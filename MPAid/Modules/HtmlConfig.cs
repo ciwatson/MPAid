@@ -40,27 +40,27 @@ namespace MPAid
         {
             switch (type)
             {
-                case pathType.fullSampleRecPath:
-                    return GetSampleRecPath(id);
                 case pathType.fullUserRecPath:
                     return GetUserRecPath(id);
-                case pathType.partialSampleRecPath:
-                    return GetSampleRecHtmlPath(id);
+                case pathType.fullSampleRecPath:
+                    return GetSampleRecPath(id);
                 case pathType.partialUserRecPath:
                     return GetUserRecHtmlPath(id);
+                case pathType.partialSampleRecPath:
+                    return GetSampleRecHtmlPath(id);
                 default:
                     return null;
             }
         }
 
-        public string GetUserRecPath(int id)
+        private string GetUserRecPath(int id)
         {
             return string.Format("{0}{2}{1}{3}{1}{4}{5}{6}",
                 annieDir, Path.DirectorySeparatorChar, outputDir, soundFolderName,
                 userRecFileNamePrefix, id.ToString("D4"), recFileNameSuffix);
         }
 
-        public string GetSampleRecPath(int id)
+        private string GetSampleRecPath(int id)
         {
             return string.Format("{0}{2}{1}{3}{1}{4}{5}{6}",
                 annieDir, Path.DirectorySeparatorChar, outputDir, soundFolderName,

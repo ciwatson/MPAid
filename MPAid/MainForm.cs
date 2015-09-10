@@ -591,7 +591,8 @@ namespace MPAid
                 return;
             if (listBoxREC.SelectedItem == null)
                 return;
-            string targetSoundPath = fileLocator.GetUserRecPath(listBoxREC.SelectedIndex + 1);
+            string targetSoundPath = fileLocator.GetRecPath(listBoxREC.SelectedIndex + 1,
+                HtmlConfig.pathType.fullUserRecPath);
             if (File.Exists(targetSoundPath))
                 ResMan.PlaySound(targetSoundPath, false);
         }
@@ -628,8 +629,8 @@ namespace MPAid
                 //copies the user recording files to the HTML report resource folder
                 HtmlConfig hConfig = new HtmlConfig(ResMan.GetAnnieDir());
                 ResMan.SuperCopy(CurrentVoicePath,
-                          hConfig.GetUserRecPath(listREC.Count),
-                          true);
+                          hConfig.GetRecPath(listREC.Count, 
+                          HtmlConfig.pathType.fullUserRecPath), true);
 
                 //prepare to copy the sample recording file to the HTML report res folder
 
@@ -647,9 +648,8 @@ namespace MPAid
                 lastPlayedSound = soundToPlay;
 
                 //copies the sample recording files to the HTML res folder
-                ResMan.SuperCopy(soundToPlay,
-                  hConfig.GetSampleRecPath(listREC.Count),
-                  true);
+                ResMan.SuperCopy(soundToPlay, hConfig.GetRecPath(listREC.Count,
+                    HtmlConfig.pathType.fullSampleRecPath), true);
 
                 //change the UI
                 buttonShowReport.Enabled = true;
@@ -781,7 +781,7 @@ namespace MPAid
                 Location = new Point(groupBox4.Left + groupBox4.Width + 6,
                                      groupBox4.Top + headerBox.Height + 6)
             };
-            
+
             Controls.Add(volumeMeter);
             volumeMeter.BringToFront();
         }
