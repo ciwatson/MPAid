@@ -27,19 +27,5 @@ namespace MPAid
             return "not implemented";
         }
 
-        private void HMMsConfigForm_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBoxPresets_Enter(object sender, EventArgs e)
-        {
-
-        }
     }
 }
