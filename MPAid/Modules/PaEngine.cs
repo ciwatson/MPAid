@@ -220,10 +220,10 @@ namespace MPAid
                     sw.WriteLine("color 0A");
                     sw.WriteLine("title Processing");
                     sw.WriteLine(string.Format(@"HCopy -T 1 -C user/config0 -S user/{0}", myConfig.script1));
-                    sw.WriteLine(string.Format(@"HVite -H -C user/config1 HMMs/hmm15/macros -H HMMs/hmm15/hmmdefs -S user/{0} -l * -T 4 -i {1}/{2} -w user/wordNetwork -p 0.0 -s 5.0 user/dictionary user/tiedList > {1}/{3}",
-                        myConfig.script2, myConfig.outputDir, myConfig.mlf0A, myConfig.HViteOut));
-                    sw.WriteLine(string.Format(@"HVite -H -C user/config1 HMMs/hmm15/macros -H HMMs/hmm15/hmmdefs -S user/{0} -l * -a -f -i {1}/{2} -w user/wordNetwork -p 0.0 -s 5.0 user/dictionary user/tiedList",
-                        myConfig.script2, myConfig.outputDir, myConfig.mlf0B));
+                    sw.WriteLine(string.Format(@"HVite -H -C user/config1 {4}/macros -H {4}/hmmdefs -S user/{0} -l * -T 4 -i {1}/{2} -w user/wordNetwork -p 0.0 -s 5.0 user/dictionary user/tiedList > {1}/{3}",
+                        myConfig.script2, myConfig.outputDir, myConfig.mlf0A, myConfig.HViteOut, HMMsController.GetHMMsValue()));
+                    sw.WriteLine(string.Format(@"HVite -H -C user/config1 {3}/macros -H {3}/hmmdefs -S user/{0} -l * -a -f -i {1}/{2} -w user/wordNetwork -p 0.0 -s 5.0 user/dictionary user/tiedList",
+                        myConfig.script2, myConfig.outputDir, myConfig.mlf0B, HMMsController.GetHMMsValue()));
                     sw.WriteLine(string.Format(@"HResults -t -I user/{0} user/tiedList {1}/{2} > {1}/{3}",
                         myConfig.transcript, myConfig.outputDir, myConfig.mlf0A, myConfig.HResultsOut));
                 }

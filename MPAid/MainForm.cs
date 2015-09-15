@@ -58,7 +58,7 @@ namespace MPAid
         private Process FormantPlotExe;
         private ResManager ResMan;
         private UserManagement myUsers;
-
+ 
         private Thread AsyncPlayer;
         private string CurrentSoundPath = null;
 
@@ -110,6 +110,11 @@ namespace MPAid
             InitializeNAudioController();
             VisualizeVolumeMeter();
 
+        }
+
+        private void InitializeHMMsController()
+        {
+            // this methods actually load user settings for HMMsController
         }
 
         private void FillLists()
@@ -829,8 +834,9 @@ namespace MPAid
         private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             HMMsConfigForm hmmsConfig = new HMMsConfigForm();
+            hmmsConfig.SetWorkingFolder(ResMan.GetAnnieDir());
             hmmsConfig.ShowDialog();
-            
+            HMMsController.SetHMMsValue(hmmsConfig.GetHMMsValue());
         }
     }
 }

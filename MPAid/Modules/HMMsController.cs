@@ -5,20 +5,20 @@ using System.Text;
 
 namespace MPAid
 {
-    class HMMsController
+    public static class HMMsController
     {
-        private string hmmsValue = "HMMsAnnie/HMMsFullSet";
+        private static string hmmsValue = "HMMsAnnie/HMMsFullSet/hmm15";
 
-        public string GetHMMsValue()
+        public static string GetHMMsValue()
         {
             return hmmsValue;
         }
 
-        public void SetHMMsValue(string newValue)
+        public static void SetHMMsValue(string newValue)
         {
-            hmmsValue = newValue;
+            if (newValue != hmmsValue)
+                hmmsValue = newValue;
         }
         
-
     }
 }
