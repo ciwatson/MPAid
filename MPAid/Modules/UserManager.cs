@@ -5,12 +5,12 @@ using System.Text;
 
 namespace MPAid
 {
-    class UserManager
+    class UserManagement
     {
         private string userDirRoot = null;
         private string currentUser = null;
         
-        public UserManager(string root)
+        public UserManagement(string root)
         {
             userDirRoot = root;
         }

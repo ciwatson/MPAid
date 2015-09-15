@@ -57,7 +57,7 @@ namespace MPAid
 
         private Process FormantPlotExe;
         private ResManager ResMan;
-        private UserManager myUsers;
+        private UserManagement myUsers;
 
         private Thread AsyncPlayer;
         private string CurrentSoundPath = null;
@@ -84,7 +84,7 @@ namespace MPAid
         private void InitializeUI()
         {
             ResMan = new ResManager();
-            myUsers = new UserManager(ResMan.GetUserTempPath());
+            myUsers = new UserManagement(ResMan.GetUserTempPath());
             this.Icon = Properties.Resources.MPAid;
             this.Text += " " + GetVersionString();
 
