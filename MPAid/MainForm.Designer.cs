@@ -73,6 +73,7 @@
             this.tdButtonFormantPlot = new MPAid.TDButton();
             this.ButtonStop = new MPAid.TDButton();
             this.ButtonPlay = new MPAid.TDButton();
+            this.openHMMsFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.headerBox)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.myTabControl.SuspendLayout();
@@ -537,6 +538,7 @@
             // hMMsToolStripMenuItem
             // 
             this.hMMsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.openHMMsFolderToolStripMenuItem,
             this.settingsToolStripMenuItem});
             this.hMMsToolStripMenuItem.Name = "hMMsToolStripMenuItem";
             this.hMMsToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
@@ -545,7 +547,7 @@
             // settingsToolStripMenuItem
             // 
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
             this.settingsToolStripMenuItem.Text = "Settings";
             this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
             // 
@@ -590,6 +592,13 @@
             this.ButtonPlay.Text = "Play Audio";
             this.ButtonPlay.UseVisualStyleBackColor = true;
             this.ButtonPlay.Click += new System.EventHandler(this.ButtonPlay_Click);
+            // 
+            // openHMMsFolderToolStripMenuItem
+            // 
+            this.openHMMsFolderToolStripMenuItem.Name = "openHMMsFolderToolStripMenuItem";
+            this.openHMMsFolderToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
+            this.openHMMsFolderToolStripMenuItem.Text = "Open HMMs folder";
+            this.openHMMsFolderToolStripMenuItem.Click += new System.EventHandler(this.openHMMsFolderToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -679,6 +688,7 @@
         private System.Windows.Forms.ToolStripMenuItem usersToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem hMMsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem openHMMsFolderToolStripMenuItem;
     }
 }
 

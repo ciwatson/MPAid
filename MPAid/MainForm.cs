@@ -838,5 +838,10 @@ namespace MPAid
             hmmsConfig.ShowDialog();
             HMMsController.SetHMMsValue(hmmsConfig.GetHMMsValue());
         }
+
+        private void openHMMsFolderToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ResMan.ShowInExplorer(ResMan.GetAnnieDir());
+        }
     }
 }

@@ -256,6 +256,14 @@ namespace MPAid
             explorer.Start();
         }
 
+        public void ShowInExplorer(string FilePath)
+        {
+            Process explorer = new Process();
+            explorer.StartInfo.FileName = "explorer";
+            explorer.StartInfo.Arguments = FilePath;
+            explorer.Start();
+        }
+
         public string GetUserTempPath()
         {
             return Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\MPAid";
