@@ -629,7 +629,7 @@ namespace MPAid
                 //copies the user recording files to the HTML report resource folder
                 HtmlConfig hConfig = new HtmlConfig(ResMan.GetAnnieDir());
                 ResMan.SuperCopy(CurrentVoicePath,
-                          hConfig.GetRecPath(listREC.Count, 
+                          hConfig.GetRecPath(listREC.Count,
                           HtmlConfig.pathType.fullUserRecPath), true);
 
                 //prepare to copy the sample recording file to the HTML report res folder
@@ -779,7 +779,7 @@ namespace MPAid
             {
                 Size = new Size(20, groupBox3.Height + groupBox4.Height),
                 Location = new Point(groupBox4.Left + groupBox4.Width + 6,
-                                     groupBox4.Top + headerBox.Height + 6)
+                                     groupBox4.Top + mainMenuStrip.Height + headerBox.Height + 6)
             };
 
             Controls.Add(volumeMeter);
@@ -824,6 +824,13 @@ namespace MPAid
                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
+        }
+
+        private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            HMMsConfigForm hmmsConfig = new HMMsConfigForm();
+            hmmsConfig.ShowDialog();
+            MessageBox.Show(hmmsConfig.GetValue());
         }
     }
 }

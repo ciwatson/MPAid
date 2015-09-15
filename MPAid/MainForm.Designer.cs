@@ -66,6 +66,10 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.animationTimer = new System.Windows.Forms.Timer(this.components);
             this.NAudioTimer = new System.Windows.Forms.Timer(this.components);
+            this.mainMenuStrip = new System.Windows.Forms.MenuStrip();
+            this.usersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.hMMsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tdButtonFormantPlot = new MPAid.TDButton();
             this.ButtonStop = new MPAid.TDButton();
             this.ButtonPlay = new MPAid.TDButton();
@@ -83,6 +87,7 @@
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.mainMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // headerBox
@@ -90,7 +95,7 @@
             this.headerBox.BackgroundImage = global::MPAid.Properties.Resources.header;
             this.headerBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.headerBox.Dock = System.Windows.Forms.DockStyle.Top;
-            this.headerBox.Location = new System.Drawing.Point(0, 0);
+            this.headerBox.Location = new System.Drawing.Point(0, 24);
             this.headerBox.Name = "headerBox";
             this.headerBox.Size = new System.Drawing.Size(834, 81);
             this.headerBox.TabIndex = 0;
@@ -497,9 +502,9 @@
             this.panel1.Controls.Add(this.myTabControl);
             this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 81);
+            this.panel1.Location = new System.Drawing.Point(0, 105);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(834, 380);
+            this.panel1.Size = new System.Drawing.Size(834, 381);
             this.panel1.TabIndex = 7;
             // 
             // animationTimer
@@ -511,6 +516,38 @@
             // 
             this.NAudioTimer.Interval = 10;
             this.NAudioTimer.Tick += new System.EventHandler(this.NAudioTimer_Tick);
+            // 
+            // mainMenuStrip
+            // 
+            this.mainMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.usersToolStripMenuItem,
+            this.hMMsToolStripMenuItem});
+            this.mainMenuStrip.Location = new System.Drawing.Point(0, 0);
+            this.mainMenuStrip.Name = "mainMenuStrip";
+            this.mainMenuStrip.Size = new System.Drawing.Size(834, 24);
+            this.mainMenuStrip.TabIndex = 8;
+            this.mainMenuStrip.Text = "menuStrip1";
+            // 
+            // usersToolStripMenuItem
+            // 
+            this.usersToolStripMenuItem.Name = "usersToolStripMenuItem";
+            this.usersToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
+            this.usersToolStripMenuItem.Text = "Users";
+            // 
+            // hMMsToolStripMenuItem
+            // 
+            this.hMMsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.settingsToolStripMenuItem});
+            this.hMMsToolStripMenuItem.Name = "hMMsToolStripMenuItem";
+            this.hMMsToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
+            this.hMMsToolStripMenuItem.Text = "HMMs";
+            // 
+            // settingsToolStripMenuItem
+            // 
+            this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.settingsToolStripMenuItem.Text = "Settings";
+            this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
             // 
             // tdButtonFormantPlot
             // 
@@ -559,14 +596,16 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Snow;
-            this.ClientSize = new System.Drawing.Size(834, 461);
+            this.ClientSize = new System.Drawing.Size(834, 486);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.headerBox);
+            this.Controls.Add(this.mainMenuStrip);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MainMenuStrip = this.mainMenuStrip;
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(875, 500);
-            this.MinimumSize = new System.Drawing.Size(850, 500);
+            this.MaximumSize = new System.Drawing.Size(875, 525);
+            this.MinimumSize = new System.Drawing.Size(850, 525);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Māori Pronunciation Aid";
@@ -587,7 +626,10 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
+            this.mainMenuStrip.ResumeLayout(false);
+            this.mainMenuStrip.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -633,6 +675,10 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ListBox listBoxREC;
         private System.Windows.Forms.Timer NAudioTimer;
+        private System.Windows.Forms.MenuStrip mainMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem usersToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem hMMsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
     }
 }
 
