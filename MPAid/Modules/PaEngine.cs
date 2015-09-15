@@ -102,6 +102,7 @@ namespace MPAid
         }
 
         private const string MaoriEncodingCode = "iso-8859-1";
+        private string strResultUnavailable = "Result unavailable";
 
         public string GetRecognizedWord()
         {
@@ -112,14 +113,22 @@ namespace MPAid
                     Encoding.GetEncoding(MaoriEncodingCode)))
                     tmpStr = sr.ReadToEnd();
                 string locator = "REC: ", locator2 = ((char)10).ToString();
+                const string errorMessage = "No transcriptions found";
+
+                // this indicates that the result was not available
+                if ((tmpStr.Contains(errorMessage)) && (tmpStr.Length > 0))
+                    return strResultUnavailable;
+
+                // this indicates that the word is correct
                 if ((!tmpStr.Contains(locator)) && (tmpStr.Length > 0))
                     return myConfig.currentWord;
+                
                 string result = GetWordBetween(tmpStr, locator, locator2);
                 return result;
             }
             catch (Exception)
             {
-                return "Result not available";
+                return strResultUnavailable;
             }
         }
 
@@ -139,7 +148,7 @@ namespace MPAid
             }
             catch (Exception)
             {
-                return "Result not available";
+                return strResultUnavailable;
             }
         }
 
