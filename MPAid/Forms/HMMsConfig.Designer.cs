@@ -128,7 +128,7 @@
             this.useCustomizedHMMs.Name = "useCustomizedHMMs";
             this.useCustomizedHMMs.Size = new System.Drawing.Size(330, 30);
             this.useCustomizedHMMs.TabIndex = 2;
-            this.useCustomizedHMMs.Text = "Use customized HMMs set";
+            this.useCustomizedHMMs.Text = "Use customized HMMs";
             this.useCustomizedHMMs.UseVisualStyleBackColor = true;
             this.useCustomizedHMMs.CheckedChanged += new System.EventHandler(this.useCustomizedHMMs_CheckedChanged);
             // 

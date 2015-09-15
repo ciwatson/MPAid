@@ -22,15 +22,26 @@ namespace MPAid
             customizedPath.Text = cPathInitial;
             customizedPath.ForeColor = Color.Gray;
 
+            bool notCustomize = true;
             foreach (Control c in groupPresets.Controls)
             {
                 if (c is RadioButton)
                 {
                     RadioButton rb = (RadioButton)c;
                     if (rb.Text.Equals(HMMsController.GetHMMsValue()))
+                    {
                         rb.Checked = true;
+                        notCustomize = false;
+                    }                    
                 }
             }
+            if (notCustomize)
+            {
+                useCustomizedHMMs.Checked = true;
+                customizedPath.Text = HMMsController.GetHMMsValue();
+                customizedPath.ForeColor = Color.Black;
+            }
+            
         }
 
         public void SetWorkingFolder(string annieDir)
@@ -64,6 +75,7 @@ namespace MPAid
             {
                 customizedPath.Text = "";
                 customizedPath.ForeColor = Color.Black;
+                customizedPath.Focus();
             }
         }
 
@@ -71,5 +83,6 @@ namespace MPAid
         {
             groupPresets.Enabled = !useCustomizedHMMs.Checked;
         }
+
     }
 }
