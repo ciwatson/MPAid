@@ -14,17 +14,32 @@ namespace MPAid
         public HMMsConfigForm()
         {
             InitializeComponent();
+            InitUI();
         }
 
-        public string GetValue()
+        private void InitUI()
         {
-            return (textBox1.Text);
+
+        }
+
+        public string GetHMMsValue()
+        {
+            return "not implemented";
         }
 
         private void HMMsConfigForm_Load(object sender, EventArgs e)
         {
 
         }
-    
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBoxPresets_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }

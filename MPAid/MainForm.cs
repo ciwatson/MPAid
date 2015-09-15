@@ -830,7 +830,7 @@ namespace MPAid
         {
             HMMsConfigForm hmmsConfig = new HMMsConfigForm();
             hmmsConfig.ShowDialog();
-            MessageBox.Show(hmmsConfig.GetValue());
+            
         }
     }
 }

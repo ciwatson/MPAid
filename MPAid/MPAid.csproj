@@ -71,6 +71,7 @@
     </Compile>
     <Compile Include="Modules\Examiner.cs" />
     <Compile Include="Modules\FileMapper.cs" />
+    <Compile Include="Modules\HMMsController.cs" />
     <Compile Include="Modules\HtmlConfig.cs" />
     <Compile Include="Modules\HtmlGenerator.cs" />
     <Compile Include="Modules\MaoriObj.cs" />
