@@ -7,7 +7,7 @@ namespace MPAid
 {
     public static class HMMsController
     {
-        private static string hmmsValue = "HMMsAnnie/HMMsFullSet/hmm15";
+        private static string hmmsValue = "HMMs/hmm15";
 
         public static string GetHMMsValue()
         {
