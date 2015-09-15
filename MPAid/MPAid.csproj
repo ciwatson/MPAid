@@ -79,7 +79,7 @@
     <Compile Include="Modules\NAudioController.cs" />
     <Compile Include="Modules\PaConfig.cs" />
     <Compile Include="Modules\PaEngine.cs" />
-    <Compile Include="Modules\UserManager.cs" />
+    <Compile Include="Modules\UserManagement.cs" />
     <Compile Include="Modules\WordMapper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
