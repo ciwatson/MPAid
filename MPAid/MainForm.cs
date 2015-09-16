@@ -83,11 +83,12 @@ namespace MPAid
 
         private void InitializeUI()
         {
+            Icon = Properties.Resources.MPAid;
+            Text += " " + GetVersionString();
+
             ResMan = new ResManager();
             myUsers = new UserManagement(ResMan.GetUserTempPath());
-            this.Icon = Properties.Resources.MPAid;
-            this.Text += " " + GetVersionString();
-
+            
             tdButtonFormantPlot.ImageNormal = Properties.Resources.ButtonYellow_0;
             tdButtonFormantPlot.ImageHighlight = Properties.Resources.ButtonYellow_1;
             tdButtonFormantPlot.ImagePressed = Properties.Resources.ButtonYellow_2;
