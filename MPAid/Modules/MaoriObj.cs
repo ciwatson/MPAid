@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace MPAid
 {
-    class MaoriObj
+    public class MaoriObj
     {
         public string Name;
         public string SoundFilePath;

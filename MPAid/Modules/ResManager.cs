@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace MPAid
 {
-    class ResManager
+    public class ResManager
     {
         private List<MaoriObj> Vowels;
         private List<MaoriObj> Words;

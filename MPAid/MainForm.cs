@@ -81,13 +81,18 @@ namespace MPAid
             splash.Close();
         }
 
+        public void SetUserManagement(UserManagement users)
+        {
+            myUsers = users;
+        }
+        
         private void InitializeUI()
         {
             Icon = Properties.Resources.MPAid;
             Text += " " + GetVersionString();
 
             ResMan = new ResManager();
-            myUsers = new UserManagement(ResMan.GetUserTempPath());
+            //myUsers = new UserManagement(ResMan.GetUserTempPath());
                     
             tdButtonFormantPlot.ImageNormal = Properties.Resources.ButtonYellow_0;
             tdButtonFormantPlot.ImageHighlight = Properties.Resources.ButtonYellow_1;
@@ -169,6 +174,7 @@ namespace MPAid
             if ((FormantPlotExe != null) && (!FormantPlotExe.HasExited))
                 FormantPlotExe.Kill();
             myUsers.WriteSettings();
+            Application.Exit();
         }
 
         private void headerBox_MouseDoubleClick(object sender, MouseEventArgs e)

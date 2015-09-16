@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace MPAid
 {
-    class UserManagement
+    public class UserManagement
     {
         private MPAiUser currentUser = null;
 
@@ -24,7 +24,7 @@ namespace MPAid
             ReadSettings();
         }
 
-        public void CreateNewUser(string newUserName, string newCode)
+        public bool CreateNewUser(string newUserName, string newCode)
         {
             unchanged = false;
 
@@ -34,11 +34,22 @@ namespace MPAid
                 select user;
 
             if (searchUser.Count() == 0)
+            {
                 allUsers.Add(new MPAiUser(newUserName, newCode));
+                return true;
+            }
             else
-                MessageBox.Show("User already exist, please use a different name! ",
-                    "Ooops", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            { 
+                return false;
+            }
+        }
 
+        public bool AuthenticateSuccess(string username, string code)
+        {
+            foreach (MPAiUser user in allUsers)
+                if (user.getName() == username)
+                    return user.codeCorrect(code);
+            return false;
         }
 
         public void ChangeUserCode(string userName, string newCode)

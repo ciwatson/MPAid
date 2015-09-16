@@ -10,6 +10,11 @@ namespace MPAid
         private string prefix, middle, suffix, uniformFormat = "{0}{1}M_{2}.wav";
         private int upperLimit = 0, lowerLimit = 0;
 
+        public FileMapper()
+        {
+
+        }
+
         public FileMapper(int Gender, int SoundId)
         {
             suffix = SoundId.ToString("D2");
@@ -54,5 +59,11 @@ namespace MPAid
                 result.Add(GetWordSoundName(i));
             return result;
         }
+
+        public string GetUserTempPath()
+        {
+            return Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\MPAid";
+        }
+
     }
 }
