@@ -113,6 +113,9 @@
     <EmbeddedResource Include="Forms\HMMsConfig.resx">
       <DependentUpon>HMMsConfig.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\LoginWindow.resx">
+      <DependentUpon>LoginWindow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\NewUserWindow.resx">
       <DependentUpon>NewUserWindow.cs</DependentUpon>
     </EmbeddedResource>

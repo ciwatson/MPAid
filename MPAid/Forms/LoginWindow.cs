@@ -14,6 +14,18 @@ namespace MPAid
         public LoginWindow()
         {
             InitializeComponent();
+            InitializeUI();
+        }
+
+        private void InitializeUI()
+        {
+            buttonSignUp.ImageNormal = Properties.Resources.ButtonYellow_0;
+            buttonSignUp.ImageHighlight = Properties.Resources.ButtonYellow_1;
+            buttonSignUp.ImagePressed = Properties.Resources.ButtonYellow_2;
+
+            buttonLogin.ImageNormal = Properties.Resources.ButtonGreen_0;
+            buttonLogin.ImageHighlight = Properties.Resources.ButtonGreen_1;
+            buttonLogin.ImagePressed = Properties.Resources.ButtonGreen_2;
         }
     }
 }
