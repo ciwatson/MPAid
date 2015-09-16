@@ -169,7 +169,7 @@
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(680, 240);
             this.Name = "HMMsConfigForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "HMMs Configuration";
             this.groupPresets.ResumeLayout(false);
             this.groupPresets.PerformLayout();
