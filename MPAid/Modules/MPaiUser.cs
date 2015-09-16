@@ -26,5 +26,10 @@ namespace MPAid
         {
             return userName;
         }
+
+        public string getCode()
+        {
+            return passWord;
+        }
     }
 }

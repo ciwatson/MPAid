@@ -88,7 +88,7 @@ namespace MPAid
 
             ResMan = new ResManager();
             myUsers = new UserManagement(ResMan.GetUserTempPath());
-            
+                    
             tdButtonFormantPlot.ImageNormal = Properties.Resources.ButtonYellow_0;
             tdButtonFormantPlot.ImageHighlight = Properties.Resources.ButtonYellow_1;
             tdButtonFormantPlot.ImagePressed = Properties.Resources.ButtonYellow_2;
@@ -168,6 +168,7 @@ namespace MPAid
             StopSoundPlayer();
             if ((FormantPlotExe != null) && (!FormantPlotExe.HasExited))
                 FormantPlotExe.Kill();
+            myUsers.WriteSettings();
         }
 
         private void headerBox_MouseDoubleClick(object sender, MouseEventArgs e)
