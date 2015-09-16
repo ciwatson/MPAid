@@ -35,6 +35,12 @@ namespace MPAid
             buttonLogin.ImagePressed = Properties.Resources.ButtonGreen_2;
         }
 
+        public void ResetUserInput()
+        {
+            userNameBox.Clear();
+            codeBox.Clear();
+        }
+
         private void buttonLogin_Click(object sender, EventArgs e)
         {
             if (myUsers.AuthenticateSuccess(userNameBox.Text, codeBox.Text))
