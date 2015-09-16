@@ -1,4 +1,4 @@
-﻿namespace MPAid.Forms
+﻿namespace MPAid
 {
     partial class LoginWindow
     {

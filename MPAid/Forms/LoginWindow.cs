@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace MPAid.Forms
+namespace MPAid
 {
     public partial class LoginWindow : Form
     {
