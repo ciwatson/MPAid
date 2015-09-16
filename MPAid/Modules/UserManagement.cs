@@ -92,10 +92,7 @@ namespace MPAid
                     }
                 }
             }
-            catch (Exception)
-            {
-
-            }
+            catch (Exception) { }
         }
 
     }
