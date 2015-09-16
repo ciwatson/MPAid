@@ -76,9 +76,13 @@ namespace MPAid
 
         public void WriteSettings()
         {
+            if (unchanged)
+                return;
+
             int n = allUsers.Count;
             if (n == 0)
                 return;
+
             try
             {
                 using (BinaryWriter writer = new BinaryWriter(
