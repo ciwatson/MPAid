@@ -57,7 +57,7 @@ namespace MPAid
 
         private Process FormantPlotExe;
         private ResManager ResMan;
-        private UserManagement myUsers;
+        public UserManagement allUsers;
  
         private Thread AsyncPlayer;
         private string CurrentSoundPath = null;
@@ -85,7 +85,7 @@ namespace MPAid
 
         public void SetUserManagement(UserManagement users)
         {
-            myUsers = users;
+            allUsers = users;
         }
         
         public void SetHomeWindow(LoginWindow loginWin)
@@ -100,7 +100,7 @@ namespace MPAid
 
             ResMan = new ResManager();
             //myUsers = new UserManagement(ResMan.GetUserTempPath());
-                    
+          
             tdButtonFormantPlot.ImageNormal = Properties.Resources.ButtonYellow_0;
             tdButtonFormantPlot.ImageHighlight = Properties.Resources.ButtonYellow_1;
             tdButtonFormantPlot.ImagePressed = Properties.Resources.ButtonYellow_2;
@@ -123,6 +123,12 @@ namespace MPAid
             InitializeNAudioController();
             VisualizeVolumeMeter();
 
+        }
+
+        //this method is called when all the variables has been initialized
+        private void InitializeUI2()
+        {
+            usersToolStripMenuItem.Text = allUsers.getLastUser().getName();
         }
 
         private void InitializeHMMsController()
@@ -878,5 +884,11 @@ namespace MPAid
             loginForm.Show();
             Close();           
         }
+
+        private void MainForm_Shown(object sender, EventArgs e)
+        {
+            InitializeUI2();
+        }
+
     }
 }

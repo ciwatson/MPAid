@@ -18,7 +18,7 @@ namespace MPAid
         public LoginWindow()
         {
             InitializeComponent();
-            
+
             fileMapper = new FileMapper();
             myUsers = new UserManagement(fileMapper.GetUserTempPath());
 
@@ -36,7 +36,7 @@ namespace MPAid
             buttonLogin.ImagePressed = Properties.Resources.ButtonGreen_2;
 
             bool autoLog = autoLogin.Checked = Properties.Settings.Default.autoLoginSetting;
-            
+
             if (autoLog)
             {
                 MPAiUser lastUser = myUsers.getLastUser();
@@ -63,8 +63,8 @@ namespace MPAid
             if (myUsers.AuthenticateUser(tUser))
             {
                 Hide();
-                MainForm mainWindow = new MainForm();
-                mainWindow.SetUserManagement(myUsers);
+                MainForm mainWindow = new MainForm() { allUsers = myUsers };
+                //mainWindow.SetUserManagement(myUsers);
                 mainWindow.SetHomeWindow(this);
                 mainWindow.Show();
             }
@@ -96,7 +96,7 @@ namespace MPAid
                         "Congratulations", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     myUsers.WriteSettings();
 
-                    VisualizeUser(candidate);                  
+                    VisualizeUser(candidate);
                 }
                 else
                 {
