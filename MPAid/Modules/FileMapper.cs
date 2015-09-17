@@ -60,10 +60,5 @@ namespace MPAid
             return result;
         }
 
-        public string GetUserTempPath()
-        {
-            return Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\MPAid";
-        }
-
     }
 }

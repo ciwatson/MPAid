@@ -12,14 +12,14 @@ namespace MPAid
     public partial class LoginWindow : Form
     {
 
-        private FileMapper fileMapper;
+        private IoController fileMapper;
         private UserManagement myUsers;
 
         public LoginWindow()
         {
             InitializeComponent();
 
-            fileMapper = new FileMapper();
+            fileMapper = new IoController();
             myUsers = new UserManagement(fileMapper.GetUserTempPath());
 
             InitializeUI();

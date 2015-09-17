@@ -241,34 +241,6 @@ namespace MPAid
             catch { }
         }
 
-        public void ShowInBrowser(string htmlPath)
-        {
-            Process browser = new Process();
-            browser.StartInfo.FileName = htmlPath;
-            browser.Start();
-        }
-
-        public void ShowInNotepad(string FilePath)
-        {
-            Process explorer = new Process();
-            explorer.StartInfo.FileName = "notepad";
-            explorer.StartInfo.Arguments = FilePath;
-            explorer.Start();
-        }
-
-        public void ShowInExplorer(string FilePath)
-        {
-            Process explorer = new Process();
-            explorer.StartInfo.FileName = "explorer";
-            explorer.StartInfo.Arguments = FilePath;
-            explorer.Start();
-        }
-
-        public string GetUserTempPath()
-        {
-            return Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\MPAid";
-        }
-
         ///<summary>
         ///This method copies a file from sourcePath to destPath,
         ///ALSO it checks the target directory before copying

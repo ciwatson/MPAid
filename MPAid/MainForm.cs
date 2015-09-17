@@ -58,7 +58,8 @@ namespace MPAid
         private Process FormantPlotExe;
         private ResManager ResMan;
         public UserManagement allUsers;
- 
+        private IoController systemIO;
+
         private Thread AsyncPlayer;
         private string CurrentSoundPath = null;
 
@@ -99,8 +100,9 @@ namespace MPAid
             Text += " " + GetVersionString();
 
             ResMan = new ResManager();
+            systemIO = new IoController();
             //myUsers = new UserManagement(ResMan.GetUserTempPath());
-          
+
             tdButtonFormantPlot.ImageNormal = Properties.Resources.ButtonYellow_0;
             tdButtonFormantPlot.ImageHighlight = Properties.Resources.ButtonYellow_1;
             tdButtonFormantPlot.ImagePressed = Properties.Resources.ButtonYellow_2;
@@ -582,9 +584,10 @@ namespace MPAid
         private string GetNextUserRecordingName(MaoriObj word)
         {
             string result;
+      
             FileMapper fileMapper = new FileMapper(0, word.WordSoundId);
             int index = recordedWavFiles.Count + 1;
-            result = ResMan.GetUserTempPath()
+            result = systemIO.GetUserTempPath()
                 + "\\" + fileMapper.GetWordSoundName(index);
             return result;
         }
@@ -751,7 +754,7 @@ namespace MPAid
             // Show the HTML file in system browser
             ReportPath = hConfig.GetHtmlFullPath();
             if (File.Exists(ReportPath))
-                ResMan.ShowInBrowser(ReportPath);
+                systemIO.ShowInBrowser(ReportPath);
             else
                 buttonShowReport.Enabled = false;
         }
@@ -872,7 +875,7 @@ namespace MPAid
 
         private void openHMMsFolderToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ResMan.ShowInExplorer(ResMan.GetAnnieDir());
+            systemIO.ShowInExplorer(ResMan.GetAnnieDir());
         }
 
         bool doCloseLogin = true;
