@@ -43,5 +43,10 @@ namespace MPAid
             else
                 return false;
         }
+
+        public override string ToString()
+        {
+            return userName;
+        }
     }
 }
