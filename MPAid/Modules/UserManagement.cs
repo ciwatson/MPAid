@@ -115,10 +115,10 @@ namespace MPAid
                         for (int i = 0; i < n; i++)
                             allUsers.Add(new MPAiUser(reader.ReadString(), reader.ReadString()));
 
-                        // restore the last used user
-                        string name = reader.ReadString();
-                        string code = reader.ReadString();
-                        currentUser = new MPAiUser(name, code);
+                        //// restore the last used user
+                        //string name = reader.ReadString();
+                        //string code = reader.ReadString();
+                        //currentUser = new MPAiUser(name, code);
                     }
                 }
             }
