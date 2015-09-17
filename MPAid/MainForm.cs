@@ -70,6 +70,8 @@ namespace MPAid
         private List<string> recordedWavFiles = new List<string>();
         private BindingList<string> listREC = new BindingList<string>();
 
+        private LoginWindow loginForm;
+
         public MainForm()
         {
             SplashScreen splash = new SplashScreen();
@@ -86,6 +88,11 @@ namespace MPAid
             myUsers = users;
         }
         
+        public void SetHomeWindow(LoginWindow loginWin)
+        {
+            loginForm = loginWin;
+        }
+
         private void InitializeUI()
         {
             Icon = Properties.Resources.MPAid;
@@ -174,7 +181,18 @@ namespace MPAid
             if ((FormantPlotExe != null) && (!FormantPlotExe.HasExited))
                 FormantPlotExe.Kill();
             myUsers.WriteSettings();
-            Application.Exit();
+            
+            // this method will decide if the application is exiting
+            CloseOtherForms();
+        }
+
+        private void CloseOtherForms()
+        {
+            if (doCloseLogin)
+            {
+                loginForm.Close();
+                doCloseLogin = true;
+            }
         }
 
         private void headerBox_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -850,6 +868,16 @@ namespace MPAid
         private void openHMMsFolderToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ResMan.ShowInExplorer(ResMan.GetAnnieDir());
+        }
+
+        bool doCloseLogin = true;
+
+        private void logToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            doCloseLogin = false;
+            //loginForm.ResetUserInput();
+            loginForm.Show();
+            Close();           
         }
     }
 }

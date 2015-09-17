@@ -22,5 +22,17 @@ namespace MPAid.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool autoLoginSetting {
+            get {
+                return ((bool)(this["autoLoginSetting"]));
+            }
+            set {
+                this["autoLoginSetting"] = value;
+            }
+        }
     }
 }

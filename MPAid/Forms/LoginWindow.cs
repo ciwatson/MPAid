@@ -33,6 +33,8 @@ namespace MPAid
             buttonLogin.ImageNormal = Properties.Resources.ButtonGreen_0;
             buttonLogin.ImageHighlight = Properties.Resources.ButtonGreen_1;
             buttonLogin.ImagePressed = Properties.Resources.ButtonGreen_2;
+
+            autoLogin.Checked = Properties.Settings.Default.autoLoginSetting;
         }
 
         public void ResetUserInput()
@@ -48,6 +50,7 @@ namespace MPAid
                 Hide();
                 MainForm mainWindow = new MainForm();
                 mainWindow.SetUserManagement(myUsers);
+                mainWindow.SetHomeWindow(this);
                 mainWindow.Show();
             }
             else
@@ -76,6 +79,11 @@ namespace MPAid
                 }
             }
 
+        }
+
+        private void LoginWindow_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Properties.Settings.Default.Save();
         }
     }
 }

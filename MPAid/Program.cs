@@ -17,5 +17,6 @@ namespace MPAid
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new LoginWindow());
         }
+        
     }
 }

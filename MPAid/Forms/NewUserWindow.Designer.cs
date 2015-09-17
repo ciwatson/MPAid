@@ -118,6 +118,7 @@
             // buttonCancel
             // 
             this.buttonCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.buttonCancel.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.buttonCancel.Location = new System.Drawing.Point(217, 168);
             this.buttonCancel.Name = "buttonCancel";
@@ -129,9 +130,11 @@
             // 
             // NewUserWindow
             // 
+            this.AcceptButton = this.buttonOK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Snow;
+            this.CancelButton = this.buttonCancel;
             this.ClientSize = new System.Drawing.Size(304, 211);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonOK);

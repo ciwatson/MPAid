@@ -20,7 +20,7 @@ namespace MPAid
         public UserManagement(string root)
         {
             userDirRoot = root + Path.DirectorySeparatorChar;
-            allUsers = new List<MPAiUser>();
+            allUsers = new List<MPAiUser>() { new MPAiUser("admin", "admin") };
             ReadSettings();
         }
 

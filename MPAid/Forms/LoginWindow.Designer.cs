@@ -34,6 +34,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.buttonLogin = new MPAid.TDButton();
             this.buttonSignUp = new MPAid.TDButton();
+            this.autoLogin = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // label2
@@ -85,7 +86,7 @@
             this.buttonLogin.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.buttonLogin.FlatAppearance.BorderSize = 0;
             this.buttonLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonLogin.Location = new System.Drawing.Point(49, 116);
+            this.buttonLogin.Location = new System.Drawing.Point(49, 142);
             this.buttonLogin.Name = "buttonLogin";
             this.buttonLogin.Size = new System.Drawing.Size(100, 28);
             this.buttonLogin.TabIndex = 11;
@@ -99,7 +100,7 @@
             this.buttonSignUp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.buttonSignUp.FlatAppearance.BorderSize = 0;
             this.buttonSignUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSignUp.Location = new System.Drawing.Point(155, 116);
+            this.buttonSignUp.Location = new System.Drawing.Point(155, 142);
             this.buttonSignUp.Name = "buttonSignUp";
             this.buttonSignUp.Size = new System.Drawing.Size(100, 28);
             this.buttonSignUp.TabIndex = 12;
@@ -107,13 +108,27 @@
             this.buttonSignUp.UseVisualStyleBackColor = true;
             this.buttonSignUp.Click += new System.EventHandler(this.buttonSignUp_Click);
             // 
+            // autoLogin
+            // 
+            this.autoLogin.AutoSize = true;
+            this.autoLogin.Checked = global::MPAid.Properties.Settings.Default.autoLoginSetting;
+            this.autoLogin.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::MPAid.Properties.Settings.Default, "autoLoginSetting", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.autoLogin.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.autoLogin.Location = new System.Drawing.Point(94, 116);
+            this.autoLogin.Name = "autoLogin";
+            this.autoLogin.Size = new System.Drawing.Size(116, 20);
+            this.autoLogin.TabIndex = 13;
+            this.autoLogin.Text = "Remember me";
+            this.autoLogin.UseVisualStyleBackColor = true;
+            // 
             // LoginWindow
             // 
             this.AcceptButton = this.buttonLogin;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Snow;
-            this.ClientSize = new System.Drawing.Size(304, 161);
+            this.ClientSize = new System.Drawing.Size(304, 186);
+            this.Controls.Add(this.autoLogin);
             this.Controls.Add(this.buttonSignUp);
             this.Controls.Add(this.buttonLogin);
             this.Controls.Add(this.label2);
@@ -123,12 +138,13 @@
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(320, 200);
+            this.MaximumSize = new System.Drawing.Size(320, 225);
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(320, 200);
+            this.MinimumSize = new System.Drawing.Size(320, 225);
             this.Name = "LoginWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login to MPAid";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.LoginWindow_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -142,5 +158,6 @@
         private System.Windows.Forms.Label label1;
         private TDButton buttonLogin;
         private TDButton buttonSignUp;
+        private System.Windows.Forms.CheckBox autoLogin;
     }
 }
