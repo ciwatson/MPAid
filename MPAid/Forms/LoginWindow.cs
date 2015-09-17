@@ -18,10 +18,11 @@ namespace MPAid
         public LoginWindow()
         {
             InitializeComponent();
-            InitializeUI();
-
+            
             fileMapper = new FileMapper();
             myUsers = new UserManagement(fileMapper.GetUserTempPath());
+
+            InitializeUI();
         }
 
         private void InitializeUI()
@@ -38,12 +39,12 @@ namespace MPAid
             
             if (autoLog)
             {
-                //if (myUsers.getLastUser() != null)
-                //{
-                //    MPAiUser lastUser = myUsers.getLastUser();
-                //    userNameBox.Text = lastUser.getName();
-                //    codeBox.Text = lastUser.getCode();
-                //}               
+                if (myUsers.getLastUser() != null)
+                {
+                    MPAiUser lastUser = myUsers.getLastUser();
+                    userNameBox.Text = lastUser.getName();
+                    codeBox.Text = lastUser.getCode();
+                }
             }
         }
 
@@ -96,6 +97,7 @@ namespace MPAid
 
         private void LoginWindow_FormClosed(object sender, FormClosedEventArgs e)
         {
+            myUsers.WriteSettings();
             Properties.Settings.Default.Save();
         }
     }

@@ -13,7 +13,7 @@ namespace MPAid
 
         private string userDirRoot = null;
         private string fileName = "AppSettings.dat";
-        private bool unchanged = true;
+        //private bool unchanged = true;
 
         private List<MPAiUser> allUsers;
 
@@ -26,7 +26,7 @@ namespace MPAid
 
         public bool CreateNewUser(string newUserName, string newCode)
         {
-            unchanged = false;
+            //unchanged = false;
 
             IEnumerable<MPAiUser> searchUser =
                 from user in allUsers
@@ -56,6 +56,8 @@ namespace MPAid
 
         public bool CreateNewUser(MPAiUser candidate)
         {
+            //unchanged = false;
+
             if (allUsers.Contains(candidate))
                 return false;
             else
@@ -115,23 +117,23 @@ namespace MPAid
                         for (int i = 0; i < n; i++)
                             allUsers.Add(new MPAiUser(reader.ReadString(), reader.ReadString()));
 
-                        //// restore the last used user
-                        //string name = reader.ReadString();
-                        //string code = reader.ReadString();
-                        //currentUser = new MPAiUser(name, code);
+                        // restore the last used user
+                        string name = reader.ReadString();
+                        string code = reader.ReadString();
+                        currentUser = new MPAiUser(name, code);
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                
             }
         }
 
         public void WriteSettings()
         {
-            if (unchanged)
-                return;
+            //if (unchanged)
+            //    return;
 
             int n = allUsers.Count;
             if (n == 0)
@@ -149,14 +151,14 @@ namespace MPAid
                         writer.Write(user.getCode());
                     }
 
-                    //// store the last used user
-                    //writer.Write(currentUser.getName());
-                    //writer.Write(currentUser.getCode());
+                    // store the last used user
+                    writer.Write(currentUser.getName());
+                    writer.Write(currentUser.getCode());
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                
             }
         }
 
