@@ -30,7 +30,7 @@ namespace MPAid
 
             IEnumerable<MPAiUser> searchUser =
                 from user in allUsers
-                where user.getName() == newUserName
+                where user.getName().ToLower() == newUserName.ToLower()
                 select user;
 
             if (searchUser.Count() == 0)
@@ -47,10 +47,9 @@ namespace MPAid
         public bool ContainUser(MPAiUser candidate)
         {
             foreach (MPAiUser item in allUsers)
-            {
-                if (item.getName() == candidate.getName())
+                if (item.getName().ToLower() == candidate.getName().ToLower())
                     return true;
-            }
+            
             return false;
         }
 

@@ -39,13 +39,16 @@ namespace MPAid
             
             if (autoLog)
             {
-                if (myUsers.getLastUser() != null)
-                {
-                    MPAiUser lastUser = myUsers.getLastUser();
-                    userNameBox.Text = lastUser.getName();
-                    codeBox.Text = lastUser.getCode();
-                }
+                MPAiUser lastUser = myUsers.getLastUser();
+                if (lastUser != null)
+                    VisualizeUser(lastUser);
             }
+        }
+
+        private void VisualizeUser(MPAiUser user)
+        {
+            userNameBox.Text = user.getName();
+            codeBox.Text = user.getCode();
         }
 
         public void ResetUserInput()
@@ -54,7 +57,7 @@ namespace MPAid
             codeBox.Clear();
         }
 
-        private void buttonLogin_Click(object sender, EventArgs e)
+        public void PerformLogin()
         {
             MPAiUser tUser = new MPAiUser(userNameBox.Text, codeBox.Text);
             if (myUsers.AuthenticateUser(tUser))
@@ -72,23 +75,32 @@ namespace MPAid
             }
         }
 
+        private void buttonLogin_Click(object sender, EventArgs e)
+        {
+            PerformLogin();
+        }
+
         private void buttonSignUp_Click(object sender, EventArgs e)
         {
             NewUserWindow newUserWin = new NewUserWindow();
             newUserWin.SetAllUsers(myUsers);
             newUserWin.ShowDialog();
 
+            MPAiUser candidate = newUserWin.getCandidate();
+
             if (newUserWin.validRegistration())
             {
-                if (myUsers.CreateNewUser(newUserWin.getCandidate()))
+                if (myUsers.CreateNewUser(candidate))
                 {
                     MessageBox.Show("Registration successful! ",
                         "Congratulations", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     myUsers.WriteSettings();
+
+                    VisualizeUser(candidate);                  
                 }
                 else
                 {
-                    MessageBox.Show("User already exist, please use a different name! ",
+                    MessageBox.Show("Sorry, unknown error occurred! Please try again~ ",
                         "Ooops", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
             }
