@@ -6,7 +6,7 @@ using System.Text;
 
 namespace MPAid
 {
-    class MPAiUser
+    public class MPAiUser
     {
         private string userName;
         private string passWord;
@@ -21,7 +21,7 @@ namespace MPAid
         {
             return (code.Equals(passWord));
         }
-        
+
         public string getName()
         {
             return userName;
@@ -30,6 +30,17 @@ namespace MPAid
         public string getCode()
         {
             return passWord;
+        }
+
+        public override bool Equals(System.Object obj)
+        {
+            if (obj is MPAiUser)
+            {
+                MPAiUser otherUser = (MPAiUser)obj;
+                return ((userName == otherUser.getName()) && (passWord == otherUser.getCode()));
+            }
+            else
+                return false;
         }
     }
 }

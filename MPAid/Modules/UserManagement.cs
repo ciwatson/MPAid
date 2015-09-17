@@ -39,17 +39,52 @@ namespace MPAid
                 return true;
             }
             else
-            { 
+            {
                 return false;
             }
         }
 
-        public bool AuthenticateSuccess(string username, string code)
+        public bool ContainUser(MPAiUser candidate)
         {
-            foreach (MPAiUser user in allUsers)
-                if (user.getName() == username)
-                    return user.codeCorrect(code);
+            foreach (MPAiUser item in allUsers)
+            {
+                if (item.getName() == candidate.getName())
+                    return true;
+            }
             return false;
+        }
+
+        public bool CreateNewUser(MPAiUser candidate)
+        {
+            if (allUsers.Contains(candidate))
+                return false;
+            else
+            {
+                allUsers.Add(candidate);
+                return true;
+            }
+        }
+
+        public MPAiUser getLastUser()
+        {
+            if (currentUser != null)
+                return currentUser;
+            else
+                return null;
+        }
+
+        //public bool AuthenticateUser(string username, string code)
+        //{
+        //    foreach (MPAiUser user in allUsers)
+        //        if (user.getName() == username)
+        //            return user.codeCorrect(code);
+        //    return false;
+        //}
+
+        public bool AuthenticateUser(MPAiUser tUser)
+        {
+            currentUser = tUser;
+            return (allUsers.Contains(tUser));
         }
 
         public void ChangeUserCode(string userName, string newCode)
@@ -79,10 +114,18 @@ namespace MPAid
                         int n = reader.ReadInt32();
                         for (int i = 0; i < n; i++)
                             allUsers.Add(new MPAiUser(reader.ReadString(), reader.ReadString()));
+
+                        // restore the last used user
+                        string name = reader.ReadString();
+                        string code = reader.ReadString();
+                        currentUser = new MPAiUser(name, code);
                     }
                 }
             }
-            catch (Exception) { }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         public void WriteSettings()
@@ -105,9 +148,16 @@ namespace MPAid
                         writer.Write(user.getName());
                         writer.Write(user.getCode());
                     }
+
+                    //// store the last used user
+                    //writer.Write(currentUser.getName());
+                    //writer.Write(currentUser.getCode());
                 }
             }
-            catch (Exception) { }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
     }

@@ -34,7 +34,17 @@ namespace MPAid
             buttonLogin.ImageHighlight = Properties.Resources.ButtonGreen_1;
             buttonLogin.ImagePressed = Properties.Resources.ButtonGreen_2;
 
-            autoLogin.Checked = Properties.Settings.Default.autoLoginSetting;
+            bool autoLog = autoLogin.Checked = Properties.Settings.Default.autoLoginSetting;
+            
+            if (autoLog)
+            {
+                //if (myUsers.getLastUser() != null)
+                //{
+                //    MPAiUser lastUser = myUsers.getLastUser();
+                //    userNameBox.Text = lastUser.getName();
+                //    codeBox.Text = lastUser.getCode();
+                //}               
+            }
         }
 
         public void ResetUserInput()
@@ -45,7 +55,8 @@ namespace MPAid
 
         private void buttonLogin_Click(object sender, EventArgs e)
         {
-            if (myUsers.AuthenticateSuccess(userNameBox.Text, codeBox.Text))
+            MPAiUser tUser = new MPAiUser(userNameBox.Text, codeBox.Text);
+            if (myUsers.AuthenticateUser(tUser))
             {
                 Hide();
                 MainForm mainWindow = new MainForm();
@@ -63,14 +74,16 @@ namespace MPAid
         private void buttonSignUp_Click(object sender, EventArgs e)
         {
             NewUserWindow newUserWin = new NewUserWindow();
+            newUserWin.SetAllUsers(myUsers);
             newUserWin.ShowDialog();
 
             if (newUserWin.validRegistration())
             {
-                if (myUsers.CreateNewUser(newUserWin.getUsername(), newUserWin.getCode()))
+                if (myUsers.CreateNewUser(newUserWin.getCandidate()))
                 {
                     MessageBox.Show("Registration successful! ",
                         "Congratulations", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    myUsers.WriteSettings();
                 }
                 else
                 {

@@ -180,8 +180,7 @@ namespace MPAid
             StopSoundPlayer();
             if ((FormantPlotExe != null) && (!FormantPlotExe.HasExited))
                 FormantPlotExe.Kill();
-            myUsers.WriteSettings();
-            
+               
             // this method will decide if the application is exiting
             CloseOtherForms();
         }

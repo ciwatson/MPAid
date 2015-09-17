@@ -15,34 +15,33 @@ namespace MPAid
         {
             InitializeComponent();
         }
-
-        private void NewUserWindow_Load(object sender, EventArgs e)
-        {
-
-        }
-
+        
         private string username = null;
         private string usercode = null;
         private bool valid = false;
+        private UserManagement allUsers;
 
-        public string getUsername()
+        public MPAiUser getCandidate()
         {
-            return username;
+            username = userNameBox.Text;
+            usercode = codeBox.Text;
+
+            return (new MPAiUser(username, usercode));
         }
 
         public bool validRegistration()
         {
             return valid;
         }
-
-        public string getCode()
-        {
-            return usercode;
-        }
-
+        
         private void buttonCancel_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        public void SetAllUsers(UserManagement console)
+        {
+            allUsers = console;
         }
 
         private void buttonOK_Click(object sender, EventArgs e)
@@ -67,12 +66,21 @@ namespace MPAid
                     "Ooops", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
+            
+            MPAiUser candidate = getCandidate();
 
-            valid = true;
-            username = userNameBox.Text;
-            usercode = codeBox.Text;
+            if (allUsers.ContainUser(candidate))
+            {
+                MessageBox.Show("User already exist, please use a different name! ",
+                    "Ooops", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            else
+            {
+                valid = true;
+                this.Close();
+            }
 
-            this.Close();
         }
+        
     }
 }

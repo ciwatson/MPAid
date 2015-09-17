@@ -153,7 +153,7 @@
             this.Name = "NewUserWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Create a new user";
-            this.Load += new System.EventHandler(this.NewUserWindow_Load);
+           
             this.ResumeLayout(false);
             this.PerformLayout();
 
