@@ -38,7 +38,7 @@ namespace MPAid
             {
                 MPAiUser otherUser = (MPAiUser)obj;
                 return ((userName.ToLower() == otherUser.getName().ToLower())
-                    && (passWord.ToLower() == otherUser.getCode().ToLower()));
+                    && (passWord == otherUser.getCode()));
             }
             else
                 return false;
