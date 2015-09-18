@@ -10,4 +10,4 @@
 ## Vendor Conventions ##
 
 # Tcl Libs
-- ^[Dd]eployment/MPAi/dist/tcl/
+- tcl/
