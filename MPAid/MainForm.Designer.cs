@@ -508,7 +508,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 113);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(834, 373);
+            this.panel1.Size = new System.Drawing.Size(834, 383);
             this.panel1.TabIndex = 7;
             // 
             // animationTimer
@@ -627,7 +627,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Snow;
-            this.ClientSize = new System.Drawing.Size(834, 486);
+            this.ClientSize = new System.Drawing.Size(834, 496);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.headerBox);
             this.Controls.Add(this.mainMenuStrip);
@@ -635,8 +635,8 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.mainMenuStrip;
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(875, 525);
-            this.MinimumSize = new System.Drawing.Size(850, 525);
+            this.MaximumSize = new System.Drawing.Size(875, 535);
+            this.MinimumSize = new System.Drawing.Size(850, 535);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Māori Pronunciation Aid";

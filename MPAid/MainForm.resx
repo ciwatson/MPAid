@@ -345,19 +345,6 @@
         uf0DOKmWJuWLEtMAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="hMMsToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAGbSURBVEhL7ZU9S8NQFIbvD3NQUBFERFB0UBBBUAeHQoeiIpYWCn4RqQQpheIgQkV0cRMpRQSj
-        gzi55RcEOgSbKfIeeuLJbW6KtYtg4OE2be7zvjkJVP39o9F8DI9P7IFy/9AIO3ql9gql8P3D7Yu1nNW1
-        PjlvFNLRK4WT55fXvnAcJ1oB5Fi7AoIg+BXt9mcMY8DQRo0YzlTDkWyFGNu1ickDi65xXTdqDHzfj/ZB
-        3mq1zAEQMyyfKJZJDvSmjAwAqQGyNeRgyjoisBl3gDeP74ADxvOn1D71Dka3zmJytIZ4xt4PZyulqKEO
-        5LiGz40Buny6fEhAPlct0mb9GaAx5IsXO/S753nmAH0k3Bzy+VohaqgD+epthuQ4NwZwa8ghBgvneZJz
-        w6RnAPn63SZ9Tr0DORLZfOlym4BAhx+sxBggR4LmaA2W67lw5TqbGMBjwdozgJvzSNAaYoAxQJQ0IilP
-        HRHEenMAOQfosJjlqQFAbkxak15TKe8ZIEMYluhIqeTHARII9FUnFoB/H3wxSOpXN98B/0f6odQXh5hH
-        9dw+fdMAAAAASUVORK5CYII=
-</value>
-  </data>
   <data name="logToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABUAAAAVCAYAAACpF6WWAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -384,6 +371,19 @@
         SaxtnszaFoFcr4penTurLRNZVT2RFRVufHvBTcm39FYj+6QdkREajZ8/zd01lNzMoeRWNscEJa2C2+IG
         a8/iWGcmJXczKe0U6zuCNkGr6P8zK3JyXvbIPuWXEhcbo/Hb6MfLEhcbLYSS9DdWYYun7I3tfwAAAABJ
         RU5ErkJggg==
+</value>
+  </data>
+  <data name="hMMsToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAGbSURBVEhL7ZU9S8NQFIbvD3NQUBFERFB0UBBBUAeHQoeiIpYWCn4RqQQpheIgQkV0cRMpRQSj
+        gzi55RcEOgSbKfIeeuLJbW6KtYtg4OE2be7zvjkJVP39o9F8DI9P7IFy/9AIO3ql9gql8P3D7Yu1nNW1
+        PjlvFNLRK4WT55fXvnAcJ1oB5Fi7AoIg+BXt9mcMY8DQRo0YzlTDkWyFGNu1ickDi65xXTdqDHzfj/ZB
+        3mq1zAEQMyyfKJZJDvSmjAwAqQGyNeRgyjoisBl3gDeP74ADxvOn1D71Dka3zmJytIZ4xt4PZyulqKEO
+        5LiGz40Buny6fEhAPlct0mb9GaAx5IsXO/S753nmAH0k3Bzy+VohaqgD+epthuQ4NwZwa8ghBgvneZJz
+        w6RnAPn63SZ9Tr0DORLZfOlym4BAhx+sxBggR4LmaA2W67lw5TqbGMBjwdozgJvzSNAaYoAxQJQ0IilP
+        HRHEenMAOQfosJjlqQFAbkxak15TKe8ZIEMYluhIqeTHARII9FUnFoB/H3wxSOpXN98B/0f6odQXh5hH
+        9dw+fdMAAAAASUVORK5CYII=
 </value>
   </data>
   <data name="openHMMsFolderToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
