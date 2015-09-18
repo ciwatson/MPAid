@@ -587,7 +587,7 @@ namespace MPAid
       
             FileMapper fileMapper = new FileMapper(0, word.WordSoundId);
             int index = recordedWavFiles.Count + 1;
-            result = systemIO.GetUserTempPath()
+            result = systemIO.GetAppDataDir(allUsers.getLastUser())
                 + "\\" + fileMapper.GetWordSoundName(index);
             return result;
         }
@@ -644,6 +644,11 @@ namespace MPAid
             explorer.Start();
         }
 
+        private void RefreshListRecBox()
+        {
+            listBoxREC.SelectedIndex = listBoxREC.Items.Count - 1;
+        }
+
         private void DoAnalysis()
         {
             MaoriObj word = GetSelectedMaoriObj(MaoriObjType.Word);
@@ -664,6 +669,7 @@ namespace MPAid
 
                 //listBoxREC.Items.Add(engine.GetRecognizedWord());
                 listREC.Add(engine.GetRecognizedWord());
+                RefreshListRecBox();
 
                 //copies the user recording files to the HTML report resource folder
                 HtmlConfig hConfig = new HtmlConfig(ResMan.GetAnnieDir());

@@ -409,6 +409,7 @@
             // listBoxREC
             // 
             this.listBoxREC.FormattingEnabled = true;
+            this.listBoxREC.HorizontalScrollbar = true;
             this.listBoxREC.ItemHeight = 15;
             this.listBoxREC.Location = new System.Drawing.Point(6, 79);
             this.listBoxREC.Name = "listBoxREC";

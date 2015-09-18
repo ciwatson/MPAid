@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 
@@ -9,9 +10,14 @@ namespace MPAid
     public class IoController
     {
 
-        public string GetUserTempPath()
+        public string GetAppDataDir()
         {
             return Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\MPAid";
+        }
+
+        public string GetAppDataDir(MPAiUser user)
+        {
+            return (GetAppDataDir() + Path.DirectorySeparatorChar + user.getName());
         }
 
         public void ShowInBrowser(string htmlPath)

@@ -20,7 +20,7 @@ namespace MPAid
             InitializeComponent();
 
             fileMapper = new IoController();
-            myUsers = new UserManagement(fileMapper.GetUserTempPath());
+            myUsers = new UserManagement(fileMapper.GetAppDataDir());
 
             InitializeUI();
         }
