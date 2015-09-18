@@ -13,18 +13,21 @@ namespace MPAid
         private string recFileNameSuffix = ".wav";
 
         public string myWord = null;
-        public string outputDir = "MPAidOutput";
+        public string outputDir = "report";
         public string soundFolderName = "sound";
         public string imageFolderName = "image";
         public string reportFileName = "report.html";
-        public string annieDir = null;
+        public string logoCorrect = "correct.png";
+        public string logoWrong = "wrong.png";
+        public string reportDir = null;
         public string correctnessValue;
 
         public List<string> listRecognized;
 
         public HtmlConfig(string rootDir)
         {
-            annieDir = rootDir;
+            reportDir = rootDir;
+            CheckAndCreateImages();
         }
 
         public enum pathType
@@ -55,14 +58,14 @@ namespace MPAid
         private string GetUserRecPath(int id)
         {
             return string.Format("{0}{2}{1}{3}{1}{4}{5}{6}",
-                annieDir, Path.DirectorySeparatorChar, outputDir, soundFolderName,
+                reportDir, Path.DirectorySeparatorChar, outputDir, soundFolderName,
                 userRecFileNamePrefix, id.ToString("D4"), recFileNameSuffix);
         }
 
         private string GetSampleRecPath(int id)
         {
             return string.Format("{0}{2}{1}{3}{1}{4}{5}{6}",
-                annieDir, Path.DirectorySeparatorChar, outputDir, soundFolderName,
+                reportDir, Path.DirectorySeparatorChar, outputDir, soundFolderName,
                 sampleRecFileNamePrefix, id.ToString("D4"), recFileNameSuffix);
         }
 
@@ -81,20 +84,36 @@ namespace MPAid
         public string GetReportImageDir()
         {
             return string.Format("{0}{1}{2}{1}{3}{1}",
-                annieDir, Path.DirectorySeparatorChar, outputDir, imageFolderName);
+                reportDir, Path.DirectorySeparatorChar, outputDir, imageFolderName);
         }
-
+        
         public string GetUserRecordingDir()
         {
             return string.Format("{0}{1}{2}{1}{3}{1}",
-                annieDir, Path.DirectorySeparatorChar, outputDir, soundFolderName);
+                reportDir, Path.DirectorySeparatorChar, outputDir, soundFolderName);
         }
 
         public string GetHtmlFullPath()
         {
             return string.Format("{0}{1}{2}{1}{3}",
-                annieDir, Path.DirectorySeparatorChar, outputDir, reportFileName);
+                reportDir, Path.DirectorySeparatorChar, outputDir, reportFileName);
         }
 
+        private void CheckAndCreateImages()
+        {
+            if (!Directory.Exists(GetReportImageDir()))
+            {
+                try
+                {
+                    Directory.CreateDirectory(GetReportImageDir());
+                    File.WriteAllBytes(GetReportImageDir() + logoCorrect, Properties.Resources.correct);
+                    File.WriteAllBytes(GetReportImageDir() + logoWrong, Properties.Resources.wrong);
+                }
+                catch (Exception)
+                {
+                    
+                }           
+            }
+        }
     }
 }

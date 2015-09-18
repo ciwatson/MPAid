@@ -162,6 +162,7 @@
     <Content Include="Resources\ButtonYellow-0.png" />
     <Content Include="Resources\ButtonYellow-1.png" />
     <Content Include="Resources\ButtonYellow-2.png" />
+    <None Include="Resources\correct.pngfile" />
     <Content Include="Resources\header.png" />
     <Content Include="Resources\HMMs.png" />
     <Content Include="Resources\MPAid.ico" />
@@ -173,6 +174,7 @@
     <Content Include="Resources\SplashScreen.png" />
     <Content Include="Resources\userLogo.png" />
     <Content Include="Resources\LoginLogo.png" />
+    <None Include="Resources\wrong.pngfile" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

@@ -17,7 +17,7 @@ namespace MPAid
 
         public string GetAppDataDir(MPAiUser user)
         {
-            return (GetAppDataDir() + Path.DirectorySeparatorChar + user.getName());
+            return (GetAppDataDir() + Path.DirectorySeparatorChar + user.getName()) + "\\";
         }
 
         public void ShowInBrowser(string htmlPath)

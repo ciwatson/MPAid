@@ -588,7 +588,7 @@ namespace MPAid
             FileMapper fileMapper = new FileMapper(0, word.WordSoundId);
             int index = recordedWavFiles.Count + 1;
             result = systemIO.GetAppDataDir(allUsers.getLastUser())
-                + "\\" + fileMapper.GetWordSoundName(index);
+                + fileMapper.GetWordSoundName(index);
             return result;
         }
 
@@ -625,7 +625,7 @@ namespace MPAid
 
         private void buttonPlayUserRecording_Click(object sender, EventArgs e)
         {
-            HtmlConfig fileLocator = new HtmlConfig(ResMan.GetAnnieDir());
+            HtmlConfig fileLocator = new HtmlConfig(systemIO.GetAppDataDir(allUsers.getLastUser()));
             if (listBoxREC.Items.Count == 0)
                 return;
             if (listBoxREC.SelectedItem == null)
@@ -672,7 +672,7 @@ namespace MPAid
                 RefreshListRecBox();
 
                 //copies the user recording files to the HTML report resource folder
-                HtmlConfig hConfig = new HtmlConfig(ResMan.GetAnnieDir());
+                HtmlConfig hConfig = new HtmlConfig(systemIO.GetAppDataDir(allUsers.getLastUser()));
                 ResMan.SuperCopy(CurrentVoicePath,
                           hConfig.GetRecPath(listREC.Count,
                           HtmlConfig.pathType.fullUserRecPath), true);
@@ -745,7 +745,7 @@ namespace MPAid
         private void buttonShowReport_Click(object sender, EventArgs e)
         {
             MaoriObj word = GetSelectedMaoriObj(MaoriObjType.Word);
-            HtmlConfig hConfig = new HtmlConfig(ResMan.GetAnnieDir())
+            HtmlConfig hConfig = new HtmlConfig(systemIO.GetAppDataDir(allUsers.getLastUser()))
             {
                 myWord = word.Name,
                 correctnessValue = GetUserScore()
