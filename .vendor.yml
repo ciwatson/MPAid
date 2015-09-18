@@ -304,4 +304,4 @@
 - (^|/)\.google_apis/
 
 # Tcl Libs
-- ^[Dd]eployment/MPAi/dist/tcl/
+- /Deployment/MPAi/dist/tcl/
