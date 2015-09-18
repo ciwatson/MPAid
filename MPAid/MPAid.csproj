@@ -165,12 +165,14 @@
     <Content Include="Resources\header.png" />
     <Content Include="Resources\HMMs.png" />
     <Content Include="Resources\MPAid.ico" />
+    <Content Include="Resources\newUser.png" />
     <Content Include="Resources\openFolder.png" />
     <Content Include="Resources\PictureNotFound.png" />
     <Content Include="Resources\Settings.png" />
     <Content Include="Resources\signOut.png" />
     <Content Include="Resources\SplashScreen.png" />
     <Content Include="Resources\userLogo.png" />
+    <Content Include="Resources\LoginLogo.png" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
