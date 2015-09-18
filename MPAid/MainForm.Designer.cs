@@ -98,7 +98,7 @@
             this.headerBox.BackgroundImage = global::MPAid.Properties.Resources.header;
             this.headerBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.headerBox.Dock = System.Windows.Forms.DockStyle.Top;
-            this.headerBox.Location = new System.Drawing.Point(0, 24);
+            this.headerBox.Location = new System.Drawing.Point(0, 32);
             this.headerBox.Name = "headerBox";
             this.headerBox.Size = new System.Drawing.Size(834, 81);
             this.headerBox.TabIndex = 0;
@@ -506,9 +506,9 @@
             this.panel1.Controls.Add(this.myTabControl);
             this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 105);
+            this.panel1.Location = new System.Drawing.Point(0, 113);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(834, 381);
+            this.panel1.Size = new System.Drawing.Size(834, 373);
             this.panel1.TabIndex = 7;
             // 
             // animationTimer
@@ -528,7 +528,7 @@
             this.hMMsToolStripMenuItem});
             this.mainMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.mainMenuStrip.Name = "mainMenuStrip";
-            this.mainMenuStrip.Size = new System.Drawing.Size(834, 24);
+            this.mainMenuStrip.Size = new System.Drawing.Size(834, 32);
             this.mainMenuStrip.TabIndex = 8;
             this.mainMenuStrip.Text = "menuStrip1";
             // 
@@ -537,15 +537,17 @@
             this.usersToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.logToolStripMenuItem});
             this.usersToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("usersToolStripMenuItem.Image")));
+            this.usersToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.usersToolStripMenuItem.Name = "usersToolStripMenuItem";
-            this.usersToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
+            this.usersToolStripMenuItem.Size = new System.Drawing.Size(71, 28);
             this.usersToolStripMenuItem.Text = "Users";
             // 
             // logToolStripMenuItem
             // 
             this.logToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("logToolStripMenuItem.Image")));
+            this.logToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.logToolStripMenuItem.Name = "logToolStripMenuItem";
-            this.logToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.logToolStripMenuItem.Size = new System.Drawing.Size(157, 28);
             this.logToolStripMenuItem.Text = "Sign out";
             this.logToolStripMenuItem.Click += new System.EventHandler(this.logToolStripMenuItem_Click);
             // 
@@ -554,23 +556,27 @@
             this.hMMsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.openHMMsFolderToolStripMenuItem,
             this.settingsToolStripMenuItem});
+            this.hMMsToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("hMMsToolStripMenuItem.Image")));
+            this.hMMsToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.hMMsToolStripMenuItem.Name = "hMMsToolStripMenuItem";
-            this.hMMsToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
+            this.hMMsToolStripMenuItem.Size = new System.Drawing.Size(79, 28);
             this.hMMsToolStripMenuItem.Text = "HMMs";
             // 
             // openHMMsFolderToolStripMenuItem
             // 
             this.openHMMsFolderToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("openHMMsFolderToolStripMenuItem.Image")));
+            this.openHMMsFolderToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.openHMMsFolderToolStripMenuItem.Name = "openHMMsFolderToolStripMenuItem";
-            this.openHMMsFolderToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
+            this.openHMMsFolderToolStripMenuItem.Size = new System.Drawing.Size(184, 30);
             this.openHMMsFolderToolStripMenuItem.Text = "Open HMMs folder";
             this.openHMMsFolderToolStripMenuItem.Click += new System.EventHandler(this.openHMMsFolderToolStripMenuItem_Click);
             // 
             // settingsToolStripMenuItem
             // 
             this.settingsToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("settingsToolStripMenuItem.Image")));
+            this.settingsToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(184, 30);
             this.settingsToolStripMenuItem.Text = "Settings";
             this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
             // 
