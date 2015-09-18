@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.headerBox = new System.Windows.Forms.PictureBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.radioYoungFemale = new System.Windows.Forms.RadioButton();
@@ -46,8 +47,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.speedController = new System.Windows.Forms.TrackBar();
-            this.ButtonStop = new MPAid.TDButton();
-            this.ButtonPlay = new MPAid.TDButton();
             this.AudioDelay = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
             this.previewBox = new System.Windows.Forms.PictureBox();
@@ -65,7 +64,6 @@
             this.buttonAnalyze = new System.Windows.Forms.Button();
             this.buttonStopRecording = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.tdButtonFormantPlot = new MPAid.TDButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.animationTimer = new System.Windows.Forms.Timer(this.components);
             this.NAudioTimer = new System.Windows.Forms.Timer(this.components);
@@ -75,6 +73,9 @@
             this.hMMsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openHMMsFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tdButtonFormantPlot = new MPAid.TDButton();
+            this.ButtonStop = new MPAid.TDButton();
+            this.ButtonPlay = new MPAid.TDButton();
             ((System.ComponentModel.ISupportInitialize)(this.headerBox)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.myTabControl.SuspendLayout();
@@ -210,7 +211,7 @@
             this.WordList.ItemHeight = 15;
             this.WordList.Location = new System.Drawing.Point(3, 3);
             this.WordList.Name = "WordList";
-            this.WordList.Size = new System.Drawing.Size(146, 188);
+            this.WordList.Size = new System.Drawing.Size(146, 190);
             this.WordList.TabIndex = 5;
             this.WordList.SelectedIndexChanged += new System.EventHandler(this.WordList_SelectedIndexChanged);
             // 
@@ -280,34 +281,6 @@
             this.speedController.TabIndex = 8;
             this.speedController.Value = 5;
             this.speedController.Scroll += new System.EventHandler(this.speedController_Scroll);
-            // 
-            // ButtonStop
-            // 
-            this.ButtonStop.BackgroundImage = global::MPAid.Properties.Resources.ButtonRed_0;
-            this.ButtonStop.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ButtonStop.FlatAppearance.BorderSize = 0;
-            this.ButtonStop.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ButtonStop.Location = new System.Drawing.Point(159, 74);
-            this.ButtonStop.Name = "ButtonStop";
-            this.ButtonStop.Size = new System.Drawing.Size(120, 25);
-            this.ButtonStop.TabIndex = 7;
-            this.ButtonStop.Text = "Stop Audio";
-            this.ButtonStop.UseVisualStyleBackColor = true;
-            this.ButtonStop.Click += new System.EventHandler(this.ButtonStop_Click);
-            // 
-            // ButtonPlay
-            // 
-            this.ButtonPlay.BackgroundImage = global::MPAid.Properties.Resources.ButtonGreen_0;
-            this.ButtonPlay.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ButtonPlay.FlatAppearance.BorderSize = 0;
-            this.ButtonPlay.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ButtonPlay.Location = new System.Drawing.Point(33, 74);
-            this.ButtonPlay.Name = "ButtonPlay";
-            this.ButtonPlay.Size = new System.Drawing.Size(120, 25);
-            this.ButtonPlay.TabIndex = 6;
-            this.ButtonPlay.Text = "Play Audio";
-            this.ButtonPlay.UseVisualStyleBackColor = true;
-            this.ButtonPlay.Click += new System.EventHandler(this.ButtonPlay_Click);
             // 
             // AudioDelay
             // 
@@ -525,20 +498,6 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Formant Plot";
             // 
-            // tdButtonFormantPlot
-            // 
-            this.tdButtonFormantPlot.BackgroundImage = global::MPAid.Properties.Resources.ButtonYellow_0;
-            this.tdButtonFormantPlot.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.tdButtonFormantPlot.FlatAppearance.BorderSize = 0;
-            this.tdButtonFormantPlot.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.tdButtonFormantPlot.Location = new System.Drawing.Point(87, 24);
-            this.tdButtonFormantPlot.Name = "tdButtonFormantPlot";
-            this.tdButtonFormantPlot.Size = new System.Drawing.Size(150, 32);
-            this.tdButtonFormantPlot.TabIndex = 0;
-            this.tdButtonFormantPlot.Text = "Open Formant Plot";
-            this.tdButtonFormantPlot.UseVisualStyleBackColor = true;
-            this.tdButtonFormantPlot.Click += new System.EventHandler(this.tdButtonFormantPlot_Click);
-            // 
             // panel1
             // 
             this.panel1.Controls.Add(this.groupBox4);
@@ -577,14 +536,16 @@
             // 
             this.usersToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.logToolStripMenuItem});
+            this.usersToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("usersToolStripMenuItem.Image")));
             this.usersToolStripMenuItem.Name = "usersToolStripMenuItem";
-            this.usersToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
+            this.usersToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
             this.usersToolStripMenuItem.Text = "Users";
             // 
             // logToolStripMenuItem
             // 
+            this.logToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("logToolStripMenuItem.Image")));
             this.logToolStripMenuItem.Name = "logToolStripMenuItem";
-            this.logToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
+            this.logToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.logToolStripMenuItem.Text = "Sign out";
             this.logToolStripMenuItem.Click += new System.EventHandler(this.logToolStripMenuItem_Click);
             // 
@@ -599,6 +560,7 @@
             // 
             // openHMMsFolderToolStripMenuItem
             // 
+            this.openHMMsFolderToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("openHMMsFolderToolStripMenuItem.Image")));
             this.openHMMsFolderToolStripMenuItem.Name = "openHMMsFolderToolStripMenuItem";
             this.openHMMsFolderToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
             this.openHMMsFolderToolStripMenuItem.Text = "Open HMMs folder";
@@ -606,10 +568,53 @@
             // 
             // settingsToolStripMenuItem
             // 
+            this.settingsToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("settingsToolStripMenuItem.Image")));
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
             this.settingsToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
             this.settingsToolStripMenuItem.Text = "Settings";
             this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
+            // 
+            // tdButtonFormantPlot
+            // 
+            this.tdButtonFormantPlot.BackgroundImage = global::MPAid.Properties.Resources.ButtonYellow_0;
+            this.tdButtonFormantPlot.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.tdButtonFormantPlot.FlatAppearance.BorderSize = 0;
+            this.tdButtonFormantPlot.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.tdButtonFormantPlot.Location = new System.Drawing.Point(87, 24);
+            this.tdButtonFormantPlot.Name = "tdButtonFormantPlot";
+            this.tdButtonFormantPlot.Size = new System.Drawing.Size(150, 32);
+            this.tdButtonFormantPlot.TabIndex = 0;
+            this.tdButtonFormantPlot.Text = "Open Formant Plot";
+            this.tdButtonFormantPlot.UseVisualStyleBackColor = true;
+            this.tdButtonFormantPlot.Click += new System.EventHandler(this.tdButtonFormantPlot_Click);
+            // 
+            // ButtonStop
+            // 
+            this.ButtonStop.BackgroundImage = global::MPAid.Properties.Resources.ButtonRed_0;
+            this.ButtonStop.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ButtonStop.FlatAppearance.BorderSize = 0;
+            this.ButtonStop.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ButtonStop.Location = new System.Drawing.Point(159, 74);
+            this.ButtonStop.Name = "ButtonStop";
+            this.ButtonStop.Size = new System.Drawing.Size(120, 25);
+            this.ButtonStop.TabIndex = 7;
+            this.ButtonStop.Text = "Stop Audio";
+            this.ButtonStop.UseVisualStyleBackColor = true;
+            this.ButtonStop.Click += new System.EventHandler(this.ButtonStop_Click);
+            // 
+            // ButtonPlay
+            // 
+            this.ButtonPlay.BackgroundImage = global::MPAid.Properties.Resources.ButtonGreen_0;
+            this.ButtonPlay.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ButtonPlay.FlatAppearance.BorderSize = 0;
+            this.ButtonPlay.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ButtonPlay.Location = new System.Drawing.Point(33, 74);
+            this.ButtonPlay.Name = "ButtonPlay";
+            this.ButtonPlay.Size = new System.Drawing.Size(120, 25);
+            this.ButtonPlay.TabIndex = 6;
+            this.ButtonPlay.Text = "Play Audio";
+            this.ButtonPlay.UseVisualStyleBackColor = true;
+            this.ButtonPlay.Click += new System.EventHandler(this.ButtonPlay_Click);
             // 
             // MainForm
             // 
