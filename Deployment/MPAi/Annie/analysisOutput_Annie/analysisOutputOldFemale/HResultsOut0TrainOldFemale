@@ -1,0 +1,146 @@
+Aligned transcription: R001M_03.lab vs R001M_03.rec
+ LAB: hau 
+ REC: pau 
+Aligned transcription: R001M_05.lab vs R001M_05.rec
+ LAB: pao 
+ REC: pae 
+Aligned transcription: R001M_06.lab vs R001M_06.rec
+ LAB: pau 
+ REC: pou 
+Aligned transcription: R001M_15.lab vs R001M_15.rec
+ LAB: hei 
+ REC: hë  
+Aligned transcription: R001M_16.lab vs R001M_16.rec
+ LAB: hï 
+ REC: kï 
+Aligned transcription: R001M_18.lab vs R001M_18.rec
+ LAB: tai 
+ REC: pai 
+Aligned transcription: R001M_26.lab vs R001M_26.rec
+ LAB:     mao 
+ REC: hou pae 
+Aligned transcription: R002M_06.lab vs R002M_06.rec
+ LAB: pau 
+ REC: pou 
+Aligned transcription: R002M_15.lab vs R002M_15.rec
+ LAB: hei 
+ REC: kï  
+Aligned transcription: R002M_23.lab vs R002M_23.rec
+ LAB: toi     
+ REC: toi kei 
+Aligned transcription: R002M_24.lab vs R002M_24.rec
+ LAB: hoihoi     
+ REC: hoihoi kei 
+Aligned transcription: R002M_27.lab vs R002M_27.rec
+ LAB: mau     
+ REC: mau pou 
+Aligned transcription: R002M_28.lab vs R002M_28.rec
+ LAB:        moutere 
+ REC: mau kë hë      
+Aligned transcription: R003M_07.lab vs R003M_07.rec
+ LAB: pou 
+ REC: hou 
+Aligned transcription: R003M_12.lab vs R003M_12.rec
+ LAB: kei 
+ REC: hei 
+Aligned transcription: R003M_14.lab vs R003M_14.rec
+ LAB: hë 
+ REC: kë 
+Aligned transcription: R003M_21.lab vs R003M_21.rec
+ LAB: mätou 
+ REC: mätau 
+Aligned transcription: R003M_22.lab vs R003M_22.rec
+ LAB:     toetoe 
+ REC: hoe hoe    
+Aligned transcription: R003M_26.lab vs R003M_26.rec
+ LAB:     mao 
+ REC: hou mao 
+Aligned transcription: R004M_07.lab vs R004M_07.rec
+ LAB: pou 
+ REC: hou 
+Aligned transcription: R004M_10.lab vs R004M_10.rec
+ LAB: pae 
+ REC: tae 
+Aligned transcription: R004M_14.lab vs R004M_14.rec
+ LAB: hë 
+ REC: kë 
+Aligned transcription: R004M_16.lab vs R004M_16.rec
+ LAB: hï 
+ REC: kï 
+Aligned transcription: R004M_18.lab vs R004M_18.rec
+ LAB:     tai 
+ REC: tae pau 
+Aligned transcription: R004M_20.lab vs R004M_20.rec
+ LAB:    mätau 
+ REC: tü mätau 
+Aligned transcription: R004M_21.lab vs R004M_21.rec
+ LAB: mätou 
+ REC: mätau 
+Aligned transcription: R004M_23.lab vs R004M_23.rec
+ LAB:     toi 
+ REC: hou hoe 
+Aligned transcription: R004M_24.lab vs R004M_24.rec
+ LAB:     hoihoi 
+ REC: hoe hoe    
+Aligned transcription: R005M_05.lab vs R005M_05.rec
+ LAB: pao 
+ REC: pö  
+Aligned transcription: R005M_06.lab vs R005M_06.rec
+ LAB: pau 
+ REC: pou 
+Aligned transcription: R005M_17.lab vs R005M_17.rec
+ LAB: tae 
+ REC: pae 
+Aligned transcription: R005M_24.lab vs R005M_24.rec
+ LAB:     hoihoi 
+ REC: toi toi    
+Aligned transcription: R006M_03.lab vs R006M_03.rec
+ LAB: hau 
+ REC: pau 
+Aligned transcription: R006M_04.lab vs R006M_04.rec
+ LAB: hou 
+ REC: pou 
+Aligned transcription: R006M_05.lab vs R006M_05.rec
+ LAB: pao 
+ REC: pö  
+Aligned transcription: R006M_14.lab vs R006M_14.rec
+ LAB: hë 
+ REC: kï 
+Aligned transcription: R007M_07.lab vs R007M_07.rec
+ LAB: pou 
+ REC: hou 
+Aligned transcription: R007M_22.lab vs R007M_22.rec
+ LAB: toetoe    
+ REC: toetoe kë 
+Aligned transcription: R008M_03.lab vs R008M_03.rec
+ LAB: hau 
+ REC: pau 
+Aligned transcription: R008M_05.lab vs R008M_05.rec
+ LAB: pao 
+ REC: mao 
+Aligned transcription: R008M_07.lab vs R008M_07.rec
+ LAB: pou 
+ REC: hou 
+Aligned transcription: R008M_08.lab vs R008M_08.rec
+ LAB: pö  
+ REC: pao 
+Aligned transcription: R008M_09.lab vs R008M_09.rec
+ LAB: pai 
+ REC: tai 
+Aligned transcription: R008M_14.lab vs R008M_14.rec
+ LAB: hë 
+ REC: kë 
+Aligned transcription: R008M_16.lab vs R008M_16.rec
+ LAB: hï 
+ REC: kï 
+Aligned transcription: R008M_22.lab vs R008M_22.rec
+ LAB:     toetoe 
+ REC: hoe täne   
+====================== HTK Results Analysis =======================
+  Date: Wed Feb 01 18:21:51 2012
+  Ref : user/trainingWordTranscriptOldFemale.mlf
+  Rec : analysisOutputOldFemale/recout0aTrainOldFemale.mlf
+------------------------ Overall Results --------------------------
+SENT: %Correct=79.65 [H=180, S=46, N=226]
+WORD: %Corr=82.30, Acc=75.66 [H=186, D=0, S=40, I=15, N=226]
+===================================================================

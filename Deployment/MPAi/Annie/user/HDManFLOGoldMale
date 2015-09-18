@@ -1,0 +1,40 @@
+WARNING: no script file user/lexicon.txt.ded
+
+Dictionary Usage Statistics
+---------------------------
+  Dictionary    TotalWords WordsUsed  TotalProns PronsUsed
+ lexicon.txt        32         32         32         32
+triphoneDict        32         32         32         32
+
+32 words required, 0 missing
+
+New Phone Usage Counts
+---------------------
+  1. h     :     8
+  2. au    :     4
+  3. sp    :    60
+  4. ei    :     3
+  5. oe    :     3
+  6. oi    :     3
+  7. ou    :     4
+  8. e:    :     3
+  9. i:    :     2
+ 10. k     :     3
+ 11. m     :     7
+ 12. ao    :     3
+ 13. a     :     1
+ 14. t     :    13
+ 15. i     :     1
+ 16. u     :     1
+ 17. e     :     3
+ 18. r     :     1
+ 19. a:    :     4
+ 20. p     :     6
+ 21. ae    :     2
+ 22. ai    :     2
+ 23. o:    :     1
+ 24. sil   :     2
+ 25. n     :     2
+ 26. u:    :     1
+
+Dictionary user/triphoneDictionaryOldMale created

@@ -1,0 +1,113 @@
+Aligned transcription: L1Y05M_01.lab vs L1Y05M_01.rec
+ LAB:    tënei  
+ REC: kë toetoe 
+Aligned transcription: L1Y05M_02.lab vs L1Y05M_02.rec
+ LAB:     täne 
+ REC: pau hoe  
+Aligned transcription: L1Y05M_05.lab vs L1Y05M_05.rec
+ LAB:     pao 
+ REC: pao pao 
+Aligned transcription: L1Y05M_06.lab vs L1Y05M_06.rec
+ LAB: pau 
+ REC: pou 
+Aligned transcription: L1Y01M_09.lab vs L1Y01M_09.rec
+ LAB: pai 
+ REC: pae 
+Aligned transcription: L1Y05M_09.lab vs L1Y05M_09.rec
+ LAB: pai 
+ REC: pae 
+Aligned transcription: L1Y05M_13.lab vs L1Y05M_13.rec
+ LAB: kï 
+ REC: kë 
+Aligned transcription: L1Y01M_14.lab vs L1Y01M_14.rec
+ LAB: hë 
+ REC: kë 
+Aligned transcription: L1Y02M_14.lab vs L1Y02M_14.rec
+ LAB: hë 
+ REC: kë 
+Aligned transcription: L1Y03M_14.lab vs L1Y03M_14.rec
+ LAB: hë 
+ REC: kë 
+Aligned transcription: L1Y05M_14.lab vs L1Y05M_14.rec
+ LAB: hë 
+ REC: kë 
+Aligned transcription: L1Y01M_15.lab vs L1Y01M_15.rec
+ LAB: hei 
+ REC: kei 
+Aligned transcription: L1Y02M_15.lab vs L1Y02M_15.rec
+ LAB: hei 
+ REC: kï  
+Aligned transcription: L1Y05M_15.lab vs L1Y05M_15.rec
+ LAB: hei 
+ REC: hoe 
+Aligned transcription: L1Y01M_16.lab vs L1Y01M_16.rec
+ LAB: hï 
+ REC: kï 
+Aligned transcription: L1Y02M_16.lab vs L1Y02M_16.rec
+ LAB: hï 
+ REC: kï 
+Aligned transcription: L1Y03M_16.lab vs L1Y03M_16.rec
+ LAB: hï 
+ REC: kï 
+Aligned transcription: L1Y05M_16.lab vs L1Y05M_16.rec
+ LAB:    hï 
+ REC: kë kï 
+Aligned transcription: L1Y01M_17.lab vs L1Y01M_17.rec
+ LAB: tae 
+ REC: pae 
+Aligned transcription: L1Y03M_17.lab vs L1Y03M_17.rec
+ LAB: tae 
+ REC: pae 
+Aligned transcription: L1Y05M_17.lab vs L1Y05M_17.rec
+ LAB: tae 
+ REC: pae 
+Aligned transcription: L1Y01M_18.lab vs L1Y01M_18.rec
+ LAB: tai 
+ REC: pai 
+Aligned transcription: L1Y02M_18.lab vs L1Y02M_18.rec
+ LAB: tai 
+ REC: pai 
+Aligned transcription: L1Y03M_18.lab vs L1Y03M_18.rec
+ LAB: tai 
+ REC: pai 
+Aligned transcription: L1Y05M_18.lab vs L1Y05M_18.rec
+ LAB: tai 
+ REC: pai 
+Aligned transcription: L1Y03M_19.lab vs L1Y03M_19.rec
+ LAB:       mätao 
+ REC: mätou pao   
+Aligned transcription: L1Y05M_21.lab vs L1Y05M_21.rec
+ LAB: mätou 
+ REC: mätau 
+Aligned transcription: L1Y01M_22.lab vs L1Y01M_22.rec
+ LAB:     toetoe 
+ REC: toi toi    
+Aligned transcription: L1Y02M_22.lab vs L1Y02M_22.rec
+ LAB:     toetoe 
+ REC: toi toi    
+Aligned transcription: L1Y03M_22.lab vs L1Y03M_22.rec
+ LAB:     toetoe 
+ REC: toi toi    
+Aligned transcription: L1Y05M_22.lab vs L1Y05M_22.rec
+ LAB:         toetoe 
+ REC: toi pao hoe    
+Aligned transcription: L1Y05M_24.lab vs L1Y05M_24.rec
+ LAB:     hoihoi 
+ REC: hoe hoe    
+Aligned transcription: L1Y03M_25.lab vs L1Y03M_25.rec
+ LAB:     hoe 
+ REC: hou hoe 
+Aligned transcription: L1Y05M_28.lab vs L1Y05M_28.rec
+ LAB:     moutere 
+ REC: mau tü      
+Aligned transcription: L1Y05M_30.lab vs L1Y05M_30.rec
+ LAB:     matiu 
+ REC: toi kï    
+====================== HTK Results Analysis =======================
+  Date: Fri Jan 27 13:27:37 2012
+  Ref : user/testL1YoungMaleWordTranscript.mlf
+  Rec : analysisOutput/recout1aTestL1Male.mlf
+------------------------ Overall Results --------------------------
+SENT: %Correct=70.59 [H=84, S=35, N=119]
+WORD: %Corr=72.27, Acc=60.50 [H=86, D=0, S=33, I=14, N=119]
+===================================================================

@@ -1,0 +1,2 @@
+$word = tënei | täne | hau | hou | pao | pau | pou | pö | pai | pae | kë | kei | kï | hë | hei | hï | tae | tai | mätao | mätau | mätou | toetoe | toi | hoihoi | hoe | mao | mau | moutere | tü | matiu;
+( SENT-START (<$word>) SENT-END )
