@@ -14,7 +14,6 @@ namespace MPAid
 
         public string myWord = null;
         public string outputDir = "MPAidOutput";
-        public string originalReportFileName = "FinalResult.txt";
         public string soundFolderName = "sound";
         public string imageFolderName = "image";
         public string reportFileName = "report.html";
