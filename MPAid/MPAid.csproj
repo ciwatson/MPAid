@@ -57,6 +57,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\ChangePasswordWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ChangePasswordWindow.Designer.cs">
+      <DependentUpon>ChangePasswordWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\HMMsConfig.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -111,6 +117,9 @@
     <Compile Include="Modules\VerticalProgressBar.cs">
       <SubType>Component</SubType>
     </Compile>
+    <EmbeddedResource Include="Forms\ChangePasswordWindow.resx">
+      <DependentUpon>ChangePasswordWindow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\HMMsConfig.resx">
       <DependentUpon>HMMsConfig.cs</DependentUpon>
     </EmbeddedResource>
@@ -163,6 +172,7 @@
     <Content Include="Resources\ButtonYellow-1.png" />
     <Content Include="Resources\ButtonYellow-2.png" />
     <None Include="Resources\correct.pngfile" />
+    <Content Include="Resources\changePswd.png" />
     <Content Include="Resources\header.png" />
     <Content Include="Resources\HMMs.png" />
     <Content Include="Resources\MPAid.ico" />

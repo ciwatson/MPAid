@@ -88,7 +88,7 @@ namespace MPAid
         {
             allUsers = users;
         }
-        
+
         public void SetHomeWindow(LoginWindow loginWin)
         {
             loginForm = loginWin;
@@ -130,7 +130,8 @@ namespace MPAid
         //this method is called when all the variables has been initialized
         private void InitializeUI2()
         {
-            usersToolStripMenuItem.Text = allUsers.getLastUser().getName();
+            usersToolStripMenuItem.Text = allUsers.getCurrentUser().getName();
+            changePasswordToolStripMenuItem.Visible = !allUsers.currentUserIsAdmin();
         }
 
         private void InitializeHMMsController()
@@ -188,7 +189,7 @@ namespace MPAid
             StopSoundPlayer();
             if ((FormantPlotExe != null) && (!FormantPlotExe.HasExited))
                 FormantPlotExe.Kill();
-               
+
             // this method will decide if the application is exiting
             CloseOtherForms();
         }
@@ -584,10 +585,10 @@ namespace MPAid
         private string GetNextUserRecordingName(MaoriObj word)
         {
             string result;
-      
+
             FileMapper fileMapper = new FileMapper(0, word.WordSoundId);
             int index = recordedWavFiles.Count + 1;
-            result = systemIO.GetAppDataDir(allUsers.getLastUser())
+            result = systemIO.GetAppDataDir(allUsers.getCurrentUser())
                 + fileMapper.GetWordSoundName(index);
             return result;
         }
@@ -625,7 +626,7 @@ namespace MPAid
 
         private void buttonPlayUserRecording_Click(object sender, EventArgs e)
         {
-            HtmlConfig fileLocator = new HtmlConfig(systemIO.GetAppDataDir(allUsers.getLastUser()));
+            HtmlConfig fileLocator = new HtmlConfig(systemIO.GetAppDataDir(allUsers.getCurrentUser()));
             if (listBoxREC.Items.Count == 0)
                 return;
             if (listBoxREC.SelectedItem == null)
@@ -672,7 +673,7 @@ namespace MPAid
                 RefreshListRecBox();
 
                 //copies the user recording files to the HTML report resource folder
-                HtmlConfig hConfig = new HtmlConfig(systemIO.GetAppDataDir(allUsers.getLastUser()));
+                HtmlConfig hConfig = new HtmlConfig(systemIO.GetAppDataDir(allUsers.getCurrentUser()));
                 ResMan.SuperCopy(CurrentVoicePath,
                           hConfig.GetRecPath(listREC.Count,
                           HtmlConfig.pathType.fullUserRecPath), true);
@@ -745,7 +746,7 @@ namespace MPAid
         private void buttonShowReport_Click(object sender, EventArgs e)
         {
             MaoriObj word = GetSelectedMaoriObj(MaoriObjType.Word);
-            HtmlConfig hConfig = new HtmlConfig(systemIO.GetAppDataDir(allUsers.getLastUser()))
+            HtmlConfig hConfig = new HtmlConfig(systemIO.GetAppDataDir(allUsers.getCurrentUser()))
             {
                 myWord = word.Name,
                 correctnessValue = GetUserScore()
@@ -891,7 +892,7 @@ namespace MPAid
             doCloseLogin = false;
             //loginForm.ResetUserInput();
             loginForm.Show();
-            Close();           
+            Close();
         }
 
         private void MainForm_Shown(object sender, EventArgs e)
@@ -899,5 +900,11 @@ namespace MPAid
             InitializeUI2();
         }
 
+        private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ChangePasswordWindow changePswdForm = new ChangePasswordWindow();
+            changePswdForm.SetUserManagement(allUsers);
+            changePswdForm.ShowDialog();
+        }
     }
 }

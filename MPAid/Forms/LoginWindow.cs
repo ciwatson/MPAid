@@ -39,7 +39,7 @@ namespace MPAid
 
             if (autoLog)
             {
-                MPAiUser lastUser = myUsers.getLastUser();
+                MPAiUser lastUser = myUsers.getCurrentUser();
                 if (lastUser != null)
                     VisualizeUser(lastUser);
             }

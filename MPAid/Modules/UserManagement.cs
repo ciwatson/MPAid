@@ -14,13 +14,14 @@ namespace MPAid
         private string userDirRoot = null;
         private string fileName = "AppSettings.dat";
         //private bool unchanged = true;
+        private readonly string adminStr = "admin";
 
         private List<MPAiUser> allUsers;
 
         public UserManagement(string root)
         {
             userDirRoot = root + Path.DirectorySeparatorChar;
-            allUsers = new List<MPAiUser>() { new MPAiUser("admin", "admin") };
+            allUsers = new List<MPAiUser>() { new MPAiUser(adminStr, adminStr) };
             ReadSettings();
         }
 
@@ -49,7 +50,7 @@ namespace MPAid
             foreach (MPAiUser item in allUsers)
                 if (item.getName().ToLower() == candidate.getName().ToLower())
                     return true;
-            
+
             return false;
         }
 
@@ -66,12 +67,17 @@ namespace MPAid
             }
         }
 
-        public MPAiUser getLastUser()
+        public MPAiUser getCurrentUser()
         {
             if (currentUser != null)
                 return currentUser;
             else
                 return null;
+        }
+
+        public bool currentUserIsAdmin()
+        {
+            return (getCurrentUser().getName() == adminStr);
         }
 
         //public bool AuthenticateUser(string username, string code)
@@ -90,12 +96,14 @@ namespace MPAid
 
         public void ChangeUserCode(string userName, string newCode)
         {
-
+            allUsers.Remove(currentUser);
+            currentUser = new MPAiUser(userName, newCode);
+            allUsers.Add(currentUser);
         }
 
-        public void RemoveUserByName(string userName)
+        public void RemoveUser(MPAiUser userToRemove)
         {
-
+            allUsers.Remove(userToRemove);
         }
 
         private string GetSettingFilePath()
@@ -125,7 +133,7 @@ namespace MPAid
             }
             catch (Exception ex)
             {
-                
+
             }
         }
 
@@ -157,7 +165,7 @@ namespace MPAid
             }
             catch (Exception ex)
             {
-                
+
             }
         }
 
