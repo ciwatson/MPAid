@@ -145,22 +145,6 @@ namespace MPAid
             return Words;
         }
 
-        public string GetFormantPlotExeName()
-        {
-            const string OldName = @"MPAi.exe";
-            const string NewName = @"Runner.exe";
-            if (File.Exists(NewName))
-                return (NewName);
-            if (File.Exists(OldName))
-                return (OldName);
-            return (NewName);
-        }
-
-        public string GetFormantPlotTitle()
-        {
-            return (@"Formant Plot");
-        }
-
         private string GetWorkingDir()
         {
             return Directory.GetCurrentDirectory();

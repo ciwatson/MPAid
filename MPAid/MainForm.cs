@@ -13,49 +13,7 @@ namespace MPAid
 {
     public partial class MainForm : Form
     {
-        #region BringProcessToFront
 
-        [DllImport("USER32.DLL", CharSet = CharSet.Unicode)]
-        public static extern IntPtr FindWindow(String lpClassName, String lpWindowName);
-
-        [DllImport("USER32.DLL")]
-        public static extern bool SetForegroundWindow(IntPtr hWnd);
-
-        [DllImport("USER32.DLL")]
-        public static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
-        private const int SW_SHOWNORMAL = 1;
-
-        public static int ShowFormantPlot(string title)
-        {
-            // Get a handle to the FormantPlot application.
-            IntPtr handle = FindWindow(null, title);
-
-            // Verify that FormantPlot is a running process.
-            if (handle == IntPtr.Zero)
-                return 1;
-
-            // Make FormantPlot the foreground application
-            SetForegroundWindow(handle);
-            ShowWindow(handle, SW_SHOWNORMAL);
-
-            return 0;
-        }
-
-        public static int FormantPlotStarted(string title)
-        {
-            // Get a handle to the FormantPlot application.
-            IntPtr handle = FindWindow(null, title);
-
-            // Verify that FormantPlot is a running process.
-            if (handle == IntPtr.Zero)
-                return 1;
-
-            return 0;
-        }
-
-        #endregion
-
-        private Process FormantPlotExe;
         private ResManager ResMan;
         public UserManagement allUsers;
         private IoController systemIO;
@@ -151,35 +109,13 @@ namespace MPAid
             return ("[Version " + Application.ProductVersion + "]");
         }
 
-        private void StartFormantPlot()
-        {
-            try
-            {
-                FormantPlotExe = new Process();
-                FormantPlotExe.StartInfo.FileName = ResMan.GetFormantPlotExeName();
-                FormantPlotExe.StartInfo.UseShellExecute = true;
-                FormantPlotExe.Start();
-
-                // Hang up the main application to wait until it finished starting
-                while ((FormantPlotStarted(ResMan.GetFormantPlotTitle()) == 1)
-                    && (!FormantPlotExe.HasExited))
-                    ;
-            }
-            catch
-            {
-                FormantPlotExe = null;
-            }
-        }
-
         private void tdButtonFormantPlot_Click(object sender, EventArgs e)
         {
             tdButtonFormantPlot.Enabled = false;
             this.WindowState = FormWindowState.Minimized;
 
-            if (FormantPlotStarted(ResMan.GetFormantPlotTitle()) == 1)
-                StartFormantPlot();
-            else
-                ShowFormantPlot(ResMan.GetFormantPlotTitle());
+            // Start formant plot
+            FormantPlotController.RunFormantPlot();
 
             tdButtonFormantPlot.Enabled = true;
         }
@@ -187,8 +123,7 @@ namespace MPAid
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             StopSoundPlayer();
-            if ((FormantPlotExe != null) && (!FormantPlotExe.HasExited))
-                FormantPlotExe.Kill();
+            FormantPlotController.CloseFormantPlot();
 
             // this method will decide if the application is exiting
             CloseOtherForms();
