@@ -13,13 +13,14 @@ namespace MPAid
         private string passWord;
 
         [DisplayName("UserName")]
-        public string DataID
+        public string UserID
         {
             get { return userName; }
             set { userName = value; }
         }
+
         [DisplayName("Password")]
-        public string DataName
+        public string UserPswd
         {
             get { return passWord; }
             set { passWord = value; }
