@@ -172,6 +172,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\admin.png" />
     <Content Include="Resources\ButtonGreen-0.png" />
     <Content Include="Resources\ButtonGreen-1.png" />
     <Content Include="Resources\ButtonGreen-2.png" />

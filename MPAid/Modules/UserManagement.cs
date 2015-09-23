@@ -7,6 +7,8 @@ using System.Windows.Forms;
 
 namespace MPAid
 {
+    //Better make this a static class
+
     public class UserManagement
     {
         private MPAiUser currentUser = null;

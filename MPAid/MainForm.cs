@@ -15,7 +15,7 @@ namespace MPAid
     {
 
         private ResManager ResMan;
-        public UserManagement allUsers;
+        private UserManagement allUsers;
         private IoController systemIO;
 
         private Thread AsyncPlayer;
@@ -92,7 +92,10 @@ namespace MPAid
         private void InitializeUserProfile()
         {
             usersToolStripMenuItem.Text = allUsers.getCurrentUser().getName();
+
+            // the administrator account is not advised to change its password
             changePasswordToolStripMenuItem.Visible = !allUsers.currentUserIsAdmin();
+            administratorConsoleToolStripMenuItem.Visible = allUsers.currentUserIsAdmin();
         }
 
         private void InitializeHMMsController()
@@ -835,9 +838,14 @@ namespace MPAid
 
         private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ChangePasswordWindow changePswdForm = new ChangePasswordWindow();
-            changePswdForm.SetUserManagement(allUsers);
+            ChangePasswordWindow changePswdForm = new ChangePasswordWindow(allUsers);
             changePswdForm.ShowDialog();
+        }
+
+        private void administratorConsoleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AdminConsole adminForm = new AdminConsole(allUsers);
+            adminForm.ShowDialog();
         }
     }
 }

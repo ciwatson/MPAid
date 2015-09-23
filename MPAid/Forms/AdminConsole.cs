@@ -11,9 +11,22 @@ namespace MPAid
 {
     public partial class AdminConsole : Form
     {
-        public AdminConsole()
+        private UserManagement allUsers;
+        private MPAiUser currentUser;
+
+        public AdminConsole(UserManagement users)
         {
             InitializeComponent();
+
+            SetUserManagement(users);
         }
+        
+        private void SetUserManagement(UserManagement users)
+        {
+            allUsers = users;
+            currentUser = allUsers.getCurrentUser();
+        }
+
+
     }
 }

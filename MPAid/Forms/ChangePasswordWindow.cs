@@ -8,16 +8,18 @@ namespace MPAid
         private MPAiUser currentUser;
         private const string title = "Change your password";
 
-        public ChangePasswordWindow()
+        public ChangePasswordWindow(UserManagement users)
         {
             InitializeComponent();
+
+            SetUserManagement(users);
+            InitUI();
         }
 
-        public void SetUserManagement(UserManagement users)
+        private void SetUserManagement(UserManagement users)
         {
             allUsers = users;
             currentUser = allUsers.getCurrentUser();
-            InitUI();
         }
 
         private void InitUI()
