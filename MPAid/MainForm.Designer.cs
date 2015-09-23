@@ -652,7 +652,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Māori Pronunciation Aid";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
-            this.Shown += new System.EventHandler(this.MainForm_Shown);
+            
             ((System.ComponentModel.ISupportInitialize)(this.headerBox)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

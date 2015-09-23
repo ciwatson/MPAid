@@ -31,18 +31,19 @@ namespace MPAid
 
         private LoginWindow loginForm;
 
-        public MainForm()
+        public MainForm(UserManagement users)
         {
             SplashScreen splash = new SplashScreen();
             splash.Show();
 
+            SetUserManagement(users);
             InitializeComponent();
             InitializeUI();
 
             splash.Close();
         }
 
-        public void SetUserManagement(UserManagement users)
+        private void SetUserManagement(UserManagement users)
         {
             allUsers = users;
         }
@@ -60,6 +61,8 @@ namespace MPAid
             ResMan = new ResManager();
             systemIO = new IoController();
             //myUsers = new UserManagement(ResMan.GetUserTempPath());
+
+            InitializeUserProfile();
 
             tdButtonFormantPlot.ImageNormal = Properties.Resources.ButtonYellow_0;
             tdButtonFormantPlot.ImageHighlight = Properties.Resources.ButtonYellow_1;
@@ -85,8 +88,8 @@ namespace MPAid
 
         }
 
-        //this method is called when all the variables has been initialized
-        private void InitializeUI2()
+        //this method is called when allUsers has been initialized
+        private void InitializeUserProfile()
         {
             usersToolStripMenuItem.Text = allUsers.getCurrentUser().getName();
             changePasswordToolStripMenuItem.Visible = !allUsers.currentUserIsAdmin();
@@ -828,11 +831,6 @@ namespace MPAid
             //loginForm.ResetUserInput();
             loginForm.Show();
             Close();
-        }
-
-        private void MainForm_Shown(object sender, EventArgs e)
-        {
-            InitializeUI2();
         }
 
         private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)

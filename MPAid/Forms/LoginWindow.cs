@@ -63,7 +63,7 @@ namespace MPAid
             if (myUsers.AuthenticateUser(tUser))
             {
                 Hide();
-                MainForm mainWindow = new MainForm() { allUsers = myUsers };
+                MainForm mainWindow = new MainForm(myUsers);
                 //mainWindow.SetUserManagement(myUsers);
                 mainWindow.SetHomeWindow(this);
                 mainWindow.Show();
