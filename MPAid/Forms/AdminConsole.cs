@@ -19,6 +19,8 @@ namespace MPAid
             InitializeComponent();
 
             SetUserManagement(users);
+
+            userDataView.DataSource = allUsers.GetAllUsers();
         }
         
         private void SetUserManagement(UserManagement users)

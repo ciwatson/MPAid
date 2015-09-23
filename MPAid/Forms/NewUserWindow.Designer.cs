@@ -148,7 +148,7 @@
             this.AcceptButton = this.buttonOK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Snow;
+            this.BackColor = System.Drawing.Color.White;
             this.CancelButton = this.buttonCancel;
             this.ClientSize = new System.Drawing.Size(304, 281);
             this.Controls.Add(this.logoBox);

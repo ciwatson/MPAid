@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,19 @@ namespace MPAid
     {
         private string userName;
         private string passWord;
+
+        [DisplayName("UserName")]
+        public string DataID
+        {
+            get { return userName; }
+            set { userName = value; }
+        }
+        [DisplayName("Password")]
+        public string DataName
+        {
+            get { return passWord; }
+            set { passWord = value; }
+        }
 
         public MPAiUser(string name, string code)
         {
@@ -37,6 +51,8 @@ namespace MPAid
             if (obj is MPAiUser)
             {
                 MPAiUser otherUser = (MPAiUser)obj;
+                if (userName == null || passWord == null)
+                    return false;
                 return ((userName.ToLower() == otherUser.getName().ToLower())
                     && (passWord == otherUser.getCode()));
             }

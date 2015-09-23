@@ -23,8 +23,16 @@ namespace MPAid
         public UserManagement(string root)
         {
             userDirRoot = root + Path.DirectorySeparatorChar;
-            allUsers = new List<MPAiUser>() { new MPAiUser(adminStr, adminStr) };
+            allUsers = new List<MPAiUser>();
             ReadSettings();
+
+            if (allUsers.Count == 0)            
+                allUsers.Add(new MPAiUser(adminStr, adminStr));
+        }
+
+        public List<MPAiUser> GetAllUsers()
+        {
+            return allUsers;
         }
 
         public bool CreateNewUser(string newUserName, string newCode)
@@ -157,7 +165,7 @@ namespace MPAid
                     foreach (MPAiUser user in allUsers)
                     {
                         writer.Write(user.getName());
-                        writer.Write(user.getCode());
+                        writer.Write(user.getCode());               
                     }
 
                     // store the last used user
