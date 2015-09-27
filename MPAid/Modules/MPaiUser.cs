@@ -77,7 +77,7 @@ namespace MPAid
                 MPAiUser otherUser = (MPAiUser)obj;
                 if (userName == null || passWord == null)
                     return false;
-                return ((userName.ToLower() == otherUser.getName().ToLower())
+                return ((getName() == otherUser.getName())
                     && (passWord == otherUser.getCode()));
             }
             else
