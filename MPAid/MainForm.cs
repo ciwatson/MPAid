@@ -91,7 +91,7 @@ namespace MPAid
         //this method is called when allUsers has been initialized
         private void InitializeUserProfile()
         {
-            usersToolStripMenuItem.Text = allUsers.getCurrentUser().getName();
+            usersToolStripMenuItem.Text = allUsers.getCurrentUser().getName(true);
 
             // the administrator account is not advised to change its password
             changePasswordToolStripMenuItem.Visible = !allUsers.currentUserIsAdmin();

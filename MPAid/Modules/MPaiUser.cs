@@ -49,6 +49,7 @@ namespace MPAid
             return (code.Equals(passWord));
         }
 
+        // Only when username == admin, then the user is an admin
         public bool isAdmin()
         {
             return (getName() == adminStr);
@@ -57,6 +58,11 @@ namespace MPAid
         public string getName()
         {
             return userName.ToLower();
+        }
+
+        public string getName(bool formal)
+        {
+            return userName;
         }
 
         public string getCode()
