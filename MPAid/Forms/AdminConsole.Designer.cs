@@ -30,6 +30,7 @@
         {
             this.userDataView = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
+            this.dataReadOnly = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.userDataView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -42,7 +43,8 @@
             this.userDataView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.userDataView.Location = new System.Drawing.Point(12, 27);
             this.userDataView.Name = "userDataView";
-            this.userDataView.Size = new System.Drawing.Size(260, 222);
+            this.userDataView.ReadOnly = true;
+            this.userDataView.Size = new System.Drawing.Size(260, 197);
             this.userDataView.TabIndex = 0;
             // 
             // label1
@@ -54,12 +56,27 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "View and edit all the users:";
             // 
+            // dataReadOnly
+            // 
+            this.dataReadOnly.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataReadOnly.AutoSize = true;
+            this.dataReadOnly.Checked = true;
+            this.dataReadOnly.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.dataReadOnly.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.dataReadOnly.Location = new System.Drawing.Point(183, 229);
+            this.dataReadOnly.Name = "dataReadOnly";
+            this.dataReadOnly.Size = new System.Drawing.Size(89, 20);
+            this.dataReadOnly.TabIndex = 2;
+            this.dataReadOnly.Text = "Read Only";
+            this.dataReadOnly.UseVisualStyleBackColor = true;
+            // 
             // AdminConsole
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Controls.Add(this.dataReadOnly);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.userDataView);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -81,5 +98,6 @@
 
         private System.Windows.Forms.DataGridView userDataView;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.CheckBox dataReadOnly;
     }
 }

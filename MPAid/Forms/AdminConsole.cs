@@ -21,6 +21,7 @@ namespace MPAid
             SetUserManagement(users);
 
             userDataView.DataSource = allUsers.GetAllUsers();
+            userDataView.DataBindings.Add(new Binding("ReadOnly", dataReadOnly, "Checked"));
         }
         
         private void SetUserManagement(UserManagement users)
@@ -28,7 +29,6 @@ namespace MPAid
             allUsers = users;
             currentUser = allUsers.getCurrentUser();
         }
-
 
     }
 }
