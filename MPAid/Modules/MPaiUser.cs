@@ -11,12 +11,18 @@ namespace MPAid
     {
         private string userName;
         private string passWord;
+        private readonly string adminStr = "admin";
 
         [DisplayName("UserName")]
         public string UserID
         {
             get { return userName; }
-            set { userName = value; }
+            set
+            {
+                // prevent the user from changing the name of the admin
+                if (userName != adminStr)
+                    userName = value;
+            }
         }
 
         [DisplayName("Password")]
@@ -24,6 +30,12 @@ namespace MPAid
         {
             get { return passWord; }
             set { passWord = value; }
+        }
+
+        [DisplayName("IsAdministrator")]
+        public bool IsAdmin
+        {
+            get { return isAdmin(); }
         }
 
         public MPAiUser(string name, string code)
@@ -37,9 +49,14 @@ namespace MPAid
             return (code.Equals(passWord));
         }
 
+        public bool isAdmin()
+        {
+            return (getName() == adminStr);
+        }
+
         public string getName()
         {
-            return userName;
+            return userName.ToLower();
         }
 
         public string getCode()
