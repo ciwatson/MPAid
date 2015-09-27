@@ -197,6 +197,7 @@ namespace MPAid
             catch { }
         }
 
+        // Add double quote for a string
         private string AddQuote(string targetStr)
         {
             if (string.IsNullOrEmpty(targetStr))
@@ -219,6 +220,7 @@ namespace MPAid
             return targetStr;
         }
 
+        // This is one way how Annie's recognizer is called
         private void CreateBatchFile()
         {
             try
@@ -238,6 +240,21 @@ namespace MPAid
                 }
             }
             catch { }
+        }
+
+        // You can create different ways to run Annie's recognizer
+        private void CreateBatchFileType2()
+        {
+            using (StreamWriter sw = new StreamWriter(myConfig.batFilePath))
+            {
+                sw.WriteLine("echo off");
+                sw.WriteLine("color 0A");
+                sw.WriteLine("title Processing");
+                
+                // Add your code here 
+                // please use a different way to call the recognizer
+
+            }
         }
     }
 }
