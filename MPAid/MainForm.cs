@@ -549,7 +549,14 @@ namespace MPAid
 
             //CheckIfRecordingsReady();
 
-            DoAnalysis();
+            try
+            {
+                DoAnalysis();
+            }
+            catch (Exception)
+            {
+                
+            }
         }
 
         private void CheckIfRecordingsReady()
@@ -736,7 +743,14 @@ namespace MPAid
 
                     //CheckIfRecordingsReady();
 
-                    DoAnalysis();
+                    try
+                    {
+                        DoAnalysis();
+                    }
+                    catch (Exception)
+                    {
+                        
+                    }
                 }
             }
             else
