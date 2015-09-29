@@ -553,9 +553,11 @@ namespace MPAid
             {
                 DoAnalysis();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                
+#if DEBUG
+                MessageBox.Show(ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+#endif
             }
         }
 
@@ -747,9 +749,11 @@ namespace MPAid
                     {
                         DoAnalysis();
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
-                        
+#if DEBUG
+                        MessageBox.Show(ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+#endif
                     }
                 }
             }
