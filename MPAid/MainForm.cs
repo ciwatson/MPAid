@@ -144,16 +144,21 @@ namespace MPAid
             }
         }
 
+        private void showAbout()
+        {
+            MessageBox.Show(this, "Maori Pronunciation Aid "
+                  + GetVersionString() + "\n\n" +
+                  "Dr. Catherine Watson\n" +
+                  "The University of Auckland",
+                  "About",
+                  MessageBoxButtons.OK,
+                  MessageBoxIcon.Information);
+        }
+
         private void headerBox_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             if (e.Button == System.Windows.Forms.MouseButtons.Left)
-                MessageBox.Show(this, "Maori Pronunciation Aid "
-                    + GetVersionString() + "\n\n" +
-                                  "Dr. Catherine Watson\n" +
-                                  "The University of Auckland",
-                                  "About",
-                                  MessageBoxButtons.OK,
-                                  MessageBoxIcon.Information);
+                showAbout();
         }
 
         private enum MaoriObjType
@@ -864,6 +869,17 @@ namespace MPAid
         {
             AdminConsole adminForm = new AdminConsole(allUsers);
             adminForm.ShowDialog();
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            showAbout();
+        }
+
+        private void submitFeedbackToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Implement the feedback window please
+            MessageBox.Show("Coming soon! ", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

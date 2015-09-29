@@ -172,6 +172,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\About.png" />
     <Content Include="Resources\admin.png" />
     <Content Include="Resources\ButtonGreen-0.png" />
     <Content Include="Resources\ButtonGreen-1.png" />
@@ -184,7 +185,9 @@
     <Content Include="Resources\ButtonYellow-2.png" />
     <None Include="Resources\correct.pngfile" />
     <Content Include="Resources\changePswd.png" />
+    <Content Include="Resources\Feedback.png" />
     <Content Include="Resources\header.png" />
+    <Content Include="Resources\help.png" />
     <Content Include="Resources\HMMs.png" />
     <Content Include="Resources\MPAid.ico" />
     <Content Include="Resources\newUser.png" />
