@@ -552,8 +552,6 @@ namespace MPAid
             buttonLoadFromFile.Enabled = true;
             buttonStopRecording.Enabled = false;
 
-            CheckIfRecordingsReady();
-
             try
             {
                 DoAnalysis();
