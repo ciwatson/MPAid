@@ -40,7 +40,22 @@ namespace MPAid
 
         private int GetNAudioMasterPeakValue(NAudio.CoreAudioApi.MMDevice device)
         {
-            return ((int)(Math.Round(device.AudioMeterInformation.MasterPeakValue * 100)));
+            int result = 0;
+            if (device == null)
+                goto emptyReturn;
+
+            try
+            {
+                result = (int)(Math.Round(device.AudioMeterInformation.MasterPeakValue * 100));
+                return result;
+            }
+            catch (Exception)
+            {
+                goto emptyReturn;
+            }
+
+        emptyReturn:
+            return 0;
         }
 
         public int GetValue()
@@ -53,11 +68,14 @@ namespace MPAid
 
         private NAudio.CoreAudioApi.MMDevice GetMicDevice()
         {
+            if (!StatusOK())
+                return null;
+
             foreach (NAudio.CoreAudioApi.MMDevice device in DeviceList)
                 if (device.FriendlyName.ToLower().Contains(micPrefix))
                     if (GetNAudioMasterPeakValue(device) > 0)
                         return device;
-            
+
             // If no audio device with "mic" keyword is found
             foreach (NAudio.CoreAudioApi.MMDevice device in DeviceList)
                 if (GetNAudioMasterPeakValue(device) > 0)

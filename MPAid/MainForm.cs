@@ -552,7 +552,7 @@ namespace MPAid
             buttonLoadFromFile.Enabled = true;
             buttonStopRecording.Enabled = false;
 
-            //CheckIfRecordingsReady();
+            CheckIfRecordingsReady();
 
             try
             {
