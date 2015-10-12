@@ -876,8 +876,17 @@ namespace MPAid
 
         private void submitFeedbackToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // Implement the feedback window please
-            MessageBox.Show("Coming soon! ", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            try
+            {
+                const string email = "c.watson@auckland.ac.nz";
+                Process.Start(string.Format("mailto:{1}?subject=MPAi Feedback from {0}&body=",
+                    allUsers.getCurrentUser().getName(true), email));
+            }
+            catch (Exception)
+            {
+                
+            }
+
         }
     }
 }
