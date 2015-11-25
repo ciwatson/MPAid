@@ -8,9 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace MPAid.UserControllers
+namespace MPAid.Forms.Config
 {
-    public partial class RecordingConfig : UserControl
+    public partial class RecordingConfig : Form
     {
         public RecordingConfig()
         {
@@ -19,13 +19,16 @@ namespace MPAid.UserControllers
 
         private void selectFileButton_Click(object sender, EventArgs e)
         {
-            this.openFileDialog.ShowDialog();
+            if(this.openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                this.onLocalListBox.Items.Clear();
+                this.onLocalListBox.Items.AddRange(this.openFileDialog.FileNames);
+            }
         }
 
         private void openFileDialog_FileOk(object sender, CancelEventArgs e)
         {
-            this.onLocalListBox.Items.Clear();
-            this.onLocalListBox.Items.AddRange(this.openFileDialog.FileNames);
+
         }
 
         private void updateDBButton_Click(object sender, EventArgs e)

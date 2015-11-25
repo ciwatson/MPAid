@@ -167,11 +167,17 @@
     <Compile Include="Modules\VerticalProgressBar.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="UserControl\RecordingConfig.cs">
-      <SubType>UserControl</SubType>
+    <Compile Include="Forms\Config\RecordingConfig.cs">
+      <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UserControl\RecordingConfig.Designer.cs">
+    <Compile Include="Forms\Config\RecordingConfig.Designer.cs">
       <DependentUpon>RecordingConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Config\SystemConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Config\SystemConfig.Designer.cs">
+      <DependentUpon>SystemConfig.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Forms\AdminConsole.resx">
       <DependentUpon>AdminConsole.cs</DependentUpon>
@@ -210,8 +216,11 @@
     <EmbeddedResource Include="Forms\SplashScreen.resx">
       <DependentUpon>SplashScreen.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControl\RecordingConfig.resx">
+    <EmbeddedResource Include="Forms\Config\RecordingConfig.resx">
       <DependentUpon>RecordingConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Config\SystemConfig.resx">
+      <DependentUpon>SystemConfig.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

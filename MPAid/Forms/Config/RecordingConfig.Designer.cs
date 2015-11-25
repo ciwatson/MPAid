@@ -1,4 +1,4 @@
-﻿namespace MPAid.UserControllers
+﻿namespace MPAid.Forms.Config
 {
     partial class RecordingConfig
     {
@@ -98,20 +98,22 @@
             // openFileDialog
             // 
             this.openFileDialog.FileName = "openFileDialog1";
-            this.openFileDialog.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog_FileOk);
             // 
             // RecordingConfig
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(382, 265);
             this.Controls.Add(this.updateDBButton);
             this.Controls.Add(this.selectFileButton);
             this.Controls.Add(this.toLocalButton);
             this.Controls.Add(this.toDBButton);
             this.Controls.Add(this.onDBListBox);
             this.Controls.Add(this.onLocalListBox);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "RecordingConfig";
-            this.Size = new System.Drawing.Size(387, 277);
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.ResumeLayout(false);
 
         }

@@ -8,6 +8,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows.Forms;
+using MPAid.Forms.Config;
 
 namespace MPAid
 {
@@ -30,6 +31,10 @@ namespace MPAid
         private BindingList<string> listREC = new BindingList<string>();
 
         private LoginWindow loginForm;
+
+        private SystemConfig systemConfigForm;
+
+        private RecordingConfig recordingConfigForm;
 
         public MainForm(UserManagement users)
         {
@@ -85,7 +90,7 @@ namespace MPAid
             // Add Volume Meter to the form
             InitializeNAudioController();
             VisualizeVolumeMeter();
-
+            InitializeConfig();
         }
 
         //this method is called when allUsers has been initialized
@@ -101,6 +106,12 @@ namespace MPAid
         private void InitializeHMMsController()
         {
             // this methods actually load user settings for HMMsController
+        }
+
+        private void InitializeConfig()
+        {
+            this.systemConfigForm = new SystemConfig();
+            this.recordingConfigForm = new RecordingConfig();
         }
 
         private void FillLists()
@@ -887,6 +898,16 @@ namespace MPAid
                 
             }
 
+        }
+
+        private void systemToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.systemConfigForm.ShowDialog();
+        }
+
+        private void recordingToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.recordingConfigForm.ShowDialog();
         }
     }
 }
