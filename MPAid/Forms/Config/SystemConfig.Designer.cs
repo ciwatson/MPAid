@@ -64,7 +64,7 @@
             // 
             // folderBrowserDialog
             // 
-            this.folderBrowserDialog.SelectedPath = "./Recording";
+            this.folderBrowserDialog.SelectedPath = "./Recordings";
             // 
             // SaveButton
             // 

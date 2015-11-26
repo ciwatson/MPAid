@@ -126,15 +126,15 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201511261123339_Initial.cs" />
-    <Compile Include="Migrations\201511261123339_Initial.Designer.cs">
-      <DependentUpon>201511261123339_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201511252242549_Initialize.cs" />
+    <Compile Include="Migrations\201511252242549_Initialize.Designer.cs">
+      <DependentUpon>201511252242549_Initialize.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\MPAidModel.cs" />
     <Compile Include="Models\Recording.cs" />
     <Compile Include="Models\Speaker.cs" />
-    <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\Type.cs" />
     <Compile Include="Models\Word.cs" />
     <Compile Include="Modules\Common.cs" />
     <Compile Include="Modules\FormantPlotController.cs" />
@@ -147,7 +147,6 @@
     <Compile Include="Modules\HtmlGenerator.cs" />
     <Compile Include="Modules\MaoriObj.cs" />
     <Compile Include="Modules\mathLib.cs" />
-    <Compile Include="Modules\NamePaser.cs" />
     <Compile Include="Modules\NAudioController.cs" />
     <Compile Include="Modules\PaConfig.cs" />
     <Compile Include="Modules\PaEngine.cs" />
@@ -200,8 +199,8 @@
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201511261123339_Initial.resx">
-      <DependentUpon>201511261123339_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201511252242549_Initialize.resx">
+      <DependentUpon>201511252242549_Initialize.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

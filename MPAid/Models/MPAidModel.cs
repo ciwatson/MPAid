@@ -1,4 +1,4 @@
-namespace MPAid.Models
+namespace MPAid.Model
 {
     using System;
     using System.Data.Entity;
@@ -15,7 +15,7 @@ namespace MPAid.Models
         public virtual DbSet<Speaker> Speaker { get; set; }
         public virtual DbSet<Recording> Recording { get; set; }
         public virtual DbSet<Word> Word { get; set; }
-        public virtual DbSet<Category> Category { get; set; }
+        public virtual DbSet<Type> Type { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

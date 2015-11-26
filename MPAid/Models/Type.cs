@@ -1,4 +1,4 @@
-﻿namespace MPAid.Models
+﻿namespace MPAid.Model
 {
     using System;
     using System.Collections.Generic;
@@ -6,14 +6,14 @@
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("Category")]
-    public partial class Category
+    [Table("Type")]
+    public partial class Type
     {
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Id { get; set; }
 
         [Required]
-        [StringLength(64)]
+        [StringLength(50)]
         public string Name { get; set; }
 
         public virtual ICollection<Word> Words { get; set; }

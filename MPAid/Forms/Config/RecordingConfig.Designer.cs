@@ -98,7 +98,6 @@
             // openFileDialog
             // 
             this.openFileDialog.FileName = "openFileDialog1";
-            this.openFileDialog.Multiselect = true;
             // 
             // RecordingConfig
             // 
