@@ -3,16 +3,38 @@ namespace MPAid.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Initialize : DbMigration
+    public partial class Initial : DbMigration
     {
         public override void Up()
         {
+            CreateTable(
+                "dbo.Category",
+                c => new
+                    {
+                        Id = c.Int(nullable: false),
+                        Name = c.String(nullable: false, maxLength: 64),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.Word",
+                c => new
+                    {
+                        Id = c.Int(nullable: false),
+                        Name = c.String(nullable: false, maxLength: 64),
+                        Category_Id = c.Int(),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Category", t => t.Category_Id)
+                .Index(t => t.Category_Id);
+            
             CreateTable(
                 "dbo.Recording",
                 c => new
                     {
                         Id = c.Int(nullable: false),
-                        Address = c.String(nullable: false, maxLength: 200),
+                        Address = c.String(nullable: false, maxLength: 256),
+                        Name = c.String(nullable: false, maxLength: 64),
                         Speaker_Id = c.Int(),
                         Word_Id = c.Int(),
                     })
@@ -27,28 +49,7 @@ namespace MPAid.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false),
-                        Name = c.String(nullable: false, maxLength: 50),
-                    })
-                .PrimaryKey(t => t.Id);
-            
-            CreateTable(
-                "dbo.Word",
-                c => new
-                    {
-                        Id = c.Int(nullable: false),
-                        Name = c.String(nullable: false, maxLength: 50),
-                        Type_Id = c.Int(),
-                    })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Type", t => t.Type_Id)
-                .Index(t => t.Type_Id);
-            
-            CreateTable(
-                "dbo.Type",
-                c => new
-                    {
-                        Id = c.Int(nullable: false),
-                        Name = c.String(nullable: false, maxLength: 50),
+                        Name = c.String(nullable: false, maxLength: 64),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -56,16 +57,16 @@ namespace MPAid.Migrations
         
         public override void Down()
         {
-            DropForeignKey("dbo.Word", "Type_Id", "dbo.Type");
             DropForeignKey("dbo.Recording", "Word_Id", "dbo.Word");
             DropForeignKey("dbo.Recording", "Speaker_Id", "dbo.Speaker");
-            DropIndex("dbo.Word", new[] { "Type_Id" });
+            DropForeignKey("dbo.Word", "Category_Id", "dbo.Category");
             DropIndex("dbo.Recording", new[] { "Word_Id" });
             DropIndex("dbo.Recording", new[] { "Speaker_Id" });
-            DropTable("dbo.Type");
-            DropTable("dbo.Word");
+            DropIndex("dbo.Word", new[] { "Category_Id" });
             DropTable("dbo.Speaker");
             DropTable("dbo.Recording");
+            DropTable("dbo.Word");
+            DropTable("dbo.Category");
         }
     }
 }

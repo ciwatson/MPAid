@@ -8,10 +8,10 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows.Forms;
+using System.Runtime.Serialization.Formatters.Binary;
 using MPAid.Forms.Config;
 using MPAid.Modules;
-using System.Runtime.Serialization.Formatters.Binary;
-
+using MPAid.Models;
 namespace MPAid
 {
     public partial class MainForm : Form
@@ -39,6 +39,8 @@ namespace MPAid
         private RecordingConfig recordingConfigForm;
 
         public SysCfg configContent;
+
+        public MPAidModel DBModel = new MPAidModel();
 
         public MainForm(UserManagement users)
         {
@@ -317,7 +319,7 @@ namespace MPAid
 
         ///<summary>
         ///This function returns the state of the tab,
-        ///Vowels as 0, Words as 1.
+        ///Vowels as 0, Word as 1.
         ///</summary>
         private int GetTabState()
         {

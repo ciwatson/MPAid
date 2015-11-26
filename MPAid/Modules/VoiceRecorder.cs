@@ -54,7 +54,7 @@ namespace MPAid
 
         public void Start()
         {
-            mciSendString("open new Type waveaudio Alias recsound", "", 0, 0);
+            mciSendString("open new Category waveaudio Alias recsound", "", 0, 0);
             mciSendString("record recsound", "", 0, 0);
         }
 

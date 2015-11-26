@@ -5,14 +5,14 @@ namespace MPAid.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<MPAid.Model.MPAidModel>
+    internal sealed class Configuration : DbMigrationsConfiguration<MPAid.Models.MPAidModel>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(MPAid.Model.MPAidModel context)
+        protected override void Seed(MPAid.Models.MPAidModel context)
         {
             //  This method will be called after migrating to the latest version.
 
