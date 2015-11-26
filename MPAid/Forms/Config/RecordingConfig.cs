@@ -18,7 +18,7 @@ namespace MPAid.Forms.Config
         {
             InitializeComponent();
             this.onDBListBox.DataSource = MainForm.self.DBModel.Recording.Local.ToList();
-            this.onDBListBox.DisplayMember = "Name";
+            this.onDBListBox.DisplayMember = "FileName";
         }
 
         private void selectFileButton_Click(object sender, EventArgs e)
