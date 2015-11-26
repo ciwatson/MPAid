@@ -1,4 +1,4 @@
-namespace MPAid.Model
+namespace MPAid.Models
 {
     using System;
     using System.Collections.Generic;
@@ -13,7 +13,7 @@ namespace MPAid.Model
         public int Id { get; set; }
 
         [Required]
-        [StringLength(50)]
+        [StringLength(64)]
         public string Name { get; set; }
 
         public virtual ICollection<Recording> Recordings { get; set; }
