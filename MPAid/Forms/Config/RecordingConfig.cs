@@ -26,11 +26,6 @@ namespace MPAid.Forms.Config
             }
         }
 
-        private void openFileDialog_FileOk(object sender, CancelEventArgs e)
-        {
-
-        }
-
         private void updateDBButton_Click(object sender, EventArgs e)
         {
 
@@ -38,7 +33,6 @@ namespace MPAid.Forms.Config
 
         private void toDBButton_Click(object sender, EventArgs e)
         {
-
         }
 
         private void toLocalButton_Click(object sender, EventArgs e)

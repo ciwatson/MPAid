@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
+using MPAid.Modules;
 
 namespace MPAid.Forms.Config
 {
@@ -15,12 +18,25 @@ namespace MPAid.Forms.Config
         public SystemConfig()
         {
             InitializeComponent();
+
+            InitializeContent();
+        }
+
+        private void InitializeContent()
+        {
+            this.recordingFolderTextBox.Text = MainForm.self.configContent.recordingFolderAddr;
+            this.recordingFolderTextBox.TextChanged += RecordingFolderTextBox_TextChanged;
+        }
+
+        private void RecordingFolderTextBox_TextChanged(object sender, EventArgs e)
+        {
+            MainForm.self.configContent.recordingFolderAddr = this.recordingFolderTextBox.Text;
         }
 
         private void folderSelectButton_Click(object sender, EventArgs e)
         {
             if (this.folderBrowserDialog.ShowDialog() == DialogResult.OK)
-            {
+            {           
                 this.recordingFolderTextBox.Text = folderBrowserDialog.SelectedPath;
             }
         }
@@ -32,7 +48,8 @@ namespace MPAid.Forms.Config
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
-
-        }
+            Serializer<SysCfg>.Save<BinaryFormatter>(SysCfg.path, MainForm.self.configContent);
+            this.Close();
+        }       
     }
 }

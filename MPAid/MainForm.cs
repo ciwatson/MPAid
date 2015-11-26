@@ -9,12 +9,14 @@ using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows.Forms;
 using MPAid.Forms.Config;
+using MPAid.Modules;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace MPAid
 {
     public partial class MainForm : Form
     {
-
+        public static MainForm self;
         private ResManager ResMan;
         private UserManagement allUsers;
         private IoController systemIO;
@@ -36,8 +38,11 @@ namespace MPAid
 
         private RecordingConfig recordingConfigForm;
 
+        public SysCfg configContent;
+
         public MainForm(UserManagement users)
         {
+            MainForm.self = this;
             SplashScreen splash = new SplashScreen();
             splash.Show();
 
@@ -110,6 +115,7 @@ namespace MPAid
 
         private void InitializeConfig()
         {
+            configContent = Serializer<SysCfg>.Load<BinaryFormatter>(SysCfg.path);
             this.systemConfigForm = new SystemConfig();
             this.recordingConfigForm = new RecordingConfig();
         }
@@ -902,12 +908,12 @@ namespace MPAid
 
         private void systemToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.systemConfigForm.ShowDialog();
+            this.systemConfigForm.ShowDialog(this);
         }
 
         private void recordingToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.recordingConfigForm.ShowDialog();
+            this.recordingConfigForm.ShowDialog(this);
         }
     }
 }

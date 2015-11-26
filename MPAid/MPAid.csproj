@@ -131,11 +131,12 @@
       <DependentUpon>201511252242549_Initialize.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Model\MPAidModel.cs" />
-    <Compile Include="Model\Recording.cs" />
-    <Compile Include="Model\Speaker.cs" />
-    <Compile Include="Model\Type.cs" />
-    <Compile Include="Model\Word.cs" />
+    <Compile Include="Models\MPAidModel.cs" />
+    <Compile Include="Models\Recording.cs" />
+    <Compile Include="Models\Speaker.cs" />
+    <Compile Include="Models\Type.cs" />
+    <Compile Include="Models\Word.cs" />
+    <Compile Include="Modules\Common.cs" />
     <Compile Include="Modules\FormantPlotController.cs" />
     <Compile Include="Modules\IoController.cs" />
     <Compile Include="Modules\MPAiUser.cs" />
@@ -149,6 +150,7 @@
     <Compile Include="Modules\NAudioController.cs" />
     <Compile Include="Modules\PaConfig.cs" />
     <Compile Include="Modules\PaEngine.cs" />
+    <Compile Include="Modules\SysCfg.cs" />
     <Compile Include="Modules\UserManagement.cs" />
     <Compile Include="Modules\WordMapper.cs" />
     <Compile Include="Program.cs" />
@@ -272,6 +274,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Properties\DataSources\" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
