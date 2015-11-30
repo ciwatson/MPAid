@@ -22,6 +22,8 @@ namespace MPAid.Forms.Config
             MainForm.self.DBModel.Recording.Load();
             this.onDBListBox.DataSource = MainForm.self.DBModel.Recording.Local.ToBindingList();
             this.onDBListBox.DisplayMember = "Name";
+
+            this.openFileDialog.InitialDirectory = MainForm.self.configContent.recordingFolderAddr;
         }
 
         private void selectFileButton_Click(object sender, EventArgs e)

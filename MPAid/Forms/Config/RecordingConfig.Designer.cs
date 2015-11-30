@@ -40,26 +40,28 @@
             // onLocalListBox
             // 
             this.onLocalListBox.FormattingEnabled = true;
+            this.onLocalListBox.HorizontalScrollbar = true;
             this.onLocalListBox.ItemHeight = 12;
-            this.onLocalListBox.Location = new System.Drawing.Point(225, 55);
+            this.onLocalListBox.Location = new System.Drawing.Point(225, 19);
             this.onLocalListBox.Name = "onLocalListBox";
-            this.onLocalListBox.Size = new System.Drawing.Size(110, 172);
+            this.onLocalListBox.Size = new System.Drawing.Size(110, 244);
             this.onLocalListBox.TabIndex = 0;
             // 
             // onDBListBox
             // 
             this.onDBListBox.FormattingEnabled = true;
+            this.onDBListBox.HorizontalScrollbar = true;
             this.onDBListBox.ItemHeight = 12;
-            this.onDBListBox.Location = new System.Drawing.Point(37, 55);
+            this.onDBListBox.Location = new System.Drawing.Point(37, 19);
             this.onDBListBox.Name = "onDBListBox";
-            this.onDBListBox.Size = new System.Drawing.Size(113, 172);
+            this.onDBListBox.Size = new System.Drawing.Size(113, 244);
             this.onDBListBox.TabIndex = 1;
             // 
             // toDBButton
             // 
-            this.toDBButton.Location = new System.Drawing.Point(162, 92);
+            this.toDBButton.Location = new System.Drawing.Point(162, 29);
             this.toDBButton.Name = "toDBButton";
-            this.toDBButton.Size = new System.Drawing.Size(44, 23);
+            this.toDBButton.Size = new System.Drawing.Size(50, 23);
             this.toDBButton.TabIndex = 2;
             this.toDBButton.Text = "<<";
             this.toDBButton.UseVisualStyleBackColor = true;
@@ -67,9 +69,9 @@
             // 
             // toLocalButton
             // 
-            this.toLocalButton.Location = new System.Drawing.Point(162, 178);
+            this.toLocalButton.Location = new System.Drawing.Point(162, 93);
             this.toLocalButton.Name = "toLocalButton";
-            this.toLocalButton.Size = new System.Drawing.Size(44, 23);
+            this.toLocalButton.Size = new System.Drawing.Size(50, 23);
             this.toLocalButton.TabIndex = 3;
             this.toLocalButton.Text = ">>";
             this.toLocalButton.UseVisualStyleBackColor = true;
@@ -77,9 +79,9 @@
             // 
             // selectFileButton
             // 
-            this.selectFileButton.Location = new System.Drawing.Point(243, 233);
+            this.selectFileButton.Location = new System.Drawing.Point(162, 168);
             this.selectFileButton.Name = "selectFileButton";
-            this.selectFileButton.Size = new System.Drawing.Size(75, 23);
+            this.selectFileButton.Size = new System.Drawing.Size(50, 23);
             this.selectFileButton.TabIndex = 4;
             this.selectFileButton.Text = "Select";
             this.selectFileButton.UseVisualStyleBackColor = true;
@@ -87,9 +89,9 @@
             // 
             // updateDBButton
             // 
-            this.updateDBButton.Location = new System.Drawing.Point(51, 233);
+            this.updateDBButton.Location = new System.Drawing.Point(162, 222);
             this.updateDBButton.Name = "updateDBButton";
-            this.updateDBButton.Size = new System.Drawing.Size(75, 23);
+            this.updateDBButton.Size = new System.Drawing.Size(50, 23);
             this.updateDBButton.TabIndex = 5;
             this.updateDBButton.Text = "Update";
             this.updateDBButton.UseVisualStyleBackColor = true;
@@ -97,20 +99,21 @@
             // 
             // openFileDialog
             // 
-            this.openFileDialog.FileName = "openFileDialog1";
+            this.openFileDialog.FileName = "Speaker-Category-Word.Ext";
             this.openFileDialog.Multiselect = true;
             // 
             // RecordingConfig
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(382, 265);
+            this.ClientSize = new System.Drawing.Size(387, 304);
             this.Controls.Add(this.updateDBButton);
             this.Controls.Add(this.selectFileButton);
             this.Controls.Add(this.toLocalButton);
             this.Controls.Add(this.toDBButton);
             this.Controls.Add(this.onDBListBox);
             this.Controls.Add(this.onLocalListBox);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "RecordingConfig";

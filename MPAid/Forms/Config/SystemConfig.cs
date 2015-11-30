@@ -41,11 +41,6 @@ namespace MPAid.Forms.Config
             }
         }
 
-        private void CancelButton_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
         private void SaveButton_Click(object sender, EventArgs e)
         {
             Serializer<SysCfg>.Save<BinaryFormatter>(SysCfg.path, MainForm.self.configContent);
