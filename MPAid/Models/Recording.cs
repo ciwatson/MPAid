@@ -9,8 +9,8 @@
     [Table("Recording")]
     public partial class Recording
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int Id { get; set; }
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int RecordingId { get; set; }
 
         [Required]
         [StringLength(256)]
@@ -20,7 +20,12 @@
         [StringLength(64)]
         public string Name { get; set; }
 
+        public int SpeakerId { get; set; }
+        [ForeignKey("SpeakerId")]
         public virtual Speaker Speaker { get; set; }
+
+        public int WordId { get; set; }
+        [ForeignKey("WordId")]
         public virtual Word Word { get; set; }
     }
 }

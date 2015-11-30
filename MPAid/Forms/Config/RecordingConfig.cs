@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MPAid.Models;
 using MPAid.Modules;
+using System.Data.Entity.Migrations;
 
 namespace MPAid.Forms.Config
 {
@@ -63,15 +64,30 @@ namespace MPAid.Forms.Config
             {
                 foreach (var item in this.onLocalListBox.Items)
                 {
+                    var DBContext = MainForm.self.DBModel;
                     String filename = item.ToString();
                     NamePaser paser = new NamePaser();
                     paser.FileName = filename;
                     Speaker spk = new Speaker() { Name = paser.Speaker };
-                    Category cty = new Category() { Name = paser.Category };
-                    Word wd = new Word() { Name = paser.Word, Category = cty };
-                    Recording rd = new Recording { Address = MainForm.self.configContent.recordingFolderAddr, Name = paser.FileName, Speaker = spk, Word = wd };
+                    DBContext.Speaker.AddOrUpdate(x => x.Name, spk);
+                    MainForm.self.DBModel.SaveChanges();
 
-                    MainForm.self.DBModel.Recording.Add(rd);
+                    Category cty = new Category() { Name = paser.Category };
+                    DBContext.Category.AddOrUpdate(x => x.Name, cty);
+                    MainForm.self.DBModel.SaveChanges();
+
+                    Word wd = new Word() { Name = paser.Word,
+                        CategoryId = DBContext.Category.Single(x =>x.Name == paser.Category).CategoryId};
+                    DBContext.Word.AddOrUpdate(x => x.Name, wd);
+                    MainForm.self.DBModel.SaveChanges();
+
+                    Recording rd = new Recording { Address = MainForm.self.configContent.recordingFolderAddr,
+                        Name = paser.FileName,
+                        SpeakerId = DBContext.Speaker.Single(x => x.Name == paser.Speaker).SpeakerId,
+                        WordId = DBContext.Word.Single(x => x.Name == paser.Word).WordId
+                    };
+                    DBContext.Recording.AddOrUpdate(x => x.Name, rd);
+                    MainForm.self.DBModel.SaveChanges();
                 }
             }
             catch(Exception exp)

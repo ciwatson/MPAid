@@ -130,6 +130,22 @@
     <Compile Include="Migrations\201511261123339_Initial.Designer.cs">
       <DependentUpon>201511261123339_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201511300502504_foreignkey.cs" />
+    <Compile Include="Migrations\201511300502504_foreignkey.Designer.cs">
+      <DependentUpon>201511300502504_foreignkey.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201511300523048_primarykey.cs" />
+    <Compile Include="Migrations\201511300523048_primarykey.Designer.cs">
+      <DependentUpon>201511300523048_primarykey.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201511300536362_identity.cs" />
+    <Compile Include="Migrations\201511300536362_identity.Designer.cs">
+      <DependentUpon>201511300536362_identity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201511300543521_identity1.cs" />
+    <Compile Include="Migrations\201511300543521_identity1.Designer.cs">
+      <DependentUpon>201511300543521_identity1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\MPAidModel.cs" />
     <Compile Include="Models\Recording.cs" />
@@ -202,6 +218,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201511261123339_Initial.resx">
       <DependentUpon>201511261123339_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511300502504_foreignkey.resx">
+      <DependentUpon>201511300502504_foreignkey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511300523048_primarykey.resx">
+      <DependentUpon>201511300523048_primarykey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511300536362_identity.resx">
+      <DependentUpon>201511300536362_identity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511300543521_identity1.resx">
+      <DependentUpon>201511300543521_identity1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

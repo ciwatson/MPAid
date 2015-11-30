@@ -9,14 +9,18 @@
     [Table("Word")]
     public partial class Word
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int Id { get; set; }
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int WordId { get; set; }
 
         [Required]
         [StringLength(64)]
         public string Name { get; set; }
 
-        public virtual ICollection<Recording> Recordings { get; set; }
+        public int CategoryId { get; set; }
+        [ForeignKey("CategoryId")]
         public virtual Category Category { get; set; }
+
+        public virtual ICollection<Recording> Recordings { get; set; }
+        
     }
 }

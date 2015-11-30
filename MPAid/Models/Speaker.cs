@@ -9,8 +9,8 @@ namespace MPAid.Models
     [Table("Speaker")]
     public partial class Speaker
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int Id { get; set; }
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int SpeakerId { get; set; }
 
         [Required]
         [StringLength(64)]
