@@ -40,7 +40,7 @@ namespace MPAid
 
         public SysCfg configContent;
 
-        public MPAidModel DBModel = new MPAidModel();
+        public MPAidModel DBModel;
 
         public MainForm(UserManagement users)
         {
@@ -97,7 +97,8 @@ namespace MPAid
             // Add Volume Meter to the form
             InitializeNAudioController();
             VisualizeVolumeMeter();
-            InitializeConfig();
+            InitializeDB();
+            InitializeConfig();           
         }
 
         //this method is called when allUsers has been initialized
@@ -120,6 +121,11 @@ namespace MPAid
             configContent = Serializer<SysCfg>.Load<BinaryFormatter>(SysCfg.path);
             this.systemConfigForm = new SystemConfig();
             this.recordingConfigForm = new RecordingConfig();
+        }
+
+        private void InitializeDB()
+        {
+            this.DBModel = new MPAidModel();
         }
 
         private void FillLists()

@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using MPAid.Models;
 using MPAid.Modules;
 using System.Data.Entity.Migrations;
+using System.Data.Entity;
 
 namespace MPAid.Forms.Config
 {
@@ -18,7 +19,8 @@ namespace MPAid.Forms.Config
         public RecordingConfig()
         {
             InitializeComponent();
-            this.onDBListBox.DataSource = MainForm.self.DBModel.Recording.Local.ToList();
+            MainForm.self.DBModel.Recording.Load();
+            this.onDBListBox.DataSource = MainForm.self.DBModel.Recording.Local.ToBindingList();
             this.onDBListBox.DisplayMember = "Name";
         }
 
