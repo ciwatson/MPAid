@@ -12,6 +12,8 @@ using System.Runtime.Serialization.Formatters.Binary;
 using MPAid.Forms.Config;
 using MPAid.Modules;
 using MPAid.Models;
+using System.Data.Entity;
+
 namespace MPAid
 {
     public partial class MainForm : Form
@@ -67,6 +69,8 @@ namespace MPAid
 
         private void InitializeUI()
         {
+            InitializeDB();
+
             Icon = Properties.Resources.MPAid;
             Text += " " + GetVersionString();
 
@@ -96,8 +100,7 @@ namespace MPAid
 
             // Add Volume Meter to the form
             InitializeNAudioController();
-            VisualizeVolumeMeter();
-            InitializeDB();
+            VisualizeVolumeMeter();         
             InitializeConfig();           
         }
 
@@ -126,11 +129,14 @@ namespace MPAid
         private void InitializeDB()
         {
             this.DBModel = new MPAidModel();
+            this.DBModel.Recording.Load();
+            this.DBModel.Speaker.Load();
         }
 
         private void FillLists()
         {
-            //VowelList.DataSource = DBModel.Recording.Where(x => x.Speaker.Name == )
+            //VowelList.DataSource = DBModel.Recording.Local.ToBindingList();
+            //VowelList.DisplayMember = "Name";
             VowelList.DataSource = ResMan.GetVowelList();
             WordList.DataSource = ResMan.GetWordList();
             listBoxREC.DataSource = listREC;

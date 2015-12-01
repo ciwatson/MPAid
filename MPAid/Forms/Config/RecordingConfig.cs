@@ -11,6 +11,7 @@ using MPAid.Models;
 using MPAid.Modules;
 using System.Data.Entity.Migrations;
 using System.Data.Entity;
+using System.IO;
 
 namespace MPAid.Forms.Config
 {
@@ -19,7 +20,7 @@ namespace MPAid.Forms.Config
         public RecordingConfig()
         {
             InitializeComponent();
-            MainForm.self.DBModel.Recording.Load();
+
             this.onDBListBox.DataSource = MainForm.self.DBModel.Recording.Local.ToBindingList();
             this.onDBListBox.DisplayMember = "Name";
 
@@ -32,9 +33,14 @@ namespace MPAid.Forms.Config
             {
                 if (this.openFileDialog.ShowDialog() == DialogResult.OK)
                 {
-                    String[] filenames = openFileDialog.FileNames.Select(x => x = x.Substring(x.LastIndexOf('\\') + 1)).ToArray();
-                    this.onLocalListBox.Items.Clear();
-                    this.onLocalListBox.Items.AddRange(filenames);
+                    String[] fileNames = openFileDialog.FileNames.Select(x => x = x.Substring(x.LastIndexOf('\\') + 1)).ToArray();
+                    String[] fileAddresses = openFileDialog.FileNames.Select(x => x = x.Substring(0, x.LastIndexOf('\\'))).ToArray();
+
+                    Dictionary<string, string> dataSource = fileNames.Zip(fileAddresses, (lText, lValue) => new { lText, lValue }).ToDictionary(x => x.lText, x => x.lValue);
+
+                    this.onLocalListBox.DataSource = new BindingSource() { DataSource = dataSource } ;
+                    this.onLocalListBox.DisplayMember = "Key";
+                    this.onLocalListBox.ValueMember = "Value";
                 }
             }
             catch(Exception exp)
@@ -49,9 +55,10 @@ namespace MPAid.Forms.Config
             try
             {
                 var DBContext = MainForm.self.DBModel;
-                foreach (var item in this.onLocalListBox.SelectedItems)
-                {                 
-                    String filename = item.ToString();
+                var recordingFolder = MainForm.self.configContent.recordingFolderAddr;
+                foreach (KeyValuePair<string, string> item in this.onLocalListBox.SelectedItems)
+                {
+                    String filename = item.Key.ToString();
                     NamePaser paser = new NamePaser();
                     paser.FileName = filename;
 
@@ -68,13 +75,21 @@ namespace MPAid.Forms.Config
                     DBContext.Word.AddOrUpdate(x => x.Name, wd);
                     MainForm.self.DBModel.SaveChanges();
 
-                    Recording rd = new Recording { Address = MainForm.self.configContent.recordingFolderAddr,
+                    Recording rd = new Recording { Address = recordingFolder,
                         Name = paser.FileName,
                         SpeakerId = DBContext.Speaker.Single(x => x.Name == paser.Speaker).SpeakerId,
                         WordId = DBContext.Word.Single(x => x.Name == paser.Word).WordId
                     };
                     DBContext.Recording.AddOrUpdate(x => x.Name, rd);
                     MainForm.self.DBModel.SaveChanges();
+
+                    string existingFile = item.Value + "\\" + item.Key;
+                    string newFile = recordingFolder + "\\" + rd.Name;
+                    //avoid writing itslef
+                    if(!existingFile.Equals(newFile))
+                    {
+                        File.Copy(existingFile, newFile, true);
+                    }
                 }
             }
             catch(Exception exp)
@@ -92,7 +107,13 @@ namespace MPAid.Forms.Config
                 //Dont use foreach since the index will change when item is deleted
                 for(int i = onDBListBox.SelectedItems.Count - 1; i >= 0; i--)
                 {
-                    DBContext.Recording.Remove(onDBListBox.Items[i] as MPAid.Models.Recording);
+                    Recording item = onDBListBox.Items[i] as MPAid.Models.Recording;
+                    string existingFile = item.Address + "\\" + item.Name;
+                    if (File.Exists(existingFile))
+                    {
+                        File.Delete(existingFile);
+                    }
+                    DBContext.Recording.Remove(item);            
                 }
                 MainForm.self.DBModel.SaveChanges();
             }
