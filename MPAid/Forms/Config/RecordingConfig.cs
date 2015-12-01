@@ -43,35 +43,18 @@ namespace MPAid.Forms.Config
             }
         }
 
-        private void updateDBButton_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (MainForm.self.DBModel.SaveChanges() > 0)
-                {
-                    MessageBox.Show("Successfully updated!");
-                }
-                else
-                {
-                    MessageBox.Show("Fail to update.");
-                }
-            }
-            catch(Exception exp)
-            {
-                Console.WriteLine(exp);
-            }
-        }
 
         private void toDBButton_Click(object sender, EventArgs e)
         {
             try
             {
-                foreach (var item in this.onLocalListBox.Items)
-                {
-                    var DBContext = MainForm.self.DBModel;
+                var DBContext = MainForm.self.DBModel;
+                foreach (var item in this.onLocalListBox.SelectedItems)
+                {                 
                     String filename = item.ToString();
                     NamePaser paser = new NamePaser();
                     paser.FileName = filename;
+
                     Speaker spk = new Speaker() { Name = paser.Speaker };
                     DBContext.Speaker.AddOrUpdate(x => x.Name, spk);
                     MainForm.self.DBModel.SaveChanges();
@@ -97,12 +80,27 @@ namespace MPAid.Forms.Config
             catch(Exception exp)
             {
                 Console.WriteLine(exp);
+                MessageBox.Show("Fail to update!");
             }
         }
 
         private void toLocalButton_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                var DBContext = MainForm.self.DBModel;
+                //Dont use foreach since the index will change when item is deleted
+                for(int i = onDBListBox.SelectedItems.Count - 1; i >= 0; i--)
+                {
+                    DBContext.Recording.Remove(onDBListBox.Items[i] as MPAid.Models.Recording);
+                }
+                MainForm.self.DBModel.SaveChanges();
+            }
+            catch(Exception exp)
+            {
+                Console.WriteLine(exp);
+                MessageBox.Show("Fail to delete!");
+            }
         }
     }
 }

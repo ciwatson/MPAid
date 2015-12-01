@@ -1,4 +1,4 @@
-﻿namespace MPAid.Models
+namespace MPAid.Models
 {
     using System;
     using System.Collections.Generic;
@@ -9,6 +9,11 @@
     [Table("Word")]
     public partial class Word
     {
+        public Word()
+        {
+            Recordings = new HashSet<Recording>();
+        }
+
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int WordId { get; set; }
 
@@ -21,6 +26,5 @@
         public virtual Category Category { get; set; }
 
         public virtual ICollection<Recording> Recordings { get; set; }
-        
     }
 }

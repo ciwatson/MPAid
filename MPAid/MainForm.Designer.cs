@@ -1,4 +1,6 @@
-﻿namespace MPAid
+﻿using MPAid.Models;
+
+namespace MPAid
 {
     partial class MainForm
     {
@@ -84,6 +86,7 @@
             this.configToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.systemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.recordingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.categoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.headerBox)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.myTabControl.SuspendLayout();
@@ -99,6 +102,7 @@
             this.groupBox4.SuspendLayout();
             this.panel1.SuspendLayout();
             this.mainMenuStrip.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.categoryBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // headerBox
@@ -172,6 +176,7 @@
             // 
             this.myTabControl.Controls.Add(this.tabPage1);
             this.myTabControl.Controls.Add(this.tabPage2);
+            this.myTabControl.DataBindings.Add(new System.Windows.Forms.Binding("Tag", this.categoryBindingSource, "Name", true));
             this.myTabControl.Location = new System.Drawing.Point(12, 147);
             this.myTabControl.Name = "myTabControl";
             this.myTabControl.SelectedIndex = 0;
@@ -692,14 +697,14 @@
             // systemToolStripMenuItem
             // 
             this.systemToolStripMenuItem.Name = "systemToolStripMenuItem";
-            this.systemToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.systemToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.systemToolStripMenuItem.Text = "System";
             this.systemToolStripMenuItem.Click += new System.EventHandler(this.systemToolStripMenuItem_Click);
             // 
             // recordingToolStripMenuItem
             // 
             this.recordingToolStripMenuItem.Name = "recordingToolStripMenuItem";
-            this.recordingToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.recordingToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.recordingToolStripMenuItem.Text = "Recording";
             this.recordingToolStripMenuItem.Click += new System.EventHandler(this.recordingToolStripMenuItem_Click);
             // 
@@ -801,6 +806,7 @@
         private System.Windows.Forms.ToolStripMenuItem configToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem systemToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem recordingToolStripMenuItem;
+        private System.Windows.Forms.BindingSource categoryBindingSource;
     }
 }
 

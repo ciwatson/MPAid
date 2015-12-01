@@ -40,7 +40,7 @@
             // 
             this.recordingFolderTextBox.Location = new System.Drawing.Point(127, 34);
             this.recordingFolderTextBox.Name = "recordingFolderTextBox";
-            this.recordingFolderTextBox.Size = new System.Drawing.Size(220, 21);
+            this.recordingFolderTextBox.Size = new System.Drawing.Size(332, 21);
             this.recordingFolderTextBox.TabIndex = 0;
             // 
             // recordingFolderLabel
@@ -54,7 +54,7 @@
             // 
             // folderSelectButton
             // 
-            this.folderSelectButton.Location = new System.Drawing.Point(353, 34);
+            this.folderSelectButton.Location = new System.Drawing.Point(465, 34);
             this.folderSelectButton.Name = "folderSelectButton";
             this.folderSelectButton.Size = new System.Drawing.Size(33, 23);
             this.folderSelectButton.TabIndex = 2;
@@ -68,7 +68,7 @@
             // 
             // saveButton
             // 
-            this.saveButton.Location = new System.Drawing.Point(254, 173);
+            this.saveButton.Location = new System.Drawing.Point(388, 252);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(51, 23);
             this.saveButton.TabIndex = 3;
@@ -79,7 +79,7 @@
             // cancelButton
             // 
             this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.cancelButton.Location = new System.Drawing.Point(311, 173);
+            this.cancelButton.Location = new System.Drawing.Point(445, 252);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(53, 23);
             this.cancelButton.TabIndex = 4;
@@ -90,7 +90,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(398, 226);
+            this.ClientSize = new System.Drawing.Size(510, 287);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.folderSelectButton);

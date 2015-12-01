@@ -1,4 +1,4 @@
-﻿namespace MPAid.Models
+namespace MPAid.Models
 {
     using System;
     using System.Collections.Generic;

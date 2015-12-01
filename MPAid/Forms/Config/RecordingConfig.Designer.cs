@@ -1,4 +1,6 @@
-﻿namespace MPAid.Forms.Config
+﻿using MPAid.Models;
+
+namespace MPAid.Forms.Config
 {
     partial class RecordingConfig
     {
@@ -28,12 +30,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.onLocalListBox = new System.Windows.Forms.ListBox();
             this.onDBListBox = new System.Windows.Forms.ListBox();
             this.toDBButton = new System.Windows.Forms.Button();
             this.toLocalButton = new System.Windows.Forms.Button();
             this.selectFileButton = new System.Windows.Forms.Button();
-            this.updateDBButton = new System.Windows.Forms.Button();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.SuspendLayout();
             // 
@@ -42,9 +44,10 @@
             this.onLocalListBox.FormattingEnabled = true;
             this.onLocalListBox.HorizontalScrollbar = true;
             this.onLocalListBox.ItemHeight = 12;
-            this.onLocalListBox.Location = new System.Drawing.Point(225, 19);
+            this.onLocalListBox.Location = new System.Drawing.Point(317, 19);
             this.onLocalListBox.Name = "onLocalListBox";
-            this.onLocalListBox.Size = new System.Drawing.Size(110, 244);
+            this.onLocalListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
+            this.onLocalListBox.Size = new System.Drawing.Size(188, 244);
             this.onLocalListBox.TabIndex = 0;
             // 
             // onDBListBox
@@ -54,12 +57,13 @@
             this.onDBListBox.ItemHeight = 12;
             this.onDBListBox.Location = new System.Drawing.Point(37, 19);
             this.onDBListBox.Name = "onDBListBox";
-            this.onDBListBox.Size = new System.Drawing.Size(113, 244);
+            this.onDBListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
+            this.onDBListBox.Size = new System.Drawing.Size(189, 244);
             this.onDBListBox.TabIndex = 1;
             // 
             // toDBButton
             // 
-            this.toDBButton.Location = new System.Drawing.Point(162, 29);
+            this.toDBButton.Location = new System.Drawing.Point(247, 19);
             this.toDBButton.Name = "toDBButton";
             this.toDBButton.Size = new System.Drawing.Size(50, 23);
             this.toDBButton.TabIndex = 2;
@@ -69,7 +73,7 @@
             // 
             // toLocalButton
             // 
-            this.toLocalButton.Location = new System.Drawing.Point(162, 93);
+            this.toLocalButton.Location = new System.Drawing.Point(247, 126);
             this.toLocalButton.Name = "toLocalButton";
             this.toLocalButton.Size = new System.Drawing.Size(50, 23);
             this.toLocalButton.TabIndex = 3;
@@ -79,23 +83,13 @@
             // 
             // selectFileButton
             // 
-            this.selectFileButton.Location = new System.Drawing.Point(162, 168);
+            this.selectFileButton.Location = new System.Drawing.Point(247, 240);
             this.selectFileButton.Name = "selectFileButton";
             this.selectFileButton.Size = new System.Drawing.Size(50, 23);
             this.selectFileButton.TabIndex = 4;
             this.selectFileButton.Text = "Select";
             this.selectFileButton.UseVisualStyleBackColor = true;
             this.selectFileButton.Click += new System.EventHandler(this.selectFileButton_Click);
-            // 
-            // updateDBButton
-            // 
-            this.updateDBButton.Location = new System.Drawing.Point(162, 222);
-            this.updateDBButton.Name = "updateDBButton";
-            this.updateDBButton.Size = new System.Drawing.Size(50, 23);
-            this.updateDBButton.TabIndex = 5;
-            this.updateDBButton.Text = "Update";
-            this.updateDBButton.UseVisualStyleBackColor = true;
-            this.updateDBButton.Click += new System.EventHandler(this.updateDBButton_Click);
             // 
             // openFileDialog
             // 
@@ -106,8 +100,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(387, 304);
-            this.Controls.Add(this.updateDBButton);
+            this.ClientSize = new System.Drawing.Size(548, 288);
             this.Controls.Add(this.selectFileButton);
             this.Controls.Add(this.toLocalButton);
             this.Controls.Add(this.toDBButton);
@@ -129,7 +122,6 @@
         private System.Windows.Forms.Button toDBButton;
         private System.Windows.Forms.Button toLocalButton;
         private System.Windows.Forms.Button selectFileButton;
-        private System.Windows.Forms.Button updateDBButton;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
     }
 }

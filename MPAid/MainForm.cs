@@ -130,6 +130,7 @@ namespace MPAid
 
         private void FillLists()
         {
+            //VowelList.DataSource = DBModel.Recording.Where(x => x.Speaker.Name == )
             VowelList.DataSource = ResMan.GetVowelList();
             WordList.DataSource = ResMan.GetWordList();
             listBoxREC.DataSource = listREC;

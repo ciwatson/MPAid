@@ -10,12 +10,14 @@ namespace MPAid.Models
         public MPAidModel()
             : base("name=MPAidModel")
         {
+            //AppDomain.CurrentDomain.SetData("DataDirectory", System.Windows.Forms.Application.StartupPath);
+            AppDomain.CurrentDomain.SetData("DataDirectory", @"C:\Users\Alan\Documents\Visual Studio 2015\Projects\MPAid\MPAid\App_Data");
         }
 
-        public virtual DbSet<Speaker> Speaker { get; set; }
-        public virtual DbSet<Recording> Recording { get; set; }
-        public virtual DbSet<Word> Word { get; set; }
         public virtual DbSet<Category> Category { get; set; }
+        public virtual DbSet<Recording> Recording { get; set; }
+        public virtual DbSet<Speaker> Speaker { get; set; }
+        public virtual DbSet<Word> Word { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

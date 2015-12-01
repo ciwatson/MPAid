@@ -126,25 +126,9 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201511261123339_Initial.cs" />
-    <Compile Include="Migrations\201511261123339_Initial.Designer.cs">
-      <DependentUpon>201511261123339_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201511300502504_foreignkey.cs" />
-    <Compile Include="Migrations\201511300502504_foreignkey.Designer.cs">
-      <DependentUpon>201511300502504_foreignkey.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201511300523048_primarykey.cs" />
-    <Compile Include="Migrations\201511300523048_primarykey.Designer.cs">
-      <DependentUpon>201511300523048_primarykey.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201511300536362_identity.cs" />
-    <Compile Include="Migrations\201511300536362_identity.Designer.cs">
-      <DependentUpon>201511300536362_identity.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201511300543521_identity1.cs" />
-    <Compile Include="Migrations\201511300543521_identity1.Designer.cs">
-      <DependentUpon>201511300543521_identity1.cs</DependentUpon>
+    <Compile Include="Migrations\201512010517240_Initial.cs" />
+    <Compile Include="Migrations\201512010517240_Initial.Designer.cs">
+      <DependentUpon>201512010517240_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\MPAidModel.cs" />
@@ -216,20 +200,8 @@
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201511261123339_Initial.resx">
-      <DependentUpon>201511261123339_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201511300502504_foreignkey.resx">
-      <DependentUpon>201511300502504_foreignkey.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201511300523048_primarykey.resx">
-      <DependentUpon>201511300523048_primarykey.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201511300536362_identity.resx">
-      <DependentUpon>201511300536362_identity.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201511300543521_identity1.resx">
-      <DependentUpon>201511300543521_identity1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201512010517240_Initial.resx">
+      <DependentUpon>201512010517240_Initial.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -254,6 +226,8 @@
       <DependentUpon>SystemConfig.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\MPAid.Models.MPAidModel.datasource" />
+    <None Include="Properties\DataSources\MPAid.Models.Recording.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -270,6 +244,13 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\MPAidDB.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="App_Data\MPAidDB_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>MPAidDB.mdf</DependentUpon>
+    </Content>
     <Content Include="Resources\About.png" />
     <Content Include="Resources\admin.png" />
     <Content Include="Resources\ButtonGreen-0.png" />
@@ -301,10 +282,7 @@
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-    <Folder Include="Properties\DataSources\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
       <Visible>False</Visible>
