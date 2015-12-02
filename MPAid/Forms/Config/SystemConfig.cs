@@ -20,6 +20,8 @@ namespace MPAid.Forms.Config
             InitializeComponent();
 
             InitializeContent();
+
+            recordingPanel.DataBinding();
         }
 
         private void InitializeContent()

@@ -27,6 +27,15 @@ namespace MPAid.Forms.Config
             this.openFileDialog.InitialDirectory = MainForm.self.configContent.recordingFolderAddr;
         }
 
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            this.onLocalListBox.DataSource = null;
+
+            base.OnFormClosing(e);
+
+            if (e.CloseReason == CloseReason.WindowsShutDown) return;
+        }
+
         private void selectFileButton_Click(object sender, EventArgs e)
         {
             try

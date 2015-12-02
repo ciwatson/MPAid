@@ -30,7 +30,6 @@ namespace MPAid.Forms.Config
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.onLocalListBox = new System.Windows.Forms.ListBox();
             this.onDBListBox = new System.Windows.Forms.ListBox();
             this.toDBButton = new System.Windows.Forms.Button();

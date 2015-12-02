@@ -81,7 +81,7 @@
             this.label1.Size = new System.Drawing.Size(53, 26);
             this.label1.TabIndex = 0;
             this.label1.Text = "Speaker";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label2
             // 
@@ -95,7 +95,7 @@
             this.label2.Size = new System.Drawing.Size(53, 32);
             this.label2.TabIndex = 2;
             this.label2.Text = "Category";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // filterGroupBox
             // 

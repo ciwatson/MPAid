@@ -17,11 +17,14 @@ namespace MPAid.UserControls
         public RecordingPanel()
         {
             InitializeComponent();
-           
+        }
+
+        public void DataBinding()
+        {
             this.speakerComboBox.DataSource = MainForm.self.DBModel.Speaker.Local.ToBindingList();
             this.speakerComboBox.DisplayMember = "Name";
             //this.speakerComboBox.SelectedIndex = 0;
-       
+
             this.categoryComboBox.DataSource = MainForm.self.DBModel.Category.Local.ToBindingList();
             this.categoryComboBox.DisplayMember = "Name";
             //this.categoryComboBox.SelectedIndex = 0;
