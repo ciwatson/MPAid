@@ -43,14 +43,13 @@ namespace MPAid
             this.VowelList = new System.Windows.Forms.ListBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.WordList = new System.Windows.Forms.ListBox();
+            this.categoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.speedController = new System.Windows.Forms.TrackBar();
-            this.ButtonStop = new MPAid.TDButton();
-            this.ButtonPlay = new MPAid.TDButton();
             this.AudioDelay = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
             this.previewBox = new System.Windows.Forms.PictureBox();
@@ -68,7 +67,6 @@ namespace MPAid
             this.buttonAnalyze = new System.Windows.Forms.Button();
             this.buttonStopRecording = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.tdButtonFormantPlot = new MPAid.TDButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.animationTimer = new System.Windows.Forms.Timer(this.components);
             this.NAudioTimer = new System.Windows.Forms.Timer(this.components);
@@ -86,12 +84,15 @@ namespace MPAid
             this.configToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.systemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.recordingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.categoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tdButtonFormantPlot = new MPAid.TDButton();
+            this.ButtonStop = new MPAid.TDButton();
+            this.ButtonPlay = new MPAid.TDButton();
             ((System.ComponentModel.ISupportInitialize)(this.headerBox)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.myTabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.categoryBindingSource)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.speedController)).BeginInit();
@@ -102,7 +103,6 @@ namespace MPAid
             this.groupBox4.SuspendLayout();
             this.panel1.SuspendLayout();
             this.mainMenuStrip.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.categoryBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // headerBox
@@ -112,7 +112,7 @@ namespace MPAid
             this.headerBox.Dock = System.Windows.Forms.DockStyle.Top;
             this.headerBox.Location = new System.Drawing.Point(0, 32);
             this.headerBox.Name = "headerBox";
-            this.headerBox.Size = new System.Drawing.Size(834, 81);
+            this.headerBox.Size = new System.Drawing.Size(836, 81);
             this.headerBox.TabIndex = 0;
             this.headerBox.TabStop = false;
             this.headerBox.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.headerBox_MouseDoubleClick);
@@ -176,7 +176,6 @@ namespace MPAid
             // 
             this.myTabControl.Controls.Add(this.tabPage1);
             this.myTabControl.Controls.Add(this.tabPage2);
-            this.myTabControl.DataBindings.Add(new System.Windows.Forms.Binding("Tag", this.categoryBindingSource, "Name", true));
             this.myTabControl.Location = new System.Drawing.Point(12, 147);
             this.myTabControl.Name = "myTabControl";
             this.myTabControl.SelectedIndex = 0;
@@ -294,34 +293,6 @@ namespace MPAid
             this.speedController.TabIndex = 8;
             this.speedController.Value = 5;
             this.speedController.Scroll += new System.EventHandler(this.speedController_Scroll);
-            // 
-            // ButtonStop
-            // 
-            this.ButtonStop.BackgroundImage = global::MPAid.Properties.Resources.ButtonRed_0;
-            this.ButtonStop.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ButtonStop.FlatAppearance.BorderSize = 0;
-            this.ButtonStop.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ButtonStop.Location = new System.Drawing.Point(159, 74);
-            this.ButtonStop.Name = "ButtonStop";
-            this.ButtonStop.Size = new System.Drawing.Size(120, 25);
-            this.ButtonStop.TabIndex = 7;
-            this.ButtonStop.Text = "Stop Audio";
-            this.ButtonStop.UseVisualStyleBackColor = true;
-            this.ButtonStop.Click += new System.EventHandler(this.ButtonStop_Click);
-            // 
-            // ButtonPlay
-            // 
-            this.ButtonPlay.BackgroundImage = global::MPAid.Properties.Resources.ButtonGreen_0;
-            this.ButtonPlay.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ButtonPlay.FlatAppearance.BorderSize = 0;
-            this.ButtonPlay.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ButtonPlay.Location = new System.Drawing.Point(33, 74);
-            this.ButtonPlay.Name = "ButtonPlay";
-            this.ButtonPlay.Size = new System.Drawing.Size(120, 25);
-            this.ButtonPlay.TabIndex = 6;
-            this.ButtonPlay.Text = "Play Audio";
-            this.ButtonPlay.UseVisualStyleBackColor = true;
-            this.ButtonPlay.Click += new System.EventHandler(this.ButtonPlay_Click);
             // 
             // AudioDelay
             // 
@@ -539,20 +510,6 @@ namespace MPAid
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Formant Plot";
             // 
-            // tdButtonFormantPlot
-            // 
-            this.tdButtonFormantPlot.BackgroundImage = global::MPAid.Properties.Resources.ButtonYellow_0;
-            this.tdButtonFormantPlot.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.tdButtonFormantPlot.FlatAppearance.BorderSize = 0;
-            this.tdButtonFormantPlot.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.tdButtonFormantPlot.Location = new System.Drawing.Point(87, 24);
-            this.tdButtonFormantPlot.Name = "tdButtonFormantPlot";
-            this.tdButtonFormantPlot.Size = new System.Drawing.Size(150, 32);
-            this.tdButtonFormantPlot.TabIndex = 0;
-            this.tdButtonFormantPlot.Text = "Open Formant Plot";
-            this.tdButtonFormantPlot.UseVisualStyleBackColor = true;
-            this.tdButtonFormantPlot.Click += new System.EventHandler(this.tdButtonFormantPlot_Click);
-            // 
             // panel1
             // 
             this.panel1.Controls.Add(this.groupBox4);
@@ -563,7 +520,7 @@ namespace MPAid
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 113);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(834, 383);
+            this.panel1.Size = new System.Drawing.Size(836, 383);
             this.panel1.TabIndex = 7;
             // 
             // animationTimer
@@ -585,7 +542,7 @@ namespace MPAid
             this.configToolStripMenuItem});
             this.mainMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.mainMenuStrip.Name = "mainMenuStrip";
-            this.mainMenuStrip.Size = new System.Drawing.Size(834, 32);
+            this.mainMenuStrip.Size = new System.Drawing.Size(836, 32);
             this.mainMenuStrip.TabIndex = 8;
             this.mainMenuStrip.Text = "menuStrip1";
             // 
@@ -708,12 +665,54 @@ namespace MPAid
             this.recordingToolStripMenuItem.Text = "Recording";
             this.recordingToolStripMenuItem.Click += new System.EventHandler(this.recordingToolStripMenuItem_Click);
             // 
+            // tdButtonFormantPlot
+            // 
+            this.tdButtonFormantPlot.BackgroundImage = global::MPAid.Properties.Resources.ButtonYellow_0;
+            this.tdButtonFormantPlot.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.tdButtonFormantPlot.FlatAppearance.BorderSize = 0;
+            this.tdButtonFormantPlot.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.tdButtonFormantPlot.Location = new System.Drawing.Point(87, 24);
+            this.tdButtonFormantPlot.Name = "tdButtonFormantPlot";
+            this.tdButtonFormantPlot.Size = new System.Drawing.Size(150, 32);
+            this.tdButtonFormantPlot.TabIndex = 0;
+            this.tdButtonFormantPlot.Text = "Open Formant Plot";
+            this.tdButtonFormantPlot.UseVisualStyleBackColor = true;
+            this.tdButtonFormantPlot.Click += new System.EventHandler(this.tdButtonFormantPlot_Click);
+            // 
+            // ButtonStop
+            // 
+            this.ButtonStop.BackgroundImage = global::MPAid.Properties.Resources.ButtonRed_0;
+            this.ButtonStop.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ButtonStop.FlatAppearance.BorderSize = 0;
+            this.ButtonStop.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ButtonStop.Location = new System.Drawing.Point(159, 74);
+            this.ButtonStop.Name = "ButtonStop";
+            this.ButtonStop.Size = new System.Drawing.Size(120, 25);
+            this.ButtonStop.TabIndex = 7;
+            this.ButtonStop.Text = "Stop Audio";
+            this.ButtonStop.UseVisualStyleBackColor = true;
+            this.ButtonStop.Click += new System.EventHandler(this.ButtonStop_Click);
+            // 
+            // ButtonPlay
+            // 
+            this.ButtonPlay.BackgroundImage = global::MPAid.Properties.Resources.ButtonGreen_0;
+            this.ButtonPlay.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ButtonPlay.FlatAppearance.BorderSize = 0;
+            this.ButtonPlay.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ButtonPlay.Location = new System.Drawing.Point(33, 74);
+            this.ButtonPlay.Name = "ButtonPlay";
+            this.ButtonPlay.Size = new System.Drawing.Size(120, 25);
+            this.ButtonPlay.TabIndex = 6;
+            this.ButtonPlay.Text = "Play Audio";
+            this.ButtonPlay.UseVisualStyleBackColor = true;
+            this.ButtonPlay.Click += new System.EventHandler(this.ButtonPlay_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Snow;
-            this.ClientSize = new System.Drawing.Size(834, 496);
+            this.ClientSize = new System.Drawing.Size(836, 496);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.headerBox);
             this.Controls.Add(this.mainMenuStrip);
@@ -733,6 +732,7 @@ namespace MPAid
             this.myTabControl.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.categoryBindingSource)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();

@@ -182,6 +182,12 @@
     <Compile Include="Forms\Config\SystemConfig.Designer.cs">
       <DependentUpon>SystemConfig.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\RecordingPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\RecordingPanel.Designer.cs">
+      <DependentUpon>RecordingPanel.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Forms\AdminConsole.resx">
       <DependentUpon>AdminConsole.cs</DependentUpon>
     </EmbeddedResource>
@@ -225,9 +231,10 @@
     <EmbeddedResource Include="Forms\Config\SystemConfig.resx">
       <DependentUpon>SystemConfig.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\RecordingPanel.resx">
+      <DependentUpon>RecordingPanel.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
-    <None Include="Properties\DataSources\MPAid.Models.MPAidModel.datasource" />
-    <None Include="Properties\DataSources\MPAid.Models.Recording.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -282,7 +289,9 @@
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Properties\DataSources\" />
+  </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
       <Visible>False</Visible>

@@ -13,6 +13,7 @@ using MPAid.Forms.Config;
 using MPAid.Modules;
 using MPAid.Models;
 using System.Data.Entity;
+using MPAid.UserControls;
 
 namespace MPAid
 {
@@ -131,6 +132,8 @@ namespace MPAid
             this.DBModel = new MPAidModel();
             this.DBModel.Recording.Load();
             this.DBModel.Speaker.Load();
+            this.DBModel.Category.Load();
+            this.DBModel.Word.Load();
         }
 
         private void FillLists()
@@ -929,6 +932,11 @@ namespace MPAid
         private void recordingToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.recordingConfigForm.ShowDialog(this);
+        }
+
+        private void testPanelToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }
