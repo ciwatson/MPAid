@@ -1,0 +1,11 @@
+Aligned transcription: R001M_24.lab vs R001M_24.rec
+ LAB:     hoihoi 
+ REC: pai tai    
+====================== HTK Results Analysis =======================
+  Date: Thu Dec 03 15:09:54 2015
+  Ref : user/wordTranscript.mlf
+  Rec : MPAidOutput/mpaid0A.mlf
+------------------------ Overall Results --------------------------
+SENT: %Correct=0.00 [H=0, S=1, N=1]
+WORD: %Corr=0.00, Acc=-100.00 [H=0, D=0, S=1, I=1, N=1]
+===================================================================

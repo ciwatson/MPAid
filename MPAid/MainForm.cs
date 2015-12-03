@@ -138,10 +138,8 @@ namespace MPAid
 
         private void FillLists()
         {
-            //VowelList.DataSource = DBModel.Recording.Local.ToBindingList();
-            //VowelList.DisplayMember = "Name";
-            VowelList.DataSource = ResMan.GetVowelList();
-            WordList.DataSource = ResMan.GetWordList();
+            this.recordingPanel.DataBinding();
+
             listBoxREC.DataSource = listREC;
         }
 
@@ -204,10 +202,10 @@ namespace MPAid
 
         private MaoriObj GetSelectedMaoriObj(MaoriObjType source)
         {
-            if (source == MaoriObjType.Vowel)
-                return (MaoriObj)(VowelList.SelectedItem);
-            if (source == MaoriObjType.Word)
-                return (MaoriObj)(WordList.SelectedItem);
+            //if (source == MaoriObjType.Vowel)
+            //    return (MaoriObj)(VowelList.SelectedItem);
+            //if (source == MaoriObjType.Word)
+            //    return (MaoriObj)(WordList.SelectedItem);
             return null;
         }
 
@@ -221,26 +219,24 @@ namespace MPAid
 
         private void ButtonPlay_Click(object sender, EventArgs e)
         {
-            if (GetTabState() == 0)
+            try
             {
-                MaoriObj m = GetSelectedMaoriObj(MaoriObjType.Vowel);
-                if (m != null)
+                Speaker spk = recordingPanel.speakerComboBox.SelectedItem as Speaker;
+                Word wd = recordingPanel.wordListBox.SelectedItem as Word;
+                Recording rdg = this.DBModel.Recording.Local.Where(x => x.WordId == wd.WordId && x.SpeakerId == spk.SpeakerId).SingleOrDefault();
+                if (rdg != null)
                 {
-                    if (CanPlayAnimation(m))
-                        StartAnimation();
-                    PlayVowelSoundAsync(m.SoundFilePath, (int)NumPlayback.Value);
+                    string filePath = rdg.Address + "\\" + rdg.Name;
+                    PlayVowelSoundAsync(filePath, (int)NumPlayback.Value);
                 }
                 else
-                    ShowPleaseSelectMsgBox("vowel");
+                {
+                    MessageBox.Show("Invalid recording!");
+                }
             }
-
-            if (GetTabState() == 1)
+            catch (Exception exp)
             {
-                MaoriObj m = GetSelectedMaoriObj(MaoriObjType.Word);
-                if (m != null)
-                    PlayWordSoundAsync(GetAudioSource(), m.WordSoundId, (int)NumPlayback.Value);
-                else
-                    ShowPleaseSelectMsgBox("word");
+                Console.WriteLine(exp);
             }
         }
 
@@ -339,7 +335,7 @@ namespace MPAid
         ///</summary>
         private int GetTabState()
         {
-            return myTabControl.SelectedIndex;
+            return 0/*myTabControl.SelectedIndex*/;
         }
 
         ///<summary>
@@ -348,14 +344,14 @@ namespace MPAid
         ///</summary>
         private int GetAudioSource()
         {
-            if (radioFemale.Checked)
-                return 0;
-            if (radioOldMale.Checked)
-                return 1;
-            if (radioYoungMale.Checked)
-                return 2;
-            if (radioYoungFemale.Checked)
-                return 3;
+            //if (radioFemale.Checked)
+            //    return 0;
+            //if (radioOldMale.Checked)
+            //    return 1;
+            //if (radioYoungMale.Checked)
+            //    return 2;
+            //if (radioYoungFemale.Checked)
+            //    return 3;
             return 0;
         }
 

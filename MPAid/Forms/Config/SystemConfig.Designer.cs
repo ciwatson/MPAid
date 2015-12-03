@@ -34,7 +34,6 @@
             this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.saveButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
-            this.recordingPanel = new MPAid.UserControls.RecordingPanel();
             this.SuspendLayout();
             // 
             // recordingFolderTextBox
@@ -87,19 +86,11 @@
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
             // 
-            // recordingPanel
-            // 
-            this.recordingPanel.Location = new System.Drawing.Point(12, 61);
-            this.recordingPanel.Name = "recordingPanel";
-            this.recordingPanel.Size = new System.Drawing.Size(241, 386);
-            this.recordingPanel.TabIndex = 5;
-            // 
             // SystemConfig
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(510, 448);
-            this.Controls.Add(this.recordingPanel);
+            this.ClientSize = new System.Drawing.Size(510, 281);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.folderSelectButton);
@@ -123,6 +114,5 @@
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog;
         private System.Windows.Forms.Button saveButton;
         private System.Windows.Forms.Button cancelButton;
-        private UserControls.RecordingPanel recordingPanel;
     }
 }

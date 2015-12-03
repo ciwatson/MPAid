@@ -33,16 +33,6 @@ namespace MPAid
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.headerBox = new System.Windows.Forms.PictureBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.radioYoungFemale = new System.Windows.Forms.RadioButton();
-            this.radioYoungMale = new System.Windows.Forms.RadioButton();
-            this.radioFemale = new System.Windows.Forms.RadioButton();
-            this.radioOldMale = new System.Windows.Forms.RadioButton();
-            this.myTabControl = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.VowelList = new System.Windows.Forms.ListBox();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.WordList = new System.Windows.Forms.ListBox();
             this.categoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -84,14 +74,12 @@ namespace MPAid
             this.configToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.systemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.recordingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.recordingPanel = new MPAid.UserControls.RecordingPanel();
             this.tdButtonFormantPlot = new MPAid.TDButton();
             this.ButtonStop = new MPAid.TDButton();
             this.ButtonPlay = new MPAid.TDButton();
+            this.recordingPanel1 = new MPAid.UserControls.RecordingPanel();
             ((System.ComponentModel.ISupportInitialize)(this.headerBox)).BeginInit();
-            this.groupBox1.SuspendLayout();
-            this.myTabControl.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.categoryBindingSource)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -116,116 +104,6 @@ namespace MPAid
             this.headerBox.TabIndex = 0;
             this.headerBox.TabStop = false;
             this.headerBox.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.headerBox_MouseDoubleClick);
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.radioYoungFemale);
-            this.groupBox1.Controls.Add(this.radioYoungMale);
-            this.groupBox1.Controls.Add(this.radioFemale);
-            this.groupBox1.Controls.Add(this.radioOldMale);
-            this.groupBox1.Location = new System.Drawing.Point(12, 6);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(160, 135);
-            this.groupBox1.TabIndex = 2;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Source";
-            // 
-            // radioYoungFemale
-            // 
-            this.radioYoungFemale.AutoSize = true;
-            this.radioYoungFemale.Location = new System.Drawing.Point(27, 95);
-            this.radioYoungFemale.Name = "radioYoungFemale";
-            this.radioYoungFemale.Size = new System.Drawing.Size(105, 19);
-            this.radioYoungFemale.TabIndex = 5;
-            this.radioYoungFemale.Text = "Young Female";
-            this.radioYoungFemale.UseVisualStyleBackColor = true;
-            // 
-            // radioYoungMale
-            // 
-            this.radioYoungMale.AutoSize = true;
-            this.radioYoungMale.Location = new System.Drawing.Point(27, 70);
-            this.radioYoungMale.Name = "radioYoungMale";
-            this.radioYoungMale.Size = new System.Drawing.Size(91, 19);
-            this.radioYoungMale.TabIndex = 4;
-            this.radioYoungMale.Text = "Young Male";
-            this.radioYoungMale.UseVisualStyleBackColor = true;
-            // 
-            // radioFemale
-            // 
-            this.radioFemale.AutoSize = true;
-            this.radioFemale.Location = new System.Drawing.Point(27, 45);
-            this.radioFemale.Name = "radioFemale";
-            this.radioFemale.Size = new System.Drawing.Size(106, 19);
-            this.radioFemale.TabIndex = 3;
-            this.radioFemale.Text = "Senior Female";
-            this.radioFemale.UseVisualStyleBackColor = true;
-            // 
-            // radioOldMale
-            // 
-            this.radioOldMale.AutoSize = true;
-            this.radioOldMale.Checked = true;
-            this.radioOldMale.Location = new System.Drawing.Point(27, 20);
-            this.radioOldMale.Name = "radioOldMale";
-            this.radioOldMale.Size = new System.Drawing.Size(92, 19);
-            this.radioOldMale.TabIndex = 3;
-            this.radioOldMale.TabStop = true;
-            this.radioOldMale.Text = "Senior Male";
-            this.radioOldMale.UseVisualStyleBackColor = true;
-            // 
-            // myTabControl
-            // 
-            this.myTabControl.Controls.Add(this.tabPage1);
-            this.myTabControl.Controls.Add(this.tabPage2);
-            this.myTabControl.Location = new System.Drawing.Point(12, 147);
-            this.myTabControl.Name = "myTabControl";
-            this.myTabControl.SelectedIndex = 0;
-            this.myTabControl.Size = new System.Drawing.Size(160, 222);
-            this.myTabControl.TabIndex = 3;
-            this.myTabControl.SelectedIndexChanged += new System.EventHandler(this.myTabControl_SelectedIndexChanged);
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.Controls.Add(this.VowelList);
-            this.tabPage1.Location = new System.Drawing.Point(4, 24);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(152, 194);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Vowels";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // VowelList
-            // 
-            this.VowelList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.VowelList.FormattingEnabled = true;
-            this.VowelList.ItemHeight = 15;
-            this.VowelList.Location = new System.Drawing.Point(3, 3);
-            this.VowelList.Name = "VowelList";
-            this.VowelList.Size = new System.Drawing.Size(146, 188);
-            this.VowelList.TabIndex = 4;
-            this.VowelList.SelectedIndexChanged += new System.EventHandler(this.VowelList_SelectedIndexChanged);
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.WordList);
-            this.tabPage2.Location = new System.Drawing.Point(4, 24);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(152, 194);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Word";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // WordList
-            // 
-            this.WordList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.WordList.FormattingEnabled = true;
-            this.WordList.ItemHeight = 15;
-            this.WordList.Location = new System.Drawing.Point(3, 3);
-            this.WordList.Name = "WordList";
-            this.WordList.Size = new System.Drawing.Size(146, 188);
-            this.WordList.TabIndex = 5;
-            this.WordList.SelectedIndexChanged += new System.EventHandler(this.WordList_SelectedIndexChanged);
             // 
             // groupBox2
             // 
@@ -512,11 +390,10 @@ namespace MPAid
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.recordingPanel);
             this.panel1.Controls.Add(this.groupBox4);
             this.panel1.Controls.Add(this.groupBox2);
             this.panel1.Controls.Add(this.groupBox3);
-            this.panel1.Controls.Add(this.myTabControl);
-            this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 113);
             this.panel1.Name = "panel1";
@@ -665,6 +542,17 @@ namespace MPAid
             this.recordingToolStripMenuItem.Text = "Recording";
             this.recordingToolStripMenuItem.Click += new System.EventHandler(this.recordingToolStripMenuItem_Click);
             // 
+            // recordingPanel
+            // 
+            this.recordingPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.recordingPanel.Location = new System.Drawing.Point(4, 4);
+            this.recordingPanel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.recordingPanel.Name = "recordingPanel";
+            this.recordingPanel.Size = new System.Drawing.Size(150, 354);
+            this.recordingPanel.TabIndex = 7;
+            // 
             // tdButtonFormantPlot
             // 
             this.tdButtonFormantPlot.BackgroundImage = global::MPAid.Properties.Resources.ButtonYellow_0;
@@ -707,6 +595,14 @@ namespace MPAid
             this.ButtonPlay.UseVisualStyleBackColor = true;
             this.ButtonPlay.Click += new System.EventHandler(this.ButtonPlay_Click);
             // 
+            // recordingPanel1
+            // 
+            this.recordingPanel1.Location = new System.Drawing.Point(-166, 1);
+            this.recordingPanel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.recordingPanel1.Name = "recordingPanel1";
+            this.recordingPanel1.Size = new System.Drawing.Size(160, 327);
+            this.recordingPanel1.TabIndex = 7;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -727,11 +623,6 @@ namespace MPAid
             this.Text = "Māori Pronunciation Aid";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.headerBox)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.myTabControl.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.categoryBindingSource)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
@@ -753,21 +644,12 @@ namespace MPAid
         #endregion
 
         private System.Windows.Forms.PictureBox headerBox;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.RadioButton radioFemale;
-        private System.Windows.Forms.RadioButton radioOldMale;
-        private System.Windows.Forms.TabControl myTabControl;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.ListBox VowelList;
-        private System.Windows.Forms.ListBox WordList;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.NumericUpDown NumPlayback;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.RadioButton radioYoungMale;
         private System.Windows.Forms.PictureBox previewBox;
         private System.Windows.Forms.NumericUpDown AudioDelay;
         private System.Windows.Forms.Label label2;
@@ -786,7 +668,6 @@ namespace MPAid
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.RadioButton radioYoungFemale;
         private System.Windows.Forms.Button buttonShowReport;
         private System.Windows.Forms.Button buttonLoadFromFile;
         private System.Windows.Forms.Label label6;
@@ -807,6 +688,8 @@ namespace MPAid
         private System.Windows.Forms.ToolStripMenuItem systemToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem recordingToolStripMenuItem;
         private System.Windows.Forms.BindingSource categoryBindingSource;
+        private UserControls.RecordingPanel recordingPanel1;
+        private UserControls.RecordingPanel recordingPanel;
     }
 }
 
