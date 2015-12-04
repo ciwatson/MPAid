@@ -75,7 +75,7 @@ namespace MPAid.Modules
             T t = null;
             try
             {
-                using (FileStream stream = new FileStream(path, FileMode.Open))
+                using (FileStream stream = new FileStream(path, FileMode.OpenOrCreate))
                 {
                     using (StreamReader sr = new StreamReader(stream))
                     {
