@@ -141,9 +141,9 @@ namespace MPAid
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception exp)
             {
-
+                Console.WriteLine(exp);
             }
         }
 
@@ -173,9 +173,9 @@ namespace MPAid
                     writer.Write(currentUser.getCode());
                 }
             }
-            catch (Exception ex)
+            catch (Exception exp)
             {
-
+                Console.WriteLine(exp);
             }
         }
 
