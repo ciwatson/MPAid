@@ -21,10 +21,11 @@ namespace MPAid.Forms.Config
         {
             InitializeComponent();
 
+
             this.onDBListBox.DataSource = MainForm.self.DBModel.Recording.Local.ToBindingList();
             this.onDBListBox.DisplayMember = "Name";
 
-            this.openFileDialog.InitialDirectory = MainForm.self.configContent.recordingFolderAddr;
+            this.openFileDialog.InitialDirectory = MainForm.self.configContent.RecordingFolderAddr;
         }
 
         protected override void OnFormClosing(FormClosingEventArgs e)
@@ -47,12 +48,12 @@ namespace MPAid.Forms.Config
 
                     Dictionary<string, string> dataSource = fileNames.Zip(fileAddresses, (lText, lValue) => new { lText, lValue }).ToDictionary(x => x.lText, x => x.lValue);
 
-                    this.onLocalListBox.DataSource = new BindingSource() { DataSource = dataSource } ;
+                    this.onLocalListBox.DataSource = new BindingSource() { DataSource = dataSource };
                     this.onLocalListBox.DisplayMember = "Key";
                     this.onLocalListBox.ValueMember = "Value";
                 }
             }
-            catch(Exception exp)
+            catch (Exception exp)
             {
                 Console.WriteLine(exp);
             }
@@ -64,44 +65,73 @@ namespace MPAid.Forms.Config
             try
             {
                 var DBContext = MainForm.self.DBModel;
-                var recordingFolder = MainForm.self.configContent.recordingFolderAddr;
+                var recordingFolder = MainForm.self.configContent.RecordingFolderAddr;
                 foreach (KeyValuePair<string, string> item in this.onLocalListBox.SelectedItems)
                 {
                     String filename = item.Key.ToString();
                     NamePaser paser = new NamePaser();
                     paser.FileName = filename;
 
-                    Speaker spk = new Speaker() { Name = paser.Speaker };
-                    DBContext.Speaker.AddOrUpdate(x => x.Name, spk);
-                    MainForm.self.DBModel.SaveChanges();
 
-                    Category cty = new Category() { Name = paser.Category };
-                    DBContext.Category.AddOrUpdate(x => x.Name, cty);
-                    MainForm.self.DBModel.SaveChanges();
+                    Speaker spk = DBContext.Speaker.SingleOrDefault(x => x.Name == paser.Speaker);
+                    if (spk == null)
+                    {
+                        spk = new Speaker()
+                        {
+                            Name = paser.Speaker
+                        };
+                        DBContext.Speaker.AddOrUpdate(x => x.Name, spk);
+                        MainForm.self.DBModel.SaveChanges();
+                    }
 
-                    Word wd = new Word() { Name = paser.Word,
-                        CategoryId = DBContext.Category.Single(x =>x.Name == paser.Category).CategoryId};
-                    DBContext.Word.AddOrUpdate(x => x.Name, wd);
-                    MainForm.self.DBModel.SaveChanges();
+                    Category cty = DBContext.Category.SingleOrDefault(x => x.Name == paser.Category);
+                    if (cty == null)
+                    {
+                        cty = new Category()
+                        {
+                            Name = paser.Category
+                        };
+                        DBContext.Category.AddOrUpdate(x => x.Name, cty);
+                        MainForm.self.DBModel.SaveChanges();
+                    }
 
-                    Recording rd = new Recording { Address = recordingFolder,
-                        Name = paser.FileName,
-                        SpeakerId = DBContext.Speaker.Single(x => x.Name == paser.Speaker).SpeakerId,
-                        WordId = DBContext.Word.Single(x => x.Name == paser.Word).WordId
-                    };
-                    DBContext.Recording.AddOrUpdate(x => x.Name, rd);
-                    MainForm.self.DBModel.SaveChanges();
+                    Word word = DBContext.Word.SingleOrDefault(x => x.Name == paser.Word);
+                    if (word == null)
+                    {
+                        word = new Word()
+                        {
+                            Name = paser.Word,
+                            CategoryId = cty.CategoryId
+                        };
+                        DBContext.Word.AddOrUpdate(x => x.Name, word);
+                        MainForm.self.DBModel.SaveChanges();
+                    }
+
+                    Recording rd = DBContext.Recording.SingleOrDefault(x => x.Name == paser.FileName);
+                    if (rd == null)
+                    {
+                        rd = new Recording()
+                        {
+                            Address = recordingFolder,
+                            Name = paser.FileName,
+                            SpeakerId = spk.SpeakerId,
+                            WordId = word.WordId
+                        };
+                        DBContext.Recording.AddOrUpdate(x => x.Name, rd);
+                        MainForm.self.DBModel.SaveChanges();
+                    }
+
 
                     string existingFile = item.Value + "\\" + item.Key;
                     string newFile = recordingFolder + "\\" + rd.Name;
                     //avoid writing itslef
-                    if(!existingFile.Equals(newFile))
+                    if (!existingFile.Equals(newFile))
                     {
                         File.Copy(existingFile, newFile, true);
                     }
                 }
             }
-            catch(Exception exp)
+            catch (Exception exp)
             {
                 Console.WriteLine(exp);
                 MessageBox.Show("Fail to update!");
@@ -113,20 +143,25 @@ namespace MPAid.Forms.Config
             try
             {
                 var DBContext = MainForm.self.DBModel;
-                //Dont use foreach since the index will change when item is deleted
-                for(int i = onDBListBox.SelectedItems.Count - 1; i >= 0; i--)
+                for (int i = onDBListBox.SelectedItems.Count - 1; i >= 0; i--)
                 {
-                    Recording item = onDBListBox.Items[i] as MPAid.Models.Recording;
+                    Recording item = onDBListBox.SelectedItems[i] as MPAid.Models.Recording;
+                    Speaker spk = item.Speaker;
+                    Word word = item.Word;
                     string existingFile = item.Address + "\\" + item.Name;
                     if (File.Exists(existingFile))
                     {
                         File.Delete(existingFile);
                     }
-                    DBContext.Recording.Remove(item);            
+                    DBContext.Recording.Remove(item);
+
+                    if (spk.Recordings.Count == 0) DBContext.Speaker.Remove(spk);
+                    if (word.Recordings.Count == 0) DBContext.Word.Remove(word);
                 }
                 MainForm.self.DBModel.SaveChanges();
+
             }
-            catch(Exception exp)
+            catch (Exception exp)
             {
                 Console.WriteLine(exp);
                 MessageBox.Show("Fail to delete!");

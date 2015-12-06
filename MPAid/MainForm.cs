@@ -121,8 +121,9 @@ namespace MPAid
         }
 
         private void InitializeConfig()
-        {
+        {          
             configContent = Serializer<SysCfg>.Load<BinaryFormatter>(SysCfg.path);
+            System.IO.Directory.CreateDirectory(configContent.RecordingFolderAddr);
             this.systemConfigForm = new SystemConfig();
             this.recordingConfigForm = new RecordingConfig();
         }

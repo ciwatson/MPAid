@@ -36,6 +36,18 @@ namespace MPAid.Modules
         [NonSerialized]
         public static readonly String path = "./SystemConfig.ini";
 
-        public String recordingFolderAddr;
+        private String recordingFolderAddr;
+        public String RecordingFolderAddr
+        {
+            get
+            {
+                //by default, the url is ./Recordings
+                return recordingFolderAddr == null ? System.Windows.Forms.Application.StartupPath + @"\Recordings" : recordingFolderAddr;
+            }
+            set
+            {
+                recordingFolderAddr = value;
+            }
+        }
     }
 }

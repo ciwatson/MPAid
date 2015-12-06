@@ -38,39 +38,35 @@
             // 
             // recordingFolderTextBox
             // 
-            this.recordingFolderTextBox.Location = new System.Drawing.Point(127, 34);
+            this.recordingFolderTextBox.Location = new System.Drawing.Point(127, 37);
             this.recordingFolderTextBox.Name = "recordingFolderTextBox";
-            this.recordingFolderTextBox.Size = new System.Drawing.Size(332, 21);
+            this.recordingFolderTextBox.Size = new System.Drawing.Size(332, 20);
             this.recordingFolderTextBox.TabIndex = 0;
             // 
             // recordingFolderLabel
             // 
             this.recordingFolderLabel.AutoSize = true;
-            this.recordingFolderLabel.Location = new System.Drawing.Point(20, 37);
+            this.recordingFolderLabel.Location = new System.Drawing.Point(20, 40);
             this.recordingFolderLabel.Name = "recordingFolderLabel";
-            this.recordingFolderLabel.Size = new System.Drawing.Size(101, 12);
+            this.recordingFolderLabel.Size = new System.Drawing.Size(88, 13);
             this.recordingFolderLabel.TabIndex = 1;
             this.recordingFolderLabel.Text = "Recording Folder";
             // 
             // folderSelectButton
             // 
-            this.folderSelectButton.Location = new System.Drawing.Point(465, 34);
+            this.folderSelectButton.Location = new System.Drawing.Point(465, 37);
             this.folderSelectButton.Name = "folderSelectButton";
-            this.folderSelectButton.Size = new System.Drawing.Size(33, 23);
+            this.folderSelectButton.Size = new System.Drawing.Size(33, 25);
             this.folderSelectButton.TabIndex = 2;
             this.folderSelectButton.Text = "...";
             this.folderSelectButton.UseVisualStyleBackColor = true;
             this.folderSelectButton.Click += new System.EventHandler(this.folderSelectButton_Click);
             // 
-            // folderBrowserDialog
-            // 
-            this.folderBrowserDialog.SelectedPath = "./Recording";
-            // 
             // saveButton
             // 
-            this.saveButton.Location = new System.Drawing.Point(388, 252);
+            this.saveButton.Location = new System.Drawing.Point(388, 273);
             this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(51, 23);
+            this.saveButton.Size = new System.Drawing.Size(51, 25);
             this.saveButton.TabIndex = 3;
             this.saveButton.Text = "Save";
             this.saveButton.UseVisualStyleBackColor = true;
@@ -79,18 +75,18 @@
             // cancelButton
             // 
             this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.cancelButton.Location = new System.Drawing.Point(445, 252);
+            this.cancelButton.Location = new System.Drawing.Point(445, 273);
             this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Size = new System.Drawing.Size(53, 23);
+            this.cancelButton.Size = new System.Drawing.Size(53, 25);
             this.cancelButton.TabIndex = 4;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
             // 
             // SystemConfig
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(510, 281);
+            this.ClientSize = new System.Drawing.Size(510, 304);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.folderSelectButton);
