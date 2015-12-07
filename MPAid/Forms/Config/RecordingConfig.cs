@@ -22,7 +22,7 @@ namespace MPAid.Forms.Config
             InitializeComponent();
 
 
-            this.onDBListBox.DataSource = MainForm.self.DBModel.Recording.Local.ToBindingList();
+            this.onDBListBox.DataSource = MainForm.self.DBModel.SingleFile.Local.ToBindingList();
             this.onDBListBox.DisplayMember = "Name";
 
             this.openFileDialog.InitialDirectory = MainForm.self.configContent.RecordingFolderAddr;
@@ -70,8 +70,20 @@ namespace MPAid.Forms.Config
                 {
                     String filename = item.Key.ToString();
                     NamePaser paser = new NamePaser();
-                    paser.FileName = filename;
+                    paser.SingleFile = filename;
 
+
+                    SingleFile sf = DBContext.SingleFile.SingleOrDefault(x => x.Name == paser.SingleFile);
+                    if(sf == null)
+                    {
+                        sf = new SingleFile()
+                        {
+                            Name = paser.SingleFile,
+                            Address = recordingFolder
+                        };
+                        DBContext.SingleFile.AddOrUpdate(x => x.Name, sf);
+                        MainForm.self.DBModel.SaveChanges();
+                    }
 
                     Speaker spk = DBContext.Speaker.SingleOrDefault(x => x.Name == paser.Speaker);
                     if (spk == null)
@@ -107,17 +119,29 @@ namespace MPAid.Forms.Config
                         MainForm.self.DBModel.SaveChanges();
                     }
 
-                    Recording rd = DBContext.Recording.SingleOrDefault(x => x.Name == paser.FileName);
+                    Recording rd = DBContext.Recording.SingleOrDefault(x => x.Name == paser.Recording);
                     if (rd == null)
                     {
                         rd = new Recording()
                         {
-                            Address = recordingFolder,
-                            Name = paser.FileName,
+                            Name = paser.Recording,
                             SpeakerId = spk.SpeakerId,
                             WordId = word.WordId
                         };
                         DBContext.Recording.AddOrUpdate(x => x.Name, rd);
+                        MainForm.self.DBModel.SaveChanges();
+                    }
+
+                    Copy copy = DBContext.Copy.SingleOrDefault(x => x.Name == paser.Copy);
+                    if(copy == null)
+                    {
+                        copy = new Copy()
+                        {
+                            Name = paser.Copy,
+                            RecordingId = rd.RecordingId,
+                            SingleFileId = sf.SingleFileId
+                        };
+                        DBContext.Copy.AddOrUpdate(x => x.Name, copy);
                         MainForm.self.DBModel.SaveChanges();
                     }
 
@@ -145,17 +169,21 @@ namespace MPAid.Forms.Config
                 var DBContext = MainForm.self.DBModel;
                 for (int i = onDBListBox.SelectedItems.Count - 1; i >= 0; i--)
                 {
-                    Recording item = onDBListBox.SelectedItems[i] as MPAid.Models.Recording;
-                    Speaker spk = item.Speaker;
-                    Word word = item.Word;
+                    SingleFile sf = onDBListBox.SelectedItems[i] as MPAid.Models.SingleFile;
+                    Copy copy = sf.Copy;
+                    Recording rd = copy.Recording;
+                    Speaker spk = rd.Speaker;
+                    Word word = rd.Word;
                     Category cty = word.Category;
-                    string existingFile = item.Address + "\\" + item.Name;
+                    string existingFile = sf.Address + "\\" + sf.Name;
                     if (File.Exists(existingFile))
                     {
                         File.Delete(existingFile);
                     }
-                    DBContext.Recording.Remove(item);
+                    DBContext.SingleFile.Remove(sf);
+                    DBContext.Copy.Remove(copy);
 
+                    if(rd.Copies.Count == 0) DBContext.Recording.Remove(rd);
                     if (spk.Recordings.Count == 0) DBContext.Speaker.Remove(spk);
                     if (word.Recordings.Count == 0) DBContext.Word.Remove(word);
                     if (cty.Words.Count == 0) DBContext.Category.Remove(cty);

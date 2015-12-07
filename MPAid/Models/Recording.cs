@@ -13,10 +13,6 @@ namespace MPAid.Models
         public int RecordingId { get; set; }
 
         [Required]
-        [StringLength(256)]
-        public string Address { get; set; }
-
-        [Required]
         [StringLength(64)]
         public string Name { get; set; }
 
@@ -27,5 +23,7 @@ namespace MPAid.Models
         public int WordId { get; set; }
         [ForeignKey("WordId")]
         public virtual Word Word { get; set; }
+
+        public virtual ICollection<Copy> Copies { get; set; }
     }
 }

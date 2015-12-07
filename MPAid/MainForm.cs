@@ -227,7 +227,8 @@ namespace MPAid
                 Recording rdg = this.DBModel.Recording.Local.Where(x => x.WordId == wd.WordId && x.SpeakerId == spk.SpeakerId).SingleOrDefault();
                 if (rdg != null)
                 {
-                    string filePath = rdg.Address + "\\" + rdg.Name;
+                    SingleFile sf = rdg.Copies.Single().SingleFile;
+                    string filePath = sf.Address + "\\" + sf.Name;
                     PlayVowelSoundAsync(filePath, (int)NumPlayback.Value);
                 }
                 else

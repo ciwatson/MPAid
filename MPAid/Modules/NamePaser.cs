@@ -8,7 +8,7 @@ namespace MPAid.Modules
 {
     class NamePaser
     {
-        public string FileName
+        public string SingleFile
         {
             get { return Name + "." + Ext; }
             set
@@ -29,22 +29,28 @@ namespace MPAid.Modules
 
         public string Name
         {
-            get { return Speaker + "-" + Category + "-" + Word; }
+            get { return Recording + "-" + Copy; }
             set
             {
                 try
                 {
                     string[] parts = value.Split('-');
-                    if(parts.Length != 3) { throw new Exception("Invilad name!"); }
+                    if(parts.Length != 4) { throw new Exception("Invilad name format!"); }
                     Speaker = parts[0];
                     Category = parts[1];
                     Word = parts[2];
+                    copy = parts[3];
                 }
                 catch(Exception e)
                 {
                     Console.WriteLine(e);
                 }
             }
+        }
+
+        public string Recording
+        {
+            get { return Speaker + "-" + Category + "-" + Word; }
         }
 
         public string Speaker
@@ -65,6 +71,12 @@ namespace MPAid.Modules
             set { word = value; }
         }
 
+        public string Copy
+        {
+            get { return copy; }
+            set { copy = value; }
+        }
+
         public string Ext
         {
             get { return ext; }
@@ -73,6 +85,7 @@ namespace MPAid.Modules
         private string speaker;
         private string category;
         private string word;
+        private string copy;
         private string ext;
     }
 }
