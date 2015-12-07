@@ -10,8 +10,8 @@ namespace MPAid.Models
         public MPAidModel()
             : base("name=MPAidModel")
         {
-            //AppDomain.CurrentDomain.SetData("DataDirectory", System.Windows.Forms.Application.StartupPath);
-            AppDomain.CurrentDomain.SetData("DataDirectory", @"D:\Projects\MPAid\MPAid\App_Data");
+            AppDomain.CurrentDomain.SetData("DataDirectory", System.Windows.Forms.Application.StartupPath + @"\App_Data");
+            //AppDomain.CurrentDomain.SetData("DataDirectory", @"D:\Projects\MPAid\MPAid\App_Data");
         }
 
         public virtual DbSet<Category> Category { get; set; }
