@@ -148,6 +148,7 @@ namespace MPAid.Forms.Config
                     Recording item = onDBListBox.SelectedItems[i] as MPAid.Models.Recording;
                     Speaker spk = item.Speaker;
                     Word word = item.Word;
+                    Category cty = word.Category;
                     string existingFile = item.Address + "\\" + item.Name;
                     if (File.Exists(existingFile))
                     {
@@ -157,6 +158,7 @@ namespace MPAid.Forms.Config
 
                     if (spk.Recordings.Count == 0) DBContext.Speaker.Remove(spk);
                     if (word.Recordings.Count == 0) DBContext.Word.Remove(word);
+                    if (cty.Words.Count == 0) DBContext.Category.Remove(cty);
                 }
                 MainForm.self.DBModel.SaveChanges();
 

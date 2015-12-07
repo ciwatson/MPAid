@@ -22,7 +22,7 @@ namespace MPAid.UserControls
         public void DataBinding()
         {
             //this.speakerComboBox.DataSource = MainForm.self.DBModel.Speaker.Local.ToBindingList();
-            this.speakerComboBox.DataSource = new BindingSource() { DataSource = MainForm.self.DBModel.Speaker.Local.OrderBy(x => x.Name).ToList() };
+            this.speakerComboBox.DataSource = MainForm.self.DBModel.Speaker.Local.ToBindingList();
             this.speakerComboBox.DisplayMember = "Name";
             //this.speakerComboBox.SelectedIndex = 0;
 
@@ -37,6 +37,7 @@ namespace MPAid.UserControls
             Category cty = categoryComboBox.SelectedItem as Category;
             if(spk == null || cty == null)
             {
+                this.wordListBox.DataSource = null;
                 return;
             }
 
@@ -45,7 +46,7 @@ namespace MPAid.UserControls
                     x.Recordings.Any(y => y.SpeakerId == spk.SpeakerId))
                 );
 
-            this.wordListBox.DataSource = new BindingSource() { DataSource = view.OrderBy(x => x.Name).ToList() };
+            this.wordListBox.DataSource = new BindingSource() { DataSource = view.ToList() };
             this.wordListBox.DisplayMember = "Name";
         }
 

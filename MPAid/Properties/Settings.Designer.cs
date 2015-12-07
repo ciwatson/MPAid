@@ -34,27 +34,5 @@ namespace MPAid.Properties {
                 this["autoLoginSetting"] = value;
             }
         }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\Models\\MPAidD" +
-            "B.mdf;Integrated Security=True;Connect Timeout=30")]
-        public string MPAidDBConnectionString {
-            get {
-                return ((string)(this["MPAidDBConnectionString"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\bin\\Debug\\Mod" +
-            "els\\MPAidDB.mdf;Integrated Security=True;Connect Timeout=30")]
-        public string MPAidDBConnectionString1 {
-            get {
-                return ((string)(this["MPAidDBConnectionString1"]));
-            }
-        }
     }
 }
