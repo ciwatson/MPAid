@@ -9,11 +9,6 @@ namespace MPAid.Models
     [Table("Speaker")]
     public partial class Speaker
     {
-        public Speaker()
-        {
-            Recordings = new HashSet<Recording>();
-        }
-
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int SpeakerId { get; set; }
 

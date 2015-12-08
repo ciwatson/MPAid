@@ -9,11 +9,6 @@ namespace MPAid.Models
     [Table("Word")]
     public partial class Word
     {
-        public Word()
-        {
-            Recordings = new HashSet<Recording>();
-        }
-
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int WordId { get; set; }
 

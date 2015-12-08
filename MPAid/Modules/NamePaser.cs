@@ -10,26 +10,43 @@ namespace MPAid.Modules
     {
         public string SingleFile
         {
-            get { return Name + "." + Ext; }
+            get { return Address + @"\\" + FullName; }
             set
             {
                 try
                 {
-                    string[] parts = value.Split('.');
-                    if (parts.Length != 2) { throw new Exception("Invilad file name!"); }
-                    Name = parts[0];
-                    Ext = parts[1];
+                    Address = value.Substring(0, value.LastIndexOf(@"\\"));
+                    FullName = value.Substring(value.LastIndexOf(@"\\") + 1);
                 }
-                catch (Exception e)
+                catch (Exception exp)
                 {
-                    Console.WriteLine(e);
+                    Console.WriteLine(exp);
                 }
             }
         }
 
-        public string Name
+        public string FullName
         {
-            get { return Recording + "-" + Copy; }
+            get
+            {
+                return FileName + @"." + Ext;
+            }
+            set
+            {
+                try
+                {
+                    FileName = value.Substring(0, value.IndexOf(@"."));
+                    Ext = value.Substring(value.IndexOf(@".") + 1);
+                }
+                catch(Exception exp)
+                {
+                    Console.WriteLine(exp);
+                }   
+            }
+        }
+        public string FileName
+        {
+            get { return Recording + @"-" + Copy; }
             set
             {
                 try
@@ -53,6 +70,11 @@ namespace MPAid.Modules
             get { return Speaker + "-" + Category + "-" + Word; }
         }
 
+        public string Address
+        {
+            get { return address; }
+            set { address = value; }
+        }
         public string Speaker
         {
             get { return speaker; }
@@ -82,6 +104,8 @@ namespace MPAid.Modules
             get { return ext; }
             set { ext = value; }
         }
+
+        private string address;
         private string speaker;
         private string category;
         private string word;

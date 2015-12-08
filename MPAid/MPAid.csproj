@@ -126,6 +126,7 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\SingleFile.cs" />
     <Compile Include="Models\Copy.cs" />
     <Compile Include="Models\MPAidModel.cs" />
@@ -150,6 +151,7 @@
     <Compile Include="Modules\PaEngine.cs" />
     <Compile Include="Modules\SysCfg.cs" />
     <Compile Include="Modules\UserManagement.cs" />
+    <Compile Include="Modules\VowelComparer.cs" />
     <Compile Include="Modules\WordMapper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

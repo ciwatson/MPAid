@@ -70,84 +70,13 @@ namespace MPAid.Forms.Config
                 {
                     String filename = item.Key.ToString();
                     NamePaser paser = new NamePaser();
-                    paser.SingleFile = filename;
+                    paser.FileName = filename;
+                    paser.Address = recordingFolder;
 
-
-                    SingleFile sf = DBContext.SingleFile.SingleOrDefault(x => x.Name == paser.SingleFile);
-                    if(sf == null)
-                    {
-                        sf = new SingleFile()
-                        {
-                            Name = paser.SingleFile,
-                            Address = recordingFolder
-                        };
-                        DBContext.SingleFile.AddOrUpdate(x => x.Name, sf);
-                        MainForm.self.DBModel.SaveChanges();
-                    }
-
-                    Speaker spk = DBContext.Speaker.SingleOrDefault(x => x.Name == paser.Speaker);
-                    if (spk == null)
-                    {
-                        spk = new Speaker()
-                        {
-                            Name = paser.Speaker
-                        };
-                        DBContext.Speaker.AddOrUpdate(x => x.Name, spk);
-                        MainForm.self.DBModel.SaveChanges();
-                    }
-
-                    Category cty = DBContext.Category.SingleOrDefault(x => x.Name == paser.Category);
-                    if (cty == null)
-                    {
-                        cty = new Category()
-                        {
-                            Name = paser.Category
-                        };
-                        DBContext.Category.AddOrUpdate(x => x.Name, cty);
-                        MainForm.self.DBModel.SaveChanges();
-                    }
-
-                    Word word = DBContext.Word.SingleOrDefault(x => x.Name == paser.Word);
-                    if (word == null)
-                    {
-                        word = new Word()
-                        {
-                            Name = paser.Word,
-                            CategoryId = cty.CategoryId
-                        };
-                        DBContext.Word.AddOrUpdate(x => x.Name, word);
-                        MainForm.self.DBModel.SaveChanges();
-                    }
-
-                    Recording rd = DBContext.Recording.SingleOrDefault(x => x.Name == paser.Recording);
-                    if (rd == null)
-                    {
-                        rd = new Recording()
-                        {
-                            Name = paser.Recording,
-                            SpeakerId = spk.SpeakerId,
-                            WordId = word.WordId
-                        };
-                        DBContext.Recording.AddOrUpdate(x => x.Name, rd);
-                        MainForm.self.DBModel.SaveChanges();
-                    }
-
-                    Copy copy = DBContext.Copy.SingleOrDefault(x => x.Name == paser.Copy);
-                    if(copy == null)
-                    {
-                        copy = new Copy()
-                        {
-                            Name = paser.Copy,
-                            RecordingId = rd.RecordingId,
-                            SingleFileId = sf.SingleFileId
-                        };
-                        DBContext.Copy.AddOrUpdate(x => x.Name, copy);
-                        MainForm.self.DBModel.SaveChanges();
-                    }
-
+                    DBContext.AddOrUpdateRecordingFile(paser.SingleFile);
 
                     string existingFile = item.Value + "\\" + item.Key;
-                    string newFile = recordingFolder + "\\" + rd.Name;
+                    string newFile = recordingFolder + "\\" + item.Key;
                     //avoid writing itslef
                     if (!existingFile.Equals(newFile))
                     {

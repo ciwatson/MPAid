@@ -9,11 +9,6 @@
     [Table("Category")]
     public partial class Category
     {
-        public Category()
-        {
-            Words = new HashSet<Word>();
-        }
-
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int CategoryId { get; set; }
 
