@@ -11,7 +11,7 @@ namespace MPAid.Models
             : base("name=MPAidModel")
         {
             //AppDomain.CurrentDomain.SetData("DataDirectory", System.Windows.Forms.Application.StartupPath + @"\App_Data");
-            AppDomain.CurrentDomain.SetData("DataDirectory", @"D:\Projects\MPAid\MPAid\App_Data");
+            AppDomain.CurrentDomain.SetData("DataDirectory", AppDataPath.path);
         }
 
         public virtual DbSet<Category> Category { get; set; }
