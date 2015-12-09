@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace MPAid.Modules
 {
@@ -10,13 +11,13 @@ namespace MPAid.Modules
     {
         public string SingleFile
         {
-            get { return Address + @"\\" + FullName; }
+            get { return Address + @"\" + FullName; }
             set
             {
                 try
                 {
-                    Address = value.Substring(0, value.LastIndexOf(@"\\"));
-                    FullName = value.Substring(value.LastIndexOf(@"\\") + 1);
+                    Address = Path.GetDirectoryName(value);
+                    FullName = Path.GetFileName(value);
                 }
                 catch (Exception exp)
                 {
@@ -29,14 +30,14 @@ namespace MPAid.Modules
         {
             get
             {
-                return FileName + @"." + Ext;
+                return FileName + Ext;
             }
             set
             {
                 try
                 {
-                    FileName = value.Substring(0, value.IndexOf(@"."));
-                    Ext = value.Substring(value.IndexOf(@".") + 1);
+                    FileName = Path.GetFileNameWithoutExtension(value);
+                    Ext = Path.GetExtension(value);
                 }
                 catch(Exception exp)
                 {
@@ -46,7 +47,7 @@ namespace MPAid.Modules
         }
         public string FileName
         {
-            get { return Recording + @"-" + Copy; }
+            get { return Recording + @"-" + Label; }
             set
             {
                 try
@@ -56,7 +57,7 @@ namespace MPAid.Modules
                     Speaker = parts[0];
                     Category = parts[1];
                     Word = parts[2];
-                    copy = parts[3];
+                    Label = parts[3];
                 }
                 catch(Exception e)
                 {
@@ -93,10 +94,10 @@ namespace MPAid.Modules
             set { word = value; }
         }
 
-        public string Copy
+        public string Label
         {
-            get { return copy; }
-            set { copy = value; }
+            get { return label; }
+            set { label = value; }
         }
 
         public string Ext
@@ -109,7 +110,7 @@ namespace MPAid.Modules
         private string speaker;
         private string category;
         private string word;
-        private string copy;
+        private string label;
         private string ext;
     }
 }

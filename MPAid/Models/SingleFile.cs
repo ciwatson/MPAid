@@ -8,20 +8,18 @@
     [Table("SingleFile")]
     public partial class SingleFile
     {
-        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Key, ForeignKey("Copy"),DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int SingleFileId { get; set; }
 
         [Required]
         [StringLength(64)]
+        [Index(IsUnique = true)]
         public string Name { get; set; }
 
         [Required]
         [StringLength(256)]
         public string Address { get; set; }
 
-        public int CopyId { get; set; }
-        [Required]
-        [ForeignKey("CopyId")]
         public virtual Copy Copy { get; set; }
     }
 }

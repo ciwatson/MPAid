@@ -40,6 +40,8 @@ namespace MPAid
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.speedController = new System.Windows.Forms.TrackBar();
+            this.ButtonStop = new MPAid.TDButton();
+            this.ButtonPlay = new MPAid.TDButton();
             this.AudioDelay = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
             this.previewBox = new System.Windows.Forms.PictureBox();
@@ -57,7 +59,9 @@ namespace MPAid
             this.buttonAnalyze = new System.Windows.Forms.Button();
             this.buttonStopRecording = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.tdButtonFormantPlot = new MPAid.TDButton();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.recordingPanel = new MPAid.UserControls.RecordingPanel();
             this.animationTimer = new System.Windows.Forms.Timer(this.components);
             this.NAudioTimer = new System.Windows.Forms.Timer(this.components);
             this.mainMenuStrip = new System.Windows.Forms.MenuStrip();
@@ -74,11 +78,9 @@ namespace MPAid
             this.configToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.systemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.recordingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.recordingPanel = new MPAid.UserControls.RecordingPanel();
-            this.tdButtonFormantPlot = new MPAid.TDButton();
-            this.ButtonStop = new MPAid.TDButton();
-            this.ButtonPlay = new MPAid.TDButton();
             this.recordingPanel1 = new MPAid.UserControls.RecordingPanel();
+            this.uploadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.renameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.headerBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.categoryBindingSource)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -171,6 +173,34 @@ namespace MPAid
             this.speedController.TabIndex = 8;
             this.speedController.Value = 5;
             this.speedController.Scroll += new System.EventHandler(this.speedController_Scroll);
+            // 
+            // ButtonStop
+            // 
+            this.ButtonStop.BackgroundImage = global::MPAid.Properties.Resources.ButtonRed_0;
+            this.ButtonStop.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ButtonStop.FlatAppearance.BorderSize = 0;
+            this.ButtonStop.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ButtonStop.Location = new System.Drawing.Point(159, 74);
+            this.ButtonStop.Name = "ButtonStop";
+            this.ButtonStop.Size = new System.Drawing.Size(120, 25);
+            this.ButtonStop.TabIndex = 7;
+            this.ButtonStop.Text = "Stop Audio";
+            this.ButtonStop.UseVisualStyleBackColor = true;
+            this.ButtonStop.Click += new System.EventHandler(this.ButtonStop_Click);
+            // 
+            // ButtonPlay
+            // 
+            this.ButtonPlay.BackgroundImage = global::MPAid.Properties.Resources.ButtonGreen_0;
+            this.ButtonPlay.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ButtonPlay.FlatAppearance.BorderSize = 0;
+            this.ButtonPlay.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ButtonPlay.Location = new System.Drawing.Point(33, 74);
+            this.ButtonPlay.Name = "ButtonPlay";
+            this.ButtonPlay.Size = new System.Drawing.Size(120, 25);
+            this.ButtonPlay.TabIndex = 6;
+            this.ButtonPlay.Text = "Play Audio";
+            this.ButtonPlay.UseVisualStyleBackColor = true;
+            this.ButtonPlay.Click += new System.EventHandler(this.ButtonPlay_Click);
             // 
             // AudioDelay
             // 
@@ -388,6 +418,20 @@ namespace MPAid
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Formant Plot";
             // 
+            // tdButtonFormantPlot
+            // 
+            this.tdButtonFormantPlot.BackgroundImage = global::MPAid.Properties.Resources.ButtonYellow_0;
+            this.tdButtonFormantPlot.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.tdButtonFormantPlot.FlatAppearance.BorderSize = 0;
+            this.tdButtonFormantPlot.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.tdButtonFormantPlot.Location = new System.Drawing.Point(87, 24);
+            this.tdButtonFormantPlot.Name = "tdButtonFormantPlot";
+            this.tdButtonFormantPlot.Size = new System.Drawing.Size(150, 32);
+            this.tdButtonFormantPlot.TabIndex = 0;
+            this.tdButtonFormantPlot.Text = "Open Formant Plot";
+            this.tdButtonFormantPlot.UseVisualStyleBackColor = true;
+            this.tdButtonFormantPlot.Click += new System.EventHandler(this.tdButtonFormantPlot_Click);
+            // 
             // panel1
             // 
             this.panel1.Controls.Add(this.recordingPanel);
@@ -397,8 +441,19 @@ namespace MPAid
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 113);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(836, 383);
+            this.panel1.Size = new System.Drawing.Size(836, 384);
             this.panel1.TabIndex = 7;
+            // 
+            // recordingPanel
+            // 
+            this.recordingPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.recordingPanel.Location = new System.Drawing.Point(4, 4);
+            this.recordingPanel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.recordingPanel.Name = "recordingPanel";
+            this.recordingPanel.Size = new System.Drawing.Size(150, 355);
+            this.recordingPanel.TabIndex = 7;
             // 
             // animationTimer
             // 
@@ -415,8 +470,8 @@ namespace MPAid
             this.mainMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.usersToolStripMenuItem,
             this.hMMsToolStripMenuItem,
-            this.helpToolStripMenuItem,
-            this.configToolStripMenuItem});
+            this.configToolStripMenuItem,
+            this.helpToolStripMenuItem});
             this.mainMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.mainMenuStrip.Name = "mainMenuStrip";
             this.mainMenuStrip.Size = new System.Drawing.Size(836, 32);
@@ -432,7 +487,7 @@ namespace MPAid
             this.usersToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("usersToolStripMenuItem.Image")));
             this.usersToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.usersToolStripMenuItem.Name = "usersToolStripMenuItem";
-            this.usersToolStripMenuItem.Size = new System.Drawing.Size(77, 28);
+            this.usersToolStripMenuItem.Size = new System.Drawing.Size(71, 28);
             this.usersToolStripMenuItem.Text = "Users";
             // 
             // administratorConsoleToolStripMenuItem
@@ -440,7 +495,7 @@ namespace MPAid
             this.administratorConsoleToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("administratorConsoleToolStripMenuItem.Image")));
             this.administratorConsoleToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.administratorConsoleToolStripMenuItem.Name = "administratorConsoleToolStripMenuItem";
-            this.administratorConsoleToolStripMenuItem.Size = new System.Drawing.Size(214, 30);
+            this.administratorConsoleToolStripMenuItem.Size = new System.Drawing.Size(201, 30);
             this.administratorConsoleToolStripMenuItem.Text = "Administrator Console";
             this.administratorConsoleToolStripMenuItem.Click += new System.EventHandler(this.administratorConsoleToolStripMenuItem_Click);
             // 
@@ -449,7 +504,7 @@ namespace MPAid
             this.changePasswordToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("changePasswordToolStripMenuItem.Image")));
             this.changePasswordToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.changePasswordToolStripMenuItem.Name = "changePasswordToolStripMenuItem";
-            this.changePasswordToolStripMenuItem.Size = new System.Drawing.Size(214, 30);
+            this.changePasswordToolStripMenuItem.Size = new System.Drawing.Size(201, 30);
             this.changePasswordToolStripMenuItem.Text = "Change password";
             this.changePasswordToolStripMenuItem.Click += new System.EventHandler(this.changePasswordToolStripMenuItem_Click);
             // 
@@ -458,7 +513,7 @@ namespace MPAid
             this.logToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("logToolStripMenuItem.Image")));
             this.logToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.logToolStripMenuItem.Name = "logToolStripMenuItem";
-            this.logToolStripMenuItem.Size = new System.Drawing.Size(214, 30);
+            this.logToolStripMenuItem.Size = new System.Drawing.Size(201, 30);
             this.logToolStripMenuItem.Text = "Sign out";
             this.logToolStripMenuItem.Click += new System.EventHandler(this.logToolStripMenuItem_Click);
             // 
@@ -470,7 +525,7 @@ namespace MPAid
             this.hMMsToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("hMMsToolStripMenuItem.Image")));
             this.hMMsToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.hMMsToolStripMenuItem.Name = "hMMsToolStripMenuItem";
-            this.hMMsToolStripMenuItem.Size = new System.Drawing.Size(83, 28);
+            this.hMMsToolStripMenuItem.Size = new System.Drawing.Size(79, 28);
             this.hMMsToolStripMenuItem.Text = "HMMs";
             // 
             // openHMMsFolderToolStripMenuItem
@@ -478,7 +533,7 @@ namespace MPAid
             this.openHMMsFolderToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("openHMMsFolderToolStripMenuItem.Image")));
             this.openHMMsFolderToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.openHMMsFolderToolStripMenuItem.Name = "openHMMsFolderToolStripMenuItem";
-            this.openHMMsFolderToolStripMenuItem.Size = new System.Drawing.Size(198, 30);
+            this.openHMMsFolderToolStripMenuItem.Size = new System.Drawing.Size(184, 30);
             this.openHMMsFolderToolStripMenuItem.Text = "Open HMMs folder";
             this.openHMMsFolderToolStripMenuItem.Click += new System.EventHandler(this.openHMMsFolderToolStripMenuItem_Click);
             // 
@@ -487,7 +542,7 @@ namespace MPAid
             this.settingsToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("settingsToolStripMenuItem.Image")));
             this.settingsToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(198, 30);
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(184, 30);
             this.settingsToolStripMenuItem.Text = "Settings";
             this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
             // 
@@ -499,14 +554,14 @@ namespace MPAid
             this.helpToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("helpToolStripMenuItem.Image")));
             this.helpToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(67, 28);
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(64, 28);
             this.helpToolStripMenuItem.Text = "Help";
             // 
             // submitFeedbackToolStripMenuItem
             // 
             this.submitFeedbackToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("submitFeedbackToolStripMenuItem.Image")));
             this.submitFeedbackToolStripMenuItem.Name = "submitFeedbackToolStripMenuItem";
-            this.submitFeedbackToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
+            this.submitFeedbackToolStripMenuItem.Size = new System.Drawing.Size(169, 26);
             this.submitFeedbackToolStripMenuItem.Text = "Submit Feedback";
             this.submitFeedbackToolStripMenuItem.Click += new System.EventHandler(this.submitFeedbackToolStripMenuItem_Click);
             // 
@@ -515,7 +570,7 @@ namespace MPAid
             this.aboutToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("aboutToolStripMenuItem.Image")));
             this.aboutToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(169, 26);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
@@ -525,75 +580,24 @@ namespace MPAid
             this.systemToolStripMenuItem,
             this.recordingToolStripMenuItem});
             this.configToolStripMenuItem.Name = "configToolStripMenuItem";
-            this.configToolStripMenuItem.Size = new System.Drawing.Size(58, 28);
+            this.configToolStripMenuItem.Size = new System.Drawing.Size(55, 28);
             this.configToolStripMenuItem.Text = "Config";
             // 
             // systemToolStripMenuItem
             // 
             this.systemToolStripMenuItem.Name = "systemToolStripMenuItem";
-            this.systemToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.systemToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.systemToolStripMenuItem.Text = "System";
             this.systemToolStripMenuItem.Click += new System.EventHandler(this.systemToolStripMenuItem_Click);
             // 
             // recordingToolStripMenuItem
             // 
+            this.recordingToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.uploadToolStripMenuItem,
+            this.renameToolStripMenuItem});
             this.recordingToolStripMenuItem.Name = "recordingToolStripMenuItem";
-            this.recordingToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.recordingToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.recordingToolStripMenuItem.Text = "Recording";
-            this.recordingToolStripMenuItem.Click += new System.EventHandler(this.recordingToolStripMenuItem_Click);
-            // 
-            // recordingPanel
-            // 
-            this.recordingPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.recordingPanel.Location = new System.Drawing.Point(4, 4);
-            this.recordingPanel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.recordingPanel.Name = "recordingPanel";
-            this.recordingPanel.Size = new System.Drawing.Size(150, 354);
-            this.recordingPanel.TabIndex = 7;
-            // 
-            // tdButtonFormantPlot
-            // 
-            this.tdButtonFormantPlot.BackgroundImage = global::MPAid.Properties.Resources.ButtonYellow_0;
-            this.tdButtonFormantPlot.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.tdButtonFormantPlot.FlatAppearance.BorderSize = 0;
-            this.tdButtonFormantPlot.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.tdButtonFormantPlot.Location = new System.Drawing.Point(87, 24);
-            this.tdButtonFormantPlot.Name = "tdButtonFormantPlot";
-            this.tdButtonFormantPlot.Size = new System.Drawing.Size(150, 32);
-            this.tdButtonFormantPlot.TabIndex = 0;
-            this.tdButtonFormantPlot.Text = "Open Formant Plot";
-            this.tdButtonFormantPlot.UseVisualStyleBackColor = true;
-            this.tdButtonFormantPlot.Click += new System.EventHandler(this.tdButtonFormantPlot_Click);
-            // 
-            // ButtonStop
-            // 
-            this.ButtonStop.BackgroundImage = global::MPAid.Properties.Resources.ButtonRed_0;
-            this.ButtonStop.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ButtonStop.FlatAppearance.BorderSize = 0;
-            this.ButtonStop.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ButtonStop.Location = new System.Drawing.Point(159, 74);
-            this.ButtonStop.Name = "ButtonStop";
-            this.ButtonStop.Size = new System.Drawing.Size(120, 25);
-            this.ButtonStop.TabIndex = 7;
-            this.ButtonStop.Text = "Stop Audio";
-            this.ButtonStop.UseVisualStyleBackColor = true;
-            this.ButtonStop.Click += new System.EventHandler(this.ButtonStop_Click);
-            // 
-            // ButtonPlay
-            // 
-            this.ButtonPlay.BackgroundImage = global::MPAid.Properties.Resources.ButtonGreen_0;
-            this.ButtonPlay.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ButtonPlay.FlatAppearance.BorderSize = 0;
-            this.ButtonPlay.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ButtonPlay.Location = new System.Drawing.Point(33, 74);
-            this.ButtonPlay.Name = "ButtonPlay";
-            this.ButtonPlay.Size = new System.Drawing.Size(120, 25);
-            this.ButtonPlay.TabIndex = 6;
-            this.ButtonPlay.Text = "Play Audio";
-            this.ButtonPlay.UseVisualStyleBackColor = true;
-            this.ButtonPlay.Click += new System.EventHandler(this.ButtonPlay_Click);
             // 
             // recordingPanel1
             // 
@@ -603,12 +607,26 @@ namespace MPAid
             this.recordingPanel1.Size = new System.Drawing.Size(160, 327);
             this.recordingPanel1.TabIndex = 7;
             // 
+            // uploadToolStripMenuItem
+            // 
+            this.uploadToolStripMenuItem.Name = "uploadToolStripMenuItem";
+            this.uploadToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.uploadToolStripMenuItem.Text = "Upload";
+            this.uploadToolStripMenuItem.Click += new System.EventHandler(this.uploadToolStripMenuItem_Click);
+            // 
+            // renameToolStripMenuItem
+            // 
+            this.renameToolStripMenuItem.Name = "renameToolStripMenuItem";
+            this.renameToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.renameToolStripMenuItem.Text = "Rename";
+            this.renameToolStripMenuItem.Click += new System.EventHandler(this.renameToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Snow;
-            this.ClientSize = new System.Drawing.Size(836, 496);
+            this.ClientSize = new System.Drawing.Size(836, 497);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.headerBox);
             this.Controls.Add(this.mainMenuStrip);
@@ -690,6 +708,8 @@ namespace MPAid
         private System.Windows.Forms.BindingSource categoryBindingSource;
         private UserControls.RecordingPanel recordingPanel1;
         private UserControls.RecordingPanel recordingPanel;
+        private System.Windows.Forms.ToolStripMenuItem uploadToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem renameToolStripMenuItem;
     }
 }
 

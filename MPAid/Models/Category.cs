@@ -14,6 +14,7 @@
 
         [Required]
         [StringLength(64)]
+        [Index(IsUnique = true)]
         public string Name { get; set; }
 
         public virtual ICollection<Word> Words { get; set; }

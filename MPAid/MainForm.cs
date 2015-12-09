@@ -39,7 +39,9 @@ namespace MPAid
 
         private SystemConfig systemConfigForm;
 
-        private RecordingConfig recordingConfigForm;
+        private RecordingUploadConfig recordingUploadForm;
+
+        private RecordingRenameConfig recordingRenameForm;
 
         public SysCfg configContent;
 
@@ -125,7 +127,8 @@ namespace MPAid
             configContent = Serializer<SysCfg>.Load<BinaryFormatter>(SysCfg.path);
             System.IO.Directory.CreateDirectory(configContent.RecordingFolderAddr);
             this.systemConfigForm = new SystemConfig();
-            this.recordingConfigForm = new RecordingConfig();
+            this.recordingUploadForm = new RecordingUploadConfig();
+            this.recordingRenameForm = new RecordingRenameConfig();
         }
 
         private void InitializeDB()
@@ -135,6 +138,8 @@ namespace MPAid
             this.DBModel.Speaker.Load();
             this.DBModel.Category.Load();
             this.DBModel.Word.Load();
+            this.DBModel.Copy.Load();
+            this.DBModel.SingleFile.Load();
         }
 
         private void FillLists()
@@ -227,7 +232,7 @@ namespace MPAid
                 Recording rdg = this.DBModel.Recording.Local.Where(x => x.WordId == wd.WordId && x.SpeakerId == spk.SpeakerId).SingleOrDefault();
                 if (rdg != null)
                 {
-                    SingleFile sf = rdg.Copies.Single().SingleFile;
+                    SingleFile sf = rdg.Copies.PickNext().SingleFile;
                     string filePath = sf.Address + "\\" + sf.Name;
                     PlayVowelSoundAsync(filePath, (int)NumPlayback.Value);
                 }
@@ -927,14 +932,14 @@ namespace MPAid
             this.systemConfigForm.ShowDialog(this);
         }
 
-        private void recordingToolStripMenuItem_Click(object sender, EventArgs e)
+        private void uploadToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.recordingConfigForm.ShowDialog(this);
+            this.recordingUploadForm.ShowDialog(this);
         }
 
-        private void testPanelToolStripMenuItem_Click(object sender, EventArgs e)
+        private void renameToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+            this.recordingRenameForm.ShowDialog(this);
         }
     }
 }

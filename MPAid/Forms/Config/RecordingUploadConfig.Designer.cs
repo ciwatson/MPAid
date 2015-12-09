@@ -2,7 +2,7 @@
 
 namespace MPAid.Forms.Config
 {
-    partial class RecordingConfig
+    partial class RecordingUploadConfig
     {
         /// <summary> 
         /// Required designer variable.

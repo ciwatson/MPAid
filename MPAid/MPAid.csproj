@@ -102,6 +102,12 @@
     <Compile Include="Forms\ChangePasswordWindow.Designer.cs">
       <DependentUpon>ChangePasswordWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Config\RecordingRenameConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Config\RecordingRenameConfig.Designer.cs">
+      <DependentUpon>RecordingRenameConfig.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\HMMsConfig.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -126,6 +132,10 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201512090043112_Initial.cs" />
+    <Compile Include="Migrations\201512090043112_Initial.Designer.cs">
+      <DependentUpon>201512090043112_Initial.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\SingleFile.cs" />
     <Compile Include="Models\Copy.cs" />
@@ -134,7 +144,8 @@
     <Compile Include="Models\Speaker.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Word.cs" />
-    <Compile Include="Modules\Common.cs" />
+    <Compile Include="Modules\Picker.cs" />
+    <Compile Include="Modules\Serializer.cs" />
     <Compile Include="Modules\FormantPlotController.cs" />
     <Compile Include="Modules\IoController.cs" />
     <Compile Include="Modules\MPAiUser.cs" />
@@ -169,11 +180,11 @@
     <Compile Include="Modules\VerticalProgressBar.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Forms\Config\RecordingConfig.cs">
+    <Compile Include="Forms\Config\RecordingUploadConfig.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Config\RecordingConfig.Designer.cs">
-      <DependentUpon>RecordingConfig.cs</DependentUpon>
+    <Compile Include="Forms\Config\RecordingUploadConfig.Designer.cs">
+      <DependentUpon>RecordingUploadConfig.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Config\SystemConfig.cs">
       <SubType>Form</SubType>
@@ -193,6 +204,9 @@
     <EmbeddedResource Include="Forms\ChangePasswordWindow.resx">
       <DependentUpon>ChangePasswordWindow.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Config\RecordingRenameConfig.resx">
+      <DependentUpon>RecordingRenameConfig.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\HMMsConfig.resx">
       <DependentUpon>HMMsConfig.cs</DependentUpon>
     </EmbeddedResource>
@@ -204,6 +218,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512090043112_Initial.resx">
+      <DependentUpon>201512090043112_Initial.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -221,8 +238,8 @@
     <EmbeddedResource Include="Forms\SplashScreen.resx">
       <DependentUpon>SplashScreen.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Config\RecordingConfig.resx">
-      <DependentUpon>RecordingConfig.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Config\RecordingUploadConfig.resx">
+      <DependentUpon>RecordingUploadConfig.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Config\SystemConfig.resx">
       <DependentUpon>SystemConfig.cs</DependentUpon>
@@ -247,13 +264,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\MPAidDB.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="App_Data\MPAidDB_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>MPAidDB.mdf</DependentUpon>
-    </Content>
     <Content Include="Resources\About.png" />
     <Content Include="Resources\admin.png" />
     <Content Include="Resources\ButtonGreen-0.png" />
@@ -286,6 +296,7 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App_Data\" />
     <Folder Include="Properties\DataSources\" />
   </ItemGroup>
   <ItemGroup>

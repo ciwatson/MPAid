@@ -15,12 +15,11 @@ using System.IO;
 
 namespace MPAid.Forms.Config
 {
-    public partial class RecordingConfig : Form
+    public partial class RecordingUploadConfig : Form
     {
-        public RecordingConfig()
+        public RecordingUploadConfig()
         {
             InitializeComponent();
-
 
             this.onDBListBox.DataSource = MainForm.self.DBModel.SingleFile.Local.ToBindingList();
             this.onDBListBox.DisplayMember = "Name";
@@ -70,7 +69,7 @@ namespace MPAid.Forms.Config
                 {
                     String filename = item.Key.ToString();
                     NamePaser paser = new NamePaser();
-                    paser.FileName = filename;
+                    paser.FullName = filename;
                     paser.Address = recordingFolder;
 
                     DBContext.AddOrUpdateRecordingFile(paser.SingleFile);
@@ -118,7 +117,6 @@ namespace MPAid.Forms.Config
                     if (cty.Words.Count == 0) DBContext.Category.Remove(cty);
                 }
                 MainForm.self.DBModel.SaveChanges();
-
             }
             catch (Exception exp)
             {

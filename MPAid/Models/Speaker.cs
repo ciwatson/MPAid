@@ -14,6 +14,7 @@ namespace MPAid.Models
 
         [Required]
         [StringLength(64)]
+        [Index(IsUnique = true)]
         public string Name { get; set; }
 
         public virtual ICollection<Recording> Recordings { get; set; }

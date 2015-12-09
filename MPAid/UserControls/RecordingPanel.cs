@@ -41,12 +41,13 @@ namespace MPAid.UserControls
                 return;
             }
 
-            var view = MainForm.self.DBModel.Word.Where(
+            List<Word> view = MainForm.self.DBModel.Word.Where(
                 x => (x.CategoryId == cty.CategoryId &&
                     x.Recordings.Any(y => y.SpeakerId == spk.SpeakerId))
-                );
+                ).ToList();
 
-            this.wordListBox.DataSource = new BindingSource() { DataSource = view.ToList() };
+            view.Sort(new Modules.VowelComparer());
+            this.wordListBox.DataSource = new BindingSource() { DataSource = view};
             this.wordListBox.DisplayMember = "Name";
         }
 
