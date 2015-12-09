@@ -132,6 +132,7 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\SingleFile.cs" />
     <Compile Include="Models\Copy.cs" />
     <Compile Include="Models\MPAidModel.cs" />
