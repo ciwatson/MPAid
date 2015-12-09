@@ -214,3 +214,6 @@ ModelManifest.xml
 
 # Entity Framework code first migrations
 # [Mm]igrations
+
+# App_Data path configration 
+[Mm]odels/AppDataPath.cs
