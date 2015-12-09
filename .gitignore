@@ -216,4 +216,4 @@ ModelManifest.xml
 # [Mm]igrations
 
 # App_Data path configration 
-[Mm]odels/AppDataPath.cs
+MPAid/[Mm]odels/AppDataPath.cs
