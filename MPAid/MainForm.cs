@@ -307,7 +307,7 @@ namespace MPAid
             }
         }
 
-        private void PlayVowelSoundAsync(string SoundPath, int nPlayBack)
+        public void PlayVowelSoundAsync(string SoundPath, int nPlayBack)
         {
             StopSoundPlayer();
             AsyncPlayer = new Thread(ThreadPlayVowelSound);

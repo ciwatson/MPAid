@@ -50,6 +50,7 @@ namespace MPAid.Forms.Config
                 if(File.Exists(paser.SingleFile))
                 {
                     this.filenameTextBox.Text = paser.FullName;
+                    this.openFileDialog.FileName = paser.SingleFile;
                 }
             }
             catch(Exception exp)
@@ -58,6 +59,18 @@ namespace MPAid.Forms.Config
                 {
                     MessageBox.Show(exp.ToString());
                 }
+                Console.WriteLine(exp);
+            }
+        }
+
+        private void testButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                MainForm.self.PlayVowelSoundAsync(this.openFileDialog.FileName, 1);
+            }
+            catch(Exception exp)
+            {
                 Console.WriteLine(exp);
             }
         }

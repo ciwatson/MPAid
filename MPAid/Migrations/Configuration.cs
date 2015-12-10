@@ -40,31 +40,6 @@ namespace MPAid.Migrations
 
                     context.AddOrUpdateRecordingFile(paser.SingleFile);
                 }
-                //Models.Category cty = new Models.Category() { Name = "vowel" };
-                //Models.Speaker spk = new Models.Speaker() { Name = "male" };
-                //List<Models.Word> words = new List<Models.Word>()
-                //{
-                //    new Models.Word() { Name = "a", Category = cty },
-                //    new Models.Word() { Name = "ae", Category = cty }
-                //};
-
-                //List<Models.Recording> rdgs = new List<Models.Recording>();
-                //foreach(Models.Word word in words)
-                //{
-                //    Modules.NamePaser paser = new Modules.NamePaser;
-                //    paser.Category = cty.Name;
-                //    paser.Speaker = spk.Name;
-                //    rdgs.Add(new Models.Recording() {Name =  });
-                //}
-                //context.Category.AddOrUpdate(x => x.Name, cty);
-
-                //context.Word.AddOrUpdate(x => x.Name, word_list.ToArray());
-
-                //context.Speaker.AddOrUpdate(x => x.Name, spk);
-
-                //context.Recording.AddOrUpdate(x => x.Name, 
-                //    new Models.Recording() { }
-                //    );
             }
             catch(Exception exp)
             {
