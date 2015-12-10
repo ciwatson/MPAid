@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.Entity;
 using MPAid.Models;
+using MPAid.Cores;
 
 namespace MPAid.UserControls
 {
@@ -46,7 +47,7 @@ namespace MPAid.UserControls
                     x.Recordings.Any(y => y.SpeakerId == spk.SpeakerId))
                 ).ToList();
 
-            view.Sort(new Modules.VowelComparer());
+            view.Sort(new VowelComparer());
             this.wordListBox.DataSource = new BindingSource() { DataSource = view};
             this.wordListBox.DisplayMember = "Name";
         }

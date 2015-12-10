@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using MPAid.Cores;
 
 namespace MPAid.Forms.Config
 {
@@ -37,7 +38,7 @@ namespace MPAid.Forms.Config
         {
             try
             {
-                Modules.NamePaser paser = new Modules.NamePaser();
+                NamePaser paser = new NamePaser();
                 paser.Address = Path.GetDirectoryName(openFileDialog.FileName);
                 paser.Ext = Path.GetExtension(openFileDialog.FileName);
                 paser.Speaker = this.speakerTextBox.Text;

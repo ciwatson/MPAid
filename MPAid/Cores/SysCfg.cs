@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 
-namespace MPAid.Modules
+namespace MPAid.Cores
 {
     [Serializable]
     public class SysCfg : ISerializable

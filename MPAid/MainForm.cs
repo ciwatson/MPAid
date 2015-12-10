@@ -10,7 +10,7 @@ using System.Threading;
 using System.Windows.Forms;
 using System.Runtime.Serialization.Formatters.Binary;
 using MPAid.Forms.Config;
-using MPAid.Modules;
+using MPAid.Cores;
 using MPAid.Models;
 using System.Data.Entity;
 using MPAid.UserControls;

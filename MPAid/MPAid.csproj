@@ -145,8 +145,8 @@
     <Compile Include="Models\Speaker.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Word.cs" />
-    <Compile Include="Modules\Picker.cs" />
-    <Compile Include="Modules\Serializer.cs" />
+    <Compile Include="Cores\EnumberationPicker.cs" />
+    <Compile Include="Cores\Serializer.cs" />
     <Compile Include="Modules\FormantPlotController.cs" />
     <Compile Include="Modules\IoController.cs" />
     <Compile Include="Modules\MPAiUser.cs" />
@@ -157,13 +157,13 @@
     <Compile Include="Modules\HtmlGenerator.cs" />
     <Compile Include="Modules\MaoriObj.cs" />
     <Compile Include="Modules\mathLib.cs" />
-    <Compile Include="Modules\NamePaser.cs" />
+    <Compile Include="Cores\NamePaser.cs" />
     <Compile Include="Modules\NAudioController.cs" />
     <Compile Include="Modules\PaConfig.cs" />
     <Compile Include="Modules\PaEngine.cs" />
-    <Compile Include="Modules\SysCfg.cs" />
+    <Compile Include="Cores\SysCfg.cs" />
     <Compile Include="Modules\UserManagement.cs" />
-    <Compile Include="Modules\VowelComparer.cs" />
+    <Compile Include="Cores\VowelComparer.cs" />
     <Compile Include="Modules\WordMapper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
