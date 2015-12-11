@@ -13,9 +13,21 @@ using MPAid.Cores;
 
 namespace MPAid.UserControls
 {
-    public partial class RecordingPanel : UserControl
+    public partial class RecordingList : UserControl
     {
-        public RecordingPanel()
+        public ComboBox SpeakerComboBox
+        {
+            get { return speakerComboBox; }
+        }
+        public ComboBox CategoryComboBox
+        {
+            get { return categoryComboBox; }
+        }
+        public ListBox WordListBox
+        {
+            get { return wordListBox; }
+        }
+        public RecordingList()
         {
             InitializeComponent();
         }

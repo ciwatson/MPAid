@@ -61,7 +61,7 @@ namespace MPAid
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.tdButtonFormantPlot = new MPAid.TDButton();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.recordingPanel = new MPAid.UserControls.RecordingPanel();
+            this.recordingPanel = new MPAid.UserControls.RecordingList();
             this.animationTimer = new System.Windows.Forms.Timer(this.components);
             this.NAudioTimer = new System.Windows.Forms.Timer(this.components);
             this.mainMenuStrip = new System.Windows.Forms.MenuStrip();
@@ -72,15 +72,14 @@ namespace MPAid
             this.hMMsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openHMMsFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.submitFeedbackToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.configToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.systemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.recordingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.recordingPanel1 = new MPAid.UserControls.RecordingPanel();
             this.uploadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.renameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.submitFeedbackToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.headerBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.categoryBindingSource)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -117,7 +116,7 @@ namespace MPAid
             this.groupBox2.Controls.Add(this.previewBox);
             this.groupBox2.Controls.Add(this.NumPlayback);
             this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Location = new System.Drawing.Point(178, 6);
+            this.groupBox2.Location = new System.Drawing.Point(178, 9);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(312, 363);
             this.groupBox2.TabIndex = 4;
@@ -292,7 +291,7 @@ namespace MPAid
             this.groupBox3.Controls.Add(this.wordSelectedLabel);
             this.groupBox3.Controls.Add(this.buttonAnalyze);
             this.groupBox3.Controls.Add(this.buttonStopRecording);
-            this.groupBox3.Location = new System.Drawing.Point(496, 92);
+            this.groupBox3.Location = new System.Drawing.Point(498, 95);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(326, 277);
             this.groupBox3.TabIndex = 5;
@@ -411,7 +410,7 @@ namespace MPAid
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.tdButtonFormantPlot);
-            this.groupBox4.Location = new System.Drawing.Point(496, 6);
+            this.groupBox4.Location = new System.Drawing.Point(498, 6);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(326, 80);
             this.groupBox4.TabIndex = 6;
@@ -449,10 +448,10 @@ namespace MPAid
             this.recordingPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.recordingPanel.Location = new System.Drawing.Point(4, 4);
+            this.recordingPanel.Location = new System.Drawing.Point(12, 6);
             this.recordingPanel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.recordingPanel.Name = "recordingPanel";
-            this.recordingPanel.Size = new System.Drawing.Size(150, 355);
+            this.recordingPanel.Size = new System.Drawing.Size(160, 365);
             this.recordingPanel.TabIndex = 7;
             // 
             // animationTimer
@@ -546,6 +545,45 @@ namespace MPAid
             this.settingsToolStripMenuItem.Text = "Settings";
             this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
             // 
+            // configToolStripMenuItem
+            // 
+            this.configToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.systemToolStripMenuItem,
+            this.recordingToolStripMenuItem});
+            this.configToolStripMenuItem.Name = "configToolStripMenuItem";
+            this.configToolStripMenuItem.Size = new System.Drawing.Size(55, 28);
+            this.configToolStripMenuItem.Text = "Config";
+            // 
+            // systemToolStripMenuItem
+            // 
+            this.systemToolStripMenuItem.Name = "systemToolStripMenuItem";
+            this.systemToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.systemToolStripMenuItem.Text = "System";
+            this.systemToolStripMenuItem.Click += new System.EventHandler(this.systemToolStripMenuItem_Click);
+            // 
+            // recordingToolStripMenuItem
+            // 
+            this.recordingToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.uploadToolStripMenuItem,
+            this.renameToolStripMenuItem});
+            this.recordingToolStripMenuItem.Name = "recordingToolStripMenuItem";
+            this.recordingToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.recordingToolStripMenuItem.Text = "Recording";
+            // 
+            // uploadToolStripMenuItem
+            // 
+            this.uploadToolStripMenuItem.Name = "uploadToolStripMenuItem";
+            this.uploadToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.uploadToolStripMenuItem.Text = "Upload";
+            this.uploadToolStripMenuItem.Click += new System.EventHandler(this.uploadToolStripMenuItem_Click);
+            // 
+            // renameToolStripMenuItem
+            // 
+            this.renameToolStripMenuItem.Name = "renameToolStripMenuItem";
+            this.renameToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.renameToolStripMenuItem.Text = "Rename";
+            this.renameToolStripMenuItem.Click += new System.EventHandler(this.renameToolStripMenuItem_Click);
+            // 
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -573,53 +611,6 @@ namespace MPAid
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(169, 26);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
-            // 
-            // configToolStripMenuItem
-            // 
-            this.configToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.systemToolStripMenuItem,
-            this.recordingToolStripMenuItem});
-            this.configToolStripMenuItem.Name = "configToolStripMenuItem";
-            this.configToolStripMenuItem.Size = new System.Drawing.Size(55, 28);
-            this.configToolStripMenuItem.Text = "Config";
-            // 
-            // systemToolStripMenuItem
-            // 
-            this.systemToolStripMenuItem.Name = "systemToolStripMenuItem";
-            this.systemToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.systemToolStripMenuItem.Text = "System";
-            this.systemToolStripMenuItem.Click += new System.EventHandler(this.systemToolStripMenuItem_Click);
-            // 
-            // recordingToolStripMenuItem
-            // 
-            this.recordingToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.uploadToolStripMenuItem,
-            this.renameToolStripMenuItem});
-            this.recordingToolStripMenuItem.Name = "recordingToolStripMenuItem";
-            this.recordingToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.recordingToolStripMenuItem.Text = "Recording";
-            // 
-            // recordingPanel1
-            // 
-            this.recordingPanel1.Location = new System.Drawing.Point(-166, 1);
-            this.recordingPanel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.recordingPanel1.Name = "recordingPanel1";
-            this.recordingPanel1.Size = new System.Drawing.Size(160, 327);
-            this.recordingPanel1.TabIndex = 7;
-            // 
-            // uploadToolStripMenuItem
-            // 
-            this.uploadToolStripMenuItem.Name = "uploadToolStripMenuItem";
-            this.uploadToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.uploadToolStripMenuItem.Text = "Upload";
-            this.uploadToolStripMenuItem.Click += new System.EventHandler(this.uploadToolStripMenuItem_Click);
-            // 
-            // renameToolStripMenuItem
-            // 
-            this.renameToolStripMenuItem.Name = "renameToolStripMenuItem";
-            this.renameToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.renameToolStripMenuItem.Text = "Rename";
-            this.renameToolStripMenuItem.Click += new System.EventHandler(this.renameToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -706,8 +697,7 @@ namespace MPAid
         private System.Windows.Forms.ToolStripMenuItem systemToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem recordingToolStripMenuItem;
         private System.Windows.Forms.BindingSource categoryBindingSource;
-        private UserControls.RecordingPanel recordingPanel1;
-        private UserControls.RecordingPanel recordingPanel;
+        private UserControls.RecordingList recordingPanel;
         private System.Windows.Forms.ToolStripMenuItem uploadToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem renameToolStripMenuItem;
     }

@@ -1,6 +1,6 @@
 ﻿namespace MPAid.UserControls
 {
-    partial class RecordingPanel
+    partial class RecordingList
     {
         /// <summary> 
         /// Required designer variable.
@@ -45,9 +45,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.categoryComboBox.FormattingEnabled = true;
-            this.categoryComboBox.Location = new System.Drawing.Point(59, 50);
+            this.categoryComboBox.Location = new System.Drawing.Point(59, 54);
             this.categoryComboBox.Name = "categoryComboBox";
-            this.categoryComboBox.Size = new System.Drawing.Size(109, 20);
+            this.categoryComboBox.Size = new System.Drawing.Size(109, 21);
             this.categoryComboBox.TabIndex = 0;
             this.categoryComboBox.SelectedValueChanged += new System.EventHandler(this.SpeakerOrCategoryComboBox_OnSelectedValueChanged);
             // 
@@ -57,9 +57,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.speakerComboBox.FormattingEnabled = true;
-            this.speakerComboBox.Location = new System.Drawing.Point(59, 21);
+            this.speakerComboBox.Location = new System.Drawing.Point(59, 23);
             this.speakerComboBox.Name = "speakerComboBox";
-            this.speakerComboBox.Size = new System.Drawing.Size(109, 20);
+            this.speakerComboBox.Size = new System.Drawing.Size(109, 21);
             this.speakerComboBox.TabIndex = 1;
             this.speakerComboBox.SelectedValueChanged += new System.EventHandler(this.SpeakerOrCategoryComboBox_OnSelectedValueChanged);
             // 
@@ -69,10 +69,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.wordListBox.FormattingEnabled = true;
-            this.wordListBox.ItemHeight = 12;
-            this.wordListBox.Location = new System.Drawing.Point(8, 13);
+            this.wordListBox.Location = new System.Drawing.Point(8, 14);
             this.wordListBox.Name = "wordListBox";
-            this.wordListBox.Size = new System.Drawing.Size(160, 88);
+            this.wordListBox.Size = new System.Drawing.Size(160, 95);
             this.wordListBox.TabIndex = 2;
             // 
             // label1
@@ -81,9 +80,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 24);
+            this.label1.Location = new System.Drawing.Point(6, 26);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(47, 12);
+            this.label1.Size = new System.Drawing.Size(47, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Speaker";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -94,10 +93,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 53);
+            this.label2.Location = new System.Drawing.Point(6, 57);
             this.label2.Name = "label2";
             this.label2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.label2.Size = new System.Drawing.Size(53, 12);
+            this.label2.Size = new System.Drawing.Size(49, 13);
             this.label2.TabIndex = 2;
             this.label2.Text = "Category";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -112,7 +111,7 @@
             this.filterGroupBox.Controls.Add(this.speakerComboBox);
             this.filterGroupBox.Location = new System.Drawing.Point(3, 3);
             this.filterGroupBox.Name = "filterGroupBox";
-            this.filterGroupBox.Size = new System.Drawing.Size(179, 75);
+            this.filterGroupBox.Size = new System.Drawing.Size(179, 81);
             this.filterGroupBox.TabIndex = 4;
             this.filterGroupBox.TabStop = false;
             this.filterGroupBox.Text = "Filter";
@@ -123,21 +122,21 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.wordListBox);
-            this.groupBox1.Location = new System.Drawing.Point(3, 79);
+            this.groupBox1.Location = new System.Drawing.Point(3, 86);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(179, 118);
+            this.groupBox1.Size = new System.Drawing.Size(179, 128);
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "List";
             // 
-            // RecordingPanel
+            // RecordingList
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.filterGroupBox);
-            this.Name = "RecordingPanel";
-            this.Size = new System.Drawing.Size(207, 269);
+            this.Name = "RecordingList";
+            this.Size = new System.Drawing.Size(207, 291);
             this.filterGroupBox.ResumeLayout(false);
             this.filterGroupBox.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -150,8 +149,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox filterGroupBox;
         private System.Windows.Forms.GroupBox groupBox1;
-        public System.Windows.Forms.ListBox wordListBox;
-        public System.Windows.Forms.ComboBox categoryComboBox;
-        public System.Windows.Forms.ComboBox speakerComboBox;
+        private System.Windows.Forms.ComboBox speakerComboBox;
+        private System.Windows.Forms.ComboBox categoryComboBox;
+        private System.Windows.Forms.ListBox wordListBox;
     }
 }
