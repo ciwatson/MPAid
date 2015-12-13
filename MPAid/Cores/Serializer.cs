@@ -6,7 +6,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MPAid.Modules
+namespace MPAid.Cores
 {
     public class Serializer<T>
     where T : class, ISerializable, new()

@@ -5,6 +5,7 @@ namespace MPAid.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
     using System.Data.Entity.Migrations;
+    using Cores;
     public partial class MPAidModel : DbContext
     {
         public MPAidModel()
@@ -29,7 +30,7 @@ namespace MPAid.Models
         {
             try
             {
-                Modules.NamePaser paser = new Modules.NamePaser();
+                NamePaser paser = new NamePaser();
                 paser.SingleFile = recordingFile;
 
                 Speaker spk = this.Speaker.SingleOrDefault(x => x.Name == paser.Speaker);

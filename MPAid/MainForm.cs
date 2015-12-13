@@ -10,7 +10,7 @@ using System.Threading;
 using System.Windows.Forms;
 using System.Runtime.Serialization.Formatters.Binary;
 using MPAid.Forms.Config;
-using MPAid.Modules;
+using MPAid.Cores;
 using MPAid.Models;
 using System.Data.Entity;
 using MPAid.UserControls;
@@ -227,8 +227,8 @@ namespace MPAid
         {
             try
             {
-                Speaker spk = recordingPanel.speakerComboBox.SelectedItem as Speaker;
-                Word wd = recordingPanel.wordListBox.SelectedItem as Word;
+                Speaker spk = recordingPanel.SpeakerComboBox.SelectedItem as Speaker;
+                Word wd = recordingPanel.WordListBox.SelectedItem as Word;
                 Recording rdg = this.DBModel.Recording.Local.Where(x => x.WordId == wd.WordId && x.SpeakerId == spk.SpeakerId).SingleOrDefault();
                 if (rdg != null)
                 {
@@ -886,6 +886,11 @@ namespace MPAid
         }
 
         bool doCloseLogin = true;
+
+        public RecordingList RecordingList
+        {
+            get {return RecordingList; }
+        }
 
         private void logToolStripMenuItem_Click(object sender, EventArgs e)
         {

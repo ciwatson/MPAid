@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MPAid.Modules
+namespace MPAid.Cores
 {
     public static class EnumerableExtension
     {

@@ -1,5 +1,6 @@
 namespace MPAid.Migrations
 {
+    using Cores;
     using System;
     using System.Collections.Generic;
     using System.Data.Entity;
@@ -33,7 +34,7 @@ namespace MPAid.Migrations
             {
                 String dirPath = @".\Recordings";
                 DirectoryInfo dirInfo = new DirectoryInfo(dirPath);
-                Modules.NamePaser paser = new Modules.NamePaser();
+                NamePaser paser = new NamePaser();
                 foreach(FileInfo item in dirInfo.GetFiles().Where(x => x.FullName.Contains("vowel")))
                 {
                     paser.SingleFile = item.FullName;

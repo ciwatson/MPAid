@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MPAid.Models;
-namespace MPAid.Modules
+namespace MPAid.Cores
 {
     public class VowelComparer : IComparer<Word>
     {

@@ -61,6 +61,24 @@
   <PropertyGroup>
     <StartupObject>MPAid.Program</StartupObject>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
@@ -78,6 +96,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing.Design" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web" />
@@ -88,6 +107,21 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="Vlc.DotNet.Core, Version=2.1.62.0, Culture=neutral, PublicKeyToken=84529da31f4eb963, processorArchitecture=x86">
+      <HintPath>..\packages\Vlc.DotNet.Core.2.1.62\lib\net45\x86\Vlc.DotNet.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Vlc.DotNet.Core.Interops, Version=2.1.62.0, Culture=neutral, PublicKeyToken=84529da31f4eb963, processorArchitecture=x86">
+      <HintPath>..\packages\Vlc.DotNet.Core.Interops.2.1.62\lib\net45\x86\Vlc.DotNet.Core.Interops.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Vlc.DotNet.Forms, Version=2.1.62.0, Culture=neutral, PublicKeyToken=84529da31f4eb963, processorArchitecture=x86">
+      <HintPath>..\packages\Vlc.DotNet.Forms.2.1.62\lib\net45\x86\Vlc.DotNet.Forms.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Vlc.DotNet.Wpf">
+      <HintPath>..\packages\Vlc.DotNet.Wpf.2.1.62\lib\net45\x86\Vlc.DotNet.Wpf.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Forms\AdminConsole.cs">
@@ -145,8 +179,8 @@
     <Compile Include="Models\Speaker.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Word.cs" />
-    <Compile Include="Modules\Picker.cs" />
-    <Compile Include="Modules\Serializer.cs" />
+    <Compile Include="Cores\EnumberationPicker.cs" />
+    <Compile Include="Cores\Serializer.cs" />
     <Compile Include="Modules\FormantPlotController.cs" />
     <Compile Include="Modules\IoController.cs" />
     <Compile Include="Modules\MPAiUser.cs" />
@@ -157,13 +191,13 @@
     <Compile Include="Modules\HtmlGenerator.cs" />
     <Compile Include="Modules\MaoriObj.cs" />
     <Compile Include="Modules\mathLib.cs" />
-    <Compile Include="Modules\NamePaser.cs" />
+    <Compile Include="Cores\NamePaser.cs" />
     <Compile Include="Modules\NAudioController.cs" />
     <Compile Include="Modules\PaConfig.cs" />
     <Compile Include="Modules\PaEngine.cs" />
-    <Compile Include="Modules\SysCfg.cs" />
+    <Compile Include="Cores\SysCfg.cs" />
     <Compile Include="Modules\UserManagement.cs" />
-    <Compile Include="Modules\VowelComparer.cs" />
+    <Compile Include="Cores\VowelComparer.cs" />
     <Compile Include="Modules\WordMapper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -193,11 +227,17 @@
     <Compile Include="Forms\Config\SystemConfig.Designer.cs">
       <DependentUpon>SystemConfig.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\RecordingPanel.cs">
+    <Compile Include="UserControls\RecordingList.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\RecordingPanel.Designer.cs">
-      <DependentUpon>RecordingPanel.cs</DependentUpon>
+    <Compile Include="UserControls\RecordingList.Designer.cs">
+      <DependentUpon>RecordingList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\VLCPlayer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\VLCPlayer.Designer.cs">
+      <DependentUpon>VLCPlayer.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Forms\AdminConsole.resx">
       <DependentUpon>AdminConsole.cs</DependentUpon>
@@ -245,8 +285,11 @@
     <EmbeddedResource Include="Forms\Config\SystemConfig.resx">
       <DependentUpon>SystemConfig.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\RecordingPanel.resx">
-      <DependentUpon>RecordingPanel.cs</DependentUpon>
+    <EmbeddedResource Include="UserControls\RecordingList.resx">
+      <DependentUpon>RecordingList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\VLCPlayer.resx">
+      <DependentUpon>VLCPlayer.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -298,6 +341,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Lib\header-files\" />
+    <Folder Include="Lib\x64\" />
+    <Folder Include="Lib\x86\" />
     <Folder Include="Properties\DataSources\" />
   </ItemGroup>
   <ItemGroup>
@@ -308,6 +354,9 @@
     </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>XCOPY "$(ProjectDir)Lib" "$(TargetDir)" /S /Y</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
