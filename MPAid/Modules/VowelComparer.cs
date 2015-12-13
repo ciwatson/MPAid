@@ -28,9 +28,16 @@ namespace MPAid.Modules
 
         private List<String> table = new List<string>()
         {
-            "ae",
+            "o",
             "a",
-            "e"
+            "e",
+            "i",
+            "u",
+            "ae",
+            "ai",
+            "ao",
+            "au",
+            "ou"
         };
     }
 }
