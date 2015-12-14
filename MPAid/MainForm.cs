@@ -138,8 +138,7 @@ namespace MPAid
         private void InitializeDB()
         {
             this.DBModel = new MPAidModel();
-            this.DBModel.AudioRecording.Load();
-            this.DBModel.VideoRecording.Load();
+            this.DBModel.Recording.Load();
             this.DBModel.Speaker.Load();
             this.DBModel.Category.Load();
             this.DBModel.Word.Load();

@@ -99,7 +99,7 @@ namespace MPAid.Forms.Config
                 {
                     SingleFile sf = onDBListBox.SelectedItems[i] as MPAid.Models.SingleFile;
                     Copy copy = sf.Copy;
-                    Recording rd = copy.Recording;
+                    Recording rd = copy.Audio;
                     Speaker spk = rd.Speaker;
                     Word word = rd.Word;
                     Category cty = word.Category;
@@ -113,11 +113,11 @@ namespace MPAid.Forms.Config
 
                     if(rd.GetType() == typeof(AudioRecording))
                     {
-                        if ((rd as AudioRecording).Audio.Count == 0) DBContext.AudioRecording.Remove(rd as AudioRecording);
+                        if ((rd as AudioRecording).Audio.Count == 0) DBContext.Recording.Remove(rd);
                     }
                     else if (rd.GetType() == typeof(VideoRecording))
                     {
-                        if ((rd as VideoRecording).Video == null) DBContext.VideoRecording.Remove(rd as VideoRecording);
+                        if ((rd as VideoRecording).Video == null) DBContext.Recording.Remove(rd);
                     }
                     if (spk.Recordings.Count == 0) DBContext.Speaker.Remove(spk);
                     if (word.Recordings.Count == 0) DBContext.Word.Remove(word);

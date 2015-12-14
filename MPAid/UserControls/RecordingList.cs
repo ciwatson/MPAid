@@ -71,7 +71,7 @@ namespace MPAid.UserControls
             {
                 Speaker spk = SpeakerComboBox.SelectedItem as Speaker;
                 Word wd = WordListBox.SelectedItem as Word;
-                AudioRecording ard = MainForm.self.DBModel.AudioRecording.Local.Where(x => x.WordId == wd.WordId && x.SpeakerId == spk.SpeakerId).SingleOrDefault();
+                AudioRecording ard = MainForm.self.DBModel.Recording.Local.Where(x => x.WordId == wd.WordId && x.SpeakerId == spk.SpeakerId).SingleOrDefault() as AudioRecording;
                 if (ard != null)
                 {
                     SingleFile sf = ard.Audio.PickNext().SingleFile;

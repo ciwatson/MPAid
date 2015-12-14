@@ -16,9 +16,13 @@
         [Index(IsUnique = true)]
         public string Name { get; set; }
 
-        public int RecordingId { get; set; }
-        [ForeignKey("RecordingId")]
-        public virtual Recording Recording { get; set; }
+        public int AudioId { get; set; }
+        [ForeignKey("AudioId")]
+        public virtual Recording Audio { get; set; }
+
+        public int? VideoId { get; set; }
+        [ForeignKey("VideoId")]
+        public virtual Recording Video { get; set; }
 
         public virtual SingleFile SingleFile { get; set; }
     }

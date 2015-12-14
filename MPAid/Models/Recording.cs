@@ -8,10 +8,9 @@ namespace MPAid.Models
 
     [Table("Recording")]
     public partial class Recording
-    {       
+    {
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
-
+        public int RecordingId { get; set; }
         [Required]
         [StringLength(64)]
         [Index(IsUnique = true)]

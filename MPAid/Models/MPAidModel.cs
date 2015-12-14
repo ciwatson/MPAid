@@ -16,8 +16,7 @@ namespace MPAid.Models
         }
 
         public virtual DbSet<Category> Category { get; set; }
-        public virtual DbSet<AudioRecording> AudioRecording { get; set; }
-        public virtual DbSet<VideoRecording> VideoRecording { get; set; }
+        public virtual DbSet<Recording> Recording { get; set; }
         public virtual DbSet<Speaker> Speaker { get; set; }
         public virtual DbSet<Word> Word { get; set; }
         public virtual DbSet<Copy> Copy { get; set; }
@@ -68,7 +67,7 @@ namespace MPAid.Models
                     this.SaveChanges();
                 }
 
-                AudioRecording ard = this.AudioRecording.SingleOrDefault(x => x.Name == paser.Recording);
+                AudioRecording ard = this.Recording.SingleOrDefault(x => x.Name == paser.Recording) as AudioRecording;
                 if (ard == null)
                 {
                     ard = new AudioRecording()
@@ -77,7 +76,7 @@ namespace MPAid.Models
                         SpeakerId = spk.SpeakerId,
                         WordId = word.WordId
                     };
-                    this.AudioRecording.AddOrUpdate(x => x.Name, ard);
+                    this.Recording.AddOrUpdate(x => x.Name, ard);
                     this.SaveChanges();
                 }
 
@@ -87,9 +86,9 @@ namespace MPAid.Models
                     copy = new Copy()
                     {
                         Name = paser.FileName,
-                        RecordingId = ard.Id
+                        AudioId = ard.RecordingId
                     };
-                    this.Copy.AddOrUpdate(x => new { x.Name, x.RecordingId }, copy);
+                    this.Copy.AddOrUpdate(x => new { x.Name, x.AudioId }, copy);
                     this.SaveChanges();
                 }
 
