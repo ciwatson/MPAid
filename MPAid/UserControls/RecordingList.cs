@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Data.Entity;
 using MPAid.Models;
 using MPAid.Cores;
+using MPAid.Forms;
 
 namespace MPAid.UserControls
 {
@@ -64,5 +65,29 @@ namespace MPAid.UserControls
             this.wordListBox.DisplayMember = "Name";
         }
 
+        private void WordListBox_OnDoubleClick(object sender, EventArgs e)
+        {
+            try
+            {
+                Speaker spk = SpeakerComboBox.SelectedItem as Speaker;
+                Word wd = WordListBox.SelectedItem as Word;
+                Recording rdg = MainForm.self.DBModel.Recording.Local.Where(x => x.WordId == wd.WordId && x.SpeakerId == spk.SpeakerId).SingleOrDefault();
+                if (rdg != null)
+                {
+                    SingleFile sf = rdg.Copies.PickNext().SingleFile;
+                    string filePath = sf.Address + "\\" + sf.Name;
+
+                    TestForm.self.OperationTab.VlcPlayer.VlcControl.Play(new Uri(filePath));
+                }
+                else
+                {
+                    MessageBox.Show("Invalid recording!");
+                }
+            }
+            catch (Exception exp)
+            {
+                Console.WriteLine(exp);
+            }
+        }
     }
 }

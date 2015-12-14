@@ -80,6 +80,7 @@ namespace MPAid
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.submitFeedbackToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.testToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.headerBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.categoryBindingSource)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -449,7 +450,6 @@ namespace MPAid
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.recordingPanel.Location = new System.Drawing.Point(12, 6);
-            this.recordingPanel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.recordingPanel.Name = "recordingPanel";
             this.recordingPanel.Size = new System.Drawing.Size(160, 365);
             this.recordingPanel.TabIndex = 7;
@@ -557,7 +557,7 @@ namespace MPAid
             // systemToolStripMenuItem
             // 
             this.systemToolStripMenuItem.Name = "systemToolStripMenuItem";
-            this.systemToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.systemToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.systemToolStripMenuItem.Text = "System";
             this.systemToolStripMenuItem.Click += new System.EventHandler(this.systemToolStripMenuItem_Click);
             // 
@@ -567,7 +567,7 @@ namespace MPAid
             this.uploadToolStripMenuItem,
             this.renameToolStripMenuItem});
             this.recordingToolStripMenuItem.Name = "recordingToolStripMenuItem";
-            this.recordingToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.recordingToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.recordingToolStripMenuItem.Text = "Recording";
             // 
             // uploadToolStripMenuItem
@@ -588,7 +588,8 @@ namespace MPAid
             // 
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.submitFeedbackToolStripMenuItem,
-            this.aboutToolStripMenuItem});
+            this.aboutToolStripMenuItem,
+            this.testToolStripMenuItem});
             this.helpToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("helpToolStripMenuItem.Image")));
             this.helpToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
@@ -611,6 +612,13 @@ namespace MPAid
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(169, 26);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
+            // 
+            // testToolStripMenuItem
+            // 
+            this.testToolStripMenuItem.Name = "testToolStripMenuItem";
+            this.testToolStripMenuItem.Size = new System.Drawing.Size(169, 26);
+            this.testToolStripMenuItem.Text = "Test";
+            this.testToolStripMenuItem.Click += new System.EventHandler(this.testToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -700,6 +708,7 @@ namespace MPAid
         private UserControls.RecordingList recordingPanel;
         private System.Windows.Forms.ToolStripMenuItem uploadToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem renameToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem testToolStripMenuItem;
     }
 }
 

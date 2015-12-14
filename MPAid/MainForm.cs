@@ -14,6 +14,8 @@ using MPAid.Cores;
 using MPAid.Models;
 using System.Data.Entity;
 using MPAid.UserControls;
+using Vlc.DotNet.Core;
+using MPAid.Forms;
 
 namespace MPAid
 {
@@ -46,6 +48,8 @@ namespace MPAid
         public SysCfg configContent;
 
         public MPAidModel DBModel;
+
+        public TestForm test = new TestForm();
 
         public MainForm(UserManagement users)
         {
@@ -141,7 +145,6 @@ namespace MPAid
             this.DBModel.Copy.Load();
             this.DBModel.SingleFile.Load();
         }
-
         private void FillLists()
         {
             this.recordingPanel.DataBinding();
@@ -945,6 +948,11 @@ namespace MPAid
         private void renameToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.recordingRenameForm.ShowDialog(this);
+        }
+
+        private void testToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.test.ShowDialog(this);
         }
     }
 }

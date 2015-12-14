@@ -16,6 +16,10 @@ namespace MPAid.UserControls
 {
     public partial class VlcPlayer : UserControl
     {
+        public VlcControl VlcControl
+        {
+            get { return vlcControl; }
+        }
         public VlcPlayer()
         {
             InitializeComponent();
@@ -28,9 +32,9 @@ namespace MPAid.UserControls
             if (currentDirectory == null)
                 return;
             if (AssemblyName.GetAssemblyName(currentAssembly.Location).ProcessorArchitecture == ProcessorArchitecture.X86)
-                e.VlcLibDirectory = new DirectoryInfo(Path.Combine(currentDirectory, @"..\..\..\lib\x86\"));
+                e.VlcLibDirectory = new DirectoryInfo(Path.Combine(currentDirectory, @"x86\"));
             else
-                e.VlcLibDirectory = new DirectoryInfo(Path.Combine(currentDirectory, @"..\..\..\lib\x64\"));
+                e.VlcLibDirectory = new DirectoryInfo(Path.Combine(currentDirectory, @"x64\"));
 
             if (!e.VlcLibDirectory.Exists)
             {

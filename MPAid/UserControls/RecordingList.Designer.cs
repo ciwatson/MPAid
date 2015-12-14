@@ -73,6 +73,7 @@
             this.wordListBox.Name = "wordListBox";
             this.wordListBox.Size = new System.Drawing.Size(160, 95);
             this.wordListBox.TabIndex = 2;
+            this.wordListBox.DoubleClick += new System.EventHandler(this.WordListBox_OnDoubleClick);
             // 
             // label1
             // 
