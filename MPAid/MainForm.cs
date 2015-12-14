@@ -87,17 +87,17 @@ namespace MPAid
 
             InitializeUserProfile();
 
-            tdButtonFormantPlot.ImageNormal = Properties.Resources.ButtonYellow_0;
-            tdButtonFormantPlot.ImageHighlight = Properties.Resources.ButtonYellow_1;
-            tdButtonFormantPlot.ImagePressed = Properties.Resources.ButtonYellow_2;
+            //tdButtonFormantPlot.ImageNormal = Properties.Resources.ButtonYellow_0;
+            //tdButtonFormantPlot.ImageHighlight = Properties.Resources.ButtonYellow_1;
+            //tdButtonFormantPlot.ImagePressed = Properties.Resources.ButtonYellow_2;
 
-            ButtonPlay.ImageNormal = Properties.Resources.ButtonGreen_0;
-            ButtonPlay.ImageHighlight = Properties.Resources.ButtonGreen_1;
-            ButtonPlay.ImagePressed = Properties.Resources.ButtonGreen_2;
+            //ButtonPlay.ImageNormal = Properties.Resources.ButtonGreen_0;
+            //ButtonPlay.ImageHighlight = Properties.Resources.ButtonGreen_1;
+            //ButtonPlay.ImagePressed = Properties.Resources.ButtonGreen_2;
 
-            ButtonStop.ImageNormal = Properties.Resources.ButtonRed_0;
-            ButtonStop.ImageHighlight = Properties.Resources.ButtonRed_1;
-            ButtonStop.ImagePressed = Properties.Resources.ButtonRed_2;
+            //ButtonStop.ImageNormal = Properties.Resources.ButtonRed_0;
+            //ButtonStop.ImageHighlight = Properties.Resources.ButtonRed_1;
+            //ButtonStop.ImagePressed = Properties.Resources.ButtonRed_2;
 
             RefreshTabState();
             ResetPreviewBox();
@@ -129,7 +129,7 @@ namespace MPAid
         private void InitializeConfig()
         {          
             configContent = Serializer<SysCfg>.Load<BinaryFormatter>(SysCfg.path);
-            System.IO.Directory.CreateDirectory(configContent.RecordingFolderAddr);
+            System.IO.Directory.CreateDirectory(configContent.AudioFolderAddr);
             this.systemConfigForm = new SystemConfig();
             this.recordingUploadForm = new RecordingUploadConfig();
             this.recordingRenameForm = new RecordingRenameConfig();
@@ -149,7 +149,7 @@ namespace MPAid
         {
             this.recordingPanel.DataBinding();
 
-            listBoxREC.DataSource = listREC;
+            //listBoxREC.DataSource = listREC;
         }
 
         private string GetVersionString()
@@ -159,13 +159,13 @@ namespace MPAid
 
         private void tdButtonFormantPlot_Click(object sender, EventArgs e)
         {
-            tdButtonFormantPlot.Enabled = false;
+            //tdButtonFormantPlot.Enabled = false;
             this.WindowState = FormWindowState.Minimized;
 
             // Start formant plot
             FormantPlotController.RunFormantPlot();
 
-            tdButtonFormantPlot.Enabled = true;
+            //tdButtonFormantPlot.Enabled = true;
         }
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -228,26 +228,26 @@ namespace MPAid
 
         private void ButtonPlay_Click(object sender, EventArgs e)
         {
-            try
-            {
-                Speaker spk = recordingPanel.SpeakerComboBox.SelectedItem as Speaker;
-                Word wd = recordingPanel.WordListBox.SelectedItem as Word;
-                Recording rdg = this.DBModel.Recording.Local.Where(x => x.WordId == wd.WordId && x.SpeakerId == spk.SpeakerId).SingleOrDefault();
-                if (rdg != null)
-                {
-                    SingleFile sf = rdg.Copies.PickNext().SingleFile;
-                    string filePath = sf.Address + "\\" + sf.Name;
-                    PlayVowelSoundAsync(filePath, (int)NumPlayback.Value);
-                }
-                else
-                {
-                    MessageBox.Show("Invalid recording!");
-                }
-            }
-            catch (Exception exp)
-            {
-                Console.WriteLine(exp);
-            }
+            //try
+            //{
+            //    Speaker spk = recordingPanel.SpeakerComboBox.SelectedItem as Speaker;
+            //    Word wd = recordingPanel.WordListBox.SelectedItem as Word;
+            //    Recording rdg = this.DBModel.Recording.Local.Where(x => x.WordId == wd.WordId && x.SpeakerId == spk.SpeakerId).SingleOrDefault();
+            //    if (rdg != null)
+            //    {
+            //        SingleFile sf = rdg.Copies.PickNext().SingleFile;
+            //        string filePath = sf.Address + "\\" + sf.Name;
+            //        PlayVowelSoundAsync(filePath, (int)NumPlayback.Value);
+            //    }
+            //    else
+            //    {
+            //        MessageBox.Show("Invalid recording!");
+            //    }
+            //}
+            //catch (Exception exp)
+            //{
+            //    Console.WriteLine(exp);
+            //}
         }
 
         private void ButtonStop_Click(object sender, EventArgs e)
@@ -367,18 +367,18 @@ namespace MPAid
 
         private void RefreshTabState()
         {
-            if (GetTabState() == 0)
-            {
-                groupBox3.Enabled = false;
-                panel2.Enabled = true;
-                ResetPAid();
-            }
-            if (GetTabState() == 1)
-            {
-                groupBox3.Enabled = true;
-                panel2.Enabled = false;
-                RefreshPAid();
-            }
+            //if (GetTabState() == 0)
+            //{
+            //    groupBox3.Enabled = false;
+            //    panel2.Enabled = true;
+            //    ResetPAid();
+            //}
+            //if (GetTabState() == 1)
+            //{
+            //    groupBox3.Enabled = true;
+            //    panel2.Enabled = false;
+            //    RefreshPAid();
+            //}
         }
 
         private void myTabControl_SelectedIndexChanged(object sender, EventArgs e)
@@ -389,7 +389,7 @@ namespace MPAid
 
         private void ResetPreviewBox()
         {
-            previewBox.BackgroundImage = previewBox.InitialImage;
+            //previewBox.BackgroundImage = previewBox.InitialImage;
         }
 
         private void RefreshPreviewBox()
@@ -399,16 +399,16 @@ namespace MPAid
                 ResetPreviewBox();
                 return;
             }
-            if (GetTabState() == 0)
-            {
-                MaoriObj m = GetSelectedMaoriObj(MaoriObjType.Vowel);
-                if ((m != null) && (m.DefaultImage != null))
-                    previewBox.BackgroundImage = m.DefaultImage;
-                else if ((m != null) && (m.AnimationImages != null))
-                    previewBox.BackgroundImage = m.AnimationImages.Images[0];
-                else
-                    ResetPreviewBox();
-            }
+            //if (GetTabState() == 0)
+            //{
+            //    MaoriObj m = GetSelectedMaoriObj(MaoriObjType.Vowel);
+            //    if ((m != null) && (m.DefaultImage != null))
+            //        previewBox.BackgroundImage = m.DefaultImage;
+            //    else if ((m != null) && (m.AnimationImages != null))
+            //        previewBox.BackgroundImage = m.AnimationImages.Images[0];
+            //    else
+            //        ResetPreviewBox();
+            //}
         }
 
         private void VowelList_SelectedIndexChanged(object sender, EventArgs e)
@@ -425,7 +425,7 @@ namespace MPAid
 
         private void AudioDelay_ValueChanged(object sender, EventArgs e)
         {
-            SetAudioInterval((int)AudioDelay.Value);
+            //SetAudioInterval((int)AudioDelay.Value);
         }
 
         private int AudioInterval = 1000;
@@ -453,7 +453,7 @@ namespace MPAid
             animationTotalFrames = 0;
             animationCurrentFrame = 0;
             animationCurrentPlay = null;
-            animationTimer.Stop();
+            //animationTimer.Stop();
         }
 
         private int animationTotalFrames = 0;
@@ -462,32 +462,32 @@ namespace MPAid
 
         private void StartAnimation()
         {
-            if (GetTabState() == 0)
-            {
-                MaoriObj m = GetSelectedMaoriObj(MaoriObjType.Vowel);
-                if (m != null)
-                {
-                    animationCurrentPlay = m;
-                    animationCurrentFrame = 0;
-                    animationTotalFrames = m.AnimationImages.Images.Count;
-                    animationTimer.Start();
-                }
-            }
+            //if (GetTabState() == 0)
+            //{
+            //    MaoriObj m = GetSelectedMaoriObj(MaoriObjType.Vowel);
+            //    if (m != null)
+            //    {
+            //        animationCurrentPlay = m;
+            //        animationCurrentFrame = 0;
+            //        animationTotalFrames = m.AnimationImages.Images.Count;
+            //        //animationTimer.Start();
+            //    }
+            //}
         }
 
         private void animationTimer_Tick(object sender, EventArgs e)
         {
-            if (GetTabState() == 0)
-            {
-                previewBox.BackgroundImage = animationCurrentPlay.AnimationImages.Images[animationCurrentFrame];
-                animationCurrentFrame += 1;
-                if (animationCurrentFrame == animationTotalFrames)
-                    ResetAnimator();
-            }
-            else
-            {
-                ResetAnimator();
-            }
+            //if (GetTabState() == 0)
+            //{
+            //    previewBox.BackgroundImage = animationCurrentPlay.AnimationImages.Images[animationCurrentFrame];
+            //    animationCurrentFrame += 1;
+            //    if (animationCurrentFrame == animationTotalFrames)
+            //        ResetAnimator();
+            //}
+            //else
+            //{
+            //    ResetAnimator();
+            //}
         }
 
         private const string strCorrectness = "Correctness";
@@ -500,21 +500,21 @@ namespace MPAid
 
         private void SetPaLabel(string text)
         {
-            labelCorrectness.Text = text;
+            //labelCorrectness.Text = text;
         }
 
         private void ResetRecordings()
         {
             recordedWavFiles.Clear();
-            buttonRecord.Enabled = true;
-            buttonLoadFromFile.Enabled = true;
+            //buttonRecord.Enabled = true;
+            //buttonLoadFromFile.Enabled = true;
             //buttonAnalyze.Enabled = false;
         }
 
         private void ResetPAid()
         {
             ResetRecordings();
-            wordSelectedLabel.Text = strNoWordSelected;
+            //wordSelectedLabel.Text = strNoWordSelected;
 
             //listBoxREC.Items.Clear();
             listREC.Clear();
@@ -525,8 +525,8 @@ namespace MPAid
         private void RefreshPAid()
         {
             MaoriObj m = GetSelectedMaoriObj(MaoriObjType.Word);
-            if (m != null)
-                wordSelectedLabel.Text = m.Name;
+            //if (m != null)
+                //wordSelectedLabel.Text = m.Name;
         }
 
         private bool RecordingsReady()
@@ -552,18 +552,18 @@ namespace MPAid
             if (word != null)
             {
                 SetPaLabel(strCorrectness);
-                buttonRecord.Enabled = false;
-                buttonLoadFromFile.Enabled = false;
-                //buttonAnalyze.Enabled = false;
+                //buttonRecord.Enabled = false;
+                //buttonLoadFromFile.Enabled = false;
+                ////buttonAnalyze.Enabled = false;
 
-                CurrentVoicePath = GetNextUserRecordingName(word);
+                //CurrentVoicePath = GetNextUserRecordingName(word);
 
-                // Start the Volume Meter and recorder
-                StartNAudioController();
-                myVoice = new VoiceRecorder(CurrentVoicePath);
-                myVoice.Start();
+                //// Start the Volume Meter and recorder
+                //StartNAudioController();
+                //myVoice = new VoiceRecorder(CurrentVoicePath);
+                //myVoice.Start();
 
-                buttonStopRecording.Enabled = true;
+                //buttonStopRecording.Enabled = true;
             }
             else
                 ShowPleaseSelectMsgBox("word");
@@ -589,9 +589,9 @@ namespace MPAid
             if (File.Exists(CurrentVoicePath))
                 recordedWavFiles.Add(CurrentVoicePath);
 
-            buttonRecord.Enabled = true;
-            buttonLoadFromFile.Enabled = true;
-            buttonStopRecording.Enabled = false;
+            //buttonRecord.Enabled = true;
+            //buttonLoadFromFile.Enabled = true;
+            //buttonStopRecording.Enabled = false;
 
             try
             {
@@ -607,28 +607,28 @@ namespace MPAid
 
         private void CheckIfRecordingsReady()
         {
-            if (RecordingsReady())
-            {
-                buttonAnalyze.Enabled = true;
-                buttonRecord.Enabled = false;
-                buttonLoadFromFile.Enabled = false;
-                SetPaLabel("Please click on Analyze");
-            }
-            else
-                SetPaLabel("One more time :) ");
+            //if (RecordingsReady())
+            //{
+            //    buttonAnalyze.Enabled = true;
+            //    buttonRecord.Enabled = false;
+            //    buttonLoadFromFile.Enabled = false;
+            //    SetPaLabel("Please click on Analyze");
+            //}
+            //else
+            //    SetPaLabel("One more time :) ");
         }
 
         private void buttonPlayUserRecording_Click(object sender, EventArgs e)
         {
-            HtmlConfig fileLocator = new HtmlConfig(systemIO.GetAppDataDir(allUsers.getCurrentUser()));
-            if (listBoxREC.Items.Count == 0)
-                return;
-            if (listBoxREC.SelectedItem == null)
-                return;
-            string targetSoundPath = fileLocator.GetRecPath(listBoxREC.SelectedIndex + 1,
-                HtmlConfig.pathType.fullUserRecPath);
-            if (File.Exists(targetSoundPath))
-                ResMan.PlaySound(targetSoundPath, false);
+            //HtmlConfig fileLocator = new HtmlConfig(systemIO.GetAppDataDir(allUsers.getCurrentUser()));
+            //if (listBoxREC.Items.Count == 0)
+            //    return;
+            //if (listBoxREC.SelectedItem == null)
+            //    return;
+            //string targetSoundPath = fileLocator.GetRecPath(listBoxREC.SelectedIndex + 1,
+            //    HtmlConfig.pathType.fullUserRecPath);
+            //if (File.Exists(targetSoundPath))
+            //    ResMan.PlaySound(targetSoundPath, false);
         }
 
         private void ShowInExplorer(string dirPath)
@@ -641,7 +641,7 @@ namespace MPAid
 
         private void RefreshListRecBox()
         {
-            listBoxREC.SelectedIndex = listBoxREC.Items.Count - 1;
+            //listBoxREC.SelectedIndex = listBoxREC.Items.Count - 1;
         }
 
         private void DoAnalysis()
@@ -692,7 +692,7 @@ namespace MPAid
                     HtmlConfig.pathType.fullSampleRecPath), true);
 
                 //change the UI
-                buttonShowReport.Enabled = true;
+                //buttonShowReport.Enabled = true;
                 ReportPath = engine.GetReportPath();
             }
 
@@ -732,7 +732,7 @@ namespace MPAid
 
         private void RefreshAnimationSpeed()
         {
-            animationTimer.Interval = DefaultInterval / speedController.Value;
+            //animationTimer.Interval = DefaultInterval / speedController.Value;
         }
 
         private string ReportPath = null;
@@ -753,11 +753,11 @@ namespace MPAid
             htmlWriter.Run();
 
             // Show the HTML file in system browser
-            ReportPath = hConfig.GetHtmlFullPath();
-            if (File.Exists(ReportPath))
-                systemIO.ShowInBrowser(ReportPath);
-            else
-                buttonShowReport.Enabled = false;
+            //ReportPath = hConfig.GetHtmlFullPath();
+            //if (File.Exists(ReportPath))
+            //    systemIO.ShowInBrowser(ReportPath);
+            //else
+            //    buttonShowReport.Enabled = false;
         }
 
         private void buttonLoadFromFile_Click(object sender, EventArgs e)
@@ -809,10 +809,10 @@ namespace MPAid
         {
             if (e.Button == MouseButtons.Left)
             {
-                MaoriObj word = GetSelectedMaoriObj(MaoriObjType.Word);
-                if (word != null)
-                    wordSelectedLabel.Text = string.Format("{0} ({1})",
-                        word.Name, word.WordSoundId);
+                //MaoriObj word = GetSelectedMaoriObj(MaoriObjType.Word);
+                //if (word != null)
+                //    wordSelectedLabel.Text = string.Format("{0} ({1})",
+                //        word.Name, word.WordSoundId);
             }
         }
 
@@ -820,36 +820,36 @@ namespace MPAid
 
         private void VisualizeVolumeMeter()
         {
-            // Make space for the volume meter
-            Width += 25;
+            //// Make space for the volume meter
+            //Width += 25;
 
-            // Visualize the volume meter
-            volumeMeter = new VerticalProgressBar()
-            {
-                Size = new Size(20, groupBox3.Height + groupBox4.Height),
-                Location = new Point(groupBox4.Left + groupBox4.Width + 6,
-                                     groupBox4.Top + mainMenuStrip.Height + headerBox.Height + 6)
-            };
+            //// Visualize the volume meter
+            //volumeMeter = new VerticalProgressBar()
+            //{
+            //    Size = new Size(20, groupBox3.Height + groupBox4.Height),
+            //    Location = new Point(groupBox4.Left + groupBox4.Width + 6,
+            //                         groupBox4.Top + mainMenuStrip.Height + headerBox.Height + 6)
+            //};
 
-            Controls.Add(volumeMeter);
-            volumeMeter.BringToFront();
+            //Controls.Add(volumeMeter);
+            //volumeMeter.BringToFront();
         }
 
-        private NAudioController volumeMeterController;
+        //private NAudioController volumeMeterController;
 
         private void InitializeNAudioController()
         {
-            volumeMeterController = new NAudioController();
+            //volumeMeterController = new NAudioController();
         }
 
         private void NAudioTimer_Tick(object sender, EventArgs e)
         {
-            volumeMeter.Value = volumeMeterController.GetValue();
+            //volumeMeter.Value = volumeMeterController.GetValue();
         }
 
         private void StopNAudioController()
         {
-            NAudioTimer.Stop();
+            //NAudioTimer.Stop();
             volumeMeter.Value = 0;
         }
 
@@ -857,22 +857,22 @@ namespace MPAid
 
         private void StartNAudioController()
         {
-            try
-            {
-                if (volumeMeterController.StatusOK())
-                    NAudioTimer.Start();
-            }
-            catch (Exception ex)
-            {
-                if (!NAudioFailureShown)
-                {
-                    NAudioFailureShown = true;
-                    MessageBox.Show("There is something wrong with the component NAudio.dll. \n" +
-                        "The Volume Meter feature will be disabled. \n"
-                        + ex.Message, "Ooops",
-                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-            }
+            //try
+            //{
+            //    if (volumeMeterController.StatusOK())
+            //        NAudioTimer.Start();
+            //}
+            //catch (Exception ex)
+            //{
+            //    if (!NAudioFailureShown)
+            //    {
+            //        NAudioFailureShown = true;
+            //        MessageBox.Show("There is something wrong with the component NAudio.dll. \n" +
+            //            "The Volume Meter feature will be disabled. \n"
+            //            + ex.Message, "Ooops",
+            //            MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //    }
+            //}
         }
 
         private void settingsToolStripMenuItem_Click(object sender, EventArgs e)

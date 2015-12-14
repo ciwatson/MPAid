@@ -1,11 +1,8 @@
 namespace MPAid.Migrations
 {
-    using Cores;
     using System;
-    using System.Collections.Generic;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
-    using System.IO;
     using System.Linq;
 
     internal sealed class Configuration : DbMigrationsConfiguration<MPAid.Models.MPAidModel>
@@ -29,23 +26,6 @@ namespace MPAid.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
-
-            try
-            {
-                String dirPath = @".\Recordings";
-                DirectoryInfo dirInfo = new DirectoryInfo(dirPath);
-                NamePaser paser = new NamePaser();
-                foreach(FileInfo item in dirInfo.GetFiles().Where(x => x.FullName.Contains("vowel")))
-                {
-                    paser.SingleFile = item.FullName;
-
-                    context.AddOrUpdateRecordingFile(paser.SingleFile);
-                }
-            }
-            catch(Exception exp)
-            {
-                Console.WriteLine(exp);
-            }
         }
     }
 }

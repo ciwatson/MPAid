@@ -89,10 +89,6 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="NAudio, Version=1.7.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\NAudio.1.7.3\lib\net35\NAudio.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -198,7 +194,6 @@
     <Compile Include="Modules\MaoriObj.cs" />
     <Compile Include="Modules\mathLib.cs" />
     <Compile Include="Cores\NamePaser.cs" />
-    <Compile Include="Modules\NAudioController.cs" />
     <Compile Include="Modules\PaConfig.cs" />
     <Compile Include="Modules\PaEngine.cs" />
     <Compile Include="Cores\SysCfg.cs" />

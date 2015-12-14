@@ -47,7 +47,7 @@
             this.categoryComboBox.FormattingEnabled = true;
             this.categoryComboBox.Location = new System.Drawing.Point(59, 54);
             this.categoryComboBox.Name = "categoryComboBox";
-            this.categoryComboBox.Size = new System.Drawing.Size(109, 21);
+            this.categoryComboBox.Size = new System.Drawing.Size(31, 21);
             this.categoryComboBox.TabIndex = 0;
             this.categoryComboBox.SelectedValueChanged += new System.EventHandler(this.SpeakerOrCategoryComboBox_OnSelectedValueChanged);
             // 
@@ -59,7 +59,7 @@
             this.speakerComboBox.FormattingEnabled = true;
             this.speakerComboBox.Location = new System.Drawing.Point(59, 23);
             this.speakerComboBox.Name = "speakerComboBox";
-            this.speakerComboBox.Size = new System.Drawing.Size(109, 21);
+            this.speakerComboBox.Size = new System.Drawing.Size(31, 21);
             this.speakerComboBox.TabIndex = 1;
             this.speakerComboBox.SelectedValueChanged += new System.EventHandler(this.SpeakerOrCategoryComboBox_OnSelectedValueChanged);
             // 
@@ -71,7 +71,7 @@
             this.wordListBox.FormattingEnabled = true;
             this.wordListBox.Location = new System.Drawing.Point(8, 14);
             this.wordListBox.Name = "wordListBox";
-            this.wordListBox.Size = new System.Drawing.Size(160, 95);
+            this.wordListBox.Size = new System.Drawing.Size(82, 160);
             this.wordListBox.TabIndex = 2;
             this.wordListBox.DoubleClick += new System.EventHandler(this.WordListBox_OnDoubleClick);
             // 
@@ -112,7 +112,7 @@
             this.filterGroupBox.Controls.Add(this.speakerComboBox);
             this.filterGroupBox.Location = new System.Drawing.Point(3, 3);
             this.filterGroupBox.Name = "filterGroupBox";
-            this.filterGroupBox.Size = new System.Drawing.Size(179, 81);
+            this.filterGroupBox.Size = new System.Drawing.Size(101, 81);
             this.filterGroupBox.TabIndex = 4;
             this.filterGroupBox.TabStop = false;
             this.filterGroupBox.Text = "Filter";
@@ -123,9 +123,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.wordListBox);
-            this.groupBox1.Location = new System.Drawing.Point(3, 86);
+            this.groupBox1.Location = new System.Drawing.Point(3, 87);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(179, 128);
+            this.groupBox1.Size = new System.Drawing.Size(101, 181);
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "List";
@@ -137,7 +137,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.filterGroupBox);
             this.Name = "RecordingList";
-            this.Size = new System.Drawing.Size(207, 291);
+            this.Size = new System.Drawing.Size(129, 318);
             this.filterGroupBox.ResumeLayout(false);
             this.filterGroupBox.PerformLayout();
             this.groupBox1.ResumeLayout(false);

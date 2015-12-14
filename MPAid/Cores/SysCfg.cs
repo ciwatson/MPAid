@@ -21,13 +21,13 @@ namespace MPAid.Cores
         protected SysCfg(SerializationInfo info, StreamingContext context)
         {
             if (info == null) { throw new System.ArgumentNullException("info"); }
-            this.recordingFolderAddr = info.GetString("recording folder address");
+            this.audioFolderAddr = info.GetString("recording folder address");
         }
 
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
             if (info == null) { throw new System.ArgumentNullException("info"); }
-            info.AddValue("recording folder address", this.recordingFolderAddr);
+            info.AddValue("recording folder address", this.audioFolderAddr);
         }
         #endregion
 
@@ -36,17 +36,31 @@ namespace MPAid.Cores
         [NonSerialized]
         public static readonly String path = "./SystemConfig.ini";
 
-        private String recordingFolderAddr;
-        public String RecordingFolderAddr
+        private String audioFolderAddr;
+        public String AudioFolderAddr
         {
             get
             {
-                //by default, the url is ./Recordings
-                return recordingFolderAddr == null ? System.Windows.Forms.Application.StartupPath + @"\Recordings" : recordingFolderAddr;
+                //by default, the url is ./Audio
+                return audioFolderAddr == null ? System.Windows.Forms.Application.StartupPath + @"\Audio" : audioFolderAddr;
             }
             set
             {
-                recordingFolderAddr = value;
+                audioFolderAddr = value;
+            }
+        }
+
+        private String videoFolderAddr;
+        public String VideoFolder
+        {
+            get
+            {
+                //by default, the url is ./Video
+                return audioFolderAddr == null ? System.Windows.Forms.Application.StartupPath + @"\Video" : videoFolderAddr;
+            }
+            set
+            {
+                audioFolderAddr = value;
             }
         }
     }

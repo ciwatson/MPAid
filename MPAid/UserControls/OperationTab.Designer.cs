@@ -30,8 +30,8 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.vlcPlayer = new MPAid.UserControls.VlcPlayer();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.tdButtonFormantPlot = new MPAid.TDButton();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -64,7 +64,7 @@
             this.tabControl1.Location = new System.Drawing.Point(6, 19);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(520, 340);
+            this.tabControl1.Size = new System.Drawing.Size(529, 394);
             this.tabControl1.TabIndex = 0;
             this.tabControl1.Tag = "";
             // 
@@ -74,22 +74,10 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(512, 314);
+            this.tabPage1.Size = new System.Drawing.Size(785, 454);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Video Player";
             this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.groupBox4);
-            this.tabPage2.Controls.Add(this.groupBox3);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(527, 355);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Pronouciation Aid";
-            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // vlcPlayer
             // 
@@ -98,15 +86,29 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.vlcPlayer.Location = new System.Drawing.Point(0, 0);
             this.vlcPlayer.Name = "vlcPlayer";
-            this.vlcPlayer.Size = new System.Drawing.Size(509, 308);
+            this.vlcPlayer.Size = new System.Drawing.Size(779, 448);
             this.vlcPlayer.TabIndex = 0;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.groupBox4);
+            this.tabPage2.Controls.Add(this.groupBox3);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(521, 368);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Pronouciation Aid";
+            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // groupBox4
             // 
+            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox4.Controls.Add(this.tdButtonFormantPlot);
             this.groupBox4.Location = new System.Drawing.Point(3, 3);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(520, 55);
+            this.groupBox4.Size = new System.Drawing.Size(512, 55);
             this.groupBox4.TabIndex = 8;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Formant Plot";
@@ -118,9 +120,9 @@
             this.tdButtonFormantPlot.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.tdButtonFormantPlot.FlatAppearance.BorderSize = 0;
             this.tdButtonFormantPlot.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.tdButtonFormantPlot.Location = new System.Drawing.Point(172, 14);
+            this.tdButtonFormantPlot.Location = new System.Drawing.Point(166, 19);
             this.tdButtonFormantPlot.Name = "tdButtonFormantPlot";
-            this.tdButtonFormantPlot.Size = new System.Drawing.Size(153, 27);
+            this.tdButtonFormantPlot.Size = new System.Drawing.Size(145, 27);
             this.tdButtonFormantPlot.TabIndex = 0;
             this.tdButtonFormantPlot.Text = "Open Formant Plot";
             this.tdButtonFormantPlot.UseVisualStyleBackColor = true;
@@ -128,6 +130,9 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox3.Controls.Add(this.listBoxREC);
             this.groupBox3.Controls.Add(this.buttonRecord);
             this.groupBox3.Controls.Add(this.label6);
@@ -140,7 +145,7 @@
             this.groupBox3.Controls.Add(this.buttonStopRecording);
             this.groupBox3.Location = new System.Drawing.Point(3, 64);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(520, 282);
+            this.groupBox3.Size = new System.Drawing.Size(512, 298);
             this.groupBox3.TabIndex = 7;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Pronunciation Aid (Beta)";
@@ -152,18 +157,18 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.listBoxREC.FormattingEnabled = true;
             this.listBoxREC.HorizontalScrollbar = true;
-            this.listBoxREC.Location = new System.Drawing.Point(6, 79);
+            this.listBoxREC.Location = new System.Drawing.Point(9, 64);
             this.listBoxREC.Name = "listBoxREC";
-            this.listBoxREC.Size = new System.Drawing.Size(377, 147);
+            this.listBoxREC.Size = new System.Drawing.Size(433, 173);
             this.listBoxREC.TabIndex = 13;
             // 
             // buttonRecord
             // 
             this.buttonRecord.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonRecord.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.buttonRecord.Location = new System.Drawing.Point(389, 55);
+            this.buttonRecord.Location = new System.Drawing.Point(448, 15);
             this.buttonRecord.Name = "buttonRecord";
-            this.buttonRecord.Size = new System.Drawing.Size(125, 25);
+            this.buttonRecord.Size = new System.Drawing.Size(58, 25);
             this.buttonRecord.TabIndex = 4;
             this.buttonRecord.Text = "&Record";
             this.buttonRecord.UseVisualStyleBackColor = true;
@@ -171,7 +176,7 @@
             // 
             // label6
             // 
-            this.label6.Location = new System.Drawing.Point(6, 55);
+            this.label6.Location = new System.Drawing.Point(6, 40);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(183, 21);
             this.label6.TabIndex = 12;
@@ -182,9 +187,9 @@
             // 
             this.buttonLoadFromFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonLoadFromFile.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.buttonLoadFromFile.Location = new System.Drawing.Point(389, 148);
+            this.buttonLoadFromFile.Location = new System.Drawing.Point(448, 108);
             this.buttonLoadFromFile.Name = "buttonLoadFromFile";
-            this.buttonLoadFromFile.Size = new System.Drawing.Size(125, 25);
+            this.buttonLoadFromFile.Size = new System.Drawing.Size(58, 25);
             this.buttonLoadFromFile.TabIndex = 10;
             this.buttonLoadFromFile.Text = "From file";
             this.buttonLoadFromFile.UseVisualStyleBackColor = true;
@@ -195,21 +200,22 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonShowReport.Enabled = false;
             this.buttonShowReport.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.buttonShowReport.Location = new System.Drawing.Point(98, 251);
+            this.buttonShowReport.Location = new System.Drawing.Point(98, 267);
             this.buttonShowReport.Name = "buttonShowReport";
-            this.buttonShowReport.Size = new System.Drawing.Size(317, 25);
+            this.buttonShowReport.Size = new System.Drawing.Size(309, 25);
             this.buttonShowReport.TabIndex = 9;
             this.buttonShowReport.Text = "Show score report";
             this.buttonShowReport.UseVisualStyleBackColor = true;
             // 
             // labelCorrectness
             // 
-            this.labelCorrectness.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelCorrectness.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.labelCorrectness.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelCorrectness.ForeColor = System.Drawing.Color.Green;
-            this.labelCorrectness.Location = new System.Drawing.Point(6, 227);
+            this.labelCorrectness.Location = new System.Drawing.Point(174, 244);
             this.labelCorrectness.Name = "labelCorrectness";
-            this.labelCorrectness.Size = new System.Drawing.Size(508, 20);
+            this.labelCorrectness.Size = new System.Drawing.Size(165, 20);
             this.labelCorrectness.TabIndex = 8;
             this.labelCorrectness.Text = "Correctness";
             this.labelCorrectness.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -218,9 +224,9 @@
             // 
             this.buttonShowDir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonShowDir.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.buttonShowDir.Location = new System.Drawing.Point(389, 117);
+            this.buttonShowDir.Location = new System.Drawing.Point(448, 77);
             this.buttonShowDir.Name = "buttonShowDir";
-            this.buttonShowDir.Size = new System.Drawing.Size(125, 25);
+            this.buttonShowDir.Size = new System.Drawing.Size(58, 25);
             this.buttonShowDir.TabIndex = 7;
             this.buttonShowDir.Text = "Play this";
             this.buttonShowDir.UseVisualStyleBackColor = true;
@@ -232,7 +238,7 @@
             this.wordSelectedLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.wordSelectedLabel.Location = new System.Drawing.Point(6, 17);
             this.wordSelectedLabel.Name = "wordSelectedLabel";
-            this.wordSelectedLabel.Size = new System.Drawing.Size(508, 35);
+            this.wordSelectedLabel.Size = new System.Drawing.Size(436, 23);
             this.wordSelectedLabel.TabIndex = 6;
             this.wordSelectedLabel.Text = "No word has been selected";
             this.wordSelectedLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -241,9 +247,9 @@
             // 
             this.buttonAnalyze.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonAnalyze.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.buttonAnalyze.Location = new System.Drawing.Point(389, 179);
+            this.buttonAnalyze.Location = new System.Drawing.Point(448, 139);
             this.buttonAnalyze.Name = "buttonAnalyze";
-            this.buttonAnalyze.Size = new System.Drawing.Size(125, 25);
+            this.buttonAnalyze.Size = new System.Drawing.Size(58, 25);
             this.buttonAnalyze.TabIndex = 5;
             this.buttonAnalyze.Text = "&Analyze";
             this.buttonAnalyze.UseVisualStyleBackColor = true;
@@ -253,9 +259,9 @@
             this.buttonStopRecording.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonStopRecording.Enabled = false;
             this.buttonStopRecording.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.buttonStopRecording.Location = new System.Drawing.Point(389, 86);
+            this.buttonStopRecording.Location = new System.Drawing.Point(448, 46);
             this.buttonStopRecording.Name = "buttonStopRecording";
-            this.buttonStopRecording.Size = new System.Drawing.Size(125, 25);
+            this.buttonStopRecording.Size = new System.Drawing.Size(58, 25);
             this.buttonStopRecording.TabIndex = 3;
             this.buttonStopRecording.Text = "&Stop";
             this.buttonStopRecording.UseVisualStyleBackColor = true;
@@ -268,7 +274,7 @@
             this.groupBox1.Controls.Add(this.tabControl1);
             this.groupBox1.Location = new System.Drawing.Point(3, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(532, 365);
+            this.groupBox1.Size = new System.Drawing.Size(541, 419);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Operation Panel";
@@ -279,7 +285,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.groupBox1);
             this.Name = "OperationTab";
-            this.Size = new System.Drawing.Size(538, 371);
+            this.Size = new System.Drawing.Size(649, 475);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);

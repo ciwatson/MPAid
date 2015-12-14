@@ -24,13 +24,13 @@ namespace MPAid.Forms.Config
 
         private void InitializeContent()
         {
-            this.recordingFolderTextBox.Text = MainForm.self.configContent.RecordingFolderAddr;
+            this.recordingFolderTextBox.Text = MainForm.self.configContent.AudioFolderAddr;
             this.recordingFolderTextBox.TextChanged += RecordingFolderTextBox_TextChanged;
         }
 
         private void RecordingFolderTextBox_TextChanged(object sender, EventArgs e)
         {
-            MainForm.self.configContent.RecordingFolderAddr = this.recordingFolderTextBox.Text;
+            MainForm.self.configContent.AudioFolderAddr = this.recordingFolderTextBox.Text;
         }
 
         private void folderSelectButton_Click(object sender, EventArgs e)

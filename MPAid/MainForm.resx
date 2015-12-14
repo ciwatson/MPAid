@@ -120,12 +120,6 @@
   <metadata name="categoryBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 55</value>
   </metadata>
-  <metadata name="animationTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <metadata name="NAudioTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>154, 17</value>
-  </metadata>
   <metadata name="mainMenuStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>278, 17</value>
   </metadata>
@@ -166,7 +160,7 @@
   <data name="changePasswordToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1
-        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACw4AAAsOAUC+4UEAAALpSURBVDhPlZRrSJNRAIaPZF4S
+        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACwwAAAsMAT9AIsgAAALpSURBVDhPlZRrSJNRAIaPZF4S
         U3CUl6WmaWmaSiqVNeclNdNgGzZMSy1tVppNMA0sqmH0y2UmmGY/1Ci7oOQFNDajGUGakVEiKaRhFngJ
         isxA3878/Lbv6J984fnxnu88L4ztGwGwgkzZAZIYJSEZ0TvJzUyJU25iUPzeANeUhAh/3w0iJ7I8Qpcp
         PKkH48i+kGBy9WzahYk3jX+/vazEpO46vncUQ6uO09ONzdwUF6HLFB5ZZITd5Xxlya+hetzVZMHPzVFv

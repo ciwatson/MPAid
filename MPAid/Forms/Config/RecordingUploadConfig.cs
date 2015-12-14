@@ -24,7 +24,7 @@ namespace MPAid.Forms.Config
             this.onDBListBox.DataSource = MainForm.self.DBModel.SingleFile.Local.ToBindingList();
             this.onDBListBox.DisplayMember = "Name";
 
-            this.openFileDialog.InitialDirectory = MainForm.self.configContent.RecordingFolderAddr;
+            this.openFileDialog.InitialDirectory = MainForm.self.configContent.AudioFolderAddr;
         }
 
         protected override void OnFormClosing(FormClosingEventArgs e)
@@ -64,7 +64,7 @@ namespace MPAid.Forms.Config
             try
             {
                 var DBContext = MainForm.self.DBModel;
-                var recordingFolder = MainForm.self.configContent.RecordingFolderAddr;
+                var recordingFolder = MainForm.self.configContent.AudioFolderAddr;
                 foreach (KeyValuePair<string, string> item in this.onLocalListBox.SelectedItems)
                 {
                     String filename = item.Key.ToString();
