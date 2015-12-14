@@ -176,6 +176,10 @@
     <Compile Include="Migrations\201512140526212_video.Designer.cs">
       <DependentUpon>201512140526212_video.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201512140547389_recording.cs" />
+    <Compile Include="Migrations\201512140547389_recording.Designer.cs">
+      <DependentUpon>201512140547389_recording.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AppDataPath.cs" />
     <Compile Include="Models\SingleFile.cs" />
@@ -279,6 +283,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201512140526212_video.resx">
       <DependentUpon>201512140526212_video.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512140547389_recording.resx">
+      <DependentUpon>201512140547389_recording.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

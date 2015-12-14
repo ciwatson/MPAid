@@ -25,6 +25,8 @@ namespace MPAid.Models
         [ForeignKey("WordId")]
         public virtual Word Word { get; set; }
 
-        public virtual ICollection<Copy> Copies { get; set; }
+        public virtual ICollection<Copy> Audio { get; set; }
+
+        public virtual Copy Video { get; set; }
     }
 }

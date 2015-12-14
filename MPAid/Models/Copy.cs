@@ -20,7 +20,6 @@
         [ForeignKey("RecordingId")]
         public virtual Recording Recording { get; set; }
 
-        public virtual SingleFile Video { get; set; }
-        public virtual SingleFile Audio { get; set; }
+        public virtual SingleFile SingleFile { get; set; }
     }
 }

@@ -111,7 +111,7 @@ namespace MPAid.Forms.Config
                     DBContext.SingleFile.Remove(sf);
                     DBContext.Copy.Remove(copy);
 
-                    if(rd.Copies.Count == 0) DBContext.Recording.Remove(rd);
+                    if(rd.Audio.Count == 0) DBContext.Recording.Remove(rd);
                     if (spk.Recordings.Count == 0) DBContext.Speaker.Remove(spk);
                     if (word.Recordings.Count == 0) DBContext.Word.Remove(word);
                     if (cty.Words.Count == 0) DBContext.Category.Remove(cty);

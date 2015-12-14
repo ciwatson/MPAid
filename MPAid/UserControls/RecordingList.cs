@@ -74,7 +74,7 @@ namespace MPAid.UserControls
                 Recording rdg = MainForm.self.DBModel.Recording.Local.Where(x => x.WordId == wd.WordId && x.SpeakerId == spk.SpeakerId).SingleOrDefault();
                 if (rdg != null)
                 {
-                    SingleFile sf = rdg.Copies.PickNext().Audio;
+                    SingleFile sf = rdg.Audio.PickNext().SingleFile;
                     string filePath = sf.Address + "\\" + sf.Name;
 
                     TestForm.self.OperationTab.VlcPlayer.VlcControl.Play(new Uri(filePath));
