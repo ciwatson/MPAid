@@ -51,16 +51,16 @@ namespace MPAid.Cores
         }
 
         private String videoFolderAddr;
-        public String VideoFolder
+        public String VideoFolderAddr
         {
             get
             {
                 //by default, the url is ./Video
-                return audioFolderAddr == null ? System.Windows.Forms.Application.StartupPath + @"\Video" : videoFolderAddr;
+                return videoFolderAddr == null ? System.Windows.Forms.Application.StartupPath + @"\Video" : videoFolderAddr;
             }
             set
             {
-                audioFolderAddr = value;
+                videoFolderAddr = value;
             }
         }
     }

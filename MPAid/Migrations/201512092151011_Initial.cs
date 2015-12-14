@@ -53,17 +53,11 @@ namespace MPAid.Migrations
                         CopyId = c.Int(nullable: false, identity: true),
                         Name = c.String(nullable: false, maxLength: 64),
                         RecordingId = c.Int(nullable: false),
-                        Audio_SingleFileId = c.Int(),
-                        Video_SingleFileId = c.Int(),
                     })
                 .PrimaryKey(t => t.CopyId)
-                .ForeignKey("dbo.SingleFile", t => t.Audio_SingleFileId)
                 .ForeignKey("dbo.Recording", t => t.RecordingId, cascadeDelete: true)
-                .ForeignKey("dbo.SingleFile", t => t.Video_SingleFileId)
                 .Index(t => t.Name, unique: true)
-                .Index(t => t.RecordingId)
-                .Index(t => t.Audio_SingleFileId)
-                .Index(t => t.Video_SingleFileId);
+                .Index(t => t.RecordingId);
             
             CreateTable(
                 "dbo.SingleFile",
@@ -94,16 +88,12 @@ namespace MPAid.Migrations
         {
             DropForeignKey("dbo.Recording", "WordId", "dbo.Word");
             DropForeignKey("dbo.Recording", "SpeakerId", "dbo.Speaker");
-            DropForeignKey("dbo.Copy", "Video_SingleFileId", "dbo.SingleFile");
-            DropForeignKey("dbo.Copy", "RecordingId", "dbo.Recording");
-            DropForeignKey("dbo.Copy", "Audio_SingleFileId", "dbo.SingleFile");
             DropForeignKey("dbo.SingleFile", "SingleFileId", "dbo.Copy");
+            DropForeignKey("dbo.Copy", "RecordingId", "dbo.Recording");
             DropForeignKey("dbo.Word", "CategoryId", "dbo.Category");
             DropIndex("dbo.Speaker", new[] { "Name" });
             DropIndex("dbo.SingleFile", new[] { "Name" });
             DropIndex("dbo.SingleFile", new[] { "SingleFileId" });
-            DropIndex("dbo.Copy", new[] { "Video_SingleFileId" });
-            DropIndex("dbo.Copy", new[] { "Audio_SingleFileId" });
             DropIndex("dbo.Copy", new[] { "RecordingId" });
             DropIndex("dbo.Copy", new[] { "Name" });
             DropIndex("dbo.Recording", new[] { "WordId" });

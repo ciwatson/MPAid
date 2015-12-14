@@ -172,6 +172,10 @@
     <Compile Include="Migrations\201512092151011_Initial.Designer.cs">
       <DependentUpon>201512092151011_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201512140526212_video.cs" />
+    <Compile Include="Migrations\201512140526212_video.Designer.cs">
+      <DependentUpon>201512140526212_video.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AppDataPath.cs" />
     <Compile Include="Models\SingleFile.cs" />
@@ -273,6 +277,9 @@
     <EmbeddedResource Include="Migrations\201512092151011_Initial.resx">
       <DependentUpon>201512092151011_Initial.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512140526212_video.resx">
+      <DependentUpon>201512140526212_video.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -357,7 +364,6 @@
     <Folder Include="Lib\header-files\" />
     <Folder Include="Lib\x64\" />
     <Folder Include="Lib\x86\" />
-    <Folder Include="Properties\DataSources\" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">

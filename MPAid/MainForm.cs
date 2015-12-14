@@ -32,7 +32,7 @@ namespace MPAid
         private int CurrentNumPlayback = 1;
         private int CurrentSoundId = 0;
         private int CurrentAudioSource = 0;
-        private int DefaultInterval = 200;
+        //private int DefaultInterval = 200;
 
         private List<string> recordedWavFiles = new List<string>();
         private BindingList<string> listREC = new BindingList<string>();
@@ -450,15 +450,15 @@ namespace MPAid
 
         private void ResetAnimator()
         {
-            animationTotalFrames = 0;
-            animationCurrentFrame = 0;
-            animationCurrentPlay = null;
+            //animationTotalFrames = 0;
+            //animationCurrentFrame = 0;
+            //animationCurrentPlay = null;
             //animationTimer.Stop();
         }
 
-        private int animationTotalFrames = 0;
-        private int animationCurrentFrame = 0;
-        private MaoriObj animationCurrentPlay = null;
+        //private int animationTotalFrames = 0;
+        //private int animationCurrentFrame = 0;
+        //private MaoriObj animationCurrentPlay = null;
 
         private void StartAnimation()
         {
