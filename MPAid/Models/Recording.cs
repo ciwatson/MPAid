@@ -23,17 +23,8 @@ namespace MPAid.Models
         public int WordId { get; set; }
         [ForeignKey("WordId")]
         public virtual Word Word { get; set; }
-    }
 
-    public partial class AudioRecording
-        : Recording
-    {
-        public virtual ICollection<Copy> Audio { get; set; }
-    }
-
-    public partial class VideoRecording
-        : Recording
-    {
-        public virtual Copy Video { get; set; }
+        public virtual ICollection<SingleFile> Audios { get; set; }
+        public virtual SingleFile Video { get; set; }
     }
 }

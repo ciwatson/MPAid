@@ -130,6 +130,7 @@ namespace MPAid
         {          
             configContent = Serializer<SysCfg>.Load<BinaryFormatter>(SysCfg.path);
             System.IO.Directory.CreateDirectory(configContent.AudioFolderAddr);
+            System.IO.Directory.CreateDirectory(configContent.VideoFolderAddr);
             this.systemConfigForm = new SystemConfig();
             this.recordingUploadForm = new RecordingUploadConfig();
             this.recordingRenameForm = new RecordingRenameConfig();
@@ -142,7 +143,6 @@ namespace MPAid
             this.DBModel.Speaker.Load();
             this.DBModel.Category.Load();
             this.DBModel.Word.Load();
-            this.DBModel.Copy.Load();
             this.DBModel.SingleFile.Load();
         }
         private void FillLists()

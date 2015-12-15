@@ -71,10 +71,10 @@ namespace MPAid.UserControls
             {
                 Speaker spk = SpeakerComboBox.SelectedItem as Speaker;
                 Word wd = WordListBox.SelectedItem as Word;
-                AudioRecording ard = MainForm.self.DBModel.Recording.Local.Where(x => x.WordId == wd.WordId && x.SpeakerId == spk.SpeakerId).SingleOrDefault() as AudioRecording;
-                if (ard != null)
+                Recording rd = MainForm.self.DBModel.Recording.Local.Where(x => x.WordId == wd.WordId && x.SpeakerId == spk.SpeakerId).SingleOrDefault();
+                if (rd != null)
                 {
-                    SingleFile sf = ard.Audio.PickNext().SingleFile;
+                    SingleFile sf = rd.Audios.PickNext();
                     string filePath = sf.Address + "\\" + sf.Name;
 
                     TestForm.self.OperationTab.VlcPlayer.VlcControl.Play(new Uri(filePath));

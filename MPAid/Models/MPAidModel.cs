@@ -19,11 +19,31 @@ namespace MPAid.Models
         public virtual DbSet<Recording> Recording { get; set; }
         public virtual DbSet<Speaker> Speaker { get; set; }
         public virtual DbSet<Word> Word { get; set; }
-        public virtual DbSet<Copy> Copy { get; set; }
         public virtual DbSet<SingleFile> SingleFile { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            //modelBuilder.Entity<AudioRecording>()
+            //    .HasMany(a => a.Audio)
+            //    .WithRequired(c => c.Audio)
+            //    .Map(m => m.MapKey("AudioId"));
+
+            //modelBuilder.Entity<VideoRecording>()
+            //    .HasOptional(v => v.Video)
+            //    .WithOptionalDependent(c => c.Video)
+            //    .Map(m => m.MapKey("VideoId"));
+
+            modelBuilder.Entity<Recording>()
+                .HasMany(r => r.Audios)
+                .WithOptional(s => s.Audio)
+                .Map(m => m.MapKey("AudioId"));
+
+            modelBuilder.Entity<Recording>()
+                .HasOptional(r => r.Video)
+                .WithOptionalDependent(s => s.Video)
+                .Map(m => m.MapKey("VideoId"));
+         
+            base.OnModelCreating(modelBuilder);
         }
 
         public void AddOrUpdateRecordingFile(String recordingFile)
@@ -67,28 +87,16 @@ namespace MPAid.Models
                     this.SaveChanges();
                 }
 
-                AudioRecording ard = this.Recording.SingleOrDefault(x => x.Name == paser.Recording) as AudioRecording;
-                if (ard == null)
+                Recording rd = this.Recording.SingleOrDefault(x => x.Name == paser.Recording); ;
+                if (rd == null)
                 {
-                    ard = new AudioRecording()
+                    rd = new Recording()
                     {
                         Name = paser.Recording,
                         SpeakerId = spk.SpeakerId,
                         WordId = word.WordId
                     };
-                    this.Recording.AddOrUpdate(x => x.Name, ard);
-                    this.SaveChanges();
-                }
-
-                Copy copy = this.Copy.SingleOrDefault(x => x.Name == paser.FileName);
-                if (copy == null)
-                {
-                    copy = new Copy()
-                    {
-                        Name = paser.FileName,
-                        AudioId = ard.RecordingId
-                    };
-                    this.Copy.AddOrUpdate(x => new { x.Name, x.AudioId }, copy);
+                    this.Recording.AddOrUpdate(x => x.Name, rd);
                     this.SaveChanges();
                 }
 
@@ -99,13 +107,28 @@ namespace MPAid.Models
                     {
                         Name = paser.FullName,
                         Address = paser.Address,
-                        Copy = copy
                     };
+
+                    //this.SingleFile.AddOrUpdate(x => x.Name, sf);
+                    //this.SaveChanges();
+                    if (paser.MediaFormat == "audio")
+                    {
+                        sf.Audio = rd;
+                    }
+                    else if (paser.MediaFormat == "video")
+                    {
+                        sf.Video = rd;
+                    }
                     this.SingleFile.AddOrUpdate(x => x.Name, sf);
                     this.SaveChanges();
                 }
+
+
+
+
+
             }
-            catch(Exception exp)
+            catch (Exception exp)
             {
                 Console.WriteLine(exp);
             }

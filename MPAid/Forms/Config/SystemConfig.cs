@@ -24,20 +24,28 @@ namespace MPAid.Forms.Config
 
         private void InitializeContent()
         {
-            this.recordingFolderTextBox.Text = MainForm.self.configContent.AudioFolderAddr;
-            this.recordingFolderTextBox.TextChanged += RecordingFolderTextBox_TextChanged;
+            this.audioFolderTextBox.Text = MainForm.self.configContent.AudioFolderAddr;
+            this.audioFolderTextBox.TextChanged += AudioFolderTextBox_TextChanged;
+
+            this.videoFolderTextBox.Text = MainForm.self.configContent.VideoFolderAddr;
+            this.videoFolderTextBox.TextChanged += VideoFolderTextBox_TextChanged;
         }
 
-        private void RecordingFolderTextBox_TextChanged(object sender, EventArgs e)
+        private void AudioFolderTextBox_TextChanged(object sender, EventArgs e)
         {
-            MainForm.self.configContent.AudioFolderAddr = this.recordingFolderTextBox.Text;
+            MainForm.self.configContent.AudioFolderAddr = this.audioFolderTextBox.Text;
+        }
+
+        private void VideoFolderTextBox_TextChanged(object sender, EventArgs e)
+        {
+            MainForm.self.configContent.VideoFolderAddr = this.videoFolderTextBox.Text;
         }
 
         private void folderSelectButton_Click(object sender, EventArgs e)
         {
             if (this.folderBrowserDialog.ShowDialog() == DialogResult.OK)
             {           
-                this.recordingFolderTextBox.Text = folderBrowserDialog.SelectedPath;
+                this.audioFolderTextBox.Text = folderBrowserDialog.SelectedPath;
             }
         }
 
@@ -45,6 +53,14 @@ namespace MPAid.Forms.Config
         {
             Serializer<SysCfg>.Save<BinaryFormatter>(SysCfg.path, MainForm.self.configContent);
             this.Close();
-        }       
+        }
+
+        private void videoFolderSelectButton_Click(object sender, EventArgs e)
+        {
+            if (this.folderBrowserDialog.ShowDialog() == DialogResult.OK)
+            {
+                this.videoFolderTextBox.Text = folderBrowserDialog.SelectedPath;
+            }
+        }
     }
 }

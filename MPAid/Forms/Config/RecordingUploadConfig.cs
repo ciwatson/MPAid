@@ -23,13 +23,11 @@ namespace MPAid.Forms.Config
 
             this.onDBListBox.DataSource = MainForm.self.DBModel.SingleFile.Local.ToBindingList();
             this.onDBListBox.DisplayMember = "Name";
-
-            this.openFileDialog.InitialDirectory = MainForm.self.configContent.AudioFolderAddr;
         }
 
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
-            this.onLocalListBox.DataSource = null;
+            this.audioLocalListBox.DataSource = null;
 
             base.OnFormClosing(e);
 
@@ -47,9 +45,10 @@ namespace MPAid.Forms.Config
 
                     Dictionary<string, string> dataSource = fileNames.Zip(fileAddresses, (lText, lValue) => new { lText, lValue }).ToDictionary(x => x.lText, x => x.lValue);
 
-                    this.onLocalListBox.DataSource = new BindingSource() { DataSource = dataSource };
-                    this.onLocalListBox.DisplayMember = "Key";
-                    this.onLocalListBox.ValueMember = "Value";
+                    ListBox localListBox = this.mediaLocalTabControl.SelectedIndex == 0 ? this.audioLocalListBox : this.videoLocalListBox;
+                    localListBox.DataSource = new BindingSource() { DataSource = dataSource };
+                    localListBox.DisplayMember = "Key";
+                    localListBox.ValueMember = "Value";
                 }
             }
             catch (Exception exp)
@@ -64,8 +63,11 @@ namespace MPAid.Forms.Config
             try
             {
                 var DBContext = MainForm.self.DBModel;
-                var recordingFolder = MainForm.self.configContent.AudioFolderAddr;
-                foreach (KeyValuePair<string, string> item in this.onLocalListBox.SelectedItems)
+                ListBox.SelectedObjectCollection selectedCollection = null;
+                if (mediaLocalTabControl.SelectedIndex == 0) selectedCollection = audioLocalListBox.SelectedItems;
+                else if (mediaLocalTabControl.SelectedIndex == 1) selectedCollection = videoLocalListBox.SelectedItems;
+
+                foreach (KeyValuePair<string, string> item in selectedCollection)
                 {
                     String filename = item.Key.ToString();
                     NamePaser paser = new NamePaser();
@@ -98,8 +100,7 @@ namespace MPAid.Forms.Config
                 for (int i = onDBListBox.SelectedItems.Count - 1; i >= 0; i--)
                 {
                     SingleFile sf = onDBListBox.SelectedItems[i] as MPAid.Models.SingleFile;
-                    Copy copy = sf.Copy;
-                    Recording rd = copy.Audio;
+                    Recording rd = sf.Audio;
                     Speaker spk = rd.Speaker;
                     Word word = rd.Word;
                     Category cty = word.Category;
@@ -109,16 +110,8 @@ namespace MPAid.Forms.Config
                         File.Delete(existingFile);
                     }
                     DBContext.SingleFile.Remove(sf);
-                    DBContext.Copy.Remove(copy);
 
-                    if(rd.GetType() == typeof(AudioRecording))
-                    {
-                        if ((rd as AudioRecording).Audio.Count == 0) DBContext.Recording.Remove(rd);
-                    }
-                    else if (rd.GetType() == typeof(VideoRecording))
-                    {
-                        if ((rd as VideoRecording).Video == null) DBContext.Recording.Remove(rd);
-                    }
+                    if(rd.Audios.Count == 0 && rd.Video == null) DBContext.Recording.Remove(rd);
                     if (spk.Recordings.Count == 0) DBContext.Speaker.Remove(spk);
                     if (word.Recordings.Count == 0) DBContext.Word.Remove(word);
                     if (cty.Words.Count == 0) DBContext.Category.Remove(cty);
@@ -131,5 +124,20 @@ namespace MPAid.Forms.Config
                 MessageBox.Show("Fail to delete!");
             }
         }
+
+        private void mediaLocalTabControl_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (this.mediaLocalTabControl.SelectedIndex == 0)
+            {
+                recordingFolder = MainForm.self.configContent.AudioFolderAddr;
+            }
+            else if(this.mediaLocalTabControl.SelectedIndex == 1)
+            {
+                recordingFolder = MainForm.self.configContent.VideoFolderAddr;
+            }
+            this.openFileDialog.InitialDirectory = recordingFolder;
+        }
+
+        private String recordingFolder;
     }
 }

@@ -106,6 +106,34 @@ namespace MPAid.Cores
             set { ext = value; }
         }
 
+        public string MediaFormat
+        {
+            get
+            {
+                if (audioExtsTable.Contains(ext))
+                {
+                    return "audio";
+                }
+                else if (videoExtsTable.Contains(ext))
+                {
+                    return "video";
+                }
+                return "unknow";
+            }
+        }
+
+        private string[] videoExtsTable =
+        {
+            ".mp4",
+            ".avi"
+        };
+
+        private string[] audioExtsTable =
+        {
+            ".wav",
+            ".mp3"
+        };
+
         private string address;
         private string speaker;
         private string category;
