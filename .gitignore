@@ -216,6 +216,5 @@ ModelManifest.xml
 #[Mm]igrations/
 
 # App_Data path configration 
-Models/
-AppDataPath
-/MPAid/Lib/header-files
+Models/AppDataPath.cs
+Lib/header-files
