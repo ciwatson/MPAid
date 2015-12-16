@@ -1,6 +1,6 @@
 ﻿namespace MPAid.UserControls
 {
-    partial class RecordingList
+    partial class RecordingPanel
     {
         /// <summary> 
         /// Required designer variable.

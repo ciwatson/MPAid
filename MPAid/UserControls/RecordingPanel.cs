@@ -14,7 +14,7 @@ using MPAid.Forms;
 
 namespace MPAid.UserControls
 {
-    public partial class RecordingList : UserControl
+    public partial class RecordingPanel : UserControl
     {
         public ComboBox SpeakerComboBox
         {
@@ -28,7 +28,7 @@ namespace MPAid.UserControls
         {
             get { return wordListBox; }
         }
-        public RecordingList()
+        public RecordingPanel()
         {
             InitializeComponent();
         }

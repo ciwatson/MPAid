@@ -15,7 +15,7 @@ namespace MPAid.Forms
     {
         public static TestForm self;
 
-        public OperationTab OperationTab
+        public OperationPanel OperationTab
         {
             get { return operationTab; }
         }

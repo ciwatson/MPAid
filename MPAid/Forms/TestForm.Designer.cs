@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.operationTab = new MPAid.UserControls.OperationTab();
+            this.operationTab = new MPAid.UserControls.OperationPanel();
             this.SuspendLayout();
             // 
             // operationTab
@@ -52,6 +52,6 @@
 
         #endregion
 
-        private UserControls.OperationTab operationTab;
+        private UserControls.OperationPanel operationTab;
     }
 }

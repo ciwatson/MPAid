@@ -150,6 +150,12 @@
     <Compile Include="Forms\LoginWindow.Designer.cs">
       <DependentUpon>LoginWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\NewUserWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -162,15 +168,6 @@
     <Compile Include="Forms\TestForm.Designer.cs">
       <DependentUpon>TestForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="MainForm.cs" />
-    <Compile Include="MainForm.Designer.cs">
-      <DependentUpon>MainForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201512160014363_Initial.cs" />
-    <Compile Include="Migrations\201512160014363_Initial.Designer.cs">
-      <DependentUpon>201512160014363_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AppDataPath.cs" />
     <Compile Include="Models\SingleFile.cs" />
     <Compile Include="Models\MPAidModel.cs" />
@@ -225,17 +222,17 @@
     <Compile Include="Forms\Config\SystemConfig.Designer.cs">
       <DependentUpon>SystemConfig.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\OperationTab.cs">
+    <Compile Include="UserControls\OperationPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\OperationTab.Designer.cs">
-      <DependentUpon>OperationTab.cs</DependentUpon>
+    <Compile Include="UserControls\OperationPanel.Designer.cs">
+      <DependentUpon>OperationPanel.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\RecordingList.cs">
+    <Compile Include="UserControls\RecordingPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\RecordingList.Designer.cs">
-      <DependentUpon>RecordingList.cs</DependentUpon>
+    <Compile Include="UserControls\RecordingPanel.Designer.cs">
+      <DependentUpon>RecordingPanel.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\VLCPlayer.cs">
       <SubType>UserControl</SubType>
@@ -258,17 +255,14 @@
     <EmbeddedResource Include="Forms\LoginWindow.resx">
       <DependentUpon>LoginWindow.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\NewUserWindow.resx">
       <DependentUpon>NewUserWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\TestForm.resx">
       <DependentUpon>TestForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MainForm.resx">
-      <DependentUpon>MainForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201512160014363_Initial.resx">
-      <DependentUpon>201512160014363_Initial.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -292,11 +286,11 @@
     <EmbeddedResource Include="Forms\Config\SystemConfig.resx">
       <DependentUpon>SystemConfig.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\OperationTab.resx">
-      <DependentUpon>OperationTab.cs</DependentUpon>
+    <EmbeddedResource Include="UserControls\OperationPanel.resx">
+      <DependentUpon>OperationPanel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\RecordingList.resx">
-      <DependentUpon>RecordingList.cs</DependentUpon>
+    <EmbeddedResource Include="UserControls\RecordingPanel.resx">
+      <DependentUpon>RecordingPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\VLCPlayer.resx">
       <DependentUpon>VLCPlayer.cs</DependentUpon>

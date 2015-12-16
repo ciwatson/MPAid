@@ -890,7 +890,7 @@ namespace MPAid
 
         bool doCloseLogin = true;
 
-        public RecordingList RecordingList
+        public RecordingPanel RecordingList
         {
             get {return RecordingList; }
         }
