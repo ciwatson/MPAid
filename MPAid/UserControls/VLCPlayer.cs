@@ -11,8 +11,6 @@ using Vlc.DotNet.Forms;
 using System.Reflection;
 using System.IO;
 using MPAid.Models;
-using MPAid.Cores;
-using MPAid.Forms;
 
 namespace MPAid.UserControls
 {
@@ -53,30 +51,8 @@ namespace MPAid.UserControls
 
         private void playButton_Click(object sender, EventArgs e)
         {
-            try
-            {
-                MainForm mainForm = this.Parent.Parent.Parent.Parent.Parent.Parent as MainForm;
-                Speaker spk = mainForm.RecordingList.SpeakerComboBox.SelectedItem as Speaker;
-                Word wd = mainForm.RecordingList.WordListBox.SelectedItem as Word;
-                Recording rd = mainForm.DBModel.Recording.Local.Where(x => x.WordId == wd.WordId && x.SpeakerId == spk.SpeakerId).SingleOrDefault();
-                if (rd != null)
-                {
-                    SingleFile sf = rd.Video;
-                    if (sf == null) throw new Exception("No video recording!");
-                    string filePath = sf.Address + "\\" + sf.Name;
-
-                    vlcControl.Play(new Uri(filePath));
-                }
-                else
-                {
-                    MessageBox.Show("Invalid recording!");
-                }
-            }
-            catch (Exception exp)
-            {
-                MessageBox.Show(exp.Message);
-                Console.WriteLine(exp);
-            }    
+            Word word = MainForm.self.RecordingList.WordListBox.SelectedItem as Word;
+            vlcControl.Play();
         }
 
         private void pauseButton_Click(object sender, EventArgs e)

@@ -1,6 +1,6 @@
 ﻿namespace MPAid.UserControls
 {
-    partial class OperationPanel
+    partial class OperationTab
     {
         /// <summary> 
         /// Required designer variable.

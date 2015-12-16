@@ -108,6 +108,9 @@ namespace MPAid.Models
                         Name = paser.FullName,
                         Address = paser.Address,
                     };
+
+                    //this.SingleFile.AddOrUpdate(x => x.Name, sf);
+                    //this.SaveChanges();
                     if (paser.MediaFormat == "audio")
                     {
                         sf.Audio = rd;

@@ -14,7 +14,7 @@ using MPAid.Forms;
 
 namespace MPAid.UserControls
 {
-    public partial class RecordingPanel : UserControl
+    public partial class RecordingList : UserControl
     {
         public ComboBox SpeakerComboBox
         {
@@ -28,63 +28,56 @@ namespace MPAid.UserControls
         {
             get { return wordListBox; }
         }
-        public RecordingPanel()
+        public RecordingList()
         {
             InitializeComponent();
         }
 
         public void DataBinding()
         {
+            //this.speakerComboBox.DataSource = MainForm.self.DBModel.Speaker.Local.ToBindingList();
             this.speakerComboBox.DataSource = MainForm.self.DBModel.Speaker.Local.ToBindingList();
             this.speakerComboBox.DisplayMember = "Name";
+            //this.speakerComboBox.SelectedIndex = 0;
 
             this.categoryComboBox.DataSource = MainForm.self.DBModel.Category.Local.ToBindingList();
             this.categoryComboBox.DisplayMember = "Name";
+            //this.categoryComboBox.SelectedIndex = 0;
         }
 
         private void SpeakerOrCategoryComboBox_OnSelectedValueChanged(object sender, EventArgs e)
         {
-            try
+            Speaker spk = speakerComboBox.SelectedItem as Speaker;
+            Category cty = categoryComboBox.SelectedItem as Category;
+            if(spk == null || cty == null)
             {
-                Speaker spk = speakerComboBox.SelectedItem as Speaker;
-                Category cty = categoryComboBox.SelectedItem as Category;
-                if (spk == null || cty == null)
-                {
-                    this.wordListBox.DataSource = null;
-                    return;
-                }
-
-                List<Word> view = MainForm.self.DBModel.Word.Where(
-                    x => (x.CategoryId == cty.CategoryId &&
-                        x.Recordings.Any(y => y.SpeakerId == spk.SpeakerId))
-                    ).ToList();
-
-                view.Sort(new VowelComparer());
-                this.wordListBox.DataSource = new BindingSource() { DataSource = view };
-                this.wordListBox.DisplayMember = "Name";
+                this.wordListBox.DataSource = null;
+                return;
             }
-            catch(Exception exp)
-            {
-                Console.WriteLine(exp);
-            }
+
+            List<Word> view = MainForm.self.DBModel.Word.Where(
+                x => (x.CategoryId == cty.CategoryId &&
+                    x.Recordings.Any(y => y.SpeakerId == spk.SpeakerId))
+                ).ToList();
+
+            view.Sort(new VowelComparer());
+            this.wordListBox.DataSource = new BindingSource() { DataSource = view};
+            this.wordListBox.DisplayMember = "Name";
         }
 
         private void WordListBox_OnDoubleClick(object sender, EventArgs e)
         {
             try
             {
-                MainForm mainForm = this.Parent.Parent as MainForm;
                 Speaker spk = SpeakerComboBox.SelectedItem as Speaker;
                 Word wd = WordListBox.SelectedItem as Word;
-                Recording rd = mainForm.DBModel.Recording.Local.Where(x => x.WordId == wd.WordId && x.SpeakerId == spk.SpeakerId).SingleOrDefault();
+                Recording rd = MainForm.self.DBModel.Recording.Local.Where(x => x.WordId == wd.WordId && x.SpeakerId == spk.SpeakerId).SingleOrDefault();
                 if (rd != null)
                 {
-                    ICollection<SingleFile> audios = rd.Audios;
-                    if (audios == null || audios.Count == 0) throw new Exception("No audio recording!");
-                    SingleFile sf = audios.PickNext();
+                    SingleFile sf = rd.Audios.PickNext();
                     string filePath = sf.Address + "\\" + sf.Name;
 
-                    mainForm.OperationPanel.VlcPlayer.VlcControl.Play(new Uri(filePath));
+                    TestForm.self.OperationTab.VlcPlayer.VlcControl.Play(new Uri(filePath));
                 }
                 else
                 {
@@ -93,7 +86,6 @@ namespace MPAid.UserControls
             }
             catch (Exception exp)
             {
-                MessageBox.Show(exp.Message);
                 Console.WriteLine(exp);
             }
         }
