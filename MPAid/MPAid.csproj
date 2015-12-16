@@ -198,7 +198,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Modules\ResManager.cs" />
-    <Compile Include="Modules\TDButton.cs">
+    <Compile Include="Components\TDButton.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Modules\VoiceRecorder.cs" />
@@ -208,7 +208,7 @@
     <Compile Include="Forms\SplashScreen.Designer.cs">
       <DependentUpon>SplashScreen.cs</DependentUpon>
     </Compile>
-    <Compile Include="Modules\VerticalProgressBar.cs">
+    <Compile Include="Components\VerticalProgressBar.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Forms\Config\RecordingUploadConfig.cs">
@@ -275,7 +275,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Modules\TDButton.resx">
+    <EmbeddedResource Include="Components\TDButton.resx">
       <DependentUpon>TDButton.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SplashScreen.resx">

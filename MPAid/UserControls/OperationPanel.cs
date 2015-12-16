@@ -19,8 +19,15 @@ namespace MPAid.UserControls
         public OperationPanel()
         {
             InitializeComponent();
-        }
 
+            tdButtonFormantPlot.ImageNormal = Properties.Resources.ButtonYellow_0;
+            tdButtonFormantPlot.ImageHighlight = Properties.Resources.ButtonYellow_1;
+            tdButtonFormantPlot.ImagePressed = Properties.Resources.ButtonYellow_2;
+        }
+        private void operationTabControlSelectedIndexChanged(object sender, EventArgs e)
+        {
+            VlcPlayer.VlcControl.Stop();
+        }
         private void tdButtonFormantPlot_Click(object sender, EventArgs e)
         {
             tdButtonFormantPlot.Enabled = false;
@@ -33,6 +40,31 @@ namespace MPAid.UserControls
 
         private void buttonRecord_Click(object sender, EventArgs e)
         {
+        }
+
+        private void buttonStopRecording_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonShowDir_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonLoadFromFile_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonAnalyze_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonShowReport_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

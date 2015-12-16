@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.operationTabControl = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.vlcPlayer = new MPAid.UserControls.VlcPlayer();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -46,7 +46,7 @@
             this.buttonAnalyze = new System.Windows.Forms.Button();
             this.buttonStopRecording = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.tabControl1.SuspendLayout();
+            this.operationTabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -54,19 +54,20 @@
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // tabControl1
+            // operationTabControl
             // 
-            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.operationTabControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(6, 19);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(529, 394);
-            this.tabControl1.TabIndex = 0;
-            this.tabControl1.Tag = "";
+            this.operationTabControl.Controls.Add(this.tabPage1);
+            this.operationTabControl.Controls.Add(this.tabPage2);
+            this.operationTabControl.Location = new System.Drawing.Point(6, 19);
+            this.operationTabControl.Name = "operationTabControl";
+            this.operationTabControl.SelectedIndex = 0;
+            this.operationTabControl.Size = new System.Drawing.Size(529, 394);
+            this.operationTabControl.TabIndex = 0;
+            this.operationTabControl.Tag = "";
+            this.operationTabControl.SelectedIndexChanged += new System.EventHandler(this.operationTabControlSelectedIndexChanged);
             // 
             // tabPage1
             // 
@@ -74,7 +75,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(785, 454);
+            this.tabPage1.Size = new System.Drawing.Size(521, 368);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Video Player";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -86,7 +87,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.vlcPlayer.Location = new System.Drawing.Point(0, 0);
             this.vlcPlayer.Name = "vlcPlayer";
-            this.vlcPlayer.Size = new System.Drawing.Size(779, 448);
+            this.vlcPlayer.Size = new System.Drawing.Size(518, 365);
             this.vlcPlayer.TabIndex = 0;
             // 
             // tabPage2
@@ -193,6 +194,7 @@
             this.buttonLoadFromFile.TabIndex = 10;
             this.buttonLoadFromFile.Text = "From file";
             this.buttonLoadFromFile.UseVisualStyleBackColor = true;
+            this.buttonLoadFromFile.Click += new System.EventHandler(this.buttonLoadFromFile_Click);
             // 
             // buttonShowReport
             // 
@@ -206,6 +208,7 @@
             this.buttonShowReport.TabIndex = 9;
             this.buttonShowReport.Text = "Show score report";
             this.buttonShowReport.UseVisualStyleBackColor = true;
+            this.buttonShowReport.Click += new System.EventHandler(this.buttonShowReport_Click);
             // 
             // labelCorrectness
             // 
@@ -230,6 +233,7 @@
             this.buttonShowDir.TabIndex = 7;
             this.buttonShowDir.Text = "Play this";
             this.buttonShowDir.UseVisualStyleBackColor = true;
+            this.buttonShowDir.Click += new System.EventHandler(this.buttonShowDir_Click);
             // 
             // wordSelectedLabel
             // 
@@ -253,6 +257,7 @@
             this.buttonAnalyze.TabIndex = 5;
             this.buttonAnalyze.Text = "&Analyze";
             this.buttonAnalyze.UseVisualStyleBackColor = true;
+            this.buttonAnalyze.Click += new System.EventHandler(this.buttonAnalyze_Click);
             // 
             // buttonStopRecording
             // 
@@ -265,13 +270,14 @@
             this.buttonStopRecording.TabIndex = 3;
             this.buttonStopRecording.Text = "&Stop";
             this.buttonStopRecording.UseVisualStyleBackColor = true;
+            this.buttonStopRecording.Click += new System.EventHandler(this.buttonStopRecording_Click);
             // 
             // groupBox1
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.tabControl1);
+            this.groupBox1.Controls.Add(this.operationTabControl);
             this.groupBox1.Location = new System.Drawing.Point(3, 3);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(541, 419);
@@ -279,14 +285,14 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Operation Panel";
             // 
-            // OperationTab
+            // OperationPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.groupBox1);
-            this.Name = "OperationTab";
+            this.Name = "OperationPanel";
             this.Size = new System.Drawing.Size(649, 475);
-            this.tabControl1.ResumeLayout(false);
+            this.operationTabControl.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
@@ -298,7 +304,7 @@
 
         #endregion
 
-        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabControl operationTabControl;
         private System.Windows.Forms.TabPage tabPage1;
         private VlcPlayer vlcPlayer;
         private System.Windows.Forms.TabPage tabPage2;

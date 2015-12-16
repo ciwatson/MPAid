@@ -68,7 +68,7 @@ namespace MPAid.Forms.Config
         {
             try
             {
-                MainForm.self.PlayVowelSoundAsync(this.openFileDialog.FileName, 1);
+                MainForm.self.OperationPanel.VlcPlayer.VlcControl.Play(new Uri(this.openFileDialog.FileName));
             }
             catch(Exception exp)
             {

@@ -96,20 +96,6 @@ namespace MPAid
 
             InitializeUserProfile();
 
-            //tdButtonFormantPlot.ImageNormal = Properties.Resources.ButtonYellow_0;
-            //tdButtonFormantPlot.ImageHighlight = Properties.Resources.ButtonYellow_1;
-            //tdButtonFormantPlot.ImagePressed = Properties.Resources.ButtonYellow_2;
-
-            //ButtonPlay.ImageNormal = Properties.Resources.ButtonGreen_0;
-            //ButtonPlay.ImageHighlight = Properties.Resources.ButtonGreen_1;
-            //ButtonPlay.ImagePressed = Properties.Resources.ButtonGreen_2;
-
-            //ButtonStop.ImageNormal = Properties.Resources.ButtonRed_0;
-            //ButtonStop.ImageHighlight = Properties.Resources.ButtonRed_1;
-            //ButtonStop.ImagePressed = Properties.Resources.ButtonRed_2;
-
-            RefreshTabState();
-            ResetPreviewBox();
             RefreshAnimationSpeed();
 
             FillLists();
@@ -164,20 +150,8 @@ namespace MPAid
             return ("[Version " + Application.ProductVersion + "]");
         }
 
-        private void tdButtonFormantPlot_Click(object sender, EventArgs e)
-        {
-            //tdButtonFormantPlot.Enabled = false;
-            this.WindowState = FormWindowState.Minimized;
-
-            // Start formant plot
-            FormantPlotController.RunFormantPlot();
-
-            //tdButtonFormantPlot.Enabled = true;
-        }
-
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            StopSoundPlayer();
             FormantPlotController.CloseFormantPlot();
 
             // this method will decide if the application is exiting
@@ -254,246 +228,6 @@ namespace MPAid
             //catch (Exception exp)
             //{
             //    Console.WriteLine(exp);
-            //}
-        }
-
-        private void ButtonStop_Click(object sender, EventArgs e)
-        {
-            StopSoundPlayer();
-        }
-
-        private void StopSoundPlayer()
-        {
-            if (AsyncPlayer != null)
-                AsyncPlayer.Abort();
-        }
-
-        private void PlayWordSoundAsync(int AudioSourceId, int SoundId, int nPlayback)
-        {
-            StopSoundPlayer();
-            AsyncPlayer = new Thread(ThreadPlayWordSound);
-            CurrentAudioSource = AudioSourceId;
-            CurrentSoundId = SoundId;
-            CurrentNumPlayback = nPlayback;
-            AsyncPlayer.Start();
-        }
-
-        private string lastPlayedSound = null;
-
-        private void ThreadPlayWordSound()
-        {
-            int i = 0, j = 0, lower = 0, upper = 0;
-
-            List<string> filesPlayed = new List<string>();
-            List<string> CurrentPlayList = ResMan.GetWordSoundList(CurrentAudioSource, CurrentSoundId);
-
-            if ((CurrentPlayList == null)
-                || (CurrentPlayList.Count == 0))
-                return;
-
-            lastPlayedSound = null;
-
-            while (i < CurrentNumPlayback)
-            {
-                upper = CurrentPlayList.Count - 1;
-                j = mathLib.RndInt(lower, upper);
-                CurrentSoundPath = CurrentPlayList[j];
-
-                if ((!filesPlayed.Contains(CurrentSoundPath))
-                    && (lastPlayedSound != CurrentSoundPath))
-                {
-                    ResMan.PlaySound(CurrentSoundPath, true);
-
-                    filesPlayed.Add(CurrentSoundPath);
-                    lastPlayedSound = CurrentSoundPath;
-                    i += 1;
-
-                    if (filesPlayed.Count == CurrentPlayList.Count)
-                        filesPlayed = new List<string>();
-
-                    if (i < CurrentNumPlayback)
-                        Thread.Sleep(GetAudioInterval());
-                }
-            }
-        }
-
-        public void PlayVowelSoundAsync(string SoundPath, int nPlayBack)
-        {
-            StopSoundPlayer();
-            AsyncPlayer = new Thread(ThreadPlayVowelSound);
-            CurrentSoundPath = SoundPath;
-            CurrentNumPlayback = nPlayBack;
-            AsyncPlayer.Start();
-        }
-
-        private void ThreadPlayVowelSound()
-        {
-            if (!File.Exists(CurrentSoundPath))
-            {
-                MessageBox.Show("Sound file doesn't exist! \n" + CurrentSoundPath,
-                  Application.ProductName,
-                  MessageBoxButtons.OK,
-                  MessageBoxIcon.Warning);
-                return;
-            }
-
-            for (int i = 1; i <= CurrentNumPlayback; i++)
-            {
-                ResMan.PlaySound(CurrentSoundPath, true);
-
-                if (i < CurrentNumPlayback)
-                    Thread.Sleep(GetAudioInterval());
-            }
-        }
-
-        ///<summary>
-        ///This function returns the state of the tab,
-        ///Vowels as 0, Word as 1.
-        ///</summary>
-        private int GetTabState()
-        {
-            return 0/*myTabControl.SelectedIndex*/;
-        }
-
-        ///<summary>
-        ///This function returns the audio source id,
-        ///Female as 0, Senior Male as 1, Young Male as 2.
-        ///</summary>
-        private int GetAudioSource()
-        {
-            //if (radioFemale.Checked)
-            //    return 0;
-            //if (radioOldMale.Checked)
-            //    return 1;
-            //if (radioYoungMale.Checked)
-            //    return 2;
-            //if (radioYoungFemale.Checked)
-            //    return 3;
-            return 0;
-        }
-
-        private void RefreshTabState()
-        {
-            //if (GetTabState() == 0)
-            //{
-            //    groupBox3.Enabled = false;
-            //    panel2.Enabled = true;
-            //    ResetPAid();
-            //}
-            //if (GetTabState() == 1)
-            //{
-            //    groupBox3.Enabled = true;
-            //    panel2.Enabled = false;
-            //    RefreshPAid();
-            //}
-        }
-
-        private void myTabControl_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            RefreshTabState();
-            ResetAll();
-        }
-
-        private void ResetPreviewBox()
-        {
-            //previewBox.BackgroundImage = previewBox.InitialImage;
-        }
-
-        private void RefreshPreviewBox()
-        {
-            if (GetTabState() == 1)
-            {
-                ResetPreviewBox();
-                return;
-            }
-            //if (GetTabState() == 0)
-            //{
-            //    MaoriObj m = GetSelectedMaoriObj(MaoriObjType.Vowel);
-            //    if ((m != null) && (m.DefaultImage != null))
-            //        previewBox.BackgroundImage = m.DefaultImage;
-            //    else if ((m != null) && (m.AnimationImages != null))
-            //        previewBox.BackgroundImage = m.AnimationImages.Images[0];
-            //    else
-            //        ResetPreviewBox();
-            //}
-        }
-
-        private void VowelList_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            ResetAll();
-        }
-
-        private void ResetAll()
-        {
-            StopSoundPlayer();
-            ResetAnimator();
-            RefreshPreviewBox();
-        }
-
-        private void AudioDelay_ValueChanged(object sender, EventArgs e)
-        {
-            //SetAudioInterval((int)AudioDelay.Value);
-        }
-
-        private int AudioInterval = 1000;
-
-        private int GetAudioInterval()
-        {
-            return AudioInterval;
-        }
-
-        private void SetAudioInterval(int newValue)
-        {
-            AudioInterval = newValue;
-        }
-
-        private bool CanPlayAnimation(MaoriObj currentMaoriObj)
-        {
-            if (currentMaoriObj != null)
-                return (currentMaoriObj.AnimationImages != null);
-            else
-                return false;
-        }
-
-        private void ResetAnimator()
-        {
-            //animationTotalFrames = 0;
-            //animationCurrentFrame = 0;
-            //animationCurrentPlay = null;
-            //animationTimer.Stop();
-        }
-
-        //private int animationTotalFrames = 0;
-        //private int animationCurrentFrame = 0;
-        //private MaoriObj animationCurrentPlay = null;
-
-        private void StartAnimation()
-        {
-            //if (GetTabState() == 0)
-            //{
-            //    MaoriObj m = GetSelectedMaoriObj(MaoriObjType.Vowel);
-            //    if (m != null)
-            //    {
-            //        animationCurrentPlay = m;
-            //        animationCurrentFrame = 0;
-            //        animationTotalFrames = m.AnimationImages.Images.Count;
-            //        //animationTimer.Start();
-            //    }
-            //}
-        }
-
-        private void animationTimer_Tick(object sender, EventArgs e)
-        {
-            //if (GetTabState() == 0)
-            //{
-            //    previewBox.BackgroundImage = animationCurrentPlay.AnimationImages.Images[animationCurrentFrame];
-            //    animationCurrentFrame += 1;
-            //    if (animationCurrentFrame == animationTotalFrames)
-            //        ResetAnimator();
-            //}
-            //else
-            //{
-            //    ResetAnimator();
             //}
         }
 
@@ -653,57 +387,57 @@ namespace MPAid
 
         private void DoAnalysis()
         {
-            MaoriObj word = GetSelectedMaoriObj(MaoriObjType.Word);
+            //MaoriObj word = GetSelectedMaoriObj(MaoriObjType.Word);
 
-            PaConfig config = new PaConfig()
-            {
-                currentWord = word.Name,
-                AnnieDir = ResMan.GetAnnieDir(),
-                batFilePath = ResMan.GetAnnieDir() + "\\Process.bat",
-                audioList = recordedWavFiles
-            };
+            //PaConfig config = new PaConfig()
+            //{
+            //    currentWord = word.Name,
+            //    AnnieDir = ResMan.GetAnnieDir(),
+            //    batFilePath = ResMan.GetAnnieDir() + "\\Process.bat",
+            //    audioList = recordedWavFiles
+            //};
 
-            PaEngine engine = new PaEngine(config);
-            if (engine.wavFilesOK())
-            {
-                // The Main thread will wait until the process finishes
-                engine.Start();
+            //PaEngine engine = new PaEngine(config);
+            //if (engine.wavFilesOK())
+            //{
+            //    // The Main thread will wait until the process finishes
+            //    engine.Start();
 
-                //listBoxREC.Items.Add(engine.GetRecognizedWord());
-                listREC.Add(engine.GetRecognizedWord());
-                RefreshListRecBox();
+            //    //listBoxREC.Items.Add(engine.GetRecognizedWord());
+            //    listREC.Add(engine.GetRecognizedWord());
+            //    RefreshListRecBox();
 
-                //copies the user recording files to the HTML report resource folder
-                HtmlConfig hConfig = new HtmlConfig(systemIO.GetAppDataDir(allUsers.getCurrentUser()));
-                ResMan.SuperCopy(CurrentVoicePath,
-                          hConfig.GetRecPath(listREC.Count,
-                          HtmlConfig.pathType.fullUserRecPath), true);
+            //    //copies the user recording files to the HTML report resource folder
+            //    HtmlConfig hConfig = new HtmlConfig(systemIO.GetAppDataDir(allUsers.getCurrentUser()));
+            //    ResMan.SuperCopy(CurrentVoicePath,
+            //              hConfig.GetRecPath(listREC.Count,
+            //              HtmlConfig.pathType.fullUserRecPath), true);
 
-                //prepare to copy the sample recording file to the HTML report res folder
+            //    //prepare to copy the sample recording file to the HTML report res folder
 
-                //make sure the sample recording is different from each other
-                string soundToPlay = null;
-                int counter = 0;
-                do
-                {
-                    counter += 1;
-                    soundToPlay = ResMan.GetWordSound(GetAudioSource(), word.WordSoundId, true);
-                    if (soundToPlay == null)
-                        break;
-                } while ((soundToPlay == lastPlayedSound) && (counter < 255));
+            //    //make sure the sample recording is different from each other
+            //    string soundToPlay = null;
+            //    int counter = 0;
+            //    do
+            //    {
+            //        counter += 1;
+            //        soundToPlay = ResMan.GetWordSound(GetAudioSource(), word.WordSoundId, true);
+            //        if (soundToPlay == null)
+            //            break;
+            //    } while ((soundToPlay == lastPlayedSound) && (counter < 255));
 
-                lastPlayedSound = soundToPlay;
+            //    lastPlayedSound = soundToPlay;
 
-                //copies the sample recording files to the HTML res folder
-                ResMan.SuperCopy(soundToPlay, hConfig.GetRecPath(listREC.Count,
-                    HtmlConfig.pathType.fullSampleRecPath), true);
+            //    //copies the sample recording files to the HTML res folder
+            //    ResMan.SuperCopy(soundToPlay, hConfig.GetRecPath(listREC.Count,
+            //        HtmlConfig.pathType.fullSampleRecPath), true);
 
-                //change the UI
-                //buttonShowReport.Enabled = true;
-                ReportPath = engine.GetReportPath();
-            }
+            //    //change the UI
+            //    //buttonShowReport.Enabled = true;
+            //    ReportPath = engine.GetReportPath();
+            //}
 
-            ResetRecordings();
+            //ResetRecordings();
         }
 
         private void buttonAnalyze_Click(object sender, EventArgs e)
