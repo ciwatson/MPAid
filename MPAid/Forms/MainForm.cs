@@ -51,6 +51,16 @@ namespace MPAid
 
         public TestForm test = new TestForm();
 
+        public OperationPanel OperationPanel
+        {
+            get { return operationPanel; }
+        }
+
+        public RecordingPanel RecordingList
+        {
+            get { return recordingPanel; }
+        }
+
         public MainForm(UserManagement users)
         {
             MainForm.self = this;
@@ -107,8 +117,8 @@ namespace MPAid
 
             // Add Volume Meter to the form
             InitializeNAudioController();
-            VisualizeVolumeMeter();         
-            InitializeConfig();           
+            VisualizeVolumeMeter();
+            InitializeConfig();
         }
 
         //this method is called when allUsers has been initialized
@@ -127,10 +137,8 @@ namespace MPAid
         }
 
         private void InitializeConfig()
-        {          
+        {
             configContent = Serializer<SysCfg>.Load<BinaryFormatter>(SysCfg.path);
-            System.IO.Directory.CreateDirectory(configContent.AudioFolderAddr);
-            System.IO.Directory.CreateDirectory(configContent.VideoFolderAddr);
             this.systemConfigForm = new SystemConfig();
             this.recordingUploadForm = new RecordingUploadConfig();
             this.recordingRenameForm = new RecordingRenameConfig();
@@ -526,7 +534,7 @@ namespace MPAid
         {
             MaoriObj m = GetSelectedMaoriObj(MaoriObjType.Word);
             //if (m != null)
-                //wordSelectedLabel.Text = m.Name;
+            //wordSelectedLabel.Text = m.Name;
         }
 
         private bool RecordingsReady()
@@ -890,11 +898,6 @@ namespace MPAid
 
         bool doCloseLogin = true;
 
-        public RecordingPanel RecordingList
-        {
-            get {return RecordingList; }
-        }
-
         private void logToolStripMenuItem_Click(object sender, EventArgs e)
         {
             doCloseLogin = false;
@@ -930,7 +933,7 @@ namespace MPAid
             }
             catch (Exception)
             {
-                
+
             }
 
         }

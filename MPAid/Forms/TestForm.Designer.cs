@@ -28,22 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.operationTab = new MPAid.UserControls.OperationPanel();
+            this.operationPanel = new MPAid.UserControls.OperationPanel();
             this.SuspendLayout();
             // 
-            // operationTab
+            // operationPanel
             // 
-            this.operationTab.Location = new System.Drawing.Point(13, 13);
-            this.operationTab.Name = "operationTab";
-            this.operationTab.Size = new System.Drawing.Size(538, 418);
-            this.operationTab.TabIndex = 0;
+            this.operationPanel.Location = new System.Drawing.Point(13, 13);
+            this.operationPanel.Name = "operationPanel";
+            this.operationPanel.Size = new System.Drawing.Size(538, 418);
+            this.operationPanel.TabIndex = 0;
             // 
             // TestForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(672, 462);
-            this.Controls.Add(this.operationTab);
+            this.Controls.Add(this.operationPanel);
             this.Name = "TestForm";
             this.Text = "TestForm";
             this.ResumeLayout(false);
@@ -52,6 +52,6 @@
 
         #endregion
 
-        private UserControls.OperationPanel operationTab;
+        private UserControls.OperationPanel operationPanel;
     }
 }

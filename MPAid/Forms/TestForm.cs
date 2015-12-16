@@ -17,7 +17,7 @@ namespace MPAid.Forms
 
         public OperationPanel OperationTab
         {
-            get { return operationTab; }
+            get { return operationPanel; }
         }
         public TestForm()
         {
