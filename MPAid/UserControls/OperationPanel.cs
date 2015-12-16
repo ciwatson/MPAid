@@ -10,13 +10,13 @@ using System.Windows.Forms;
 
 namespace MPAid.UserControls
 {
-    public partial class OperationTab : UserControl
+    public partial class OperationPanel : UserControl
     {
         public VlcPlayer VlcPlayer
         {
             get { return vlcPlayer; }
         }
-        public OperationTab()
+        public OperationPanel()
         {
             InitializeComponent();
         }

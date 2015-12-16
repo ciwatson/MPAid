@@ -47,6 +47,7 @@ namespace MPAid.Cores
             set
             {
                 audioFolderAddr = value;
+                System.IO.Directory.CreateDirectory(audioFolderAddr);
             }
         }
 
@@ -61,6 +62,7 @@ namespace MPAid.Cores
             set
             {
                 videoFolderAddr = value;
+                System.IO.Directory.CreateDirectory(videoFolderAddr);
             }
         }
     }

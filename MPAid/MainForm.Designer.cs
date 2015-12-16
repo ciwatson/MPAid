@@ -35,6 +35,8 @@ namespace MPAid
             this.headerBox = new System.Windows.Forms.PictureBox();
             this.categoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
+            this.operationPanel = new MPAid.UserControls.OperationPanel();
+            this.recordingPanel = new MPAid.UserControls.RecordingPanel();
             this.mainMenuStrip = new System.Windows.Forms.MenuStrip();
             this.usersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.administratorConsoleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -52,8 +54,6 @@ namespace MPAid
             this.submitFeedbackToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.testToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.operationTab1 = new MPAid.UserControls.OperationTab();
-            this.recordingPanel = new MPAid.UserControls.RecordingList();
             ((System.ComponentModel.ISupportInitialize)(this.headerBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.categoryBindingSource)).BeginInit();
             this.panel1.SuspendLayout();
@@ -74,13 +74,30 @@ namespace MPAid
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.operationTab1);
+            this.panel1.Controls.Add(this.operationPanel);
             this.panel1.Controls.Add(this.recordingPanel);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 113);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(859, 384);
             this.panel1.TabIndex = 7;
+            // 
+            // operationPanel
+            // 
+            this.operationPanel.Location = new System.Drawing.Point(197, 7);
+            this.operationPanel.Name = "operationPanel";
+            this.operationPanel.Size = new System.Drawing.Size(659, 365);
+            this.operationPanel.TabIndex = 8;
+            // 
+            // recordingPanel
+            // 
+            this.recordingPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.recordingPanel.Location = new System.Drawing.Point(12, 6);
+            this.recordingPanel.Name = "recordingPanel";
+            this.recordingPanel.Size = new System.Drawing.Size(179, 366);
+            this.recordingPanel.TabIndex = 7;
             // 
             // mainMenuStrip
             // 
@@ -238,23 +255,6 @@ namespace MPAid
             this.testToolStripMenuItem.Text = "Test";
             this.testToolStripMenuItem.Click += new System.EventHandler(this.testToolStripMenuItem_Click);
             // 
-            // operationTab1
-            // 
-            this.operationTab1.Location = new System.Drawing.Point(197, 7);
-            this.operationTab1.Name = "operationTab1";
-            this.operationTab1.Size = new System.Drawing.Size(659, 365);
-            this.operationTab1.TabIndex = 8;
-            // 
-            // recordingPanel
-            // 
-            this.recordingPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.recordingPanel.Location = new System.Drawing.Point(12, 6);
-            this.recordingPanel.Name = "recordingPanel";
-            this.recordingPanel.Size = new System.Drawing.Size(179, 366);
-            this.recordingPanel.TabIndex = 7;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -303,11 +303,11 @@ namespace MPAid
         private System.Windows.Forms.ToolStripMenuItem systemToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem recordingToolStripMenuItem;
         private System.Windows.Forms.BindingSource categoryBindingSource;
-        private UserControls.RecordingList recordingPanel;
+        private UserControls.RecordingPanel recordingPanel;
         private System.Windows.Forms.ToolStripMenuItem uploadToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem renameToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem testToolStripMenuItem;
-        private UserControls.OperationTab operationTab1;
+        private UserControls.OperationPanel operationPanel;
     }
 }
 

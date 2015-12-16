@@ -51,6 +51,15 @@ namespace MPAid
 
         public TestForm test = new TestForm();
 
+        public OperationPanel OperationPanel
+        {
+            get { return operationPanel; }
+        }
+
+        public RecordingPanel RecordingList
+        {
+            get { return recordingPanel; }
+        }
         public MainForm(UserManagement users)
         {
             MainForm.self = this;
@@ -129,8 +138,6 @@ namespace MPAid
         private void InitializeConfig()
         {          
             configContent = Serializer<SysCfg>.Load<BinaryFormatter>(SysCfg.path);
-            System.IO.Directory.CreateDirectory(configContent.AudioFolderAddr);
-            System.IO.Directory.CreateDirectory(configContent.VideoFolderAddr);
             this.systemConfigForm = new SystemConfig();
             this.recordingUploadForm = new RecordingUploadConfig();
             this.recordingRenameForm = new RecordingRenameConfig();
@@ -889,11 +896,6 @@ namespace MPAid
         }
 
         bool doCloseLogin = true;
-
-        public RecordingList RecordingList
-        {
-            get {return RecordingList; }
-        }
 
         private void logToolStripMenuItem_Click(object sender, EventArgs e)
         {

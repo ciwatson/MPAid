@@ -27,7 +27,7 @@ namespace MPAid.Forms.Config
 
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
-            this.audioLocalListBox.DataSource = null;
+            this.mediaLocalListBox.DataSource = null;
 
             base.OnFormClosing(e);
 
@@ -45,7 +45,7 @@ namespace MPAid.Forms.Config
 
                     Dictionary<string, string> dataSource = fileNames.Zip(fileAddresses, (lText, lValue) => new { lText, lValue }).ToDictionary(x => x.lText, x => x.lValue);
 
-                    ListBox localListBox = this.mediaLocalTabControl.SelectedIndex == 0 ? this.audioLocalListBox : this.videoLocalListBox;
+                    ListBox localListBox = this.mediaLocalListBox;
                     localListBox.DataSource = new BindingSource() { DataSource = dataSource };
                     localListBox.DisplayMember = "Key";
                     localListBox.ValueMember = "Value";
@@ -63,21 +63,18 @@ namespace MPAid.Forms.Config
             try
             {
                 var DBContext = MainForm.self.DBModel;
-                ListBox.SelectedObjectCollection selectedCollection = null;
-                if (mediaLocalTabControl.SelectedIndex == 0) selectedCollection = audioLocalListBox.SelectedItems;
-                else if (mediaLocalTabControl.SelectedIndex == 1) selectedCollection = videoLocalListBox.SelectedItems;
-
-                foreach (KeyValuePair<string, string> item in selectedCollection)
+                foreach (KeyValuePair<string, string> item in mediaLocalListBox.SelectedItems)
                 {
                     String filename = item.Key.ToString();
                     NamePaser paser = new NamePaser();
                     paser.FullName = filename;
-                    paser.Address = recordingFolder;
+                    if (paser.MediaFormat == "audio") paser.Address = MainForm.self.configContent.AudioFolderAddr;
+                    else if (paser.MediaFormat == "video") paser.Address = MainForm.self.configContent.VideoFolderAddr;
 
                     DBContext.AddOrUpdateRecordingFile(paser.SingleFile);
 
                     string existingFile = item.Value + "\\" + item.Key;
-                    string newFile = recordingFolder + "\\" + item.Key;
+                    string newFile = paser.Address + "\\" + item.Key;
                     //avoid writing itslef
                     if (!existingFile.Equals(newFile))
                     {
@@ -100,7 +97,11 @@ namespace MPAid.Forms.Config
                 for (int i = onDBListBox.SelectedItems.Count - 1; i >= 0; i--)
                 {
                     SingleFile sf = onDBListBox.SelectedItems[i] as MPAid.Models.SingleFile;
-                    Recording rd = sf.Audio;
+                    Recording rd = null;
+                    NamePaser paser = new NamePaser();
+                    paser.FullName = sf.Name;
+                    if (paser.MediaFormat == "audio") rd = sf.Audio;
+                    else if (paser.MediaFormat == "video") rd = sf.Video;
                     Speaker spk = rd.Speaker;
                     Word word = rd.Word;
                     Category cty = word.Category;
@@ -124,20 +125,5 @@ namespace MPAid.Forms.Config
                 MessageBox.Show("Fail to delete!");
             }
         }
-
-        private void mediaLocalTabControl_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (this.mediaLocalTabControl.SelectedIndex == 0)
-            {
-                recordingFolder = MainForm.self.configContent.AudioFolderAddr;
-            }
-            else if(this.mediaLocalTabControl.SelectedIndex == 1)
-            {
-                recordingFolder = MainForm.self.configContent.VideoFolderAddr;
-            }
-            this.openFileDialog.InitialDirectory = recordingFolder;
-        }
-
-        private String recordingFolder;
     }
 }

@@ -118,6 +118,7 @@
     <Reference Include="Vlc.DotNet.Wpf">
       <HintPath>..\packages\Vlc.DotNet.Wpf.2.1.62\lib\net45\x86\Vlc.DotNet.Wpf.dll</HintPath>
     </Reference>
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Forms\AdminConsole.cs">
@@ -231,17 +232,17 @@
     <Compile Include="Forms\Config\SystemConfig.Designer.cs">
       <DependentUpon>SystemConfig.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\OperationTab.cs">
+    <Compile Include="UserControls\OperationPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\OperationTab.Designer.cs">
-      <DependentUpon>OperationTab.cs</DependentUpon>
+    <Compile Include="UserControls\OperationPanel.Designer.cs">
+      <DependentUpon>OperationPanel.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\RecordingList.cs">
+    <Compile Include="UserControls\RecordingPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\RecordingList.Designer.cs">
-      <DependentUpon>RecordingList.cs</DependentUpon>
+    <Compile Include="UserControls\RecordingPanel.Designer.cs">
+      <DependentUpon>RecordingPanel.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\VLCPlayer.cs">
       <SubType>UserControl</SubType>
@@ -301,11 +302,11 @@
     <EmbeddedResource Include="Forms\Config\SystemConfig.resx">
       <DependentUpon>SystemConfig.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\OperationTab.resx">
-      <DependentUpon>OperationTab.cs</DependentUpon>
+    <EmbeddedResource Include="UserControls\OperationPanel.resx">
+      <DependentUpon>OperationPanel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\RecordingList.resx">
-      <DependentUpon>RecordingList.cs</DependentUpon>
+    <EmbeddedResource Include="UserControls\RecordingPanel.resx">
+      <DependentUpon>RecordingPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\VLCPlayer.resx">
       <DependentUpon>VLCPlayer.cs</DependentUpon>
