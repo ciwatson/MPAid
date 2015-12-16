@@ -56,10 +56,10 @@ namespace MPAid.Migrations
                         SingleFileId = c.Int(nullable: false, identity: true),
                         Name = c.String(nullable: false, maxLength: 64),
                         Address = c.String(nullable: false, maxLength: 256),
-                        AudioId = c.Int(nullable: false),
+                        AudioId = c.Int(),
                     })
                 .PrimaryKey(t => t.SingleFileId)
-                .ForeignKey("dbo.Recording", t => t.AudioId, cascadeDelete: true)
+                .ForeignKey("dbo.Recording", t => t.AudioId)
                 .Index(t => t.Name, unique: true)
                 .Index(t => t.AudioId);
             

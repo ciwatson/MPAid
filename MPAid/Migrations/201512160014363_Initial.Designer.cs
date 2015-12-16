@@ -13,7 +13,7 @@ namespace MPAid.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201512150734483_Initial"; }
+            get { return "201512160014363_Initial"; }
         }
         
         string IMigrationMetadata.Source

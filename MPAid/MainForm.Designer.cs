@@ -35,8 +35,6 @@ namespace MPAid
             this.headerBox = new System.Windows.Forms.PictureBox();
             this.categoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
-            this.operationPanel = new MPAid.UserControls.OperationPanel();
-            this.recordingPanel = new MPAid.UserControls.RecordingPanel();
             this.mainMenuStrip = new System.Windows.Forms.MenuStrip();
             this.usersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.administratorConsoleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -54,6 +52,8 @@ namespace MPAid
             this.submitFeedbackToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.testToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.operationPanel = new MPAid.UserControls.OperationPanel();
+            this.recordingPanel = new MPAid.UserControls.RecordingPanel();
             ((System.ComponentModel.ISupportInitialize)(this.headerBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.categoryBindingSource)).BeginInit();
             this.panel1.SuspendLayout();
@@ -79,25 +79,8 @@ namespace MPAid
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 113);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(859, 384);
+            this.panel1.Size = new System.Drawing.Size(859, 383);
             this.panel1.TabIndex = 7;
-            // 
-            // operationPanel
-            // 
-            this.operationPanel.Location = new System.Drawing.Point(197, 7);
-            this.operationPanel.Name = "operationPanel";
-            this.operationPanel.Size = new System.Drawing.Size(659, 365);
-            this.operationPanel.TabIndex = 8;
-            // 
-            // recordingPanel
-            // 
-            this.recordingPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.recordingPanel.Location = new System.Drawing.Point(12, 6);
-            this.recordingPanel.Name = "recordingPanel";
-            this.recordingPanel.Size = new System.Drawing.Size(179, 366);
-            this.recordingPanel.TabIndex = 7;
             // 
             // mainMenuStrip
             // 
@@ -121,7 +104,7 @@ namespace MPAid
             this.usersToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("usersToolStripMenuItem.Image")));
             this.usersToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.usersToolStripMenuItem.Name = "usersToolStripMenuItem";
-            this.usersToolStripMenuItem.Size = new System.Drawing.Size(71, 28);
+            this.usersToolStripMenuItem.Size = new System.Drawing.Size(77, 28);
             this.usersToolStripMenuItem.Text = "Users";
             // 
             // administratorConsoleToolStripMenuItem
@@ -129,7 +112,7 @@ namespace MPAid
             this.administratorConsoleToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("administratorConsoleToolStripMenuItem.Image")));
             this.administratorConsoleToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.administratorConsoleToolStripMenuItem.Name = "administratorConsoleToolStripMenuItem";
-            this.administratorConsoleToolStripMenuItem.Size = new System.Drawing.Size(201, 30);
+            this.administratorConsoleToolStripMenuItem.Size = new System.Drawing.Size(214, 30);
             this.administratorConsoleToolStripMenuItem.Text = "Administrator Console";
             this.administratorConsoleToolStripMenuItem.Click += new System.EventHandler(this.administratorConsoleToolStripMenuItem_Click);
             // 
@@ -138,7 +121,7 @@ namespace MPAid
             this.changePasswordToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("changePasswordToolStripMenuItem.Image")));
             this.changePasswordToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.changePasswordToolStripMenuItem.Name = "changePasswordToolStripMenuItem";
-            this.changePasswordToolStripMenuItem.Size = new System.Drawing.Size(201, 30);
+            this.changePasswordToolStripMenuItem.Size = new System.Drawing.Size(214, 30);
             this.changePasswordToolStripMenuItem.Text = "Change password";
             this.changePasswordToolStripMenuItem.Click += new System.EventHandler(this.changePasswordToolStripMenuItem_Click);
             // 
@@ -147,7 +130,7 @@ namespace MPAid
             this.logToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("logToolStripMenuItem.Image")));
             this.logToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.logToolStripMenuItem.Name = "logToolStripMenuItem";
-            this.logToolStripMenuItem.Size = new System.Drawing.Size(201, 30);
+            this.logToolStripMenuItem.Size = new System.Drawing.Size(214, 30);
             this.logToolStripMenuItem.Text = "Sign out";
             this.logToolStripMenuItem.Click += new System.EventHandler(this.logToolStripMenuItem_Click);
             // 
@@ -159,7 +142,7 @@ namespace MPAid
             this.hMMsToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("hMMsToolStripMenuItem.Image")));
             this.hMMsToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.hMMsToolStripMenuItem.Name = "hMMsToolStripMenuItem";
-            this.hMMsToolStripMenuItem.Size = new System.Drawing.Size(79, 28);
+            this.hMMsToolStripMenuItem.Size = new System.Drawing.Size(83, 28);
             this.hMMsToolStripMenuItem.Text = "HMMs";
             // 
             // openHMMsFolderToolStripMenuItem
@@ -167,7 +150,7 @@ namespace MPAid
             this.openHMMsFolderToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("openHMMsFolderToolStripMenuItem.Image")));
             this.openHMMsFolderToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.openHMMsFolderToolStripMenuItem.Name = "openHMMsFolderToolStripMenuItem";
-            this.openHMMsFolderToolStripMenuItem.Size = new System.Drawing.Size(184, 30);
+            this.openHMMsFolderToolStripMenuItem.Size = new System.Drawing.Size(198, 30);
             this.openHMMsFolderToolStripMenuItem.Text = "Open HMMs folder";
             this.openHMMsFolderToolStripMenuItem.Click += new System.EventHandler(this.openHMMsFolderToolStripMenuItem_Click);
             // 
@@ -176,7 +159,7 @@ namespace MPAid
             this.settingsToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("settingsToolStripMenuItem.Image")));
             this.settingsToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(184, 30);
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(198, 30);
             this.settingsToolStripMenuItem.Text = "Settings";
             this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
             // 
@@ -186,13 +169,13 @@ namespace MPAid
             this.systemToolStripMenuItem,
             this.recordingToolStripMenuItem});
             this.configToolStripMenuItem.Name = "configToolStripMenuItem";
-            this.configToolStripMenuItem.Size = new System.Drawing.Size(55, 28);
+            this.configToolStripMenuItem.Size = new System.Drawing.Size(58, 28);
             this.configToolStripMenuItem.Text = "Config";
             // 
             // systemToolStripMenuItem
             // 
             this.systemToolStripMenuItem.Name = "systemToolStripMenuItem";
-            this.systemToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.systemToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.systemToolStripMenuItem.Text = "System";
             this.systemToolStripMenuItem.Click += new System.EventHandler(this.systemToolStripMenuItem_Click);
             // 
@@ -202,20 +185,20 @@ namespace MPAid
             this.uploadToolStripMenuItem,
             this.renameToolStripMenuItem});
             this.recordingToolStripMenuItem.Name = "recordingToolStripMenuItem";
-            this.recordingToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.recordingToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.recordingToolStripMenuItem.Text = "Recording";
             // 
             // uploadToolStripMenuItem
             // 
             this.uploadToolStripMenuItem.Name = "uploadToolStripMenuItem";
-            this.uploadToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.uploadToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
             this.uploadToolStripMenuItem.Text = "Upload";
             this.uploadToolStripMenuItem.Click += new System.EventHandler(this.uploadToolStripMenuItem_Click);
             // 
             // renameToolStripMenuItem
             // 
             this.renameToolStripMenuItem.Name = "renameToolStripMenuItem";
-            this.renameToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.renameToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
             this.renameToolStripMenuItem.Text = "Rename";
             this.renameToolStripMenuItem.Click += new System.EventHandler(this.renameToolStripMenuItem_Click);
             // 
@@ -228,14 +211,14 @@ namespace MPAid
             this.helpToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("helpToolStripMenuItem.Image")));
             this.helpToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(64, 28);
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(67, 28);
             this.helpToolStripMenuItem.Text = "Help";
             // 
             // submitFeedbackToolStripMenuItem
             // 
             this.submitFeedbackToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("submitFeedbackToolStripMenuItem.Image")));
             this.submitFeedbackToolStripMenuItem.Name = "submitFeedbackToolStripMenuItem";
-            this.submitFeedbackToolStripMenuItem.Size = new System.Drawing.Size(169, 26);
+            this.submitFeedbackToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
             this.submitFeedbackToolStripMenuItem.Text = "Submit Feedback";
             this.submitFeedbackToolStripMenuItem.Click += new System.EventHandler(this.submitFeedbackToolStripMenuItem_Click);
             // 
@@ -244,28 +227,44 @@ namespace MPAid
             this.aboutToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("aboutToolStripMenuItem.Image")));
             this.aboutToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(169, 26);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // testToolStripMenuItem
             // 
             this.testToolStripMenuItem.Name = "testToolStripMenuItem";
-            this.testToolStripMenuItem.Size = new System.Drawing.Size(169, 26);
+            this.testToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
             this.testToolStripMenuItem.Text = "Test";
             this.testToolStripMenuItem.Click += new System.EventHandler(this.testToolStripMenuItem_Click);
+            // 
+            // operationPanel
+            // 
+            this.operationPanel.Location = new System.Drawing.Point(197, 7);
+            this.operationPanel.Name = "operationPanel";
+            this.operationPanel.Size = new System.Drawing.Size(659, 376);
+            this.operationPanel.TabIndex = 8;
+            // 
+            // recordingPanel
+            // 
+            this.recordingPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.recordingPanel.Location = new System.Drawing.Point(12, 6);
+            this.recordingPanel.Name = "recordingPanel";
+            this.recordingPanel.Size = new System.Drawing.Size(179, 365);
+            this.recordingPanel.TabIndex = 7;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Snow;
-            this.ClientSize = new System.Drawing.Size(859, 497);
+            this.ClientSize = new System.Drawing.Size(859, 496);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.headerBox);
             this.Controls.Add(this.mainMenuStrip);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.mainMenuStrip;
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(875, 535);
