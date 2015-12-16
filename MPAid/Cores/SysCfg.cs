@@ -42,7 +42,9 @@ namespace MPAid.Cores
             get
             {
                 //by default, the url is ./Audio
-                return audioFolderAddr == null ? System.Windows.Forms.Application.StartupPath + @"\Audio" : audioFolderAddr;
+                audioFolderAddr = audioFolderAddr == null ? System.Windows.Forms.Application.StartupPath + @"\Audio" : audioFolderAddr;
+                System.IO.Directory.CreateDirectory(audioFolderAddr);
+                return audioFolderAddr;
             }
             set
             {
@@ -57,7 +59,9 @@ namespace MPAid.Cores
             get
             {
                 //by default, the url is ./Video
-                return videoFolderAddr == null ? System.Windows.Forms.Application.StartupPath + @"\Video" : videoFolderAddr;
+                videoFolderAddr = videoFolderAddr == null ? System.Windows.Forms.Application.StartupPath + @"\Video" : videoFolderAddr;
+                System.IO.Directory.CreateDirectory(videoFolderAddr);
+                return videoFolderAddr;
             }
             set
             {
