@@ -63,38 +63,61 @@ namespace MPAid.UserControls
         {
             try
             {
-                MainForm mainForm = this.Parent.Parent.Parent.Parent.Parent.Parent as MainForm;
-                Speaker spk = mainForm.RecordingList.SpeakerComboBox.SelectedItem as Speaker;
-                Word wd = mainForm.RecordingList.WordListBox.SelectedItem as Word;
-                Recording rd = mainForm.DBModel.Recording.Local.Where(x => x.WordId == wd.WordId && x.SpeakerId == spk.SpeakerId).SingleOrDefault();
-                if (rd != null)
+                switch (vlcControl.State)
                 {
-                    SingleFile sf = rd.Video;
-                    if (sf == null) throw new Exception("No video recording!");
-                    string filePath = sf.Address + "\\" + sf.Name;
+                    case Vlc.DotNet.Core.Interops.Signatures.MediaStates.NothingSpecial:
+                    case Vlc.DotNet.Core.Interops.Signatures.MediaStates.Stopped:
+                        {
+                            MainForm mainForm = this.Parent.Parent.Parent.Parent.Parent.Parent as MainForm;
+                            Speaker spk = mainForm.RecordingList.SpeakerComboBox.SelectedItem as Speaker;
+                            Word wd = mainForm.RecordingList.WordListBox.SelectedItem as Word;
+                            Recording rd = mainForm.DBModel.Recording.Local.Where(x => x.WordId == wd.WordId && x.SpeakerId == spk.SpeakerId).SingleOrDefault();
+                            if (rd != null)
+                            {
+                                SingleFile sf = rd.Video;
+                                if (sf == null) throw new Exception("No video recording!");
+                                string filePath = sf.Address + "\\" + sf.Name;
 
-                    vlcControl.Play(new Uri(filePath));
-                }
-                else
-                {
-                    MessageBox.Show("Invalid recording!");
+                                vlcControl.Play(new Uri(filePath));
+                                playButton.Text = "Pause";
+                            }
+                            else
+                            {
+                                MessageBox.Show("Invalid recording!");
+                            }
+                        }
+                        break;
+                    case Vlc.DotNet.Core.Interops.Signatures.MediaStates.Playing:
+                        {
+                            vlcControl.Pause();
+                            playButton.Text = "Play";
+                        }
+                        break;
+                    case Vlc.DotNet.Core.Interops.Signatures.MediaStates.Paused:
+                        {
+                            vlcControl.Pause();
+                            playButton.Text = "Pause";
+                        }
+                        break;
+                    default:
+                        throw new Exception("Invalid state!");
                 }
             }
             catch (Exception exp)
             {
                 MessageBox.Show(exp.Message);
                 Console.WriteLine(exp);
-            }    
-        }
-
-        private void pauseButton_Click(object sender, EventArgs e)
-        {
-            vlcControl.Pause();
+            }
         }
 
         private void stopButton_Click(object sender, EventArgs e)
         {
             vlcControl.Stop();
+        }
+
+        private void OnVlcControlStopped(object sender, Vlc.DotNet.Core.VlcMediaPlayerStoppedEventArgs e)
+        {
+            playButton.Text = "Play";
         }
     }
 }

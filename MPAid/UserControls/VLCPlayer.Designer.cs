@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.vlcControl = new Vlc.DotNet.Forms.VlcControl();
-            this.pauseButton = new System.Windows.Forms.Button();
             this.stopButton = new System.Windows.Forms.Button();
             this.playButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.vlcControl)).BeginInit();
@@ -48,22 +47,12 @@
             this.vlcControl.Text = "vlcControl1";
             this.vlcControl.VlcLibDirectory = null;
             this.vlcControl.VlcLibDirectoryNeeded += new System.EventHandler<Vlc.DotNet.Forms.VlcLibDirectoryNeededEventArgs>(this.OnVlcControlNeedLibDirectory);
-            // 
-            // pauseButton
-            // 
-            this.pauseButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.pauseButton.Location = new System.Drawing.Point(85, 252);
-            this.pauseButton.Name = "pauseButton";
-            this.pauseButton.Size = new System.Drawing.Size(69, 23);
-            this.pauseButton.TabIndex = 4;
-            this.pauseButton.Text = "Pause";
-            this.pauseButton.UseVisualStyleBackColor = true;
-            this.pauseButton.Click += new System.EventHandler(this.pauseButton_Click);
+            this.vlcControl.Stopped += new System.EventHandler<Vlc.DotNet.Core.VlcMediaPlayerStoppedEventArgs>(this.OnVlcControlStopped);
             // 
             // stopButton
             // 
             this.stopButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.stopButton.Location = new System.Drawing.Point(166, 252);
+            this.stopButton.Location = new System.Drawing.Point(85, 252);
             this.stopButton.Name = "stopButton";
             this.stopButton.Size = new System.Drawing.Size(69, 23);
             this.stopButton.TabIndex = 5;
@@ -88,7 +77,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.playButton);
             this.Controls.Add(this.stopButton);
-            this.Controls.Add(this.pauseButton);
             this.Controls.Add(this.vlcControl);
             this.Name = "VlcPlayer";
             this.Size = new System.Drawing.Size(513, 279);
@@ -99,7 +87,6 @@
 
         #endregion
         private Vlc.DotNet.Forms.VlcControl vlcControl;
-        private System.Windows.Forms.Button pauseButton;
         private System.Windows.Forms.Button stopButton;
         private System.Windows.Forms.Button playButton;
     }
