@@ -51,7 +51,7 @@ namespace RecordingMapper
 
                     File.Move(address + "\\" + oldName, address + "\\" + newName);
                 }
-                catch (Exception exp)
+                catch (Exception)
                 {
                     Console.WriteLine("Wrong name format!");
                     return;
