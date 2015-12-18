@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using MPAid.Cores;
+using NAudio.CoreAudioApi;
 
 namespace MPAid.Forms.Config
 {
