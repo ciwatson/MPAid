@@ -37,6 +37,12 @@
             this.videoFolderSelectButton = new System.Windows.Forms.Button();
             this.videoFolderlabel = new System.Windows.Forms.Label();
             this.videoFolderTextBox = new System.Windows.Forms.TextBox();
+            this.reportFolderSelectButton = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.reportFolderTextBox = new System.Windows.Forms.TextBox();
+            this.recordingFolderSelectButton = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.recordingFolderTextBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // audioFolderTextBox
@@ -63,7 +69,7 @@
             this.audioFolderSelectButton.TabIndex = 2;
             this.audioFolderSelectButton.Text = "...";
             this.audioFolderSelectButton.UseVisualStyleBackColor = true;
-            this.audioFolderSelectButton.Click += new System.EventHandler(this.folderSelectButton_Click);
+            this.audioFolderSelectButton.Click += new System.EventHandler(this.audioFolderSelectButton_Click);
             // 
             // saveButton
             // 
@@ -111,11 +117,69 @@
             this.videoFolderTextBox.Size = new System.Drawing.Size(332, 20);
             this.videoFolderTextBox.TabIndex = 5;
             // 
+            // reportFolderSelectButton
+            // 
+            this.reportFolderSelectButton.Location = new System.Drawing.Point(465, 142);
+            this.reportFolderSelectButton.Name = "reportFolderSelectButton";
+            this.reportFolderSelectButton.Size = new System.Drawing.Size(33, 25);
+            this.reportFolderSelectButton.TabIndex = 13;
+            this.reportFolderSelectButton.Text = "...";
+            this.reportFolderSelectButton.UseVisualStyleBackColor = true;
+            this.reportFolderSelectButton.Click += new System.EventHandler(this.reportFolderSelectButton_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(20, 145);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(71, 13);
+            this.label1.TabIndex = 12;
+            this.label1.Text = "Report Folder";
+            // 
+            // reportFolderTextBox
+            // 
+            this.reportFolderTextBox.Location = new System.Drawing.Point(127, 142);
+            this.reportFolderTextBox.Name = "reportFolderTextBox";
+            this.reportFolderTextBox.Size = new System.Drawing.Size(332, 20);
+            this.reportFolderTextBox.TabIndex = 11;
+            // 
+            // recordingFolderSelectButton
+            // 
+            this.recordingFolderSelectButton.Location = new System.Drawing.Point(465, 105);
+            this.recordingFolderSelectButton.Name = "recordingFolderSelectButton";
+            this.recordingFolderSelectButton.Size = new System.Drawing.Size(33, 25);
+            this.recordingFolderSelectButton.TabIndex = 10;
+            this.recordingFolderSelectButton.Text = "...";
+            this.recordingFolderSelectButton.UseVisualStyleBackColor = true;
+            this.recordingFolderSelectButton.Click += new System.EventHandler(this.recordingFolderSelectButton_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(20, 108);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(88, 13);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "Recording Folder";
+            // 
+            // recordingFolderTextBox
+            // 
+            this.recordingFolderTextBox.Location = new System.Drawing.Point(127, 105);
+            this.recordingFolderTextBox.Name = "recordingFolderTextBox";
+            this.recordingFolderTextBox.Size = new System.Drawing.Size(332, 20);
+            this.recordingFolderTextBox.TabIndex = 8;
+            // 
             // SystemConfig
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(510, 304);
+            this.Controls.Add(this.reportFolderSelectButton);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.reportFolderTextBox);
+            this.Controls.Add(this.recordingFolderSelectButton);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.recordingFolderTextBox);
             this.Controls.Add(this.videoFolderSelectButton);
             this.Controls.Add(this.videoFolderlabel);
             this.Controls.Add(this.videoFolderTextBox);
@@ -145,5 +209,11 @@
         private System.Windows.Forms.Button videoFolderSelectButton;
         private System.Windows.Forms.Label videoFolderlabel;
         private System.Windows.Forms.TextBox videoFolderTextBox;
+        private System.Windows.Forms.Button reportFolderSelectButton;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox reportFolderTextBox;
+        private System.Windows.Forms.Button recordingFolderSelectButton;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox recordingFolderTextBox;
     }
 }

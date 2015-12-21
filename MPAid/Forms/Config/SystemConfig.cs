@@ -25,29 +25,27 @@ namespace MPAid.Forms.Config
 
         private void InitializeContent()
         {
-            this.audioFolderTextBox.Text = MainForm.self.configContent.AudioFolderAddr;
+            this.audioFolderTextBox.Text = MainForm.self.configContent.AudioFolderAddr.FolderAddr;
             this.audioFolderTextBox.TextChanged += AudioFolderTextBox_TextChanged;
 
-            this.videoFolderTextBox.Text = MainForm.self.configContent.VideoFolderAddr;
+            this.videoFolderTextBox.Text = MainForm.self.configContent.VideoFolderAddr.FolderAddr;
             this.videoFolderTextBox.TextChanged += VideoFolderTextBox_TextChanged;
         }
-
         private void AudioFolderTextBox_TextChanged(object sender, EventArgs e)
         {
-            MainForm.self.configContent.AudioFolderAddr = this.audioFolderTextBox.Text;
+            MainForm.self.configContent.AudioFolderAddr.FolderAddr = this.audioFolderTextBox.Text;
         }
-
         private void VideoFolderTextBox_TextChanged(object sender, EventArgs e)
         {
-            MainForm.self.configContent.VideoFolderAddr = this.videoFolderTextBox.Text;
+            MainForm.self.configContent.VideoFolderAddr.FolderAddr = this.videoFolderTextBox.Text;
         }
-
-        private void folderSelectButton_Click(object sender, EventArgs e)
+        private void RecordingFolderTextBox_TextChanged(object sender, EventArgs e)
         {
-            if (this.folderBrowserDialog.ShowDialog() == DialogResult.OK)
-            {           
-                this.audioFolderTextBox.Text = folderBrowserDialog.SelectedPath;
-            }
+            MainForm.self.configContent.RecordingFolderAddr.FolderAddr = this.recordingFolderTextBox.Text;
+        }
+        private void ReportFolderTextBox_TextChanged(object sender, EventArgs e)
+        {
+            MainForm.self.configContent.ReportFolderAddr.FolderAddr = this.reportFolderTextBox.Text;
         }
 
         private void SaveButton_Click(object sender, EventArgs e)
@@ -56,11 +54,32 @@ namespace MPAid.Forms.Config
             this.Close();
         }
 
+        private void audioFolderSelectButton_Click(object sender, EventArgs e)
+        {
+            if (this.folderBrowserDialog.ShowDialog() == DialogResult.OK)
+            {
+                this.audioFolderTextBox.Text = folderBrowserDialog.SelectedPath;
+            }
+        }
         private void videoFolderSelectButton_Click(object sender, EventArgs e)
         {
             if (this.folderBrowserDialog.ShowDialog() == DialogResult.OK)
             {
                 this.videoFolderTextBox.Text = folderBrowserDialog.SelectedPath;
+            }
+        }
+        private void recordingFolderSelectButton_Click(object sender, EventArgs e)
+        {
+            if (this.folderBrowserDialog.ShowDialog() == DialogResult.OK)
+            {
+                this.recordingFolderTextBox.Text = folderBrowserDialog.SelectedPath;
+            }
+        }
+        private void reportFolderSelectButton_Click(object sender, EventArgs e)
+        {
+            if (this.folderBrowserDialog.ShowDialog() == DialogResult.OK)
+            {
+                this.reportFolderTextBox.Text = folderBrowserDialog.SelectedPath;
             }
         }
     }

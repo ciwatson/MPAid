@@ -22,7 +22,6 @@ namespace MPAid
     public partial class MainForm : Form
     {
         public static MainForm self;
-        private ResManager ResMan;
         private UserManagement allUsers;
         private IoController systemIO;
 
@@ -50,6 +49,11 @@ namespace MPAid
         public MPAidModel DBModel;
 
         public TestForm test = new TestForm();
+
+        public UserManagement UserManager
+        {
+            get { return allUsers; }
+        }
 
         public OperationPanel OperationPanel
         {
@@ -90,7 +94,6 @@ namespace MPAid
             Icon = Properties.Resources.MPAid;
             Text += " " + GetVersionString();
 
-            ResMan = new ResManager();
             systemIO = new IoController();
             //myUsers = new UserManagement(ResMan.GetUserTempPath());
 
@@ -233,16 +236,16 @@ namespace MPAid
 
         private string CurrentVoicePath;
 
-        private string GetNextUserRecordingName(MaoriObj word)
-        {
-            string result;
+        //private string GetNextUserRecordingName(MaoriObj word)
+        //{
+        //    string result;
 
-            FileMapper fileMapper = new FileMapper(0, word.WordSoundId);
-            int index = recordedWavFiles.Count + 1;
-            result = systemIO.GetAppDataDir(allUsers.getCurrentUser())
-                + fileMapper.GetWordSoundName(index);
-            return result;
-        }
+        //    FileMapper fileMapper = new FileMapper(0, word.WordSoundId);
+        //    int index = recordedWavFiles.Count + 1;
+        //    result = systemIO.GetAppDataDir(allUsers.getCurrentUser())
+        //        + fileMapper.GetWordSoundName(index);
+        //    return result;
+        //}
 
         private void ShowInExplorer(string dirPath)
         {
@@ -431,14 +434,14 @@ namespace MPAid
         private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             HMMsConfigForm hmmsConfig = new HMMsConfigForm();
-            hmmsConfig.SetWorkingFolder(ResMan.GetAnnieDir());
+            //hmmsConfig.SetWorkingFolder(ResMan.GetAnnieDir());
             hmmsConfig.ShowDialog();
             HMMsController.SetHMMsValue(hmmsConfig.GetHMMsValue());
         }
 
         private void openHMMsFolderToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            systemIO.ShowInExplorer(ResMan.GetAnnieDir());
+            //systemIO.ShowInExplorer(ResMan.GetAnnieDir());
         }
 
         bool doCloseLogin = true;

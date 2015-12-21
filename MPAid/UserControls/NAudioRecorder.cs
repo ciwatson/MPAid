@@ -21,14 +21,19 @@ namespace MPAid.UserControls
         private WaveFileWriter writer;
         private string outputFilename;
         private readonly string outputFolder;
+        private string tempFilename;
+        private readonly string tempFolder;
         public NAudioRecorder()
         {
             InitializeComponent();
 
             LoadWasapiDevices();
 
-            outputFolder = Path.Combine(Path.GetTempPath(), "NAudioDemo");
+            outputFolder = Path.Combine(System.Windows.Forms.Application.StartupPath, "Recordings");
             Directory.CreateDirectory(outputFolder);
+
+            tempFolder = Path.Combine(Path.GetTempPath(), "MPAidTemp");
+            Directory.CreateDirectory(tempFolder);
         }
 
         private void LoadWasapiDevices()
@@ -54,6 +59,24 @@ namespace MPAid.UserControls
             recordButton.Enabled = !isRecording;
             fromFileButton.Enabled = !isRecording;
             stopButton.Enabled = isRecording;
+        }
+
+        private double CalculateScore()
+        {
+            MainForm mainForm = Parent.Parent.Parent.Parent.Parent.Parent as MainForm;
+            String word = (mainForm.RecordingList.WordListBox.SelectedItem as Word).Name;
+            int total = RECListBox.Items.Count;
+            double score = -1;
+            if (total > 0)
+            {
+                int i = 0;
+
+                foreach (var item in RECListBox.Items)
+                    if (new Examiner(item.ToString(), word).wordsMatch())
+                        i += 1;
+                score = i / total;
+            }
+            return score;
         }
 
         private void StopRecording()
@@ -84,6 +107,27 @@ namespace MPAid.UserControls
             }
         }
 
+        private void Resample()
+        {
+            try
+            {
+                using (var reader = new WaveFileReader(Path.Combine(tempFolder, tempFilename)))
+                {
+                    var outFormat = new WaveFormat(16000, reader.WaveFormat.Channels);
+                    using (var resampler = new MediaFoundationResampler(reader, outFormat))
+                    {
+                        // resampler.ResamplerQuality = 60;
+                        WaveFileWriter.CreateWaveFile(Path.Combine(outputFolder, outputFilename), resampler);
+                    }
+                }
+                File.Delete(Path.Combine(tempFolder, tempFilename));
+            }
+            catch(Exception exp)
+            {
+                Console.WriteLine(exp);
+            }
+        }
+
         void OnRecordingStopped(object sender, StoppedEventArgs e)
         {
             if (InvokeRequired)
@@ -93,6 +137,7 @@ namespace MPAid.UserControls
             else
             {
                 FinalizeWaveFile();
+                Resample();
                 recordingProgressBar.Value = 0;
                 if (e.Exception != null)
                 {
@@ -142,8 +187,9 @@ namespace MPAid.UserControls
             waveIn.DataAvailable += OnDataAvailable;
             waveIn.RecordingStopped += OnRecordingStopped;
 
-            outputFilename = String.Format("NAudioDemo {0:yyy-MM-dd HH-mm-ss}.wav", DateTime.Now);
-            writer = new WaveFileWriter(Path.Combine(outputFolder, outputFilename), waveIn.WaveFormat);
+            tempFilename = String.Format("NAudioDemo {0:yyy-MM-dd HH-mm-ss}.wav", DateTime.Now);
+            outputFilename = tempFilename;
+            writer = new WaveFileWriter(Path.Combine(tempFolder, tempFilename), waveIn.WaveFormat);
             waveIn.StartRecording();
             SetControlStates(true);
         }
@@ -160,30 +206,41 @@ namespace MPAid.UserControls
 
         private void analyzeButton_Click(object sender, EventArgs e)
         {
-            MainForm mainForm = Parent.Parent.Parent.Parent.Parent.Parent as MainForm;
-            int total = RECListBox.Items.Count;
-            String word = (mainForm.RecordingList.WordListBox.SelectedItem as Word).Name;
-            string score = null;
-            if (total > 0)
-            {
-                int i = 0;
-    
-                foreach (var item in RECListBox.Items)
-                    if (new Examiner(item.ToString(), word).wordsMatch())
-                        i += 1;
-                score = (100 * i / total).ToString();
-                score += "%";
-            }
-            else
-            {
-                score = "Unavailable";
-            }
-            correctnessLabel.Text = "Correctness = " + score;
+            correctnessLabel.Text = "Correctness = " + CalculateScore().ToString();
         }
 
         private void showReportButton_Click(object sender, EventArgs e)
         {
+            MainForm mainForm = Parent.Parent.Parent.Parent.Parent.Parent as MainForm;
 
+            String word = (mainForm.RecordingList.WordListBox.SelectedItem as Word).Name;
+            HtmlConfig hConfig = new HtmlConfig(mainForm.configContent.ReportFolderAddr.FolderAddr)
+            {
+                myWord = word,
+                correctnessValue = CalculateScore().ToString()
+            };
+
+            if ((RECListBox.Items != null) && (RECListBox.Items.Count > 0))
+            {
+                string[] wordArray = new string[RECListBox.Items.Count];
+                RECListBox.Items.CopyTo(wordArray, 0);
+                hConfig.listRecognized = wordArray.ToList();
+            }
+
+
+            HtmlGenerator htmlWriter = new HtmlGenerator(hConfig);
+            htmlWriter.Run();
+
+            // Show the HTML file in system browser
+            String reportPath = hConfig.GetHtmlFullPath();
+            if (File.Exists(reportPath))
+            {
+                Process browser = new Process();
+                browser.StartInfo.FileName = reportPath;
+                browser.Start();
+            }
+            else
+                showReportButton.Enabled = false;
         }
     }
 }
