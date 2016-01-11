@@ -68,11 +68,13 @@ namespace MPAid
         private static void StartFormantPlot()
         {
             try
-            {
+            {              
                 FormantPlotExe = new Process();
                 FormantPlotExe.StartInfo.FileName = GetFormantPlotExeName();
                 FormantPlotExe.StartInfo.UseShellExecute = true;
+                FormantPlotExe.StartInfo.Arguments = "pause";
                 FormantPlotExe.Start();
+
 
                 // Hang up the main application to wait until it finished starting
                 while ((FormantPlotStarted(GetFormantPlotTitle()) == 1)

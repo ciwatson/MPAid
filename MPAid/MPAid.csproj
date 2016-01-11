@@ -305,6 +305,10 @@
     <EmbeddedResource Include="UserControls\VLCPlayer.resx">
       <DependentUpon>VLCPlayer.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="Data\maori\VowelCodes.csv" />
+    <None Include="Data\maori\VowelCodes.xlsx" />
+    <None Include="Data\maori\WordCodes.csv" />
+    <None Include="Data\maori\WordCodes.xlsx" />
     <None Include="VlcLibs\header-files\.keep" />
     <None Include="VlcLibs\x64\.keep" />
     <None Include="VlcLibs\x64\plugins\plugins.dat" />
@@ -326,6 +330,19 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Data\maori\dipData.txt" />
+    <Content Include="Data\maori\diphthongs.txt" />
+    <Content Include="Data\maori\monDataFemale.txt" />
+    <Content Include="Data\maori\monDataMale.txt" />
+    <Content Include="Data\maori\monophthongs.txt" />
+    <Content Include="Data\README.txt" />
+    <Content Include="Images\a.jpg" />
+    <Content Include="Images\ae.gif" />
+    <Content Include="Images\e.jpg" />
+    <Content Include="Images\grey.png" />
+    <Content Include="Images\i.jpg" />
+    <Content Include="Images\o.jpg" />
+    <Content Include="Images\u.jpg" />
     <Content Include="VlcLibs\header-files\deprecated.h" />
     <Content Include="VlcLibs\header-files\libvlc.h" />
     <Content Include="VlcLibs\header-files\libvlc_events.h" />
@@ -996,7 +1013,9 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>XCOPY "$(ProjectDir)VlcLibs" "$(TargetDir)VlcLibs" /i /S /Y
-XCOPY "$(ProjectDir)Python" "$(TargetDir)Python" /i /S /Y</PostBuildEvent>
+XCOPY "$(ProjectDir)Python" "$(TargetDir)Python" /i /S /Y
+XCOPY "$(ProjectDir)Images" "$(TargetDir)Images" /i /S /Y
+XCOPY "$(ProjectDir)Data" "$(TargetDir)Data" /i /S /Y</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
