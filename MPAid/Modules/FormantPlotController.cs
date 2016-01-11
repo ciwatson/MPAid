@@ -79,16 +79,17 @@ namespace MPAid
                     && (!FormantPlotExe.HasExited))
                     ;
             }
-            catch
+            catch(Exception exp)
             {
                 FormantPlotExe = null;
+                Console.WriteLine(exp);
             }
         }
 
         public static string GetFormantPlotExeName()
         {
-            const string OldName = @"MPAi.exe";
-            const string NewName = @"Runner.exe";
+            const string OldName = @"Python\MPAi.exe";
+            const string NewName = @"Python\Runner.exe";
             if (File.Exists(NewName))
                 return (NewName);
             if (File.Exists(OldName))

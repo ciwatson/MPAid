@@ -42,9 +42,9 @@ namespace MPAid.UserControls
             if (currentDirectory == null)
                 return;
             if (AssemblyName.GetAssemblyName(currentAssembly.Location).ProcessorArchitecture == ProcessorArchitecture.X86)
-                e.VlcLibDirectory = new DirectoryInfo(Path.Combine(currentDirectory, @"x86\"));
+                e.VlcLibDirectory = new DirectoryInfo(Path.Combine(currentDirectory, @"VlcLibs\x86\"));
             else
-                e.VlcLibDirectory = new DirectoryInfo(Path.Combine(currentDirectory, @"x64\"));
+                e.VlcLibDirectory = new DirectoryInfo(Path.Combine(currentDirectory, @"VlcLibs\x64\"));
 
             if (!e.VlcLibDirectory.Exists)
             {
