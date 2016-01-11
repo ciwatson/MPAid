@@ -82,5 +82,13 @@ namespace MPAid.Forms.Config
                 this.reportFolderTextBox.Text = folderBrowserDialog.SelectedPath;
             }
         }
+
+        private void annieFolderSelectButton_Click(object sender, EventArgs e)
+        {
+            if (this.folderBrowserDialog.ShowDialog() == DialogResult.OK)
+            {
+                this.annieFolderTextBox.Text = folderBrowserDialog.SelectedPath;
+            }
+        }
     }
 }

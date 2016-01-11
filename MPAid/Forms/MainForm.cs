@@ -23,6 +23,10 @@ namespace MPAid
     {
         public static MainForm self;
         private UserManagement allUsers;
+        public UserManagement AllUsers
+        {
+            get { return allUsers; }
+        }
         private IoController systemIO;
 
         private Thread AsyncPlayer;
@@ -253,11 +257,6 @@ namespace MPAid
             explorer.StartInfo.FileName = "explorer";
             explorer.StartInfo.Arguments = dirPath;
             explorer.Start();
-        }
-
-        private void buttonAnalyze_Click(object sender, EventArgs e)
-        {
-            //SetPaLabel(string.Format("{0} = {1}", strCorrectness, GetUserScore()));
         }
 
         //private string GetUserScore()

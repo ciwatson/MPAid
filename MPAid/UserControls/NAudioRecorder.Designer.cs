@@ -54,6 +54,7 @@
             this.RECListBox.Name = "RECListBox";
             this.RECListBox.Size = new System.Drawing.Size(404, 147);
             this.RECListBox.TabIndex = 23;
+            this.RECListBox.SelectedValueChanged += new System.EventHandler(this.RECListBox_SelectedValueChanged);
             this.RECListBox.DoubleClick += new System.EventHandler(this.RECListBox_DoubleClick);
             // 
             // recordButton
@@ -81,7 +82,7 @@
             // 
             this.fromFileButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.fromFileButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.fromFileButton.Location = new System.Drawing.Point(416, 152);
+            this.fromFileButton.Location = new System.Drawing.Point(417, 183);
             this.fromFileButton.Name = "fromFileButton";
             this.fromFileButton.Size = new System.Drawing.Size(58, 25);
             this.fromFileButton.TabIndex = 21;
@@ -117,8 +118,9 @@
             // analyzeButton
             // 
             this.analyzeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.analyzeButton.Enabled = false;
             this.analyzeButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.analyzeButton.Location = new System.Drawing.Point(416, 183);
+            this.analyzeButton.Location = new System.Drawing.Point(416, 152);
             this.analyzeButton.Name = "analyzeButton";
             this.analyzeButton.Size = new System.Drawing.Size(58, 25);
             this.analyzeButton.TabIndex = 16;
@@ -177,6 +179,7 @@
             // deleteButton
             // 
             this.deleteButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.deleteButton.Enabled = false;
             this.deleteButton.Location = new System.Drawing.Point(417, 123);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(57, 23);

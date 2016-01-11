@@ -18,22 +18,20 @@ namespace MPAid.UserControls
     public partial class NAudioRecorder : UserControl
     {
         private IWaveIn waveIn;
+        private WaveOutEvent waveOut;
         private WaveFileWriter writer;
-        private string outputFilename;
-        private readonly string outputFolder;
+        private WaveFileReader reader;
+        private string outputFileName;
+        private string outputFolder;
         private string tempFilename;
-        private readonly string tempFolder;
+        private string tempFolder;
         public NAudioRecorder()
         {
             InitializeComponent();
 
             LoadWasapiDevices();
 
-            outputFolder = Path.Combine(System.Windows.Forms.Application.StartupPath, "Recordings");
-            Directory.CreateDirectory(outputFolder);
-
-            tempFolder = Path.Combine(Path.GetTempPath(), "MPAidTemp");
-            Directory.CreateDirectory(tempFolder);
+            waveOut = new WaveOutEvent();
         }
 
         private void LoadWasapiDevices()
@@ -45,12 +43,26 @@ namespace MPAid.UserControls
             audioDeviceComboBox.DisplayMember = "FriendlyName";
         }
 
-        private void FinalizeWaveFile()
+        public void CreateDirectory()
         {
-            if (writer != null)
+            MainForm mainForm = MainForm.self;
+            outputFolder = mainForm.configContent.RecordingFolderAddr.FolderAddr;
+            tempFolder = Path.Combine(Path.GetTempPath(), "MPAidTemp");
+            Directory.CreateDirectory(outputFolder);
+            Directory.CreateDirectory(tempFolder);
+        }
+
+        public void DataBinding()
+        {
+            DirectoryInfo info = new DirectoryInfo(MainForm.self.configContent.RecordingFolderAddr.FolderAddr);
+            RECListBox.Items.AddRange(info.GetFiles().Where(x => x.Extension != ".mfc").Select(x => x.Name).ToArray());
+        }
+        private void FinalizeWaveFile(Stream s)
+        {
+            if (s != null)
             {
-                writer.Dispose();
-                writer = null;
+                s.Dispose();
+                s = null;
             }
         }
 
@@ -82,6 +94,13 @@ namespace MPAid.UserControls
         private void StopRecording()
         {
             if (waveIn != null) waveIn.StopRecording();
+            FinalizeWaveFile(writer);
+        }
+
+        private void StopPlay()
+        {
+            if (waveOut != null) waveOut.Stop();
+            FinalizeWaveFile(reader);
         }
 
         private void OnDataAvailable(object sender, WaveInEventArgs e)
@@ -117,12 +136,12 @@ namespace MPAid.UserControls
                     using (var resampler = new MediaFoundationResampler(reader, outFormat))
                     {
                         // resampler.ResamplerQuality = 60;
-                        WaveFileWriter.CreateWaveFile(Path.Combine(outputFolder, outputFilename), resampler);
+                        WaveFileWriter.CreateWaveFile(Path.Combine(outputFolder, outputFileName), resampler);
                     }
                 }
                 File.Delete(Path.Combine(tempFolder, tempFilename));
             }
-            catch(Exception exp)
+            catch (Exception exp)
             {
                 Console.WriteLine(exp);
             }
@@ -136,7 +155,6 @@ namespace MPAid.UserControls
             }
             else
             {
-                FinalizeWaveFile();
                 Resample();
                 recordingProgressBar.Value = 0;
                 if (e.Exception != null)
@@ -144,7 +162,8 @@ namespace MPAid.UserControls
                     MessageBox.Show(String.Format("A problem was encountered during recording {0}",
                                                   e.Exception.Message));
                 }
-                int newItemIndex = RECListBox.Items.Add(outputFilename);
+
+                int newItemIndex = RECListBox.Items.Add(outputFileName);
                 RECListBox.SelectedIndex = newItemIndex;
                 SetControlStates(false);
             }
@@ -156,6 +175,7 @@ namespace MPAid.UserControls
             {
                 try
                 {
+                    stopButton_Click(sender, e);
                     File.Delete(Path.Combine(outputFolder, (string)RECListBox.SelectedItem));
                     RECListBox.Items.Remove(RECListBox.SelectedItem);
                     if (RECListBox.Items.Count > 0)
@@ -163,8 +183,9 @@ namespace MPAid.UserControls
                         RECListBox.SelectedIndex = 0;
                     }
                 }
-                catch (Exception)
+                catch (Exception exp)
                 {
+                    Console.WriteLine(exp);
                     MessageBox.Show("Could not delete recording");
                 }
             }
@@ -174,7 +195,12 @@ namespace MPAid.UserControls
         {
             if (RECListBox.SelectedItem != null)
             {
-                Process.Start(Path.Combine(outputFolder, (string)RECListBox.SelectedItem));
+                reader = new WaveFileReader(Path.Combine(outputFolder, (string)RECListBox.SelectedItem));
+                if (waveOut.PlaybackState != PlaybackState.Playing)
+                {
+                    waveOut.Init(reader);
+                    waveOut.Play();
+                }
             }
         }
 
@@ -187,8 +213,9 @@ namespace MPAid.UserControls
             waveIn.DataAvailable += OnDataAvailable;
             waveIn.RecordingStopped += OnRecordingStopped;
 
-            tempFilename = String.Format("NAudioDemo {0:yyy-MM-dd HH-mm-ss}.wav", DateTime.Now);
-            outputFilename = tempFilename;
+            tempFilename = String.Format("{0}-{1:yyy-MM-dd HH-mm-ss}.wav", MainForm.self.AllUsers.getCurrentUser().getName(), DateTime.Now);
+            //initially, outputname is the same as tempfilename
+            outputFileName = tempFilename;
             writer = new WaveFileWriter(Path.Combine(tempFolder, tempFilename), waveIn.WaveFormat);
             waveIn.StartRecording();
             SetControlStates(true);
@@ -197,6 +224,7 @@ namespace MPAid.UserControls
         private void stopButton_Click(object sender, EventArgs e)
         {
             StopRecording();
+            StopPlay();
         }
 
         private void fromFileButton_Click(object sender, EventArgs e)
@@ -206,6 +234,17 @@ namespace MPAid.UserControls
 
         private void analyzeButton_Click(object sender, EventArgs e)
         {
+            try
+            {
+                AudioRecognize();
+            }
+            catch (Exception ex)
+            {
+#if DEBUG
+                MessageBox.Show(ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+#endif
+            }
+
             correctnessLabel.Text = "Correctness = " + CalculateScore().ToString();
         }
 
@@ -241,6 +280,71 @@ namespace MPAid.UserControls
             }
             else
                 showReportButton.Enabled = false;
+        }
+
+        private void AudioRecognize()
+        {
+            MainForm mainForm = Parent.Parent.Parent.Parent.Parent.Parent as MainForm;
+            String word = (mainForm.RecordingList.WordListBox.SelectedItem as Word).Name;
+
+            PaConfig config = new PaConfig()
+            {
+                currentWord = word,
+                AnnieDir = mainForm.configContent.AnnieFolderAddr.FolderAddr,
+                batFilePath = Path.Combine(mainForm.configContent.AnnieFolderAddr.FolderAddr, "Process.bat")
+            };
+
+            if ((RECListBox.Items != null) && (RECListBox.Items.Count > 0))
+            {
+                string[] wordArray = new string[RECListBox.Items.Count];
+                RECListBox.Items.CopyTo(wordArray, 0);
+                config.audioList = wordArray.ToList();
+            }
+
+            PaEngine engine = new PaEngine(config);
+            if (engine.wavFilesOK())
+            {
+                // The Main thread will wait until the process finishes
+                engine.Start();
+
+                MessageBox.Show("The result is " + engine.GetRecognizedWord());
+
+                //copies the user recording files to the HTML report resource folder
+                //HtmlConfig hConfig = new HtmlConfig(mainForm.configContent.ReportFolderAddr.FolderAddr);
+                //File.Copy(Path.Combine(mainForm.configContent.RecordingFolderAddr.FolderAddr, outputFileName),
+                //          hConfig.GetRecPath(RECListBox.Items.Count, HtmlConfig.pathType.fullUserRecPath), 
+                //          true);
+
+                //prepare to copy the sample recording file to the HTML report res folder
+
+                //make sure the sample recording is different from each other
+                //string soundToPlay = null;
+                //int counter = 0;
+                //do
+                //{
+                //    counter += 1;
+                //    soundToPlay = ResMan.GetWordSound(GetAudioSource(), word.WordSoundId, true);
+                //    if (soundToPlay == null)
+                //        break;
+                //} while ((soundToPlay == lastPlayedSound) && (counter < 255));
+
+                //lastPlayedSound = soundToPlay;
+
+                ////copies the sample recording files to the HTML res folder
+                //ResMan.SuperCopy(soundToPlay, hConfig.GetRecPath(listREC.Count,
+                //    HtmlConfig.pathType.fullSampleRecPath), true);
+
+                //change the UI
+                showReportButton.Enabled = true;
+            }
+
+            //ResetRecordings();
+        }
+
+        private void RECListBox_SelectedValueChanged(object sender, EventArgs e)
+        {
+            analyzeButton.Enabled = (sender as ListBox).SelectedItem != null;
+            deleteButton.Enabled = (sender as ListBox).SelectedItem != null;
         }
     }
 }

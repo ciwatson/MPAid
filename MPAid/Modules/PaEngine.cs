@@ -72,12 +72,19 @@ namespace MPAid
 
         public void Start()
         {
-            if (NeedAdmin())
-                return;
+            try
+            {
+                if (NeedAdmin())
+                    return;
 
-            CheckAndCreateDirs();
-            GenerateFiles();
-            RunBatFile();
+                CheckAndCreateDirs();
+                GenerateFiles();
+                RunBatFile();
+            }
+            catch(Exception)
+            {
+
+            }
         }
 
         public void GenerateFiles()
