@@ -1,0 +1,5 @@
+$word = hoihoi ;
+
+$vowel =  o | a | e | i | u | ae | ai | ao | au | ou;
+
+( SENT-START ( $word | $vowel ) SENT-END )

@@ -201,7 +201,6 @@
     <Compile Include="Components\TDButton.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Modules\VoiceRecorder.cs" />
     <Compile Include="Forms\SplashScreen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -309,6 +308,9 @@
     <None Include="Data\maori\VowelCodes.xlsx" />
     <None Include="Data\maori\WordCodes.csv" />
     <None Include="Data\maori\WordCodes.xlsx" />
+    <None Include="HTK\Grammars\Grammar2WordNet.bat" />
+    <None Include="HTK\Grammars\MPAid.gram" />
+    <None Include="HTK\WordNets\MPAid.wdnet" />
     <None Include="VlcLibs\header-files\.keep" />
     <None Include="VlcLibs\x64\.keep" />
     <None Include="VlcLibs\x64\plugins\plugins.dat" />
@@ -336,6 +338,40 @@
     <Content Include="Data\maori\monDataMale.txt" />
     <Content Include="Data\maori\monophthongs.txt" />
     <Content Include="Data\README.txt" />
+    <Content Include="HTK\Tools\Cluster.exe" />
+    <Content Include="HTK\Tools\HBuild.exe" />
+    <Content Include="HTK\Tools\HCompV.exe" />
+    <Content Include="HTK\Tools\HCopy.exe" />
+    <Content Include="HTK\Tools\HDMan.exe" />
+    <Content Include="HTK\Tools\HERest.exe" />
+    <Content Include="HTK\Tools\HHEd.exe" />
+    <Content Include="HTK\Tools\HInit.exe" />
+    <Content Include="HTK\Tools\HLEd.exe" />
+    <Content Include="HTK\Tools\HList.exe" />
+    <Content Include="HTK\Tools\HLMCopy.exe" />
+    <Content Include="HTK\Tools\HLRescore.exe" />
+    <Content Include="HTK\Tools\HLStats.exe" />
+    <Content Include="HTK\Tools\HMMIRest.exe" />
+    <Content Include="HTK\Tools\HParse.exe" />
+    <Content Include="HTK\Tools\HQuant.exe" />
+    <Content Include="HTK\Tools\HRest.exe" />
+    <Content Include="HTK\Tools\HResults.exe" />
+    <Content Include="HTK\Tools\HSGen.exe" />
+    <Content Include="HTK\Tools\HSLab.exe" />
+    <Content Include="HTK\Tools\HSmooth.exe" />
+    <Content Include="HTK\Tools\HVite.exe" />
+    <Content Include="HTK\Tools\LAdapt.exe" />
+    <Content Include="HTK\Tools\LBuild.exe" />
+    <Content Include="HTK\Tools\LFoF.exe" />
+    <Content Include="HTK\Tools\LGCopy.exe" />
+    <Content Include="HTK\Tools\LGList.exe" />
+    <Content Include="HTK\Tools\LGPrep.exe" />
+    <Content Include="HTK\Tools\LLink.exe" />
+    <Content Include="HTK\Tools\LMerge.exe" />
+    <Content Include="HTK\Tools\LNewMap.exe" />
+    <Content Include="HTK\Tools\LNorm.exe" />
+    <Content Include="HTK\Tools\LPlex.exe" />
+    <Content Include="HTK\Tools\LSubset.exe" />
     <Content Include="Images\a.jpg" />
     <Content Include="Images\ae.gif" />
     <Content Include="Images\e.jpg" />
@@ -1013,6 +1049,7 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>XCOPY "$(ProjectDir)VlcLibs" "$(TargetDir)VlcLibs" /i /S /Y
+XCOPY "$(ProjectDir)HTK" "$(TargetDir)HTK" /i /S /Y
 XCOPY "$(ProjectDir)Python" "$(TargetDir)Python" /i /S /Y
 XCOPY "$(ProjectDir)Images" "$(TargetDir)Images" /i /S /Y
 XCOPY "$(ProjectDir)Data" "$(TargetDir)Data" /i /S /Y</PostBuildEvent>
