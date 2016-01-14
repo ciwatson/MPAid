@@ -310,6 +310,11 @@
     <None Include="Data\maori\WordCodes.xlsx" />
     <None Include="HTK\Grammars\Grammar2WordNet.bat" />
     <None Include="HTK\Grammars\MPAid.gram" />
+    <None Include="HTK\Perl\prompts2mlf" />
+    <None Include="HTK\Perl\Prompts2MLF.bat" />
+    <None Include="HTK\Perl\prompts2wlist" />
+    <None Include="HTK\Perl\Prompts2WordList.bat" />
+    <None Include="HTK\Perl\Recordings2Prompts.bat" />
     <None Include="HTK\WordNets\MPAid.wdnet" />
     <None Include="VlcLibs\header-files\.keep" />
     <None Include="VlcLibs\x64\.keep" />

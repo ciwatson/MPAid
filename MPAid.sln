@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MPAid", "MPAid\MPAid.csproj", "{2AAC44F2-C97C-41D7-A577-204C2CD22C40}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecordingMapper", "RecordingMapper\RecordingMapper.csproj", "{D23E524D-EC92-40F6-A1F5-AE35B3EC9144}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecordingRenamer", "RecordingRenamer\RecordingRenamer.csproj", "{D23E524D-EC92-40F6-A1F5-AE35B3EC9144}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

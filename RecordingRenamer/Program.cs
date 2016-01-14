@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RecordingMapper
+namespace RecordingRenamer
 {
     class Program
     {
@@ -98,7 +98,7 @@ namespace RecordingMapper
             "mau",      //27
             "moutere",  //28
             "tū",       //29
-            "Matiu",    //30
+            "Matiu"    //30
         };
 
         private Dictionary<String, String> speakerTable = new Dictionary<string, string>()

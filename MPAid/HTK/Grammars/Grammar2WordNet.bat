@@ -1,4 +1,4 @@
-REM @Echo OFF
+@Echo OFF
 REM	****************************
 REM	This batch file is used to convert grammar file (Grammar/MPAid.gram) to word network file (WordNet/MPAid.wdnet) by WordNets/HParse
 REM	****************************
