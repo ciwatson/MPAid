@@ -69,27 +69,27 @@ namespace RecordingRenamer
 
         private String[] wordTable =
         {
-            "tēnei",    //01
-            "tāne",     //02
+            "tënei",    //01
+            "täne",     //02
             "hau",      //03
             "hou",      //04
             "pao",      //05
             "pau",      //06
             "pou",      //07
-            "pō",       //08
+            "pö",       //08
             "pai",      //09
             "pae",      //10
-            "kē",       //11
+            "kë",       //11
             "kei",      //12
-            "kī",       //13
-            "hē",       //14
+            "kï",       //13
+            "hë",       //14
             "hei",      //15
-            "hī",       //16
+            "hï",       //16
             "tae",      //17
             "tai",      //18
-            "mātao",    //19
-            "mātau",    //20
-            "mātou",    //21
+            "mätao",    //19
+            "mätau",    //20
+            "mätou",    //21
             "toetoe",   //22
             "toi",      //23
             "hoihoi",   //24
@@ -97,8 +97,8 @@ namespace RecordingRenamer
             "mao",      //26
             "mau",      //27
             "moutere",  //28
-            "tū",       //29
-            "Matiu"    //30
+            "tü",       //29
+            "Matiu"     //30
         };
 
         private Dictionary<String, String> speakerTable = new Dictionary<string, string>()
