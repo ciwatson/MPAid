@@ -19,7 +19,7 @@ using MPAid.Forms;
 
 namespace MPAid
 {
-    public partial class MainForm : Form
+    public partial class  MainForm : Form
     {
         public static MainForm self;
         private UserManagement allUsers;
