@@ -24,6 +24,6 @@ popd
 REM	****************************
 REM	Generate word level MLF file by Prompts.pmpt
 REM	****************************
-Perl prompts2mlf.pl %MLFs%WordMLF.mlf Prompts.pmpt
+Perl prompts2mlf.pl "%MLFs%WordMLF.mlf" Prompts.pmpt
 
 pause & exit

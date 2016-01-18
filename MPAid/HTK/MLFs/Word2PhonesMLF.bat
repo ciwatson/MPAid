@@ -25,6 +25,6 @@ REM	****************************
 REM     create the phone level MLF file named PhoneMLF.mlf
 REM	****************************
 
-%Tools%HLEd -l * -d %Dictionaries%dictionary -i %MLFs%PhoneMLF.mlf mkphones.led %MLFs%WordMLF.mlf
+"%Tools%HLEd" -l * -d "%Dictionaries%dictionary" -i "%MLFs%PhoneMLF.mlf" mkphones.led "%MLFs%WordMLF.mlf"
 
 Pause&Exit
