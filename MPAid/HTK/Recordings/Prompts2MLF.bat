@@ -1,12 +1,13 @@
 @Echo OFF
 REM	****************************
-REM	This batch file is used to convert grammar file (Grammar/MPAid.gram) to word network file (WordNet/MPAid.wdnet) by WordNets/HParse
+REM	This batch file is used to generate the word level MLF file by calling the Perl script named "prompts2mlf.pl"
+REM     Author: Sgaoqing Yu(Shawn)  15/01/2016
 REM	****************************
 
 REM	****************************
-REM     if the folder "WordNets" does not exist, Create one
+REM     if the folder "MLFs" does not exist, Create one
 REM	****************************
-IF NOT EXIST "%cd%\..\WordNets\" (mkdir "%cd%\..\WordNets\")
+IF NOT EXIST "%cd%\..\MLFs\" (mkdir "%cd%\..\MLFs\")
 
 REM	****************************
 REM	set up the environment varibles 
@@ -21,8 +22,8 @@ for /f %%i in ('dir "%cd%" /a:d /b /d') do (
 popd
 
 REM	****************************
-REM     create word network file (WordNet/MPAid.wdnet) by WordNets/HParse
+REM	Generate word level MLF file by Prompts.pmpt
 REM	****************************
-%Tools%HParse %Grammars%MPAid.gram %WordNets%MPAid.wdnet
+Perl prompts2mlf.pl %MLFs%WordMLF.mlf Prompts.pmpt
 
-Pause&Exit
+pause & exit

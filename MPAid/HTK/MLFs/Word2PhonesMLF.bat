@@ -1,63 +1,30 @@
 @Echo OFF
 REM	****************************
-REM	This batch file is used to convert word network file (WordNet/MPAid.gram) to word network file (WordNet/MPAid.wdnet) by WordNets/HParse
+REM	This batch file is used to generate the phone level MLF file form dictionary and word level MLF file
+REM     Author: Sgaoqing Yu(Shawn)  15/01/2016
 REM	****************************
 
-chcp 65001 >NUL
-
-setlocal EnableDelayedExpansion
-IF NOT DEFINED Root (
-	set Root=%CD%\..\
-	echo Root: !Root! 
-)
-endlocal & set Root=%Root%
-
-setlocal EnableDelayedExpansion
-IF NOT DEFINED Tools (
-	set Tools=%Root%Tools\
-	echo Tools: !Tools! 
-)
-endlocal & set Tools=%Tools%
-
-setlocal EnableDelayedExpansion
-IF NOT DEFINED Grammars (
-	set Grammars=%Root%Grammars\
-	echo Grammars: !Grammars! 
-)
-endlocal & set Grammars=%Grammars%
-
-setlocal EnableDelayedExpansion
-IF NOT DEFINED WordNets (
-	set WordNets=%Root%WordNets\
-	echo WordNets: !WordNets! 
-)
-endlocal & set WordNets=%WordNets%
-
-setlocal EnableDelayedExpansion
-IF NOT DEFINED Dictionaries (
-	set Dictionaries=%Root%Dictionaries\
-	echo Dictionaries: !Dictionaries! 
-)
-endlocal & set Dictionaries=%Dictionaries%
-
-setlocal EnableDelayedExpansion
-IF NOT DEFINED MLFs (
-	set MLFs=%Root%MLFs\
-	echo MLFs: !MLFs! 
-)
-endlocal & set MLFs=%MLFs%
-
+REM	****************************
+REM     if the folder "MLFs" does not exist, Create one
+REM	****************************
+IF NOT EXIST "%cd%\..\MLFs\" (mkdir "%cd%\..\MLFs\")
 
 REM	****************************
-REM     if the folder "WordNet" does not exist, Create one
+REM	set up the environment varibles 
+REM	****************************
+pushd "%cd%"
+cd ..
+for /f %%i in ('dir "%cd%" /a:d /b /d') do (
+  IF NOT DEFINED %%i (
+	set %%i=%cd%\%%i\
+  )
+)
+popd
+
+REM	****************************
+REM     create the phone level MLF file named PhoneMLF.mlf
 REM	****************************
 
-IF NOT EXIST %MLFs% (mkdir %MLFs%)
-
-REM	****************************
-REM     create word network file (WordNet/MPAid.wdnet) by WordNets/HParse
-REM	****************************
-
-%Tools%HLEd -l * -d %MLFs%dictionary -i %MLFs%phones0.mlf mkphones0.led WordMLF.mlf
+%Tools%HLEd -l * -d %Dictionaries%dictionary -i %MLFs%PhoneMLF.mlf mkphones.led %MLFs%WordMLF.mlf
 
 Pause&Exit
