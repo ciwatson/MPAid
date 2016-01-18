@@ -98,7 +98,7 @@ namespace RecordingRenamer
             "mau",      //27
             "moutere",  //28
             "tü",       //29
-            "Matiu"     //30
+            "matiu"     //30
         };
 
         private Dictionary<String, String> speakerTable = new Dictionary<string, string>()

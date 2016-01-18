@@ -22,6 +22,11 @@ for /f %%i in ('dir "%cd%" /a:d /b /d') do (
 popd
 
 REM	****************************
+REM	assign character set to utf-8
+REM	****************************
+REM chcp 65001 >NUL
+
+REM	****************************
 REM     create the phone level MLF file named PhoneMLF.mlf
 REM	****************************
 

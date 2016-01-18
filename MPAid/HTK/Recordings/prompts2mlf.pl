@@ -1,7 +1,7 @@
 #!/usr/local/bin/perl -w
 use strict;
-use open ':encoding(iso-8859-1)';
-use open IO => ':encoding(utf-8)';
+#use open ':encoding(utf-8)';
+#use open IO => ':encoding(utf-8)';
 
 my ($mlf, $prompt, $line, $fname, @labs, $w);
 
@@ -23,7 +23,7 @@ if (@ARGV != 2) {
 
 
 # open MLF file
-open (MLF,">:encoding(latin1)", "$mlf") || die ("Unable to open mlf $mlf file for writing");
+open (MLF,">", "$mlf") || die ("Unable to open mlf $mlf file for writing");
 
 print "writing to mlf file $mlf\n";
 
@@ -35,9 +35,9 @@ while ($line = <LAB>) {
   ($fname,@labs) = split(/\s+/,$line);
   $fname =~ s/\.mfc//g;
   $fname =~ s/\.lab//g;
-  print MLF ("\"$fname.lab\"\n");
+  print MLF ("\"*/$fname.lab\"\n");
   
-  #printf STDOUT ("\"$fname.lab\"\n");
+  #printf STDOUT ("\"*/$fname.lab\"\n");
   
   foreach $w (@labs) {
     printf(MLF "%s\n", $w);

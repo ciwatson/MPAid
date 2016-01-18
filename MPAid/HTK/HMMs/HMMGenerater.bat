@@ -4,7 +4,7 @@ REM	This batch file is used to generate train code script (Script.scp) and the M
 REM	****************************
 
 REM	****************************
-REM     if the folder "MFCs" does not exist, Create one
+REM     if the folder "HMMs" does not exist, Create one
 REM	****************************
 
 IF NOT EXIST "%cd%\..\HMMs\" (mkdir "%cd%\..\HMMs\")
@@ -22,21 +22,18 @@ for /f %%i in ('dir "%cd%" /a:d /b /d') do (
 )
 popd
 
-set /p recordingFolder=Please enter the recording folder address:
-
 REM	****************************
-REM     create train code script (Script.scp) with a filter suffix "wav" in %MFCs%
+REM     Generate train script in %HMMs% from %MFCs%
 REM	****************************
-Perl Recordings2Script.pl "%recordingFolder%" wav "%cd%"
+Perl MFCs2Script.pl "%MFCs%\" mfc "%cd%"
 
 REM	****************************
 REM	assign character set to utf-8
 REM	****************************
 chcp 65001 >NUL
 
-REM	****************************
-REM     Generate MFC files by train code script
-REM	****************************
-"%Tools%HCopy" -T 1 -C config0 -S Script.scp
+REM "%Tools%HCompV" -C config1 -f 0.01 -m -S train.scp -M hmm0 proto
 
-Pause&Exit
+"%Tools%HERest" -C config1 -I "%MLFs%PhoneMLF.mlf" -t 250.0 150.0 1000.0 -S train.scp -H hmm0/macros -H hmm0/hmmdefs -M hmm1 "%Dictionaries%monophones"
+
+pause&exit

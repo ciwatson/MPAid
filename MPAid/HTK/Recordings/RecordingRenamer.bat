@@ -1,19 +1,12 @@
 @Echo OFF
 REM	****************************
-REM	This batch file is used to generate a script file based on the recordings stored in the input folder
+REM	This batch file is used to rename the recording file in given folder
 REM     Author: Sgaoqing Yu(Shawn)  14/01/2016
 REM	****************************
 
 REM	****************************
-REM     if the folder "MFCs" does not exist, Create one
-REM	****************************
-
-IF NOT EXIST "%cd%\..\MFCs\" (mkdir "%cd%\..\MFCs\")
-
-REM	****************************
 REM	set up the environment varibles 
 REM	****************************
-
 pushd "%cd%"
 cd ..
 for /f %%i in ('dir "%cd%" /a:d /b /d') do (
@@ -26,9 +19,13 @@ popd
 set /p recordingFolder=Please enter the recording folder address:
 
 REM	****************************
-REM     create train code script (Script.scp) with a filter suffix "wav" in %MFCs%
+REM	assign character set to utf-8
 REM	****************************
+REM chcp 65001 >NUL
 
-Perl Recordings2Script.pl "%recordingFolder%" wav "%MFCs%\"
+REM	****************************
+REM	list all the recordings 
+REM	****************************
+Perl RecordingRenamer.pl "%recordingFolder%" wav
 
-pause&exit
+pause & exit
