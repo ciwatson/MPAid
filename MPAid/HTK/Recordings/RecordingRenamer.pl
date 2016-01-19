@@ -1,7 +1,7 @@
 ﻿#!/usr/bin/perl
 use strict;
 use File::Basename;
-use File::Copy qw(move);
+#use File::Copy qw(move);
 use warnings;
 use Encode;
 
@@ -85,12 +85,16 @@ foreach my $file (@list){
     my @parts=split(/_/,$Basename);
     if(@parts == 2){
         my $NewFile = $SpeakerHash{$parts[0]}."-word-".$WordList[$parts[1] - 1]."-".$parts[0].".".$Ext;
+		
+		my @charsets = qw(utf-8 latin1 iso-8859-1 iso-8859-15 utf-16 gb2312 unicode ascii);
+		for (@charsets){print "$_: " . decode($_, $NewFile) . "\n";}
+		
         if(-e $NewFile){
             warn "Duplicate name after renaming!";
             next;
         } else {
-            #rename($file, $NewFile);
-            move $file, $NewFile;
+            rename($file, decode('utf-8', $NewFile));
+            #move $file, $NewFile;
         }
     } else {
         warn "Invalid name format!";

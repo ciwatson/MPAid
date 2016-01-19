@@ -42,7 +42,6 @@ namespace RecordingRenamer
 
                 try
                 {
-                    String s = name.Substring(name.IndexOf("_") + 1);
                     int index = int.Parse(name.Substring(name.IndexOf("_") + 1));
                     String label = name.Substring(0, name.IndexOf("_"));
 

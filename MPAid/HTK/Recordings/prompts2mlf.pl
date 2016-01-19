@@ -1,7 +1,6 @@
 #!/usr/local/bin/perl -w
 use strict;
-#use open ':encoding(utf-8)';
-#use open IO => ':encoding(utf-8)';
+use Encode;
 
 my ($mlf, $prompt, $line, $fname, @labs, $w);
 

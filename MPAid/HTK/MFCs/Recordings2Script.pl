@@ -2,8 +2,8 @@
 use strict;
 use File::Basename;
 use warnings;
-use open ':encoding(iso-8859-1)';
-use open IO => ':encoding(utf-8)';
+#use open ':encoding(iso-8859-1)';
+#use open IO => ':encoding(utf-8)';
 
 die "Usage: $0 <input dir> <extion> <output dir>\n" unless @ARGV == 3;
 my $InputDir = $ARGV[0] ;

@@ -2,8 +2,8 @@
 use strict;
 use File::Basename;
 use warnings;
-use open ':encoding(iso-8859-1)';
-use open IO => ':encoding(utf-8)';
+#use open ':encoding(iso-8859-1)';
+#use open IO => ':encoding(utf-8)';
 
 die "Usage: $0 <input dir> <extion> <output dir>\n" unless @ARGV == 3;
 my $InputDir = $ARGV[0] ;
@@ -12,7 +12,7 @@ my $OutputDir = $ARGV[2];
 
 opendir(DH, "$InputDir") or die "Can't open: $!\n" ;
 
-open(STDOUT, ">:encoding(latin1)", "$OutputDir"."\\Train.scp") or die "can't open file Train.scp:$!";
+open(STDOUT, ">", "$OutputDir"."\\Train.scp") or die "can't open file Train.scp:$!";
 
 #load all the files in $InputDir which have suffix "mfc"
 my @list = grep {/$Ext$/ && -f "$InputDir/$_" } readdir(DH) ;

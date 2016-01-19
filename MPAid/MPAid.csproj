@@ -309,6 +309,9 @@
     <None Include="Data\maori\WordCodes.csv" />
     <None Include="Data\maori\WordCodes.xlsx" />
     <None Include="HTK\Dictionaries\dictionary" />
+    <None Include="HTK\Dictionaries\dictionary.dict" />
+    <None Include="HTK\Dictionaries\monophones0" />
+    <None Include="HTK\Dictionaries\monophones1" />
     <None Include="HTK\Grammars\Grammar2WordNet.bat" />
     <None Include="HTK\Grammars\MPAid.gram" />
     <None Include="HTK\HMMs\config1" />
@@ -317,8 +320,11 @@
     <None Include="HTK\HMMs\hmm0\proto" />
     <None Include="HTK\HMMs\hmm0\vFloors" />
     <None Include="HTK\HMMs\HMMGenerater.bat" />
+    <None Include="HTK\HMMs\maketrihed.pl" />
     <None Include="HTK\HMMs\MFCs2Script.pl" />
-    <None Include="HTK\HMMs\proto" />
+    <None Include="HTK\HMMs\mktri.hed" />
+    <None Include="HTK\HMMs\mktri.led" />
+    <None Include="HTK\HMMs\sil.hed" />
     <None Include="HTK\MFCs\config0" />
     <None Include="HTK\MFCs\config1" />
     <None Include="HTK\MFCs\config2" />
@@ -328,8 +334,10 @@
     <None Include="HTK\MFCs\config6" />
     <None Include="HTK\MFCs\Recordings2Script.pl" />
     <None Include="HTK\MFCs\WAVs2MFCs.bat" />
-    <None Include="HTK\MLFs\mkphones.led" />
     <None Include="HTK\MLFs\Word2PhonesMLF.bat" />
+    <None Include="HTK\Params\global.ded" />
+    <None Include="HTK\Params\mkphones.led" />
+    <None Include="HTK\Params\tree.hed" />
     <None Include="HTK\Recordings\ChaSet.pl" />
     <None Include="HTK\Recordings\Prompts2MLF.bat" />
     <None Include="HTK\Recordings\prompts2mlf.pl" />

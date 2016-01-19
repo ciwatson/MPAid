@@ -24,12 +24,12 @@ popd
 REM	****************************
 REM	assign character set to utf-8
 REM	****************************
-REM chcp 65001 >NUL
+REM     chcp 65001 >NUL
 
 REM	****************************
 REM     create the phone level MLF file named PhoneMLF.mlf
 REM	****************************
 
-"%Tools%HLEd" -l * -d "%Dictionaries%dictionary" -i "%MLFs%PhoneMLF.mlf" mkphones.led "%MLFs%WordMLF.mlf"
+"%Tools%HLEd" -l * -d "%Dictionaries%dictionary" -i "%MLFs%PhoneMLF.mlf" "%Params%mkphones.led" "%MLFs%WordMLF.mlf"
 
 Pause&Exit

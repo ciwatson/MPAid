@@ -1,6 +1,6 @@
 @Echo OFF
 REM	****************************
-REM	This batch file is used to generate train code script (Script.scp) and the MFC files associated with audio         recordings
+REM	This batch file is used to generate train code script (Script.scp) and the MFC files associated with audio recordings
 REM	****************************
 
 REM	****************************
@@ -32,7 +32,7 @@ Perl Recordings2Script.pl "%recordingFolder%" wav "%cd%"
 REM	****************************
 REM	assign character set to utf-8
 REM	****************************
-chcp 65001 >NUL
+REM     chcp 65001 >NUL
 
 REM	****************************
 REM     Generate MFC files by train code script

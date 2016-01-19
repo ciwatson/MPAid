@@ -1,6 +1,6 @@
 @Echo OFF
 REM	****************************
-REM	This batch file is used to generate train code script (Script.scp) and the MFC files associated with audio         recordings
+REM	This batch file is used to generate train code script (Script.scp) and the MFC files associated with audio recordings
 REM	****************************
 
 REM	****************************
@@ -27,13 +27,87 @@ REM     Generate train script in %HMMs% from %MFCs%
 REM	****************************
 Perl MFCs2Script.pl "%MFCs%\" mfc "%cd%"
 
+pause
+
 REM	****************************
 REM	assign character set to utf-8
 REM	****************************
-chcp 65001 >NUL
+REM     chcp 65001 >NUL
 
-REM "%Tools%HCompV" -C config1 -f 0.01 -m -S train.scp -M hmm0 proto
+REM	****************************
+REM	make hmm0
+REM	****************************
+REM if not exist hmm0 (mkdir hmm0)
 
-"%Tools%HERest" -C config1 -I "%MLFs%PhoneMLF.mlf" -t 250.0 150.0 1000.0 -S train.scp -H hmm0/macros -H hmm0/hmmdefs -M hmm1 "%Dictionaries%monophones"
+REM "%Tools%HCompV" -C config1 -f 0.01 -m -S Train.scp -M hmm0 proto
+
+REM pause
+
+
+REM	****************************
+REM	make hmm1-3 based on hmm0
+REM	****************************
+if not exist hmm1 (mkdir hmm1)
+"%Tools%HERest" -C config1 -I "%MLFs%PhoneMLF.mlf" -t 250.0 150.0 1000.0 -S train.scp -H hmm0/macros -H hmm0/hmmdefs -M hmm1 "%Dictionaries%monophones0"
+
+if not exist hmm2 (mkdir hmm2)
+"%Tools%HERest" -C config1 -I "%MLFs%PhoneMLF.mlf" -t 250.0 150.0 1000.0 -S train.scp -H hmm1/macros -H hmm1/hmmdefs -M hmm2 "%Dictionaries%monophones0"
+
+if not exist hmm3 (mkdir hmm3)
+"%Tools%HERest" -C config1 -I "%MLFs%PhoneMLF.mlf" -t 250.0 150.0 1000.0 -S train.scp -H hmm2/macros -H hmm2/hmmdefs -M hmm3 "%Dictionaries%monophones0"
+
+REM	****************************
+REM	make hmm5-7 based on sil.hed
+REM	****************************
+if not exist hmm5 (mkdir hmm5)
+"%Tools%HHEd" -H hmm4/macros -H hmm4/hmmdefs -M hmm5 sil.hed "%Dictionaries%monophones1"
+
+if not exist hmm6 (mkdir hmm6)
+"%Tools%HERest" -C config1 -I "%MLFs%PhoneMLF.mlf" -t 250.0 150.0 1000.0 -S train.scp -H hmm5/macros -H hmm5/hmmdefs -M hmm6 "%Dictionaries%monophones1"
+
+if not exist hmm7 (mkdir hmm7)
+"%Tools%HERest" -C config1 -I "%MLFs%PhoneMLF.mlf" -t 250.0 150.0 1000.0 -S train.scp -H hmm6/macros -H hmm6/hmmdefs -M hmm7 "%Dictionaries%monophones1"
+
+REM	****************************
+REM	Re-aligning the training data 
+REM	****************************
+"%Tools%HVite" -l * -o SWT -b silence -C config1 -a -H hmm7/macros -H hmm7/hmmdefs -i "%MLFs%AlignedMLF.mlf" -m -t 250.0 150.0 1000.0 -y lab -I "%MLFs%WordMLF.mlf" -S train.scp "%Dictionaries%dictionary" "%Dictionaries%monophones1"
+
+REM	****************************
+REM	make hmm8-9 based on a %MLFs%AlignedMLF.mlf
+REM	****************************
+if not exist hmm8 (mkdir hmm8)
+"%Tools%HERest" -C config1 -I "%MLFs%AlignedMLF.mlf" -t 250.0 150.0 1000.0 -S train.scp -H hmm7/macros -H hmm7/hmmdefs -M hmm8 "%Dictionaries%monophones1"
+
+if not exist hmm9 (mkdir hmm9)
+"%Tools%HERest" -C config1 -I "%MLFs%AlignedMLF.mlf" -t 250.0 150.0 1000.0 -S train.scp -H hmm8/macros -H hmm8/hmmdefs -M hmm9 "%Dictionaries%monophones1"
+
+REM	****************************
+REM	make hmm10
+REM	****************************
+"%Tools%HLEd" -n triphones1 -l * -i "%MLFs%TriphoneMLF.mlf" mktri.led "%MLFs%AlignedMLF.mlf"
+
+Perl maketrihed.pl "%Dictionaries%monophones1" triphones1
+
+if not exist hmm10 (mkdir hmm10)
+"%Tools%HHEd" -H hmm9/macros -H hmm9/hmmdefs -M hmm10 mktri.hed "%Dictionaries%monophones1"
+
+REM	****************************
+REM	make hmm11-12, as well as statistic file stats
+REM	****************************
+if not exist hmm11 (mkdir hmm11)
+"%Tools%HERest" -C config1 -I "%MLFS%triphoneMLF.mlf" -t 250.0 150.0 1000.0 -S train.scp -H hmm10/macros -H hmm10/hmmdefs -M hmm11 triphones1 
+
+if not exist hmm12 (mkdir hmm12)
+"%Tools%HERest" -C config1 -I "%MLFS%triphoneMLF.mlf" -t 250.0 150.0 1000.0 -s stats -S train.scp -H hmm11/macros -H hmm11/hmmdefs -M hmm12 triphones1
+
+
+
+REM "%Tools%HDMan" -b sp -n "%Dictionaries%fullPhoneList" -g "%Params%global.ded" -l HDMan.Log user/triphoneDictionary "%Dictionaries%lexicon.txt"
+
+pause
+
+if not exist hmm13 (mkdir hmm13)
+"%Tools%HHEd" -H hmm12/macros -H hmm12/hmmdefs -M hmm13 "%Params%tree.hed" triphones1
 
 pause&exit

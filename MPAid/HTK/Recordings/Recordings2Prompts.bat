@@ -27,7 +27,7 @@ type NUL >%targetFile%
 REM	****************************
 REM	assign character set to utf-8
 REM	****************************
-REM chcp 65001 >NUL
+REM     chcp 65001 >NUL
 
 REM	****************************
 REM	list all the recordings 
