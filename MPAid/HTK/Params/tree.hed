@@ -1,4 +1,4 @@
-RO 100 "user/stats"
+RO 100 "stats"
 
 TR 0
 
@@ -290,7 +290,8 @@ TB 350 "ST_sil_4_" {("sil","*-sil+*","sil+*","*-sil").state[4]}
  
 TR 1
  
-AU "user/fullPhoneList2" 
-CO "user/tiedList" 
+AU "FullPhoneListMerged" 
+
+CO "tiedList" 
  
-ST "user/trees"
+ST "trees"

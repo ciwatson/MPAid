@@ -27,6 +27,12 @@ while ($line = <PROMPTS>) {
   }
 }
 
+# put SENT-END & SENT-START inside 
+$words{"sent-end"} = 1;
+$words{"sent-start"} = 1;
+$words{"SENT-END"} = 1;
+$words{"SENT-START"} = 1;
+
 # put the words in order
 @word_list = sort (keys (%words));
 

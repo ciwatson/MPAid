@@ -27,9 +27,10 @@ REM	****************************
 REM     chcp 65001 >NUL
 
 REM	****************************
-REM     create the phone level MLF file named PhoneMLF.mlf
+REM     create the phone level MLF file named PhoneMLF0.mlf PhoneMLF1.mlf
 REM	****************************
 
-"%Tools%HLEd" -l * -d "%Dictionaries%dictionary" -i "%MLFs%PhoneMLF.mlf" "%Params%mkphones.led" "%MLFs%WordMLF.mlf"
+"%Tools%HLEd" -l * -d "%Dictionaries%dictionary" -i "%MLFs%PhoneMLF0.mlf" "%Params%mkphones0.led" "%MLFs%WordMLF.mlf"
+"%Tools%HLEd" -l * -d "%Dictionaries%dictionary" -i "%MLFs%PhoneMLF1.mlf" "%Params%mkphones1.led" "%MLFs%WordMLF.mlf"
 
 Pause&Exit
