@@ -17,14 +17,14 @@ for /f %%i in ('dir "%cd%" /a:d /b /d') do (
 popd
 
 REM	****************************
-REM	Generate a monophone list file with sp named "Monophones1"
+REM	Generate a monophone list file with sp named "monophones1"
 REM	****************************
-"%Tools%HDMan" -m -w "%WordLists%WordList.wlist" -g "%Params%global.ded" -n Monophones1 -i -l HDMan.Log dictionary lexicon.txt
-echo sil >> Monophones1
+"%Tools%HDMan" -m -w "%WordLists%WordList.wlist" -g "%Params%global.ded" -n monophones1 -i -l HDMan.Log dictionary lexicon.txt
+REM echo sil>> monophones1
 
 REM	****************************
-REM	Generate a monophone list file without sp named "Monophones0"
+REM	Generate a monophone list file without sp named "monophones0"
 REM	****************************
-(type Monophones1 | findstr /v sp)>Monophones0
+(type monophones1 | findstr /v sp)>monophones0
 
 pause & exit

@@ -12,6 +12,7 @@ using NAudio.Wave;
 using System.IO;
 using System.Diagnostics;
 using MPAid.Models;
+using MPAid.Cores;
 
 namespace MPAid.UserControls
 {
@@ -25,6 +26,7 @@ namespace MPAid.UserControls
         private string outputFolder;
         private string tempFilename;
         private string tempFolder;
+        private HTKEngine RecEngine;
         public NAudioRecorder()
         {
             InitializeComponent();
@@ -32,6 +34,7 @@ namespace MPAid.UserControls
             LoadWasapiDevices();
 
             waveOut = new WaveOutEvent();
+            RecEngine = new HTKEngine();
         }
 
         private void LoadWasapiDevices()
@@ -213,7 +216,7 @@ namespace MPAid.UserControls
             waveIn.DataAvailable += OnDataAvailable;
             waveIn.RecordingStopped += OnRecordingStopped;
 
-            tempFilename = String.Format("{0}-{1:yyy-MM-dd HH-mm-ss}.wav", MainForm.self.AllUsers.getCurrentUser().getName(), DateTime.Now);
+            tempFilename = String.Format("{0}-{1:yyy/MM/dd/HH/mm/ss}.wav", MainForm.self.AllUsers.getCurrentUser().getName(), DateTime.Now);
             //initially, outputname is the same as tempfilename
             outputFileName = tempFilename;
             writer = new WaveFileWriter(Path.Combine(tempFolder, tempFilename), waveIn.WaveFormat);
@@ -236,7 +239,11 @@ namespace MPAid.UserControls
         {
             try
             {
-                AudioRecognize();
+                if (RECListBox.SelectedItem != null)
+                {
+                    RecEngine.Recognize(Path.Combine(outputFolder, (string)RECListBox.SelectedItem));
+                }
+                
             }
             catch (Exception ex)
             {

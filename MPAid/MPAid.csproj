@@ -125,6 +125,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cores\HTKEngine.cs" />
     <Compile Include="Forms\AdminConsole.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -308,6 +309,11 @@
     <None Include="Data\maori\VowelCodes.xlsx" />
     <None Include="Data\maori\WordCodes.csv" />
     <None Include="Data\maori\WordCodes.xlsx" />
+    <None Include="HTK\Batches\MFCs2Script.pl" />
+    <None Include="HTK\Batches\ModelEvaluater.bat" />
+    <None Include="HTK\Batches\Recordings2MFCs.bat" />
+    <None Include="HTK\Batches\ScriptGenerater.pl" />
+    <None Include="HTK\Batches\Word2PhonesMLF.bat" />
     <None Include="HTK\Dictionaries\WordList2Dict.bat" />
     <None Include="HTK\Grammars\Grammar2WordNet.bat" />
     <None Include="HTK\Grammars\MPAid.gram" />
@@ -320,31 +326,20 @@
     <None Include="HTK\HMMs\maketrihed.pl" />
     <None Include="HTK\HMMs\MergeFullPhoneList.pl" />
     <None Include="HTK\HMMs\MFCs2Script.pl" />
-    <None Include="HTK\MFCs\config0" />
-    <None Include="HTK\MFCs\config1" />
-    <None Include="HTK\MFCs\config2" />
-    <None Include="HTK\MFCs\config3" />
-    <None Include="HTK\MFCs\config4" />
-    <None Include="HTK\MFCs\config5" />
-    <None Include="HTK\MFCs\config6" />
-    <None Include="HTK\MFCs\Recordings2Script.pl" />
-    <None Include="HTK\MFCs\WAVs2MFCs.bat" />
-    <None Include="HTK\MLFs\Word2PhonesMLF.bat" />
     <None Include="HTK\Params\global.ded" />
     <None Include="HTK\Params\mkphones0.led" />
     <None Include="HTK\Params\mkphones1.led" />
     <None Include="HTK\Params\mktri.led" />
     <None Include="HTK\Params\mktriphones.ded" />
     <None Include="HTK\Params\tree.hed" />
-    <None Include="HTK\Recordings\ChaSet.pl" />
-    <None Include="HTK\Recordings\Prompts2MLF.bat" />
-    <None Include="HTK\Recordings\prompts2mlf.pl" />
-    <None Include="HTK\Recordings\prompts2wlist.pl" />
-    <None Include="HTK\Recordings\Prompts2WordList.bat" />
-    <None Include="HTK\Recordings\RecordingRenamer.bat" />
-    <None Include="HTK\Recordings\RecordingRenamer.pl" />
-    <None Include="HTK\Recordings\Recordings2Prompts.bat" />
-    <None Include="HTK\WordNets\WordNet2Dictionary.bat" />
+    <None Include="HTK\Batches\ChaSet.pl" />
+    <None Include="HTK\Batches\Prompts2MLF.bat" />
+    <None Include="HTK\Batches\prompts2mlf.pl" />
+    <None Include="HTK\Batches\prompts2wlist.pl" />
+    <None Include="HTK\Batches\Prompts2WordList.bat" />
+    <None Include="HTK\Batches\RecordingRenamer.bat" />
+    <None Include="HTK\Batches\RecordingRenamer.pl" />
+    <None Include="HTK\Batches\Recordings2Prompts.bat" />
     <None Include="VlcLibs\header-files\.keep" />
     <None Include="VlcLibs\x64\.keep" />
     <None Include="VlcLibs\x64\plugins\plugins.dat" />
@@ -1073,7 +1068,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="HTK\WordLists\" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
