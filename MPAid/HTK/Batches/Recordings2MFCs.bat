@@ -26,7 +26,7 @@ set /p recordingFolder=Please enter the recording folder address or full recordi
 REM	****************************
 REM     create train code script (Script.scp) with a filter suffix "wav" in %MFCs%
 REM	****************************
-Perl ScriptGenerater.pl "%recordingFolder%" wav "%MFCs%\"
+Perl "%Perls%ScriptGenerater.pl" "%recordingFolder%" wav "%MFCs%\"
 
 REM	****************************
 REM	assign character set to utf-8

@@ -24,6 +24,6 @@ popd
 REM	****************************
 REM	Generate word list file by Prompts.pmpt
 REM	****************************
-Perl prompts2wlist.pl Prompts.pmpt "%WordLists%WordList.wlist"
+Perl "%Perls%prompts2wlist.pl" "%Dictionaries%Prompts.pmpt" "%Dictionaries%WordList.wlist"
 
 pause & exit

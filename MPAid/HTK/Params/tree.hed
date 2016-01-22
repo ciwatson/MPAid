@@ -1,4 +1,4 @@
-RO 100 "stats"
+RO 100 "D:/Projects/MPAid/MPAid/HTK/HMMs/stats"
 
 TR 0
 
@@ -289,9 +289,9 @@ TB 350 "ST_uo_4_" {("uo","*-uo+*","uo+*","*-uo").state[4]}
 TB 350 "ST_sil_4_" {("sil","*-sil+*","sil+*","*-sil").state[4]}
  
 TR 1
- 
-AU "FullPhoneListMerged" 
 
-CO "tiedList" 
- 
-ST "trees"
+AU "D:/Projects/MPAid/MPAid/HTK/Dictionaries/FullPhoneListMerged"
+
+CO "D:/Projects/MPAid/MPAid/HTK/Dictionaries/tiedlist"
+
+ST "D:/Projects/MPAid/MPAid/HTK/HMMs/trees"

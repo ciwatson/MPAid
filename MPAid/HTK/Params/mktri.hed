@@ -1,0 +1,6 @@
+CL "D:/Projects/MPAid/MPAid/HTK/Dictionaries/triphones1"
+TI T_sil {(*-sil+*,sil+*,*-sil).transP}
+TI T_h {(*-h+*,h+*,*-h).transP}
+TI T_au {(*-au+*,au+*,*-au).transP}
+TI T_sp {(*-sp+*,sp+*,*-sp).transP}
+TI T_ei {(*-ei+*,ei+*,*-ei).transP}

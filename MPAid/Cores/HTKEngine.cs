@@ -13,6 +13,7 @@ namespace MPAid.Cores
     {
         static private readonly string HTKRoot = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"HTK");
         private string BatchesFolder = Path.Combine(HTKRoot, @"Batches");
+        private string MLFsFolder = Path.Combine(HTKRoot, @"MLFs");
 
         public void RunBatchFile(string filePath, string arguments = "")
         {
@@ -39,10 +40,22 @@ namespace MPAid.Cores
             }
         }
 
-        public void Recognize(String RecordingPath)
+        public String Recognize(String RecordingPath)
         {
             RunBatchFile(Path.Combine(BatchesFolder, "Recordings2MFCs.bat"), RecordingPath);
             RunBatchFile(Path.Combine(BatchesFolder, "ModelEvaluater.bat"));
+            return Analyze(Path.Combine(MLFsFolder, "RecMLF.mlf"));
+        }
+
+        public String Analyze(String ResultPath)
+        {
+            using (FileStream fs = File.OpenRead(ResultPath))
+            {
+                using (StreamReader sr = new StreamReader(fs))
+                {
+                    return sr.ReadToEnd();
+                }
+            }
         }
     }
 }

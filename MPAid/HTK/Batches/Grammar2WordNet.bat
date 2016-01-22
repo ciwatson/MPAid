@@ -18,6 +18,6 @@ popd
 REM	****************************
 REM     create word network file (WordNet/MPAid.wdnet) by WordNets/HParse
 REM	****************************
-"%Tools%HParse" "%Grammars%MPAid.gram" "%Grammars%MPAid.wdnet"
+"%Tools%HParse" "%Grammars%grammar.gram" "%Grammars%WordNet.wdnet"
 
 Pause&Exit

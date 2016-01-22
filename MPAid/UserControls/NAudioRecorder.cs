@@ -241,7 +241,8 @@ namespace MPAid.UserControls
             {
                 if (RECListBox.SelectedItem != null)
                 {
-                    RecEngine.Recognize(Path.Combine(outputFolder, (string)RECListBox.SelectedItem));
+                    //RecEngine.Recognize(Path.Combine(outputFolder, (string)RECListBox.SelectedItem));
+                    MessageBox.Show(RecEngine.Recognize(Path.Combine(outputFolder, (string)RECListBox.SelectedItem)));
                 }
                 
             }

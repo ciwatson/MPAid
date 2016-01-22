@@ -19,12 +19,11 @@ popd
 REM	****************************
 REM	Generate a monophone list file with sp named "monophones1"
 REM	****************************
-"%Tools%HDMan" -m -w "%WordLists%WordList.wlist" -g "%Params%global.ded" -n monophones1 -i -l HDMan.Log dictionary lexicon.txt
-REM echo sil>> monophones1
+"%Tools%HDMan" -m -w "%Dictionaries%WordList.wlist" -g "%Params%global.ded" -n "%Dictionaries%monophones1" -i -l HDMan.Log "%Dictionaries%dictionary" "%Dictionaries%lexicon.txt"
 
 REM	****************************
 REM	Generate a monophone list file without sp named "monophones0"
 REM	****************************
-(type monophones1 | findstr /v sp)>monophones0
+(type "%Dictionaries%monophones1" | findstr /v sp)>"%Dictionaries%monophones0"
 
 pause & exit

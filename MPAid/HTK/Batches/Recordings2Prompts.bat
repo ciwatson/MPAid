@@ -5,6 +5,11 @@ REM     Author: Sgaoqing Yu(Shawn)  14/01/2016
 REM	****************************
 
 REM	****************************
+REM     if the folder "Dictionaries" does not exist, Create one
+REM	****************************
+IF NOT EXIST "%cd%\..\Dictionaries\" (mkdir "%cd%\..\Dictionaries\")
+
+REM	****************************
 REM	set up the environment varibles 
 REM	****************************
 pushd "%cd%"
@@ -17,7 +22,7 @@ for /f %%i in ('dir "%cd%" /a:d /b /d') do (
 popd
 
 set /p recordingFolder=Please enter the recording folder address:
-set targetFile="Prompts.pmpt"
+set targetFile="%Dictionaries%Prompts.pmpt"
 
 REM	****************************
 REM	empty the prompts file 

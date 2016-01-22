@@ -4,23 +4,17 @@
 # 
 # rachel morton 6.12.96
 
+die "Usage: $0 <monolist> <trilist> <output dir>\n" unless @ARGV == 3;
+($monolist, $trilist, $output) = @ARGV;
 
-if (@ARGV != 2) {
-  print "usage: makehed monolist trilist\n\n"; 
-  exit (0);
-}
-
-($monolist, $trilist) = @ARGV;
-
+$mktri = $output."mktri.hed";
 # open .hed script
-open(MONO, "@ARGV[0]");
-
-
+open(MONO, $monolist);
 # open .hed script
-open(HED, ">mktri.hed");
+open(HED, ">$mktri");
 
+$trilist =~ s/\\/\//g;
 print HED "CL \"$trilist\"\n";
-#print HED "CL triphones1\n";
 
 # 
 while ($phone = <MONO>) {
