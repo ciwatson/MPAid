@@ -16,7 +16,7 @@ for /f %%i in ('dir "%cd%" /a:d /b /d') do (
 popd
 
 REM	****************************
-REM     create word network file (WordNet/MPAid.wdnet) by WordNets/HParse
+REM     create word network file WordNet.wdnet by WordNets/HParse
 REM	****************************
 "%Tools%HParse" "%Grammars%grammar.gram" "%Grammars%WordNet.wdnet"
 

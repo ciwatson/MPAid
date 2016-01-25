@@ -21,11 +21,11 @@ set /p recordingFolder=Please enter the recording folder address:
 REM	****************************
 REM	assign character set to utf-8
 REM	****************************
-chcp 65001 >NUL
+REM chcp 65001 >NUL
 
 REM	****************************
 REM	list all the recordings 
 REM	****************************
-Perl RecordingRenamer.pl "%recordingFolder%" wav
+Perl "%Perls%RecordingRenamer.pl" "%recordingFolder%" wav
 
 pause & exit

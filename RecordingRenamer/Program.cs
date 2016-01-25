@@ -22,7 +22,7 @@ namespace RecordingRenamer
 
                 foreach (FileInfo item in dirInfo.GetFiles())
                 {
-                    renamer.rename(item.FullName);
+                    renamer.Rename(item.FullName);
                 }
 
                 Console.WriteLine("{0} files were renamed!", dirInfo.GetFiles().Length);
@@ -32,29 +32,54 @@ namespace RecordingRenamer
 
     class Renamer
     {
-        public void rename(String fullname)
+        String fullname;
+        public String Address
+        {
+            get { return Path.GetDirectoryName(fullname); }
+        }
+        public String Name
+        {
+            get { return Path.GetFileNameWithoutExtension(fullname); }
+        }
+        public String Ext
+        {
+            get { return Path.GetExtension(fullname); }
+        }
+
+        public String OldName
+        {
+            get { return Name + Ext; }
+        }
+        public String NewName
+        {
+            get
+            {
+                int index = int.Parse(Name.Substring(Name.IndexOf("_") + 1));
+                String label = Name.Substring(0, Name.IndexOf("_"));
+                String newName = speakerTable[label] + "-word-" + wordTable[index - 1] + "-" + label + Ext;
+                return newName;
+            }
+        }
+        public Renamer()
+        {
+        }
+
+        public Renamer(String fullname)
+            : this()
+        {
+            this.fullname = fullname;
+        }
+        public void Rename(String fullname)
+        {
+            this.fullname = fullname;
+            Rename(this.fullname);
+        }
+
+        public void Rename()
         {
             try
             {
-                String address = Path.GetDirectoryName(fullname);
-                String name = Path.GetFileNameWithoutExtension(fullname);
-                String ext = Path.GetExtension(fullname);
-
-                try
-                {
-                    int index = int.Parse(name.Substring(name.IndexOf("_") + 1));
-                    String label = name.Substring(0, name.IndexOf("_"));
-
-                    String oldName = name + ext;
-                    String newName = speakerTable[label] + "-word-" + wordTable[index - 1] + "-" + label + ext;
-
-                    File.Move(address + "\\" + oldName, address + "\\" + newName);
-                }
-                catch (Exception)
-                {
-                    Console.WriteLine("Wrong name format!");
-                    return;
-                }
+                File.Move(Path.Combine(Address, OldName), Path.Combine(Address, NewName));
             }
             catch (Exception exp)
             {

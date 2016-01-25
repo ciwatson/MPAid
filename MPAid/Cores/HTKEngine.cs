@@ -42,8 +42,8 @@ namespace MPAid.Cores
 
         public String Recognize(String RecordingPath)
         {
-            RunBatchFile(Path.Combine(BatchesFolder, "Recordings2MFCs.bat"), RecordingPath);
-            RunBatchFile(Path.Combine(BatchesFolder, "ModelEvaluater.bat"));
+            //RunBatchFile(Path.Combine(BatchesFolder, "Recordings2MFCs.bat"), RecordingPath);
+            RunBatchFile(Path.Combine(BatchesFolder, "ModelEvaluater.bat"), RecordingPath);
             return Analyze(Path.Combine(MLFsFolder, "RecMLF.mlf"));
         }
 

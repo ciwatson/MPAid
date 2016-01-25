@@ -309,17 +309,17 @@
     <None Include="Data\maori\VowelCodes.xlsx" />
     <None Include="Data\maori\WordCodes.csv" />
     <None Include="Data\maori\WordCodes.xlsx" />
+    <None Include="HTK\Batches\DataPreparer.bat" />
     <None Include="HTK\Batches\Grammar2WordNet.bat" />
     <None Include="HTK\Batches\ModelEvaluater.bat" />
-    <None Include="HTK\Batches\Recordings2MFCs.bat" />
-    <None Include="HTK\Batches\Word2PhonesMLF.bat" />
-    <None Include="HTK\Batches\WordList2Dict.bat" />
     <None Include="HTK\Grammars\Grammar.gram" />
     <None Include="HTK\HMMs\hmm0\hmmdefs" />
     <None Include="HTK\HMMs\hmm0\macros" />
     <None Include="HTK\HMMs\hmm0\proto" />
     <None Include="HTK\HMMs\hmm0\vFloors" />
     <None Include="HTK\Batches\HMMGenerater.bat" />
+    <None Include="HTK\HMMs\hmm4\hmmdefs" />
+    <None Include="HTK\HMMs\hmm4\macros" />
     <None Include="HTK\Params\global.ded" />
     <None Include="HTK\Params\HMMs.conf" />
     <None Include="HTK\Params\MFCs.conf" />
@@ -330,10 +330,7 @@
     <None Include="HTK\Params\mktriphones.ded" />
     <None Include="HTK\Params\sil.hed" />
     <None Include="HTK\Params\tree.hed" />
-    <None Include="HTK\Batches\Prompts2MLF.bat" />
-    <None Include="HTK\Batches\Prompts2WordList.bat" />
     <None Include="HTK\Batches\RecordingRenamer.bat" />
-    <None Include="HTK\Batches\Recordings2Prompts.bat" />
     <None Include="HTK\Perls\ChaSet.pl" />
     <None Include="HTK\Perls\EditTree.pl" />
     <None Include="HTK\Perls\maketrihed.pl" />
@@ -1082,10 +1079,10 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>XCOPY "$(ProjectDir)VlcLibs" "$(TargetDir)VlcLibs" /i /S /Y
-XCOPY "$(ProjectDir)HTK" "$(TargetDir)HTK" /i /S /Y
 XCOPY "$(ProjectDir)Python" "$(TargetDir)Python" /i /S /Y
 XCOPY "$(ProjectDir)Images" "$(TargetDir)Images" /i /S /Y
-XCOPY "$(ProjectDir)Data" "$(TargetDir)Data" /i /S /Y</PostBuildEvent>
+XCOPY "$(ProjectDir)Data" "$(TargetDir)Data" /i /S /Y
+XCOPY "$(ProjectDir)HTK" "$(TargetDir)HTK" /i /S /Y</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

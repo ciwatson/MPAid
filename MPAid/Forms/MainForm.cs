@@ -29,14 +29,6 @@ namespace MPAid
         }
         private IoController systemIO;
 
-        private Thread AsyncPlayer;
-        private string CurrentSoundPath = null;
-
-        private int CurrentNumPlayback = 1;
-        private int CurrentSoundId = 0;
-        private int CurrentAudioSource = 0;
-        //private int DefaultInterval = 200;
-
         private List<string> recordedWavFiles = new List<string>();
         private BindingList<string> listREC = new BindingList<string>();
 
@@ -52,7 +44,7 @@ namespace MPAid
 
         public MPAidModel DBModel;
 
-        public TestForm test = new TestForm();
+        //public TestForm test = new TestForm();
 
         public UserManagement UserManager
         {
@@ -103,13 +95,8 @@ namespace MPAid
 
             InitializeUserProfile();
 
-            RefreshAnimationSpeed();
-
             FillLists();
-
-            // Add Volume Meter to the form
-            InitializeNAudioController();
-            VisualizeVolumeMeter();         
+      
             InitializeConfig();           
         }
 
@@ -121,11 +108,6 @@ namespace MPAid
             // the administrator account is not advised to change its password
             changePasswordToolStripMenuItem.Visible = !allUsers.currentUserIsAdmin();
             administratorConsoleToolStripMenuItem.Visible = allUsers.currentUserIsAdmin();
-        }
-
-        private void InitializeHMMsController()
-        {
-            // this methods actually load user settings for HMMsController
         }
 
         private void InitializeConfig()
@@ -189,247 +171,6 @@ namespace MPAid
                 showAbout();
         }
 
-        private void ShowPleaseSelectMsgBox(string objName)
-        {
-            MessageBox.Show(this, string.Format("Please select a {0}! ", objName),
-                    Application.ProductName,
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
-        }
-
-
-        private const string strCorrectness = "Correctness";
-        private const string strNoWordSelected = "No word has been selected";
-
-        /// <summary>
-        /// This number indicates the number of recordings that will be taken from the user for analysis
-        /// </summary>
-        private int numSamples = 1;
-
-        private void SetPaLabel(string text)
-        {
-            //labelCorrectness.Text = text;
-        }
-
-        private void ResetRecordings()
-        {
-            recordedWavFiles.Clear();
-            //buttonRecord.Enabled = true;
-            //buttonLoadFromFile.Enabled = true;
-            //buttonAnalyze.Enabled = false;
-        }
-
-        private void ResetPAid()
-        {
-            ResetRecordings();
-            //wordSelectedLabel.Text = strNoWordSelected;
-
-            //listBoxREC.Items.Clear();
-            listREC.Clear();
-
-            SetPaLabel(strCorrectness);
-        }
-
-        private bool RecordingsReady()
-        {
-            if (recordedWavFiles.Count >= numSamples)
-                return true;
-            else
-                return false;
-        }
-
-        private string CurrentVoicePath;
-
-        //private string GetNextUserRecordingName(MaoriObj word)
-        //{
-        //    string result;
-
-        //    FileMapper fileMapper = new FileMapper(0, word.WordSoundId);
-        //    int index = recordedWavFiles.Count + 1;
-        //    result = systemIO.GetAppDataDir(allUsers.getCurrentUser())
-        //        + fileMapper.GetWordSoundName(index);
-        //    return result;
-        //}
-
-        private void ShowInExplorer(string dirPath)
-        {
-            Process explorer = new Process();
-            explorer.StartInfo.FileName = "explorer";
-            explorer.StartInfo.Arguments = dirPath;
-            explorer.Start();
-        }
-
-        //private string GetUserScore()
-        //{
-        //    int total = listREC.Count;
-        //    string score = null;
-        //    if (total > 0)
-        //    {
-        //        int i = 0;
-        //        MaoriObj m = GetSelectedMaoriObj(MaoriObjType.Word);
-        //        foreach (string item in listREC)
-        //            if (new Examiner(item, m.Name).wordsMatch())
-        //                i += 1;
-        //        score = (100 * i / total).ToString();
-        //        score += "%";
-        //    }
-        //    else
-        //    {
-        //        score = "Unavailable";
-        //    }
-        //    return score;
-        //}
-
-        private void speedController_Scroll(object sender, EventArgs e)
-        {
-            RefreshAnimationSpeed();
-        }
-
-        private void RefreshAnimationSpeed()
-        {
-            //animationTimer.Interval = DefaultInterval / speedController.Value;
-        }
-
-        private string ReportPath = null;
-
-        //private void buttonShowReport_Click(object sender, EventArgs e)
-        //{
-        //    MaoriObj word = GetSelectedMaoriObj(MaoriObjType.Word);
-        //    HtmlConfig hConfig = new HtmlConfig(systemIO.GetAppDataDir(allUsers.getCurrentUser()))
-        //    {
-        //        myWord = word.Name,
-        //        correctnessValue = GetUserScore()
-        //    };
-
-        //    if ((listREC != null) && (listREC.Count > 0))
-        //        hConfig.listRecognized = listREC.ToList();
-
-        //    HtmlGenerator htmlWriter = new HtmlGenerator(hConfig);
-        //    htmlWriter.Run();
-
-        //    // Show the HTML file in system browser
-        //    //ReportPath = hConfig.GetHtmlFullPath();
-        //    //if (File.Exists(ReportPath))
-        //    //    systemIO.ShowInBrowser(ReportPath);
-        //    //else
-        //    //    buttonShowReport.Enabled = false;
-        //}
-
-//        private void buttonLoadFromFile_Click(object sender, EventArgs e)
-//        {
-//            MaoriObj word = GetSelectedMaoriObj(MaoriObjType.Word);
-//            if (word != null)
-//            {
-//                OpenFileDialog openWavFileDialog = new OpenFileDialog()
-//                {
-//                    Title = "Please select your wav files",
-//                    Filter = "Wave Files|*.wav",
-//                    Multiselect = true,
-//                    InitialDirectory = ResMan.GetSoundDir()
-//                };
-//                if (openWavFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-//                {
-//                    foreach (string wavFile in openWavFileDialog.FileNames)
-//                    {
-//                        try
-//                        {
-//                            CurrentVoicePath = GetNextUserRecordingName(word);
-//                            recordedWavFiles.Add(CurrentVoicePath);
-//                            ResMan.SuperCopy(wavFile, CurrentVoicePath, true);
-//                            if (RecordingsReady())
-//                                break;
-//                        }
-//                        catch { }
-//                    }
-
-//                    //CheckIfRecordingsReady();
-
-//                    try
-//                    {
-//                        DoAnalysis();
-//                    }
-//                    catch (Exception ex)
-//                    {
-//#if DEBUG
-//                        MessageBox.Show(ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-//#endif
-//                    }
-//                }
-//            }
-//            else
-//                ShowPleaseSelectMsgBox("word");
-//        }
-
-        private void wordSelectedLabel_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                //MaoriObj word = GetSelectedMaoriObj(MaoriObjType.Word);
-                //if (word != null)
-                //    wordSelectedLabel.Text = string.Format("{0} ({1})",
-                //        word.Name, word.WordSoundId);
-            }
-        }
-
-        private VerticalProgressBar volumeMeter;
-
-        private void VisualizeVolumeMeter()
-        {
-            //// Make space for the volume meter
-            //Width += 25;
-
-            //// Visualize the volume meter
-            //volumeMeter = new VerticalProgressBar()
-            //{
-            //    Size = new Size(20, groupBox3.Height + groupBox4.Height),
-            //    Location = new Point(groupBox4.Left + groupBox4.Width + 6,
-            //                         groupBox4.Top + mainMenuStrip.Height + headerBox.Height + 6)
-            //};
-
-            //Controls.Add(volumeMeter);
-            //volumeMeter.BringToFront();
-        }
-
-        //private NAudioController volumeMeterController;
-
-        private void InitializeNAudioController()
-        {
-            //volumeMeterController = new NAudioController();
-        }
-
-        private void NAudioTimer_Tick(object sender, EventArgs e)
-        {
-            //volumeMeter.Value = volumeMeterController.GetValue();
-        }
-
-        private void StopNAudioController()
-        {
-            //NAudioTimer.Stop();
-            volumeMeter.Value = 0;
-        }
-
-        private bool NAudioFailureShown = false;
-
-        private void StartNAudioController()
-        {
-            //try
-            //{
-            //    if (volumeMeterController.StatusOK())
-            //        NAudioTimer.Start();
-            //}
-            //catch (Exception ex)
-            //{
-            //    if (!NAudioFailureShown)
-            //    {
-            //        NAudioFailureShown = true;
-            //        MessageBox.Show("There is something wrong with the component NAudio.dll. \n" +
-            //            "The Volume Meter feature will be disabled. \n"
-            //            + ex.Message, "Ooops",
-            //            MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //    }
-            //}
-        }
-
         private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             HMMsConfigForm hmmsConfig = new HMMsConfigForm();
@@ -440,7 +181,7 @@ namespace MPAid
 
         private void openHMMsFolderToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //systemIO.ShowInExplorer(ResMan.GetAnnieDir());
+            //systemIO.ShowInExplorer();
         }
 
         bool doCloseLogin = true;
@@ -498,11 +239,6 @@ namespace MPAid
         private void renameToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.recordingRenameForm.ShowDialog(this);
-        }
-
-        private void testToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.test.ShowDialog(this);
         }
     }
 }
