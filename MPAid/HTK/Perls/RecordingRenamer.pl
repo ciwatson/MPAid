@@ -10,27 +10,27 @@ my $InputDir = $ARGV[0] ;
 my $Ext = $ARGV[1] ;
 
 my @WordList = (
-            "tënei",    #01
-            "täne",     #02
+            "teenei",    #01
+            "taane",     #02
             "hau",      #03
             "hou",      #04
             "pao",      #05
             "pau",      #06
             "pou",      #07
-            "pö",       #08
+            "poo",       #08
             "pai",      #09
             "pae",      #10
-            "kë",       #11
+            "kee",       #11
             "kei",      #12
-            "kï",       #13
-            "hë",       #14
+            "kii",       #13
+            "hee",       #14
             "hei",      #15
-            "hï",       #16
+            "hii",       #16
             "tae",      #17
             "tai",      #18
-            "mätao",    #19
-            "mätau",    #20
-            "mätou",    #21
+            "maatao",    #19
+            "maatau",    #20
+            "maatou",    #21
             "toetoe",   #22
             "toi",      #23
             "hoihoi",   #24
@@ -38,18 +38,18 @@ my @WordList = (
             "mao",      #26
             "mau",      #27
             "moutere",  #28
-            "tü",       #29
+            "tuu",       #29
             "matiu"     #30
 );
 
 my %SpeakerHash = (
-  "K004M" => "male",
-  "K005M" => "male",
-  "K006M" => "male",
-  "K007M" => "male",
-  "K008M" => "male",
-  "K009M" => "male",
-  "K010M" => "male",
+  "K004M" => "oldmale",
+  "K005M" => "oldmale",
+  "K006M" => "oldmale",
+  "K007M" => "oldmale",
+  "K008M" => "oldmale",
+  "K009M" => "oldmale",
+  "K010M" => "oldmale",
 
   "L1Y01M" => "male",
   "L1Y02M" => "male",
@@ -64,14 +64,14 @@ my %SpeakerHash = (
   "L1H05M" => "female",
   "L1H06M" => "female",
 
-  "R001M" => "female",
-  "R002M" => "female",
-  "R003M" => "female",
-  "R004M" => "female",
-  "R005M" => "female",
-  "R006M" => "female",
-  "R007M" => "female",
-  "R008M" => "female"
+  "R001M" => "oldfemale",
+  "R002M" => "oldfemale",
+  "R003M" => "oldfemale",
+  "R004M" => "oldfemale",
+  "R005M" => "oldfemale",
+  "R006M" => "oldfemale",
+  "R007M" => "oldfemale",
+  "R008M" => "oldfemale"
 );
 
 opendir(DH, "$InputDir") or die "Can't open: $!\n" ;
@@ -86,8 +86,8 @@ foreach my $file (@list){
     if(@parts == 2){
         my $NewFile = $SpeakerHash{$parts[0]}."-word-".$WordList[$parts[1] - 1]."-".$parts[0].".".$Ext;
 		
-		my @charsets = qw(utf-8 latin1 iso-8859-1 iso-8859-15 utf-16 gb2312 unicode ascii);
-		for (@charsets){print "$_: " . decode($_, $NewFile) . "\n";}
+		#my @charsets = qw(utf-8 latin1 iso-8859-1 iso-8859-15 utf-16 gb2312 unicode ascii);
+		#for (@charsets){print "$_: " . decode($_, $NewFile) . "\n";}
 		
         if(-e $NewFile){
             warn "Duplicate name after renaming!";

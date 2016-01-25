@@ -121,9 +121,7 @@ REM	Recognize the recordings on evaluation.scp and then output the transcript "R
 REM	****************************
 "%Tools%HVite" -H -C "%Params%HMMs.conf" "%HMMs%hmm15/macros" -H "%HMMs%hmm15/hmmdefs" -S "%Evaluations%evaluation.scp" -l * -T 4 -i "%MLFs%RecMLF.mlf" -w "%Grammars%WordNet.wdnet" -p 0.0 -s 5.0 "%Dictionaries%dictionary" "%Dictionaries%tiedlist"> HVite.log
 
-"%Tools%HResults" -I "%MLFs%WordMLF.mlf" "%Dictionaries%tiedlist" "%MLFs%RecMLF.mlf"
+("%Tools%HResults" -I "%MLFs%WordMLF.mlf" "%Dictionaries%tiedlist" "%MLFs%RecMLF.mlf")> "%Evaluations%result.txt"
 
 echo step: 3  recordingstest ends
-pause
-
 exit

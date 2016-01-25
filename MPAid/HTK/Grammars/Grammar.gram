@@ -1,3 +1,2 @@
-$word = hau | hei;
-
-( SENT-START ( $word ) SENT-END )
+$word = teenei | taane | hau | hou | pao | pau | pou | poo| pai | pae | kee | kei | kii | hee | hei | hii | tae | tai | maatao | maatau | maatou | toetoe | toi | hoihoi | hoe | mao | mau | moutere | tuu | matiu;
+( SENT-START (<$word>) SENT-END )

@@ -310,7 +310,7 @@
     <None Include="Data\maori\WordCodes.csv" />
     <None Include="Data\maori\WordCodes.xlsx" />
     <None Include="HTK\Batches\DataPreparer.bat" />
-    <None Include="HTK\Batches\Grammar2WordNet.bat" />
+    <None Include="HTK\Batches\LiveTest.bat" />
     <None Include="HTK\Batches\ModelEvaluater.bat" />
     <None Include="HTK\Grammars\Grammar.gram" />
     <None Include="HTK\HMMs\hmm0\hmmdefs" />
@@ -329,6 +329,7 @@
     <None Include="HTK\Params\mktri.led" />
     <None Include="HTK\Params\mktriphones.ded" />
     <None Include="HTK\Params\sil.hed" />
+    <None Include="HTK\Params\Test.conf" />
     <None Include="HTK\Params\tree.hed" />
     <None Include="HTK\Batches\RecordingRenamer.bat" />
     <None Include="HTK\Perls\ChaSet.pl" />
