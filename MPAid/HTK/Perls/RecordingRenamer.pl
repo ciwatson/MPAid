@@ -51,18 +51,18 @@ my %SpeakerHash = (
   "K009M" => "oldmale",
   "K010M" => "oldmale",
 
-  "L1Y01M" => "male",
-  "L1Y02M" => "male",
-  "L1Y03M" => "male",
-  "L1Y04M" => "male",
-  "L1Y05M" => "male",
+  "L1Y01M" => "youngmale",
+  "L1Y02M" => "youngmale",
+  "L1Y03M" => "youngmale",
+  "L1Y04M" => "youngmale",
+  "L1Y05M" => "youngmale",
 
-  "L1H01M" => "female",
-  "L1H02M" => "female",
-  "L1H03M" => "female",
-  "L1H04M" => "female",
-  "L1H05M" => "female",
-  "L1H06M" => "female",
+  "L1H01M" => "youngfemale",
+  "L1H02M" => "youngfemale",
+  "L1H03M" => "youngfemale",
+  "L1H04M" => "youngfemale",
+  "L1H05M" => "youngfemale",
+  "L1H06M" => "youngfemale",
 
   "R001M" => "oldfemale",
   "R002M" => "oldfemale",
@@ -90,7 +90,7 @@ foreach my $file (@list){
 		#for (@charsets){print "$_: " . decode($_, $NewFile) . "\n";}
 		
         if(-e $NewFile){
-            warn "Duplicate name after renaming!";
+            warn "Duplicated name after renaming!";
             next;
         } else {
             rename($file, decode('utf-8', $NewFile));

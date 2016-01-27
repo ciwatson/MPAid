@@ -28,26 +28,25 @@ for /f %%i in ('dir "%cd%" /a:d /b /d') do (
 popd
 
 set /p recordingFolder=Please enter the recording folder address:
-set targetFile="%Dictionaries%Prompts.pmpt"
-
-REM	****************************
-REM	empty the prompts file 
-REM	****************************
-type NUL >%targetFile%
 
 REM	****************************
 REM	assign character set to utf-8
 REM	****************************
-REM     chcp 65001 >NUL
+REM chcp 65001 >NUL
 
 REM	****************************
 REM	list all the recordings 
 REM	****************************
-for /f %%n in ('forfiles /p %recordingFolder% /s /m *.wav /c "cmd /c echo @fname"') do (
-  for /f "tokens=1-4 delims=-" %%a in ("%%~n") do echo %%~n %%c>> %targetFile%
-)
+Perl "%Perls%Recordings2Prompts.pl" "%recordingFolder%" .wav "%Dictionaries%\"
 
 echo step: 1  recordings2prompts ends
+
+
+
+
+
+
+
 
 echo step: 2  recordings2mfcs starts
 REM	****************************

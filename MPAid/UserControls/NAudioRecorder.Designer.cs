@@ -108,9 +108,9 @@
             this.correctnessLabel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.correctnessLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.correctnessLabel.ForeColor = System.Drawing.Color.Green;
-            this.correctnessLabel.Location = new System.Drawing.Point(163, 212);
+            this.correctnessLabel.Location = new System.Drawing.Point(6, 212);
             this.correctnessLabel.Name = "correctnessLabel";
-            this.correctnessLabel.Size = new System.Drawing.Size(139, 20);
+            this.correctnessLabel.Size = new System.Drawing.Size(468, 20);
             this.correctnessLabel.TabIndex = 19;
             this.correctnessLabel.Text = "Correctness";
             this.correctnessLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;

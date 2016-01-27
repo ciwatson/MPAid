@@ -13,6 +13,7 @@ using System.IO;
 using System.Diagnostics;
 using MPAid.Models;
 using MPAid.Cores;
+using MPAid.Forms.MSGBox;
 
 namespace MPAid.UserControls
 {
@@ -27,6 +28,7 @@ namespace MPAid.UserControls
         private string tempFilename;
         private string tempFolder;
         private HTKEngine RecEngine;
+        private ScoreBoard scoreBoard;
         public NAudioRecorder()
         {
             InitializeComponent();
@@ -35,6 +37,7 @@ namespace MPAid.UserControls
 
             waveOut = new WaveOutEvent();
             RecEngine = new HTKEngine();
+            scoreBoard = new ScoreBoard();
         }
 
         private void LoadWasapiDevices()
@@ -216,7 +219,7 @@ namespace MPAid.UserControls
             waveIn.DataAvailable += OnDataAvailable;
             waveIn.RecordingStopped += OnRecordingStopped;
 
-            tempFilename = String.Format("{0}-{1:yyy/MM/dd/HH/mm/ss}.wav", MainForm.self.AllUsers.getCurrentUser().getName(), DateTime.Now);
+            tempFilename = String.Format("{0}-{1:yyy-MM-dd-HH-mm-ss}.wav", MainForm.self.AllUsers.getCurrentUser().getName(), DateTime.Now);
             //initially, outputname is the same as tempfilename
             outputFileName = tempFilename;
             writer = new WaveFileWriter(Path.Combine(tempFolder, tempFilename), waveIn.WaveFormat);
@@ -241,8 +244,22 @@ namespace MPAid.UserControls
             {
                 if (RECListBox.SelectedItem != null)
                 {
-                    //RecEngine.Recognize(Path.Combine(outputFolder, (string)RECListBox.SelectedItem));
-                    MessageBox.Show(RecEngine.Recognize(Path.Combine(outputFolder, (string)RECListBox.SelectedItem)));
+                    string msg = string.Empty;
+                    Dictionary<string, string> result = RecEngine.Recognize(Path.Combine(outputFolder, (string)RECListBox.SelectedItem)).ToDictionary(x => x.Key, x => x.Value);
+                    foreach(KeyValuePair<string, string> pair in result)
+                    {
+                        msg += pair.Key + " was recognised as " + pair.Value + "\n";
+                    }
+
+                    if(msg != string.Empty)
+                    {
+                        RecognitionResultMSGBox recMSGBox = new RecognitionResultMSGBox();
+                        if (recMSGBox.ShowDialog(result.First().Value, msg) == DialogResult.OK)
+                        {
+                            scoreBoard.content.Add(recMSGBox.scoreBoardItem);
+                            correctnessLabel.Text = string.Format(@"Correctness: {0:0.0%}", scoreBoard.CalculateCorrectness); 
+                        }
+                    }         
                 }
                 
             }
@@ -252,8 +269,6 @@ namespace MPAid.UserControls
                 MessageBox.Show(ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 #endif
             }
-
-            correctnessLabel.Text = "Correctness = " + CalculateScore().ToString();
         }
 
         private void showReportButton_Click(object sender, EventArgs e)
@@ -288,65 +303,6 @@ namespace MPAid.UserControls
             }
             else
                 showReportButton.Enabled = false;
-        }
-
-        private void AudioRecognize()
-        {
-            MainForm mainForm = Parent.Parent.Parent.Parent.Parent.Parent as MainForm;
-            String word = (mainForm.RecordingList.WordListBox.SelectedItem as Word).Name;
-
-            PaConfig config = new PaConfig()
-            {
-                currentWord = word,
-                AnnieDir = mainForm.configContent.AnnieFolderAddr.FolderAddr,
-                batFilePath = Path.Combine(mainForm.configContent.AnnieFolderAddr.FolderAddr, "Process.bat")
-            };
-
-            if ((RECListBox.Items != null) && (RECListBox.Items.Count > 0))
-            {
-                string[] wordArray = new string[RECListBox.Items.Count];
-                RECListBox.Items.CopyTo(wordArray, 0);
-                config.audioList = wordArray.ToList();
-            }
-
-            PaEngine engine = new PaEngine(config);
-            if (engine.wavFilesOK())
-            {
-                // The Main thread will wait until the process finishes
-                engine.Start();
-
-                MessageBox.Show("The result is " + engine.GetRecognizedWord());
-
-                //copies the user recording files to the HTML report resource folder
-                //HtmlConfig hConfig = new HtmlConfig(mainForm.configContent.ReportFolderAddr.FolderAddr);
-                //File.Copy(Path.Combine(mainForm.configContent.RecordingFolderAddr.FolderAddr, outputFileName),
-                //          hConfig.GetRecPath(RECListBox.Items.Count, HtmlConfig.pathType.fullUserRecPath), 
-                //          true);
-
-                //prepare to copy the sample recording file to the HTML report res folder
-
-                //make sure the sample recording is different from each other
-                //string soundToPlay = null;
-                //int counter = 0;
-                //do
-                //{
-                //    counter += 1;
-                //    soundToPlay = ResMan.GetWordSound(GetAudioSource(), word.WordSoundId, true);
-                //    if (soundToPlay == null)
-                //        break;
-                //} while ((soundToPlay == lastPlayedSound) && (counter < 255));
-
-                //lastPlayedSound = soundToPlay;
-
-                ////copies the sample recording files to the HTML res folder
-                //ResMan.SuperCopy(soundToPlay, hConfig.GetRecPath(listREC.Count,
-                //    HtmlConfig.pathType.fullSampleRecPath), true);
-
-                //change the UI
-                showReportButton.Enabled = true;
-            }
-
-            //ResetRecordings();
         }
 
         private void RECListBox_SelectedValueChanged(object sender, EventArgs e)

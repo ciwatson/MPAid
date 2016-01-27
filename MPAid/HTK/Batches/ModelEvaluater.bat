@@ -3,6 +3,7 @@ REM	****************************
 REM	This batch file is used to evaluate the model we have built by audio recordings
 REM	****************************
 
+
 echo step: 1  recordings2mfcs starts
 REM	****************************
 REM	There are 3 steps in preparation process, this is the 1 step "recordings2mfcs"
@@ -26,7 +27,7 @@ for /f %%i in ('dir "%cd%" /a:d /b /d') do (
 )
 popd
 
-set /p recordingFolder=Please enter the recording folder address or full recording name:
+set /p recordingFolder=Please enter the recording folder address:
 
 REM	****************************
 REM     create train code script (Script.scp) with a filter suffix "wav" in %MFCs%
@@ -83,7 +84,7 @@ echo step: 2  grammar2wordnet ends
 
 echo step: 3  recordingstest starts
 REM	****************************
-REM	There are 2 steps in preparation process, this is the 3 step "recordingstest"
+REM	There are 3 steps in preparation process, this is the 3 step "recordingstest"
 REM	****************************
 
 REM	****************************
@@ -119,9 +120,9 @@ for /f "tokens=1,2" %%a in (%MFCs%script.scp) do (
 REM	****************************
 REM	Recognize the recordings on evaluation.scp and then output the transcript "RecMLF.mlf"
 REM	****************************
-"%Tools%HVite" -H -C "%Params%HMMs.conf" "%HMMs%hmm15/macros" -H "%HMMs%hmm15/hmmdefs" -S "%Evaluations%evaluation.scp" -l * -T 4 -i "%MLFs%RecMLF.mlf" -w "%Grammars%WordNet.wdnet" -p 0.0 -s 5.0 "%Dictionaries%dictionary" "%Dictionaries%tiedlist"> HVite.log
+"%Tools%HVite" -o ST -H -C "%Params%HMMs.conf" "%HMMs%hmm15/macros" -H "%HMMs%hmm15/hmmdefs" -S "%Evaluations%evaluation.scp" -l * -T 4 -i "%MLFs%RecMLF.mlf" -w "%Grammars%WordNet.wdnet" -p 0.0 -s 5.0 "%Dictionaries%dictionary" "%Dictionaries%tiedlist"> HVite.log
 
-("%Tools%HResults" -I "%MLFs%WordMLF.mlf" "%Dictionaries%tiedlist" "%MLFs%RecMLF.mlf")> "%Evaluations%result.txt"
+REM ("%Tools%HResults" -I "%MLFs%WordMLF.mlf" "%Dictionaries%tiedlist" "%MLFs%RecMLF.mlf")> "%Evaluations%result.txt"
 
 echo step: 3  recordingstest ends
 exit

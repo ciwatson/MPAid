@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
+using MPAid.Cores;
 
 namespace MPAid
 {
@@ -70,11 +71,10 @@ namespace MPAid
             try
             {              
                 FormantPlotExe = new Process();
-                FormantPlotExe.StartInfo.FileName = GetFormantPlotExeName();
+                FormantPlotExe.StartInfo.FileName = "Runner.exe";
                 FormantPlotExe.StartInfo.UseShellExecute = true;
-                FormantPlotExe.StartInfo.Arguments = "pause";
+                FormantPlotExe.StartInfo.WorkingDirectory = @"D:\Projects\MPAid\MPAid\bin\x86\Debug\Fomant\dist";
                 FormantPlotExe.Start();
-
 
                 // Hang up the main application to wait until it finished starting
                 while ((FormantPlotStarted(GetFormantPlotTitle()) == 1)
@@ -88,21 +88,9 @@ namespace MPAid
             }
         }
 
-        public static string GetFormantPlotExeName()
-        {
-            const string OldName = @"Python\MPAi.exe";
-            const string NewName = @"Python\Runner.exe";
-            if (File.Exists(NewName))
-                return (NewName);
-            if (File.Exists(OldName))
-                return (OldName);
-            return (NewName);
-        }
-
         public static string GetFormantPlotTitle()
         {
             return (@"Formant Plot");
         }
-
     }
 }
