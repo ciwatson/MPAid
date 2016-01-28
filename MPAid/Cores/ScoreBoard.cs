@@ -41,7 +41,7 @@ namespace MPAid.Cores
     {
         public float CalculateCorrectness
         {
-            get { return CalculateScore / content.Count;}
+            get { return CalculateScore / Content.Count;}
         }
 
         public float CalculateScore
@@ -49,7 +49,7 @@ namespace MPAid.Cores
             get
             {
                 float sum = 0;
-                foreach(ScoreBoardItem item in content)
+                foreach(ScoreBoardItem item in Content)
                 {
                     sum += item.Similarity(SimilarityAlgorithm.DamereauLevensheinDistanceAlgorithm);
                 }
@@ -57,7 +57,7 @@ namespace MPAid.Cores
             }
         }
      
-        public List<ScoreBoardItem> content = new List<ScoreBoardItem>();
+        public List<ScoreBoardItem> Content = new List<ScoreBoardItem>();
     }
 
     public static class SimilarityAlgorithm
@@ -95,7 +95,7 @@ namespace MPAid.Cores
                     d[i, j] = Math.Min(Math.Min(min1, min2), min3);
                 }
             }
-            return 1 - (float)d[n, m] / m;
+            return Math.Abs(1 - (float)d[n, m] / m);
         }
     }
 }

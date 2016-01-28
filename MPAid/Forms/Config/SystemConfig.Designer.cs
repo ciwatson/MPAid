@@ -43,9 +43,12 @@
             this.recordingFolderSelectButton = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.recordingFolderTextBox = new System.Windows.Forms.TextBox();
-            this.annieFolderSelectButton = new System.Windows.Forms.Button();
+            this.HTKFolderSelectButton = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.annieFolderTextBox = new System.Windows.Forms.TextBox();
+            this.HTKFolderTextBox = new System.Windows.Forms.TextBox();
+            this.fomantFolderSelectButton = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.fomantFolderTextBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // audioFolderTextBox
@@ -172,40 +175,71 @@
             this.recordingFolderTextBox.Size = new System.Drawing.Size(332, 20);
             this.recordingFolderTextBox.TabIndex = 8;
             // 
-            // annieFolderSelectButton
+            // HTKFolderSelectButton
             // 
-            this.annieFolderSelectButton.Location = new System.Drawing.Point(465, 172);
-            this.annieFolderSelectButton.Name = "annieFolderSelectButton";
-            this.annieFolderSelectButton.Size = new System.Drawing.Size(33, 25);
-            this.annieFolderSelectButton.TabIndex = 16;
-            this.annieFolderSelectButton.Text = "...";
-            this.annieFolderSelectButton.UseVisualStyleBackColor = true;
-            this.annieFolderSelectButton.Click += new System.EventHandler(this.annieFolderSelectButton_Click);
+            this.HTKFolderSelectButton.Location = new System.Drawing.Point(465, 172);
+            this.HTKFolderSelectButton.Name = "HTKFolderSelectButton";
+            this.HTKFolderSelectButton.Size = new System.Drawing.Size(33, 25);
+            this.HTKFolderSelectButton.TabIndex = 16;
+            this.HTKFolderSelectButton.Text = "...";
+            this.HTKFolderSelectButton.UseVisualStyleBackColor = true;
+            this.HTKFolderSelectButton.Click += new System.EventHandler(this.HTKFolderSelectButton_Click);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(20, 175);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(66, 13);
+            this.label3.Size = new System.Drawing.Size(61, 13);
             this.label3.TabIndex = 15;
-            this.label3.Text = "Annie Folder";
+            this.label3.Text = "HTK Folder";
             // 
-            // annieFolderTextBox
+            // HTKFolderTextBox
             // 
-            this.annieFolderTextBox.Location = new System.Drawing.Point(127, 172);
-            this.annieFolderTextBox.Name = "annieFolderTextBox";
-            this.annieFolderTextBox.Size = new System.Drawing.Size(332, 20);
-            this.annieFolderTextBox.TabIndex = 14;
+            this.HTKFolderTextBox.Location = new System.Drawing.Point(127, 172);
+            this.HTKFolderTextBox.Name = "HTKFolderTextBox";
+            this.HTKFolderTextBox.Size = new System.Drawing.Size(332, 20);
+            this.HTKFolderTextBox.TabIndex = 14;
+            this.HTKFolderTextBox.TextChanged += new System.EventHandler(this.HTKFolderTextBox_TextChanged);
+            // 
+            // fomantFolderSelectButton
+            // 
+            this.fomantFolderSelectButton.Location = new System.Drawing.Point(465, 200);
+            this.fomantFolderSelectButton.Name = "fomantFolderSelectButton";
+            this.fomantFolderSelectButton.Size = new System.Drawing.Size(33, 25);
+            this.fomantFolderSelectButton.TabIndex = 19;
+            this.fomantFolderSelectButton.Text = "...";
+            this.fomantFolderSelectButton.UseVisualStyleBackColor = true;
+            this.fomantFolderSelectButton.Click += new System.EventHandler(this.fomantFolderSelectButton_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(20, 203);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(74, 13);
+            this.label4.TabIndex = 18;
+            this.label4.Text = "Fomant Folder";
+            // 
+            // fomantFolderTextBox
+            // 
+            this.fomantFolderTextBox.Location = new System.Drawing.Point(127, 200);
+            this.fomantFolderTextBox.Name = "fomantFolderTextBox";
+            this.fomantFolderTextBox.Size = new System.Drawing.Size(332, 20);
+            this.fomantFolderTextBox.TabIndex = 17;
+            this.fomantFolderTextBox.TextChanged += new System.EventHandler(this.FomantFolderTextBox_TextChanged);
             // 
             // SystemConfig
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(510, 304);
-            this.Controls.Add(this.annieFolderSelectButton);
+            this.Controls.Add(this.fomantFolderSelectButton);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.fomantFolderTextBox);
+            this.Controls.Add(this.HTKFolderSelectButton);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.annieFolderTextBox);
+            this.Controls.Add(this.HTKFolderTextBox);
             this.Controls.Add(this.reportFolderSelectButton);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.reportFolderTextBox);
@@ -247,8 +281,11 @@
         private System.Windows.Forms.Button recordingFolderSelectButton;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox recordingFolderTextBox;
-        private System.Windows.Forms.Button annieFolderSelectButton;
+        private System.Windows.Forms.Button HTKFolderSelectButton;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox annieFolderTextBox;
+        private System.Windows.Forms.TextBox HTKFolderTextBox;
+        private System.Windows.Forms.Button fomantFolderSelectButton;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox fomantFolderTextBox;
     }
 }

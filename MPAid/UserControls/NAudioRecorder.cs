@@ -20,24 +20,20 @@ namespace MPAid.UserControls
     public partial class NAudioRecorder : UserControl
     {
         private IWaveIn waveIn;
-        private WaveOutEvent waveOut;
+        private WaveOutEvent waveOut = new WaveOutEvent();
         private WaveFileWriter writer;
         private WaveFileReader reader;
         private string outputFileName;
         private string outputFolder;
         private string tempFilename;
         private string tempFolder;
-        private HTKEngine RecEngine;
-        private ScoreBoard scoreBoard;
+        private HTKEngine RecEngine = new HTKEngine();
+        private ScoreBoard scoreBoard = new ScoreBoard();
         public NAudioRecorder()
         {
             InitializeComponent();
 
             LoadWasapiDevices();
-
-            waveOut = new WaveOutEvent();
-            RecEngine = new HTKEngine();
-            scoreBoard = new ScoreBoard();
         }
 
         private void LoadWasapiDevices()
@@ -51,8 +47,7 @@ namespace MPAid.UserControls
 
         public void CreateDirectory()
         {
-            MainForm mainForm = MainForm.self;
-            outputFolder = mainForm.configContent.RecordingFolderAddr.FolderAddr;
+            outputFolder = SystemConfigration.configs.RecordingFolderAddr.FolderAddr;
             tempFolder = Path.Combine(Path.GetTempPath(), "MPAidTemp");
             Directory.CreateDirectory(outputFolder);
             Directory.CreateDirectory(tempFolder);
@@ -60,7 +55,7 @@ namespace MPAid.UserControls
 
         public void DataBinding()
         {
-            DirectoryInfo info = new DirectoryInfo(MainForm.self.configContent.RecordingFolderAddr.FolderAddr);
+            DirectoryInfo info = new DirectoryInfo(SystemConfigration.configs.RecordingFolderAddr.FolderAddr);
             RECListBox.Items.AddRange(info.GetFiles().Where(x => x.Extension != ".mfc").Select(x => x.Name).ToArray());
         }
         private void FinalizeWaveFile(Stream s)
@@ -77,24 +72,6 @@ namespace MPAid.UserControls
             recordButton.Enabled = !isRecording;
             fromFileButton.Enabled = !isRecording;
             stopButton.Enabled = isRecording;
-        }
-
-        private double CalculateScore()
-        {
-            MainForm mainForm = Parent.Parent.Parent.Parent.Parent.Parent as MainForm;
-            String word = (mainForm.RecordingList.WordListBox.SelectedItem as Word).Name;
-            int total = RECListBox.Items.Count;
-            double score = -1;
-            if (total > 0)
-            {
-                int i = 0;
-
-                foreach (var item in RECListBox.Items)
-                    if (new Examiner(item.ToString(), word).wordsMatch())
-                        i += 1;
-                score = i / total;
-            }
-            return score;
         }
 
         private void StopRecording()
@@ -251,14 +228,15 @@ namespace MPAid.UserControls
                         msg += pair.Key + " was recognised as " + pair.Value + "\n";
                     }
 
-                    if(msg != string.Empty)
+                    if(!string.IsNullOrEmpty(msg))
                     {
                         RecognitionResultMSGBox recMSGBox = new RecognitionResultMSGBox();
                         if (recMSGBox.ShowDialog(result.First().Value, msg) == DialogResult.OK)
                         {
-                            scoreBoard.content.Add(recMSGBox.scoreBoardItem);
+                            scoreBoard.Content.Add(recMSGBox.scoreBoardItem);
                             correctnessLabel.Text = string.Format(@"Correctness: {0:0.0%}", scoreBoard.CalculateCorrectness); 
                         }
+                        showReportButton.Enabled = true;
                     }         
                 }
                 
@@ -273,32 +251,35 @@ namespace MPAid.UserControls
 
         private void showReportButton_Click(object sender, EventArgs e)
         {
-            MainForm mainForm = Parent.Parent.Parent.Parent.Parent.Parent as MainForm;
+            //MainForm mainForm = Parent.Parent.Parent.Parent.Parent.Parent as MainForm;
 
-            String word = (mainForm.RecordingList.WordListBox.SelectedItem as Word).Name;
-            HtmlConfig hConfig = new HtmlConfig(mainForm.configContent.ReportFolderAddr.FolderAddr)
-            {
-                myWord = word,
-                correctnessValue = CalculateScore().ToString()
-            };
+            //String word = (mainForm.RecordingList.WordListBox.SelectedItem as Word).Name;
+            //HtmlConfig hConfig = new HtmlConfig(mainForm.configContent.ReportFolderAddr.FolderAddr)
+            //{
+            //    myWord = word,
+            //    correctnessValue = CalculateScore().ToString()
+            //};
 
-            if ((RECListBox.Items != null) && (RECListBox.Items.Count > 0))
-            {
-                string[] wordArray = new string[RECListBox.Items.Count];
-                RECListBox.Items.CopyTo(wordArray, 0);
-                hConfig.listRecognized = wordArray.ToList();
-            }
+            //if ((RECListBox.Items != null) && (RECListBox.Items.Count > 0))
+            //{
+            //    string[] wordArray = new string[RECListBox.Items.Count];
+            //    RECListBox.Items.CopyTo(wordArray, 0);
+            //    hConfig.listRecognized = wordArray.ToList();
+            //}
 
 
-            HtmlGenerator htmlWriter = new HtmlGenerator(hConfig);
-            htmlWriter.Run();
+            //HtmlGenerator htmlWriter = new HtmlGenerator(hConfig);
+            //htmlWriter.Run();
+
+            ReportLaucher rl = new ReportLaucher();
+            rl.GenerateHTML(scoreBoard);
 
             // Show the HTML file in system browser
-            String reportPath = hConfig.GetHtmlFullPath();
-            if (File.Exists(reportPath))
+            //String reportPath = hConfig.GetHtmlFullPath();
+            if (File.Exists(rl.ReportAddr))
             {
                 Process browser = new Process();
-                browser.StartInfo.FileName = reportPath;
+                browser.StartInfo.FileName = rl.ReportAddr;
                 browser.Start();
             }
             else

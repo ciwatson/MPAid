@@ -35,8 +35,6 @@ namespace MPAid
             this.headerBox = new System.Windows.Forms.PictureBox();
             this.categoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
-            this.operationPanel = new MPAid.UserControls.OperationPanel();
-            this.recordingPanel = new MPAid.UserControls.RecordingPanel();
             this.mainMenuStrip = new System.Windows.Forms.MenuStrip();
             this.usersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.administratorConsoleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -54,6 +52,8 @@ namespace MPAid
             this.submitFeedbackToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.testToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.operationPanel = new MPAid.UserControls.OperationPanel();
+            this.recordingPanel = new MPAid.UserControls.RecordingPanel();
             ((System.ComponentModel.ISupportInitialize)(this.headerBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.categoryBindingSource)).BeginInit();
             this.panel1.SuspendLayout();
@@ -81,23 +81,6 @@ namespace MPAid
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(859, 384);
             this.panel1.TabIndex = 7;
-            // 
-            // operationPanel
-            // 
-            this.operationPanel.Location = new System.Drawing.Point(197, 7);
-            this.operationPanel.Name = "operationPanel";
-            this.operationPanel.Size = new System.Drawing.Size(659, 365);
-            this.operationPanel.TabIndex = 8;
-            // 
-            // recordingPanel
-            // 
-            this.recordingPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.recordingPanel.Location = new System.Drawing.Point(12, 6);
-            this.recordingPanel.Name = "recordingPanel";
-            this.recordingPanel.Size = new System.Drawing.Size(179, 366);
-            this.recordingPanel.TabIndex = 7;
             // 
             // mainMenuStrip
             // 
@@ -247,6 +230,28 @@ namespace MPAid
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(169, 26);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
+            // 
+            // testToolStripMenuItem
+            // 
+            this.testToolStripMenuItem.Name = "testToolStripMenuItem";
+            this.testToolStripMenuItem.Size = new System.Drawing.Size(169, 26);
+            // 
+            // operationPanel
+            // 
+            this.operationPanel.Location = new System.Drawing.Point(197, 7);
+            this.operationPanel.Name = "operationPanel";
+            this.operationPanel.Size = new System.Drawing.Size(659, 365);
+            this.operationPanel.TabIndex = 8;
+            // 
+            // recordingPanel
+            // 
+            this.recordingPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.recordingPanel.Location = new System.Drawing.Point(12, 6);
+            this.recordingPanel.Name = "recordingPanel";
+            this.recordingPanel.Size = new System.Drawing.Size(179, 366);
+            this.recordingPanel.TabIndex = 7;
             // 
             // MainForm
             // 

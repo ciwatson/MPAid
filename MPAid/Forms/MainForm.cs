@@ -2,11 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
-using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Threading;
 using System.Windows.Forms;
 using System.Runtime.Serialization.Formatters.Binary;
 using MPAid.Forms.Config;
@@ -14,8 +9,6 @@ using MPAid.Cores;
 using MPAid.Models;
 using System.Data.Entity;
 using MPAid.UserControls;
-using Vlc.DotNet.Core;
-using MPAid.Forms;
 
 namespace MPAid
 {
@@ -40,8 +33,6 @@ namespace MPAid
 
         private RecordingRenameConfig recordingRenameForm;
 
-        public SysCfg configContent;
-
         public MPAidModel DBModel;
 
         //public TestForm test = new TestForm();
@@ -63,6 +54,9 @@ namespace MPAid
         public MainForm(UserManagement users)
         {
             MainForm.self = this;
+            InitializeDB();
+            InitializeConfig();
+
             SplashScreen splash = new SplashScreen();
             splash.Show();
 
@@ -85,8 +79,6 @@ namespace MPAid
 
         private void InitializeUI()
         {
-            InitializeDB();
-
             Icon = Properties.Resources.MPAid;
             Text += " " + GetVersionString();
 
@@ -95,9 +87,7 @@ namespace MPAid
 
             InitializeUserProfile();
 
-            FillLists();
-      
-            InitializeConfig();           
+            FillLists();        
         }
 
         //this method is called when allUsers has been initialized
@@ -112,7 +102,6 @@ namespace MPAid
 
         private void InitializeConfig()
         {          
-            configContent = Serializer<SysCfg>.Load<BinaryFormatter>(SysCfg.path);
             this.systemConfigForm = new SystemConfig();
             this.recordingUploadForm = new RecordingUploadConfig();
             this.recordingRenameForm = new RecordingRenameConfig();

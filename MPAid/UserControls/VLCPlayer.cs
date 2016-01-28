@@ -34,7 +34,6 @@ namespace MPAid.UserControls
             //stopButton.ImageHighlight = Properties.Resources.ButtonRed_1;
             //stopButton.ImagePressed = Properties.Resources.ButtonRed_2;
         }
-
         private void OnVlcControlNeedLibDirectory(object sender, VlcLibDirectoryNeededEventArgs e)
         {
             var currentAssembly = Assembly.GetEntryAssembly();
@@ -76,7 +75,7 @@ namespace MPAid.UserControls
                             {
                                 SingleFile sf = rd.Video;
                                 if (sf == null) throw new Exception("No video recording!");
-                                string filePath = sf.Address + "\\" + sf.Name;
+                                string filePath = Path.Combine(sf.Address, sf.Name);
 
                                 vlcControl.Play(new Uri(filePath));
                                 playButton.Text = "Pause";

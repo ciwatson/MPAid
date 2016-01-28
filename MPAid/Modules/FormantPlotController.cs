@@ -74,6 +74,7 @@ namespace MPAid
                 FormantPlotExe.StartInfo.FileName = "Runner.exe";
                 FormantPlotExe.StartInfo.UseShellExecute = true;
                 FormantPlotExe.StartInfo.WorkingDirectory = @"D:\Projects\MPAid\MPAid\bin\x86\Debug\Fomant\dist";
+                FormantPlotExe.StartInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
                 FormantPlotExe.Start();
 
                 // Hang up the main application to wait until it finished starting

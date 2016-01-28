@@ -12,10 +12,6 @@ namespace MPAid.Cores
 {
     class HTKEngine
     {
-        static private readonly string HTKRoot = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"HTK");
-        private string BatchesFolder = Path.Combine(HTKRoot, @"Batches");
-        private string MLFsFolder = Path.Combine(HTKRoot, @"MLFs");
-
         public void RunBatchFile(string filePath, string arguments = "")
         {
             try
@@ -23,7 +19,7 @@ namespace MPAid.Cores
                 ProcessStartInfo processInfo = new ProcessStartInfo(filePath);
                 processInfo.CreateNoWindow = true;
                 processInfo.UseShellExecute = false;
-                processInfo.WorkingDirectory = BatchesFolder;
+                processInfo.WorkingDirectory = Path.Combine(SystemConfigration.configs.HTKFolderAddr.FolderAddr, @"Batches");
                 //  ***Redirect the output ***
                 processInfo.RedirectStandardError = true;
                 processInfo.RedirectStandardOutput = true;
@@ -46,6 +42,8 @@ namespace MPAid.Cores
 
         public IDictionary<string, string> Recognize(String RecordingPath)
         {
+            string BatchesFolder = Path.Combine(SystemConfigration.configs.HTKFolderAddr.FolderAddr, @"Batches");
+            string MLFsFolder = Path.Combine(SystemConfigration.configs.HTKFolderAddr.FolderAddr, @"MLFs");
             //RunBatchFile(Path.Combine(BatchesFolder, "Recordings2MFCs.bat"), RecordingPath);
             RunBatchFile(Path.Combine(BatchesFolder, "ModelEvaluater.bat"), RecordingPath);
             return Analyze(Path.Combine(MLFsFolder, "RecMLF.mlf"));
@@ -62,7 +60,7 @@ namespace MPAid.Cores
                     {
                         string line;
                         Match m = Match.Empty;
-                        string result = "";
+                        string result = string.Empty;
                         while ((line = sr.ReadLine()) != null)
                         {
                             if (Regex.Match(line, @"(?<="")(?:\\.|[^""\\])*(?="")").Success)
@@ -71,13 +69,13 @@ namespace MPAid.Cores
                             }
                             else if (Regex.Match(line, @"\.$").Success)
                             {
-                                RecResult.Add(m.Value, result);
+                                RecResult.Add(m.Value, result.TrimEnd(' '));
                                 m = Match.Empty;
-                                result = "";
+                                result = string.Empty;
                             }
                             else if(line != "#!MLF!#")
                             {
-                                result += line;
+                                result += line + " ";
                             }
                         }
                     }

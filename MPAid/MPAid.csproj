@@ -128,6 +128,7 @@
     <Compile Include="Cores\CollectionExtensions.cs" />
     <Compile Include="Cores\HTKEngine.cs" />
     <Compile Include="Cores\ProcessExtension.cs" />
+    <Compile Include="Cores\ReportLaucher.cs" />
     <Compile Include="Cores\ScoreBoard.cs" />
     <Compile Include="Forms\AdminConsole.cs">
       <SubType>Form</SubType>
@@ -171,12 +172,6 @@
     <Compile Include="Forms\NewUserWindow.Designer.cs">
       <DependentUpon>NewUserWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\TestForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\TestForm.Designer.cs">
-      <DependentUpon>TestForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -201,10 +196,7 @@
     <Compile Include="Modules\HMMsController.cs" />
     <Compile Include="Modules\HtmlConfig.cs" />
     <Compile Include="Modules\HtmlGenerator.cs" />
-    <Compile Include="Modules\mathLib.cs" />
     <Compile Include="Cores\NamePaser.cs" />
-    <Compile Include="Modules\PaConfig.cs" />
-    <Compile Include="Modules\PaEngine.cs" />
     <Compile Include="Cores\SysCfg.cs" />
     <Compile Include="Modules\UserManagement.cs" />
     <Compile Include="Cores\VowelComparer.cs" />
@@ -278,9 +270,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\NewUserWindow.resx">
       <DependentUpon>NewUserWindow.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\TestForm.resx">
-      <DependentUpon>TestForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

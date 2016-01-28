@@ -25,35 +25,54 @@ namespace MPAid.Forms.Config
 
         private void InitializeContent()
         {
-            this.audioFolderTextBox.Text = MainForm.self.configContent.AudioFolderAddr.FolderAddr;
+            this.audioFolderTextBox.Text = SystemConfigration.configs.AudioFolderAddr.FolderAddr;
             this.audioFolderTextBox.TextChanged += AudioFolderTextBox_TextChanged;
 
-            this.videoFolderTextBox.Text = MainForm.self.configContent.VideoFolderAddr.FolderAddr;
+            this.videoFolderTextBox.Text = SystemConfigration.configs.VideoFolderAddr.FolderAddr;
             this.videoFolderTextBox.TextChanged += VideoFolderTextBox_TextChanged;
+
+            this.recordingFolderTextBox.Text = SystemConfigration.configs.RecordingFolderAddr.FolderAddr;
+            this.recordingFolderTextBox.TextChanged += RecordingFolderTextBox_TextChanged;
+
+            this.reportFolderTextBox.Text = SystemConfigration.configs.ReportFolderAddr.FolderAddr;
+            this.reportFolderTextBox.TextChanged += ReportFolderTextBox_TextChanged;
+
+            this.HTKFolderTextBox.Text = SystemConfigration.configs.HTKFolderAddr.FolderAddr;
+            this.HTKFolderTextBox.TextChanged += HTKFolderTextBox_TextChanged;
+
+            this.fomantFolderTextBox.Text = SystemConfigration.configs.FomantFolderAddr.FolderAddr;
+            this.fomantFolderTextBox.TextChanged += FomantFolderTextBox_TextChanged;
         }
         private void AudioFolderTextBox_TextChanged(object sender, EventArgs e)
         {
-            MainForm.self.configContent.AudioFolderAddr.FolderAddr = this.audioFolderTextBox.Text;
+            SystemConfigration.configs.AudioFolderAddr.FolderAddr = this.audioFolderTextBox.Text;
         }
         private void VideoFolderTextBox_TextChanged(object sender, EventArgs e)
         {
-            MainForm.self.configContent.VideoFolderAddr.FolderAddr = this.videoFolderTextBox.Text;
+            SystemConfigration.configs.VideoFolderAddr.FolderAddr = this.videoFolderTextBox.Text;
         }
         private void RecordingFolderTextBox_TextChanged(object sender, EventArgs e)
         {
-            MainForm.self.configContent.RecordingFolderAddr.FolderAddr = this.recordingFolderTextBox.Text;
+            SystemConfigration.configs.RecordingFolderAddr.FolderAddr = this.recordingFolderTextBox.Text;
         }
         private void ReportFolderTextBox_TextChanged(object sender, EventArgs e)
         {
-            MainForm.self.configContent.ReportFolderAddr.FolderAddr = this.reportFolderTextBox.Text;
+            SystemConfigration.configs.ReportFolderAddr.FolderAddr = this.reportFolderTextBox.Text;
+        }
+        private void HTKFolderTextBox_TextChanged(object sender, EventArgs e)
+        {
+            SystemConfigration.configs.HTKFolderAddr.FolderAddr = this.HTKFolderTextBox.Text;
+        }
+        private void FomantFolderTextBox_TextChanged(object sender, EventArgs e)
+        {
+            SystemConfigration.configs.FomantFolderAddr.FolderAddr = this.fomantFolderTextBox.Text;
         }
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            Serializer<SysCfg>.Save<BinaryFormatter>(SysCfg.path, MainForm.self.configContent);
+            Serializer<SysCfg>.Save<BinaryFormatter>(SysCfg.path, SystemConfigration.configs);
             this.Close();
         }
-
         private void audioFolderSelectButton_Click(object sender, EventArgs e)
         {
             if (this.folderBrowserDialog.ShowDialog() == DialogResult.OK)
@@ -82,12 +101,18 @@ namespace MPAid.Forms.Config
                 this.reportFolderTextBox.Text = folderBrowserDialog.SelectedPath;
             }
         }
-
-        private void annieFolderSelectButton_Click(object sender, EventArgs e)
+        private void HTKFolderSelectButton_Click(object sender, EventArgs e)
         {
             if (this.folderBrowserDialog.ShowDialog() == DialogResult.OK)
             {
-                this.annieFolderTextBox.Text = folderBrowserDialog.SelectedPath;
+                this.HTKFolderTextBox.Text = folderBrowserDialog.SelectedPath;
+            }
+        }
+        private void fomantFolderSelectButton_Click(object sender, EventArgs e)
+        {
+            if (this.folderBrowserDialog.ShowDialog() == DialogResult.OK)
+            {
+                this.fomantFolderTextBox.Text = folderBrowserDialog.SelectedPath;
             }
         }
     }
