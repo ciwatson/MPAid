@@ -47,6 +47,9 @@ namespace MPAid.Cores
                         htw.RenderBeginTag(HtmlTextWriterTag.Th);
                         htw.Write(@"Similarity Score");
                         htw.RenderEndTag();
+                        htw.RenderBeginTag(HtmlTextWriterTag.Th);
+                        htw.Write(@"Analysis Tips");
+                        htw.RenderEndTag();
                         htw.RenderEndTag();
                         foreach (ScoreBoardItem item in scoreboard.Content)
                         {
@@ -59,6 +62,9 @@ namespace MPAid.Cores
                             htw.RenderEndTag();
                             htw.RenderBeginTag(HtmlTextWriterTag.Td);
                             htw.Write(item.Similarity(SimilarityAlgorithm.DamereauLevensheinDistanceAlgorithm).ToString("0.0%"));
+                            htw.RenderEndTag();
+                            htw.RenderBeginTag(HtmlTextWriterTag.Td);
+                            htw.Write(item.Analysis);
                             htw.RenderEndTag();
                             htw.RenderEndTag();
                         }
@@ -75,7 +81,5 @@ namespace MPAid.Cores
                 }
             }
         }
-
-
     }
 }

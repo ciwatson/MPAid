@@ -36,6 +36,12 @@ namespace MPAid.Cores
             get { return expectingText; }
             set { expectingText = value; }
         }
+        private string analysis;
+        public string Analysis
+        {
+            get { return analysis; }
+            set { analysis = value; }
+        }
     }
     class ScoreBoard
     {

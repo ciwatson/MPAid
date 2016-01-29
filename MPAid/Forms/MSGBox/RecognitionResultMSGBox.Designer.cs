@@ -143,6 +143,7 @@
             this.elseTextBox.Name = "elseTextBox";
             this.elseTextBox.Size = new System.Drawing.Size(274, 20);
             this.elseTextBox.TabIndex = 25;
+            this.elseTextBox.Leave += new System.EventHandler(this.ElseTextBox_Leave);
             // 
             // RecognitionResultMSGBox
             // 

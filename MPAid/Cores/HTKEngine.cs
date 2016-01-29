@@ -14,6 +14,7 @@ namespace MPAid.Cores
     {
         public void RunBatchFile(string filePath, string arguments = "")
         {
+            if (!File.Exists(filePath)) return;
             try
             {
                 ProcessStartInfo processInfo = new ProcessStartInfo(filePath);
@@ -28,7 +29,7 @@ namespace MPAid.Cores
                 Process process = Process.Start(processInfo);
                 process.StandardInput.WriteLine(arguments);
                 //run process sequencially
-                 process.WaitForExit();
+                process.WaitForExit();
                 //if(process.WaitForExit(10000))
                 //{
                 //    string output = process.StandardOutput.ReadToEnd();
@@ -52,38 +53,43 @@ namespace MPAid.Cores
         public IDictionary<string, string> Analyze(String ResultPath)
         {
             Dictionary<String, String> RecResult = new Dictionary<string, string>();
-            try
+            if (File.Exists(ResultPath))
             {
-                using (FileStream fs = File.OpenRead(ResultPath))
+                try
                 {
-                    using (StreamReader sr = new StreamReader(fs))
+                    using (FileStream fs = File.OpenRead(ResultPath))
                     {
-                        string line;
-                        Match m = Match.Empty;
-                        string result = string.Empty;
-                        while ((line = sr.ReadLine()) != null)
+                        using (StreamReader sr = new StreamReader(fs))
                         {
-                            if (Regex.Match(line, @"(?<="")(?:\\.|[^""\\])*(?="")").Success)
+                            string line;
+                            Match m = Match.Empty;
+                            string index = string.Empty;
+                            string result = string.Empty;
+                            while ((line = sr.ReadLine()) != null)
                             {
-                                m = Regex.Match(line, @"(?<="")(?:\\.|[^""\\])*(?="")");
-                            }
-                            else if (Regex.Match(line, @"\.$").Success)
-                            {
-                                RecResult.Add(m.Value, result.TrimEnd(' '));
-                                m = Match.Empty;
-                                result = string.Empty;
-                            }
-                            else if(line != "#!MLF!#")
-                            {
-                                result += line + " ";
+                                if ((m = Regex.Match(line, @"(?<="")(?:\\.|[^""\\])*(?="")")).Success)
+                                {
+                                    index = m.Value;
+                                }
+                                else if (Regex.Match(line, @"\.$").Success)
+                                {
+                                    RecResult.Add(index.TrimStart('*', '/'), result.TrimEnd(' '));
+                                    m = Match.Empty;
+                                    index = string.Empty;
+                                    result = string.Empty;
+                                }
+                                else if (line != "#!MLF!#")
+                                {
+                                    result += line + " ";
+                                }
                             }
                         }
                     }
                 }
-            }
-            catch(Exception exp)
-            {
-                Console.WriteLine(exp);
+                catch (Exception exp)
+                {
+                    Console.WriteLine(exp);
+                }
             }
             return RecResult;
         }

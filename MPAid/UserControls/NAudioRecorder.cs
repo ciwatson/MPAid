@@ -29,6 +29,7 @@ namespace MPAid.UserControls
         private string tempFolder;
         private HTKEngine RecEngine = new HTKEngine();
         private ScoreBoard scoreBoard = new ScoreBoard();
+
         public NAudioRecorder()
         {
             InitializeComponent();
@@ -104,7 +105,7 @@ namespace MPAid.UserControls
                 }
                 else
                 {
-                    recordingProgressBar.Value = secondsRecorded;
+                    recordingProgressBar.Value = secondsRecorded * 10;
                 }
             }
         }
@@ -189,19 +190,31 @@ namespace MPAid.UserControls
 
         private void recordButton_Click(object sender, EventArgs e)
         {
-            var device = (MMDevice)audioDeviceComboBox.SelectedItem;
-            device.AudioEndpointVolume.Mute = false;
-            //use wasapi by default
-            waveIn = new WasapiCapture(device);
-            waveIn.DataAvailable += OnDataAvailable;
-            waveIn.RecordingStopped += OnRecordingStopped;
+            try
+            {
+                var device = (MMDevice)audioDeviceComboBox.SelectedItem;
+                if (!device.Equals(null))
+                {
+                    device.AudioEndpointVolume.Mute = false;
+                    //use wasapi by default
+                    waveIn = new WasapiCapture(device);
+                    waveIn.DataAvailable += OnDataAvailable;
+                    waveIn.RecordingStopped += OnRecordingStopped;
 
-            tempFilename = String.Format("{0}-{1:yyy-MM-dd-HH-mm-ss}.wav", MainForm.self.AllUsers.getCurrentUser().getName(), DateTime.Now);
-            //initially, outputname is the same as tempfilename
-            outputFileName = tempFilename;
-            writer = new WaveFileWriter(Path.Combine(tempFolder, tempFilename), waveIn.WaveFormat);
-            waveIn.StartRecording();
-            SetControlStates(true);
+                    tempFilename = String.Format("{0}-{1:yyy-MM-dd-HH-mm-ss}.wav", MainForm.self.AllUsers.getCurrentUser().getName(), DateTime.Now);
+                    //initially, outputname is the same as tempfilename
+                    outputFileName = tempFilename;
+                    writer = new WaveFileWriter(Path.Combine(tempFolder, tempFilename), waveIn.WaveFormat);
+                    waveIn.StartRecording();
+                    SetControlStates(true);
+                }
+            }
+            catch(Exception exp)
+            {
+#if DEBUG
+                MessageBox.Show(exp.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+#endif
+            }
         }
 
         private void stopButton_Click(object sender, EventArgs e)
@@ -221,17 +234,20 @@ namespace MPAid.UserControls
             {
                 if (RECListBox.SelectedItem != null)
                 {
-                    string msg = string.Empty;
-                    Dictionary<string, string> result = RecEngine.Recognize(Path.Combine(outputFolder, (string)RECListBox.SelectedItem)).ToDictionary(x => x.Key, x => x.Value);
-                    foreach(KeyValuePair<string, string> pair in result)
+                    string target;
+                    try
                     {
-                        msg += pair.Key + " was recognised as " + pair.Value + "\n";
+                        target = (MainForm.self.RecordingList.WordListBox.SelectedItem as Word).Name;
                     }
-
-                    if(!string.IsNullOrEmpty(msg))
+                    catch
+                    {
+                        target = string.Empty;
+                    }
+                    Dictionary<string, string> result = RecEngine.Recognize(Path.Combine(outputFolder, (string)RECListBox.SelectedItem)).ToDictionary(x => x.Key, x => x.Value);
+                    if(result.Count > 0)
                     {
                         RecognitionResultMSGBox recMSGBox = new RecognitionResultMSGBox();
-                        if (recMSGBox.ShowDialog(result.First().Value, msg) == DialogResult.OK)
+                        if (recMSGBox.ShowDialog(result.First().Key, target, result.First().Value) == DialogResult.OK)
                         {
                             scoreBoard.Content.Add(recMSGBox.scoreBoardItem);
                             correctnessLabel.Text = string.Format(@"Correctness: {0:0.0%}", scoreBoard.CalculateCorrectness); 
@@ -241,10 +257,10 @@ namespace MPAid.UserControls
                 }
                 
             }
-            catch (Exception ex)
+            catch (Exception exp)
             {
 #if DEBUG
-                MessageBox.Show(ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show(exp.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 #endif
             }
         }

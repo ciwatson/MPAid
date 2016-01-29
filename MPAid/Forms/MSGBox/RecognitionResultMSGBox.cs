@@ -7,21 +7,25 @@ using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MPAid.Cores;
+using MPAid.Models;
 
 namespace MPAid.Forms.MSGBox
 {
     partial class RecognitionResultMSGBox : Form
     {
         public ScoreBoardItem scoreBoardItem = new ScoreBoardItem();
+        private PronouciationAdvisor advisor = new PronouciationAdvisor();
         public RecognitionResultMSGBox()
         {
             InitializeComponent();
         }
 
-        public DialogResult ShowDialog(string recognition, string description)
+        public DialogResult ShowDialog(string recording, string target,string recognized)
         {
-            recognitionResultLabel.Text = recognition;
-            descriptionTextBox.Text = description;
+            this.Text = recording;
+            recognitionResultLabel.Text = recognized;
+            elseTextBox.Text = target;
+            ElseTextBox_Leave(this, EventArgs.Empty);
             return ShowDialog();
         }
 
@@ -29,6 +33,11 @@ namespace MPAid.Forms.MSGBox
         {
             scoreBoardItem.RecognisedText = recognitionResultLabel.Text;
             scoreBoardItem.ExpectingText = string.IsNullOrEmpty(elseTextBox.Text) ? recognitionResultLabel.Text : elseTextBox.Text;
+            scoreBoardItem.Analysis = descriptionTextBox.Text;
+        }
+        private void ElseTextBox_Leave(object sender, EventArgs e)
+        {
+           descriptionTextBox.Text = advisor.Advise(this.Text, elseTextBox.Text, recognitionResultLabel.Text);
         }
     }
 }
