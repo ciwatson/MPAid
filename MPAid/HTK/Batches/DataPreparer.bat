@@ -32,7 +32,7 @@ set /p recordingFolder=Please enter the recording folder address:
 REM	****************************
 REM	assign character set to utf-8
 REM	****************************
-REM chcp 65001 >NUL
+chcp 28605>NUL
 
 REM	****************************
 REM	list all the recordings 
@@ -88,6 +88,13 @@ REM	****************************
 
 echo step: 2  recordings2mfcs ends
 
+
+
+
+
+
+
+
 echo step: 3  prompts2wordlist starts
 REM	****************************
 REM	There are 6 steps in preparation process, this is the 3 step "prompts2wordlist"
@@ -111,6 +118,13 @@ REM	****************************
 Perl "%Perls%prompts2wlist.pl" "%Dictionaries%Prompts.pmpt" "%Dictionaries%WordList.wlist"
 
 echo step: 3  prompts2wordlist ends
+
+
+
+
+
+
+
 
 echo step: 4  wordlist2dictionary starts
 REM	****************************
@@ -141,6 +155,13 @@ REM	****************************
 
 echo step: 4  wordlist2dictionary ends
 
+pause
+
+
+
+
+
+
 echo step: 5  prompts2Wordmlf starts
 REM	****************************
 REM	There are 6 steps in preparation process, this is the 5 step "prompts2Wordmlf"
@@ -169,6 +190,14 @@ REM	****************************
 Perl "%Perls%prompts2mlf.pl" "%MLFs%WordMLF.mlf" "%Dictionaries%Prompts.pmpt"
 
 echo step: 5  prompts2Wordmlf ends
+
+pause
+
+
+
+
+
+
 
 echo step: 6  wordmlf2phonemlf starts
 REM	****************************

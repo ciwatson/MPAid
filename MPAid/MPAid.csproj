@@ -180,6 +180,7 @@
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <None Include="HTK\Batches\FileTest.bat" />
+    <None Include="HTK\Batches\RecordingPicker.bat" />
     <None Include="HTK\Perls\Recordings2Prompts.pl" />
     <Compile Include="Models\AppDataPath.cs" />
     <Compile Include="Models\SingleFile.cs" />

@@ -1,7 +1,7 @@
 ﻿#!/usr/bin/perl
 use strict;
 use File::Basename;
-#use File::Copy qw(move);
+use File::Copy;
 use warnings;
 use Encode;
 
@@ -10,27 +10,27 @@ my $InputDir = $ARGV[0] ;
 my $Ext = $ARGV[1] ;
 
 my @WordList = (
-            "teenei",    #01
-            "taane",     #02
+            "t�nei",    #01
+            "t�ne",     #02
             "hau",      #03
             "hou",      #04
             "pao",      #05
             "pau",      #06
             "pou",      #07
-            "poo",       #08
+            "p�",       #08
             "pai",      #09
             "pae",      #10
-            "kee",       #11
+            "k�",       #11
             "kei",      #12
-            "kii",       #13
-            "hee",       #14
+            "k�",       #13
+            "h�",       #14
             "hei",      #15
-            "hii",       #16
+            "h�",       #16
             "tae",      #17
             "tai",      #18
-            "maatao",    #19
-            "maatau",    #20
-            "maatou",    #21
+            "m�tao",    #19
+            "m�tau",    #20
+            "m�tou",    #21
             "toetoe",   #22
             "toi",      #23
             "hoihoi",   #24
@@ -38,7 +38,7 @@ my @WordList = (
             "mao",      #26
             "mau",      #27
             "moutere",  #28
-            "tuu",       #29
+            "t�",       #29
             "matiu"     #30
 );
 
@@ -85,16 +85,13 @@ foreach my $file (@list){
     my @parts=split(/_/,$Basename);
     if(@parts == 2){
         my $NewFile = $SpeakerHash{$parts[0]}."-word-".$WordList[$parts[1] - 1]."-".$parts[0].".".$Ext;
-		
-		#my @charsets = qw(utf-8 latin1 iso-8859-1 iso-8859-15 utf-16 gb2312 unicode ascii);
-		#for (@charsets){print "$_: " . decode($_, $NewFile) . "\n";}
-		
+			
         if(-e $NewFile){
             warn "Duplicated name after renaming!";
             next;
         } else {
-            rename($file, decode('utf-8', $NewFile));
-            #move $file, $NewFile;
+            #rename($file, $NewFile);
+            move $file, $NewFile;
         }
     } else {
         warn "Invalid name format!";

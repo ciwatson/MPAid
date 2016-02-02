@@ -56,6 +56,7 @@ namespace MPAid.UserControls
 
         public void DataBinding()
         {
+            RECListBox.Items.Clear();
             DirectoryInfo info = new DirectoryInfo(SystemConfigration.configs.RecordingFolderAddr.FolderAddr);
             RECListBox.Items.AddRange(info.GetFiles().Where(x => x.Extension != ".mfc").Select(x => x.Name).ToArray());
         }
