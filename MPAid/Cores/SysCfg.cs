@@ -9,9 +9,20 @@ using System.IO;
 
 namespace MPAid.Cores
 {
-    static class SystemConfigration
+    class SystemConfigration
     {
-        static public SysCfg configs = Serializer<SysCfg>.Load<BinaryFormatter>(SysCfg.path);
+        static SystemConfigration()
+        {
+            try
+            {
+                configs = Serializer<SysCfg>.Load<BinaryFormatter>(SysCfg.path);
+            }
+            catch(Exception exp)
+            {
+                configs = new SysCfg(SysCfg.path);
+            }            
+        }
+        static public SysCfg configs;
     }
 
     [Serializable]

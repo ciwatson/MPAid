@@ -103,6 +103,7 @@ namespace MPAid
         private void InitializeConfig()
         {          
             this.systemConfigForm = new SystemConfig();
+            this.systemConfigForm.InitializeContent();
             this.recordingUploadForm = new RecordingUploadConfig();
             this.recordingRenameForm = new RecordingRenameConfig();
         }

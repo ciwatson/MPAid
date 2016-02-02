@@ -19,29 +19,37 @@ namespace MPAid.Forms.Config
         public SystemConfig()
         {
             InitializeComponent();
-
-            InitializeContent();
         }
 
-        private void InitializeContent()
+        public void InitializeContent()
         {
-            this.audioFolderTextBox.Text = SystemConfigration.configs.AudioFolderAddr.FolderAddr;
-            this.audioFolderTextBox.TextChanged += AudioFolderTextBox_TextChanged;
+            try
+            {
+                if (SystemConfigration.configs == null) throw new Exception("configs null");
+                if (SystemConfigration.configs.AudioFolderAddr == null) throw new Exception("folder null");
 
-            this.videoFolderTextBox.Text = SystemConfigration.configs.VideoFolderAddr.FolderAddr;
-            this.videoFolderTextBox.TextChanged += VideoFolderTextBox_TextChanged;
+                this.audioFolderTextBox.Text = SystemConfigration.configs.AudioFolderAddr.FolderAddr;
+                this.audioFolderTextBox.TextChanged += AudioFolderTextBox_TextChanged;
 
-            this.recordingFolderTextBox.Text = SystemConfigration.configs.RecordingFolderAddr.FolderAddr;
-            this.recordingFolderTextBox.TextChanged += RecordingFolderTextBox_TextChanged;
+                this.videoFolderTextBox.Text = SystemConfigration.configs.VideoFolderAddr.FolderAddr;
+                this.videoFolderTextBox.TextChanged += VideoFolderTextBox_TextChanged;
 
-            this.reportFolderTextBox.Text = SystemConfigration.configs.ReportFolderAddr.FolderAddr;
-            this.reportFolderTextBox.TextChanged += ReportFolderTextBox_TextChanged;
+                this.recordingFolderTextBox.Text = SystemConfigration.configs.RecordingFolderAddr.FolderAddr;
+                this.recordingFolderTextBox.TextChanged += RecordingFolderTextBox_TextChanged;
 
-            this.HTKFolderTextBox.Text = SystemConfigration.configs.HTKFolderAddr.FolderAddr;
-            this.HTKFolderTextBox.TextChanged += HTKFolderTextBox_TextChanged;
+                this.reportFolderTextBox.Text = SystemConfigration.configs.ReportFolderAddr.FolderAddr;
+                this.reportFolderTextBox.TextChanged += ReportFolderTextBox_TextChanged;
 
-            this.fomantFolderTextBox.Text = SystemConfigration.configs.FomantFolderAddr.FolderAddr;
-            this.fomantFolderTextBox.TextChanged += FomantFolderTextBox_TextChanged;
+                this.HTKFolderTextBox.Text = SystemConfigration.configs.HTKFolderAddr.FolderAddr;
+                this.HTKFolderTextBox.TextChanged += HTKFolderTextBox_TextChanged;
+
+                this.fomantFolderTextBox.Text = SystemConfigration.configs.FomantFolderAddr.FolderAddr;
+                this.fomantFolderTextBox.TextChanged += FomantFolderTextBox_TextChanged;
+            }
+            catch(Exception exp)
+            {
+                MessageBox.Show(exp.Message);
+            }
         }
 
         private void AudioFolderTextBox_TextChanged(object sender, EventArgs e)
