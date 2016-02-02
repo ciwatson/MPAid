@@ -179,6 +179,7 @@
     <Compile Include="Forms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <None Include="ClassDiagram1.cd" />
     <None Include="HTK\Batches\FileTest.bat" />
     <None Include="HTK\Batches\RecordingPicker.bat" />
     <None Include="HTK\Perls\Recordings2Prompts.pl" />
@@ -227,6 +228,11 @@
     </Compile>
     <Compile Include="Forms\Config\SystemConfig.Designer.cs">
       <DependentUpon>SystemConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="UserControls\NAudioRecorder.cs">
       <SubType>UserControl</SubType>
@@ -278,14 +284,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <EmbeddedResource Include="Components\TDButton.resx">
       <DependentUpon>TDButton.cs</DependentUpon>
     </EmbeddedResource>
@@ -1682,6 +1683,12 @@
     <Content Include="HTK\Tools\LNorm.exe" />
     <Content Include="HTK\Tools\LPlex.exe" />
     <Content Include="HTK\Tools\LSubset.exe" />
+    <Content Include="Resources\player\pause_64_1.png" />
+    <Content Include="Resources\player\pause_64_2.png" />
+    <Content Include="Resources\player\play_64_1.png" />
+    <Content Include="Resources\player\play_64_2.png" />
+    <Content Include="Resources\player\stop_64_1.png" />
+    <Content Include="Resources\player\stop_64_2.png" />
     <Content Include="VlcLibs\header-files\deprecated.h" />
     <Content Include="VlcLibs\header-files\libvlc.h" />
     <Content Include="VlcLibs\header-files\libvlc_events.h" />

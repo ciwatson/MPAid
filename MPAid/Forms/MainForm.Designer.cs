@@ -40,9 +40,6 @@ namespace MPAid
             this.administratorConsoleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.changePasswordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.hMMsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.openHMMsFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.configToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.systemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.recordingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -51,9 +48,9 @@ namespace MPAid
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.submitFeedbackToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.testToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.operationPanel = new MPAid.UserControls.OperationPanel();
             this.recordingPanel = new MPAid.UserControls.RecordingPanel();
+            this.tutorialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.headerBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.categoryBindingSource)).BeginInit();
             this.panel1.SuspendLayout();
@@ -86,7 +83,6 @@ namespace MPAid
             // 
             this.mainMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.usersToolStripMenuItem,
-            this.hMMsToolStripMenuItem,
             this.configToolStripMenuItem,
             this.helpToolStripMenuItem});
             this.mainMenuStrip.Location = new System.Drawing.Point(0, 0);
@@ -134,35 +130,6 @@ namespace MPAid
             this.logToolStripMenuItem.Text = "Sign out";
             this.logToolStripMenuItem.Click += new System.EventHandler(this.logToolStripMenuItem_Click);
             // 
-            // hMMsToolStripMenuItem
-            // 
-            this.hMMsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.openHMMsFolderToolStripMenuItem,
-            this.settingsToolStripMenuItem});
-            this.hMMsToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("hMMsToolStripMenuItem.Image")));
-            this.hMMsToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.hMMsToolStripMenuItem.Name = "hMMsToolStripMenuItem";
-            this.hMMsToolStripMenuItem.Size = new System.Drawing.Size(79, 28);
-            this.hMMsToolStripMenuItem.Text = "HMMs";
-            // 
-            // openHMMsFolderToolStripMenuItem
-            // 
-            this.openHMMsFolderToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("openHMMsFolderToolStripMenuItem.Image")));
-            this.openHMMsFolderToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.openHMMsFolderToolStripMenuItem.Name = "openHMMsFolderToolStripMenuItem";
-            this.openHMMsFolderToolStripMenuItem.Size = new System.Drawing.Size(184, 30);
-            this.openHMMsFolderToolStripMenuItem.Text = "Open HMMs folder";
-            this.openHMMsFolderToolStripMenuItem.Click += new System.EventHandler(this.openHMMsFolderToolStripMenuItem_Click);
-            // 
-            // settingsToolStripMenuItem
-            // 
-            this.settingsToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("settingsToolStripMenuItem.Image")));
-            this.settingsToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(184, 30);
-            this.settingsToolStripMenuItem.Text = "Settings";
-            this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
-            // 
             // configToolStripMenuItem
             // 
             this.configToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -175,7 +142,7 @@ namespace MPAid
             // systemToolStripMenuItem
             // 
             this.systemToolStripMenuItem.Name = "systemToolStripMenuItem";
-            this.systemToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.systemToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.systemToolStripMenuItem.Text = "System";
             this.systemToolStripMenuItem.Click += new System.EventHandler(this.systemToolStripMenuItem_Click);
             // 
@@ -185,7 +152,7 @@ namespace MPAid
             this.uploadToolStripMenuItem,
             this.renameToolStripMenuItem});
             this.recordingToolStripMenuItem.Name = "recordingToolStripMenuItem";
-            this.recordingToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.recordingToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.recordingToolStripMenuItem.Text = "Recording";
             // 
             // uploadToolStripMenuItem
@@ -206,8 +173,8 @@ namespace MPAid
             // 
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.submitFeedbackToolStripMenuItem,
-            this.aboutToolStripMenuItem,
-            this.testToolStripMenuItem});
+            this.tutorialToolStripMenuItem,
+            this.aboutToolStripMenuItem});
             this.helpToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("helpToolStripMenuItem.Image")));
             this.helpToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
@@ -231,11 +198,6 @@ namespace MPAid
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
-            // testToolStripMenuItem
-            // 
-            this.testToolStripMenuItem.Name = "testToolStripMenuItem";
-            this.testToolStripMenuItem.Size = new System.Drawing.Size(169, 26);
-            // 
             // operationPanel
             // 
             this.operationPanel.Location = new System.Drawing.Point(197, 7);
@@ -252,6 +214,12 @@ namespace MPAid
             this.recordingPanel.Name = "recordingPanel";
             this.recordingPanel.Size = new System.Drawing.Size(179, 366);
             this.recordingPanel.TabIndex = 7;
+            // 
+            // tutorialToolStripMenuItem
+            // 
+            this.tutorialToolStripMenuItem.Name = "tutorialToolStripMenuItem";
+            this.tutorialToolStripMenuItem.Size = new System.Drawing.Size(169, 26);
+            this.tutorialToolStripMenuItem.Text = "Tutorial";
             // 
             // MainForm
             // 
@@ -288,9 +256,6 @@ namespace MPAid
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.MenuStrip mainMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem usersToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem hMMsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem openHMMsFolderToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem logToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem changePasswordToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem administratorConsoleToolStripMenuItem;
@@ -304,8 +269,8 @@ namespace MPAid
         private UserControls.RecordingPanel recordingPanel;
         private System.Windows.Forms.ToolStripMenuItem uploadToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem renameToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem testToolStripMenuItem;
         private UserControls.OperationPanel operationPanel;
+        private System.Windows.Forms.ToolStripMenuItem tutorialToolStripMenuItem;
     }
 }
 

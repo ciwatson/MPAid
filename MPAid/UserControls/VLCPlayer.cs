@@ -78,7 +78,7 @@ namespace MPAid.UserControls
                                 string filePath = Path.Combine(sf.Address, sf.Name);
 
                                 vlcControl.Play(new Uri(filePath));
-                                playButton.Text = "Pause";
+                                playButton.ImageIndex = 2;
                             }
                             else
                             {
@@ -89,13 +89,13 @@ namespace MPAid.UserControls
                     case Vlc.DotNet.Core.Interops.Signatures.MediaStates.Playing:
                         {
                             vlcControl.Pause();
-                            playButton.Text = "Play";
+                            playButton.ImageIndex = 0;
                         }
                         break;
                     case Vlc.DotNet.Core.Interops.Signatures.MediaStates.Paused:
                         {
                             vlcControl.Pause();
-                            playButton.Text = "Pause";
+                            playButton.ImageIndex = 2;
                         }
                         break;
                     default:
@@ -116,7 +116,27 @@ namespace MPAid.UserControls
 
         private void OnVlcControlStopped(object sender, Vlc.DotNet.Core.VlcMediaPlayerStoppedEventArgs e)
         {
-            playButton.Text = "Play";
+            playButton.ImageIndex = 0;
+        }
+
+        private void playButton_MouseEnter(object sender, EventArgs e)
+        {
+            playButton.ImageIndex = vlcControl.State != Vlc.DotNet.Core.Interops.Signatures.MediaStates.Playing ? 1 : 3; 
+        }
+
+        private void playButton_MouseLeave(object sender, EventArgs e)
+        {
+            playButton.ImageIndex = vlcControl.State != Vlc.DotNet.Core.Interops.Signatures.MediaStates.Playing ? 0 : 2;
+        }
+
+        private void stopButton_MouseEnter(object sender, EventArgs e)
+        {
+            stopButton.ImageIndex = 1;
+        }
+
+        private void stopButton_MouseLeave(object sender, EventArgs e)
+        {
+            stopButton.ImageIndex = 0;
         }
     }
 }
