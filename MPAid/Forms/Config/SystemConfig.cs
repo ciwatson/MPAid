@@ -11,6 +11,7 @@ using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using MPAid.Cores;
 using NAudio.CoreAudioApi;
+using System.IO;
 
 namespace MPAid.Forms.Config
 {
@@ -28,22 +29,40 @@ namespace MPAid.Forms.Config
                 if (SystemConfigration.configs == null) throw new Exception("configs null");
                 if (SystemConfigration.configs.AudioFolderAddr == null) throw new Exception("folder null");
 
-                this.audioFolderTextBox.Text = SystemConfigration.configs.AudioFolderAddr.FolderAddr;
+                //this.audioFolderTextBox.Text = SystemConfigration.configs.AudioFolderAddr.FolderAddr;
+                //this.audioFolderTextBox.TextChanged += AudioFolderTextBox_TextChanged;
+
+                //this.videoFolderTextBox.Text = SystemConfigration.configs.VideoFolderAddr.FolderAddr;
+                //this.videoFolderTextBox.TextChanged += VideoFolderTextBox_TextChanged;
+
+                //this.recordingFolderTextBox.Text = SystemConfigration.configs.RecordingFolderAddr.FolderAddr;
+                //this.recordingFolderTextBox.TextChanged += RecordingFolderTextBox_TextChanged;
+
+                //this.reportFolderTextBox.Text = SystemConfigration.configs.ReportFolderAddr.FolderAddr;
+                //this.reportFolderTextBox.TextChanged += ReportFolderTextBox_TextChanged;
+
+                //this.HTKFolderTextBox.Text = SystemConfigration.configs.HTKFolderAddr.FolderAddr;
+                //this.HTKFolderTextBox.TextChanged += HTKFolderTextBox_TextChanged;
+
+                //this.fomantFolderTextBox.Text = SystemConfigration.configs.FomantFolderAddr.FolderAddr;
+                //this.fomantFolderTextBox.TextChanged += FomantFolderTextBox_TextChanged;
+
+                this.audioFolderTextBox.Text = Path.Combine(System.Windows.Forms.Application.StartupPath, Properties.Settings.Default.AudioFolder);
                 this.audioFolderTextBox.TextChanged += AudioFolderTextBox_TextChanged;
 
-                this.videoFolderTextBox.Text = SystemConfigration.configs.VideoFolderAddr.FolderAddr;
+                this.videoFolderTextBox.Text = Path.Combine(System.Windows.Forms.Application.StartupPath, Properties.Settings.Default.VideoFolder);
                 this.videoFolderTextBox.TextChanged += VideoFolderTextBox_TextChanged;
 
-                this.recordingFolderTextBox.Text = SystemConfigration.configs.RecordingFolderAddr.FolderAddr;
+                this.recordingFolderTextBox.Text = Path.Combine(System.Windows.Forms.Application.StartupPath, Properties.Settings.Default.RecordingFolder);
                 this.recordingFolderTextBox.TextChanged += RecordingFolderTextBox_TextChanged;
 
-                this.reportFolderTextBox.Text = SystemConfigration.configs.ReportFolderAddr.FolderAddr;
+                this.reportFolderTextBox.Text = Path.Combine(System.Windows.Forms.Application.StartupPath, Properties.Settings.Default.ReportFolder);
                 this.reportFolderTextBox.TextChanged += ReportFolderTextBox_TextChanged;
 
-                this.HTKFolderTextBox.Text = SystemConfigration.configs.HTKFolderAddr.FolderAddr;
+                this.HTKFolderTextBox.Text = Path.Combine(System.Windows.Forms.Application.StartupPath, Properties.Settings.Default.HTKFolder);
                 this.HTKFolderTextBox.TextChanged += HTKFolderTextBox_TextChanged;
 
-                this.fomantFolderTextBox.Text = SystemConfigration.configs.FomantFolderAddr.FolderAddr;
+                this.fomantFolderTextBox.Text = Path.Combine(System.Windows.Forms.Application.StartupPath, Properties.Settings.Default.FomantFolder);
                 this.fomantFolderTextBox.TextChanged += FomantFolderTextBox_TextChanged;
             }
             catch(Exception exp)
