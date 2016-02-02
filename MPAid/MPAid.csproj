@@ -107,20 +107,21 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="Vlc.DotNet.Core, Version=2.1.62.0, Culture=neutral, PublicKeyToken=84529da31f4eb963, processorArchitecture=x86">
-      <HintPath>..\packages\Vlc.DotNet.Core.2.1.62\lib\net45\x86\Vlc.DotNet.Core.dll</HintPath>
+    <Reference Include="Vlc.DotNet.Core, Version=2.1.115.0, Culture=neutral, PublicKeyToken=84529da31f4eb963, processorArchitecture=x86">
+      <HintPath>..\packages\Vlc.DotNet.Core.2.1.115\lib\net45\x86\Vlc.DotNet.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Vlc.DotNet.Core.Interops, Version=2.1.62.0, Culture=neutral, PublicKeyToken=84529da31f4eb963, processorArchitecture=x86">
-      <HintPath>..\packages\Vlc.DotNet.Core.Interops.2.1.62\lib\net45\x86\Vlc.DotNet.Core.Interops.dll</HintPath>
+    <Reference Include="Vlc.DotNet.Core.Interops, Version=2.1.115.0, Culture=neutral, PublicKeyToken=84529da31f4eb963, processorArchitecture=x86">
+      <HintPath>..\packages\Vlc.DotNet.Core.Interops.2.1.115\lib\net45\x86\Vlc.DotNet.Core.Interops.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Vlc.DotNet.Forms, Version=2.1.62.0, Culture=neutral, PublicKeyToken=84529da31f4eb963, processorArchitecture=x86">
-      <HintPath>..\packages\Vlc.DotNet.Forms.2.1.62\lib\net45\x86\Vlc.DotNet.Forms.dll</HintPath>
+    <Reference Include="Vlc.DotNet.Forms, Version=2.1.115.0, Culture=neutral, PublicKeyToken=84529da31f4eb963, processorArchitecture=x86">
+      <HintPath>..\packages\Vlc.DotNet.Forms.2.1.115\lib\net45\x86\Vlc.DotNet.Forms.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Vlc.DotNet.Wpf">
-      <HintPath>..\packages\Vlc.DotNet.Wpf.2.1.62\lib\net45\x86\Vlc.DotNet.Wpf.dll</HintPath>
+    <Reference Include="Vlc.DotNet.Wpf, Version=2.1.115.0, Culture=neutral, PublicKeyToken=84529da31f4eb963, processorArchitecture=x86">
+      <HintPath>..\packages\Vlc.DotNet.Wpf.2.1.115\lib\net45\x86\Vlc.DotNet.Wpf.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="WindowsBase" />
   </ItemGroup>
@@ -179,7 +180,6 @@
     <Compile Include="Forms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <None Include="ClassDiagram1.cd" />
     <None Include="HTK\Batches\FileTest.bat" />
     <None Include="HTK\Batches\RecordingPicker.bat" />
     <None Include="HTK\Perls\Recordings2Prompts.pl" />
@@ -1607,6 +1607,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="VlcLibs\x86\plugins\audio_filter\x86.lnk" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
@@ -2350,9 +2351,8 @@
   <PropertyGroup>
     <PostBuildEvent>XCOPY "$(ProjectDir)VlcLibs" "$(TargetDir)VlcLibs" /i /S /Y
 XCOPY "$(ProjectDir)Fomant" "$(TargetDir)Fomant" /i /S /Y
-XCOPY "$(ProjectDir)Images" "$(TargetDir)Images" /i /S /Y
-XCOPY "$(ProjectDir)Data" "$(TargetDir)Data" /i /S /Y
-XCOPY "$(ProjectDir)HTK" "$(TargetDir)HTK" /i /S /Y</PostBuildEvent>
+XCOPY "$(ProjectDir)HTK" "$(TargetDir)HTK" /i /S /Y
+XCOPY "$(ProjectDir)App_Data" "$(TargetDir)App_Data" /i /S /Y</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

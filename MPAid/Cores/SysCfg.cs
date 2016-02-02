@@ -58,7 +58,7 @@ namespace MPAid.Cores
         [NonSerialized]
         private String filePath;
         [NonSerialized]
-        public static readonly String path = "./SystemConfig.ini";
+        public static readonly String path = Path.Combine(System.Windows.Forms.Application.StartupPath, @"SystemConfig.ini");
 
         private FolderAddress audioFolderAddr;
         public FolderAddress AudioFolderAddr

@@ -43,6 +43,7 @@ namespace MPAid.Forms.Config
             this.fomantFolderTextBox.Text = SystemConfigration.configs.FomantFolderAddr.FolderAddr;
             this.fomantFolderTextBox.TextChanged += FomantFolderTextBox_TextChanged;
         }
+
         private void AudioFolderTextBox_TextChanged(object sender, EventArgs e)
         {
             SystemConfigration.configs.AudioFolderAddr.FolderAddr = this.audioFolderTextBox.Text;
