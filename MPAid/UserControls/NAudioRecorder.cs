@@ -100,7 +100,7 @@ namespace MPAid.UserControls
                 //Debug.WriteLine("Flushing Data Available");
                 writer.Write(e.Buffer, 0, e.BytesRecorded);
                 int secondsRecorded = (int)(writer.Length / writer.WaveFormat.AverageBytesPerSecond);
-                if (secondsRecorded >= 30)
+                if (secondsRecorded >= 10)
                 {
                     StopRecording();
                 }
