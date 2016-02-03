@@ -20,7 +20,7 @@ namespace MPAid.Cores
                 ProcessStartInfo processInfo = new ProcessStartInfo(filePath);
                 processInfo.CreateNoWindow = true;
                 processInfo.UseShellExecute = false;
-                processInfo.WorkingDirectory = Path.Combine(SystemConfigration.configs.HTKFolderAddr.FolderAddr, @"Batches");
+                processInfo.WorkingDirectory = Path.Combine(Properties.Settings.Default.HTKFolder, @"Batches");
                 //  ***Redirect the output ***
                 processInfo.RedirectStandardError = true;
                 processInfo.RedirectStandardOutput = true;
@@ -43,8 +43,8 @@ namespace MPAid.Cores
 
         public IDictionary<string, string> Recognize(String RecordingPath)
         {
-            string BatchesFolder = Path.Combine(SystemConfigration.configs.HTKFolderAddr.FolderAddr, @"Batches");
-            string MLFsFolder = Path.Combine(SystemConfigration.configs.HTKFolderAddr.FolderAddr, @"MLFs");
+            string BatchesFolder = Path.Combine(Properties.Settings.Default.HTKFolder, @"Batches");
+            string MLFsFolder = Path.Combine(Properties.Settings.Default.HTKFolder, @"MLFs");
             //RunBatchFile(Path.Combine(BatchesFolder, "Recordings2MFCs.bat"), RecordingPath);
             RunBatchFile(Path.Combine(BatchesFolder, "ModelEvaluater.bat"), RecordingPath);
             return Analyze(Path.Combine(MLFsFolder, "RecMLF.mlf"));
@@ -73,7 +73,7 @@ namespace MPAid.Cores
                                 }
                                 else if (Regex.Match(line, @"\.$").Success)
                                 {
-                                    RecResult.Add(index.TrimStart('*', '/'), result.TrimEnd(' '));
+                                    RecResult.Add(index.TrimStart('*', '/'), ResultModifier.LetterReplace(result.TrimEnd(' ')));
                                     m = Match.Empty;
                                     index = string.Empty;
                                     result = string.Empty;
@@ -92,6 +92,15 @@ namespace MPAid.Cores
                 }
             }
             return RecResult;
+        }
+    }
+
+    public static class ResultModifier
+    {
+        public static string LetterReplace(string value)
+        {
+            value = value.Replace(@"\344", @"ä").Replace(@"\353", @"ë").Replace(@"\357", @"ï").Replace(@"\366", @"ö").Replace(@"\374", @"ü");
+            return value;
         }
     }
 }

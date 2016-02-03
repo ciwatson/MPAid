@@ -10,19 +10,8 @@ using System.IO;
 namespace MPAid.Cores
 {
     class SystemConfigration
-    {
-        static SystemConfigration()
-        {
-            try
-            {
-                configs = Serializer<SysCfg>.Load<BinaryFormatter>(SysCfg.path);
-            }
-            catch(Exception exp)
-            {
-                configs = new SysCfg(SysCfg.path);
-            }            
-        }
-        static public SysCfg configs;
+    {         
+        static public SysCfg configs = Serializer<SysCfg>.Load<BinaryFormatter>(SysCfg.path);
     }
 
     [Serializable]

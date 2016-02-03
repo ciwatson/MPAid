@@ -14,7 +14,7 @@ namespace MPAid.Cores
         {
             get
             {
-                return Path.Combine(SystemConfigration.configs.ReportFolderAddr.FolderAddr, "Report.html");
+                return Path.Combine(Properties.Settings.Default.ReportFolder, "Report.html");
             }
         }
         public void GenerateHTML(ScoreBoard scoreboard)

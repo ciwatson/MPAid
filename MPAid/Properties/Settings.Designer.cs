@@ -37,7 +37,7 @@ namespace MPAid.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Audio")]
+        [global::System.Configuration.DefaultSettingValueAttribute("./Audio")]
         public string AudioFolder {
             get {
                 return ((string)(this["AudioFolder"]));
@@ -49,7 +49,7 @@ namespace MPAid.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Video")]
+        [global::System.Configuration.DefaultSettingValueAttribute("./Video")]
         public string VideoFolder {
             get {
                 return ((string)(this["VideoFolder"]));
@@ -61,7 +61,7 @@ namespace MPAid.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Recording")]
+        [global::System.Configuration.DefaultSettingValueAttribute("./Recording")]
         public string RecordingFolder {
             get {
                 return ((string)(this["RecordingFolder"]));
@@ -73,7 +73,7 @@ namespace MPAid.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Report")]
+        [global::System.Configuration.DefaultSettingValueAttribute("./Report")]
         public string ReportFolder {
             get {
                 return ((string)(this["ReportFolder"]));
@@ -85,7 +85,7 @@ namespace MPAid.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("HTK")]
+        [global::System.Configuration.DefaultSettingValueAttribute("./HTK")]
         public string HTKFolder {
             get {
                 return ((string)(this["HTKFolder"]));
@@ -97,7 +97,7 @@ namespace MPAid.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Fomant")]
+        [global::System.Configuration.DefaultSettingValueAttribute("./Fomant")]
         public string FomantFolder {
             get {
                 return ((string)(this["FomantFolder"]));

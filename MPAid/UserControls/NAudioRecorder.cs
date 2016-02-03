@@ -48,7 +48,7 @@ namespace MPAid.UserControls
 
         public void CreateDirectory()
         {
-            outputFolder = SystemConfigration.configs.RecordingFolderAddr.FolderAddr;
+            outputFolder = Properties.Settings.Default.RecordingFolder;
             tempFolder = Path.Combine(Path.GetTempPath(), "MPAidTemp");
             Directory.CreateDirectory(outputFolder);
             Directory.CreateDirectory(tempFolder);
@@ -57,7 +57,7 @@ namespace MPAid.UserControls
         public void DataBinding()
         {
             RECListBox.Items.Clear();
-            DirectoryInfo info = new DirectoryInfo(SystemConfigration.configs.RecordingFolderAddr.FolderAddr);
+            DirectoryInfo info = new DirectoryInfo(Properties.Settings.Default.RecordingFolder);
             RECListBox.Items.AddRange(info.GetFiles().Where(x => x.Extension != ".mfc").Select(x => x.Name).ToArray());
         }
         private void FinalizeWaveFile(Stream s)

@@ -68,8 +68,8 @@ namespace MPAid.Forms.Config
                     String filename = item.Key.ToString();
                     NamePaser paser = new NamePaser();
                     paser.FullName = filename;
-                    if (paser.MediaFormat == "audio") paser.Address = SystemConfigration.configs.AudioFolderAddr.FolderAddr;
-                    else if (paser.MediaFormat == "video") paser.Address = SystemConfigration.configs.VideoFolderAddr.FolderAddr;
+                    if (paser.MediaFormat == "audio") paser.Address = Properties.Settings.Default.AudioFolder;
+                    else if (paser.MediaFormat == "video") paser.Address = Properties.Settings.Default.VideoFolder;
 
                     DBContext.AddOrUpdateRecordingFile(paser.SingleFile);
 

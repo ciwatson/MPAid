@@ -69,13 +69,13 @@ namespace MPAid.Cores
         {
             try
             {
-                string filepath = Path.Combine(SystemConfigration.configs.HTKFolderAddr.FolderAddr, @"Dictionaries", @"lexicon.txt");
+                string filepath = Path.Combine(Properties.Settings.Default.HTKFolder, @"Dictionaries", @"lexicon.txt");
                 if (File.Exists(filepath))
                 {
                     dictionary.Clear();
                     using (FileStream fs = new FileStream(filepath, FileMode.Open))
                     {
-                        using (StreamReader sr = new StreamReader(fs))
+                        using (StreamReader sr = new StreamReader(fs, Encoding.Default))
                         {
                             
                             string item;
