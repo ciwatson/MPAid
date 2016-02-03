@@ -27,30 +27,43 @@ namespace MPAid.Forms.Config
             try
             {
                 Properties.Settings.Default.AudioFolder = Path.Combine(System.Windows.Forms.Application.StartupPath, @"Audio");
-                this.audioFolderTextBox.Text = Properties.Settings.Default.AudioFolder;
+                InitializeTextBox(this.audioFolderTextBox, Properties.Settings.Default.AudioFolder);
                 this.audioFolderTextBox.TextChanged += AudioFolderTextBox_TextChanged;
 
                 Properties.Settings.Default.VideoFolder = Path.Combine(System.Windows.Forms.Application.StartupPath, @"Video");
-                this.videoFolderTextBox.Text = Properties.Settings.Default.VideoFolder;
+                InitializeTextBox(this.videoFolderTextBox, Properties.Settings.Default.VideoFolder);
                 this.videoFolderTextBox.TextChanged += VideoFolderTextBox_TextChanged;
 
                 Properties.Settings.Default.RecordingFolder = Path.Combine(System.Windows.Forms.Application.StartupPath, @"Recording");
-                this.recordingFolderTextBox.Text = Properties.Settings.Default.RecordingFolder;
+                InitializeTextBox(this.recordingFolderTextBox, Properties.Settings.Default.RecordingFolder);
                 this.recordingFolderTextBox.TextChanged += RecordingFolderTextBox_TextChanged;
 
                 Properties.Settings.Default.ReportFolder = Path.Combine(System.Windows.Forms.Application.StartupPath, @"Report");
-                this.reportFolderTextBox.Text = Properties.Settings.Default.ReportFolder;
+                InitializeTextBox(this.reportFolderTextBox, Properties.Settings.Default.ReportFolder);
                 this.reportFolderTextBox.TextChanged += ReportFolderTextBox_TextChanged;
 
                 Properties.Settings.Default.HTKFolder = Path.Combine(System.Windows.Forms.Application.StartupPath, @"HTK");
-                this.HTKFolderTextBox.Text = Properties.Settings.Default.HTKFolder;
+                InitializeTextBox(this.HTKFolderTextBox, Properties.Settings.Default.HTKFolder);
                 this.HTKFolderTextBox.TextChanged += HTKFolderTextBox_TextChanged;
 
                 Properties.Settings.Default.FomantFolder = Path.Combine(System.Windows.Forms.Application.StartupPath, @"Fomant");
-                this.fomantFolderTextBox.Text = Properties.Settings.Default.FomantFolder;
+                InitializeTextBox(this.fomantFolderTextBox, Properties.Settings.Default.FomantFolder);
                 this.fomantFolderTextBox.TextChanged += FomantFolderTextBox_TextChanged;
 
                 Properties.Settings.Default.Save();
+            }
+            catch(Exception exp)
+            {
+                MessageBox.Show(exp.Message);
+            }
+        }
+
+        private void InitializeTextBox(TextBox tb, string dir)
+        {
+            try
+            {
+                Directory.CreateDirectory(dir);
+                tb.Text = dir;
             }
             catch(Exception exp)
             {
