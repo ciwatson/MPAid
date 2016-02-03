@@ -26,27 +26,6 @@ namespace MPAid.Forms.Config
         {
             try
             {
-                if (SystemConfigration.configs == null) throw new Exception("configs null");
-                if (SystemConfigration.configs.AudioFolderAddr == null) throw new Exception("folder null");
-
-                //this.audioFolderTextBox.Text = SystemConfigration.configs.AudioFolderAddr.FolderAddr;
-                //this.audioFolderTextBox.TextChanged += AudioFolderTextBox_TextChanged;
-
-                //this.videoFolderTextBox.Text = SystemConfigration.configs.VideoFolderAddr.FolderAddr;
-                //this.videoFolderTextBox.TextChanged += VideoFolderTextBox_TextChanged;
-
-                //this.recordingFolderTextBox.Text = SystemConfigration.configs.RecordingFolderAddr.FolderAddr;
-                //this.recordingFolderTextBox.TextChanged += RecordingFolderTextBox_TextChanged;
-
-                //this.reportFolderTextBox.Text = SystemConfigration.configs.ReportFolderAddr.FolderAddr;
-                //this.reportFolderTextBox.TextChanged += ReportFolderTextBox_TextChanged;
-
-                //this.HTKFolderTextBox.Text = SystemConfigration.configs.HTKFolderAddr.FolderAddr;
-                //this.HTKFolderTextBox.TextChanged += HTKFolderTextBox_TextChanged;
-
-                //this.fomantFolderTextBox.Text = SystemConfigration.configs.FomantFolderAddr.FolderAddr;
-                //this.fomantFolderTextBox.TextChanged += FomantFolderTextBox_TextChanged;
-
                 this.audioFolderTextBox.Text = Path.Combine(System.Windows.Forms.Application.StartupPath, Properties.Settings.Default.AudioFolder);
                 this.audioFolderTextBox.TextChanged += AudioFolderTextBox_TextChanged;
 
@@ -73,32 +52,31 @@ namespace MPAid.Forms.Config
 
         private void AudioFolderTextBox_TextChanged(object sender, EventArgs e)
         {
-            SystemConfigration.configs.AudioFolderAddr.FolderAddr = this.audioFolderTextBox.Text;
+            Properties.Settings.Default.AudioFolder = this.audioFolderTextBox.Text;
         }
         private void VideoFolderTextBox_TextChanged(object sender, EventArgs e)
         {
-            SystemConfigration.configs.VideoFolderAddr.FolderAddr = this.videoFolderTextBox.Text;
+            Properties.Settings.Default.VideoFolder = this.videoFolderTextBox.Text;
         }
         private void RecordingFolderTextBox_TextChanged(object sender, EventArgs e)
         {
-            SystemConfigration.configs.RecordingFolderAddr.FolderAddr = this.recordingFolderTextBox.Text;
+            Properties.Settings.Default.RecordingFolder = this.recordingFolderTextBox.Text;
         }
         private void ReportFolderTextBox_TextChanged(object sender, EventArgs e)
         {
-            SystemConfigration.configs.ReportFolderAddr.FolderAddr = this.reportFolderTextBox.Text;
+            Properties.Settings.Default.ReportFolder = this.reportFolderTextBox.Text;
         }
         private void HTKFolderTextBox_TextChanged(object sender, EventArgs e)
         {
-            SystemConfigration.configs.HTKFolderAddr.FolderAddr = this.HTKFolderTextBox.Text;
+            Properties.Settings.Default.HTKFolder = this.HTKFolderTextBox.Text;
         }
         private void FomantFolderTextBox_TextChanged(object sender, EventArgs e)
         {
-            SystemConfigration.configs.FomantFolderAddr.FolderAddr = this.fomantFolderTextBox.Text;
+            Properties.Settings.Default.FomantFolder = this.fomantFolderTextBox.Text;
         }
-
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            Serializer<SysCfg>.Save<BinaryFormatter>(SysCfg.path, SystemConfigration.configs);
+            Properties.Settings.Default.Save();
             this.Close();
         }
         private void audioFolderSelectButton_Click(object sender, EventArgs e)

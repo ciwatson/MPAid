@@ -67,28 +67,36 @@ namespace MPAid.Cores
         public Dictionary<string, string> dictionary = new Dictionary<string, string>();
         public bool ReadLexicon()
         {
-            string filepath = Path.Combine(SystemConfigration.configs.HTKFolderAddr.FolderAddr, @"Dictionaries", @"lexicon.txt");
-            if (File.Exists(filepath))
+            try
             {
-                dictionary.Clear();
-                using (FileStream fs = new FileStream(filepath, FileMode.Open))
+                string filepath = Path.Combine(SystemConfigration.configs.HTKFolderAddr.FolderAddr, @"Dictionaries", @"lexicon.txt");
+                if (File.Exists(filepath))
                 {
-                    using (StreamReader sr = new StreamReader(fs))
+                    dictionary.Clear();
+                    using (FileStream fs = new FileStream(filepath, FileMode.Open))
                     {
-                        string item;
-                        while((item = sr.ReadLine()) != null)
+                        using (StreamReader sr = new StreamReader(fs))
                         {
-                            if (string.IsNullOrEmpty(item)) continue;
-                            string word = item.Substring(0, item.IndexOf('[')).Trim(' ');
-                            string pronouciation = item.Substring(item.IndexOf(']') + 1).Trim(' ');
-                            if (!string.IsNullOrEmpty(word))
+                            
+                            string item;
+                            while ((item = sr.ReadLine()) != null)
                             {
-                                dictionary.Add(word, pronouciation);
+                                if (string.IsNullOrEmpty(item)) continue;
+                                string word = item.Substring(0, item.IndexOf('[')).Trim(' ');
+                                string pronouciation = item.Substring(item.IndexOf(']') + 1).Trim(' ');
+                                if (!string.IsNullOrEmpty(word))
+                                {
+                                    dictionary.Add(word, pronouciation);
+                                }
                             }
                         }
                     }
+                    return true;
                 }
-                return true;
+            }
+            catch(Exception exp)
+            {
+                Console.WriteLine(exp);
             }
             return false;
         }

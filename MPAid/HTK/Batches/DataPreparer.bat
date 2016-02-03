@@ -147,6 +147,7 @@ REM	****************************
 REM	Generate a monophone list file with sp named "monophones1"
 REM	****************************
 "%Tools%HDMan" -m -w "%Dictionaries%WordList.wlist" -g "%Params%global.ded" -n "%Dictionaries%monophones1" -i -l HDMan.Log "%Dictionaries%dictionary" "%Dictionaries%lexicon.txt"
+REM perl -pe "s/$/sp/ unless /^$|sil $|sp $/;" "%Dictionaries%lexicon.txt" > "%Dictionaries%dictionary"
 
 REM	****************************
 REM	Generate a monophone list file without sp named "monophones0"
@@ -155,7 +156,7 @@ REM	****************************
 
 echo step: 4  wordlist2dictionary ends
 
-pause
+
 
 
 
@@ -191,7 +192,7 @@ Perl "%Perls%prompts2mlf.pl" "%MLFs%WordMLF.mlf" "%Dictionaries%Prompts.pmpt"
 
 echo step: 5  prompts2Wordmlf ends
 
-pause
+
 
 
 

@@ -1,4 +1,4 @@
-ï»¿#!/usr/bin/perl
+#!/usr/bin/perl
 use strict;
 use File::Basename;
 use File::Copy;
@@ -10,27 +10,27 @@ my $InputDir = $ARGV[0] ;
 my $Ext = $ARGV[1] ;
 
 my @WordList = (
-            "tï¿½nei",    #01
-            "tï¿½ne",     #02
+            "tënei",    #01
+            "täne",     #02
             "hau",      #03
             "hou",      #04
             "pao",      #05
             "pau",      #06
             "pou",      #07
-            "pï¿½",       #08
+            "pö",       #08
             "pai",      #09
             "pae",      #10
-            "kï¿½",       #11
+            "kë",       #11
             "kei",      #12
-            "kï¿½",       #13
-            "hï¿½",       #14
+            "kï",       #13
+            "hë",       #14
             "hei",      #15
-            "hï¿½",       #16
+            "hï",       #16
             "tae",      #17
             "tai",      #18
-            "mï¿½tao",    #19
-            "mï¿½tau",    #20
-            "mï¿½tou",    #21
+            "mätao",    #19
+            "mätau",    #20
+            "mätou",    #21
             "toetoe",   #22
             "toi",      #23
             "hoihoi",   #24
@@ -38,7 +38,7 @@ my @WordList = (
             "mao",      #26
             "mau",      #27
             "moutere",  #28
-            "tï¿½",       #29
+            "tü",       #29
             "matiu"     #30
 );
 
