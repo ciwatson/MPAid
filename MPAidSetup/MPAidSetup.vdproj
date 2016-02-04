@@ -3249,6 +3249,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_388BFE7B884D452682136E8E0C0A683D"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_38965AB1E804474394B01AE53B8A4E19"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -5728,12 +5734,6 @@
         "Entry"
         {
         "MsmKey" = "8:_6345AEE9317B428EAE123B8D254DEE78"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_63529F793FB3454D98217E89FA932DAE"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -14834,6 +14834,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.5"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.5 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.5"
+                    }
+                }
             }
         }
         "Release"
@@ -25650,6 +25658,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_388BFE7B884D452682136E8E0C0A683D"
+            {
+            "SourcePath" = "8:..\\MPAid\\HTK\\Dictionaries\\lexicon.txt"
+            "TargetName" = "8:lexicon.txt"
+            "Tag" = "8:"
+            "Folder" = "8:_D277A8275A3E4097AEE948377A124E24"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:2"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_38965AB1E804474394B01AE53B8A4E19"
             {
             "SourcePath" = "8:..\\MPAid\\Audio\\oldmale-word-mätau-K005M.wav"
@@ -33889,26 +33917,6 @@
             "TargetName" = "8:libaudioscrobbler_plugin.dll"
             "Tag" = "8:"
             "Folder" = "8:_A13A4C2B837D4040B5C6E77A300670DE"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_63529F793FB3454D98217E89FA932DAE"
-            {
-            "SourcePath" = "8:..\\MPAid\\HTK\\Dictionaries\\lexicon.txt"
-            "TargetName" = "8:lexicon.txt"
-            "Tag" = "8:"
-            "Folder" = "8:_734E5998CCC14CB5B0FA9DB8CA6F4410"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -64624,17 +64632,6 @@
                                 {
                                 }
                             }
-                            "{9EF0B969-E518-4E46-987F-47570745A589}:_734E5998CCC14CB5B0FA9DB8CA6F4410"
-                            {
-                            "Name" = "8:Dictionaries"
-                            "AlwaysCreate" = "11:FALSE"
-                            "Condition" = "8:"
-                            "Transitive" = "11:FALSE"
-                            "Property" = "8:_6CE087EC3B2E4AFC90A1FECFDD76D85D"
-                                "Folders"
-                                {
-                                }
-                            }
                             "{9EF0B969-E518-4E46-987F-47570745A589}:_88C0FB5E97AE4408BC68F8383A06DD3E"
                             {
                             "Name" = "8:Perls"
@@ -64697,6 +64694,17 @@
                             "Condition" = "8:"
                             "Transitive" = "11:FALSE"
                             "Property" = "8:_B2A731AA379344F199B6666F79F8B6C1"
+                                "Folders"
+                                {
+                                }
+                            }
+                            "{9EF0B969-E518-4E46-987F-47570745A589}:_D277A8275A3E4097AEE948377A124E24"
+                            {
+                            "Name" = "8:Dictionaries"
+                            "AlwaysCreate" = "11:FALSE"
+                            "Condition" = "8:"
+                            "Transitive" = "11:FALSE"
+                            "Property" = "8:_4EAB51A00C904984B176513D1A076EEB"
                                 "Folders"
                                 {
                                 }
@@ -65327,7 +65335,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:MPAidSetup"
         "ProductCode" = "8:{66D0DB07-5220-4228-93FB-317D3D154702}"
-        "PackageCode" = "8:{BFAFA13D-65CD-4D55-AA3B-7DCA34568DE9}"
+        "PackageCode" = "8:{03B683E3-7B43-4C20-B701-47D0D84DAB8F}"
         "UpgradeCode" = "8:{0C7D9F69-FEA5-47B5-9807-BACF7937728F}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"

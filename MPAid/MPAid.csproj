@@ -3071,11 +3071,15 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>XCOPY "$(ProjectDir)VlcLibs" "$(TargetDir)VlcLibs" /i /S /Y
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>XCOPY "$(ProjectDir)VlcLibs" "$(TargetDir)VlcLibs" /i /S /Y
 XCOPY "$(ProjectDir)Fomant" "$(TargetDir)Fomant" /i /S /Y
 XCOPY "$(ProjectDir)HTK" "$(TargetDir)HTK" /i /S /Y
 XCOPY "$(ProjectDir)Audio" "$(TargetDir)Audio" /i /S /Y
-XCOPY "$(ProjectDir)App_Data" "$(TargetDir)App_Data" /i /S /Y</PostBuildEvent>
+XCOPY "$(ProjectDir)App_Data" "$(TargetDir)App_Data" /i /S /Y</PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
