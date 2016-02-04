@@ -2038,7 +2038,6 @@
     <Content Include="Audio\oldmale-word-tü-K008M.wav" />
     <Content Include="Audio\oldmale-word-tü-K009M.wav" />
     <Content Include="Audio\oldmale-word-tü-K010M.wav" />
-    <Content Include="Audio\VowelSoundsList.txt" />
     <Content Include="Audio\youngfemale-word-hau-L1H01M.wav" />
     <Content Include="Audio\youngfemale-word-hau-L1H02M.wav" />
     <Content Include="Audio\youngfemale-word-hau-L1H03M.wav" />

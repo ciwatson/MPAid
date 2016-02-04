@@ -5733,6 +5733,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_63529F793FB3454D98217E89FA932DAE"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_6354017591F24169A367DA864B6866B1"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -9021,12 +9027,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_9C6E7D00B41440C6A81C55B93AD473B9"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_9C7399F31FDB4CF590E0C53DF5658DE7"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -10774,12 +10774,6 @@
         "Entry"
         {
         "MsmKey" = "8:_BA8D0F2182314ECAA2BCD7DC149BB1C4"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_BAC2C09E97B14912B510B8CFC9E2FEAF"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -33909,6 +33903,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_63529F793FB3454D98217E89FA932DAE"
+            {
+            "SourcePath" = "8:..\\MPAid\\HTK\\Dictionaries\\lexicon.txt"
+            "TargetName" = "8:lexicon.txt"
+            "Tag" = "8:"
+            "Folder" = "8:_734E5998CCC14CB5B0FA9DB8CA6F4410"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_6354017591F24169A367DA864B6866B1"
             {
             "SourcePath" = "8:..\\MPAid\\VlcLibs\\x64\\plugins\\mux\\libmux_mp4_plugin.dll"
@@ -44849,26 +44863,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_9C6E7D00B41440C6A81C55B93AD473B9"
-            {
-            "SourcePath" = "8:..\\MPAid\\Audio\\VowelSoundsList.txt"
-            "TargetName" = "8:VowelSoundsList.txt"
-            "Tag" = "8:"
-            "Folder" = "8:_84FABF3A3F03467EB319D62B821393BD"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_9C7399F31FDB4CF590E0C53DF5658DE7"
             {
             "SourcePath" = "8:..\\MPAid\\Audio\\oldfemale-word-mätao-R004M.wav"
@@ -50695,26 +50689,6 @@
             "TargetName" = "8:puzzle.tcl"
             "Tag" = "8:"
             "Folder" = "8:_24017835EA4244F5AC9E7AF2D8BD1945"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_BAC2C09E97B14912B510B8CFC9E2FEAF"
-            {
-            "SourcePath" = "8:..\\MPAid\\HTK\\Dictionaries\\lexicon.txt"
-            "TargetName" = "8:lexicon.txt"
-            "Tag" = "8:"
-            "Folder" = "8:_734E5998CCC14CB5B0FA9DB8CA6F4410"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"

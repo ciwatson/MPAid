@@ -1,5 +1,0 @@
-a self.aSound
-e self.eSound
-i self.iSound
-o self.oSound
-u self.uSound
