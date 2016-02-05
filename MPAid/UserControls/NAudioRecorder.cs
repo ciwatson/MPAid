@@ -37,12 +37,12 @@ namespace MPAid.UserControls
             LoadWasapiDevices();
         }
 
-        private void LoadWasapiDevices()
+        public void LoadWasapiDevices()
         {
             var deviceEnum = new MMDeviceEnumerator();
             var devices = deviceEnum.EnumerateAudioEndPoints(DataFlow.Capture, DeviceState.Active).ToList();
 
-            audioDeviceComboBox.DataSource = devices;
+            audioDeviceComboBox.DataSource = devices.Count == 0 ? null : devices;
             audioDeviceComboBox.DisplayMember = "FriendlyName";
         }
 
@@ -307,6 +307,11 @@ namespace MPAid.UserControls
         {
             analyzeButton.Enabled = (sender as ListBox).SelectedItem != null;
             deleteButton.Enabled = (sender as ListBox).SelectedItem != null;
+        }
+
+        private void deviceRefreshButton_Click(object sender, EventArgs e)
+        {
+            LoadWasapiDevices();
         }
     }
 }

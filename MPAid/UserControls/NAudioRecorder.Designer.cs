@@ -30,7 +30,6 @@
         {
             this.RECListBox = new System.Windows.Forms.ListBox();
             this.recordButton = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
             this.fromFileButton = new System.Windows.Forms.Button();
             this.showReportButton = new System.Windows.Forms.Button();
             this.correctnessLabel = new System.Windows.Forms.Label();
@@ -41,6 +40,7 @@
             this.recordingProgressBar = new System.Windows.Forms.ProgressBar();
             this.label2 = new System.Windows.Forms.Label();
             this.deleteButton = new System.Windows.Forms.Button();
+            this.deviceRefreshButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // RECListBox
@@ -50,9 +50,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.RECListBox.FormattingEnabled = true;
             this.RECListBox.HorizontalScrollbar = true;
-            this.RECListBox.Location = new System.Drawing.Point(6, 56);
+            this.RECListBox.Location = new System.Drawing.Point(6, 30);
             this.RECListBox.Name = "RECListBox";
-            this.RECListBox.Size = new System.Drawing.Size(404, 147);
+            this.RECListBox.Size = new System.Drawing.Size(404, 173);
             this.RECListBox.TabIndex = 23;
             this.RECListBox.SelectedValueChanged += new System.EventHandler(this.RECListBox_SelectedValueChanged);
             this.RECListBox.DoubleClick += new System.EventHandler(this.RECListBox_DoubleClick);
@@ -61,7 +61,7 @@
             // 
             this.recordButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.recordButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.recordButton.Location = new System.Drawing.Point(416, 56);
+            this.recordButton.Location = new System.Drawing.Point(416, 30);
             this.recordButton.Name = "recordButton";
             this.recordButton.Size = new System.Drawing.Size(58, 25);
             this.recordButton.TabIndex = 15;
@@ -69,20 +69,11 @@
             this.recordButton.UseVisualStyleBackColor = true;
             this.recordButton.Click += new System.EventHandler(this.recordButton_Click);
             // 
-            // label6
-            // 
-            this.label6.Location = new System.Drawing.Point(3, 27);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(71, 21);
-            this.label6.TabIndex = 22;
-            this.label6.Text = "Recognized: ";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // fromFileButton
             // 
             this.fromFileButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.fromFileButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.fromFileButton.Location = new System.Drawing.Point(417, 183);
+            this.fromFileButton.Location = new System.Drawing.Point(416, 178);
             this.fromFileButton.Name = "fromFileButton";
             this.fromFileButton.Size = new System.Drawing.Size(58, 25);
             this.fromFileButton.TabIndex = 21;
@@ -120,7 +111,7 @@
             this.analyzeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.analyzeButton.Enabled = false;
             this.analyzeButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.analyzeButton.Location = new System.Drawing.Point(416, 152);
+            this.analyzeButton.Location = new System.Drawing.Point(417, 141);
             this.analyzeButton.Name = "analyzeButton";
             this.analyzeButton.Size = new System.Drawing.Size(58, 25);
             this.analyzeButton.TabIndex = 16;
@@ -133,7 +124,7 @@
             this.stopButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.stopButton.Enabled = false;
             this.stopButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.stopButton.Location = new System.Drawing.Point(416, 90);
+            this.stopButton.Location = new System.Drawing.Point(416, 67);
             this.stopButton.Name = "stopButton";
             this.stopButton.Size = new System.Drawing.Size(58, 25);
             this.stopButton.TabIndex = 14;
@@ -146,7 +137,7 @@
             this.audioDeviceComboBox.FormattingEnabled = true;
             this.audioDeviceComboBox.Location = new System.Drawing.Point(80, 3);
             this.audioDeviceComboBox.Name = "audioDeviceComboBox";
-            this.audioDeviceComboBox.Size = new System.Drawing.Size(116, 21);
+            this.audioDeviceComboBox.Size = new System.Drawing.Size(95, 21);
             this.audioDeviceComboBox.TabIndex = 25;
             // 
             // label1
@@ -161,16 +152,16 @@
             // recordingProgressBar
             // 
             this.recordingProgressBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.recordingProgressBar.Location = new System.Drawing.Point(328, 0);
+            this.recordingProgressBar.Location = new System.Drawing.Point(353, 0);
             this.recordingProgressBar.Name = "recordingProgressBar";
-            this.recordingProgressBar.Size = new System.Drawing.Size(146, 23);
+            this.recordingProgressBar.Size = new System.Drawing.Size(121, 23);
             this.recordingProgressBar.TabIndex = 26;
             // 
             // label2
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(222, 6);
+            this.label2.Location = new System.Drawing.Point(247, 6);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(100, 13);
             this.label2.TabIndex = 27;
@@ -180,7 +171,7 @@
             // 
             this.deleteButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.deleteButton.Enabled = false;
-            this.deleteButton.Location = new System.Drawing.Point(417, 123);
+            this.deleteButton.Location = new System.Drawing.Point(417, 105);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(57, 23);
             this.deleteButton.TabIndex = 28;
@@ -188,10 +179,21 @@
             this.deleteButton.UseVisualStyleBackColor = true;
             this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
+            // deviceRefreshButton
+            // 
+            this.deviceRefreshButton.Image = global::MPAid.Properties.Resources.refresh_16;
+            this.deviceRefreshButton.Location = new System.Drawing.Point(182, 0);
+            this.deviceRefreshButton.Name = "deviceRefreshButton";
+            this.deviceRefreshButton.Size = new System.Drawing.Size(23, 23);
+            this.deviceRefreshButton.TabIndex = 29;
+            this.deviceRefreshButton.UseVisualStyleBackColor = true;
+            this.deviceRefreshButton.Click += new System.EventHandler(this.deviceRefreshButton_Click);
+            // 
             // NAudioRecorder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.deviceRefreshButton);
             this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.recordingProgressBar);
@@ -199,7 +201,6 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.RECListBox);
             this.Controls.Add(this.recordButton);
-            this.Controls.Add(this.label6);
             this.Controls.Add(this.fromFileButton);
             this.Controls.Add(this.showReportButton);
             this.Controls.Add(this.correctnessLabel);
@@ -219,7 +220,6 @@
         private System.Windows.Forms.Label correctnessLabel;
         private System.Windows.Forms.Button showReportButton;
         private System.Windows.Forms.Button fromFileButton;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button recordButton;
         private System.Windows.Forms.ListBox RECListBox;
         private System.Windows.Forms.ComboBox audioDeviceComboBox;
@@ -227,5 +227,6 @@
         private System.Windows.Forms.ProgressBar recordingProgressBar;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button deleteButton;
+        private System.Windows.Forms.Button deviceRefreshButton;
     }
 }

@@ -110,12 +110,20 @@ namespace MPAid
 
         private void InitializeDB()
         {
-            this.DBModel = new MPAidModel();
-            this.DBModel.Recording.Load();
-            this.DBModel.Speaker.Load();
-            this.DBModel.Category.Load();
-            this.DBModel.Word.Load();
-            this.DBModel.SingleFile.Load();
+            try
+            {
+                this.DBModel = new MPAidModel();
+                this.DBModel.Database.Initialize(false);
+                this.DBModel.Recording.Load();
+                this.DBModel.Speaker.Load();
+                this.DBModel.Category.Load();
+                this.DBModel.Word.Load();
+                this.DBModel.SingleFile.Load();
+            }
+            catch(Exception exp)
+            {
+                MessageBox.Show(exp.Message, "Database linking error!");
+            }
         }
         private void FillLists()
         {

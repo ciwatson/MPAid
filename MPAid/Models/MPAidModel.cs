@@ -6,6 +6,8 @@ namespace MPAid.Models
     using System.Linq;
     using System.Data.Entity.Migrations;
     using Cores;
+    using System.Runtime.Remoting.Contexts;
+    using System.IO;
     public partial class MPAidModel : DbContext
     {
         public MPAidModel()
@@ -13,6 +15,8 @@ namespace MPAid.Models
         {
             //AppDomain.CurrentDomain.SetData("DataDirectory", System.Windows.Forms.Application.StartupPath + @"\App_Data");
             AppDomain.CurrentDomain.SetData("DataDirectory", AppDataPath.path);
+
+            Database.SetInitializer<MPAidModel>(new MPAidModelInitializer());
         }
 
         public virtual DbSet<Category> Category { get; set; }
@@ -129,6 +133,25 @@ namespace MPAid.Models
             {
                 Console.WriteLine(exp);
             }
+        }
+    }
+
+    public class MPAidModelInitializer : CreateDatabaseIfNotExists<MPAidModel>
+    {
+        protected override void Seed(MPAidModel context)
+        {
+            if(Directory.Exists(Properties.Settings.Default.AudioFolder))
+            {
+                DirectoryInfo dirInfo = new DirectoryInfo(Properties.Settings.Default.AudioFolder);
+                foreach(FileInfo fInfo in dirInfo.GetFiles())
+                {
+                    if(fInfo.Extension.Contains("wav"))
+                    {
+                        context.AddOrUpdateRecordingFile(Path.Combine(fInfo.DirectoryName, fInfo.FullName));
+                    }
+                }
+            }
+            base.Seed(context);
         }
     }
 }

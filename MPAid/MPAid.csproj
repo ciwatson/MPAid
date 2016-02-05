@@ -1593,6 +1593,10 @@
     <None Include="HTK\Perls\prompts2wlist.pl" />
     <None Include="HTK\Perls\RecordingRenamer.pl" />
     <None Include="HTK\Perls\ScriptGenerater.pl" />
+    <None Include="Prerequisties\x64\ActivePerl-5.22.1.2201-MSWin32-x64-299574.msi" />
+    <None Include="Prerequisties\x64\SqlLocalDB.msi" />
+    <None Include="Prerequisties\x86\ActivePerl-5.22.1.2201-MSWin32-x86-64int-299574.msi" />
+    <None Include="Prerequisties\x86\SqlLocalDB.msi" />
     <None Include="VlcLibs\header-files\.keep" />
     <None Include="VlcLibs\x64\.keep" />
     <None Include="VlcLibs\x64\plugins\plugins.dat" />
@@ -1841,6 +1845,16 @@
     <Content Include="Audio\oldfemale-word-tü-R006M.wav" />
     <Content Include="Audio\oldfemale-word-tü-R007M.wav" />
     <Content Include="Audio\oldfemale-word-tü-R008M.wav" />
+    <Content Include="Audio\oldmale-vowel-a-K001M.wav" />
+    <Content Include="Audio\oldmale-vowel-ae-K001M.wav" />
+    <Content Include="Audio\oldmale-vowel-ai-K001M.wav" />
+    <Content Include="Audio\oldmale-vowel-ao-K001M.wav" />
+    <Content Include="Audio\oldmale-vowel-au-K001M.wav" />
+    <Content Include="Audio\oldmale-vowel-e-K001M.wav" />
+    <Content Include="Audio\oldmale-vowel-i-K001M.wav" />
+    <Content Include="Audio\oldmale-vowel-o-K001M.wav" />
+    <Content Include="Audio\oldmale-vowel-ou-K001M.wav" />
+    <Content Include="Audio\oldmale-vowel-u-K001M.wav" />
     <Content Include="Audio\oldmale-word-hau-K004M.wav" />
     <Content Include="Audio\oldmale-word-hau-K005M.wav" />
     <Content Include="Audio\oldmale-word-hau-K006M.wav" />
@@ -2412,6 +2426,7 @@
     <Content Include="Resources\player\play_64_2.png" />
     <Content Include="Resources\player\stop_64_1.png" />
     <Content Include="Resources\player\stop_64_2.png" />
+    <Content Include="Resources\refresh_16.png" />
     <Content Include="VlcLibs\header-files\deprecated.h" />
     <Content Include="VlcLibs\header-files\libvlc.h" />
     <Content Include="VlcLibs\header-files\libvlc_events.h" />

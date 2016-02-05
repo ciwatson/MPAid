@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using MPAid.Cores;
+using NAudio.Wave;
 
 namespace MPAid.Forms.Config
 {
@@ -58,9 +59,12 @@ namespace MPAid.Forms.Config
             {
                 if(exp.GetType() == typeof(FileNotFoundException))
                 {
-                    MessageBox.Show(exp.ToString());
+                    MessageBox.Show(exp.Message, "No such file!");
                 }
-                Console.WriteLine(exp);
+                else if(exp.GetType() == typeof(IOException))
+                {
+                    MessageBox.Show(exp.Message, "Destination file already exists!");
+                }
             }
         }
 
@@ -68,11 +72,17 @@ namespace MPAid.Forms.Config
         {
             try
             {
-                MainForm.self.OperationPanel.VlcPlayer.VlcControl.Play(new Uri(this.openFileDialog.FileName));
+                if(File.Exists(this.openFileDialog.FileName))
+                {
+                    WaveFileReader reader = new WaveFileReader(this.openFileDialog.FileName);
+                    var waveOut = new WaveOut(); // or WaveOutEvent()
+                    waveOut.Init(reader);
+                    waveOut.Play();
+                }
             }
             catch(Exception exp)
             {
-                Console.WriteLine(exp);
+                MessageBox.Show(exp.Message, "NAudio playing error!");
             }
         }
     }

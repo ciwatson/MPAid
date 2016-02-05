@@ -24,7 +24,6 @@ namespace MPAid.Forms.Config
             this.onDBListBox.DataSource = MainForm.self.DBModel.SingleFile.Local.ToBindingList();
             this.onDBListBox.DisplayMember = "Name";
         }
-
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
             this.mediaLocalListBox.DataSource = null;
@@ -33,31 +32,6 @@ namespace MPAid.Forms.Config
 
             if (e.CloseReason == CloseReason.WindowsShutDown) return;
         }
-
-        private void selectFileButton_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (this.openFileDialog.ShowDialog() == DialogResult.OK)
-                {
-                    String[] fileNames = openFileDialog.FileNames.Select(x => x = x.Substring(x.LastIndexOf('\\') + 1)).ToArray();
-                    String[] fileAddresses = openFileDialog.FileNames.Select(x => x = x.Substring(0, x.LastIndexOf('\\'))).ToArray();
-
-                    Dictionary<string, string> dataSource = fileNames.Zip(fileAddresses, (lText, lValue) => new { lText, lValue }).ToDictionary(x => x.lText, x => x.lValue);
-
-                    ListBox localListBox = this.mediaLocalListBox;
-                    localListBox.DataSource = new BindingSource() { DataSource = dataSource };
-                    localListBox.DisplayMember = "Key";
-                    localListBox.ValueMember = "Value";
-                }
-            }
-            catch (Exception exp)
-            {
-                Console.WriteLine(exp);
-            }
-        }
-
-
         private void toDBButton_Click(object sender, EventArgs e)
         {
             try
@@ -88,7 +62,6 @@ namespace MPAid.Forms.Config
                 MessageBox.Show("Fail to update!");
             }
         }
-
         private void toLocalButton_Click(object sender, EventArgs e)
         {
             try
@@ -121,8 +94,58 @@ namespace MPAid.Forms.Config
             }
             catch (Exception exp)
             {
+                MessageBox.Show(exp.Message, "Fail to delete!");
+            }
+        }
+        private void allItemsButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Button bt = sender as Button;
+                bool value = false;
+                ListBox operatingListBox = null;
+                if (bt.Text == "All") { value = true; bt.Text = "None"; }
+                else if (bt.Text == "None") { value = false; bt.Text = "All"; }
+                
+                if (DBRadioButton.Checked) operatingListBox = onDBListBox;
+                else if (localRadioButton.Checked) operatingListBox = mediaLocalListBox;
+                if(operatingListBox == null)
+                {
+                    MessageBox.Show("Please choose a listbox to operate on first!");
+                }
+                else
+                {
+                    for (int i = 0; i < operatingListBox.Items.Count; i++)
+                    {
+                        operatingListBox.SetSelected(i, value);
+                    }
+                }
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.Message,"Fail to pick all items!");
+            }
+        }
+        private void selectFileButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (this.openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    String[] fileNames = openFileDialog.FileNames.Select(x => x = x.Substring(x.LastIndexOf('\\') + 1)).ToArray();
+                    String[] fileAddresses = openFileDialog.FileNames.Select(x => x = x.Substring(0, x.LastIndexOf('\\'))).ToArray();
+
+                    Dictionary<string, string> dataSource = fileNames.Zip(fileAddresses, (lText, lValue) => new { lText, lValue }).ToDictionary(x => x.lText, x => x.lValue);
+
+                    ListBox localListBox = this.mediaLocalListBox;
+                    localListBox.DataSource = new BindingSource() { DataSource = dataSource };
+                    localListBox.DisplayMember = "Key";
+                    localListBox.ValueMember = "Value";
+                }
+            }
+            catch (Exception exp)
+            {
                 Console.WriteLine(exp);
-                MessageBox.Show("Fail to delete!");
             }
         }
     }
