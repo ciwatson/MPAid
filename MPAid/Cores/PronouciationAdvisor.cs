@@ -15,7 +15,7 @@ namespace MPAid.Cores
             if (lexicon.ReadLexicon())
             {
                 string recognizedPronouciation = lexicon.dictionary[recognized];
-                advice = string.Format(@"Your recording '{0}' is analyzed as '{1}', having pronouciation '{2}'.{3}{4}", recording, recognized, recognizedPronouciation, Environment.NewLine, Environment.NewLine);
+                advice = string.Format(@"Your recording '{0}' is analyzed as '{1}', having pronounciation '{2}'.{3}{4}", recording, recognized, recognizedPronouciation, Environment.NewLine, Environment.NewLine);
                 if (!recognized.Equals(target) && !string.IsNullOrEmpty(target))
                 {
                     advice += CompareWords(target, recognized);
@@ -28,12 +28,12 @@ namespace MPAid.Cores
         {
             string advice = string.Empty;
             string targetPronouciation = lexicon.dictionary[target];
-            advice += string.Format(@"However, compared to the target word '{0}', whose pronouciation is '{1}',{2}{3}", target, targetPronouciation, Environment.NewLine, Environment.NewLine);
+            advice += string.Format(@"However, compared to the target word '{0}', whose pronounciation is '{1}',{2}{3}", target, targetPronouciation, Environment.NewLine, Environment.NewLine);
 
             Dictionary<string, string> mismatched = AnalyzePronouciation(targetPronouciation, lexicon.dictionary[recognized]);
             if (mismatched.Count > 0)
             {
-                advice += string.Format(@"It sounds that you are mis-pronoucing:{0}", Environment.NewLine);
+                advice += string.Format(@"It sounds that you are mispronouncing:{0}", Environment.NewLine);
                 foreach (KeyValuePair<string, string> pair in mismatched)
                 {
                     advice += string.Format(@"{0} to {1}{2}", pair.Key, pair.Value, Environment.NewLine);
