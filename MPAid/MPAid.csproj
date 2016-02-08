@@ -2042,6 +2042,16 @@
     <Content Include="Audio\oldmale-word-tü-K008M.wav" />
     <Content Include="Audio\oldmale-word-tü-K009M.wav" />
     <Content Include="Audio\oldmale-word-tü-K010M.wav" />
+    <Content Include="Audio\Vowels\oldmale-vowel-a-K004M.wav" />
+    <Content Include="Audio\Vowels\oldmale-vowel-ae-K004M.wav" />
+    <Content Include="Audio\Vowels\oldmale-vowel-ai-K004M.wav" />
+    <Content Include="Audio\Vowels\oldmale-vowel-ao-K004M.wav" />
+    <Content Include="Audio\Vowels\oldmale-vowel-au-K004M.wav" />
+    <Content Include="Audio\Vowels\oldmale-vowel-e-K004M.wav" />
+    <Content Include="Audio\Vowels\oldmale-vowel-i-K004M.wav" />
+    <Content Include="Audio\Vowels\oldmale-vowel-o-K004M.wav" />
+    <Content Include="Audio\Vowels\oldmale-vowel-ou-K004M.wav" />
+    <Content Include="Audio\Vowels\oldmale-vowel-u-K004M.wav" />
     <Content Include="Audio\youngfemale-word-hau-L1H01M.wav" />
     <Content Include="Audio\youngfemale-word-hau-L1H02M.wav" />
     <Content Include="Audio\youngfemale-word-hau-L1H03M.wav" />

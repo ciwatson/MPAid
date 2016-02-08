@@ -27,7 +27,7 @@ sil        [sil]        sil
 silence    [silence]    sil
 tae        [tae]        t ae
 tai        [tai]        t ai
-toetoe     [toitoi]     t oe t oe
+toetoe     [toetoe]     t oe t oe
 toi        [toi]        t oi
 täne       [täne]       t aa n e
 tënei      [tënei]      t ee n ei

@@ -123,11 +123,6 @@ namespace MPAid.Models
                     this.SingleFile.AddOrUpdate(x => x.Name, sf);
                     this.SaveChanges();
                 }
-
-
-
-
-
             }
             catch (Exception exp)
             {
@@ -143,7 +138,7 @@ namespace MPAid.Models
             if(Directory.Exists(Properties.Settings.Default.AudioFolder))
             {
                 DirectoryInfo dirInfo = new DirectoryInfo(Properties.Settings.Default.AudioFolder);
-                foreach(FileInfo fInfo in dirInfo.GetFiles())
+                foreach(FileInfo fInfo in dirInfo.GetFiles("*.wav", SearchOption.AllDirectories))
                 {
                     if(fInfo.Extension.Contains("wav"))
                     {

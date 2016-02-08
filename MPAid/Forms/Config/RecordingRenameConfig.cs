@@ -15,6 +15,7 @@ namespace MPAid.Forms.Config
 {
     public partial class RecordingRenameConfig : Form
     {
+        private WaveFileReader reader;
         public RecordingRenameConfig()
         {
             InitializeComponent();
@@ -29,7 +30,7 @@ namespace MPAid.Forms.Config
                     this.filenameTextBox.Text = openFileDialog.SafeFileName;
                 }
             }
-            catch(Exception exp)
+            catch (Exception exp)
             {
                 Console.WriteLine(exp);
             }
@@ -49,19 +50,19 @@ namespace MPAid.Forms.Config
 
                 File.Move(openFileDialog.FileName, paser.SingleFile);
 
-                if(File.Exists(paser.SingleFile))
+                if (File.Exists(paser.SingleFile))
                 {
                     this.filenameTextBox.Text = paser.FullName;
                     this.openFileDialog.FileName = paser.SingleFile;
                 }
             }
-            catch(Exception exp)
+            catch (Exception exp)
             {
-                if(exp.GetType() == typeof(FileNotFoundException))
+                if (exp.GetType() == typeof(FileNotFoundException))
                 {
                     MessageBox.Show(exp.Message, "No such file!");
                 }
-                else if(exp.GetType() == typeof(IOException))
+                else if (exp.GetType() == typeof(IOException))
                 {
                     MessageBox.Show(exp.Message, "Destination file already exists!");
                 }
@@ -72,17 +73,28 @@ namespace MPAid.Forms.Config
         {
             try
             {
-                if(File.Exists(this.openFileDialog.FileName))
+                if (File.Exists(this.openFileDialog.FileName))
                 {
-                    WaveFileReader reader = new WaveFileReader(this.openFileDialog.FileName);
-                    var waveOut = new WaveOut(); // or WaveOutEvent()
+                    var waveOut = new WaveOutEvent();
+                    reader = new WaveFileReader(this.openFileDialog.FileName);
                     waveOut.Init(reader);
+                    waveOut.PlaybackStopped += WaveOut_PlaybackStopped;
                     waveOut.Play();
                 }
             }
-            catch(Exception exp)
+            catch (Exception exp)
             {
                 MessageBox.Show(exp.Message, "NAudio playing error!");
+            }
+        }
+
+        private void WaveOut_PlaybackStopped(object sender, StoppedEventArgs e)
+        {
+            if (sender != null) (sender as WaveOutEvent).Dispose();
+            if (reader != null)
+            {
+                reader.Dispose();
+                reader = null;
             }
         }
     }

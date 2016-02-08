@@ -11,37 +11,32 @@ namespace MPAid.Cores
     {
         public string Advise(string recording, string target, string recognized)
         {
-            string advice = string.Format(@"Your speech {0} was recognized as {1}!{2}", recording, recognized, Environment.NewLine);
-            if(!recognized.Equals(target) && !string.IsNullOrEmpty(target))
+            string advice = "Errors in lexicon.txt!";
+            if (lexicon.ReadLexicon())
             {
-                advice += CompareWords(target, recognized);
+                string recognizedPronouciation = lexicon.dictionary[recognized];
+                advice = string.Format(@"Your recording '{0}' is analyzed as '{1}', having pronouciation '{2}'.{3}{4}", recording, recognized, recognizedPronouciation, Environment.NewLine, Environment.NewLine);
+                if (!recognized.Equals(target) && !string.IsNullOrEmpty(target))
+                {
+                    advice += CompareWords(target, recognized);
+                }
             }
             return advice;
-        } 
+        }
 
         private string CompareWords(string target, string recognized)
         {
             string advice = string.Empty;
-            if (lexicon.ReadLexicon())
-            {
-                string targetPronouciation = lexicon.dictionary[target], recognizedPronouciation = lexicon.dictionary[recognized];
-                string[] lines =
-                {
-                    @"Compared with the target word {0},",
-                    @"which should be pronouced as {1},",
-                    @"It sounds linke you were saying {2},",
-                    @"which was pronouced like {3}!"
-                };
-                advice += string.Format(string.Join(Environment.NewLine, lines), target, targetPronouciation, recognized, recognizedPronouciation);
+            string targetPronouciation = lexicon.dictionary[target];
+            advice += string.Format(@"However, compared to the target word '{0}', whose pronouciation is '{1}',{2}{3}", target, targetPronouciation, Environment.NewLine, Environment.NewLine);
 
-                Dictionary<string, string> mismatched = AnalyzePronouciation(targetPronouciation, recognizedPronouciation);
-                if(mismatched.Count > 0)
+            Dictionary<string, string> mismatched = AnalyzePronouciation(targetPronouciation, lexicon.dictionary[recognized]);
+            if (mismatched.Count > 0)
+            {
+                advice += string.Format(@"It sounds that you are mis-pronoucing:{0}", Environment.NewLine);
+                foreach (KeyValuePair<string, string> pair in mismatched)
                 {
-                    advice += string.Format(@"You are mis-pronoucing:{0}", Environment.NewLine);
-                    foreach(KeyValuePair<string, string> pair in mismatched)
-                    {
-                        advice += string.Format(@"{0} to {1}{2}", pair.Key, pair.Value, Environment.NewLine);
-                    }
+                    advice += string.Format(@"{0} to {1}{2}", pair.Key, pair.Value, Environment.NewLine);
                 }
             }
             return advice;
@@ -52,7 +47,7 @@ namespace MPAid.Cores
             Dictionary<string, string> mismatched = new Dictionary<string, string>();
             string[] targetPhones = target.Split(' ');
             string[] recognizedPhones = recognized.Split(' ');
-            for(int i = 0; i < Math.Min(targetPhones.Length, recognizedPhones.Length); i++)
+            for (int i = 0; i < Math.Min(targetPhones.Length, recognizedPhones.Length); i++)
             {
                 mismatched.Add(targetPhones[i], recognizedPhones[i]);
             }
@@ -77,7 +72,7 @@ namespace MPAid.Cores
                     {
                         using (StreamReader sr = new StreamReader(fs, Encoding.Default))
                         {
-                            
+
                             string item;
                             while ((item = sr.ReadLine()) != null)
                             {
@@ -94,7 +89,7 @@ namespace MPAid.Cores
                     return true;
                 }
             }
-            catch(Exception exp)
+            catch (Exception exp)
             {
                 Console.WriteLine(exp);
             }
