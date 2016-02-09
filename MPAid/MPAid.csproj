@@ -2422,6 +2422,7 @@
     <Content Include="HTK\Tools\LNorm.exe" />
     <Content Include="HTK\Tools\LPlex.exe" />
     <Content Include="HTK\Tools\LSubset.exe" />
+    <Content Include="Resources\Instruction\upload.jpg" />
     <Content Include="Resources\player\pause_64_1.png" />
     <Content Include="Resources\player\pause_64_2.png" />
     <Content Include="Resources\player\play_64_1.png" />

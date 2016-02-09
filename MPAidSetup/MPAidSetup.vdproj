@@ -537,12 +537,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_06D0C13E562E4CF98FC695F6A33584F0"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_06E2CED74ED44AA2B86A65F4BC92D348"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -981,12 +975,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_0BE1C8FB56F34E00898DE3A657B74947"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_0BEECE2D4E5643CE9BF65AAD82E515D4"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -1282,6 +1270,12 @@
         "Entry"
         {
         "MsmKey" = "8:_105D497FA2C44AFA812EAF585EB9970B"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_1080E2A920824F58B8C2F7EE9299BA8E"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -2253,12 +2247,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_1C24D5CD536442918AA5C7917044779D"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_1C4DB3ECCEE845D38D13A5F04ACB2B7C"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -2596,6 +2584,12 @@
         "Entry"
         {
         "MsmKey" = "8:_20044914E5114F7991CBAE7281247E34"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_20367E56FFBC48AF8AFAC8599D78A544"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -4719,12 +4713,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_3DFC25EBD7B34265B804E3928E7D280A"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_3E0407968B4D4C59A4B10F447A51D56D"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -5589,6 +5577,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_484A2ED303794BA0BCEC79257226B370"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_4888EEE51ADC47FFA1A909D81F09940C"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -5782,6 +5776,12 @@
         "Entry"
         {
         "MsmKey" = "8:_4A6C87D38A174674BFC750D59C413D36"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_4A7564D46AD4434CA5C3DAD28E3AEE20"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -7281,6 +7281,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_5EBCAC1597B94984BA4A6F15BBA93A70"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_5ECECC5DA6EC411BB143C02F350C6259"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -8128,12 +8134,6 @@
         "Entry"
         {
         "MsmKey" = "8:_6998083D39224755957D0B8B426116CD"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_699E61D68A2E46A1957A98F4D869E577"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -9105,6 +9105,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_77F36BFA096243FCB61145814CC35557"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_77F4CEA26BBD4FBE94650291EAFCDE1D"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -9778,6 +9784,12 @@
         "Entry"
         {
         "MsmKey" = "8:_80D2F35E19D349FAACFBE0193BD2A9A6"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_80EAE6562E824E93872E4CAB2D2F34FA"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -10857,12 +10869,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_910AFB46C70E446B8F1F3AB9FC07689F"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_911AA022C6274B7C83F84DFFDF422DBE"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -11320,12 +11326,6 @@
         "Entry"
         {
         "MsmKey" = "8:_95BFC183712241B0BE2ED63AFF0EDA3D"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_95CA98BDCBCD439D825975093334A47F"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -12519,12 +12519,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_A608D9D200AC4532A93DCCDE6ED27541"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_A60FFBE1A0F747F7995DB5FD1FFC5077"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -12675,6 +12669,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_A83ADA3F96F2467984A15568CCC72AFF"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_A848319AD1AD4A4B9FB8DF3CEAD9B0B5"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -12742,6 +12742,12 @@
         "Entry"
         {
         "MsmKey" = "8:_A8E38BFDF697463BBCCF3BE5B7398F8F"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_A8E7DD4880484302A2D743E4B4919E66"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -16611,12 +16617,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_DA36E9BDD8EF4B059F2D9B4FEADA1FC4"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_DA537F02738D4A448D886465F9A72C96"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -17746,12 +17746,6 @@
         "Entry"
         {
         "MsmKey" = "8:_E8B9ED5727A24C8AB7DE47BF15FE1300"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_E8CC096F008A4B0D87ECDF0DC2ED33D1"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -21375,26 +21369,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_06D0C13E562E4CF98FC695F6A33584F0"
-            {
-            "SourcePath" = "8:..\\MPAid\\HTK\\Batches\\HDMan.Log"
-            "TargetName" = "8:HDMan.Log"
-            "Tag" = "8:"
-            "Folder" = "8:_A02DAD03AC174253AEEDC5CEB70E09FA"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_06E2CED74ED44AA2B86A65F4BC92D348"
             {
             "SourcePath" = "8:..\\MPAid\\VlcLibs\\x86\\plugins\\video_filter\\libswscale_plugin.dll"
@@ -22855,26 +22829,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_0BE1C8FB56F34E00898DE3A657B74947"
-            {
-            "SourcePath" = "8:..\\MPAid\\HTK\\Batches\\RecordingRenamer.bat"
-            "TargetName" = "8:RecordingRenamer.bat"
-            "Tag" = "8:"
-            "Folder" = "8:_A02DAD03AC174253AEEDC5CEB70E09FA"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_0BEECE2D4E5643CE9BF65AAD82E515D4"
             {
             "SourcePath" = "8:..\\MPAid\\VlcLibs\\x86\\plugins\\lua\\liblua_plugin.dll"
@@ -23861,6 +23815,26 @@
             "TargetName" = "8:youngfemale-word-pö-L1H05M.mfc"
             "Tag" = "8:"
             "Folder" = "8:_69FE244997CF493CA4730FAAA819F752"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_1080E2A920824F58B8C2F7EE9299BA8E"
+            {
+            "SourcePath" = "8:..\\MPAid\\HTK\\Batches\\Experiment.bat"
+            "TargetName" = "8:Experiment.bat"
+            "Tag" = "8:"
+            "Folder" = "8:_A02DAD03AC174253AEEDC5CEB70E09FA"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -27086,26 +27060,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_1C24D5CD536442918AA5C7917044779D"
-            {
-            "SourcePath" = "8:..\\MPAid\\HTK\\Batches\\HVite.log"
-            "TargetName" = "8:HVite.log"
-            "Tag" = "8:"
-            "Folder" = "8:_A02DAD03AC174253AEEDC5CEB70E09FA"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_1C4DB3ECCEE845D38D13A5F04ACB2B7C"
             {
             "SourcePath" = "8:..\\MPAid\\Fomant\\dist\\tcl\\tk8.5\\demos\\style.tcl"
@@ -28232,6 +28186,26 @@
             "TargetName" = "8:Reykjavik"
             "Tag" = "8:"
             "Folder" = "8:_CBA925CABC644F1CB069CA73128E7544"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_20367E56FFBC48AF8AFAC8599D78A544"
+            {
+            "SourcePath" = "8:..\\MPAid\\HTK\\Batches\\ModelEvaluater.bat"
+            "TargetName" = "8:ModelEvaluater.bat"
+            "Tag" = "8:"
+            "Folder" = "8:_A02DAD03AC174253AEEDC5CEB70E09FA"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -35306,26 +35280,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_3DFC25EBD7B34265B804E3928E7D280A"
-            {
-            "SourcePath" = "8:..\\MPAid\\HTK\\Batches\\Experiment.bat"
-            "TargetName" = "8:Experiment.bat"
-            "Tag" = "8:"
-            "Folder" = "8:_A02DAD03AC174253AEEDC5CEB70E09FA"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_3E0407968B4D4C59A4B10F447A51D56D"
             {
             "SourcePath" = "8:..\\MPAid\\Fomant\\dist\\tcl\\tcl8.5\\tzdata\\Africa\\Mbabane"
@@ -38177,6 +38131,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_484A2ED303794BA0BCEC79257226B370"
+            {
+            "SourcePath" = "8:..\\MPAid\\HTK\\Batches\\LiveTest.bat"
+            "TargetName" = "8:LiveTest.bat"
+            "Tag" = "8:"
+            "Folder" = "8:_A02DAD03AC174253AEEDC5CEB70E09FA"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_4888EEE51ADC47FFA1A909D81F09940C"
             {
             "SourcePath" = "8:..\\MPAid\\Audio\\oldfemale-word-moutere-R003M.wav"
@@ -38823,6 +38797,26 @@
             "TargetName" = "8:libxa_plugin.dll"
             "Tag" = "8:"
             "Folder" = "8:_DEFAF44F999349C0BC9B76BBFFEFE5A7"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_4A7564D46AD4434CA5C3DAD28E3AEE20"
+            {
+            "SourcePath" = "8:..\\MPAid\\HTK\\Batches\\RecordingPicker.bat"
+            "TargetName" = "8:RecordingPicker.bat"
+            "Tag" = "8:"
+            "Folder" = "8:_A02DAD03AC174253AEEDC5CEB70E09FA"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -43819,6 +43813,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_5EBCAC1597B94984BA4A6F15BBA93A70"
+            {
+            "SourcePath" = "8:..\\MPAid\\HTK\\Batches\\FileTest.bat"
+            "TargetName" = "8:FileTest.bat"
+            "Tag" = "8:"
+            "Folder" = "8:_A02DAD03AC174253AEEDC5CEB70E09FA"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_5ECECC5DA6EC411BB143C02F350C6259"
             {
             "SourcePath" = "8:..\\MPAid\\Audio\\youngfemale-word-tü-L1H01M.wav"
@@ -46645,26 +46659,6 @@
             "TargetName" = "8:fa_in.msg"
             "Tag" = "8:"
             "Folder" = "8:_6596C193EDEF44CDA1056CD96AAE8479"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_699E61D68A2E46A1957A98F4D869E577"
-            {
-            "SourcePath" = "8:..\\MPAid\\HTK\\Batches\\DataPreparer.bat"
-            "TargetName" = "8:DataPreparer.bat"
-            "Tag" = "8:"
-            "Folder" = "8:_A02DAD03AC174253AEEDC5CEB70E09FA"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -49879,6 +49873,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_77F36BFA096243FCB61145814CC35557"
+            {
+            "SourcePath" = "8:..\\MPAid\\HTK\\Batches\\DataPreparer.bat"
+            "TargetName" = "8:DataPreparer.bat"
+            "Tag" = "8:"
+            "Folder" = "8:_A02DAD03AC174253AEEDC5CEB70E09FA"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_77F4CEA26BBD4FBE94650291EAFCDE1D"
             {
             "SourcePath" = "8:..\\MPAid\\VlcLibs\\x86\\plugins\\video_filter\\libsubsdelay_plugin.dll"
@@ -52125,6 +52139,26 @@
             "TargetName" = "8:be.msg"
             "Tag" = "8:"
             "Folder" = "8:_6596C193EDEF44CDA1056CD96AAE8479"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_80EAE6562E824E93872E4CAB2D2F34FA"
+            {
+            "SourcePath" = "8:..\\MPAid\\HTK\\Batches\\RecordingRenamer.bat"
+            "TargetName" = "8:RecordingRenamer.bat"
+            "Tag" = "8:"
+            "Folder" = "8:_A02DAD03AC174253AEEDC5CEB70E09FA"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -55719,26 +55753,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_910AFB46C70E446B8F1F3AB9FC07689F"
-            {
-            "SourcePath" = "8:..\\MPAid\\HTK\\Batches\\LiveTest.bat"
-            "TargetName" = "8:LiveTest.bat"
-            "Tag" = "8:"
-            "Folder" = "8:_A02DAD03AC174253AEEDC5CEB70E09FA"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_911AA022C6274B7C83F84DFFDF422DBE"
             {
             "SourcePath" = "8:..\\MPAid\\VlcLibs\\x86\\plugins\\codec\\libdvbsub_plugin.dll"
@@ -57265,26 +57279,6 @@
             "TargetName" = "8:pkgIndex.tcl"
             "Tag" = "8:"
             "Folder" = "8:_71153074D329435DAB7E6ECAF5878865"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_95CA98BDCBCD439D825975093334A47F"
-            {
-            "SourcePath" = "8:..\\MPAid\\HTK\\Batches\\HMMGenerater.bat"
-            "TargetName" = "8:HMMGenerater.bat"
-            "Tag" = "8:"
-            "Folder" = "8:_A02DAD03AC174253AEEDC5CEB70E09FA"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -61259,26 +61253,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_A608D9D200AC4532A93DCCDE6ED27541"
-            {
-            "SourcePath" = "8:..\\MPAid\\HTK\\Batches\\RecordingPicker.bat"
-            "TargetName" = "8:RecordingPicker.bat"
-            "Tag" = "8:"
-            "Folder" = "8:_A02DAD03AC174253AEEDC5CEB70E09FA"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_A60FFBE1A0F747F7995DB5FD1FFC5077"
             {
             "SourcePath" = "8:..\\MPAid\\Fomant\\dist\\tcl\\tk8.5\\button.tcl"
@@ -61779,6 +61753,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_A83ADA3F96F2467984A15568CCC72AFF"
+            {
+            "SourcePath" = "8:..\\MPAid\\HTK\\Perls\\Script2Train.pl"
+            "TargetName" = "8:Script2Train.pl"
+            "Tag" = "8:"
+            "Folder" = "8:_4E7E2048DEC64907AE85A9B51A829E65"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_A848319AD1AD4A4B9FB8DF3CEAD9B0B5"
             {
             "SourcePath" = "8:..\\MPAid\\Fomant\\dist\\tcl\\tk8.5\\bgerror.tcl"
@@ -62005,6 +61999,26 @@
             "TargetName" = "8:oldfemale-word-pou-R006M.wav"
             "Tag" = "8:"
             "Folder" = "8:_E972F75DFE9848D3A169948941618DBE"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_A8E7DD4880484302A2D743E4B4919E66"
+            {
+            "SourcePath" = "8:..\\MPAid\\HTK\\Batches\\HMMGenerater.bat"
+            "TargetName" = "8:HMMGenerater.bat"
+            "Tag" = "8:"
+            "Folder" = "8:_A02DAD03AC174253AEEDC5CEB70E09FA"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -74899,26 +74913,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_DA36E9BDD8EF4B059F2D9B4FEADA1FC4"
-            {
-            "SourcePath" = "8:..\\MPAid\\HTK\\Batches\\ModelEvaluater.bat"
-            "TargetName" = "8:ModelEvaluater.bat"
-            "Tag" = "8:"
-            "Folder" = "8:_A02DAD03AC174253AEEDC5CEB70E09FA"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_DA537F02738D4A448D886465F9A72C96"
             {
             "SourcePath" = "8:..\\MPAid\\HTK\\MFCs\\oldfemale-word-mätao-R007M.mfc"
@@ -78696,26 +78690,6 @@
             "TargetName" = "8:youngfemale-word-pö-L1H05M.wav"
             "Tag" = "8:"
             "Folder" = "8:_E972F75DFE9848D3A169948941618DBE"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E8CC096F008A4B0D87ECDF0DC2ED33D1"
-            {
-            "SourcePath" = "8:..\\MPAid\\HTK\\Batches\\FileTest.bat"
-            "TargetName" = "8:FileTest.bat"
-            "Tag" = "8:"
-            "Folder" = "8:_A02DAD03AC174253AEEDC5CEB70E09FA"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -86114,7 +86088,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:MPAidSetup"
         "ProductCode" = "8:{66D0DB07-5220-4228-93FB-317D3D154702}"
-        "PackageCode" = "8:{B534C1B5-90BC-4D68-8BE4-0D7ED3B531F5}"
+        "PackageCode" = "8:{19DA94EA-CF04-4091-BDBF-5444A4BADE94}"
         "UpgradeCode" = "8:{0C7D9F69-FEA5-47B5-9807-BACF7937728F}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
