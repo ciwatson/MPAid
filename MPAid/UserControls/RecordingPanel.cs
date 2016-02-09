@@ -11,6 +11,7 @@ using System.Data.Entity;
 using MPAid.Models;
 using MPAid.Cores;
 using MPAid.Forms;
+using System.IO;
 
 namespace MPAid.UserControls
 {
@@ -82,9 +83,9 @@ namespace MPAid.UserControls
                     ICollection<SingleFile> audios = rd.Audios;
                     if (audios == null || audios.Count == 0) throw new Exception("No audio recording!");
                     SingleFile sf = audios.PickNext();
-                    string filePath = sf.Address + "\\" + sf.Name;
+                    string filePath = Path.Combine(sf.Address, sf.Name);
 
-                    mainForm.OperationPanel.VlcPlayer.VlcControl.Play(new Uri(filePath));
+                    mainForm.OperationPanel.NAudioRecorder.AudioPlayer.Play(filePath);
                 }
                 else
                 {
@@ -94,7 +95,6 @@ namespace MPAid.UserControls
             catch (Exception exp)
             {
                 MessageBox.Show(exp.Message);
-                Console.WriteLine(exp);
             }
         }
     }

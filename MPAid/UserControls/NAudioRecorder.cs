@@ -29,6 +29,11 @@ namespace MPAid.UserControls
         private string tempFolder;
         private HTKEngine RecEngine = new HTKEngine();
         private ScoreBoard scoreBoard = new ScoreBoard();
+        private NAudioPlayer audioPlayer = new NAudioPlayer();
+        public NAudioPlayer AudioPlayer
+        {
+            get { return audioPlayer; }
+        }
 
         public NAudioRecorder()
         {
@@ -180,12 +185,8 @@ namespace MPAid.UserControls
         {
             if (RECListBox.SelectedItem != null)
             {
-                reader = new WaveFileReader(Path.Combine(outputFolder, (string)RECListBox.SelectedItem));
-                if (waveOut.PlaybackState != PlaybackState.Playing)
-                {
-                    waveOut.Init(reader);
-                    waveOut.Play();
-                }
+                string filePath = Path.Combine(outputFolder, (string)RECListBox.SelectedItem);
+                audioPlayer.Play(filePath);
             }
         }
 
@@ -268,26 +269,6 @@ namespace MPAid.UserControls
 
         private void showReportButton_Click(object sender, EventArgs e)
         {
-            //MainForm mainForm = Parent.Parent.Parent.Parent.Parent.Parent as MainForm;
-
-            //String word = (mainForm.RecordingList.WordListBox.SelectedItem as Word).Name;
-            //HtmlConfig hConfig = new HtmlConfig(mainForm.configContent.ReportFolderAddr.FolderAddr)
-            //{
-            //    myWord = word,
-            //    correctnessValue = CalculateScore().ToString()
-            //};
-
-            //if ((RECListBox.Items != null) && (RECListBox.Items.Count > 0))
-            //{
-            //    string[] wordArray = new string[RECListBox.Items.Count];
-            //    RECListBox.Items.CopyTo(wordArray, 0);
-            //    hConfig.listRecognized = wordArray.ToList();
-            //}
-
-
-            //HtmlGenerator htmlWriter = new HtmlGenerator(hConfig);
-            //htmlWriter.Run();
-
             ReportLaucher rl = new ReportLaucher();
             rl.GenerateHTML(scoreBoard);
 

@@ -112,10 +112,7 @@ popd
 REM	****************************
 REM     Generate evaluation script in %Evaluations% from %MFCs%
 REM	****************************
-type NUL> "%Evaluations%evaluation.scp"
-for /f "tokens=1,2" %%a in (%MFCs%script.scp) do (
-    echo %%b>> "%Evaluations%evaluation.scp"
-)
+Perl "%Perls%Script2Train.pl" "%MFCs%script.scp" "%Evaluations%evaluation.scp"
 
 REM	****************************
 REM	Recognize the recordings on evaluation.scp and then output the transcript "RecMLF.mlf"

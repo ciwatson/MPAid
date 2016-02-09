@@ -35,8 +35,6 @@ namespace MPAid
 
         public MPAidModel DBModel;
 
-        //public TestForm test = new TestForm();
-
         public UserManagement UserManager
         {
             get { return allUsers; }

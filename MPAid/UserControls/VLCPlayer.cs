@@ -25,14 +25,6 @@ namespace MPAid.UserControls
         public VlcPlayer()
         {
             InitializeComponent();
-
-            //playTDButton.ImageNormal = Properties.Resources.ButtonGreen_0;
-            //playTDButton.ImageHighlight = Properties.Resources.ButtonGreen_1;
-            //playTDButton.ImagePressed = Properties.Resources.ButtonGreen_2;
-
-            //stopButton.ImageNormal = Properties.Resources.ButtonRed_0;
-            //stopButton.ImageHighlight = Properties.Resources.ButtonRed_1;
-            //stopButton.ImagePressed = Properties.Resources.ButtonRed_2;
         }
         private void OnVlcControlNeedLibDirectory(object sender, VlcLibDirectoryNeededEventArgs e)
         {

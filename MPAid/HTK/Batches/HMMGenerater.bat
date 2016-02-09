@@ -24,10 +24,7 @@ popd
 REM	****************************
 REM     Generate evaluation script in %Evaluations% from %MFCs%
 REM	****************************
-type NUL> "%HMMs%train.scp"
-for /f "tokens=1,2" %%a in (%MFCs%script.scp) do (
-    echo %%b>> "%HMMs%train.scp"
-)
+Perl "%Perls%Script2Train.pl" "%MFCs%script.scp" "%HMMs%train.scp"
 
 REM	****************************
 REM	assign character set to utf-8
@@ -38,7 +35,7 @@ REM	****************************
 REM	make "%HMMs%"%HMMs%hmm0""
 REM	****************************
 REM if not exist "%HMMs%"%HMMs%hmm0"" (mkdir "%HMMs%hmm0")
-REM "%Tools%HCompV" -C "%Params%HMMs.conf" -f 0.01 -m -S Train.scp -M "%HMMs%hmm0" prot
+REM "%Tools%HCompV" -C "%Params%HMMs.conf" -f 0.01 -m -S "%HMMs%train.scp" -M "%HMMs%hmm0" prot
 
 REM	****************************
 REM	make "%HMMs%hmm1"-3 based on "%HMMs%hmm0"

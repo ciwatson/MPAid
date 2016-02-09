@@ -128,6 +128,7 @@
   <ItemGroup>
     <Compile Include="Cores\CollectionExtensions.cs" />
     <Compile Include="Cores\HTKEngine.cs" />
+    <Compile Include="Cores\NAudioPlayer.cs" />
     <Compile Include="Cores\ProcessExtension.cs" />
     <Compile Include="Cores\PronouciationAdvisor.cs" />
     <Compile Include="Cores\ReportLaucher.cs" />
@@ -1592,6 +1593,7 @@
     <None Include="HTK\Perls\prompts2mlf.pl" />
     <None Include="HTK\Perls\prompts2wlist.pl" />
     <None Include="HTK\Perls\RecordingRenamer.pl" />
+    <None Include="HTK\Perls\Script2Train.pl" />
     <None Include="HTK\Perls\ScriptGenerater.pl" />
     <None Include="Prerequisties\x64\ActivePerl-5.22.1.2201-MSWin32-x64-299574.msi" />
     <None Include="Prerequisties\x64\SqlLocalDB.msi" />

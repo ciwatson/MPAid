@@ -15,7 +15,6 @@ namespace MPAid.Forms.Config
 {
     public partial class RecordingRenameConfig : Form
     {
-        private WaveFileReader reader;
         public RecordingRenameConfig()
         {
             InitializeComponent();
@@ -28,6 +27,8 @@ namespace MPAid.Forms.Config
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     this.filenameTextBox.Text = openFileDialog.SafeFileName;
+                    FileInfo fInfo = new FileInfo(openFileDialog.FileName);
+                    if (!fInfo.Extension.Contains("wav")) this.testButton.Enabled = false;
                 }
             }
             catch (Exception exp)
@@ -75,26 +76,12 @@ namespace MPAid.Forms.Config
             {
                 if (File.Exists(this.openFileDialog.FileName))
                 {
-                    var waveOut = new WaveOutEvent();
-                    reader = new WaveFileReader(this.openFileDialog.FileName);
-                    waveOut.Init(reader);
-                    waveOut.PlaybackStopped += WaveOut_PlaybackStopped;
-                    waveOut.Play();
+                    MainForm.self.OperationPanel.NAudioRecorder.AudioPlayer.Play(this.openFileDialog.FileName);
                 }
             }
             catch (Exception exp)
             {
                 MessageBox.Show(exp.Message, "NAudio playing error!");
-            }
-        }
-
-        private void WaveOut_PlaybackStopped(object sender, StoppedEventArgs e)
-        {
-            if (sender != null) (sender as WaveOutEvent).Dispose();
-            if (reader != null)
-            {
-                reader.Dispose();
-                reader = null;
             }
         }
     }
