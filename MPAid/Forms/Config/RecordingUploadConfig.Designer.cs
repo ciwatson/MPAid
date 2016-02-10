@@ -162,6 +162,7 @@ namespace MPAid.Forms.Config
             this.MinimizeBox = false;
             this.Name = "RecordingUploadConfig";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "Upload to Database";
             this.ResumeLayout(false);
             this.PerformLayout();
 

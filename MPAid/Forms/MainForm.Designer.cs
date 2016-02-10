@@ -35,6 +35,8 @@ namespace MPAid
             this.headerBox = new System.Windows.Forms.PictureBox();
             this.categoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
+            this.operationPanel = new MPAid.UserControls.OperationPanel();
+            this.recordingPanel = new MPAid.UserControls.RecordingPanel();
             this.mainMenuStrip = new System.Windows.Forms.MenuStrip();
             this.usersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.administratorConsoleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -47,10 +49,8 @@ namespace MPAid
             this.renameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.submitFeedbackToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.operationPanel = new MPAid.UserControls.OperationPanel();
-            this.recordingPanel = new MPAid.UserControls.RecordingPanel();
             this.tutorialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.headerBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.categoryBindingSource)).BeginInit();
             this.panel1.SuspendLayout();
@@ -78,6 +78,23 @@ namespace MPAid
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(859, 384);
             this.panel1.TabIndex = 7;
+            // 
+            // operationPanel
+            // 
+            this.operationPanel.Location = new System.Drawing.Point(197, 7);
+            this.operationPanel.Name = "operationPanel";
+            this.operationPanel.Size = new System.Drawing.Size(659, 365);
+            this.operationPanel.TabIndex = 8;
+            // 
+            // recordingPanel
+            // 
+            this.recordingPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.recordingPanel.Location = new System.Drawing.Point(12, 6);
+            this.recordingPanel.Name = "recordingPanel";
+            this.recordingPanel.Size = new System.Drawing.Size(179, 366);
+            this.recordingPanel.TabIndex = 7;
             // 
             // mainMenuStrip
             // 
@@ -142,7 +159,7 @@ namespace MPAid
             // systemToolStripMenuItem
             // 
             this.systemToolStripMenuItem.Name = "systemToolStripMenuItem";
-            this.systemToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.systemToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.systemToolStripMenuItem.Text = "System";
             this.systemToolStripMenuItem.Click += new System.EventHandler(this.systemToolStripMenuItem_Click);
             // 
@@ -152,7 +169,7 @@ namespace MPAid
             this.uploadToolStripMenuItem,
             this.renameToolStripMenuItem});
             this.recordingToolStripMenuItem.Name = "recordingToolStripMenuItem";
-            this.recordingToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.recordingToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.recordingToolStripMenuItem.Text = "Recording";
             // 
             // uploadToolStripMenuItem
@@ -189,6 +206,13 @@ namespace MPAid
             this.submitFeedbackToolStripMenuItem.Text = "Submit Feedback";
             this.submitFeedbackToolStripMenuItem.Click += new System.EventHandler(this.submitFeedbackToolStripMenuItem_Click);
             // 
+            // tutorialToolStripMenuItem
+            // 
+            this.tutorialToolStripMenuItem.Name = "tutorialToolStripMenuItem";
+            this.tutorialToolStripMenuItem.Size = new System.Drawing.Size(169, 26);
+            this.tutorialToolStripMenuItem.Text = "Tutorial";
+            this.tutorialToolStripMenuItem.Click += new System.EventHandler(this.tutorialToolStripMenuItem_Click);
+            // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("aboutToolStripMenuItem.Image")));
@@ -197,29 +221,6 @@ namespace MPAid
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(169, 26);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
-            // 
-            // operationPanel
-            // 
-            this.operationPanel.Location = new System.Drawing.Point(197, 7);
-            this.operationPanel.Name = "operationPanel";
-            this.operationPanel.Size = new System.Drawing.Size(659, 365);
-            this.operationPanel.TabIndex = 8;
-            // 
-            // recordingPanel
-            // 
-            this.recordingPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.recordingPanel.Location = new System.Drawing.Point(12, 6);
-            this.recordingPanel.Name = "recordingPanel";
-            this.recordingPanel.Size = new System.Drawing.Size(179, 366);
-            this.recordingPanel.TabIndex = 7;
-            // 
-            // tutorialToolStripMenuItem
-            // 
-            this.tutorialToolStripMenuItem.Name = "tutorialToolStripMenuItem";
-            this.tutorialToolStripMenuItem.Size = new System.Drawing.Size(169, 26);
-            this.tutorialToolStripMenuItem.Text = "Tutorial";
             // 
             // MainForm
             // 

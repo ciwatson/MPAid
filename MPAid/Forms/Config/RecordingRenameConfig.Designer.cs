@@ -48,18 +48,18 @@
             // cancelButton
             // 
             this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.cancelButton.Location = new System.Drawing.Point(312, 188);
+            this.cancelButton.Location = new System.Drawing.Point(312, 204);
             this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Size = new System.Drawing.Size(75, 21);
+            this.cancelButton.Size = new System.Drawing.Size(75, 23);
             this.cancelButton.TabIndex = 0;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
             // 
             // renameButton
             // 
-            this.renameButton.Location = new System.Drawing.Point(393, 188);
+            this.renameButton.Location = new System.Drawing.Point(393, 204);
             this.renameButton.Name = "renameButton";
-            this.renameButton.Size = new System.Drawing.Size(75, 21);
+            this.renameButton.Size = new System.Drawing.Size(75, 23);
             this.renameButton.TabIndex = 1;
             this.renameButton.Text = "Rename";
             this.renameButton.UseVisualStyleBackColor = true;
@@ -72,9 +72,9 @@
             // 
             // filePickerButton
             // 
-            this.filePickerButton.Location = new System.Drawing.Point(418, 38);
+            this.filePickerButton.Location = new System.Drawing.Point(418, 41);
             this.filePickerButton.Name = "filePickerButton";
-            this.filePickerButton.Size = new System.Drawing.Size(50, 21);
+            this.filePickerButton.Size = new System.Drawing.Size(50, 23);
             this.filePickerButton.TabIndex = 2;
             this.filePickerButton.Text = "...";
             this.filePickerButton.UseVisualStyleBackColor = true;
@@ -83,89 +83,89 @@
             // filenameLabel
             // 
             this.filenameLabel.AutoSize = true;
-            this.filenameLabel.Location = new System.Drawing.Point(35, 42);
+            this.filenameLabel.Location = new System.Drawing.Point(35, 46);
             this.filenameLabel.Name = "filenameLabel";
-            this.filenameLabel.Size = new System.Drawing.Size(53, 12);
+            this.filenameLabel.Size = new System.Drawing.Size(49, 13);
             this.filenameLabel.TabIndex = 3;
             this.filenameLabel.Text = "Filename";
             // 
             // filenameTextBox
             // 
-            this.filenameTextBox.Location = new System.Drawing.Point(90, 40);
+            this.filenameTextBox.Location = new System.Drawing.Point(90, 43);
             this.filenameTextBox.Name = "filenameTextBox";
             this.filenameTextBox.ReadOnly = true;
-            this.filenameTextBox.Size = new System.Drawing.Size(322, 21);
+            this.filenameTextBox.Size = new System.Drawing.Size(322, 20);
             this.filenameTextBox.TabIndex = 4;
             // 
             // speakerTextBox
             // 
-            this.speakerTextBox.Location = new System.Drawing.Point(90, 67);
+            this.speakerTextBox.Location = new System.Drawing.Point(90, 73);
             this.speakerTextBox.Name = "speakerTextBox";
-            this.speakerTextBox.Size = new System.Drawing.Size(322, 21);
+            this.speakerTextBox.Size = new System.Drawing.Size(322, 20);
             this.speakerTextBox.TabIndex = 6;
             // 
             // speakerLabel
             // 
             this.speakerLabel.AutoSize = true;
-            this.speakerLabel.Location = new System.Drawing.Point(35, 72);
+            this.speakerLabel.Location = new System.Drawing.Point(35, 78);
             this.speakerLabel.Name = "speakerLabel";
-            this.speakerLabel.Size = new System.Drawing.Size(47, 12);
+            this.speakerLabel.Size = new System.Drawing.Size(47, 13);
             this.speakerLabel.TabIndex = 5;
             this.speakerLabel.Text = "Speaker";
             // 
             // categoryTextBox
             // 
-            this.categoryTextBox.Location = new System.Drawing.Point(90, 91);
+            this.categoryTextBox.Location = new System.Drawing.Point(90, 99);
             this.categoryTextBox.Name = "categoryTextBox";
-            this.categoryTextBox.Size = new System.Drawing.Size(322, 21);
+            this.categoryTextBox.Size = new System.Drawing.Size(322, 20);
             this.categoryTextBox.TabIndex = 8;
             // 
             // CategoryLabel
             // 
             this.CategoryLabel.AutoSize = true;
-            this.CategoryLabel.Location = new System.Drawing.Point(35, 96);
+            this.CategoryLabel.Location = new System.Drawing.Point(35, 104);
             this.CategoryLabel.Name = "CategoryLabel";
-            this.CategoryLabel.Size = new System.Drawing.Size(53, 12);
+            this.CategoryLabel.Size = new System.Drawing.Size(49, 13);
             this.CategoryLabel.TabIndex = 7;
             this.CategoryLabel.Text = "Category";
             // 
             // wordTextBox
             // 
-            this.wordTextBox.Location = new System.Drawing.Point(90, 115);
+            this.wordTextBox.Location = new System.Drawing.Point(90, 125);
             this.wordTextBox.Name = "wordTextBox";
-            this.wordTextBox.Size = new System.Drawing.Size(322, 21);
+            this.wordTextBox.Size = new System.Drawing.Size(322, 20);
             this.wordTextBox.TabIndex = 10;
             // 
             // wordLabel
             // 
             this.wordLabel.AutoSize = true;
-            this.wordLabel.Location = new System.Drawing.Point(35, 120);
+            this.wordLabel.Location = new System.Drawing.Point(35, 130);
             this.wordLabel.Name = "wordLabel";
-            this.wordLabel.Size = new System.Drawing.Size(29, 12);
+            this.wordLabel.Size = new System.Drawing.Size(33, 13);
             this.wordLabel.TabIndex = 9;
             this.wordLabel.Text = "Word";
             // 
             // labelTextBox
             // 
-            this.labelTextBox.Location = new System.Drawing.Point(90, 139);
+            this.labelTextBox.Location = new System.Drawing.Point(90, 151);
             this.labelTextBox.Name = "labelTextBox";
-            this.labelTextBox.Size = new System.Drawing.Size(322, 21);
+            this.labelTextBox.Size = new System.Drawing.Size(322, 20);
             this.labelTextBox.TabIndex = 12;
             // 
             // labelLabel
             // 
             this.labelLabel.AutoSize = true;
-            this.labelLabel.Location = new System.Drawing.Point(35, 144);
+            this.labelLabel.Location = new System.Drawing.Point(35, 156);
             this.labelLabel.Name = "labelLabel";
-            this.labelLabel.Size = new System.Drawing.Size(35, 12);
+            this.labelLabel.Size = new System.Drawing.Size(33, 13);
             this.labelLabel.TabIndex = 11;
             this.labelLabel.Text = "Label";
             // 
             // testButton
             // 
-            this.testButton.Location = new System.Drawing.Point(418, 68);
+            this.testButton.Location = new System.Drawing.Point(418, 74);
             this.testButton.Name = "testButton";
-            this.testButton.Size = new System.Drawing.Size(50, 21);
+            this.testButton.Size = new System.Drawing.Size(50, 23);
             this.testButton.TabIndex = 13;
             this.testButton.Text = "Test";
             this.testButton.UseVisualStyleBackColor = true;
@@ -173,10 +173,11 @@
             // 
             // RecordingRenameConfig
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AcceptButton = this.renameButton;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cancelButton;
-            this.ClientSize = new System.Drawing.Size(501, 221);
+            this.ClientSize = new System.Drawing.Size(501, 239);
             this.Controls.Add(this.testButton);
             this.Controls.Add(this.labelTextBox);
             this.Controls.Add(this.labelLabel);
@@ -196,7 +197,7 @@
             this.MinimizeBox = false;
             this.Name = "RecordingRenameConfig";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "RecordingRenameConfig";
+            this.Text = "Rename Recordings";
             this.ResumeLayout(false);
             this.PerformLayout();
 

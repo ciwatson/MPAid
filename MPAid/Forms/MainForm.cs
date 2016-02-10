@@ -9,10 +9,12 @@ using MPAid.Cores;
 using MPAid.Models;
 using System.Data.Entity;
 using MPAid.UserControls;
+using System.Net.Mail;
+using MPAid.Forms.MSGBox;
 
 namespace MPAid
 {
-    public partial class  MainForm : Form
+    public partial class MainForm : Form
     {
         public static MainForm self;
         private UserManagement allUsers;
@@ -81,11 +83,10 @@ namespace MPAid
             Text += " " + GetVersionString();
 
             systemIO = new IoController();
-            //myUsers = new UserManagement(ResMan.GetUserTempPath());
 
             InitializeUserProfile();
 
-            FillLists();        
+            FillLists();
         }
 
         //this method is called when allUsers has been initialized
@@ -99,7 +100,7 @@ namespace MPAid
         }
 
         private void InitializeConfig()
-        {          
+        {
             this.systemConfigForm = new SystemConfig();
             this.systemConfigForm.InitializeContent();
             this.recordingUploadForm = new RecordingUploadConfig();
@@ -118,7 +119,7 @@ namespace MPAid
                 this.DBModel.Word.Load();
                 this.DBModel.SingleFile.Load();
             }
-            catch(Exception exp)
+            catch (Exception exp)
             {
                 MessageBox.Show(exp.Message, "Database linking error!");
             }
@@ -150,21 +151,10 @@ namespace MPAid
             }
         }
 
-        private void showAbout()
-        {
-            MessageBox.Show(this, "Maori Pronunciation Aid "
-                  + GetVersionString() + "\n\n" +
-                  "Dr. Catherine Watson\n" +
-                  "The University of Auckland",
-                  "About",
-                  MessageBoxButtons.OK,
-                  MessageBoxIcon.Information);
-        }
-
         private void headerBox_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             if (e.Button == System.Windows.Forms.MouseButtons.Left)
-                showAbout();
+                aboutToolStripMenuItem_Click(sender, e);
         }
 
         private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -193,33 +183,31 @@ namespace MPAid
         private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ChangePasswordWindow changePswdForm = new ChangePasswordWindow(allUsers);
-            changePswdForm.ShowDialog();
+            changePswdForm.ShowDialog(this);
         }
 
         private void administratorConsoleToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AdminConsole adminForm = new AdminConsole(allUsers);
-            adminForm.ShowDialog();
+            adminForm.ShowDialog(this);
         }
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            showAbout();
+            MessageBox.Show(
+                this, "Maori Pronunciation Aid " + 
+                GetVersionString() + "\n\n" + 
+                "Dr. Catherine Watson\n" +
+                "The University of Auckland",
+                "About",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
         }
 
         private void submitFeedbackToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            try
-            {
-                const string email = "c.watson@auckland.ac.nz";
-                Process.Start(string.Format("mailto:{1}?subject=MPAi Feedback from {0}&body=",
-                    allUsers.getCurrentUser().getName(true), email));
-            }
-            catch (Exception)
-            {
-                
-            }
-
+            FeedbackMSGBox fbMSGBox = new FeedbackMSGBox();
+            fbMSGBox.ShowDialog(this);
         }
 
         private void systemToolStripMenuItem_Click(object sender, EventArgs e)
@@ -235,6 +223,19 @@ namespace MPAid
         private void renameToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.recordingRenameForm.ShowDialog(this);
+        }
+
+        private void tutorialToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string target = @"https://github.com/YsqEvilmax/MPAid/wiki/Instruction";
+                Process.Start(target);
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.Message, "Invalid URL Address!");
+            }
         }
     }
 }

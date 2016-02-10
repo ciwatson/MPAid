@@ -259,6 +259,7 @@
             this.MinimizeBox = false;
             this.Name = "SystemConfig";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "Set System Paths";
             this.ResumeLayout(false);
             this.PerformLayout();
 
