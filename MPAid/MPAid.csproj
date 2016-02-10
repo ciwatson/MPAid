@@ -2433,6 +2433,8 @@
     <Content Include="HTK\Tools\LPlex.exe" />
     <Content Include="HTK\Tools\LSubset.exe" />
     <Content Include="Resources\Instruction\MPAid.jpg" />
+    <Content Include="Resources\Instruction\pronunaid.JPG" />
+    <Content Include="Resources\Instruction\recognizer.JPG" />
     <Content Include="Resources\Instruction\recordinglist.JPG" />
     <Content Include="Resources\Instruction\rename.jpg" />
     <Content Include="Resources\Instruction\system.jpg" />

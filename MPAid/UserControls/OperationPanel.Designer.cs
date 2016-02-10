@@ -33,14 +33,14 @@
             this.vlcPlayer = new MPAid.UserControls.VlcPlayer();
             this.recognizerTabPage = new System.Windows.Forms.TabPage();
             this.naudioRecorder = new MPAid.UserControls.NAudioRecorder();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.pronunAidTabPage = new System.Windows.Forms.TabPage();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.tdButtonFormantPlot = new MPAid.TDButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.operationTabControl.SuspendLayout();
             this.videoPlayerTabPage.SuspendLayout();
             this.recognizerTabPage.SuspendLayout();
-            this.tabPage2.SuspendLayout();
+            this.pronunAidTabPage.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -52,7 +52,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.operationTabControl.Controls.Add(this.videoPlayerTabPage);
             this.operationTabControl.Controls.Add(this.recognizerTabPage);
-            this.operationTabControl.Controls.Add(this.tabPage2);
+            this.operationTabControl.Controls.Add(this.pronunAidTabPage);
             this.operationTabControl.Location = new System.Drawing.Point(6, 19);
             this.operationTabControl.Name = "operationTabControl";
             this.operationTabControl.SelectedIndex = 0;
@@ -102,16 +102,16 @@
             this.naudioRecorder.Size = new System.Drawing.Size(514, 361);
             this.naudioRecorder.TabIndex = 0;
             // 
-            // tabPage2
+            // pronunAidTabPage
             // 
-            this.tabPage2.Controls.Add(this.groupBox4);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(521, 368);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Pronouciation Aid";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.pronunAidTabPage.Controls.Add(this.groupBox4);
+            this.pronunAidTabPage.Location = new System.Drawing.Point(4, 22);
+            this.pronunAidTabPage.Name = "pronunAidTabPage";
+            this.pronunAidTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.pronunAidTabPage.Size = new System.Drawing.Size(521, 368);
+            this.pronunAidTabPage.TabIndex = 1;
+            this.pronunAidTabPage.Text = "Pronunciation Aid";
+            this.pronunAidTabPage.UseVisualStyleBackColor = true;
             // 
             // groupBox4
             // 
@@ -163,7 +163,7 @@
             this.operationTabControl.ResumeLayout(false);
             this.videoPlayerTabPage.ResumeLayout(false);
             this.recognizerTabPage.ResumeLayout(false);
-            this.tabPage2.ResumeLayout(false);
+            this.pronunAidTabPage.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -175,7 +175,7 @@
         private System.Windows.Forms.TabControl operationTabControl;
         private System.Windows.Forms.TabPage videoPlayerTabPage;
         private VlcPlayer vlcPlayer;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage pronunAidTabPage;
         private System.Windows.Forms.GroupBox groupBox4;
         private TDButton tdButtonFormantPlot;
         private System.Windows.Forms.GroupBox groupBox1;
