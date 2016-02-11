@@ -1,7 +1,7 @@
 @Echo OFF
 REM	****************************
 REM	This batch file is used to perpare the data (audio recordings) for language model training
-REM     Author: Sgaoqing Yu(Shawn)  14/01/2016
+REM     Author: Shaoqing Yu(Shawn)  14/01/2016
 REM	****************************
 
 

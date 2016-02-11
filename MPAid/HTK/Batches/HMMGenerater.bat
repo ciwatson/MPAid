@@ -1,6 +1,7 @@
 @Echo OFF
 REM	****************************
-REM	This batch file is used to generate train code script (Script.scp) and the MFC files associated with audio recordings
+REM	This batch file is used to train the language model
+REM     Author: Shaoqing Yu(Shawn)  01/02/2016
 REM	****************************
 
 REM	****************************

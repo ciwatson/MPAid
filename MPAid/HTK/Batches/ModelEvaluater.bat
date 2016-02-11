@@ -1,6 +1,7 @@
 @Echo OFF
 REM	****************************
-REM	This batch file is used to evaluate the model we have built by audio recordings
+REM	This batch file is used to evaluate the language model
+REM     Author: Shaoqing Yu(Shawn)  14/01/2016
 REM	****************************
 
 

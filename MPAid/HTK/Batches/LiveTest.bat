@@ -1,7 +1,7 @@
 @Echo OFF
 REM	****************************
-REM	This batch file is used to rename the recording file in given folder
-REM     Author: Sgaoqing Yu(Shawn)  14/01/2016
+REM	This batch file is used to do a live recognition test by htk
+REM     Author: Shaoqing Yu(Shawn)  14/01/2016
 REM	****************************
 
 REM	****************************

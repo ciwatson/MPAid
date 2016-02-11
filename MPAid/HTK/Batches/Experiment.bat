@@ -1,6 +1,6 @@
 @Echo OFF
 REM	****************************
-REM	This batch file is used to evaluate the model we have built by audio recordings
+REM	This batch file is used to evaluate the model we have built by YM(youngmale) YF(youngfemale) OM(oldmale) OF(oldfemale) audio recordings respectively
 REM	****************************
 
 REM	****************************
@@ -25,7 +25,7 @@ for %%i in (YM YF OM OF) do (
     IF NOT EXIST "%Cur%%%i" (mkdir "%Cur%%%i")
 
     ModelEvaluater
-@echo off
+
     xcopy /s /y "%Evaluations%result.txt" "%Cur%%%i\result.txt*"
     xcopy /s /y "%MLFs%RecMLF.mlf" "%Cur%%%i\RecMLF.mlf*"
 )

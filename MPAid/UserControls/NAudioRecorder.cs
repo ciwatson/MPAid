@@ -248,6 +248,8 @@ namespace MPAid.UserControls
                     Dictionary<string, string> result = RecEngine.Recognize(Path.Combine(outputFolder, (string)RECListBox.SelectedItem)).ToDictionary(x => x.Key, x => x.Value);
                     if(result.Count > 0)
                     {
+                        NAudioPlayer audioplayer = new NAudioPlayer();
+                        audioplayer.Play(Path.Combine(outputFolder, (string)RECListBox.SelectedItem));
                         RecognitionResultMSGBox recMSGBox = new RecognitionResultMSGBox();
                         if (recMSGBox.ShowDialog(result.First().Key, target, result.First().Value) == DialogResult.OK)
                         {
@@ -255,7 +257,7 @@ namespace MPAid.UserControls
                             correctnessLabel.Text = string.Format(@"Correctness: {0:0.0%}", scoreBoard.CalculateCorrectness); 
                         }
                         showReportButton.Enabled = true;
-                    }         
+                    }
                 }
                 
             }

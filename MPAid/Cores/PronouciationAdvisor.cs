@@ -81,7 +81,7 @@ namespace MPAid.Cores
                                 string pronouciation = item.Substring(item.IndexOf(']') + 1).Trim(' ');
                                 if (!string.IsNullOrEmpty(word))
                                 {
-                                    dictionary.Add(word, pronouciation);
+                                    if(!dictionary.ContainsKey(word)) dictionary.Add(word, pronouciation);
                                 }
                             }
                         }
