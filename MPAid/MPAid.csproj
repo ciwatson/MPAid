@@ -2447,6 +2447,7 @@
     <Content Include="Resources\Menu\system_icon.png" />
     <Content Include="Resources\Menu\tutorials_icon.png" />
     <Content Include="Resources\Menu\upload_icon.png" />
+    <Content Include="Resources\MPAid.ico" />
     <Content Include="Resources\player\pause_64_1.png" />
     <Content Include="Resources\player\pause_64_2.png" />
     <Content Include="Resources\player\play_64_1.png" />
