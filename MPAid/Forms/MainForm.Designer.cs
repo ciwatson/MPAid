@@ -135,12 +135,14 @@ namespace MPAid
             this.configToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.systemToolStripMenuItem,
             this.recordingToolStripMenuItem});
+            this.configToolStripMenuItem.Image = global::MPAid.Properties.Resources.configure_icon;
             this.configToolStripMenuItem.Name = "configToolStripMenuItem";
-            this.configToolStripMenuItem.Size = new System.Drawing.Size(55, 28);
+            this.configToolStripMenuItem.Size = new System.Drawing.Size(71, 28);
             this.configToolStripMenuItem.Text = "Config";
             // 
             // systemToolStripMenuItem
             // 
+            this.systemToolStripMenuItem.Image = global::MPAid.Properties.Resources.system_icon;
             this.systemToolStripMenuItem.Name = "systemToolStripMenuItem";
             this.systemToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.systemToolStripMenuItem.Text = "System";
@@ -151,12 +153,14 @@ namespace MPAid
             this.recordingToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.uploadToolStripMenuItem,
             this.renameToolStripMenuItem});
+            this.recordingToolStripMenuItem.Image = global::MPAid.Properties.Resources.recording_icon;
             this.recordingToolStripMenuItem.Name = "recordingToolStripMenuItem";
             this.recordingToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.recordingToolStripMenuItem.Text = "Recording";
             // 
             // uploadToolStripMenuItem
             // 
+            this.uploadToolStripMenuItem.Image = global::MPAid.Properties.Resources.upload_icon;
             this.uploadToolStripMenuItem.Name = "uploadToolStripMenuItem";
             this.uploadToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.uploadToolStripMenuItem.Text = "Upload";
@@ -164,6 +168,7 @@ namespace MPAid
             // 
             // renameToolStripMenuItem
             // 
+            this.renameToolStripMenuItem.Image = global::MPAid.Properties.Resources.rename_icon;
             this.renameToolStripMenuItem.Name = "renameToolStripMenuItem";
             this.renameToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.renameToolStripMenuItem.Text = "Rename";
@@ -191,6 +196,7 @@ namespace MPAid
             // 
             // tutorialToolStripMenuItem
             // 
+            this.tutorialToolStripMenuItem.Image = global::MPAid.Properties.Resources.tutorials_icon;
             this.tutorialToolStripMenuItem.Name = "tutorialToolStripMenuItem";
             this.tutorialToolStripMenuItem.Size = new System.Drawing.Size(169, 26);
             this.tutorialToolStripMenuItem.Text = "Instruction";
@@ -233,6 +239,7 @@ namespace MPAid
             this.Controls.Add(this.mainMenuStrip);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.mainMenuStrip;
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(875, 535);

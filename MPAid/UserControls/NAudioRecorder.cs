@@ -64,6 +64,7 @@ namespace MPAid.UserControls
             RECListBox.Items.Clear();
             DirectoryInfo info = new DirectoryInfo(Properties.Settings.Default.RecordingFolder);
             RECListBox.Items.AddRange(info.GetFiles().Where(x => x.Extension != ".mfc").Select(x => x.Name).ToArray());
+            //RECListBox.DataSource = info.GetFiles("*.wav");
         }
         private void FinalizeWaveFile(Stream s)
         {
@@ -295,6 +296,7 @@ namespace MPAid.UserControls
         private void deviceRefreshButton_Click(object sender, EventArgs e)
         {
             LoadWasapiDevices();
+            DataBinding();
         }
     }
 }

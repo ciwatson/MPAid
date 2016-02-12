@@ -55,8 +55,7 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>
-    </ApplicationIcon>
+    <ApplicationIcon>MPAid.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>MPAid.Program</StartupObject>
@@ -2432,6 +2431,7 @@
     <Content Include="HTK\Tools\LNorm.exe" />
     <Content Include="HTK\Tools\LPlex.exe" />
     <Content Include="HTK\Tools\LSubset.exe" />
+    <Content Include="MPAid.ico" />
     <Content Include="Resources\Instruction\MPAid.jpg" />
     <Content Include="Resources\Instruction\pronunaid.JPG" />
     <Content Include="Resources\Instruction\recognitionresult.jpg" />
@@ -2441,6 +2441,12 @@
     <Content Include="Resources\Instruction\system.jpg" />
     <Content Include="Resources\Instruction\upload.jpg" />
     <Content Include="Resources\Instruction\videoplayer.JPG" />
+    <Content Include="Resources\Menu\configure_icon.png" />
+    <Content Include="Resources\Menu\recording_icon.png" />
+    <Content Include="Resources\Menu\rename_icon.png" />
+    <Content Include="Resources\Menu\system_icon.png" />
+    <Content Include="Resources\Menu\tutorials_icon.png" />
+    <Content Include="Resources\Menu\upload_icon.png" />
     <Content Include="Resources\player\pause_64_1.png" />
     <Content Include="Resources\player\pause_64_2.png" />
     <Content Include="Resources\player\play_64_1.png" />
@@ -3080,7 +3086,6 @@
     <Content Include="Resources\header.png" />
     <Content Include="Resources\help.png" />
     <Content Include="Resources\HMMs.png" />
-    <Content Include="Resources\MPAid.ico" />
     <Content Include="Resources\newUser.png" />
     <Content Include="Resources\openFolder.png" />
     <Content Include="Resources\PictureNotFound.png" />

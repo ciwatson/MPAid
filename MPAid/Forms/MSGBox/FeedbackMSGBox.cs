@@ -31,14 +31,14 @@ namespace MPAid.Forms.MSGBox
                     mail.To.Add("c.watson@auckland.ac.nz");
                     mail.To.Add("syu702@aucklanduni.ac.nz");
                     mail.Subject = mailSubjectTextBox.Text;
-                    mail.Body = mailContentTextBox.Text;
+                    mail.Body = string.Format("{0}{1}{2}{3}This email is sent from {4}", mailContentTextBox.Text, Environment.NewLine, Environment.NewLine, Environment.NewLine, customerEmialTextBox.Text);
                     send.Send(mail);
-                    MessageBox.Show("Mail has been sent!", "Thanks for your feedback!");
+                    MessageBox.Show("Mail has been sent!", "Thanks!");
                     Close();
                 }
                 else
                 {
-                    MessageBox.Show("Please enter valid email address!", "Email Address Error!");
+                    MessageBox.Show("Please enter a valid email address!", "Email Address Error!");
                 }
             }
             catch (Exception exp)

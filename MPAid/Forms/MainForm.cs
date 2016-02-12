@@ -54,11 +54,12 @@ namespace MPAid
         public MainForm(UserManagement users)
         {
             MainForm.self = this;
-            InitializeDB();
-            InitializeConfig();
 
             SplashScreen splash = new SplashScreen();
             splash.Show();
+
+            InitializeDB();
+            InitializeConfig();
 
             SetUserManagement(users);
             InitializeComponent();
@@ -79,7 +80,6 @@ namespace MPAid
 
         private void InitializeUI()
         {
-            Icon = Properties.Resources.MPAid;
             Text += " " + GetVersionString();
 
             systemIO = new IoController();
@@ -155,19 +155,6 @@ namespace MPAid
         {
             if (e.Button == System.Windows.Forms.MouseButtons.Left)
                 aboutToolStripMenuItem_Click(sender, e);
-        }
-
-        private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            HMMsConfigForm hmmsConfig = new HMMsConfigForm();
-            //hmmsConfig.SetWorkingFolder(ResMan.GetAnnieDir());
-            hmmsConfig.ShowDialog();
-            HMMsController.SetHMMsValue(hmmsConfig.GetHMMsValue());
-        }
-
-        private void openHMMsFolderToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //systemIO.ShowInExplorer();
         }
 
         bool doCloseLogin = true;

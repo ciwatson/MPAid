@@ -200,6 +200,9 @@
   <data name="ButtonRed_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ButtonRed-2.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="refresh_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\refresh_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="wrong" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\wrong.pngfile;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -208,14 +211,11 @@
             document.getElementById("quicktips").remove();
         }</value>
   </data>
-  <data name="ButtonRed_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ButtonRed-1.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="ButtonRed_0" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ButtonRed-0.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="MPAid" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\MPAid.ico;System.Drawing.Icon, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="ButtonRed_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ButtonRed-1.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ButtonGreen_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ButtonGreen-1.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -226,7 +226,25 @@
   <data name="SplashScreen" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SplashScreen.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="refresh_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\refresh_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="configure_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Menu\configure_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="recording_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Menu\recording_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="rename_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Menu\rename_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="system_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Menu\system_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="tutorials_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Menu\tutorials_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="upload_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Menu\upload_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MPAid" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\MPAid.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
