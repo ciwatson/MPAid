@@ -64,7 +64,7 @@ namespace MPAid
             this.headerBox.Dock = System.Windows.Forms.DockStyle.Top;
             this.headerBox.Location = new System.Drawing.Point(0, 32);
             this.headerBox.Name = "headerBox";
-            this.headerBox.Size = new System.Drawing.Size(859, 81);
+            this.headerBox.Size = new System.Drawing.Size(864, 81);
             this.headerBox.TabIndex = 0;
             this.headerBox.TabStop = false;
             this.headerBox.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.headerBox_MouseDoubleClick);
@@ -76,7 +76,7 @@ namespace MPAid
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 113);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(859, 384);
+            this.panel1.Size = new System.Drawing.Size(864, 409);
             this.panel1.TabIndex = 7;
             // 
             // mainMenuStrip
@@ -87,7 +87,7 @@ namespace MPAid
             this.helpToolStripMenuItem});
             this.mainMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.mainMenuStrip.Name = "mainMenuStrip";
-            this.mainMenuStrip.Size = new System.Drawing.Size(859, 32);
+            this.mainMenuStrip.Size = new System.Drawing.Size(864, 32);
             this.mainMenuStrip.TabIndex = 8;
             this.mainMenuStrip.Text = "menuStrip1";
             // 
@@ -213,9 +213,11 @@ namespace MPAid
             // 
             // operationPanel
             // 
-            this.operationPanel.Location = new System.Drawing.Point(197, 7);
+            this.operationPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.operationPanel.Location = new System.Drawing.Point(219, 7);
             this.operationPanel.Name = "operationPanel";
-            this.operationPanel.Size = new System.Drawing.Size(659, 365);
+            this.operationPanel.Size = new System.Drawing.Size(642, 390);
             this.operationPanel.TabIndex = 8;
             // 
             // recordingPanel
@@ -225,7 +227,7 @@ namespace MPAid
             | System.Windows.Forms.AnchorStyles.Right)));
             this.recordingPanel.Location = new System.Drawing.Point(12, 6);
             this.recordingPanel.Name = "recordingPanel";
-            this.recordingPanel.Size = new System.Drawing.Size(179, 366);
+            this.recordingPanel.Size = new System.Drawing.Size(201, 391);
             this.recordingPanel.TabIndex = 7;
             // 
             // MainForm
@@ -233,17 +235,15 @@ namespace MPAid
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Snow;
-            this.ClientSize = new System.Drawing.Size(859, 497);
+            this.ClientSize = new System.Drawing.Size(864, 522);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.headerBox);
             this.Controls.Add(this.mainMenuStrip);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.mainMenuStrip;
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(875, 535);
-            this.MinimumSize = new System.Drawing.Size(850, 535);
+            this.MinimumSize = new System.Drawing.Size(720, 560);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Māori Pronunciation Aid";

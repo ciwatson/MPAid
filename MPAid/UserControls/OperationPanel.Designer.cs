@@ -56,7 +56,7 @@
             this.operationTabControl.Location = new System.Drawing.Point(6, 19);
             this.operationTabControl.Name = "operationTabControl";
             this.operationTabControl.SelectedIndex = 0;
-            this.operationTabControl.Size = new System.Drawing.Size(529, 394);
+            this.operationTabControl.Size = new System.Drawing.Size(541, 394);
             this.operationTabControl.TabIndex = 0;
             this.operationTabControl.Tag = "";
             this.operationTabControl.SelectedIndexChanged += new System.EventHandler(this.operationTabControlSelectedIndexChanged);
@@ -67,7 +67,7 @@
             this.videoPlayerTabPage.Location = new System.Drawing.Point(4, 22);
             this.videoPlayerTabPage.Name = "videoPlayerTabPage";
             this.videoPlayerTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.videoPlayerTabPage.Size = new System.Drawing.Size(521, 368);
+            this.videoPlayerTabPage.Size = new System.Drawing.Size(533, 368);
             this.videoPlayerTabPage.TabIndex = 0;
             this.videoPlayerTabPage.Text = "Video Player";
             this.videoPlayerTabPage.UseVisualStyleBackColor = true;
@@ -79,7 +79,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.vlcPlayer.Location = new System.Drawing.Point(0, 0);
             this.vlcPlayer.Name = "vlcPlayer";
-            this.vlcPlayer.Size = new System.Drawing.Size(518, 365);
+            this.vlcPlayer.Size = new System.Drawing.Size(530, 365);
             this.vlcPlayer.TabIndex = 0;
             // 
             // recognizerTabPage
@@ -148,7 +148,7 @@
             this.groupBox1.Controls.Add(this.operationTabControl);
             this.groupBox1.Location = new System.Drawing.Point(3, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(541, 419);
+            this.groupBox1.Size = new System.Drawing.Size(553, 419);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Operation Panel";

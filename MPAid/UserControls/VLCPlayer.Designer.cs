@@ -44,12 +44,14 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.vlcControl.BackColor = System.Drawing.SystemColors.ButtonShadow;
-            this.vlcControl.Location = new System.Drawing.Point(4, 1);
+            this.vlcControl.Location = new System.Drawing.Point(3, 1);
             this.vlcControl.Name = "vlcControl";
-            this.vlcControl.Size = new System.Drawing.Size(542, 280);
+            this.vlcControl.Size = new System.Drawing.Size(539, 280);
+            this.vlcControl.Spu = -1;
             this.vlcControl.TabIndex = 3;
             this.vlcControl.Text = "vlcControl1";
             this.vlcControl.VlcLibDirectory = null;
+            this.vlcControl.VlcMediaplayerOptions = null;
             this.vlcControl.VlcLibDirectoryNeeded += new System.EventHandler<Vlc.DotNet.Forms.VlcLibDirectoryNeededEventArgs>(this.OnVlcControlNeedLibDirectory);
             this.vlcControl.Stopped += new System.EventHandler<Vlc.DotNet.Core.VlcMediaPlayerStoppedEventArgs>(this.OnVlcControlStopped);
             // 
@@ -60,7 +62,7 @@
             this.stopButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.stopButton.ImageIndex = 0;
             this.stopButton.ImageList = this.stopImageList;
-            this.stopButton.Location = new System.Drawing.Point(57, 282);
+            this.stopButton.Location = new System.Drawing.Point(57, 283);
             this.stopButton.Name = "stopButton";
             this.stopButton.Size = new System.Drawing.Size(44, 44);
             this.stopButton.TabIndex = 5;
@@ -85,7 +87,7 @@
             this.playButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.playButton.ImageIndex = 0;
             this.playButton.ImageList = this.playImageList;
-            this.playButton.Location = new System.Drawing.Point(4, 283);
+            this.playButton.Location = new System.Drawing.Point(3, 283);
             this.playButton.Name = "playButton";
             this.playButton.Size = new System.Drawing.Size(48, 44);
             this.playButton.TabIndex = 6;
@@ -111,7 +113,7 @@
             this.Controls.Add(this.stopButton);
             this.Controls.Add(this.vlcControl);
             this.Name = "VlcPlayer";
-            this.Size = new System.Drawing.Size(549, 327);
+            this.Size = new System.Drawing.Size(545, 327);
             ((System.ComponentModel.ISupportInitialize)(this.vlcControl)).EndInit();
             this.ResumeLayout(false);
 

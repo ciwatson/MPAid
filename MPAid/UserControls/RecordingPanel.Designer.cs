@@ -125,18 +125,18 @@
             this.groupBox1.Controls.Add(this.wordListBox);
             this.groupBox1.Location = new System.Drawing.Point(3, 87);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(101, 181);
+            this.groupBox1.Size = new System.Drawing.Size(101, 182);
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "List";
             // 
-            // RecordingList
+            // RecordingPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.filterGroupBox);
-            this.Name = "RecordingList";
+            this.Name = "RecordingPanel";
             this.Size = new System.Drawing.Size(129, 318);
             this.filterGroupBox.ResumeLayout(false);
             this.filterGroupBox.PerformLayout();
