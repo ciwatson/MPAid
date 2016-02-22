@@ -35,18 +35,19 @@
             this.stopImageList = new System.Windows.Forms.ImageList(this.components);
             this.playButton = new System.Windows.Forms.Button();
             this.playImageList = new System.Windows.Forms.ImageList(this.components);
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.vlcControl)).BeginInit();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // vlcControl
             // 
-            this.vlcControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.vlcControl.BackColor = System.Drawing.SystemColors.ButtonShadow;
-            this.vlcControl.Location = new System.Drawing.Point(3, 1);
+            this.tableLayoutPanel1.SetColumnSpan(this.vlcControl, 10);
+            this.vlcControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.vlcControl.Location = new System.Drawing.Point(3, 3);
             this.vlcControl.Name = "vlcControl";
-            this.vlcControl.Size = new System.Drawing.Size(539, 280);
+            this.vlcControl.Size = new System.Drawing.Size(539, 236);
             this.vlcControl.Spu = -1;
             this.vlcControl.TabIndex = 3;
             this.vlcControl.Text = "vlcControl1";
@@ -57,14 +58,16 @@
             // 
             // stopButton
             // 
-            this.stopButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.stopButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.stopButton.FlatAppearance.BorderSize = 0;
             this.stopButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.stopButton.ImageIndex = 0;
             this.stopButton.ImageList = this.stopImageList;
-            this.stopButton.Location = new System.Drawing.Point(57, 283);
+            this.stopButton.Location = new System.Drawing.Point(57, 245);
             this.stopButton.Name = "stopButton";
-            this.stopButton.Size = new System.Drawing.Size(44, 44);
+            this.stopButton.Size = new System.Drawing.Size(48, 54);
             this.stopButton.TabIndex = 5;
             this.stopButton.UseVisualStyleBackColor = true;
             this.stopButton.Click += new System.EventHandler(this.stopButton_Click);
@@ -80,16 +83,18 @@
             // 
             // playButton
             // 
-            this.playButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.playButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.playButton.FlatAppearance.BorderSize = 0;
             this.playButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.playButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.playButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.playButton.ImageIndex = 0;
             this.playButton.ImageList = this.playImageList;
-            this.playButton.Location = new System.Drawing.Point(3, 283);
+            this.playButton.Location = new System.Drawing.Point(3, 245);
             this.playButton.Name = "playButton";
-            this.playButton.Size = new System.Drawing.Size(48, 44);
+            this.playButton.Size = new System.Drawing.Size(48, 54);
             this.playButton.TabIndex = 6;
             this.playButton.UseVisualStyleBackColor = true;
             this.playButton.Click += new System.EventHandler(this.playButton_Click);
@@ -105,16 +110,40 @@
             this.playImageList.Images.SetKeyName(2, "pause_64_1.png");
             this.playImageList.Images.SetKeyName(3, "pause_64_2.png");
             // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 10;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel1.Controls.Add(this.playButton, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.stopButton, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.vlcControl, 0, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(545, 302);
+            this.tableLayoutPanel1.TabIndex = 7;
+            // 
             // VlcPlayer
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.playButton);
-            this.Controls.Add(this.stopButton);
-            this.Controls.Add(this.vlcControl);
+            this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "VlcPlayer";
-            this.Size = new System.Drawing.Size(545, 327);
+            this.Size = new System.Drawing.Size(545, 302);
             ((System.ComponentModel.ISupportInitialize)(this.vlcControl)).EndInit();
+            this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -125,5 +154,6 @@
         private System.Windows.Forms.Button playButton;
         private System.Windows.Forms.ImageList playImageList;
         private System.Windows.Forms.ImageList stopImageList;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     }
 }

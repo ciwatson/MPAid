@@ -298,5 +298,10 @@ namespace MPAid.UserControls
             LoadWasapiDevices();
             DataBinding();
         }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
