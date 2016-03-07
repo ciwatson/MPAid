@@ -49,7 +49,7 @@ namespace MPAid.Cores
             string[] recognizedPhones = recognized.Split(' ');
             for (int i = 0; i < Math.Min(targetPhones.Length, recognizedPhones.Length); i++)
             {
-                mismatched.Add(targetPhones[i], recognizedPhones[i]);
+                if(!mismatched.ContainsKey(targetPhones[i])) mismatched.Add(targetPhones[i], recognizedPhones[i]);
             }
             return mismatched;
         }
