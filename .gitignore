@@ -218,3 +218,4 @@ ModelManifest.xml
 # App_Data path configration 
 [Mm]odels/AppDataPath.cs
 [Ll]ib/header-files
+/MPAid/HTK/MFCs
