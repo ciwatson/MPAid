@@ -1,3 +1,0 @@
-D, MPAi\dist\MPAid.exe, , "A Maori Pronunciation Aid", MPAid, 
-P, MPAi\dist\MPAid.exe, MPAid, "A Maori Pronunciation Aid", MPAid, 
-P, MPAi\dotNetFx\dotNetFx20SP2.url, MPAid, "Install .NET Framework 2.0 SP2 for Windows XP", "Install .NET Framework 2.0 - WinXP only", 

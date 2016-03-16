@@ -20,11 +20,12 @@ namespace MPAid.Forms.MSGBox
             InitializeComponent();
         }
 
-        public DialogResult ShowDialog(string recording, string target,string recognized)
+        public DialogResult ShowDialog(string recording, string target, string recognized)
         {
             this.Text = recording;
             recognitionResultLabel.Text = recognized;
             elseTextBox.Text = target;
+
             ElseTextBox_Leave(this, EventArgs.Empty);
             return ShowDialog();
         }
@@ -37,7 +38,14 @@ namespace MPAid.Forms.MSGBox
         }
         private void ElseTextBox_Leave(object sender, EventArgs e)
         {
-           descriptionTextBox.Text = advisor.Advise(this.Text, elseTextBox.Text, recognitionResultLabel.Text);
+            try
+            {
+                descriptionTextBox.Text = advisor.Advise(this.Text, elseTextBox.Text, recognitionResultLabel.Text);
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.Message);
+            }
         }
     }
 }

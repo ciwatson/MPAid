@@ -51,11 +51,10 @@
             this.RECListBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.RECListBox.FormattingEnabled = true;
             this.RECListBox.HorizontalScrollbar = true;
-            this.RECListBox.ItemHeight = 12;
             this.RECListBox.Location = new System.Drawing.Point(3, 34);
             this.RECListBox.Name = "RECListBox";
             this.tableLayoutPanel1.SetRowSpan(this.RECListBox, 5);
-            this.RECListBox.Size = new System.Drawing.Size(389, 149);
+            this.RECListBox.Size = new System.Drawing.Size(426, 149);
             this.RECListBox.TabIndex = 23;
             this.RECListBox.SelectedValueChanged += new System.EventHandler(this.RECListBox_SelectedValueChanged);
             this.RECListBox.DoubleClick += new System.EventHandler(this.RECListBox_DoubleClick);
@@ -64,9 +63,9 @@
             // 
             this.recordButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.recordButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.recordButton.Location = new System.Drawing.Point(398, 34);
+            this.recordButton.Location = new System.Drawing.Point(435, 34);
             this.recordButton.Name = "recordButton";
-            this.recordButton.Size = new System.Drawing.Size(76, 25);
+            this.recordButton.Size = new System.Drawing.Size(39, 25);
             this.recordButton.TabIndex = 15;
             this.recordButton.Text = "&Record";
             this.recordButton.UseVisualStyleBackColor = true;
@@ -76,9 +75,9 @@
             // 
             this.fromFileButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.fromFileButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.fromFileButton.Location = new System.Drawing.Point(398, 158);
+            this.fromFileButton.Location = new System.Drawing.Point(435, 158);
             this.fromFileButton.Name = "fromFileButton";
-            this.fromFileButton.Size = new System.Drawing.Size(76, 25);
+            this.fromFileButton.Size = new System.Drawing.Size(39, 25);
             this.fromFileButton.TabIndex = 21;
             this.fromFileButton.Text = "From file";
             this.fromFileButton.UseVisualStyleBackColor = true;
@@ -90,9 +89,9 @@
             this.showReportButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.showReportButton.Enabled = false;
             this.showReportButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.showReportButton.Location = new System.Drawing.Point(161, 220);
+            this.showReportButton.Location = new System.Drawing.Point(199, 220);
             this.showReportButton.Name = "showReportButton";
-            this.showReportButton.Size = new System.Drawing.Size(152, 29);
+            this.showReportButton.Size = new System.Drawing.Size(114, 29);
             this.showReportButton.TabIndex = 20;
             this.showReportButton.Text = "Show score report";
             this.showReportButton.UseVisualStyleBackColor = true;
@@ -116,9 +115,9 @@
             this.analyzeButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.analyzeButton.Enabled = false;
             this.analyzeButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.analyzeButton.Location = new System.Drawing.Point(398, 127);
+            this.analyzeButton.Location = new System.Drawing.Point(435, 127);
             this.analyzeButton.Name = "analyzeButton";
-            this.analyzeButton.Size = new System.Drawing.Size(76, 25);
+            this.analyzeButton.Size = new System.Drawing.Size(39, 25);
             this.analyzeButton.TabIndex = 16;
             this.analyzeButton.Text = "&Analyze";
             this.analyzeButton.UseVisualStyleBackColor = true;
@@ -129,9 +128,9 @@
             this.stopButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.stopButton.Enabled = false;
             this.stopButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.stopButton.Location = new System.Drawing.Point(398, 65);
+            this.stopButton.Location = new System.Drawing.Point(435, 65);
             this.stopButton.Name = "stopButton";
-            this.stopButton.Size = new System.Drawing.Size(76, 25);
+            this.stopButton.Size = new System.Drawing.Size(39, 25);
             this.stopButton.TabIndex = 14;
             this.stopButton.Text = "&Stop";
             this.stopButton.UseVisualStyleBackColor = true;
@@ -141,9 +140,9 @@
             // 
             this.audioDeviceComboBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.audioDeviceComboBox.FormattingEnabled = true;
-            this.audioDeviceComboBox.Location = new System.Drawing.Point(82, 3);
+            this.audioDeviceComboBox.Location = new System.Drawing.Point(83, 3);
             this.audioDeviceComboBox.Name = "audioDeviceComboBox";
-            this.audioDeviceComboBox.Size = new System.Drawing.Size(73, 20);
+            this.audioDeviceComboBox.Size = new System.Drawing.Size(110, 21);
             this.audioDeviceComboBox.TabIndex = 25;
             // 
             // label1
@@ -152,7 +151,7 @@
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(73, 31);
+            this.label1.Size = new System.Drawing.Size(74, 31);
             this.label1.TabIndex = 24;
             this.label1.Text = "Audio Device";
             // 
@@ -169,9 +168,9 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label2.Location = new System.Drawing.Point(240, 0);
+            this.label2.Location = new System.Drawing.Point(239, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(73, 31);
+            this.label2.Size = new System.Drawing.Size(74, 31);
             this.label2.TabIndex = 27;
             this.label2.Text = "Recording Progress";
             // 
@@ -179,9 +178,9 @@
             // 
             this.deleteButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.deleteButton.Enabled = false;
-            this.deleteButton.Location = new System.Drawing.Point(398, 96);
+            this.deleteButton.Location = new System.Drawing.Point(435, 96);
             this.deleteButton.Name = "deleteButton";
-            this.deleteButton.Size = new System.Drawing.Size(76, 25);
+            this.deleteButton.Size = new System.Drawing.Size(39, 25);
             this.deleteButton.TabIndex = 28;
             this.deleteButton.Text = "Delete";
             this.deleteButton.UseVisualStyleBackColor = true;
@@ -190,7 +189,7 @@
             // deviceRefreshButton
             // 
             this.deviceRefreshButton.Image = global::MPAid.Properties.Resources.refresh_16;
-            this.deviceRefreshButton.Location = new System.Drawing.Point(161, 3);
+            this.deviceRefreshButton.Location = new System.Drawing.Point(199, 3);
             this.deviceRefreshButton.Name = "deviceRefreshButton";
             this.deviceRefreshButton.Size = new System.Drawing.Size(23, 21);
             this.deviceRefreshButton.TabIndex = 29;

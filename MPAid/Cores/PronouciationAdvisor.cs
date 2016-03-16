@@ -14,12 +14,20 @@ namespace MPAid.Cores
             string advice = "Errors in lexicon.txt!";
             if (lexicon.ReadLexicon())
             {
-                string recognizedPronouciation = lexicon.dictionary[recognized];
-                advice = string.Format(@"Your recording '{0}' is analyzed as '{1}', having pronounciation '{2}'.{3}{4}", recording, recognized, recognizedPronouciation, Environment.NewLine, Environment.NewLine);
-                if (!recognized.Equals(target) && !string.IsNullOrEmpty(target))
+                if (lexicon.dictionary.Keys.Contains(recognized))
                 {
-                    advice += CompareWords(target, recognized);
+                    string recognizedPronouciation = lexicon.dictionary[recognized];
+                    advice = string.Format(@"Your recording '{0}' is analyzed as '{1}', having pronounciation '{2}'.{3}{4}", recording, recognized, recognizedPronouciation, Environment.NewLine, Environment.NewLine);
+                    if (!recognized.Equals(target) && !string.IsNullOrEmpty(target))
+                    {
+                        advice += CompareWords(target, recognized);
+                    }
                 }
+                else
+                {
+                    throw new Exception("The word you choose/input is not in the dictionary!");
+                }
+
             }
             return advice;
         }
