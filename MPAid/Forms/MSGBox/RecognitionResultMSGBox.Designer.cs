@@ -109,7 +109,7 @@
             this.elseLabel.Name = "elseLabel";
             this.elseLabel.Size = new System.Drawing.Size(271, 17);
             this.elseLabel.TabIndex = 21;
-            this.elseLabel.Text = "Or somthing else:";
+            this.elseLabel.Text = "Or something else:";
             this.elseLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // descriptionTextBox
