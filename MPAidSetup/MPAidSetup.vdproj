@@ -84570,7 +84570,7 @@
             "{1525181F-901A-416C-8A58-119130FE478E}:_B190A02FA5774ACDA6B43E63C1DE67A7"
             {
             "Name" = "8:#1916"
-            "AlwaysCreate" = "11:FALSE"
+            "AlwaysCreate" = "11:TRUE"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Property" = "8:DesktopFolder"
