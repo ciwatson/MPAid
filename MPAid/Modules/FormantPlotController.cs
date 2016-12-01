@@ -66,10 +66,10 @@ namespace MPAid
                 FormantPlotExe.Kill();
         }
 
-        private static void StartFormantPlot()
+        private static async void StartFormantPlot()
         {
             try
-            {              
+            {
                 FormantPlotExe = new Process();
                 FormantPlotExe.StartInfo.FileName = "Runner.exe";
                 FormantPlotExe.StartInfo.UseShellExecute = true;
@@ -80,9 +80,10 @@ namespace MPAid
                 // Hang up the main application to wait until it finished starting
                 while ((FormantPlotStarted(GetFormantPlotTitle()) == 1)
                     && (!FormantPlotExe.HasExited))
-                    ;
+                    // Wait 5 ms before checking if secondary application has started, preventing CPU blocking.
+                    await System.Threading.Tasks.Task.Delay(5);
             }
-            catch(Exception exp)
+            catch (Exception exp)
             {
                 FormantPlotExe = null;
                 Console.WriteLine(exp);
