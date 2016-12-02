@@ -77,7 +77,7 @@ namespace MPAid
             MPAiUser tUser = new MPAiUser(userNameBox.Text, codeBox.Text);
             if (myUsers.AuthenticateUser(tUser))
             {
-                Hide(); //TODO: Ensure this form actually gets closed and calls the relevant method.
+                Hide();
                 MainForm mainWindow = new MainForm(myUsers);
                 //Deprecated: MainForm class now takes users as a parameter.
                 //mainWindow.SetUserManagement(myUsers);
@@ -108,12 +108,11 @@ namespace MPAid
         {
             //Creates a NewUserWindow object to create a new user.
             NewUserWindow newUserWin = new NewUserWindow();
-            newUserWin.SetAllUsers(myUsers);    //TODO: Put this in the NewUserWindow constructor.
+            newUserWin.SetAllUsers(myUsers);
             newUserWin.ShowDialog();
 
             MPAiUser candidate = newUserWin.getCandidate();
             // If the registration was valid, inform the user. 
-            // TODO: Put this in the create new user window.
             if (newUserWin.validRegistration())
             {
                 if (myUsers.CreateNewUser(candidate))
