@@ -9,9 +9,12 @@ using System.Windows.Forms;
 
 namespace MPAid
 {
+    /// <summary>
+    /// The login screen for the application.
+    /// </summary>
     public partial class LoginWindow : Form
     {
-
+    
         private IoController fileMapper;
         private UserManagement myUsers;
 
@@ -25,6 +28,9 @@ namespace MPAid
             InitializeUI();
         }
 
+        /// <summary>
+        /// Sets up the user interface for the login window.
+        /// </summary>
         private void InitializeUI()
         {
             buttonSignUp.ImageNormal = Properties.Resources.ButtonYellow_0;
@@ -34,9 +40,9 @@ namespace MPAid
             buttonLogin.ImageNormal = Properties.Resources.ButtonGreen_0;
             buttonLogin.ImageHighlight = Properties.Resources.ButtonGreen_1;
             buttonLogin.ImagePressed = Properties.Resources.ButtonGreen_2;
-
+            // Checks the "Remember Me"checkbox value
             bool autoLog = autoLogin.Checked = Properties.Settings.Default.autoLoginSetting;
-
+            // If the user has been remembered, populate the username and password fields with their username and password.
             if (autoLog)
             {
                 MPAiUser lastUser = myUsers.getCurrentUser();
@@ -44,19 +50,26 @@ namespace MPAid
                     VisualizeUser(lastUser);
             }
         }
-
+        /// <summary>
+        /// Populates the username and password text boxes with the values of the input user.
+        /// </summary>
+        /// <param name="user">The user to remember, as an MPAiUser object.</param>
         private void VisualizeUser(MPAiUser user)
         {
             userNameBox.Text = user.getName();
             codeBox.Text = user.getCode();
         }
-
+        /// <summary>
+        /// Clears the username and password text boxes.
+        /// </summary>
         public void ResetUserInput()
         {
             userNameBox.Clear();
             codeBox.Clear();
         }
-
+        /// <summary>
+        /// Authenticates the username and password entered in the text boxes, and shows the main window if the combination is valid.
+        /// </summary>
         public void PerformLogin()
         {
             MPAiUser tUser = new MPAiUser(userNameBox.Text, codeBox.Text);
@@ -64,6 +77,7 @@ namespace MPAid
             {
                 Hide();
                 MainForm mainWindow = new MainForm(myUsers);
+                //Deprecated: MainForm class now takes users as a parameter.
                 //mainWindow.SetUserManagement(myUsers);
                 mainWindow.SetHomeWindow(this);
                 mainWindow.Show();
@@ -82,12 +96,14 @@ namespace MPAid
 
         private void buttonSignUp_Click(object sender, EventArgs e)
         {
+            //Creates a NewUserWindow object to create a new user.
             NewUserWindow newUserWin = new NewUserWindow();
-            newUserWin.SetAllUsers(myUsers);
+            newUserWin.SetAllUsers(myUsers);    //TODO: Put this in the NewUserWindow constructor.
             newUserWin.ShowDialog();
 
             MPAiUser candidate = newUserWin.getCandidate();
-
+            // If the registration was valid, inform the user. 
+            // TODO: Put this in the create new user window.
             if (newUserWin.validRegistration())
             {
                 if (myUsers.CreateNewUser(candidate))
