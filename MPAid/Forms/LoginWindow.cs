@@ -77,9 +77,9 @@ namespace MPAid
             MPAiUser tUser = new MPAiUser(userNameBox.Text, codeBox.Text);
             if (myUsers.AuthenticateUser(tUser))
             {
-                Hide();
+                Hide(); // This form is the first one the program opens. When it is closed, the program terminates, so we must keep it alive for now.
                 MainForm mainWindow = new MainForm(myUsers);
-                //Deprecated: MainForm class now takes users as a parameter.
+                // Deprecated: MainForm class now takes users as a parameter.
                 //mainWindow.SetUserManagement(myUsers);
                 mainWindow.SetHomeWindow(this);
                 mainWindow.Show();
