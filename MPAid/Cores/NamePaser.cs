@@ -7,8 +7,16 @@ using System.IO;
 
 namespace MPAid.Cores
 {
+    /// <summary>
+    /// Class that handles extracting data about a recording file from it's file name.
+    /// </summary>
     class NamePaser
     {
+        /// <summary>
+        /// Property for accessing the file containing the recording.
+        /// Getters and setters combine the Address variable (the path to the file) and the FullName variable (the filename, with extension).
+        /// Setter takes the path and file name, as a string.
+        /// </summary>
         public string SingleFile
         {
             get { return Address + @"\" + FullName; }
@@ -25,7 +33,11 @@ namespace MPAid.Cores
                 }
             }
         }
-
+        /// <summary>
+        /// Property for accessing the file name and extension of a file containing a recording.
+        /// Getters and setters combine the FileName variable (File name without extension) and the Ext variable (File extension).
+        /// Setter takes the file name and extension as a string.
+        /// </summary>
         public string FullName
         {
             get
@@ -45,6 +57,12 @@ namespace MPAid.Cores
                 }   
             }
         }
+        /// <summary>
+        /// Property for accessing the file name of a file containing a recording. 
+        /// This follows a particular format.
+        /// Getters and Setters combine the speaker, category, and word from the recording, with the the label of the recording.
+        /// Setter takes a string made of 4 values, separated by a hyphen (-): Speaker, Category, Word, and Label.
+        /// </summary>
         public string FileName
         {
             get { return Recording + @"-" + Label; }
@@ -53,7 +71,7 @@ namespace MPAid.Cores
                 try
                 {
                     string[] parts = value.Split('-');
-                    if(parts.Length != 4) { throw new Exception("Invilad name format!"); }
+                    if(parts.Length != 4) { throw new Exception("Invalid name format!"); }
                     Speaker = parts[0];
                     Category = parts[1];
                     Word = parts[2];
@@ -65,47 +83,73 @@ namespace MPAid.Cores
                 }
             }
         }
-
+        /// <summary>
+        /// Property for accessing the recording details of a file containing a recording.
+        /// Combines the Speaker, Category, and Word values, separating them with hyphens (-).
+        /// </summary>
         public string Recording
         {
             get { return Speaker + "-" + Category + "-" + Word; }
         }
-
+        /// <summary>
+        /// Property for accessing the Address (path to the file) of a file containing a recording.
+        /// Setter takes a string representing the enclosing folder, and it's path.
+        /// </summary>
         public string Address
         {
             get { return address; }
             set { address = value; }
         }
+        /// <summary>
+        /// Property for accessing the Speaker of a recording.
+        /// Setter takes a string representing the name of the speaker.
+        /// </summary>
         public string Speaker
         {
             get { return speaker; }
             set { speaker = value; }
         }
-
+        /// <summary>
+        /// Property for accessing the category of a recording.
+        /// Setter takes a string representing the category of the recording.
+        /// </summary>
         public string Category
         {
             get { return category; }
             set { category = value; }
         }
-
+        /// <summary>
+        /// Property for accessing the Word spoken in a recording. 
+        /// Setter takes a string representing the word in the recording.
+        /// </summary>
         public string Word
         {
             get { return word; }
             set { word = value; }
         }
-
+        /// <summary>
+        /// Property for accessing the Label of a recording.
+        /// Setter takes a string representing the label.
+        /// </summary>
         public string Label
         {
             get { return label; }
             set { label = value; }
         }
-
+        /// <summary>
+        /// Property for accessing the extension of a file containing a recording.
+        /// Setter takes a string representing the extension.
+        /// Note that this value must contain a leading period - ".wav", not "wav".
+        /// </summary>
         public string Ext
         {
             get { return ext; }
             set { ext = value; }
         }
-
+        /// <summary>
+        /// Property for checking the format of a file containing a recording. 
+        /// If the table of accepted formats for audio or video contains the file extension of this recording, it returns "audio" or "video", as appropriate.
+        /// </summary>
         public string MediaFormat
         {
             get
@@ -121,19 +165,23 @@ namespace MPAid.Cores
                 return "unknow";
             }
         }
-
+        /// <summary>
+        /// Array of accepted video formats.
+        /// </summary>
         private string[] videoExtsTable =
         {
             ".mp4",
             ".avi"
         };
-
+        /// <summary>
+        /// Array of accepted audio formats.
+        /// </summary>
         private string[] audioExtsTable =
         {
             ".wav",
             ".mp3"
         };
-
+        // Variables used by all properties.
         private string address;
         private string speaker;
         private string category;
