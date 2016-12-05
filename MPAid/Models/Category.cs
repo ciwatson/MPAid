@@ -24,6 +24,9 @@
         [Index(IsUnique = true)]
         public string Name { get; set; }
         /// <summary>
+        /// ONE-TO-MANY RELATIONSHIP
+        /// Category-Word
+        /// 
         /// A collection of the words in each category.
         /// </summary>
         public virtual ICollection<Word> Words { get; set; }

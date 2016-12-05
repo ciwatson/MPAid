@@ -24,6 +24,9 @@ namespace MPAid.Models
         [Index(IsUnique = true)]
         public string Name { get; set; }
         /// <summary>
+        /// ONE-TO-MANY RELATIONSHIP
+        /// Speaker-Recording
+        /// 
         /// Each speaker can be associated with a collection of recordings.
         /// </summary>
         public virtual ICollection<Recording> Recordings { get; set; }
