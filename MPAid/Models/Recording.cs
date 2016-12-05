@@ -24,7 +24,7 @@ namespace MPAid.Models
         [Index(IsUnique = true)]
         public string Name { get; set; }
         /// <summary>
-        /// ONE-TO-ONE RELATIONSHIP
+        /// MANY-TO-ONE RELATIONSHIP
         /// Recording-Speaker
         /// 
         /// Each recording has a corresponding speaker, but we don't store the speaker in the database.
@@ -35,7 +35,7 @@ namespace MPAid.Models
         public virtual Speaker Speaker { get; set; }
         public int SpeakerId { get; set; }
         /// <summary>
-        /// ONE-TO-ONE RELATIONSHIP
+        /// MANY-TO-ONE RELATIONSHIP
         /// Recording-Word
         /// 
         /// Each recording has a corresponding word, but we don't store the word in the database.
@@ -47,12 +47,15 @@ namespace MPAid.Models
         public int WordId { get; set; }
         /// <summary>
         /// ONE-TO-MANY RELATIONSHIP
-        /// Recording-SingleFile
+        /// Recording-SingleFile (Audio)
         /// 
         /// Each recording can have a collection of associated audio files.
         /// </summary>
         public virtual ICollection<SingleFile> Audios { get; set; }
         /// <summary>
+        /// ONE-TO-ONE RELATIONSHIP
+        /// Recording-SingleFile (Video)
+        /// 
         /// Each recording can have a single video attached.
         /// </summary>
         public virtual SingleFile Video { get; set; }
