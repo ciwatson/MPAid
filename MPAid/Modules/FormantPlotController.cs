@@ -70,6 +70,9 @@ namespace MPAid
         {
             try
             {
+                // Before starting a new process, tidy up any old ones in the background.
+                CloseFormantPlot();
+
                 FormantPlotExe = new Process();
                 FormantPlotExe.StartInfo.FileName = "Runner.exe";
                 FormantPlotExe.StartInfo.UseShellExecute = true;
