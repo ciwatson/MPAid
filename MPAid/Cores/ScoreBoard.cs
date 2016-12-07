@@ -7,35 +7,57 @@ using System.Threading.Tasks;
 namespace MPAid.Cores
 {
     public delegate float SimilarityAlgorithmCallBack(string str1, string str2);
+    /// <summary>
+    /// Class representing each item on the scoreboard.
+    /// </summary>
     class ScoreBoardItem
     {
-        public ScoreBoardItem()
-        {
-
-        }
+        /// <summary>
+        /// Default constructor. Does nothing.
+        /// </summary>
+        public ScoreBoardItem(){}
+        /// <summary>
+        /// Constructor that takes 2 arguments. Only calls the one that does nothing.
+        /// </summary>
         public ScoreBoardItem(string recognisedText, string expectingText)
             : this()
-        {
-        }
+        {}
+        /// <summary>
+        /// Constructor that takes 1 argument. Only calls the one that only calls the one that does nothing.
+        /// </summary>
         public ScoreBoardItem(string recognisedText)
             : this(recognisedText, recognisedText)
         {}
+        /// <summary>
+        /// Calls the similarity algorithm to calculate the difference between the two arguments.
+        /// </summary>
+        /// <param name="simi">The delegate method to use to calculate the difference between the two arguments.</param>
+        /// <returns>A float representing the percentage difference.</returns>
         public float Similarity(SimilarityAlgorithmCallBack simi)
         {
             return simi(recognisedText, expectingText);
         }
+        /// <summary>
+        /// The text the HTKEngine identified.
+        /// </summary>
         private string recognisedText;
         public string RecognisedText
         {
             get { return recognisedText; }
             set { recognisedText = value; }
         }
+        /// <summary>
+        /// The text the user input as what they were trying to say.
+        /// </summary>
         private string expectingText;
         public string ExpectingText
         {
             get { return expectingText; }
             set { expectingText = value; }
         }
+        /// <summary>
+        /// The text describing what the user got right and wrong.
+        /// </summary>
         private string analysis;
         public string Analysis
         {
@@ -43,13 +65,21 @@ namespace MPAid.Cores
             set { analysis = value; }
         }
     }
+    /// <summary>
+    /// Class representing the scoreboard as a whole.
+    /// </summary>
     class ScoreBoard
     {
+        /// <summary>
+        /// Calculates the overall correctness of each entry, by adding each entry's correctness and dividing by the number of entries.
+        /// </summary>
         public float CalculateCorrectness
         {
             get { return CalculateScore / Content.Count;}
         }
-
+        /// <summary>
+        /// Calculates the total score of each entry on the scoreboard.
+        /// </summary>
         public float CalculateScore
         {
             get
@@ -62,12 +92,23 @@ namespace MPAid.Cores
                 return sum;
             }
         }
-     
+        /// <summary>
+        /// A list of all of the scoreboard items on the scoreboard.
+        /// </summary>     
         public List<ScoreBoardItem> Content = new List<ScoreBoardItem>();
     }
-
+    /// <summary>
+    /// Wrapper class for the similarity algorithm employed for the correctness value.
+    /// </summary>
     public static class SimilarityAlgorithm
     {
+        /// <summary>
+        /// Implementation of the Damereau-Levenshein Distance Algorithm with adjacent transpositions.
+        /// This calculates the difference between two strings based on the minimal number of operations to get from one to the other.
+        /// </summary>
+        /// <param name="str1">The first string to compare.</param>
+        /// <param name="str2">The second string to compare.</param>
+        /// <returns>A float representing the percentage difference between the two parameters.</returns>
         public static float DamereauLevensheinDistanceAlgorithm(string str1, string str2)
         {
             if (string.IsNullOrEmpty(str1))
