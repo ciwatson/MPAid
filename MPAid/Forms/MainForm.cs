@@ -21,7 +21,7 @@ namespace MPAid
     {
         public static MainForm self;
 
-        private IoController systemIO;
+        //private IoController systemIO;
 
         private List<string> recordedWavFiles = new List<string>();
         private BindingList<string> listREC = new BindingList<string>();
@@ -91,7 +91,7 @@ namespace MPAid
             // Updates the title text to show the current system version number.
             Text += " " + GetVersionString();
 
-            systemIO = new IoController();
+            //systemIO = new IoController();
 
             InitializeUserProfile();
 
