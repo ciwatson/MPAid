@@ -8,37 +8,29 @@ namespace MPAid
     /// </summary>
     public partial class ChangePasswordWindow : Form
     {
-        private UserManagement allUsers;
         private MPAiUser currentUser;
         private const string title = "Change your password";
+
         /// <summary>
         /// Constructor for the ChangePasswordWindow. Loads the UserManagement object in and creates the UI.
         /// </summary>
         /// <param name="users">The UserManagement object containing all the current users.</param>
-        public ChangePasswordWindow(UserManagement users)
+        public ChangePasswordWindow()
         {
             InitializeComponent();
 
-            SetUserManagement(users);
+            currentUser = UserManagement.getCurrentUser();
             InitUI();
         }
-        /// <summary>
-        /// Setter for the allUsers field, allowing a list of users to be loaded in.
-        /// Also sets the current user for this form to the one specfied in the UserManagement object.
-        /// </summary>
-        /// <param name="users">The UserManagement object containing all the current users.</param>
-        private void SetUserManagement(UserManagement users)
-        {
-            allUsers = users;
-            currentUser = allUsers.getCurrentUser();
-        }
+
         /// <summary>
         /// Sets the title field to display the current user's name.
         /// </summary>
         private void InitUI()
         {
-            Text = title + " - " + allUsers.getCurrentUser().getName();
+            Text = title + " - " + UserManagement.getCurrentUser().getName();
         }
+
         /// <summary>
         /// When the OK button is clicked, verify the password is valid, and prompt the user, then close the window if successful.
         /// </summary>
@@ -60,11 +52,12 @@ namespace MPAid
                 return;
             }
             
-            allUsers.ChangeUserCode(currentUser.getName(), codeBox.Text);
+            UserManagement.ChangeUserCode(currentUser.getName(), codeBox.Text);
             MessageBox.Show("Password changed! ",
                   "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
             Close();
         }
+
         /// <summary>
         /// When the cancel button is clicked, close the window, and don't save any changes.
         /// </summary>

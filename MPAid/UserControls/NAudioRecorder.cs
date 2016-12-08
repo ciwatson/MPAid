@@ -255,7 +255,7 @@ namespace MPAid.UserControls
                     waveIn.DataAvailable += OnDataAvailable;
                     waveIn.RecordingStopped += OnRecordingStopped;
 
-                    tempFilename = String.Format("{0}-{1:yyy-MM-dd-HH-mm-ss}.wav", MainForm.self.AllUsers.getCurrentUser().getName(), DateTime.Now);
+                    tempFilename = String.Format("{0}-{1:yyy-MM-dd-HH-mm-ss}.wav", UserManagement.getCurrentUser().getName(), DateTime.Now);
                     // Initially, outputname is the same as tempfilename
                     outputFileName = tempFilename;
                     writer = new WaveFileWriter(Path.Combine(tempFolder, tempFilename), waveIn.WaveFormat);

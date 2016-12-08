@@ -25,10 +25,7 @@ namespace MPAid
         private string username = null;
         private string usercode = null;
         private bool valid = false; //Set to true when the user is authenticated.
-        /// <summary>
-        /// Link to the details of all users in the system.
-        /// </summary>
-        private UserManagement allUsers;
+
         /// <summary>
         /// Gets the values of the user from the text boxes, and uses them to create an MPAi user object.
         /// </summary>
@@ -40,6 +37,7 @@ namespace MPAid
 
             return (new MPAiUser(username, usercode));
         }
+
         /// <summary>
         /// Getter method for valid.
         /// </summary>
@@ -48,6 +46,7 @@ namespace MPAid
         {
             return valid;
         }
+
         /// <summary>
         /// Closes the window if the operation is cancelled.
         /// </summary>
@@ -56,14 +55,6 @@ namespace MPAid
         private void buttonCancel_Click(object sender, EventArgs e)
         {
             Close();
-        }
-        /// <summary>
-        /// Allows the current group of users to be assigned from outside the class.
-        /// </summary>
-        /// <param name="console">The UserManagement object representing the current users.</param>
-        public void SetAllUsers(UserManagement console)
-        {
-            allUsers = console;
         }
 
         /// <summary>
@@ -96,7 +87,7 @@ namespace MPAid
             
             MPAiUser candidate = getCandidate();
 
-            if (allUsers.ContainUser(candidate))
+            if (UserManagement.ContainUser(candidate))
             {
                 MessageBox.Show("User already exist, please use a different name! ",
                     "Ooops", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -106,8 +97,6 @@ namespace MPAid
                 valid = true;
                 this.Close();
             }
-
-        }
-        
+        } 
     }
 }

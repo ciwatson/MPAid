@@ -20,14 +20,7 @@ namespace MPAid
     public partial class MainForm : Form
     {
         public static MainForm self;
-        private UserManagement allUsers;
-        /// <summary>
-        /// Wrapper property for the allUsers object, allowing reading from outside the class.
-        /// </summary>
-        public UserManagement AllUsers
-        {
-            get { return allUsers; }
-        }
+
         private IoController systemIO;
 
         private List<string> recordedWavFiles = new List<string>();
@@ -42,13 +35,7 @@ namespace MPAid
         private RecordingRenameConfig recordingRenameForm;
 
         public MPAidModel DBModel;
-        /// <summary>
-        /// Wrapper property for the allUsers object, allowing reading from outside the class.
-        /// </summary>
-        public UserManagement UserManager
-        {
-            get { return allUsers; }
-        }
+
         /// <summary>
         /// Wrapper property for the operationPanel object, allowing reading from outside the class.
         /// </summary>
@@ -56,6 +43,7 @@ namespace MPAid
         {
             get { return operationPanel; }
         }
+
         /// <summary>
         /// Wrapper property for the recordingPanel object, allowing reading from outside the class.
         /// </summary>
@@ -63,11 +51,12 @@ namespace MPAid
         {
             get { return recordingPanel; }
         }
+
         /// <summary>
         /// Constructor for the main form, which shows the splash screen whil all components are set up.
         /// </summary>
         /// <param name="users">The current list of all users, being used by the login screen.</param>
-        public MainForm(UserManagement users)
+        public MainForm()
         {
             MainForm.self = this;
 
@@ -77,20 +66,12 @@ namespace MPAid
             InitializeDB();
             InitializeConfig();
 
-            SetUserManagement(users);
             InitializeComponent();
             InitializeUI();
 
             splash.Close();
         }
-        /// <summary>
-        /// Sets the current list of all users.
-        /// </summary>
-        /// <param name="users">The UserManagement object representing all current users.</param>
-        private void SetUserManagement(UserManagement users)
-        {
-            allUsers = users;
-        }
+
         /// <summary>
         /// Sets the login window that called this main form.
         /// This is important because when the first window the program opens gets closed, the program terminates.
@@ -101,6 +82,7 @@ namespace MPAid
         {
             loginForm = loginWin;
         }
+
         /// <summary>
         /// Sets values and calls methods required to show the UI.
         /// </summary>
@@ -115,6 +97,7 @@ namespace MPAid
 
             FillLists();
         }
+
         /// <summary>
         /// This method sets the value of the user menu bar item.
         /// If the user is an administrator, the administrator console is made visible under the user tab.
@@ -122,12 +105,13 @@ namespace MPAid
         /// </summary>
         private void InitializeUserProfile()
         {
-            usersToolStripMenuItem.Text = allUsers.getCurrentUser().getName(true);
+            usersToolStripMenuItem.Text = UserManagement.getCurrentUser().getName(true);
 
             // The administrator account is not advised to change its password.
-            changePasswordToolStripMenuItem.Visible = !allUsers.currentUserIsAdmin();
-            administratorConsoleToolStripMenuItem.Visible = allUsers.currentUserIsAdmin();
+            changePasswordToolStripMenuItem.Visible = !UserManagement.currentUserIsAdmin();
+            administratorConsoleToolStripMenuItem.Visible = UserManagement.currentUserIsAdmin();
         }
+
         /// <summary>
         /// Sets up the system configuration forms, in the config menu.
         /// </summary>
@@ -138,6 +122,7 @@ namespace MPAid
             this.recordingUploadForm = new RecordingUploadConfig();
             this.recordingRenameForm = new RecordingRenameConfig();
         }
+
         /// <summary>
         /// Connects this form to the maintained database, and loads all relevant files.
         /// </summary>
@@ -158,6 +143,7 @@ namespace MPAid
                 MessageBox.Show(exp.Message, "Database linking error!");
             }
         }
+
         /// <summary>
         /// Binds the recording panel to the list of recordings in the database, and fills it based on that information.
         /// </summary>
@@ -165,6 +151,7 @@ namespace MPAid
         {
             this.recordingPanel.DataBinding();
         }
+
         /// <summary>
         /// Converts the stored application version into a string that can be more easily used by the program.
         /// </summary>
@@ -173,6 +160,7 @@ namespace MPAid
         {
             return ("[Version " + Application.ProductVersion + "]");
         }
+
         /// <summary>
         /// Called when the form itself is closed.
         /// If any formant plots are still open, closes them, and calls a method to determine what other forms should be closed.
@@ -201,6 +189,7 @@ namespace MPAid
                 doCloseLogin = true;
             }
         }
+
         /// <summary>
         /// Double clicking the banner at the top of the screen brings up the About window.
         /// </summary>
@@ -211,6 +200,7 @@ namespace MPAid
             if (e.Button == System.Windows.Forms.MouseButtons.Left)
                 aboutToolStripMenuItem_Click(sender, e);
         }
+
         /// <summary>
         /// Handles sign out functionality, by closing the main form without terminating the program.
         /// </summary>
@@ -224,6 +214,7 @@ namespace MPAid
             loginForm.Show();
             Close();
         }
+
         /// <summary>
         /// When the Change Password menu item is clicked, shows the appropriate window.
         /// </summary>
@@ -231,9 +222,10 @@ namespace MPAid
         /// <param name="e">Automatically generated by Visual Studio.</param>
         private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ChangePasswordWindow changePswdForm = new ChangePasswordWindow(allUsers);
+            ChangePasswordWindow changePswdForm = new ChangePasswordWindow();
             changePswdForm.ShowDialog(this);
         }
+
         /// <summary>
         /// When the Administrator Console menu item is clicked, shows the appropriate window.
         /// </summary>
@@ -241,9 +233,10 @@ namespace MPAid
         /// <param name="e">Automatically generated by Visual Studio.</param>
         private void administratorConsoleToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AdminConsole adminForm = new AdminConsole(allUsers);
+            AdminConsole adminForm = new AdminConsole();
             adminForm.ShowDialog(this);
         }
+
         /// <summary>
         /// When the About menu item is clicked, populates and shows the appropriate window.
         /// This window is not it's own class, rather, a default message box.
@@ -261,6 +254,7 @@ namespace MPAid
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Information);
         }
+
         /// <summary>
         /// When the Submit Feedback menu item is clicked, shows the appropriate window.
         /// </summary>
@@ -271,6 +265,7 @@ namespace MPAid
             FeedbackMSGBox fbMSGBox = new FeedbackMSGBox();
             fbMSGBox.ShowDialog(this);
         }
+
         /// <summary>
         /// When the System Tools menu item is clicked, shows the appropriate window.
         /// </summary>
@@ -280,6 +275,7 @@ namespace MPAid
         {
             this.systemConfigForm.ShowDialog(this);
         }
+
         /// <summary>
         /// When the Upload Recording menu item is clicked, shows the appropriate window.
         /// </summary>
@@ -289,6 +285,7 @@ namespace MPAid
         {
             this.recordingUploadForm.ShowDialog(this);
         }
+
         /// <summary>
         /// When the Rename Recording menu item is clicked, shows the appropriate window.
         /// </summary>
@@ -298,6 +295,7 @@ namespace MPAid
         {
             this.recordingRenameForm.ShowDialog(this);
         }
+
         /// <summary>
         /// When the Help menu item is clicked, opens a browser linking to the instruction page of the Github Wiki
         /// </summary>
