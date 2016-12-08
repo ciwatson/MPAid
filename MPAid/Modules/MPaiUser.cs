@@ -100,7 +100,7 @@ namespace MPAid
         }
         /// <summary>
         /// Override for equals().
-        /// Two users with the same username and password are considered the same user.
+        /// Two users with the same username are considered the same user.
         /// </summary>
         /// <param name="obj">The object to be compared to the current user.</param>
         /// <returns>True if the user and the object are the same thing, false otherwise.</returns>
@@ -111,8 +111,7 @@ namespace MPAid
                 MPAiUser otherUser = (MPAiUser)obj;
                 if (userName == null || passWord == null)
                     return false;
-                return ((getName() == otherUser.getName())
-                    && (passWord == otherUser.getCode()));
+                return (getName() == otherUser.getName());
             }
             else
                 return false;

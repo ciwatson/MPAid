@@ -49,6 +49,17 @@ namespace MPAid
         {
             return allUsers;
         }
+
+        /// <summary>
+        /// Gets a single user by their unique username.
+        /// </summary>
+        /// <param name="username">The name of the user to get.</param>
+        /// <returns>The MPAiUser with name username.</returns>
+        private static MPAiUser getUser(string username)
+        {
+            return GetAllUsers().Find(x => x.getName().Equals(username));
+        }
+
         /// <summary>
         /// Checks if a user already exists with the same username as the one input, and adds the user to the database if not.
         /// </summary>
@@ -123,24 +134,23 @@ namespace MPAid
         {
             return (getCurrentUser().getName() == adminStr);
         }
-        // Deprecated: AuthenticateUser now takes an MPAiUser object, which all valid users have.
-        //public bool AuthenticateUser(string username, string code)
-        //{
-        //    foreach (MPAiUser user in allUsers)
-        //        if (user.getName() == username)
-        //            return user.codeCorrect(code);
-        //    return false;
-        //}
 
         /// <summary>
-        /// Checks if the current user is a valid, existing user, and sets them to the current user. 
+        /// Checks if the input user is a valid, existing user, with a correct password, and sets them to the current user. 
         /// </summary>
         /// <param name="tUser">The user to authenticate, as an MPAiUser object.</param>
         /// <returns>True if the user exists already, false otherwise.</returns>
         public static bool AuthenticateUser(MPAiUser tUser)
         {
-            currentUser = tUser;
-            return (allUsers.Contains(tUser));
+
+            if (allUsers.Contains(tUser)
+                    && getUser(tUser.getName()).codeCorrect(tUser.getCode())){
+                currentUser = tUser;
+                return true;
+            }else
+            {
+                return false;
+            }
         }
         /// <summary>
         /// Changes the current user's password.

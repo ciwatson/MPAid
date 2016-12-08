@@ -46,18 +46,20 @@ namespace MPAid
             {
                 MPAiUser lastUser = UserManagement.getCurrentUser();
                 if (lastUser != null)
-                    VisualizeUser(lastUser);
+                    VisualizeUser(lastUser.getName(), lastUser.getCode());
             }
         }
 
         /// <summary>
-        /// Populates the username and password text boxes with the values of the input user.
+        /// Populates the username and password boxes with the input values.
+        /// Code calling this method needs access to the user's password.
         /// </summary>
-        /// <param name="user">The user to remember, as an MPAiUser object.</param>
-        private void VisualizeUser(MPAiUser user)
+        /// <param name="username">The value to place in the username box.</param>
+        /// <param name="password">The value to place in the password box.</param>
+        public void VisualizeUser(string username, string password)
         {
-            userNameBox.Text = user.getName();
-            codeBox.Text = user.getCode();
+            userNameBox.Text = username;
+            codeBox.Text = password;
         }
 
         /// <summary>
@@ -79,8 +81,6 @@ namespace MPAid
             {
                 Hide(); // This form is the first one the program opens. When it is closed, the program terminates, so we must keep it alive for now.
                 MainForm mainWindow = new MainForm();
-                // Deprecated: MainForm class now takes users as a parameter.
-                //mainWindow.SetUserManagement(myUsers);
                 mainWindow.SetHomeWindow(this);
                 mainWindow.Show();
             }
@@ -110,27 +110,7 @@ namespace MPAid
         {
             //Creates a NewUserWindow object to create a new user.
             NewUserWindow newUserWin = new NewUserWindow();
-            newUserWin.ShowDialog();
-
-            MPAiUser candidate = newUserWin.getCandidate();
-            // If the registration was valid, inform the user. 
-            if (newUserWin.validRegistration())
-            {
-                if (UserManagement.CreateNewUser(candidate))
-                {
-                    MessageBox.Show("Registration successful! ",
-                        "Congratulations", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    UserManagement.WriteSettings();
-
-                    VisualizeUser(candidate);
-                }
-                else
-                {
-                    MessageBox.Show("Sorry, unknown error occurred! Please try again~ ",
-                        "Ooops", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                }
-            }
-
+            newUserWin.ShowDialog(this);
         }
 
         /// <summary>
