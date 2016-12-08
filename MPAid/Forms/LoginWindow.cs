@@ -14,8 +14,6 @@ namespace MPAid
     /// </summary>
     public partial class LoginWindow : Form
     {
-    
-        //private IoController fileMapper;
 
         /// <summary>
         /// Default constructor.
@@ -24,7 +22,6 @@ namespace MPAid
         {
             InitializeComponent();
 
-            //fileMapper = new IoController();
             UserManagement.SetRoot(IoController.GetAppDataDir());
 
             InitializeUI();
