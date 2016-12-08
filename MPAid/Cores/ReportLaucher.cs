@@ -8,8 +8,14 @@ using System.Web.UI;
 
 namespace MPAid.Cores
 {
+    /// <summary>
+    /// Class that generates an HTML report based on data from a ScoreBoard object.
+    /// </summary>
     class ReportLaucher
     {
+        /// <summary>
+        /// The address within the local repository of the generated report.
+        /// </summary>
         public string ReportAddr
         {
             get
@@ -17,6 +23,10 @@ namespace MPAid.Cores
                 return Path.Combine(Properties.Settings.Default.ReportFolder, "Report.html");
             }
         }
+        /// <summary>
+        /// Generates an HTML score report based on an input scoreboard.
+        /// </summary>
+        /// <param name="scoreboard">The scoreboard to generate an HTML report of.</param>
         public void GenerateHTML(ScoreBoard scoreboard)
         {
             using ( FileStream fs = new FileStream(ReportAddr, FileMode.Create))
@@ -26,14 +36,14 @@ namespace MPAid.Cores
                     using (HtmlTextWriter htw = new HtmlTextWriter(sw))
                     {
                         htw.RenderBeginTag(HtmlTextWriterTag.Html);
-
+                        // Table settings
                         htw.RenderBeginTag(HtmlTextWriterTag.Head);
                         htw.RenderBeginTag(HtmlTextWriterTag.Style);
                         htw.WriteLine(@"table, th, td {border: 1px solid black; border - collapse: collapse;}");
                         htw.WriteLine(@"th, td {padding: 15px;}");
                         htw.RenderEndTag();
                         htw.RenderEndTag();
-
+                        // Header row of the table
                         htw.RenderBeginTag(HtmlTextWriterTag.Body);
                         htw.RenderBeginTag(HtmlTextWriterTag.Table);
                         htw.AddStyleAttribute(HtmlTextWriterStyle.Width, "100%");
@@ -51,6 +61,7 @@ namespace MPAid.Cores
                         htw.Write(@"Analysis Tips");
                         htw.RenderEndTag();
                         htw.RenderEndTag();
+                        // Table rows
                         foreach (ScoreBoardItem item in scoreboard.Content)
                         {
                             htw.RenderBeginTag(HtmlTextWriterTag.Tr);
@@ -69,7 +80,7 @@ namespace MPAid.Cores
                             htw.RenderEndTag();
                         }
                         htw.RenderEndTag();
-
+                        // Correctness score
                         htw.RenderBeginTag(HtmlTextWriterTag.Tr);
                         htw.RenderBeginTag(HtmlTextWriterTag.Td);
                         htw.Write(@"The correctness is: " + scoreboard.CalculateCorrectness.ToString("0.0%"));

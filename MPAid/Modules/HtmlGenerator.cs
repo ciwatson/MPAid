@@ -7,18 +7,30 @@ using System.Web.UI;
 
 namespace MPAid
 {
+    /// <summary>
+    /// Class handling generation of an HTML report displaying results.
+    /// *** Not called anywhere else in the code, marked for deletion ***
+    /// </summary>
     class HtmlGenerator
     {
         private string htmlPath = null;
         private HtmlConfig myConfig;
         private const string MaoriEncodingCode = "iso-8859-1";
-
+        /// <summary>
+        /// Constructor. Sets the configuration details for the HTML, and uses them to set the path.
+        /// </summary>
+        /// <param name="config">The configuration details, as an HtmlConfig object.</param>
         public HtmlGenerator(HtmlConfig config)
         {
             myConfig = config;
             htmlPath = config.GetHtmlFullPath();
         }
-        
+        /// <summary>
+        /// Compares two strings, checking if the first contains the second, or if they are equal.
+        /// </summary>
+        /// <param name="rec">The string that may contain the other.</param>
+        /// <param name="lab">The string that may be contained within the other.</param>
+        /// <returns>0 if the strings are equal, 1 if rec contains lab, and 2 otherwise.</returns>
         private int getComparedResult(string rec, string lab)
         {
             if (rec == lab)
@@ -29,7 +41,11 @@ namespace MPAid
                 return 2;
             return 0;
         }
-
+        /// <summary>
+        /// Used to set the class of each row in the table, based on the results of the getComparedResult method in the Examiner class.
+        /// </summary>
+        /// <param name="result">The integer result of the comparison.</param>
+        /// <returns>The html class for the row, as a string.</returns>
         private string resultToClassName(int result)
         {
             if (result == 0)
@@ -40,7 +56,9 @@ namespace MPAid
                 return "error";
             return null;
         }
-
+        /// <summary>
+        /// Builds all of the variables in config into an HTML file.
+        /// </summary>
         public void Run()
         {
             StringBuilder strBldr = new StringBuilder();

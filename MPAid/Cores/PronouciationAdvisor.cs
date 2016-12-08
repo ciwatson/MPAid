@@ -7,11 +7,21 @@ using System.Threading.Tasks;
 
 namespace MPAid.Cores
 {
+    /// <summary>
+    /// Class that generates advice based on analysed recordings.
+    /// </summary>
     class PronouciationAdvisor
     {
+        /// <summary>
+        /// Can be called from outside to generate a string of advice to present to the user.
+        /// </summary>
+        /// <param name="recording">The name of the recording being analysed, as a string.</param>
+        /// <param name="target">The intended vowel/word, as a string.</param>
+        /// <param name="recognized">The actual, identified vowel/word, as a string.</param>
+        /// <returns>The advice for the user, as a string.</returns>
         public string Advise(string recording, string target, string recognized)
         {
-            string advice = "Errors in lexicon.txt!";
+            string advice = "Errors in lexicon.txt!";   // Handle error cases.
             if (lexicon.ReadLexicon())
             {
                 if (lexicon.dictionary.Keys.Contains(recognized))
@@ -31,7 +41,12 @@ namespace MPAid.Cores
             }
             return advice;
         }
-
+        /// <summary>
+        /// Compares two words, and if they are different, points out the syllables that aren't correct.
+        /// </summary>
+        /// <param name="target">The correct string for comparison.</param>
+        /// <param name="recognized">The user's string for comparison.</param>
+        /// <returns>A string representing pronunciation advice based on the two input strings.</returns>
         private string CompareWords(string target, string recognized)
         {
             string advice = string.Empty;
@@ -49,7 +64,12 @@ namespace MPAid.Cores
             }
             return advice;
         }
-
+        /// <summary>
+        /// Steps through each syllable of the recognised word and identifies which parts have been mispronuounced.
+        /// </summary>
+        /// <param name="target">The correct pronunciation.</param>
+        /// <param name="recognized">The user's pronunciation.</param>
+        /// <returns>A dictionary mapping the correct pronunciation to the user's pronunciation, for each syllable they got wrong.</returns>
         private Dictionary<string, string> AnalyzePronouciation(string target, string recognized)
         {
             Dictionary<string, string> mismatched = new Dictionary<string, string>();
@@ -64,10 +84,19 @@ namespace MPAid.Cores
 
         private LexiconReader lexicon = new LexiconReader();
     }
-
+    /// <summary>
+    /// A class to interpret the lexicon.txt file into a dictionary object.
+    /// </summary>
     class LexiconReader
     {
+        /// <summary>
+        /// Publically accessible dictionary of words and their pronunciations.
+        /// </summary>
         public Dictionary<string, string> dictionary = new Dictionary<string, string>();
+        /// <summary>
+        /// Opens the lexicon.txt file and reads each element listed there into the dictionary. 
+        /// </summary>
+        /// <returns>True if lexicon.txt exists, is in the right place, and was read successfully, false otherwise.</returns>
         public bool ReadLexicon()
         {
             try

@@ -4,7 +4,9 @@ namespace MPAid.Cores
 {
     public static class CollectionExtensions
     {
-        /// <summary>Converts a non-generic collection to an array.</summary>
+        /// <summary>
+        /// Converts a non-generic collection to an array.
+        /// </summary>
         public static T[] ToArray<T>(this ICollection collection)
         {
          var items = new T[collection.Count];
