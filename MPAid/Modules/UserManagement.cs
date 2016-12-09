@@ -57,7 +57,7 @@ namespace MPAid
         /// <returns>The MPAiUser with name username.</returns>
         private static MPAiUser getUser(string username)
         {
-            return GetAllUsers().Find(x => x.getName().Equals(username));
+            return GetAllUsers().Find(x => x.getName().Equals(username.ToLower()));
         }
 
         /// <summary>

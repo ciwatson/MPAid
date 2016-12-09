@@ -94,7 +94,7 @@ namespace MPAid
                         "Congratulations", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 UserManagement.WriteSettings();
                 LoginWindow loginWindow = (LoginWindow)this.Owner;      // Only LoginWindow can open this form.
-                loginWindow.VisualizeUser(candidate.getName(), candidate.getCode());
+                loginWindow.VisualizeUser(candidate.getName(true), candidate.getCode());
                 this.Close();
             }
         }
