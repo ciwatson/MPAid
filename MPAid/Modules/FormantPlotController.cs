@@ -26,44 +26,34 @@ namespace MPAid
         [DllImport("USER32.DLL")]
         public static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
         private const int SW_SHOWNORMAL = 1;
+
+        private static Process FormantPlotExe;
+        private static IntPtr handle = IntPtr.Zero;
+
         /// <summary>
         /// If the formant plot is running in the background, brings it to the foreground.
         /// </summary>
         /// <param name="title">The title of the Formant plot.</param>
-        /// <returns>1 if the Formant plot is not currently running, 0 if it has been shown successfully.</returns>
-        public static int ShowFormantPlot(string title)
+        public static void ShowFormantPlot(string title)
         {
-            // Get a handle to the FormantPlot application.
-            IntPtr handle = FindWindow(null, title);
-
-            // Verify that FormantPlot is a running process.
-            if (handle == IntPtr.Zero)
-                return 1;
-
-            // Make FormantPlot the foreground application
-            SetForegroundWindow(handle);
-            ShowWindow(handle, SW_SHOWNORMAL);
-
-            return 0;
+            if (FormantPlotStarted(GetFormantPlotTitle()))
+            {
+                // Make FormantPlot the foreground application
+                SetForegroundWindow(handle);
+                ShowWindow(handle, SW_SHOWNORMAL);
+            } 
         }
+
         /// <summary>
         /// Returns a value indicating if a Formant plot has been started.
         /// </summary>
         /// <param name="title">The title of the Formant Plot</param>
-        /// <returns>1 if the Formant plot is not currently running, 0 if it has been shown successfully.</returns>
-        public static int FormantPlotStarted(string title)
+        /// <returns>True if the Formant plot is running, false otherwise.</returns>
+        public static bool FormantPlotStarted(string title)
         {
-            // Get a handle to the FormantPlot application.
-            IntPtr handle = FindWindow(null, title);
-
-            // Verify that FormantPlot is a running process.
-            if (handle == IntPtr.Zero)
-                return 1;
-
-            return 0;
+            return !(handle == IntPtr.Zero);
         }
 
-        private static Process FormantPlotExe;
         /// <summary>
         /// Method called by the button to show the Formant plot. 
         /// If there is already a Formant plot running, it is brought into the foreground.
@@ -71,11 +61,16 @@ namespace MPAid
         /// </summary>
         public static void RunFormantPlot()
         {
-            if (FormantPlotStarted(GetFormantPlotTitle()) == 1)
+            if (!FormantPlotStarted(GetFormantPlotTitle()))
+            {
                 StartFormantPlot();
+            }
             else
+            {
                 ShowFormantPlot(GetFormantPlotTitle());
+            }
         }
+
         /// <summary>
         /// Used to clean up after a Formant plot has been closed, as the process is simply put into the background.
         /// If this is called when the process does not exist yet, it does nothing.
@@ -83,8 +78,11 @@ namespace MPAid
         public static void CloseFormantPlot()
         {
             if ((FormantPlotExe != null) && (!FormantPlotExe.HasExited))
+            {
                 FormantPlotExe.Kill();
+            }    
         }
+
         /// <summary>
         /// Creates a new process, connects it to the python Runner file, and starts the Formant plot. 
         /// Also tidies up after an older process if it is still running.
@@ -102,19 +100,23 @@ namespace MPAid
                 FormantPlotExe.StartInfo.WorkingDirectory = Path.Combine(Properties.Settings.Default.FomantFolder, @"dist");
                 FormantPlotExe.StartInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
                 FormantPlotExe.Start();
-
                 // Hang up the main application to wait until it finished starting
-                while ((FormantPlotStarted(GetFormantPlotTitle()) == 1)
-                    && (!FormantPlotExe.HasExited))
+                while ((!FormantPlotStarted(GetFormantPlotTitle()) && (!FormantPlotExe.HasExited)))
+                {
                     // Wait 5 ms before checking if secondary application has started, preventing CPU blocking.
                     await System.Threading.Tasks.Task.Delay(5);
+                    // Get a handle to the FormantPlot application, if it exists.
+                    handle = FindWindow(null, GetFormantPlotTitle());
+                }
             }
             catch (Exception exp)
             {
                 FormantPlotExe = null;
+                handle = IntPtr.Zero;
                 Console.WriteLine(exp);
             }
         }
+
         /// <summary>
         /// Getter for the title of the Formant plot.
         /// </summary>
