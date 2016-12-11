@@ -53,7 +53,7 @@ namespace MPAid
 
             IEnumerable<MPAiUser> searchUser =
                 from user in allUsers
-                where user.getName() == newUserName.ToLower()
+                where user.getLowerCaseName() == newUserName.ToLower()
                 select user;
 
             if (searchUser.Count() == 0)
@@ -74,7 +74,7 @@ namespace MPAid
         public bool ContainUser(MPAiUser candidate)
         {
             foreach (MPAiUser item in allUsers)
-                if (item.getName() == candidate.getName())
+                if (item.getLowerCaseName() == candidate.getLowerCaseName())
                     return true;
 
             return false;
@@ -113,7 +113,7 @@ namespace MPAid
         /// <returns>True if the current user is the administrator, false if not.</returns>
         public bool currentUserIsAdmin()
         {
-            return (getCurrentUser().getName() == adminStr);
+            return (getCurrentUser().getLowerCaseName() == adminStr);
         }
         // Deprecated: AuthenticateUser now takes an MPAiUser object, which all valid users have.
         //public bool AuthenticateUser(string username, string code)
@@ -210,12 +210,12 @@ namespace MPAid
                     writer.Write(n);
                     foreach (MPAiUser user in allUsers)
                     {
-                        writer.Write(user.getName());
+                        writer.Write(user.getLowerCaseName());
                         writer.Write(user.getCode());               
                     }
 
                     // store the last used user
-                    writer.Write(currentUser.getName());
+                    writer.Write(currentUser.getLowerCaseName());
                     writer.Write(currentUser.getCode());
                 }
             }

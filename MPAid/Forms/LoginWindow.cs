@@ -58,7 +58,7 @@ namespace MPAid
         /// <param name="user">The user to remember, as an MPAiUser object.</param>
         private void VisualizeUser(MPAiUser user)
         {
-            userNameBox.Text = user.getName();
+            userNameBox.Text = user.getLowerCaseName();
             codeBox.Text = user.getCode();
         }
         /// <summary>

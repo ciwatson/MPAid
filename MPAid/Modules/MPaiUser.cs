@@ -71,13 +71,13 @@ namespace MPAid
         /// <returns>True if the user is the administrator, false otherwise.</returns>
         public bool isAdmin()
         {
-            return (getName() == adminStr);
+            return (getLowerCaseName() == adminStr);
         }
         /// <summary>
         /// Getter for username, Not case senstive.
         /// </summary>
         /// <returns>The lower-case username, as a string.</returns>
-        public string getName()
+        public string getLowerCaseName()
         {
             return userName.ToLower();
         }
@@ -86,7 +86,7 @@ namespace MPAid
         /// </summary>
         /// <param name="formal">Only used to activate this method, instead of the default one, unused in the code.</param>
         /// <returns>The username, as a string.</returns>
-        public string getName(bool formal)
+        public string getFormalName()
         {
             return userName;
         }
@@ -111,7 +111,7 @@ namespace MPAid
                 MPAiUser otherUser = (MPAiUser)obj;
                 if (userName == null || passWord == null)
                     return false;
-                return ((getName() == otherUser.getName())
+                return ((getLowerCaseName() == otherUser.getLowerCaseName())
                     && (passWord == otherUser.getCode()));
             }
             else

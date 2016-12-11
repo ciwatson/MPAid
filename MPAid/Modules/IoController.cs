@@ -28,7 +28,7 @@ namespace MPAid
         /// <returns>The directory of that user, as a string.</returns>
         public string GetAppDataDir(MPAiUser user)
         {
-            return (GetAppDataDir() + Path.DirectorySeparatorChar + user.getName()) + "\\";
+            return (GetAppDataDir() + Path.DirectorySeparatorChar + user.getLowerCaseName()) + "\\";
         }
         /// <summary>
         /// Loads the user's default browser to view the specified HTML file.

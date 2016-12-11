@@ -122,7 +122,7 @@ namespace MPAid
         /// </summary>
         private void InitializeUserProfile()
         {
-            usersToolStripMenuItem.Text = allUsers.getCurrentUser().getName(true);
+            usersToolStripMenuItem.Text = allUsers.getCurrentUser().getFormalName();
 
             // The administrator account is not advised to change its password.
             changePasswordToolStripMenuItem.Visible = !allUsers.currentUserIsAdmin();

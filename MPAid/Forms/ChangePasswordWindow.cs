@@ -37,7 +37,7 @@ namespace MPAid
         /// </summary>
         private void InitUI()
         {
-            Text = title + " - " + allUsers.getCurrentUser().getName();
+            Text = title + " - " + allUsers.getCurrentUser().getLowerCaseName();
         }
         /// <summary>
         /// When the OK button is clicked, verify the password is valid, and prompt the user, then close the window if successful.
@@ -60,7 +60,7 @@ namespace MPAid
                 return;
             }
             
-            allUsers.ChangeUserCode(currentUser.getName(), codeBox.Text);
+            allUsers.ChangeUserCode(currentUser.getLowerCaseName(), codeBox.Text);
             MessageBox.Show("Password changed! ",
                   "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
             Close();
