@@ -26,7 +26,9 @@ namespace MPAid
             {
                 // prevent the user from changing the name of the admin
                 if (userName != adminStr)
+                {
                     userName = value;
+                }
             }
         }
         /// <summary>
@@ -110,12 +112,15 @@ namespace MPAid
             {
                 MPAiUser otherUser = (MPAiUser)obj;
                 if (userName == null || passWord == null)
+                {
                     return false;
-                return ((getLowerCaseName() == otherUser.getLowerCaseName())
-                    && (passWord == otherUser.getCode()));
+                }
+                return ((getLowerCaseName() == otherUser.getLowerCaseName()) && (passWord == otherUser.getCode()));
             }
             else
+            {
                 return false;
+            }
         }
         /// <summary>
         /// Override for GetHashCode(). Functions the same.
