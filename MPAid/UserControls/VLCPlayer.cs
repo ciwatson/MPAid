@@ -105,7 +105,7 @@ namespace MPAid.UserControls
                         break;
                     case Vlc.DotNet.Core.Interops.Signatures.MediaStates.Paused:    // If paused, play and update the button.
                         {
-                            vlcControl.Pause();
+                            vlcControl.Play();
                             playButton.ImageIndex = 2;
                         }
                         break;
