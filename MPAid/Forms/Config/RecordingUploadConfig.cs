@@ -87,10 +87,18 @@ namespace MPAid.Forms.Config
             try
             {
                 var DBContext = MainForm.self.DBModel;
-                // For each item in the database list box...
-                for (int i = onDBListBox.SelectedItems.Count - 1; i >= 0; i--)
+
+                // Creating a copy of the list box selected items to iterate through
+                List<SingleFile> selectedItemsCopy = new List<SingleFile>();
+                foreach (SingleFile sf in onDBListBox.SelectedItems)
                 {
-                    SingleFile sf = onDBListBox.SelectedItems[i] as MPAid.Models.SingleFile;    // Get the file from the database
+                    selectedItemsCopy.Add(sf);
+                }
+
+                // For each item in the database list box...
+                for (int i = selectedItemsCopy.Count - 1; i >= 0; i--)
+                {
+                    SingleFile sf = selectedItemsCopy[i] as MPAid.Models.SingleFile;    // Get the file from the database
                     Recording rd = null;
                     NamePaser paser = new NamePaser();
                     paser.FullName = sf.Name;       // Add the file to the Parser
