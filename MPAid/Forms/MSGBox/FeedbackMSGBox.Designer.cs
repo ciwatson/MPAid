@@ -127,7 +127,7 @@
             this.MinimizeBox = false;
             this.Name = "FeedbackMSGBox";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Welcom to FeedBack";
+            this.Text = "FeedBack Form";
             this.ResumeLayout(false);
             this.PerformLayout();
 
