@@ -49,14 +49,14 @@ namespace MPAid
             if ((codeBox.Text.Trim() == "") || (codeBox2.Text.Trim() == ""))
             {
                 MessageBox.Show("Passwords should not be empty! ",
-                   "Ooops", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                   "Oops", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
 
             if (codeBox.Text != codeBox2.Text)
             {
                 MessageBox.Show("Passwords do not match! ",
-                    "Ooops", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    "Oops", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
             

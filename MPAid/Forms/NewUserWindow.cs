@@ -76,21 +76,21 @@ namespace MPAid
             if (userNameBox.Text.Trim() == "")
             {
                 MessageBox.Show("Username should not be empty! ",
-                  "Ooops", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                  "Oops", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
 
             if ((codeBox.Text.Trim() == "") || (codeBox2.Text.Trim() == ""))
             {
                 MessageBox.Show("Passwords should not be empty! ",
-                   "Ooops", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                   "Oops", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
 
             if (codeBox.Text != codeBox2.Text)
             {
                 MessageBox.Show("Passwords do not match! ",
-                    "Ooops", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    "Oops", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
             
@@ -99,7 +99,7 @@ namespace MPAid
             if (allUsers.ContainUser(candidate))
             {
                 MessageBox.Show("User already exist, please use a different name! ",
-                    "Ooops", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    "Oops", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             else
             {

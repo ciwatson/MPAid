@@ -87,7 +87,7 @@ namespace MPAid
             else
             {
                 MessageBox.Show("User does not exist or password incorrect! ",
-                    "Ooops", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    "Oops", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
         /// <summary>
@@ -126,7 +126,7 @@ namespace MPAid
                 else
                 {
                     MessageBox.Show("Sorry, unknown error occurred! Please try again~ ",
-                        "Ooops", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        "Oops", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
             }
 
