@@ -96,9 +96,8 @@ namespace MPAid.Forms.Config
                 }
 
                 // For each item in the database list box...
-                for (int i = selectedItemsCopy.Count - 1; i >= 0; i--)
-                {
-                    SingleFile sf = selectedItemsCopy[i] as MPAid.Models.SingleFile;    // Get the file from the database
+                foreach (SingleFile sf in selectedItemsCopy)
+                { 
                     Recording rd = null;
                     NamePaser paser = new NamePaser();
                     paser.FullName = sf.Name;       // Add the file to the Parser
