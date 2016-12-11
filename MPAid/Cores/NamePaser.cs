@@ -162,7 +162,7 @@ namespace MPAid.Cores
                 {
                     return "video";
                 }
-                return "unknow";
+                return "unknown";
             }
         }
         /// <summary>
