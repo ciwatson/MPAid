@@ -71,7 +71,7 @@ namespace MPAid
         /// </summary>
         /// <param name="candidate">The user to check, as an MAPiUser.</param>
         /// <returns>True if the user is in the system, false if not.</returns>
-        public bool ContainUser(MPAiUser candidate)
+        public bool ContainsUser(MPAiUser candidate)
         {
             foreach (MPAiUser item in allUsers)
                 if (item.getName() == candidate.getName())

@@ -86,8 +86,19 @@ namespace MPAid
             }
             else
             {
-                MessageBox.Show("User does not exist or password incorrect! ",
+                if (myUsers.ContainsUser(tUser))
+                {
+                    MessageBox.Show("Password is incorrect!",
                     "Oops", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    codeBox.Clear();
+                } else
+                {
+                    MessageBox.Show("User does not exist!",
+                    "Oops", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    userNameBox.Clear();
+                    codeBox.Clear();
+                }
+                
             }
         }
         /// <summary>
