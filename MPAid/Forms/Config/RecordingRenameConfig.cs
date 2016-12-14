@@ -55,7 +55,7 @@ namespace MPAid.Forms.Config
         {
             try
             {
-                NamePaser paser = new NamePaser();
+                NameParser paser = new NameParser();
                 paser.Address = Path.GetDirectoryName(openFileDialog.FileName);
                 paser.Ext = Path.GetExtension(openFileDialog.FileName);
                 paser.Speaker = this.speakerTextBox.Text;

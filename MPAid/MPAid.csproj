@@ -206,7 +206,7 @@
     <Compile Include="Modules\HMMsController.cs" />
     <Compile Include="Modules\HtmlConfig.cs" />
     <Compile Include="Modules\HtmlGenerator.cs" />
-    <Compile Include="Cores\NamePaser.cs" />
+    <Compile Include="Cores\NameParser.cs" />
     <Compile Include="Cores\SysCfg.cs" />
     <Compile Include="Modules\UserManagement.cs" />
     <Compile Include="Cores\VowelComparer.cs" />

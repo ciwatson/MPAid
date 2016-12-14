@@ -10,7 +10,7 @@ namespace MPAid.Cores
     /// <summary>
     /// Class that handles extracting data about a recording file from it's file name.
     /// </summary>
-    class NamePaser
+    class NameParser
     {
         /// <summary>
         /// Property for accessing the file containing the recording.

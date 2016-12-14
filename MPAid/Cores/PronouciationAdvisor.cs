@@ -53,13 +53,24 @@ namespace MPAid.Cores
             string targetPronouciation = lexicon.dictionary[target];
             advice += string.Format(@"However, compared to the target word '{0}', whose pronounciation is '{1}',{2}{3}", target, targetPronouciation, Environment.NewLine, Environment.NewLine);
 
-            Dictionary<string, string> mismatched = AnalyzePronouciation(targetPronouciation, lexicon.dictionary[recognized]);
-            if (mismatched.Count > 0)
+            List<KeyValuePair<string, string>> pronounciationList = AnalyzePronouciation(targetPronouciation, lexicon.dictionary[recognized]);
+            if (pronounciationList.Count > 0)
             {
-                advice += string.Format(@"It sounds that you are mispronouncing:{0}", Environment.NewLine);
-                foreach (KeyValuePair<string, string> pair in mismatched)
+                advice += string.Format(@"This is how you pronounced the word:{0}", Environment.NewLine);
+                foreach (KeyValuePair<string, string> pair in pronounciationList)
                 {
-                    advice += string.Format(@"{0} to {1}{2}", pair.Key, pair.Value, Environment.NewLine);
+                    if(pair.Key.Equals(pair.Value))
+                    {
+                        advice += string.Format(@"'{0}' was correctly pronounced.{1}", pair.Key, Environment.NewLine);
+                    }
+                    else if(pair.Value.Equals(""))
+                    {
+                        advice += string.Format(@"'{0}' was not said.{1}", pair.Key, Environment.NewLine);
+                    }
+                    else
+                    {
+                        advice += string.Format(@"'{0}' was mispronounced as '{1}'.{2}", pair.Key, pair.Value, Environment.NewLine);
+                    }
                 }
             }
             return advice;
@@ -70,16 +81,25 @@ namespace MPAid.Cores
         /// <param name="target">The correct pronunciation.</param>
         /// <param name="recognized">The user's pronunciation.</param>
         /// <returns>A dictionary mapping the correct pronunciation to the user's pronunciation, for each syllable they got wrong.</returns>
-        private Dictionary<string, string> AnalyzePronouciation(string target, string recognized)
+        private List<KeyValuePair<string, string>> AnalyzePronouciation(string target, string recognized)
         {
-            Dictionary<string, string> mismatched = new Dictionary<string, string>();
+            List<KeyValuePair<string, string>> pronounciationList = new List<KeyValuePair<string, string>>();
+
             string[] targetPhones = target.Split(' ');
             string[] recognizedPhones = recognized.Split(' ');
-            for (int i = 0; i < Math.Min(targetPhones.Length, recognizedPhones.Length); i++)
+
+            for (int i = 0; i < targetPhones.Length; i++)
             {
-                if(!mismatched.ContainsKey(targetPhones[i])) mismatched.Add(targetPhones[i], recognizedPhones[i]);
+                if (i < recognizedPhones.Length)
+                {
+                    pronounciationList.Add(new KeyValuePair<string, string>(targetPhones[i], recognizedPhones[i]));
+                }
+                else
+                {
+                    pronounciationList.Add(new KeyValuePair<string, string>(targetPhones[i], ""));
+                }
             }
-            return mismatched;
+            return pronounciationList;
         }
 
         private LexiconReader lexicon = new LexiconReader();
