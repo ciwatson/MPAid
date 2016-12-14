@@ -197,7 +197,7 @@
     <Compile Include="Models\Speaker.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Word.cs" />
-    <Compile Include="Cores\EnumberationPicker.cs" />
+    <Compile Include="Cores\EnumerationPicker.cs" />
     <Compile Include="Cores\Serializer.cs" />
     <Compile Include="Modules\FormantPlotController.cs" />
     <Compile Include="Modules\IoController.cs" />
