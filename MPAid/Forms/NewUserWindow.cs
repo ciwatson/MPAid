@@ -96,7 +96,7 @@ namespace MPAid
             
             MPAiUser candidate = getCandidate();
 
-            if (allUsers.ContainUser(candidate))
+            if (allUsers.ContainsUser(candidate))
             {
                 MessageBox.Show("User already exist, please use a different name! ",
                     "Oops", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
