@@ -130,7 +130,7 @@
     <Compile Include="Cores\MailSender.cs" />
     <Compile Include="Cores\NAudioPlayer.cs" />
     <Compile Include="Cores\ProcessExtension.cs" />
-    <Compile Include="Cores\PronouciationAdvisor.cs" />
+    <Compile Include="Cores\PronunciationAdvisor.cs" />
     <Compile Include="Cores\ReportLaucher.cs" />
     <Compile Include="Cores\ScoreBoard.cs" />
     <Compile Include="Forms\AdminConsole.cs">
@@ -197,7 +197,7 @@
     <Compile Include="Models\Speaker.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Word.cs" />
-    <Compile Include="Cores\EnumberationPicker.cs" />
+    <Compile Include="Cores\EnumerationPicker.cs" />
     <Compile Include="Cores\Serializer.cs" />
     <Compile Include="Modules\FormantPlotController.cs" />
     <Compile Include="Modules\IoController.cs" />
@@ -206,7 +206,7 @@
     <Compile Include="Modules\HMMsController.cs" />
     <Compile Include="Modules\HtmlConfig.cs" />
     <Compile Include="Modules\HtmlGenerator.cs" />
-    <Compile Include="Cores\NamePaser.cs" />
+    <Compile Include="Cores\NameParser.cs" />
     <Compile Include="Cores\SysCfg.cs" />
     <Compile Include="Modules\UserManagement.cs" />
     <Compile Include="Cores\VowelComparer.cs" />

@@ -55,7 +55,7 @@ namespace MPAid.Forms.Config
                 foreach (KeyValuePair<string, string> item in mediaLocalListBox.SelectedItems)      // For each selected item...
                 {
                     String filename = item.Key.ToString();
-                    NamePaser paser = new NamePaser();
+                    NameParser paser = new NameParser();
                     paser.FullName = filename;          // Put the name into the parser
                     // Set the parser address to the audio or video folder as appropriate. 
                     if (paser.MediaFormat == "audio") paser.Address = Properties.Settings.Default.AudioFolder;
@@ -87,12 +87,19 @@ namespace MPAid.Forms.Config
             try
             {
                 var DBContext = MainForm.self.DBModel;
-                // For each item in the database list box...
-                for (int i = onDBListBox.SelectedItems.Count - 1; i >= 0; i--)
+
+                // Creating a copy of the list box selected items to iterate through
+                List<SingleFile> selectedItemsCopy = new List<SingleFile>();
+                foreach (SingleFile sf in onDBListBox.SelectedItems)
                 {
-                    SingleFile sf = onDBListBox.SelectedItems[i] as MPAid.Models.SingleFile;    // Get the file from the database
+                    selectedItemsCopy.Add(sf);
+                }
+
+                // For each item in the database list box...
+                foreach (SingleFile sf in selectedItemsCopy)
+                { 
                     Recording rd = null;
-                    NamePaser paser = new NamePaser();
+                    NameParser paser = new NameParser();
                     paser.FullName = sf.Name;       // Add the file to the Parser
                     // Use the parser to create the model objects.
                     if (paser.MediaFormat == "audio") rd = sf.Audio;

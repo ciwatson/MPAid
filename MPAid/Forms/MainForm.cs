@@ -101,7 +101,7 @@ namespace MPAid
         /// </summary>
         private void InitializeUserProfile()
         {
-            usersToolStripMenuItem.Text = UserManagement.getCurrentUser().getName(true);
+            usersToolStripMenuItem.Text = UserManagement.getCurrentUser().getName();
 
             // The administrator account is not advised to change its password.
             changePasswordToolStripMenuItem.Visible = !UserManagement.currentUserIsAdmin();

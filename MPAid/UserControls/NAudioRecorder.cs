@@ -262,6 +262,11 @@ namespace MPAid.UserControls
                     waveIn.StartRecording();
                     SetControlStates(true);
                 }
+                else   
+                {
+                    MessageBox.Show("No audio device plugged in.",
+                    "Oops", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
             }
             catch(Exception exp)
             {

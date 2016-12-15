@@ -65,19 +65,19 @@ namespace MPAid
             if (userNameBox.Text.Trim() == "")
             {
                 MessageBox.Show("Username should not be empty! ",
-                  "Ooops", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                  "Oops", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
             else if ((codeBox.Text.Trim() == "") || (codeBox2.Text.Trim() == ""))
             {
                 MessageBox.Show("Passwords should not be empty! ",
-                   "Ooops", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                   "Oops", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
             else if (codeBox.Text != codeBox2.Text)
             {
                 MessageBox.Show("Passwords do not match! ",
-                    "Ooops", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    "Oops", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
 
@@ -86,7 +86,7 @@ namespace MPAid
             if (!UserManagement.CreateNewUser(candidate))
             {
                 MessageBox.Show("User already exists, please use a different name! ",
-                    "Ooops", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    "Oops", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             else
             {
@@ -94,7 +94,7 @@ namespace MPAid
                         "Congratulations", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 UserManagement.WriteSettings();
                 LoginWindow loginWindow = (LoginWindow)this.Owner;      // Only LoginWindow can open this form.
-                loginWindow.VisualizeUser(candidate.getName(true), candidate.getCode());
+                loginWindow.VisualizeUser(candidate.getName(), candidate.getCode());
                 this.Close();
             }
         }

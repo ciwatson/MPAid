@@ -72,7 +72,7 @@ namespace MPAid.Models
         {
             try
             {
-                NamePaser paser = new NamePaser();
+                NameParser paser = new NameParser();
                 paser.SingleFile = recordingFile;
                 // Should only be one speaker per recording.
                 Speaker spk = this.Speaker.SingleOrDefault(x => x.Name == paser.Speaker);

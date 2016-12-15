@@ -26,7 +26,9 @@ namespace MPAid
             {
                 // prevent the user from changing the name of the admin
                 if (userName != adminStr)
+                {
                     userName = value;
+                }
             }
         }
         /// <summary>
@@ -82,15 +84,6 @@ namespace MPAid
             return userName.ToLower();
         }
         /// <summary>
-        /// Override for getName(). Case senstive. 
-        /// </summary>
-        /// <param name="formal">Only used to activate this method, instead of the default one, unused in the code.</param>
-        /// <returns>The username, as a string.</returns>
-        public string getName(bool formal)
-        {
-            return userName;
-        }
-        /// <summary>
         /// Getter for password. Case Senstive.
         /// </summary>
         /// <returns>The password, as a string.</returns>
@@ -110,11 +103,15 @@ namespace MPAid
             {
                 MPAiUser otherUser = (MPAiUser)obj;
                 if (userName == null || passWord == null)
+                {
                     return false;
+                }
                 return (getName() == otherUser.getName());
             }
             else
+            {
                 return false;
+            }
         }
         /// <summary>
         /// Override for GetHashCode(). Functions the same.
