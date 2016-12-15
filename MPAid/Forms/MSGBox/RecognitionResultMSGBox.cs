@@ -17,7 +17,6 @@ namespace MPAid.Forms.MSGBox
     partial class RecognitionResultMSGBox : Form
     {
         public ScoreBoardItem scoreBoardItem = new ScoreBoardItem();
-        private PronouciationAdvisor advisor = new PronouciationAdvisor();
         /// <summary>
         /// Default constructor.
         /// </summary>
@@ -61,7 +60,7 @@ namespace MPAid.Forms.MSGBox
         {
             try
             {
-                descriptionTextBox.Text = advisor.Advise(this.Text, elseTextBox.Text, recognitionResultLabel.Text);
+                descriptionTextBox.Text = PronouciationAdvisor.Advise(this.Text, elseTextBox.Text, recognitionResultLabel.Text);
             }
             catch (Exception exp)
             {

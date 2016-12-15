@@ -10,7 +10,7 @@ namespace MPAid.Cores
     /// <summary>
     /// Class that generates advice based on analysed recordings.
     /// </summary>
-    class PronouciationAdvisor
+    static class PronouciationAdvisor
     {
         /// <summary>
         /// Can be called from outside to generate a string of advice to present to the user.
@@ -19,14 +19,14 @@ namespace MPAid.Cores
         /// <param name="target">The intended vowel/word, as a string.</param>
         /// <param name="recognized">The actual, identified vowel/word, as a string.</param>
         /// <returns>The advice for the user, as a string.</returns>
-        public string Advise(string recording, string target, string recognized)
+        public static string Advise(string recording, string target, string recognized)
         {
             string advice = "Errors in lexicon.txt!";   // Handle error cases.
-            if (lexicon.ReadLexicon())
+            if (LexiconReader.ReadLexicon())
             {
-                if (lexicon.dictionary.Keys.Contains(recognized))
+                if (LexiconReader.dictionary.Keys.Contains(recognized))
                 {
-                    string recognizedPronouciation = lexicon.dictionary[recognized];
+                    string recognizedPronouciation = LexiconReader.dictionary[recognized];
                     advice = string.Format(@"Your recording '{0}' is analyzed as '{1}', having pronounciation '{2}'.{3}{4}", recording, recognized, recognizedPronouciation, Environment.NewLine, Environment.NewLine);
                     if (!recognized.Equals(target) && !string.IsNullOrEmpty(target))
                     {
@@ -47,13 +47,13 @@ namespace MPAid.Cores
         /// <param name="target">The correct string for comparison.</param>
         /// <param name="recognized">The user's string for comparison.</param>
         /// <returns>A string representing pronunciation advice based on the two input strings.</returns>
-        private string CompareWords(string target, string recognized)
+        private static string CompareWords(string target, string recognized)
         {
             string advice = string.Empty;
-            string targetPronouciation = lexicon.dictionary[target];
+            string targetPronouciation = LexiconReader.dictionary[target];
             advice += string.Format(@"This is in comparision to the target word '{0}', whose pronunciation is '{1}'.{2}{3}", target, targetPronouciation, Environment.NewLine, Environment.NewLine);
 
-            List<KeyValuePair<string, string>> pronounciationList = AnalyzePronouciation(targetPronouciation, lexicon.dictionary[recognized]);
+            List<KeyValuePair<string, string>> pronounciationList = AnalyzePronouciation(targetPronouciation, LexiconReader.dictionary[recognized]);
             if (pronounciationList.Count > 0)
             {
                 advice += string.Format(@"This is how you pronounced the word:{0}", Environment.NewLine);
@@ -81,7 +81,7 @@ namespace MPAid.Cores
         /// <param name="target">The correct pronunciation.</param>
         /// <param name="recognized">The user's pronunciation.</param>
         /// <returns>A dictionary mapping the correct pronunciation to the user's pronunciation, for each syllable they got wrong.</returns>
-        private List<KeyValuePair<string, string>> AnalyzePronouciation(string target, string recognized)
+        private static List<KeyValuePair<string, string>> AnalyzePronouciation(string target, string recognized)
         {
             List<KeyValuePair<string, string>> pronounciationList = new List<KeyValuePair<string, string>>();
 
@@ -101,23 +101,21 @@ namespace MPAid.Cores
             }
             return pronounciationList;
         }
-
-        private LexiconReader lexicon = new LexiconReader();
     }
     /// <summary>
     /// A class to interpret the lexicon.txt file into a dictionary object.
     /// </summary>
-    class LexiconReader
+    static class LexiconReader
     {
         /// <summary>
         /// Publically accessible dictionary of words and their pronunciations.
         /// </summary>
-        public Dictionary<string, string> dictionary = new Dictionary<string, string>();
+        public static Dictionary<string, string> dictionary = new Dictionary<string, string>();
         /// <summary>
         /// Opens the lexicon.txt file and reads each element listed there into the dictionary. 
         /// </summary>
         /// <returns>True if lexicon.txt exists, is in the right place, and was read successfully, false otherwise.</returns>
-        public bool ReadLexicon()
+        public static bool ReadLexicon()
         {
             try
             {
