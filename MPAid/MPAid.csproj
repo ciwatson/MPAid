@@ -210,6 +210,12 @@
     <Compile Include="Cores\SysCfg.cs" />
     <Compile Include="Modules\UserManagement.cs" />
     <Compile Include="Cores\VowelComparer.cs" />
+    <Compile Include="NewForms\SpeechRecognitionTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewForms\SpeechRecognitionTest.Designer.cs">
+      <DependentUpon>SpeechRecognitionTest.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Components\TDButton.cs">
@@ -291,6 +297,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewForms\SpeechRecognitionTest.resx">
+      <DependentUpon>SpeechRecognitionTest.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
