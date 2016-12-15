@@ -51,7 +51,7 @@ namespace MPAid.Cores
         {
             string advice = string.Empty;
             string targetPronouciation = lexicon.dictionary[target];
-            advice += string.Format(@"However, compared to the target word '{0}', whose pronounciation is '{1}',{2}{3}", target, targetPronouciation, Environment.NewLine, Environment.NewLine);
+            advice += string.Format(@"This is in comparision to the target word '{0}', whose pronunciation is '{1}'.{2}{3}", target, targetPronouciation, Environment.NewLine, Environment.NewLine);
 
             List<KeyValuePair<string, string>> pronounciationList = AnalyzePronouciation(targetPronouciation, lexicon.dictionary[recognized]);
             if (pronounciationList.Count > 0)
