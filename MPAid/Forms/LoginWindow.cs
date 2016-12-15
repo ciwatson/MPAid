@@ -14,9 +14,7 @@ namespace MPAid
     /// </summary>
     public partial class LoginWindow : Form
     {
-    
-        private IoController fileMapper;
-        private UserManagement myUsers;
+
         /// <summary>
         /// Default constructor.
         /// </summary>
@@ -24,8 +22,7 @@ namespace MPAid
         {
             InitializeComponent();
 
-            fileMapper = new IoController();
-            myUsers = new UserManagement(fileMapper.GetAppDataDir());
+            UserManagement.SetRoot(IoController.GetAppDataDir());
 
             InitializeUI();
         }
@@ -47,20 +44,24 @@ namespace MPAid
             // If the user has been remembered, populate the username and password fields with their username and password.
             if (autoLog)
             {
-                MPAiUser lastUser = myUsers.getCurrentUser();
+                MPAiUser lastUser = UserManagement.getCurrentUser();
                 if (lastUser != null)
-                    VisualizeUser(lastUser);
+                    VisualizeUser(lastUser.getName(), lastUser.getCode());
             }
         }
+
         /// <summary>
-        /// Populates the username and password text boxes with the values of the input user.
+        /// Populates the username and password boxes with the input values.
+        /// Code calling this method needs access to the user's password.
         /// </summary>
-        /// <param name="user">The user to remember, as an MPAiUser object.</param>
-        private void VisualizeUser(MPAiUser user)
+        /// <param name="username">The value to place in the username box.</param>
+        /// <param name="password">The value to place in the password box.</param>
+        public void VisualizeUser(string username, string password)
         {
-            userNameBox.Text = user.getLowerCaseName();
-            codeBox.Text = user.getCode();
+            userNameBox.Text = username;
+            codeBox.Text = password;
         }
+
         /// <summary>
         /// Clears the username and password text boxes.
         /// </summary>
@@ -69,24 +70,23 @@ namespace MPAid
             userNameBox.Clear();
             codeBox.Clear();
         }
+
         /// <summary>
         /// Authenticates the username and password entered in the text boxes, and shows the main window if the combination is valid.
         /// </summary>
         public void PerformLogin()
         {
             MPAiUser tUser = new MPAiUser(userNameBox.Text, codeBox.Text);
-            if (myUsers.AuthenticateUser(tUser))
+            if (UserManagement.AuthenticateUser(tUser))
             {
                 Hide(); // This form is the first one the program opens. When it is closed, the program terminates, so we must keep it alive for now.
-                MainForm mainWindow = new MainForm(myUsers);
-                // Deprecated: MainForm class now takes users as a parameter.
-                //mainWindow.SetUserManagement(myUsers);
+                MainForm mainWindow = new MainForm();
                 mainWindow.SetHomeWindow(this);
                 mainWindow.Show();
             }
             else
             {
-                if (myUsers.ContainsUser(tUser))
+                if (UserManagement.ContainsUser(tUser))
                 {
                     MessageBox.Show("Password is incorrect!",
                     "Oops", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -102,6 +102,7 @@ namespace MPAid
 
             }
         }
+
         /// <summary>
         /// Handles the functionality of the Login button.
         /// </summary>
@@ -111,6 +112,7 @@ namespace MPAid
         {
             PerformLogin();
         }
+
         /// <summary>
         /// Handles the functionality of the Sign Up button.
         /// </summary>
@@ -120,29 +122,9 @@ namespace MPAid
         {
             //Creates a NewUserWindow object to create a new user.
             NewUserWindow newUserWin = new NewUserWindow();
-            newUserWin.SetAllUsers(myUsers);
-            newUserWin.ShowDialog();
-
-            MPAiUser candidate = newUserWin.getCandidate();
-            // If the registration was valid, inform the user. 
-            if (newUserWin.validRegistration())
-            {
-                if (myUsers.CreateNewUser(candidate))
-                {
-                    MessageBox.Show("Registration successful! ",
-                        "Congratulations", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    myUsers.WriteSettings();
-
-                    VisualizeUser(candidate);
-                }
-                else
-                {
-                    MessageBox.Show("Sorry, unknown error occurred! Please try again~ ",
-                        "Oops", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                }
-            }
-
+            newUserWin.ShowDialog(this);
         }
+
         /// <summary>
         /// Saves any changes made when the form is closed.
         /// </summary>
@@ -150,7 +132,7 @@ namespace MPAid
         /// <param name="e">Automatically generated by Visual Studio.</param>
         private void LoginWindow_FormClosed(object sender, FormClosedEventArgs e)
         {
-            myUsers.WriteSettings();
+            UserManagement.WriteSettings();
             Properties.Settings.Default.Save();
         }
     }

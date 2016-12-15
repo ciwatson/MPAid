@@ -9,24 +9,23 @@ namespace MPAid
 {
     /// <summary>
     /// Maintains details of all of the users of the system, the current user, and the administrator.
+    /// Only one file and list of users should exist at a time, so this class is static.
     /// </summary>
-    public class UserManagement
+    public static class UserManagement
     {
-        private MPAiUser currentUser = null;
-        private string userDirRoot = null;
-        private string fileName = "AppSettings.dat";    // At present, this does not exist. 
+        private static MPAiUser currentUser = null;
+        private static string userDirRoot = null;
+        private static string fileName = "AppSettings.dat";    // At present, this does not exist. 
         //Deprecated: Optimisation feature, commit logs suggest that it may cause errors, all references to it have been commented out.
         //private bool unchanged = true;
-        private readonly string adminStr = "admin";
+        private static readonly string adminStr = "admin";
 
-        private List<MPAiUser> allUsers;
+        private static List<MPAiUser> allUsers;
         /// <summary>
         /// Constructor for the UserManagement class, restores current user's settings, all users, and creates an admin user if one doesn't already exist.
         /// </summary>
-        /// <param name="root">The current MPAid root directory.</param>
-        public UserManagement(string root)
+        static UserManagement()
         {
-            userDirRoot = root + Path.DirectorySeparatorChar;
             allUsers = new List<MPAiUser>();
             ReadSettings();
 
@@ -34,26 +33,46 @@ namespace MPAid
                 allUsers.Add(new MPAiUser(adminStr, adminStr));
         }
         /// <summary>
+        /// Sets the root directory for the user.
+        /// </summary>
+        /// <param name="root">The current MPAid root directory.</param>
+        public static void SetRoot(string root)
+        {
+            userDirRoot = root + Path.DirectorySeparatorChar;
+        }
+
+        /// <summary>
         /// Returns the users of the system.
         /// </summary>
         /// <returns>A list of all the MPAiUsers.</returns>
-        public List<MPAiUser> GetAllUsers()
+        public static List<MPAiUser> GetAllUsers()
         {
             return allUsers;
         }
+
+        /// <summary>
+        /// Gets a single user by their unique username.
+        /// </summary>
+        /// <param name="username">The name of the user to get.</param>
+        /// <returns>The MPAiUser with name username.</returns>
+        private static MPAiUser getUser(string username)
+        {
+            return GetAllUsers().Find(x => x.getName().Equals(username.ToLower()));
+        }
+
         /// <summary>
         /// Checks if a user already exists with the same username as the one input, and adds the user to the database if not.
         /// </summary>
         /// <param name="newUserName">The username of the new user.</param>
         /// <param name="newCode">The password of the new user.</param>
         /// <returns>True if the creation was successful, false if not.</returns>
-        public bool CreateNewUser(string newUserName, string newCode)
+        public static bool CreateNewUser(string newUserName, string newCode)
         {
             //unchanged = false;
 
             IEnumerable<MPAiUser> searchUser =
                 from user in allUsers
-                where user.getLowerCaseName() == newUserName.ToLower()
+                where user.getName() == newUserName.ToLower()
                 select user;
 
             if (searchUser.Count() == 0)
@@ -71,10 +90,10 @@ namespace MPAid
         /// </summary>
         /// <param name="candidate">The user to check, as an MAPiUser.</param>
         /// <returns>True if the user is in the system, false if not.</returns>
-        public bool ContainsUser(MPAiUser candidate)
+        public static bool ContainsUser(MPAiUser candidate)
         {
             foreach (MPAiUser item in allUsers)
-                if (item.getLowerCaseName() == candidate.getLowerCaseName())
+                if (item.getName() == candidate.getName())
                     return true;
 
             return false;
@@ -84,7 +103,7 @@ namespace MPAid
         /// </summary>
         /// <param name="candidate">The user to add to the system, as an MPAiUser.</param>
         /// <returns>True if the creation was successful, false if not.</returns>
-        public bool CreateNewUser(MPAiUser candidate)
+        public static bool CreateNewUser(MPAiUser candidate)
         {
             //unchanged = false;
 
@@ -100,7 +119,7 @@ namespace MPAid
         /// Gets the current user of the system.
         /// </summary>
         /// <returns>The current user of the system as an MPAi object, if one exists. Null if not.</returns>
-        public MPAiUser getCurrentUser()
+        public static MPAiUser getCurrentUser()
         {
             if (currentUser != null)
                 return currentUser;
@@ -111,35 +130,34 @@ namespace MPAid
         /// Checks if the current user is the administrator.
         /// </summary>
         /// <returns>True if the current user is the administrator, false if not.</returns>
-        public bool currentUserIsAdmin()
+        public static bool currentUserIsAdmin()
         {
-            return (getCurrentUser().getLowerCaseName() == adminStr);
+            return (getCurrentUser().getName() == adminStr);
         }
-        // Deprecated: AuthenticateUser now takes an MPAiUser object, which all valid users have.
-        //public bool AuthenticateUser(string username, string code)
-        //{
-        //    foreach (MPAiUser user in allUsers)
-        //        if (user.getName() == username)
-        //            return user.codeCorrect(code);
-        //    return false;
-        //}
 
         /// <summary>
-        /// Checks if the current user is a valid, existing user, and sets them to the current user. 
+        /// Checks if the input user is a valid, existing user, with a correct password, and sets them to the current user. 
         /// </summary>
         /// <param name="tUser">The user to authenticate, as an MPAiUser object.</param>
         /// <returns>True if the user exists already, false otherwise.</returns>
-        public bool AuthenticateUser(MPAiUser tUser)
+        public static bool AuthenticateUser(MPAiUser tUser)
         {
-            currentUser = tUser;
-            return (allUsers.Contains(tUser));
+
+            if (allUsers.Contains(tUser)
+                    && getUser(tUser.getName()).codeCorrect(tUser.getCode())){
+                currentUser = tUser;
+                return true;
+            }else
+            {
+                return false;
+            }
         }
         /// <summary>
         /// Changes the current user's password.
         /// </summary>
         /// <param name="userName">The username of the user to change, as a string.</param>
         /// <param name="newCode">The new password for the specified user, as a string.</param>
-        public void ChangeUserCode(string userName, string newCode)
+        public static void ChangeUserCode(string userName, string newCode)
         {
             allUsers.Remove(currentUser);
             currentUser = new MPAiUser(userName, newCode);
@@ -149,7 +167,7 @@ namespace MPAid
         /// Removes the specified user from the system.
         /// </summary>
         /// <param name="userToRemove">The user to remove, as an MPAiUser object.</param>
-        public void RemoveUser(MPAiUser userToRemove)
+        public static void RemoveUser(MPAiUser userToRemove)
         {
             allUsers.Remove(userToRemove);
         }
@@ -157,7 +175,7 @@ namespace MPAid
         /// Returns a string representing the settings file on the user's computer.
         /// </summary>
         /// <returns>The path to the settings file, as a string.</returns>
-        private string GetSettingFilePath()
+        private static string GetSettingFilePath()
         {
             return (userDirRoot + fileName);
         }
@@ -165,7 +183,7 @@ namespace MPAid
         /// Opens the settings file and populates the allUsers field with the data found there.
         /// Also restores the last user to access the system to current user status.
         /// </summary>
-        public void ReadSettings()
+        public static void ReadSettings()
         {
             try
             {
@@ -193,7 +211,7 @@ namespace MPAid
         /// <summary>
         /// Writes all users to the settings file, and creates it if it does not already exist.
         /// </summary>
-        public void WriteSettings()
+        public static void WriteSettings()
         {
             //if (unchanged)
             //    return;
@@ -210,12 +228,12 @@ namespace MPAid
                     writer.Write(n);
                     foreach (MPAiUser user in allUsers)
                     {
-                        writer.Write(user.getLowerCaseName());
+                        writer.Write(user.getName());
                         writer.Write(user.getCode());               
                     }
 
                     // store the last used user
-                    writer.Write(currentUser.getLowerCaseName());
+                    writer.Write(currentUser.getName());
                     writer.Write(currentUser.getCode());
                 }
             }

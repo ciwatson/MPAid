@@ -71,6 +71,10 @@ namespace MPAid.Cores
     class ScoreBoard
     {
         /// <summary>
+        /// A list of all of the scoreboard items on the scoreboard.
+        /// </summary>     
+        public List<ScoreBoardItem> Content = new List<ScoreBoardItem>();
+        /// <summary>
         /// Calculates the overall correctness of each entry, by adding each entry's correctness and dividing by the number of entries.
         /// </summary>
         public float CalculateCorrectness
@@ -92,10 +96,6 @@ namespace MPAid.Cores
                 return sum;
             }
         }
-        /// <summary>
-        /// A list of all of the scoreboard items on the scoreboard.
-        /// </summary>     
-        public List<ScoreBoardItem> Content = new List<ScoreBoardItem>();
     }
     /// <summary>
     /// Wrapper class for the similarity algorithm employed for the correctness value.

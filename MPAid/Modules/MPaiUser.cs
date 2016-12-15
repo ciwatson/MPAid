@@ -73,24 +73,15 @@ namespace MPAid
         /// <returns>True if the user is the administrator, false otherwise.</returns>
         public bool isAdmin()
         {
-            return (getLowerCaseName() == adminStr);
+            return (getName() == adminStr);
         }
         /// <summary>
         /// Getter for username, Not case senstive.
         /// </summary>
         /// <returns>The lower-case username, as a string.</returns>
-        public string getLowerCaseName()
+        public string getName()
         {
             return userName.ToLower();
-        }
-        /// <summary>
-        /// Override for getName(). Case senstive. 
-        /// </summary>
-        /// <param name="formal">Only used to activate this method, instead of the default one, unused in the code.</param>
-        /// <returns>The username, as a string.</returns>
-        public string getFormalName()
-        {
-            return userName;
         }
         /// <summary>
         /// Getter for password. Case Senstive.
@@ -102,7 +93,7 @@ namespace MPAid
         }
         /// <summary>
         /// Override for equals().
-        /// Two users with the same username and password are considered the same user.
+        /// Two users with the same username are considered the same user.
         /// </summary>
         /// <param name="obj">The object to be compared to the current user.</param>
         /// <returns>True if the user and the object are the same thing, false otherwise.</returns>
@@ -115,7 +106,7 @@ namespace MPAid
                 {
                     return false;
                 }
-                return ((getLowerCaseName() == otherUser.getLowerCaseName()) && (passWord == otherUser.getCode()));
+                return (getName() == otherUser.getName());
             }
             else
             {
