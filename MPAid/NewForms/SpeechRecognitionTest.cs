@@ -10,17 +10,12 @@ using System.Windows.Forms;
 
 namespace MPAid.NewForms
 {
+
     public partial class SpeechRecognitionTest : Form
     {
         public SpeechRecognitionTest()
         {
             InitializeComponent();
         }
-
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
     }
 }
