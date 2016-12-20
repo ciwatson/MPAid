@@ -211,6 +211,12 @@
     <Compile Include="Cores\SysCfg.cs" />
     <Compile Include="Modules\UserManagement.cs" />
     <Compile Include="Cores\VowelComparer.cs" />
+    <Compile Include="NewForms\MPAiSoundMainMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewForms\MPAiSoundMainMenu.Designer.cs">
+      <DependentUpon>MPAiSoundMainMenu.cs</DependentUpon>
+    </Compile>
     <Compile Include="NewForms\UserCreationScreen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -304,6 +310,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewForms\MPAiSoundMainMenu.resx">
+      <DependentUpon>MPAiSoundMainMenu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NewForms\SpeechRecognitionTest.resx">
       <DependentUpon>SpeechRecognitionTest.cs</DependentUpon>
