@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Text;
+using MPAid.Models;
 
 namespace MPAid
 {
@@ -14,6 +15,9 @@ namespace MPAid
     {
         private string userName;
         private string passWord;
+        private VoiceType? voiceType;
+        private Speaker speaker;
+        private Category category;
         private readonly string adminStr = "admin";
         /// <summary>
         /// Wrapper property for the user's username, allowing access from outside the class.
@@ -40,6 +44,17 @@ namespace MPAid
             get { return passWord; }
             set { passWord = value; }
         }
+
+        /// <summary>
+        /// Wrapper property for the user's voice type, allowing access outside of the class.
+        /// </summary>
+        [DisplayName("VoiceType")]
+        public VoiceType? Voice
+        {
+            get { return voiceType; }
+            set { voiceType = value; }
+        }
+        
         /// <summary>
         /// Wrapper property for the administrator status of the user, allowing ti to be checked from outside the class.
         /// </summary>
@@ -48,6 +63,7 @@ namespace MPAid
         {
             get { return isAdmin(); }
         }
+
         /// <summary>
         /// Constructor for the MPAiUser class.
         /// </summary>
@@ -57,6 +73,18 @@ namespace MPAid
         {
             userName = name;
             passWord = code;
+            voiceType = null;
+        }
+        /// <summary>
+        /// Constructor for the MPAiUser class.
+        /// </summary>
+        /// <param name="name">The new user's username</param>
+        /// <param name="code">The new user's password</param>
+        public MPAiUser(string name, string code, VoiceType? voiceType)
+        {
+            userName = name;
+            passWord = code;
+            this.voiceType = voiceType;
         }
         /// <summary>
         /// Checks if the input string matches this user's password. Case sensitive.

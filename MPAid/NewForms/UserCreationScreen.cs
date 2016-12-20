@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MPAid.Models;
 
 namespace MPAid.NewForms
 {
@@ -14,6 +15,7 @@ namespace MPAid.NewForms
     {
         private string username = null;
         private string usercode = null;
+        private VoiceType? voiceType = null;
 
         /// <summary>
         /// Default Constructor.
@@ -31,8 +33,24 @@ namespace MPAid.NewForms
         {
             username = userNameBox.Text;
             usercode = passwordBox.Text;
+            if(masculineRadioButton.Checked && heritageRadioButton.Checked)
+            {
+                voiceType = VoiceType.MASCULINE_HERITAGE;
+            }
+            else if (masculineRadioButton.Checked && modernRadioButton.Checked)
+            {
+                voiceType = VoiceType.MASCULINE_MODERN;
+            }
+            else if (feminineRadioButton.Checked && heritageRadioButton.Checked)
+            {
+                voiceType = VoiceType.FEMININE_HERITAGE;
+            }
+            else if (feminineRadioButton.Checked && modernRadioButton.Checked)
+            {
+                voiceType = VoiceType.FEMININE_MODERN;
+            }
 
-            return (new MPAiUser(username, usercode));
+            return (new MPAiUser(username, usercode, voiceType));
         }
 
         private void UserCreationScreen_Load(object sender, EventArgs e)
