@@ -210,6 +210,12 @@
     <Compile Include="Cores\SysCfg.cs" />
     <Compile Include="Modules\UserManagement.cs" />
     <Compile Include="Cores\VowelComparer.cs" />
+    <Compile Include="NewForms\RenameFileDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewForms\RenameFileDialog.Designer.cs">
+      <DependentUpon>RenameFileDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="NewForms\SpeechRecognitionTest.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -297,6 +303,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewForms\RenameFileDialog.resx">
+      <DependentUpon>RenameFileDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NewForms\SpeechRecognitionTest.resx">
       <DependentUpon>SpeechRecognitionTest.cs</DependentUpon>
