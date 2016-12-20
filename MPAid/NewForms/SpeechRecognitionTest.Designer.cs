@@ -32,12 +32,12 @@
             this.SpeechRecognitionTestPanel = new System.Windows.Forms.SplitContainer();
             this.backButton = new System.Windows.Forms.Button();
             this.optionsButton = new System.Windows.Forms.Button();
-            this.recordingProgressBar = new System.Windows.Forms.ProgressBar();
             this.WordComboBox = new System.Windows.Forms.ComboBox();
             this.analyzeButton = new System.Windows.Forms.Button();
             this.recordingProgressBarLabel = new System.Windows.Forms.Label();
             this.recordButton = new System.Windows.Forms.Button();
             this.playButton = new System.Windows.Forms.Button();
+            this.recordingProgressBar = new System.Windows.Forms.ProgressBar();
             this.AudioInputDeviceButton = new System.Windows.Forms.Button();
             this.RenameButton = new System.Windows.Forms.Button();
             this.AudioInputDeviceComboBox = new System.Windows.Forms.ComboBox();
@@ -62,6 +62,7 @@
             this.submitFeedbackToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tutorialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.SpeechRecognitionTestPanel)).BeginInit();
             this.SpeechRecognitionTestPanel.Panel1.SuspendLayout();
             this.SpeechRecognitionTestPanel.Panel2.SuspendLayout();
@@ -132,14 +133,6 @@
             this.optionsButton.UseVisualStyleBackColor = true;
             this.optionsButton.Click += new System.EventHandler(this.optionsButton_Click);
             // 
-            // recordingProgressBar
-            // 
-            this.recordingProgressBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.recordingProgressBar.Location = new System.Drawing.Point(117, 60);
-            this.recordingProgressBar.Name = "recordingProgressBar";
-            this.recordingProgressBar.Size = new System.Drawing.Size(350, 50);
-            this.recordingProgressBar.TabIndex = 40;
-            // 
             // WordComboBox
             // 
             this.WordComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -205,6 +198,14 @@
             this.playButton.Text = "Play";
             this.playButton.UseVisualStyleBackColor = true;
             this.playButton.Click += new System.EventHandler(this.playButton_Click);
+            // 
+            // recordingProgressBar
+            // 
+            this.recordingProgressBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.recordingProgressBar.Location = new System.Drawing.Point(117, 60);
+            this.recordingProgressBar.Name = "recordingProgressBar";
+            this.recordingProgressBar.Size = new System.Drawing.Size(350, 50);
+            this.recordingProgressBar.TabIndex = 40;
             // 
             // AudioInputDeviceButton
             // 
@@ -314,7 +315,7 @@
             this.RecordingListBox.Name = "RecordingListBox";
             this.RecordingListBox.Size = new System.Drawing.Size(458, 186);
             this.RecordingListBox.TabIndex = 8;
-            this.RecordingListBox.DoubleClick += new System.EventHandler(this.RecordingListBox_DoubleClick);
+            this.RecordingListBox.DoubleClick += new System.EventHandler(this.SelectButton_Click);
             // 
             // RecordingListLabel
             // 
@@ -448,6 +449,15 @@
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(169, 26);
             this.aboutToolStripMenuItem.Text = "About";
             // 
+            // openFileDialog
+            // 
+            this.openFileDialog.Filter = "Wave files (*.wav)|*.wav|All Files(*.*)|*.*";
+            this.openFileDialog.InitialDirectory = "Environment.GetFolderPath(Environment.SpecialFolder.MyMusic, Environment.SpecialF" +
+    "olderOption.None)";
+            this.openFileDialog.Multiselect = true;
+            this.openFileDialog.RestoreDirectory = true;
+            this.openFileDialog.Title = "Select a Recording...";
+            // 
             // SpeechRecognitionTest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -507,5 +517,6 @@
         private System.Windows.Forms.ListBox RecordingListBox;
         private System.Windows.Forms.Label RecordingListLabel;
         private System.Windows.Forms.Button ScoreReportButton;
+        private System.Windows.Forms.OpenFileDialog openFileDialog;
     }
 }
