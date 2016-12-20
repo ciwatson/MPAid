@@ -191,6 +191,7 @@
     <None Include="HTK\Batches\RecordingPicker.bat" />
     <None Include="HTK\Perls\Recordings2Prompts.pl" />
     <Compile Include="Models\AppDataPath.cs" />
+    <Compile Include="Models\VoiceType.cs" />
     <Compile Include="Models\SingleFile.cs" />
     <Compile Include="Models\MPAidModel.cs" />
     <Compile Include="Models\Recording.cs" />
@@ -215,6 +216,18 @@
     </Compile>
     <Compile Include="NewForms\RenameFileDialog.Designer.cs">
       <DependentUpon>RenameFileDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewForms\MPAiSoundMainMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewForms\MPAiSoundMainMenu.Designer.cs">
+      <DependentUpon>MPAiSoundMainMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewForms\UserCreationScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewForms\UserCreationScreen.Designer.cs">
+      <DependentUpon>UserCreationScreen.cs</DependentUpon>
     </Compile>
     <Compile Include="NewForms\SpeechRecognitionTest.cs">
       <SubType>Form</SubType>
@@ -307,8 +320,14 @@
     <EmbeddedResource Include="NewForms\RenameFileDialog.resx">
       <DependentUpon>RenameFileDialog.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="NewForms\MPAiSoundMainMenu.resx">
+      <DependentUpon>MPAiSoundMainMenu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="NewForms\SpeechRecognitionTest.resx">
       <DependentUpon>SpeechRecognitionTest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewForms\UserCreationScreen.resx">
+      <DependentUpon>UserCreationScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
