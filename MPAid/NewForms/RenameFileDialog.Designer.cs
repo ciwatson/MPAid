@@ -162,11 +162,14 @@
             // 
             // WordComboBox
             // 
+            this.WordComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.WordComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.WordComboBox.FormattingEnabled = true;
             this.WordComboBox.Location = new System.Drawing.Point(81, 124);
             this.WordComboBox.Name = "WordComboBox";
             this.WordComboBox.Size = new System.Drawing.Size(322, 21);
             this.WordComboBox.TabIndex = 3;
+            this.WordComboBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.WordComboBox_KeyPress);
             // 
             // ExplanationLabel
             // 
