@@ -150,6 +150,7 @@
             // analyzeButton
             // 
             this.analyzeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.analyzeButton.Enabled = false;
             this.analyzeButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.analyzeButton.Location = new System.Drawing.Point(150, 125);
             this.analyzeButton.Margin = new System.Windows.Forms.Padding(20, 10, 20, 10);
@@ -189,6 +190,7 @@
             // playButton
             // 
             this.playButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.playButton.Enabled = false;
             this.playButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.playButton.Location = new System.Drawing.Point(474, 72);
             this.playButton.Margin = new System.Windows.Forms.Padding(0);
@@ -223,6 +225,7 @@
             // RenameButton
             // 
             this.RenameButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.RenameButton.Enabled = false;
             this.RenameButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.RenameButton.Location = new System.Drawing.Point(474, 230);
             this.RenameButton.Margin = new System.Windows.Forms.Padding(10);
@@ -246,6 +249,7 @@
             // DeleteButton
             // 
             this.DeleteButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.DeleteButton.Enabled = false;
             this.DeleteButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.DeleteButton.Location = new System.Drawing.Point(474, 180);
             this.DeleteButton.Margin = new System.Windows.Forms.Padding(10);
@@ -295,6 +299,7 @@
             // SelectButton
             // 
             this.SelectButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.SelectButton.Enabled = false;
             this.SelectButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.SelectButton.Location = new System.Drawing.Point(474, 80);
             this.SelectButton.Margin = new System.Windows.Forms.Padding(10);
@@ -315,6 +320,7 @@
             this.RecordingListBox.Name = "RecordingListBox";
             this.RecordingListBox.Size = new System.Drawing.Size(458, 186);
             this.RecordingListBox.TabIndex = 8;
+            this.RecordingListBox.SelectedIndexChanged += new System.EventHandler(this.RecordingListBox_SelectedIndexChanged);
             this.RecordingListBox.DoubleClick += new System.EventHandler(this.SelectButton_Click);
             // 
             // RecordingListLabel
@@ -462,7 +468,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(584, 561);
+            this.ClientSize = new System.Drawing.Size(584, 562);
             this.Controls.Add(this.mainMenuStrip);
             this.Controls.Add(this.SpeechRecognitionTestPanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
