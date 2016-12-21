@@ -70,6 +70,7 @@
             this.stopButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.stopButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.stopButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.stopButton.ImageIndex = 1;
             this.stopButton.ImageList = this.stopImageList;
             this.stopButton.Location = new System.Drawing.Point(273, 265);
             this.stopButton.Name = "stopButton";
@@ -97,6 +98,7 @@
             this.playButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.playButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.playButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.playButton.ImageIndex = 1;
             this.playButton.ImageList = this.playImageList;
             this.playButton.Location = new System.Drawing.Point(219, 265);
             this.playButton.Name = "playButton";
@@ -160,6 +162,7 @@
             this.forwardButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.forwardButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.forwardButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.forwardButton.ImageIndex = 1;
             this.forwardButton.ImageList = this.forwardImageList;
             this.forwardButton.Location = new System.Drawing.Point(327, 265);
             this.forwardButton.Name = "forwardButton";
@@ -186,6 +189,7 @@
             this.backButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.backButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.backButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.backButton.ImageIndex = 1;
             this.backButton.ImageList = this.backImageList;
             this.backButton.Location = new System.Drawing.Point(165, 265);
             this.backButton.Name = "backButton";
