@@ -10,7 +10,7 @@ namespace MPAid.Cores
     /// <summary>
     /// Class that generates advice based on analysed recordings.
     /// </summary>
-    static class PronouciationAdvisor
+    static class PronuciationAdvisor
     {
         /// <summary>
         /// Can be called from outside to generate a string of advice to present to the user.

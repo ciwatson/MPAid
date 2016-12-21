@@ -211,12 +211,18 @@
     <Compile Include="Cores\SysCfg.cs" />
     <Compile Include="Modules\UserManagement.cs" />
     <Compile Include="Cores\VowelComparer.cs" />
+    <Compile Include="NewForms\AnalysisScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewForms\AnalysisScreen.Designer.cs">
+      <DependentUpon>AnalysisScreen.cs</DependentUpon>
+    </Compile>
     <Compile Include="NewForms\MPAiSoundMenuStrip.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="NewForms\MPAiSoundMenuStrip.Designer.cs">
       <DependentUpon>MPAiSoundMenuStrip.cs</DependentUpon>
-	</Compile>
+    </Compile>
     <Compile Include="NewForms\RenameFileDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -334,10 +340,13 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
-	</EmbeddedResource>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewForms\AnalysisScreen.resx">
+      <DependentUpon>AnalysisScreen.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="NewForms\MPAiSoundMenuStrip.resx">
       <DependentUpon>MPAiSoundMenuStrip.cs</DependentUpon>
-	</EmbeddedResource>
+    </EmbeddedResource>
     <EmbeddedResource Include="NewForms\RenameFileDialog.resx">
       <DependentUpon>RenameFileDialog.cs</DependentUpon>
     </EmbeddedResource>

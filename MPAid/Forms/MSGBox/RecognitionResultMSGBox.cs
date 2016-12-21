@@ -60,7 +60,7 @@ namespace MPAid.Forms.MSGBox
         {
             try
             {
-                descriptionTextBox.Text = PronouciationAdvisor.Advise(this.Text, elseTextBox.Text, recognitionResultLabel.Text);
+                descriptionTextBox.Text = PronuciationAdvisor.Advise(this.Text, elseTextBox.Text, recognitionResultLabel.Text);
             }
             catch (Exception exp)
             {
