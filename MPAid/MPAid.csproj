@@ -350,6 +350,9 @@
     <EmbeddedResource Include="NewForms\AnalysisScreen.resx">
       <DependentUpon>AnalysisScreen.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="NewForms\MPAiSoundLearnVideoPlayer.resx">
+      <DependentUpon>MPAiSoundLearnVideoPlayer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="NewForms\MPAiSoundMenuStrip.resx">
       <DependentUpon>MPAiSoundMenuStrip.cs</DependentUpon>
     </EmbeddedResource>
