@@ -92,7 +92,7 @@ namespace MPAid.NewForms
 
                     List<Word> view = DBModel.Word.Where(x => (
                        x.Category.Name.Equals("Word")
-                       //&& x.Recordings.Any(y =>y.Speaker.SpeakerId == current.Speaker.SpeakerId)  // Until the Menubar is finished, this won't work. Comment this line out to test.
+                       && x.Recordings.Any(y =>y.Speaker.SpeakerId == current.Speaker.SpeakerId)  // Until the Menubar is finished, this won't work. Comment this line out to test.
                        )).ToList();
 
                     view.Sort(new VowelComparer());

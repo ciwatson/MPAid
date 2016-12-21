@@ -2501,6 +2501,11 @@
     <Content Include="Resources\player\stop_64_1.png" />
     <Content Include="Resources\player\stop_64_2.png" />
     <Content Include="Resources\refresh_16.png" />
+    <None Include="Resources\VLCIcons\Back.png" />
+    <None Include="Resources\VLCIcons\Forward.png" />
+    <None Include="Resources\VLCIcons\Pause.png" />
+    <None Include="Resources\VLCIcons\Play.png" />
+    <None Include="Resources\VLCIcons\Stop.png" />
     <Content Include="VlcLibs\header-files\deprecated.h" />
     <Content Include="VlcLibs\header-files\libvlc.h" />
     <Content Include="VlcLibs\header-files\libvlc_events.h" />
