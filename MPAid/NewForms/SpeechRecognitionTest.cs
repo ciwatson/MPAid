@@ -36,6 +36,7 @@ namespace MPAid.NewForms
         private string recordingNotSelectedText = "Please select a recording.";
         private string warningText = "Warning";
         private string noAudioDeviceText = "No audio device plugged in.";
+        private string wordNotFoundText = "That word is not valid, try another, or select from the list.";
 
         private string outputFileName;
         private string outputFolder;
@@ -90,9 +91,9 @@ namespace MPAid.NewForms
                     MPAiUser current = UserManagement.getCurrentUser();
 
                     List<Word> view = DBModel.Word.Where(x => (
-                       x.Category.Name.Equals("Word") && 
-                       x.Recordings.Any(y =>y.Speaker.SpeakerId == current.Speaker.SpeakerId))  // Until the Menubar is finished, this won't work.
-                       ).ToList();
+                       x.Category.Name.Equals("Word")
+                       //&& x.Recordings.Any(y =>y.Speaker.SpeakerId == current.Speaker.SpeakerId)  // Until the Menubar is finished, this won't work. Comment this line out to test.
+                       )).ToList();
 
                     view.Sort(new VowelComparer());
                     WordComboBox.DataSource = new BindingSource() { DataSource = view };
@@ -649,6 +650,29 @@ namespace MPAid.NewForms
         private void RecordingListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             toggleListButtons(RecordingListBox.SelectedItems.Count > 0);
+        }
+
+        /// <summary>
+        /// Ensures only valid words are entered, by comparing the text to the names of all words when focus is lost.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void WordComboBox_Leave(object sender, EventArgs e)
+        {
+            //Prevents the user getting stuck when there are no words.
+            if (WordComboBox.Items.Count < 1)
+            {
+                return;
+            }
+            foreach (Word w in WordComboBox.Items)
+            {
+                if (w.Name.Equals(WordComboBox.Text))
+                {
+                    return;
+                }
+            }
+            MessageBox.Show(wordNotFoundText);
+            WordComboBox.Focus();
         }
     }
 }

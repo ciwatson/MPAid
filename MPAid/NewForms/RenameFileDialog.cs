@@ -20,6 +20,7 @@ namespace MPAid.NewForms
         private string noSuchFileText = "No such file!";
         private string alreadyExistsText = "Destination file already exists!";
         private string dataLinkErrorText = "Database linking error!";
+        private string wordNotFoundText = "That word is not valid, try another, or select from the list.";
 
         private FileInfo file;
 
@@ -34,7 +35,7 @@ namespace MPAid.NewForms
             // Use user settings or menu data to automatically fill the fields.
             // Speaker = user's screen name
             // Category will always be word
-            CategoryComboBox.Text = "Word";
+            WordComboBox.Text = "Word";
             // Word will need a drop-down list
             populateWordComboBox();
             // Label should start with focus and be up to them.
@@ -52,24 +53,12 @@ namespace MPAid.NewForms
                 {
                     DBModel.Database.Initialize(false); // Added for safety; if the database has not been initialised, initialise it.
 
-                    //// This should be unreachable once implementation is finished.
-                    //if (spk == null || cty == null)
-                    //{
-                    //    WordComboBox.DataSource = null;
-                    //    return;
-                    //}
+                    MPAiUser current = UserManagement.getCurrentUser();
 
-                    //// Fetch list from database.
-                    //List<Word> view = DBModel.Word.Where(
-                    //    x => (x.Category.Name.Equals("Word") &&
-                    //        x.Recordings.Any(y => y.SpeakerId == spk.SpeakerId))
-                    //    ).ToList();
-
-                    // Use the below commented code to test the database systems - at the moment, it gets every word recording out of the database.
-                    List<Word> view = DBModel.Word.Where(
-                       x => (x.Category.Name.Equals("Word") &&
-                           x.Recordings.Any())
-                       ).ToList();
+                    List<Word> view = DBModel.Word.Where(x => (
+                       x.Category.Name.Equals("Word")
+                       && x.Recordings.Any(y => y.Speaker.SpeakerId == current.Speaker.SpeakerId)  // Until the Menubar is finished, this won't work. Comment this line out to test.
+                       )).ToList();
 
                     view.Sort(new VowelComparer());
                     WordComboBox.DataSource = new BindingSource() { DataSource = view };
@@ -134,7 +123,7 @@ namespace MPAid.NewForms
                 parser.Address = Path.GetDirectoryName(file.FullName);
                 parser.Ext = Path.GetExtension(file.FullName);
                 parser.Speaker = speakerTextBox.Text;
-                parser.Category = CategoryComboBox.Text;
+                parser.Category = "Word";   // This form is only used for words, not sounds, so the category will always be the same.
                 parser.Word = WordComboBox.Text;
                 parser.Label = labelTextBox.Text;
 
@@ -164,6 +153,29 @@ namespace MPAid.NewForms
         private void WordComboBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             WordComboBox.DroppedDown = false;
+        }
+
+        /// <summary>
+        /// Ensures only valid words are entered, by comparing the text to the names of all words when focus is lost.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void WordComboBox_Leave(object sender, EventArgs e)
+        {
+            //Prevents the user getting stuck when there are no words.
+            if (WordComboBox.Items.Count < 1)
+            {
+                return;
+            }
+            foreach (Word w in WordComboBox.Items)
+            {
+                if (w.Name.Equals(WordComboBox.Text))
+                {
+                    return;
+                }
+            }
+            MessageBox.Show(wordNotFoundText);
+            WordComboBox.Focus();
         }
     }
 }

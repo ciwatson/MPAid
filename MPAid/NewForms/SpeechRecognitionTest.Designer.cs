@@ -146,6 +146,7 @@
             this.WordComboBox.Size = new System.Drawing.Size(350, 21);
             this.WordComboBox.TabIndex = 0;
             this.WordComboBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.WordComboBox_KeyPress);
+            this.WordComboBox.Leave += new System.EventHandler(this.WordComboBox_Leave);
             // 
             // analyzeButton
             // 
