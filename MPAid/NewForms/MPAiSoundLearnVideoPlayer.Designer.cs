@@ -43,8 +43,8 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
-            this.trackBar1 = new System.Windows.Forms.TrackBar();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.repeatTrackBar = new System.Windows.Forms.TrackBar();
+            this.timesRepeatBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
@@ -77,7 +77,7 @@
             this.panel2.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repeatTrackBar)).BeginInit();
             this.panel4.SuspendLayout();
             this.panel5.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -234,8 +234,8 @@
             // panel3
             // 
             this.panel3.Controls.Add(this.label3);
-            this.panel3.Controls.Add(this.textBox1);
-            this.panel3.Controls.Add(this.trackBar1);
+            this.panel3.Controls.Add(this.timesRepeatBox);
+            this.panel3.Controls.Add(this.repeatTrackBar);
             this.panel3.Controls.Add(this.label2);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(3, 3);
@@ -252,20 +252,21 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Repeat:";
             // 
-            // trackBar1
+            // repeatTrackBar
             // 
-            this.trackBar1.Location = new System.Drawing.Point(106, 3);
-            this.trackBar1.Maximum = 5;
-            this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(276, 45);
-            this.trackBar1.TabIndex = 1;
+            this.repeatTrackBar.Location = new System.Drawing.Point(106, 3);
+            this.repeatTrackBar.Maximum = 5;
+            this.repeatTrackBar.Name = "repeatTrackBar";
+            this.repeatTrackBar.Size = new System.Drawing.Size(276, 45);
+            this.repeatTrackBar.TabIndex = 1;
+            this.repeatTrackBar.ValueChanged += new System.EventHandler(this.repeatTrackBar_ValueChanged);
             // 
-            // textBox1
+            // timesRepeatBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(388, 9);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(31, 20);
-            this.textBox1.TabIndex = 2;
+            this.timesRepeatBox.Location = new System.Drawing.Point(388, 9);
+            this.timesRepeatBox.Name = "timesRepeatBox";
+            this.timesRepeatBox.Size = new System.Drawing.Size(31, 20);
+            this.timesRepeatBox.TabIndex = 2;
             // 
             // label3
             // 
@@ -528,7 +529,7 @@
             this.tableLayoutPanel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repeatTrackBar)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.panel5.ResumeLayout(false);
@@ -560,8 +561,8 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TrackBar trackBar1;
+        private System.Windows.Forms.TextBox timesRepeatBox;
+        private System.Windows.Forms.TrackBar repeatTrackBar;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Button button5;

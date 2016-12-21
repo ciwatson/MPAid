@@ -16,5 +16,10 @@ namespace MPAid.NewForms
         {
             InitializeComponent();
         }
+
+        private void repeatTrackBar_ValueChanged(object sender, EventArgs e)
+        {
+            timesRepeatBox.Text = repeatTrackBar.Value + "";
+        }
     }
 }
