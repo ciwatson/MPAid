@@ -52,25 +52,39 @@ namespace MPAid.NewForms
         {
             heritageMāoriToolStripMenuItem.Checked = true;
             modernMāoriToolStripMenuItem.Checked = false;
-
+            UserManagement.getCurrentUser().changeVoiceToHeritage();
         }
 
         private void modernMāoriToolStripMenuItem_Click(object sender, EventArgs e)
         {
             heritageMāoriToolStripMenuItem.Checked = false;
             modernMāoriToolStripMenuItem.Checked = true;
+            UserManagement.getCurrentUser().changeVoiceToModern();
         }
 
         private void feminineToolStripMenuItem_Click(object sender, EventArgs e)
         {
             feminineToolStripMenuItem.Checked = true;
             masculineToolStripMenuItem.Checked = false;
+            UserManagement.getCurrentUser().changeVoiceToFeminine();
         }
 
         private void masculineToolStripMenuItem_Click(object sender, EventArgs e)
         {
             feminineToolStripMenuItem.Checked = false;
             masculineToolStripMenuItem.Checked = true;
+            UserManagement.getCurrentUser().changeVoiceToMasculine();
+        }
+
+        private void signOutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ChangePasswordWindow changePswdForm = new ChangePasswordWindow();
+            changePswdForm.ShowDialog(this);
         }
     }
 }

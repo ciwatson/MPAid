@@ -15,7 +15,7 @@ namespace MPAid
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new NewForms.AnalysisScreen("blah", "blah", "blah"));
+            Application.Run(new NewForms.MPAiSoundMainMenu());
             Application.Run(new LoginWindow());
         }
         

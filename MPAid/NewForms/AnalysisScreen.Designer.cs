@@ -1,4 +1,6 @@
-﻿namespace MPAid.NewForms
+﻿using MPAid.Cores;
+
+namespace MPAid.NewForms
 {
     partial class AnalysisScreen
     {
@@ -36,9 +38,9 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.descriptionBox = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.scoreReportButton = new System.Windows.Forms.Button();
+            this.learnButton = new System.Windows.Forms.Button();
+            this.backButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -161,9 +163,9 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel1.Controls.Add(this.button1, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.button2, 2, 0);
-            this.tableLayoutPanel1.Controls.Add(this.button3, 3, 0);
+            this.tableLayoutPanel1.Controls.Add(this.scoreReportButton, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.learnButton, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.backButton, 3, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -172,35 +174,37 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(498, 41);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
-            // button1
+            // scoreReportButton
             // 
-            this.button1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button1.Location = new System.Drawing.Point(12, 9);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(100, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Score Report";
-            this.button1.UseVisualStyleBackColor = true;
+            this.scoreReportButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.scoreReportButton.Location = new System.Drawing.Point(12, 9);
+            this.scoreReportButton.Name = "scoreReportButton";
+            this.scoreReportButton.Size = new System.Drawing.Size(100, 23);
+            this.scoreReportButton.TabIndex = 0;
+            this.scoreReportButton.Text = "Score Report";
+            this.scoreReportButton.UseVisualStyleBackColor = true;
+            this.scoreReportButton.Click += new System.EventHandler(this.scoreReportButton_Click);
             // 
-            // button2
+            // learnButton
             // 
-            this.button2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button2.Location = new System.Drawing.Point(310, 9);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Learn";
-            this.button2.UseVisualStyleBackColor = true;
+            this.learnButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.learnButton.Location = new System.Drawing.Point(310, 9);
+            this.learnButton.Name = "learnButton";
+            this.learnButton.Size = new System.Drawing.Size(75, 23);
+            this.learnButton.TabIndex = 1;
+            this.learnButton.Text = "Learn";
+            this.learnButton.UseVisualStyleBackColor = true;
+            this.learnButton.Click += new System.EventHandler(this.learnButton_Click);
             // 
-            // button3
+            // backButton
             // 
-            this.button3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button3.Location = new System.Drawing.Point(410, 9);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "Back";
-            this.button3.UseVisualStyleBackColor = true;
+            this.backButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.backButton.Location = new System.Drawing.Point(410, 9);
+            this.backButton.Name = "backButton";
+            this.backButton.Size = new System.Drawing.Size(75, 23);
+            this.backButton.TabIndex = 2;
+            this.backButton.Text = "Back";
+            this.backButton.UseVisualStyleBackColor = true;
             // 
             // AnalysisScreen
             // 
@@ -239,8 +243,8 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TextBox descriptionBox;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button scoreReportButton;
+        private System.Windows.Forms.Button learnButton;
+        private System.Windows.Forms.Button backButton;
     }
 }
