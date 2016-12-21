@@ -64,6 +64,19 @@ namespace MPAid
             get { return isAdmin(); }
         }
 
+        public Speaker Speaker
+        {
+            get
+            {
+                return speaker;
+            }
+
+            set
+            {
+                speaker = value;
+            }
+        }
+
         /// <summary>
         /// Constructor for the MPAiUser class.
         /// </summary>

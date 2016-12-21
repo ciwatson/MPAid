@@ -87,23 +87,11 @@ namespace MPAid.NewForms
                 {
                     DBModel.Database.Initialize(false); // Added for safety; if the database has not been initialised, initialise it.
 
-                    //// This should be unreachable once implementation is finished.
-                    //if (spk == null || cty == null)
-                    //{
-                    //    WordComboBox.DataSource = null;
-                    //    return;
-                    //}
+                    MPAiUser current = UserManagement.getCurrentUser();
 
-                    //// Fetch list from database.
-                    //List<Word> view = DBModel.Word.Where(
-                    //    x => (x.Category.Name.Equals("Word") &&
-                    //        x.Recordings.Any(y => y.SpeakerId == spk.SpeakerId))
-                    //    ).ToList();
-
-                    // Use the below commented code to test the database systems - at the moment, it gets every word recording out of the database.
-                    List<Word> view = DBModel.Word.Where(
-                       x => (x.Category.Name.Equals("Word") &&
-                           x.Recordings.Any())
+                    List<Word> view = DBModel.Word.Where(x => (
+                       x.Category.Name.Equals("Word") && 
+                       x.Recordings.Any(y =>y.Speaker.SpeakerId == current.Speaker.SpeakerId))  // Until the Menubar is finished, this won't work.
                        ).ToList();
 
                     view.Sort(new VowelComparer());
