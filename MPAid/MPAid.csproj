@@ -217,6 +217,12 @@
     <Compile Include="NewForms\AnalysisScreen.Designer.cs">
       <DependentUpon>AnalysisScreen.cs</DependentUpon>
     </Compile>
+    <Compile Include="NewForms\MPAiSoundLearnVideoPlayer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewForms\MPAiSoundLearnVideoPlayer.Designer.cs">
+      <DependentUpon>MPAiSoundLearnVideoPlayer.cs</DependentUpon>
+    </Compile>
     <Compile Include="NewForms\MPAiSoundMenuStrip.cs">
       <SubType>Component</SubType>
     </Compile>

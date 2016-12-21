@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SpeechRecognitionTest));
             this.SpeechRecognitionTestPanel = new System.Windows.Forms.SplitContainer();
             this.backButton = new System.Windows.Forms.Button();
@@ -48,26 +49,12 @@
             this.SelectButton = new System.Windows.Forms.Button();
             this.RecordingListBox = new System.Windows.Forms.ListBox();
             this.RecordingListLabel = new System.Windows.Forms.Label();
-            this.mainMenuStrip = new System.Windows.Forms.MenuStrip();
-            this.usersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.administratorConsoleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.changePasswordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.logToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.configToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.systemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.recordingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.uploadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.renameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.submitFeedbackToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tutorialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.mpAiSoundMenuStrip1 = new MPAid.NewForms.MPAiSoundMenuStrip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.SpeechRecognitionTestPanel)).BeginInit();
             this.SpeechRecognitionTestPanel.Panel1.SuspendLayout();
             this.SpeechRecognitionTestPanel.Panel2.SuspendLayout();
             this.SpeechRecognitionTestPanel.SuspendLayout();
-            this.mainMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // SpeechRecognitionTestPanel
@@ -332,129 +319,6 @@
             this.RecordingListLabel.TabIndex = 1;
             this.RecordingListLabel.Text = "Recording List";
             // 
-            // mainMenuStrip
-            // 
-            this.mainMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.usersToolStripMenuItem,
-            this.configToolStripMenuItem,
-            this.helpToolStripMenuItem});
-            this.mainMenuStrip.Location = new System.Drawing.Point(0, 0);
-            this.mainMenuStrip.Name = "mainMenuStrip";
-            this.mainMenuStrip.Size = new System.Drawing.Size(584, 32);
-            this.mainMenuStrip.TabIndex = 14;
-            this.mainMenuStrip.Text = "menuStrip1";
-            // 
-            // usersToolStripMenuItem
-            // 
-            this.usersToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.administratorConsoleToolStripMenuItem,
-            this.changePasswordToolStripMenuItem,
-            this.logToolStripMenuItem});
-            this.usersToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("usersToolStripMenuItem.Image")));
-            this.usersToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.usersToolStripMenuItem.Name = "usersToolStripMenuItem";
-            this.usersToolStripMenuItem.Size = new System.Drawing.Size(71, 28);
-            this.usersToolStripMenuItem.Text = "Users";
-            // 
-            // administratorConsoleToolStripMenuItem
-            // 
-            this.administratorConsoleToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("administratorConsoleToolStripMenuItem.Image")));
-            this.administratorConsoleToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.administratorConsoleToolStripMenuItem.Name = "administratorConsoleToolStripMenuItem";
-            this.administratorConsoleToolStripMenuItem.Size = new System.Drawing.Size(201, 30);
-            this.administratorConsoleToolStripMenuItem.Text = "Administrator Console";
-            // 
-            // changePasswordToolStripMenuItem
-            // 
-            this.changePasswordToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("changePasswordToolStripMenuItem.Image")));
-            this.changePasswordToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.changePasswordToolStripMenuItem.Name = "changePasswordToolStripMenuItem";
-            this.changePasswordToolStripMenuItem.Size = new System.Drawing.Size(201, 30);
-            this.changePasswordToolStripMenuItem.Text = "Change password";
-            // 
-            // logToolStripMenuItem
-            // 
-            this.logToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("logToolStripMenuItem.Image")));
-            this.logToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.logToolStripMenuItem.Name = "logToolStripMenuItem";
-            this.logToolStripMenuItem.Size = new System.Drawing.Size(201, 30);
-            this.logToolStripMenuItem.Text = "Sign out";
-            // 
-            // configToolStripMenuItem
-            // 
-            this.configToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.systemToolStripMenuItem,
-            this.recordingToolStripMenuItem});
-            this.configToolStripMenuItem.Image = global::MPAid.Properties.Resources.configure_icon;
-            this.configToolStripMenuItem.Name = "configToolStripMenuItem";
-            this.configToolStripMenuItem.Size = new System.Drawing.Size(71, 28);
-            this.configToolStripMenuItem.Text = "Config";
-            // 
-            // systemToolStripMenuItem
-            // 
-            this.systemToolStripMenuItem.Image = global::MPAid.Properties.Resources.system_icon;
-            this.systemToolStripMenuItem.Name = "systemToolStripMenuItem";
-            this.systemToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
-            this.systemToolStripMenuItem.Text = "System";
-            // 
-            // recordingToolStripMenuItem
-            // 
-            this.recordingToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.uploadToolStripMenuItem,
-            this.renameToolStripMenuItem});
-            this.recordingToolStripMenuItem.Image = global::MPAid.Properties.Resources.recording_icon;
-            this.recordingToolStripMenuItem.Name = "recordingToolStripMenuItem";
-            this.recordingToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
-            this.recordingToolStripMenuItem.Text = "Recording";
-            // 
-            // uploadToolStripMenuItem
-            // 
-            this.uploadToolStripMenuItem.Image = global::MPAid.Properties.Resources.upload_icon;
-            this.uploadToolStripMenuItem.Name = "uploadToolStripMenuItem";
-            this.uploadToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
-            this.uploadToolStripMenuItem.Text = "Upload";
-            // 
-            // renameToolStripMenuItem
-            // 
-            this.renameToolStripMenuItem.Image = global::MPAid.Properties.Resources.rename_icon;
-            this.renameToolStripMenuItem.Name = "renameToolStripMenuItem";
-            this.renameToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
-            this.renameToolStripMenuItem.Text = "Rename";
-            // 
-            // helpToolStripMenuItem
-            // 
-            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.submitFeedbackToolStripMenuItem,
-            this.tutorialToolStripMenuItem,
-            this.aboutToolStripMenuItem});
-            this.helpToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("helpToolStripMenuItem.Image")));
-            this.helpToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(64, 28);
-            this.helpToolStripMenuItem.Text = "Help";
-            // 
-            // submitFeedbackToolStripMenuItem
-            // 
-            this.submitFeedbackToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("submitFeedbackToolStripMenuItem.Image")));
-            this.submitFeedbackToolStripMenuItem.Name = "submitFeedbackToolStripMenuItem";
-            this.submitFeedbackToolStripMenuItem.Size = new System.Drawing.Size(169, 26);
-            this.submitFeedbackToolStripMenuItem.Text = "Submit Feedback";
-            // 
-            // tutorialToolStripMenuItem
-            // 
-            this.tutorialToolStripMenuItem.Image = global::MPAid.Properties.Resources.tutorials_icon;
-            this.tutorialToolStripMenuItem.Name = "tutorialToolStripMenuItem";
-            this.tutorialToolStripMenuItem.Size = new System.Drawing.Size(169, 26);
-            this.tutorialToolStripMenuItem.Text = "Instruction";
-            // 
-            // aboutToolStripMenuItem
-            // 
-            this.aboutToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("aboutToolStripMenuItem.Image")));
-            this.aboutToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(169, 26);
-            this.aboutToolStripMenuItem.Text = "About";
-            // 
             // openFileDialog
             // 
             this.openFileDialog.Filter = "Wave files (*.wav)|*.wav|All Files(*.*)|*.*";
@@ -464,14 +328,23 @@
             this.openFileDialog.RestoreDirectory = true;
             this.openFileDialog.Title = "Select a Recording...";
             // 
+            // mpAiSoundMenuStrip1
+            // 
+            this.mpAiSoundMenuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.mpAiSoundMenuStrip1.Name = "mpAiSoundMenuStrip1";
+            this.mpAiSoundMenuStrip1.Size = new System.Drawing.Size(584, 24);
+            this.mpAiSoundMenuStrip1.TabIndex = 43;
+            this.mpAiSoundMenuStrip1.Text = "mpAiSoundMenuStrip1";
+            // 
             // SpeechRecognitionTest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 562);
-            this.Controls.Add(this.mainMenuStrip);
+            this.Controls.Add(this.mpAiSoundMenuStrip1);
             this.Controls.Add(this.SpeechRecognitionTestPanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MainMenuStrip = this.mpAiSoundMenuStrip1;
             this.MinimumSize = new System.Drawing.Size(375, 600);
             this.Name = "SpeechRecognitionTest";
             this.Text = "MPAi - Version 4.0";
@@ -481,8 +354,6 @@
             this.SpeechRecognitionTestPanel.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SpeechRecognitionTestPanel)).EndInit();
             this.SpeechRecognitionTestPanel.ResumeLayout(false);
-            this.mainMenuStrip.ResumeLayout(false);
-            this.mainMenuStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -502,20 +373,6 @@
         private System.Windows.Forms.Button AudioInputDeviceButton;
         private System.Windows.Forms.ComboBox AudioInputDeviceComboBox;
         private System.Windows.Forms.Label AudioInputDeviceLabel;
-        private System.Windows.Forms.MenuStrip mainMenuStrip;
-        private System.Windows.Forms.ToolStripMenuItem usersToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem administratorConsoleToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem changePasswordToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem logToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem configToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem systemToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem recordingToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem uploadToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem renameToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem submitFeedbackToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem tutorialToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.Button AddButton;
         private System.Windows.Forms.Button DeleteButton;
         private System.Windows.Forms.Button RenameButton;
@@ -524,5 +381,6 @@
         private System.Windows.Forms.Label RecordingListLabel;
         private System.Windows.Forms.Button ScoreReportButton;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
+        private MPAiSoundMenuStrip mpAiSoundMenuStrip1;
     }
 }
