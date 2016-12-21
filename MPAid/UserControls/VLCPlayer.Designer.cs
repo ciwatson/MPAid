@@ -35,9 +35,11 @@
             this.stopImageList = new System.Windows.Forms.ImageList(this.components);
             this.playButton = new System.Windows.Forms.Button();
             this.playImageList = new System.Windows.Forms.ImageList(this.components);
+            this.backImageList = new System.Windows.Forms.ImageList(this.components);
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.forwardButton = new System.Windows.Forms.Button();
+            this.forwardImageList = new System.Windows.Forms.ImageList(this.components);
+            this.backButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.vlcControl)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -63,14 +65,18 @@
             this.stopButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.stopButton.BackColor = System.Drawing.SystemColors.Control;
             this.stopButton.FlatAppearance.BorderSize = 0;
+            this.stopButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.stopButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.stopButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.stopButton.Image = global::MPAid.Properties.Resources.Stop;
+            this.stopButton.ImageIndex = 1;
+            this.stopButton.ImageList = this.stopImageList;
             this.stopButton.Location = new System.Drawing.Point(273, 265);
             this.stopButton.Name = "stopButton";
             this.stopButton.Size = new System.Drawing.Size(48, 59);
-            this.stopButton.TabIndex = 5;
-            this.stopButton.UseVisualStyleBackColor = true;
+            this.stopButton.TabIndex = 7;
+            this.stopButton.UseVisualStyleBackColor = false;
             this.stopButton.Click += new System.EventHandler(this.stopButton_Click);
             this.stopButton.MouseEnter += new System.EventHandler(this.stopButton_MouseEnter);
             this.stopButton.MouseLeave += new System.EventHandler(this.stopButton_MouseLeave);
@@ -87,16 +93,18 @@
             this.playButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.playButton.BackColor = System.Drawing.SystemColors.Control;
             this.playButton.FlatAppearance.BorderSize = 0;
             this.playButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.playButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.playButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.playButton.Image = global::MPAid.Properties.Resources.Play;
+            this.playButton.ImageIndex = 1;
+            this.playButton.ImageList = this.playImageList;
             this.playButton.Location = new System.Drawing.Point(219, 265);
             this.playButton.Name = "playButton";
             this.playButton.Size = new System.Drawing.Size(48, 59);
             this.playButton.TabIndex = 6;
-            this.playButton.UseVisualStyleBackColor = true;
+            this.playButton.UseVisualStyleBackColor = false;
             this.playButton.Click += new System.EventHandler(this.playButton_Click);
             this.playButton.MouseEnter += new System.EventHandler(this.playButton_MouseEnter);
             this.playButton.MouseLeave += new System.EventHandler(this.playButton_MouseLeave);
@@ -105,10 +113,17 @@
             // 
             this.playImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("playImageList.ImageStream")));
             this.playImageList.TransparentColor = System.Drawing.Color.Transparent;
-            this.playImageList.Images.SetKeyName(0, "play_64_1.png");
-            this.playImageList.Images.SetKeyName(1, "play_64_2.png");
-            this.playImageList.Images.SetKeyName(2, "pause_64_1.png");
-            this.playImageList.Images.SetKeyName(3, "pause_64_2.png");
+            this.playImageList.Images.SetKeyName(0, "LightPlay.png");
+            this.playImageList.Images.SetKeyName(1, "Play.png");
+            this.playImageList.Images.SetKeyName(2, "LightPause.png");
+            this.playImageList.Images.SetKeyName(3, "Pause.png");
+            // 
+            // backImageList
+            // 
+            this.backImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("backImageList.ImageStream")));
+            this.backImageList.TransparentColor = System.Drawing.Color.Transparent;
+            this.backImageList.Images.SetKeyName(0, "LightBack.png");
+            this.backImageList.Images.SetKeyName(1, "Back.png");
             // 
             // tableLayoutPanel1
             // 
@@ -124,8 +139,8 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel1.Controls.Add(this.vlcControl, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.button1, 6, 1);
-            this.tableLayoutPanel1.Controls.Add(this.button2, 3, 1);
+            this.tableLayoutPanel1.Controls.Add(this.forwardButton, 6, 1);
+            this.tableLayoutPanel1.Controls.Add(this.backButton, 3, 1);
             this.tableLayoutPanel1.Controls.Add(this.playButton, 4, 1);
             this.tableLayoutPanel1.Controls.Add(this.stopButton, 5, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -137,37 +152,52 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(545, 327);
             this.tableLayoutPanel1.TabIndex = 7;
             // 
-            // button1
+            // forwardButton
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.forwardButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Image = global::MPAid.Properties.Resources.Forward;
-            this.button1.Location = new System.Drawing.Point(327, 265);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(48, 59);
-            this.button1.TabIndex = 7;
-            this.button1.UseVisualStyleBackColor = true;
+            this.forwardButton.BackColor = System.Drawing.SystemColors.Control;
+            this.forwardButton.FlatAppearance.BorderSize = 0;
+            this.forwardButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.forwardButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.forwardButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.forwardButton.ImageIndex = 1;
+            this.forwardButton.ImageList = this.forwardImageList;
+            this.forwardButton.Location = new System.Drawing.Point(327, 265);
+            this.forwardButton.Name = "forwardButton";
+            this.forwardButton.Size = new System.Drawing.Size(48, 59);
+            this.forwardButton.TabIndex = 8;
+            this.forwardButton.UseVisualStyleBackColor = false;
+            this.forwardButton.MouseEnter += new System.EventHandler(this.forwardButton_MouseEnter);
+            this.forwardButton.MouseLeave += new System.EventHandler(this.forwardButton_MouseLeave);
             // 
-            // button2
+            // forwardImageList
             // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.forwardImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("forwardImageList.ImageStream")));
+            this.forwardImageList.TransparentColor = System.Drawing.Color.Transparent;
+            this.forwardImageList.Images.SetKeyName(0, "LightForward.png");
+            this.forwardImageList.Images.SetKeyName(1, "Forward.png");
+            // 
+            // backButton
+            // 
+            this.backButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Image = global::MPAid.Properties.Resources.Back;
-            this.button2.Location = new System.Drawing.Point(165, 265);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(48, 59);
-            this.button2.TabIndex = 8;
-            this.button2.UseVisualStyleBackColor = true;
+            this.backButton.BackColor = System.Drawing.SystemColors.Control;
+            this.backButton.FlatAppearance.BorderSize = 0;
+            this.backButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.backButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.backButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.backButton.ImageIndex = 1;
+            this.backButton.ImageList = this.backImageList;
+            this.backButton.Location = new System.Drawing.Point(165, 265);
+            this.backButton.Name = "backButton";
+            this.backButton.Size = new System.Drawing.Size(48, 59);
+            this.backButton.TabIndex = 5;
+            this.backButton.UseVisualStyleBackColor = false;
+            this.backButton.MouseEnter += new System.EventHandler(this.backButton_MouseEnter);
+            this.backButton.MouseLeave += new System.EventHandler(this.backButton_MouseLeave);
             // 
             // VlcPlayer
             // 
@@ -186,10 +216,12 @@
         private Vlc.DotNet.Forms.VlcControl vlcControl;
         private System.Windows.Forms.Button stopButton;
         private System.Windows.Forms.Button playButton;
-        private System.Windows.Forms.ImageList playImageList;
+        private System.Windows.Forms.ImageList backImageList;
         private System.Windows.Forms.ImageList stopImageList;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button forwardButton;
+        private System.Windows.Forms.Button backButton;
+        private System.Windows.Forms.ImageList playImageList;
+        private System.Windows.Forms.ImageList forwardImageList;
     }
 }
