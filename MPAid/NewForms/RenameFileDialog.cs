@@ -22,7 +22,6 @@ namespace MPAid.NewForms
         private string dataLinkErrorText = "Database linking error!";
 
         private FileInfo file;
-        private MPAidModel DBModel;
 
         public FileInfo RenamedFile { get; set; }
 
@@ -37,7 +36,6 @@ namespace MPAid.NewForms
             // Category will always be word
             CategoryComboBox.Text = "Word";
             // Word will need a drop-down list
-            initialiseDatabase();
             populateWordComboBox();
             // Label should start with focus and be up to them.
         }
@@ -49,54 +47,38 @@ namespace MPAid.NewForms
         {
             try
             {
-                //// This should be unreachable once implementation is finished.
-                //if (spk == null || cty == null)
-                //{
-                //    WordComboBox.DataSource = null;
-                //    return;
-                //}
+                // Create new database context.
+                using (MPAidModel DBModel = new MPAidModel())
+                {
+                    DBModel.Database.Initialize(false); // Added for safety; if the database has not been initialised, initialise it.
 
-                //// Fetch list from database.
-                //List<Word> view = DBModel.Word.Where(
-                //    x => (x.Category.Name.Equals("Word") &&
-                //        x.Recordings.Any(y => y.SpeakerId == spk.SpeakerId))
-                //    ).ToList();
+                    //// This should be unreachable once implementation is finished.
+                    //if (spk == null || cty == null)
+                    //{
+                    //    WordComboBox.DataSource = null;
+                    //    return;
+                    //}
 
-                // Use this commented code to test the database systems - at the moment, it gets every word recording out of the database.
+                    //// Fetch list from database.
+                    //List<Word> view = DBModel.Word.Where(
+                    //    x => (x.Category.Name.Equals("Word") &&
+                    //        x.Recordings.Any(y => y.SpeakerId == spk.SpeakerId))
+                    //    ).ToList();
 
-                List<Word> view = DBModel.Word.Where(
-                   x => (x.Category.Name.Equals("Word") &&
-                       x.Recordings.Any())
-                   ).ToList();
+                    // Use the below commented code to test the database systems - at the moment, it gets every word recording out of the database.
+                    List<Word> view = DBModel.Word.Where(
+                       x => (x.Category.Name.Equals("Word") &&
+                           x.Recordings.Any())
+                       ).ToList();
 
-                view.Sort(new VowelComparer());
-                WordComboBox.DataSource = new BindingSource() { DataSource = view };
-                WordComboBox.DisplayMember = "Name";
+                    view.Sort(new VowelComparer());
+                    WordComboBox.DataSource = new BindingSource() { DataSource = view };
+                    WordComboBox.DisplayMember = "Name";
+                }
             }
             catch (Exception exp)
             {
                 Console.WriteLine(exp);
-            }
-        }
-
-        /// <summary>
-        /// Connects this class to the database.
-        /// </summary>
-        private void initialiseDatabase()       // Ideally to be replaced by a static class.
-        {
-            try
-            {
-                DBModel = new MPAidModel();
-                DBModel.Database.Initialize(false);
-                DBModel.Recording.Load();
-                DBModel.Speaker.Load();
-                DBModel.Category.Load();
-                DBModel.Word.Load();
-                DBModel.SingleFile.Load();
-            }
-            catch (Exception exp)
-            {
-                MessageBox.Show(exp.Message, dataLinkErrorText);
             }
         }
 

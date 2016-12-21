@@ -42,7 +42,6 @@ namespace MPAid.NewForms
         private string tempFilename;
         private string tempFolder;
 
-        private MPAidModel DBModel;
         // Assign these using user settings, or main menu, depending on implementation.
         Speaker spk = null;
         Category cty = null;
@@ -70,32 +69,10 @@ namespace MPAid.NewForms
             LoadWasapiDevices();
             CreateDirectory();
             DataBinding();
-            initialiseDatabase();
             populateWordComboBox();
             toggleOptions();    // For development, the bottom panel is visible, but the user won't need the bottom panel most of the time.
             toggleListButtons(RecordingListBox.SelectedItems.Count > 0);
             Visible = true;
-        }
-        
-        /// <summary>
-        /// Connects this class to the database.
-        /// </summary>
-        private void initialiseDatabase()       // Ideally to be replaced by a static class.
-        {
-            try
-            {
-                DBModel = new MPAidModel();
-                DBModel.Database.Initialize(false);
-                DBModel.Recording.Load();
-                DBModel.Speaker.Load();
-                DBModel.Category.Load();
-                DBModel.Word.Load();
-                DBModel.SingleFile.Load();
-            }
-            catch (Exception exp)
-            {
-                MessageBox.Show(exp.Message, dataLinkErrorText);
-            }
         }
 
         /// <summary>
@@ -105,29 +82,34 @@ namespace MPAid.NewForms
         {
             try
             {
-                //// This should be unreachable once implementation is finished.
-                //if (spk == null || cty == null)
-                //{
-                //    WordComboBox.DataSource = null;
-                //    return;
-                //}
+                // Create new database context.
+                using (MPAidModel DBModel = new MPAidModel())
+                {
+                    DBModel.Database.Initialize(false); // Added for safety; if the database has not been initialised, initialise it.
 
-                //// Fetch list from database.
-                //List<Word> view = DBModel.Word.Where(
-                //    x => (x.Category.Name.Equals("Word") &&
-                //        x.Recordings.Any(y => y.SpeakerId == spk.SpeakerId))
-                //    ).ToList();
+                    //// This should be unreachable once implementation is finished.
+                    //if (spk == null || cty == null)
+                    //{
+                    //    WordComboBox.DataSource = null;
+                    //    return;
+                    //}
 
-                // Use this commented code to test the database systems - at the moment, it gets every word recording out of the database.
+                    //// Fetch list from database.
+                    //List<Word> view = DBModel.Word.Where(
+                    //    x => (x.Category.Name.Equals("Word") &&
+                    //        x.Recordings.Any(y => y.SpeakerId == spk.SpeakerId))
+                    //    ).ToList();
 
-                List<Word> view = DBModel.Word.Where(
-                   x => (x.Category.Name.Equals("Word") &&
-                       x.Recordings.Any())
-                   ).ToList();
+                    // Use the below commented code to test the database systems - at the moment, it gets every word recording out of the database.
+                    List<Word> view = DBModel.Word.Where(
+                       x => (x.Category.Name.Equals("Word") &&
+                           x.Recordings.Any())
+                       ).ToList();
 
-                view.Sort(new VowelComparer());
-                WordComboBox.DataSource = new BindingSource() { DataSource = view };
-                WordComboBox.DisplayMember = "Name";
+                    view.Sort(new VowelComparer());
+                    WordComboBox.DataSource = new BindingSource() { DataSource = view };
+                    WordComboBox.DisplayMember = "Name";
+                }
             }
             catch (Exception exp)
             {
