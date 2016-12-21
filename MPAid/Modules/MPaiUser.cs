@@ -87,6 +87,66 @@ namespace MPAid
             this.voiceType = voiceType;
         }
         /// <summary>
+        /// Changes the voice type to feminine.
+        /// </summary>
+        public void changeVoiceToFeminine()
+        {
+            switch(voiceType)
+            {
+                case VoiceType.MASCULINE_HERITAGE:
+                    voiceType = VoiceType.FEMININE_HERITAGE;
+                    break;
+                case VoiceType.MASCULINE_MODERN:
+                    voiceType = VoiceType.FEMININE_MODERN;
+                    break;
+            }
+        }
+        /// <summary>
+        /// Changes the voice type to Masculine.
+        /// </summary>
+        public void changeVoiceToMasculine()
+        {
+            switch (voiceType)
+            {
+                case VoiceType.FEMININE_HERITAGE:
+                    voiceType = VoiceType.MASCULINE_HERITAGE;
+                    break;
+                case VoiceType.FEMININE_MODERN:
+                    voiceType = VoiceType.MASCULINE_MODERN;
+                    break;
+            }
+        }
+        /// <summary>
+        /// Changes the voice type to Heritage.
+        /// </summary>
+        public void changeVoiceToHeritage()
+        {
+            switch (voiceType)
+            {
+                case VoiceType.FEMININE_MODERN:
+                    voiceType = VoiceType.FEMININE_HERITAGE;
+                    break;
+                case VoiceType.MASCULINE_MODERN:
+                    voiceType = VoiceType.MASCULINE_HERITAGE;
+                    break;
+            }
+        }
+        /// <summary>
+        /// Changes the voice type to Modern.
+        /// </summary>
+        public void changeVoiceToModern()
+        {
+            switch (voiceType)
+            {
+                case VoiceType.FEMININE_HERITAGE:
+                    voiceType = VoiceType.FEMININE_MODERN;
+                    break;
+                case VoiceType.MASCULINE_HERITAGE:
+                    voiceType = VoiceType.MASCULINE_MODERN;
+                    break;
+            }
+        }
+        /// <summary>
         /// Checks if the input string matches this user's password. Case sensitive.
         /// </summary>
         /// <param name="code">The string to check against the password.</param>

@@ -91,7 +91,7 @@ namespace MPAid
             this.usersToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("usersToolStripMenuItem.Image")));
             this.usersToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.usersToolStripMenuItem.Name = "usersToolStripMenuItem";
-            this.usersToolStripMenuItem.Size = new System.Drawing.Size(77, 28);
+            this.usersToolStripMenuItem.Size = new System.Drawing.Size(71, 28);
             this.usersToolStripMenuItem.Text = "Users";
             // 
             // administratorConsoleToolStripMenuItem
@@ -99,7 +99,7 @@ namespace MPAid
             this.administratorConsoleToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("administratorConsoleToolStripMenuItem.Image")));
             this.administratorConsoleToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.administratorConsoleToolStripMenuItem.Name = "administratorConsoleToolStripMenuItem";
-            this.administratorConsoleToolStripMenuItem.Size = new System.Drawing.Size(214, 30);
+            this.administratorConsoleToolStripMenuItem.Size = new System.Drawing.Size(201, 30);
             this.administratorConsoleToolStripMenuItem.Text = "Administrator Console";
             this.administratorConsoleToolStripMenuItem.Click += new System.EventHandler(this.administratorConsoleToolStripMenuItem_Click);
             // 
@@ -108,7 +108,7 @@ namespace MPAid
             this.changePasswordToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("changePasswordToolStripMenuItem.Image")));
             this.changePasswordToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.changePasswordToolStripMenuItem.Name = "changePasswordToolStripMenuItem";
-            this.changePasswordToolStripMenuItem.Size = new System.Drawing.Size(214, 30);
+            this.changePasswordToolStripMenuItem.Size = new System.Drawing.Size(201, 30);
             this.changePasswordToolStripMenuItem.Text = "Change password";
             this.changePasswordToolStripMenuItem.Click += new System.EventHandler(this.changePasswordToolStripMenuItem_Click);
             // 
@@ -117,7 +117,7 @@ namespace MPAid
             this.logToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("logToolStripMenuItem.Image")));
             this.logToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.logToolStripMenuItem.Name = "logToolStripMenuItem";
-            this.logToolStripMenuItem.Size = new System.Drawing.Size(214, 30);
+            this.logToolStripMenuItem.Size = new System.Drawing.Size(201, 30);
             this.logToolStripMenuItem.Text = "Sign out";
             this.logToolStripMenuItem.Click += new System.EventHandler(this.logToolStripMenuItem_Click);
             // 
@@ -128,14 +128,14 @@ namespace MPAid
             this.recordingToolStripMenuItem});
             this.configToolStripMenuItem.Image = global::MPAid.Properties.Resources.configure_icon;
             this.configToolStripMenuItem.Name = "configToolStripMenuItem";
-            this.configToolStripMenuItem.Size = new System.Drawing.Size(74, 28);
+            this.configToolStripMenuItem.Size = new System.Drawing.Size(71, 28);
             this.configToolStripMenuItem.Text = "Config";
             // 
             // systemToolStripMenuItem
             // 
             this.systemToolStripMenuItem.Image = global::MPAid.Properties.Resources.system_icon;
             this.systemToolStripMenuItem.Name = "systemToolStripMenuItem";
-            this.systemToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.systemToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.systemToolStripMenuItem.Text = "System";
             this.systemToolStripMenuItem.Click += new System.EventHandler(this.systemToolStripMenuItem_Click);
             // 
@@ -146,14 +146,14 @@ namespace MPAid
             this.renameToolStripMenuItem});
             this.recordingToolStripMenuItem.Image = global::MPAid.Properties.Resources.recording_icon;
             this.recordingToolStripMenuItem.Name = "recordingToolStripMenuItem";
-            this.recordingToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.recordingToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.recordingToolStripMenuItem.Text = "Recording";
             // 
             // uploadToolStripMenuItem
             // 
             this.uploadToolStripMenuItem.Image = global::MPAid.Properties.Resources.upload_icon;
             this.uploadToolStripMenuItem.Name = "uploadToolStripMenuItem";
-            this.uploadToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
+            this.uploadToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.uploadToolStripMenuItem.Text = "Upload";
             this.uploadToolStripMenuItem.Click += new System.EventHandler(this.uploadToolStripMenuItem_Click);
             // 
@@ -161,7 +161,7 @@ namespace MPAid
             // 
             this.renameToolStripMenuItem.Image = global::MPAid.Properties.Resources.rename_icon;
             this.renameToolStripMenuItem.Name = "renameToolStripMenuItem";
-            this.renameToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
+            this.renameToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.renameToolStripMenuItem.Text = "Rename";
             this.renameToolStripMenuItem.Click += new System.EventHandler(this.renameToolStripMenuItem_Click);
             // 
@@ -174,14 +174,14 @@ namespace MPAid
             this.helpToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("helpToolStripMenuItem.Image")));
             this.helpToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(67, 28);
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(64, 28);
             this.helpToolStripMenuItem.Text = "Help";
             // 
             // submitFeedbackToolStripMenuItem
             // 
             this.submitFeedbackToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("submitFeedbackToolStripMenuItem.Image")));
             this.submitFeedbackToolStripMenuItem.Name = "submitFeedbackToolStripMenuItem";
-            this.submitFeedbackToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
+            this.submitFeedbackToolStripMenuItem.Size = new System.Drawing.Size(169, 26);
             this.submitFeedbackToolStripMenuItem.Text = "Submit Feedback";
             this.submitFeedbackToolStripMenuItem.Click += new System.EventHandler(this.submitFeedbackToolStripMenuItem_Click);
             // 
@@ -189,7 +189,7 @@ namespace MPAid
             // 
             this.tutorialToolStripMenuItem.Image = global::MPAid.Properties.Resources.tutorials_icon;
             this.tutorialToolStripMenuItem.Name = "tutorialToolStripMenuItem";
-            this.tutorialToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
+            this.tutorialToolStripMenuItem.Size = new System.Drawing.Size(169, 26);
             this.tutorialToolStripMenuItem.Text = "Instruction";
             this.tutorialToolStripMenuItem.Click += new System.EventHandler(this.tutorialToolStripMenuItem_Click);
             // 
@@ -198,7 +198,7 @@ namespace MPAid
             this.aboutToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("aboutToolStripMenuItem.Image")));
             this.aboutToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(169, 26);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
