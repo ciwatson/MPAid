@@ -1,6 +1,6 @@
 ﻿namespace MPAid.NewForms
 {
-    partial class MPAiSoundMainMenu
+    partial class MPAiSpeakMainMenu
     {
         /// <summary>
         /// Required designer variable.
@@ -55,7 +55,7 @@
             this.mpAiSoundMenuStrip1.Location = new System.Drawing.Point(0, 0);
             this.mpAiSoundMenuStrip1.Name = "mpAiSoundMenuStrip1";
             this.mpAiSoundMenuStrip1.Size = new System.Drawing.Size(544, 24);
-            this.mpAiSoundMenuStrip1.TabIndex = 1;
+            this.mpAiSoundMenuStrip1.TabIndex = 2;
             this.mpAiSoundMenuStrip1.Text = "mpAiSoundMenuStrip1";
             // 
             // splitContainer1
@@ -75,7 +75,7 @@
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
             this.splitContainer1.Size = new System.Drawing.Size(544, 337);
             this.splitContainer1.SplitterDistance = 75;
-            this.splitContainer1.TabIndex = 2;
+            this.splitContainer1.TabIndex = 3;
             this.splitContainer1.TabStop = false;
             // 
             // headerBox
@@ -166,16 +166,15 @@
             this.button3.Text = "Score Report";
             this.button3.UseVisualStyleBackColor = true;
             // 
-            // MPAiSoundMainMenu
+            // MPAiSpeakMainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(544, 361);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.mpAiSoundMenuStrip1);
-            this.MainMenuStrip = this.mpAiSoundMenuStrip1;
-            this.Name = "MPAiSoundMainMenu";
-            this.Text = "MPAiSoundMainMenu";
+            this.Name = "MPAiSpeakMainMenu";
+            this.Text = "MPAiSpeakMainMenu";
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
@@ -192,6 +191,7 @@
         }
 
         #endregion
+
         private MPAiSoundMenuStrip mpAiSoundMenuStrip1;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.PictureBox headerBox;

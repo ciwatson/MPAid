@@ -223,6 +223,12 @@
     <Compile Include="NewForms\MPAiSoundMainMenu.Designer.cs">
       <DependentUpon>MPAiSoundMainMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="NewForms\MPAiSpeakMainMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewForms\MPAiSpeakMainMenu.Designer.cs">
+      <DependentUpon>MPAiSpeakMainMenu.cs</DependentUpon>
+    </Compile>
     <Compile Include="NewForms\UserCreationScreen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -322,6 +328,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="NewForms\MPAiSoundMainMenu.resx">
       <DependentUpon>MPAiSoundMainMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewForms\MPAiSpeakMainMenu.resx">
+      <DependentUpon>MPAiSpeakMainMenu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NewForms\SpeechRecognitionTest.resx">
       <DependentUpon>SpeechRecognitionTest.cs</DependentUpon>
