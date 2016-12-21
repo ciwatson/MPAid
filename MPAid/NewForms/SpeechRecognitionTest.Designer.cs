@@ -32,12 +32,12 @@
             this.SpeechRecognitionTestPanel = new System.Windows.Forms.SplitContainer();
             this.backButton = new System.Windows.Forms.Button();
             this.optionsButton = new System.Windows.Forms.Button();
-            this.recordingProgressBar = new System.Windows.Forms.ProgressBar();
             this.WordComboBox = new System.Windows.Forms.ComboBox();
             this.analyzeButton = new System.Windows.Forms.Button();
             this.recordingProgressBarLabel = new System.Windows.Forms.Label();
             this.recordButton = new System.Windows.Forms.Button();
             this.playButton = new System.Windows.Forms.Button();
+            this.recordingProgressBar = new System.Windows.Forms.ProgressBar();
             this.AudioInputDeviceButton = new System.Windows.Forms.Button();
             this.RenameButton = new System.Windows.Forms.Button();
             this.AudioInputDeviceComboBox = new System.Windows.Forms.ComboBox();
@@ -62,6 +62,7 @@
             this.submitFeedbackToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tutorialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.SpeechRecognitionTestPanel)).BeginInit();
             this.SpeechRecognitionTestPanel.Panel1.SuspendLayout();
             this.SpeechRecognitionTestPanel.Panel2.SuspendLayout();
@@ -82,12 +83,12 @@
             // 
             this.SpeechRecognitionTestPanel.Panel1.Controls.Add(this.backButton);
             this.SpeechRecognitionTestPanel.Panel1.Controls.Add(this.optionsButton);
-            this.SpeechRecognitionTestPanel.Panel1.Controls.Add(this.recordingProgressBar);
             this.SpeechRecognitionTestPanel.Panel1.Controls.Add(this.WordComboBox);
             this.SpeechRecognitionTestPanel.Panel1.Controls.Add(this.analyzeButton);
             this.SpeechRecognitionTestPanel.Panel1.Controls.Add(this.recordingProgressBarLabel);
             this.SpeechRecognitionTestPanel.Panel1.Controls.Add(this.recordButton);
             this.SpeechRecognitionTestPanel.Panel1.Controls.Add(this.playButton);
+            this.SpeechRecognitionTestPanel.Panel1.Controls.Add(this.recordingProgressBar);
             this.SpeechRecognitionTestPanel.Panel1MinSize = 200;
             // 
             // SpeechRecognitionTestPanel.Panel2
@@ -114,9 +115,10 @@
             this.backButton.Margin = new System.Windows.Forms.Padding(10);
             this.backButton.Name = "backButton";
             this.backButton.Size = new System.Drawing.Size(100, 25);
-            this.backButton.TabIndex = 38;
+            this.backButton.TabIndex = 5;
             this.backButton.Text = "Back";
             this.backButton.UseVisualStyleBackColor = true;
+            this.backButton.Click += new System.EventHandler(this.backButton_Click);
             // 
             // optionsButton
             // 
@@ -126,41 +128,38 @@
             this.optionsButton.Margin = new System.Windows.Forms.Padding(10);
             this.optionsButton.Name = "optionsButton";
             this.optionsButton.Size = new System.Drawing.Size(100, 25);
-            this.optionsButton.TabIndex = 39;
-            this.optionsButton.Text = "More...";
+            this.optionsButton.TabIndex = 4;
+            this.optionsButton.Text = "Less...";
             this.optionsButton.UseVisualStyleBackColor = true;
             this.optionsButton.Click += new System.EventHandler(this.optionsButton_Click);
-            // 
-            // recordingProgressBar
-            // 
-            this.recordingProgressBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.recordingProgressBar.Location = new System.Drawing.Point(117, 60);
-            this.recordingProgressBar.Name = "recordingProgressBar";
-            this.recordingProgressBar.Size = new System.Drawing.Size(350, 50);
-            this.recordingProgressBar.TabIndex = 40;
             // 
             // WordComboBox
             // 
             this.WordComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.WordComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.WordComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.WordComboBox.FormattingEnabled = true;
             this.WordComboBox.ItemHeight = 13;
             this.WordComboBox.Location = new System.Drawing.Point(115, 21);
             this.WordComboBox.Name = "WordComboBox";
             this.WordComboBox.Size = new System.Drawing.Size(350, 21);
-            this.WordComboBox.TabIndex = 33;
+            this.WordComboBox.TabIndex = 0;
+            this.WordComboBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.WordComboBox_KeyPress);
             // 
             // analyzeButton
             // 
             this.analyzeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.analyzeButton.Enabled = false;
             this.analyzeButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.analyzeButton.Location = new System.Drawing.Point(150, 125);
             this.analyzeButton.Margin = new System.Windows.Forms.Padding(20, 10, 20, 10);
             this.analyzeButton.Name = "analyzeButton";
             this.analyzeButton.Size = new System.Drawing.Size(300, 25);
-            this.analyzeButton.TabIndex = 37;
+            this.analyzeButton.TabIndex = 3;
             this.analyzeButton.Text = "&Analyze!";
             this.analyzeButton.UseVisualStyleBackColor = true;
+            this.analyzeButton.Click += new System.EventHandler(this.analyzeButton_Click);
             // 
             // recordingProgressBarLabel
             // 
@@ -171,8 +170,9 @@
             this.recordingProgressBarLabel.Name = "recordingProgressBarLabel";
             this.recordingProgressBarLabel.Size = new System.Drawing.Size(350, 50);
             this.recordingProgressBarLabel.TabIndex = 36;
-            this.recordingProgressBarLabel.Text = "FILE_NAME";
+            this.recordingProgressBarLabel.Text = "No current file";
             this.recordingProgressBarLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.recordingProgressBarLabel.TextChanged += new System.EventHandler(this.recordingProgressBarLabel_TextChanged);
             // 
             // recordButton
             // 
@@ -182,21 +182,32 @@
             this.recordButton.Margin = new System.Windows.Forms.Padding(0);
             this.recordButton.Name = "recordButton";
             this.recordButton.Size = new System.Drawing.Size(100, 25);
-            this.recordButton.TabIndex = 34;
-            this.recordButton.Text = "&Record";
+            this.recordButton.TabIndex = 1;
+            this.recordButton.Text = "Record";
             this.recordButton.UseVisualStyleBackColor = true;
+            this.recordButton.Click += new System.EventHandler(this.recordButton_Click);
             // 
             // playButton
             // 
             this.playButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.playButton.Enabled = false;
             this.playButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.playButton.Location = new System.Drawing.Point(474, 72);
             this.playButton.Margin = new System.Windows.Forms.Padding(0);
             this.playButton.Name = "playButton";
             this.playButton.Size = new System.Drawing.Size(100, 25);
-            this.playButton.TabIndex = 35;
+            this.playButton.TabIndex = 2;
             this.playButton.Text = "Play";
             this.playButton.UseVisualStyleBackColor = true;
+            this.playButton.Click += new System.EventHandler(this.playButton_Click);
+            // 
+            // recordingProgressBar
+            // 
+            this.recordingProgressBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.recordingProgressBar.Location = new System.Drawing.Point(117, 60);
+            this.recordingProgressBar.Name = "recordingProgressBar";
+            this.recordingProgressBar.Size = new System.Drawing.Size(350, 50);
+            this.recordingProgressBar.TabIndex = 40;
             // 
             // AudioInputDeviceButton
             // 
@@ -206,21 +217,24 @@
             this.AudioInputDeviceButton.Margin = new System.Windows.Forms.Padding(10);
             this.AudioInputDeviceButton.Name = "AudioInputDeviceButton";
             this.AudioInputDeviceButton.Size = new System.Drawing.Size(100, 25);
-            this.AudioInputDeviceButton.TabIndex = 41;
+            this.AudioInputDeviceButton.TabIndex = 7;
             this.AudioInputDeviceButton.Text = "Refresh";
             this.AudioInputDeviceButton.UseVisualStyleBackColor = true;
+            this.AudioInputDeviceButton.Click += new System.EventHandler(this.AudioInputDeviceButton_Click);
             // 
             // RenameButton
             // 
             this.RenameButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.RenameButton.Enabled = false;
             this.RenameButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.RenameButton.Location = new System.Drawing.Point(474, 230);
             this.RenameButton.Margin = new System.Windows.Forms.Padding(10);
             this.RenameButton.Name = "RenameButton";
             this.RenameButton.Size = new System.Drawing.Size(100, 25);
-            this.RenameButton.TabIndex = 43;
+            this.RenameButton.TabIndex = 12;
             this.RenameButton.Text = "Rename";
             this.RenameButton.UseVisualStyleBackColor = true;
+            this.RenameButton.Click += new System.EventHandler(this.RenameButton_Click);
             // 
             // AudioInputDeviceComboBox
             // 
@@ -230,19 +244,21 @@
             this.AudioInputDeviceComboBox.Location = new System.Drawing.Point(115, 24);
             this.AudioInputDeviceComboBox.Name = "AudioInputDeviceComboBox";
             this.AudioInputDeviceComboBox.Size = new System.Drawing.Size(353, 21);
-            this.AudioInputDeviceComboBox.TabIndex = 1;
+            this.AudioInputDeviceComboBox.TabIndex = 6;
             // 
             // DeleteButton
             // 
             this.DeleteButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.DeleteButton.Enabled = false;
             this.DeleteButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.DeleteButton.Location = new System.Drawing.Point(474, 180);
             this.DeleteButton.Margin = new System.Windows.Forms.Padding(10);
             this.DeleteButton.Name = "DeleteButton";
             this.DeleteButton.Size = new System.Drawing.Size(100, 25);
-            this.DeleteButton.TabIndex = 44;
+            this.DeleteButton.TabIndex = 11;
             this.DeleteButton.Text = "Delete";
             this.DeleteButton.UseVisualStyleBackColor = true;
+            this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
             // 
             // AudioInputDeviceLabel
             // 
@@ -261,9 +277,10 @@
             this.AddButton.Margin = new System.Windows.Forms.Padding(10);
             this.AddButton.Name = "AddButton";
             this.AddButton.Size = new System.Drawing.Size(100, 25);
-            this.AddButton.TabIndex = 45;
+            this.AddButton.TabIndex = 10;
             this.AddButton.Text = "Add...";
             this.AddButton.UseVisualStyleBackColor = true;
+            this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
             // 
             // ScoreReportButton
             // 
@@ -274,21 +291,24 @@
             this.ScoreReportButton.Margin = new System.Windows.Forms.Padding(0);
             this.ScoreReportButton.Name = "ScoreReportButton";
             this.ScoreReportButton.Size = new System.Drawing.Size(300, 25);
-            this.ScoreReportButton.TabIndex = 46;
+            this.ScoreReportButton.TabIndex = 13;
             this.ScoreReportButton.Text = "Score Report";
             this.ScoreReportButton.UseVisualStyleBackColor = true;
+            this.ScoreReportButton.Click += new System.EventHandler(this.ScoreReportButton_Click);
             // 
             // SelectButton
             // 
             this.SelectButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.SelectButton.Enabled = false;
             this.SelectButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.SelectButton.Location = new System.Drawing.Point(474, 80);
             this.SelectButton.Margin = new System.Windows.Forms.Padding(10);
             this.SelectButton.Name = "SelectButton";
             this.SelectButton.Size = new System.Drawing.Size(100, 25);
-            this.SelectButton.TabIndex = 42;
+            this.SelectButton.TabIndex = 9;
             this.SelectButton.Text = "Select";
             this.SelectButton.UseVisualStyleBackColor = true;
+            this.SelectButton.Click += new System.EventHandler(this.SelectButton_Click);
             // 
             // RecordingListBox
             // 
@@ -299,7 +319,9 @@
             this.RecordingListBox.Location = new System.Drawing.Point(10, 75);
             this.RecordingListBox.Name = "RecordingListBox";
             this.RecordingListBox.Size = new System.Drawing.Size(458, 186);
-            this.RecordingListBox.TabIndex = 2;
+            this.RecordingListBox.TabIndex = 8;
+            this.RecordingListBox.SelectedIndexChanged += new System.EventHandler(this.RecordingListBox_SelectedIndexChanged);
+            this.RecordingListBox.DoubleClick += new System.EventHandler(this.SelectButton_Click);
             // 
             // RecordingListLabel
             // 
@@ -319,7 +341,7 @@
             this.mainMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.mainMenuStrip.Name = "mainMenuStrip";
             this.mainMenuStrip.Size = new System.Drawing.Size(584, 32);
-            this.mainMenuStrip.TabIndex = 43;
+            this.mainMenuStrip.TabIndex = 14;
             this.mainMenuStrip.Text = "menuStrip1";
             // 
             // usersToolStripMenuItem
@@ -433,17 +455,27 @@
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(169, 26);
             this.aboutToolStripMenuItem.Text = "About";
             // 
+            // openFileDialog
+            // 
+            this.openFileDialog.Filter = "Wave files (*.wav)|*.wav|All Files(*.*)|*.*";
+            this.openFileDialog.InitialDirectory = "Environment.GetFolderPath(Environment.SpecialFolder.MyMusic, Environment.SpecialF" +
+    "olderOption.None)";
+            this.openFileDialog.Multiselect = true;
+            this.openFileDialog.RestoreDirectory = true;
+            this.openFileDialog.Title = "Select a Recording...";
+            // 
             // SpeechRecognitionTest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(584, 561);
+            this.ClientSize = new System.Drawing.Size(584, 562);
             this.Controls.Add(this.mainMenuStrip);
             this.Controls.Add(this.SpeechRecognitionTestPanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(375, 600);
             this.Name = "SpeechRecognitionTest";
             this.Text = "MPAi - Version 4.0";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.SpeechRecognitionTest_FormClosed);
             this.SpeechRecognitionTestPanel.Panel1.ResumeLayout(false);
             this.SpeechRecognitionTestPanel.Panel2.ResumeLayout(false);
             this.SpeechRecognitionTestPanel.Panel2.PerformLayout();
@@ -491,5 +523,6 @@
         private System.Windows.Forms.ListBox RecordingListBox;
         private System.Windows.Forms.Label RecordingListLabel;
         private System.Windows.Forms.Button ScoreReportButton;
+        private System.Windows.Forms.OpenFileDialog openFileDialog;
     }
 }

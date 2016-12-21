@@ -15,12 +15,22 @@ namespace MPAid.Cores
     public class NAudioPlayer
     {
         private WaveFileReader reader;
+        private WaveOutEvent waveOut = new WaveOutEvent();
+        public WaveOutEvent WaveOut
+        {
+            get
+            {
+                return waveOut;
+            }
+        }
+
         /// <summary>
         /// Default constructor.
         /// </summary>
         public NAudioPlayer() {}
         /// <summary>
         /// Verifies that the audio file exists and if it does, invokes the WaveOut API to play it.
+        /// This can only play one audio file at a time. To play multiple, instantiate multiple NAudioPlayers.
         /// </summary>
         /// <param name="filePath">The path to the audio file, as a string.</param>
         public void Play(string filePath)
@@ -29,7 +39,7 @@ namespace MPAid.Cores
             {
                 if (!File.Exists(filePath)) throw new Exception(string.Format("No such a file:{0}!", filePath));
                 reader = new WaveFileReader(filePath);
-                var waveOut = new WaveOutEvent();
+                waveOut = new WaveOutEvent();
                 waveOut.Init(reader);
                 waveOut.PlaybackStopped += WaveOut_PlaybackStopped; ;       // Calls the WaveOut_PlaybackStopped method if playback is unexpectedly stopped.
                 waveOut.Play();
@@ -39,6 +49,20 @@ namespace MPAid.Cores
                 Console.WriteLine(exp);
             }
         }
+        /// <summary>
+        /// Stops playback of the current wave sound.
+        /// Forces the reader and WaveOutEvents to be disposed of immediately, rather than waiting for the Playbackstopped event.
+        /// </summary>
+        public void Stop()
+        {
+            if (waveOut.PlaybackState.Equals(PlaybackState.Playing))
+            {
+                waveOut.Stop();
+                waveOut.Dispose();
+                reader.Dispose();
+            }
+        }
+
         /// <summary>
         /// Fires when the sound has finished playing, and cleans up any objects that may still be running.
         /// </summary>
