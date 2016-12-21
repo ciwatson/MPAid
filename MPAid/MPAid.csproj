@@ -334,6 +334,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+	</EmbeddedResource>
     <EmbeddedResource Include="NewForms\MPAiSoundMenuStrip.resx">
       <DependentUpon>MPAiSoundMenuStrip.cs</DependentUpon>
 	</EmbeddedResource>
