@@ -30,48 +30,48 @@
         {
             this.components = new System.ComponentModel.Container();
             this.mpAiSoundMenuStrip1 = new MPAid.NewForms.MPAiSoundMenuStrip(this.components);
-            this.SpeechRecognitionTestPanel = new System.Windows.Forms.SplitContainer();
-            this.backButton = new System.Windows.Forms.Button();
-            this.optionsButton = new System.Windows.Forms.Button();
+            this.learnVideoPlayerPanel = new System.Windows.Forms.SplitContainer();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.moreLessButton = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.backButton = new System.Windows.Forms.Button();
+            this.optionsButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.repeatTrackBar = new System.Windows.Forms.TrackBar();
-            this.timesRepeatBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.timesRepeatBox = new System.Windows.Forms.TextBox();
+            this.repeatTrackBar = new System.Windows.Forms.TrackBar();
+            this.label2 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
             this.button5 = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.label6 = new System.Windows.Forms.Label();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.label6 = new System.Windows.Forms.Label();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.panel6 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
+            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.label8 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
+            this.panel6 = new System.Windows.Forms.Panel();
             this.button8 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.SpeechRecognitionTestPanel)).BeginInit();
-            this.SpeechRecognitionTestPanel.Panel1.SuspendLayout();
-            this.SpeechRecognitionTestPanel.Panel2.SuspendLayout();
-            this.SpeechRecognitionTestPanel.SuspendLayout();
+            this.button7 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.learnVideoPlayerPanel)).BeginInit();
+            this.learnVideoPlayerPanel.Panel1.SuspendLayout();
+            this.learnVideoPlayerPanel.Panel2.SuspendLayout();
+            this.learnVideoPlayerPanel.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -94,50 +94,27 @@
             this.mpAiSoundMenuStrip1.TabIndex = 0;
             this.mpAiSoundMenuStrip1.Text = "mpAiSoundMenuStrip1";
             // 
-            // SpeechRecognitionTestPanel
+            // learnVideoPlayerPanel
             // 
-            this.SpeechRecognitionTestPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SpeechRecognitionTestPanel.Location = new System.Drawing.Point(0, 24);
-            this.SpeechRecognitionTestPanel.Name = "SpeechRecognitionTestPanel";
-            this.SpeechRecognitionTestPanel.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            this.learnVideoPlayerPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.learnVideoPlayerPanel.IsSplitterFixed = true;
+            this.learnVideoPlayerPanel.Location = new System.Drawing.Point(0, 24);
+            this.learnVideoPlayerPanel.Name = "learnVideoPlayerPanel";
+            this.learnVideoPlayerPanel.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
-            // SpeechRecognitionTestPanel.Panel1
+            // learnVideoPlayerPanel.Panel1
             // 
-            this.SpeechRecognitionTestPanel.Panel1.Controls.Add(this.tableLayoutPanel1);
-            this.SpeechRecognitionTestPanel.Panel1.Controls.Add(this.backButton);
-            this.SpeechRecognitionTestPanel.Panel1.Controls.Add(this.optionsButton);
-            this.SpeechRecognitionTestPanel.Panel1MinSize = 200;
+            this.learnVideoPlayerPanel.Panel1.Controls.Add(this.tableLayoutPanel1);
+            this.learnVideoPlayerPanel.Panel1.Controls.Add(this.backButton);
+            this.learnVideoPlayerPanel.Panel1.Controls.Add(this.optionsButton);
+            this.learnVideoPlayerPanel.Panel1MinSize = 200;
             // 
-            // SpeechRecognitionTestPanel.Panel2
+            // learnVideoPlayerPanel.Panel2
             // 
-            this.SpeechRecognitionTestPanel.Panel2.Controls.Add(this.tableLayoutPanel2);
-            this.SpeechRecognitionTestPanel.Size = new System.Drawing.Size(584, 537);
-            this.SpeechRecognitionTestPanel.SplitterDistance = 279;
-            this.SpeechRecognitionTestPanel.TabIndex = 43;
-            // 
-            // backButton
-            // 
-            this.backButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.backButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.backButton.Location = new System.Drawing.Point(474, 245);
-            this.backButton.Margin = new System.Windows.Forms.Padding(10);
-            this.backButton.Name = "backButton";
-            this.backButton.Size = new System.Drawing.Size(100, 25);
-            this.backButton.TabIndex = 5;
-            this.backButton.Text = "Back";
-            this.backButton.UseVisualStyleBackColor = true;
-            // 
-            // optionsButton
-            // 
-            this.optionsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.optionsButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.optionsButton.Location = new System.Drawing.Point(368, 245);
-            this.optionsButton.Margin = new System.Windows.Forms.Padding(10);
-            this.optionsButton.Name = "optionsButton";
-            this.optionsButton.Size = new System.Drawing.Size(100, 25);
-            this.optionsButton.TabIndex = 4;
-            this.optionsButton.Text = "Less...";
-            this.optionsButton.UseVisualStyleBackColor = true;
+            this.learnVideoPlayerPanel.Panel2.Controls.Add(this.tableLayoutPanel2);
+            this.learnVideoPlayerPanel.Size = new System.Drawing.Size(584, 537);
+            this.learnVideoPlayerPanel.SplitterDistance = 300;
+            this.learnVideoPlayerPanel.TabIndex = 43;
             // 
             // tableLayoutPanel1
             // 
@@ -153,27 +130,18 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 60F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(584, 279);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(584, 300);
             this.tableLayoutPanel1.TabIndex = 6;
             // 
             // panel1
             // 
             this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.moreLessButton);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(3, 238);
+            this.panel1.Location = new System.Drawing.Point(3, 258);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(578, 38);
+            this.panel1.Size = new System.Drawing.Size(578, 39);
             this.panel1.TabIndex = 0;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(415, 5);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Less...";
-            this.button1.UseVisualStyleBackColor = true;
             // 
             // button2
             // 
@@ -184,6 +152,16 @@
             this.button2.Text = "Back";
             this.button2.UseVisualStyleBackColor = true;
             // 
+            // moreLessButton
+            // 
+            this.moreLessButton.Location = new System.Drawing.Point(415, 5);
+            this.moreLessButton.Name = "moreLessButton";
+            this.moreLessButton.Size = new System.Drawing.Size(75, 23);
+            this.moreLessButton.TabIndex = 0;
+            this.moreLessButton.Text = "Less...";
+            this.moreLessButton.UseVisualStyleBackColor = true;
+            this.moreLessButton.Click += new System.EventHandler(this.moreLessButton_Click);
+            // 
             // panel2
             // 
             this.panel2.Controls.Add(this.comboBox1);
@@ -191,8 +169,16 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(3, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(578, 21);
+            this.panel2.Size = new System.Drawing.Size(578, 24);
             this.panel2.TabIndex = 1;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(236, 0);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 21);
+            this.comboBox1.TabIndex = 1;
             // 
             // label1
             // 
@@ -203,13 +189,29 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Sound:";
             // 
-            // comboBox1
+            // backButton
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(236, 0);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 1;
+            this.backButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.backButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.backButton.Location = new System.Drawing.Point(474, 266);
+            this.backButton.Margin = new System.Windows.Forms.Padding(10);
+            this.backButton.Name = "backButton";
+            this.backButton.Size = new System.Drawing.Size(100, 25);
+            this.backButton.TabIndex = 5;
+            this.backButton.Text = "Back";
+            this.backButton.UseVisualStyleBackColor = true;
+            // 
+            // optionsButton
+            // 
+            this.optionsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.optionsButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.optionsButton.Location = new System.Drawing.Point(368, 266);
+            this.optionsButton.Margin = new System.Windows.Forms.Padding(10);
+            this.optionsButton.Name = "optionsButton";
+            this.optionsButton.Size = new System.Drawing.Size(100, 25);
+            this.optionsButton.TabIndex = 4;
+            this.optionsButton.Text = "Less...";
+            this.optionsButton.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel2
             // 
@@ -228,7 +230,7 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 55F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(584, 254);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(584, 233);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // panel3
@@ -240,17 +242,25 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(3, 3);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(578, 32);
+            this.panel3.Size = new System.Drawing.Size(578, 28);
             this.panel3.TabIndex = 0;
             // 
-            // label2
+            // label3
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(55, 9);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(45, 13);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Repeat:";
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(425, 6);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(35, 13);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "Times";
+            // 
+            // timesRepeatBox
+            // 
+            this.timesRepeatBox.Location = new System.Drawing.Point(388, 3);
+            this.timesRepeatBox.Name = "timesRepeatBox";
+            this.timesRepeatBox.ReadOnly = true;
+            this.timesRepeatBox.Size = new System.Drawing.Size(31, 20);
+            this.timesRepeatBox.TabIndex = 2;
             // 
             // repeatTrackBar
             // 
@@ -261,21 +271,14 @@
             this.repeatTrackBar.TabIndex = 1;
             this.repeatTrackBar.ValueChanged += new System.EventHandler(this.repeatTrackBar_ValueChanged);
             // 
-            // timesRepeatBox
+            // label2
             // 
-            this.timesRepeatBox.Location = new System.Drawing.Point(388, 9);
-            this.timesRepeatBox.Name = "timesRepeatBox";
-            this.timesRepeatBox.Size = new System.Drawing.Size(31, 20);
-            this.timesRepeatBox.TabIndex = 2;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(425, 12);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(35, 13);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Times";
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(55, 6);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(45, 13);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Repeat:";
             // 
             // panel4
             // 
@@ -286,54 +289,10 @@
             this.panel4.Controls.Add(this.comboBox2);
             this.panel4.Controls.Add(this.label4);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(3, 41);
+            this.panel4.Location = new System.Drawing.Point(3, 37);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(578, 32);
+            this.panel4.Size = new System.Drawing.Size(578, 28);
             this.panel4.TabIndex = 1;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(56, 6);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(81, 13);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "Add your voice:";
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(143, 3);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 21);
-            this.comboBox2.TabIndex = 1;
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(270, 3);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "Refresh";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(351, 3);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 3;
-            this.button4.Text = "Record";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(432, 8);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(16, 13);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "or";
             // 
             // button5
             // 
@@ -344,36 +303,60 @@
             this.button5.Text = "Open a File";
             this.button5.UseVisualStyleBackColor = true;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(432, 8);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(16, 13);
+            this.label5.TabIndex = 4;
+            this.label5.Text = "or";
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(351, 3);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(75, 23);
+            this.button4.TabIndex = 3;
+            this.button4.Text = "Record";
+            this.button4.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(270, 3);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 2;
+            this.button3.Text = "Refresh";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(143, 3);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(121, 21);
+            this.comboBox2.TabIndex = 1;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(56, 6);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(81, 13);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "Add your voice:";
+            // 
             // panel5
             // 
             this.panel5.Controls.Add(this.radioButton2);
             this.panel5.Controls.Add(this.radioButton1);
             this.panel5.Controls.Add(this.label6);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel5.Location = new System.Drawing.Point(3, 79);
+            this.panel5.Location = new System.Drawing.Point(3, 71);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(578, 32);
+            this.panel5.Size = new System.Drawing.Size(578, 28);
             this.panel5.TabIndex = 2;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(55, 9);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(153, 13);
-            this.label6.TabIndex = 0;
-            this.label6.Text = "Play next sound when finished:";
-            // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(214, 9);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(43, 17);
-            this.radioButton1.TabIndex = 1;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Yes";
-            this.radioButton1.UseVisualStyleBackColor = true;
             // 
             // radioButton2
             // 
@@ -386,6 +369,26 @@
             this.radioButton2.Text = "No";
             this.radioButton2.UseVisualStyleBackColor = true;
             // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Location = new System.Drawing.Point(214, 9);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(43, 17);
+            this.radioButton1.TabIndex = 1;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "Yes";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(55, 9);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(153, 13);
+            this.label6.TabIndex = 0;
+            this.label6.Text = "Play next sound when finished:";
+            // 
             // tableLayoutPanel3
             // 
             this.tableLayoutPanel3.ColumnCount = 3;
@@ -396,11 +399,11 @@
             this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel5, 2, 0);
             this.tableLayoutPanel3.Controls.Add(this.panel6, 1, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 117);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 105);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(578, 134);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(578, 125);
             this.tableLayoutPanel3.TabIndex = 3;
             // 
             // tableLayoutPanel4
@@ -415,8 +418,27 @@
             this.tableLayoutPanel4.RowCount = 2;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 80F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(225, 128);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(225, 119);
             this.tableLayoutPanel4.TabIndex = 0;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(3, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(97, 13);
+            this.label7.TabIndex = 0;
+            this.label7.Text = "Sounds to Practice";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBox2.Location = new System.Drawing.Point(3, 26);
+            this.textBox2.Multiline = true;
+            this.textBox2.Name = "textBox2";
+            this.textBox2.ReadOnly = true;
+            this.textBox2.Size = new System.Drawing.Size(219, 90);
+            this.textBox2.TabIndex = 1;
             // 
             // tableLayoutPanel5
             // 
@@ -431,28 +453,8 @@
             this.tableLayoutPanel5.RowCount = 2;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 80F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(226, 128);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(226, 119);
             this.tableLayoutPanel5.TabIndex = 1;
-            // 
-            // panel6
-            // 
-            this.panel6.Controls.Add(this.button8);
-            this.panel6.Controls.Add(this.button7);
-            this.panel6.Controls.Add(this.button6);
-            this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel6.Location = new System.Drawing.Point(234, 3);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(109, 128);
-            this.panel6.TabIndex = 2;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(3, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(97, 13);
-            this.label7.TabIndex = 0;
-            this.label7.Text = "Sounds to Practice";
             // 
             // label8
             // 
@@ -463,41 +465,26 @@
             this.label8.TabIndex = 0;
             this.label8.Text = "All Sounds";
             // 
-            // textBox2
-            // 
-            this.textBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox2.Location = new System.Drawing.Point(3, 28);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(219, 97);
-            this.textBox2.TabIndex = 1;
-            // 
             // textBox3
             // 
             this.textBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox3.Location = new System.Drawing.Point(3, 28);
+            this.textBox3.Location = new System.Drawing.Point(3, 26);
             this.textBox3.Multiline = true;
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(220, 97);
+            this.textBox3.ReadOnly = true;
+            this.textBox3.Size = new System.Drawing.Size(220, 90);
             this.textBox3.TabIndex = 1;
             // 
-            // button6
+            // panel6
             // 
-            this.button6.Location = new System.Drawing.Point(6, 36);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(100, 23);
-            this.button6.TabIndex = 0;
-            this.button6.Text = "Add Selected";
-            this.button6.UseVisualStyleBackColor = true;
-            // 
-            // button7
-            // 
-            this.button7.Location = new System.Drawing.Point(6, 65);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(100, 23);
-            this.button7.TabIndex = 1;
-            this.button7.Text = "Remove Selected";
-            this.button7.UseVisualStyleBackColor = true;
+            this.panel6.Controls.Add(this.button8);
+            this.panel6.Controls.Add(this.button7);
+            this.panel6.Controls.Add(this.button6);
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel6.Location = new System.Drawing.Point(234, 3);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(109, 119);
+            this.panel6.TabIndex = 2;
             // 
             // button8
             // 
@@ -508,20 +495,38 @@
             this.button8.Text = "Add All";
             this.button8.UseVisualStyleBackColor = true;
             // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(6, 65);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(100, 23);
+            this.button7.TabIndex = 1;
+            this.button7.Text = "Remove Selected";
+            this.button7.UseVisualStyleBackColor = true;
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(6, 36);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(100, 23);
+            this.button6.TabIndex = 0;
+            this.button6.Text = "Add Selected";
+            this.button6.UseVisualStyleBackColor = true;
+            // 
             // MPAiSoundLearnVideoPlayer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 561);
-            this.Controls.Add(this.SpeechRecognitionTestPanel);
+            this.Controls.Add(this.learnVideoPlayerPanel);
             this.Controls.Add(this.mpAiSoundMenuStrip1);
             this.MainMenuStrip = this.mpAiSoundMenuStrip1;
             this.Name = "MPAiSoundLearnVideoPlayer";
             this.Text = "MPAiSoundLearnVideoPlayer";
-            this.SpeechRecognitionTestPanel.Panel1.ResumeLayout(false);
-            this.SpeechRecognitionTestPanel.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.SpeechRecognitionTestPanel)).EndInit();
-            this.SpeechRecognitionTestPanel.ResumeLayout(false);
+            this.learnVideoPlayerPanel.Panel1.ResumeLayout(false);
+            this.learnVideoPlayerPanel.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.learnVideoPlayerPanel)).EndInit();
+            this.learnVideoPlayerPanel.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
@@ -548,13 +553,13 @@
         #endregion
 
         private MPAiSoundMenuStrip mpAiSoundMenuStrip1;
-        private System.Windows.Forms.SplitContainer SpeechRecognitionTestPanel;
+        private System.Windows.Forms.SplitContainer learnVideoPlayerPanel;
         private System.Windows.Forms.Button backButton;
         private System.Windows.Forms.Button optionsButton;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button moreLessButton;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox comboBox1;

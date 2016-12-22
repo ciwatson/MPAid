@@ -12,6 +12,8 @@ namespace MPAid.NewForms
 {
     public partial class MPAiSoundLearnVideoPlayer : Form
     {
+        private Boolean expanded = true;
+
         public MPAiSoundLearnVideoPlayer()
         {
             InitializeComponent();
@@ -20,6 +22,20 @@ namespace MPAid.NewForms
         private void repeatTrackBar_ValueChanged(object sender, EventArgs e)
         {
             timesRepeatBox.Text = repeatTrackBar.Value + "";
+        }
+
+        private void moreLessButton_Click(object sender, EventArgs e)
+        {
+            if(expanded)
+            {
+                moreLessButton.Text = "More...";
+                expanded = false;
+                learnVideoPlayerPanel.Panel2Collapsed = true;
+            } else {
+                moreLessButton.Text = "Less...";
+                expanded = true;
+                learnVideoPlayerPanel.Panel2Collapsed = false;
+            }
         }
     }
 }
