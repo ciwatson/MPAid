@@ -115,7 +115,7 @@
             this.playImageList.TransparentColor = System.Drawing.Color.Transparent;
             this.playImageList.Images.SetKeyName(0, "Light Play.png");
             this.playImageList.Images.SetKeyName(1, "Play.png");
-            this.playImageList.Images.SetKeyName(2, "LightPause.png");
+            this.playImageList.Images.SetKeyName(2, "Light Pause.png");
             this.playImageList.Images.SetKeyName(3, "Pause.png");
             // 
             // backImageList
@@ -123,7 +123,7 @@
             this.backImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("backImageList.ImageStream")));
             this.backImageList.TransparentColor = System.Drawing.Color.Transparent;
             this.backImageList.Images.SetKeyName(0, "Light Backward.png");
-            this.backImageList.Images.SetKeyName(1, "Back.png");
+            this.backImageList.Images.SetKeyName(1, "Backward.png");
             // 
             // tableLayoutPanel1
             // 
