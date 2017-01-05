@@ -62,6 +62,7 @@ namespace MPAid.UserControls
         }
 
         /// <summary>
+        /// Called when the CurrentRecordingIndex property is changed, allowing the parent class to subscribe to the PropertyChanged event and update its own values.
         /// </summary>
         /// <param name="propertyName">Automatically filled in by the CallerMemberName annotation.</param>
         private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
@@ -328,6 +329,7 @@ namespace MPAid.UserControls
             }
             else
             {
+                vlcControl.Stop();  // So the old image doesn't stay on screen.
             }
         }
 
@@ -342,6 +344,7 @@ namespace MPAid.UserControls
             {
                 CurrentRecordingIndex -= 1;
             }
+            else    // Move to the end if the user reaches the beginning of the list.
             {
                 CurrentRecordingIndex = WordsList.Count - 1;
             }
@@ -353,6 +356,7 @@ namespace MPAid.UserControls
             }
             else
             {
+                vlcControl.Stop();  // So the old image doesn't stay on screen.
             }
         }
     }
