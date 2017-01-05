@@ -32,6 +32,7 @@
             this.backButton = new System.Windows.Forms.Button();
             this.optionsButton = new System.Windows.Forms.Button();
             this.VowelComboBox = new System.Windows.Forms.ComboBox();
+            this.vlcPlayer1 = new MPAid.UserControls.VlcPlayer();
             this.divider4 = new System.Windows.Forms.Label();
             this.divider3 = new System.Windows.Forms.Label();
             this.divider2 = new System.Windows.Forms.Label();
@@ -56,7 +57,6 @@
             this.repeatSpinner = new System.Windows.Forms.DomainUpDown();
             this.repeatLabel = new System.Windows.Forms.Label();
             this.repeatTrackBar = new System.Windows.Forms.TrackBar();
-            this.vlcPlayer1 = new MPAid.UserControls.VlcPlayer();
             ((System.ComponentModel.ISupportInitialize)(this.VideoPlayerPanel)).BeginInit();
             this.VideoPlayerPanel.Panel1.SuspendLayout();
             this.VideoPlayerPanel.Panel2.SuspendLayout();
@@ -107,7 +107,7 @@
             this.VideoPlayerPanel.Panel2.Controls.Add(this.repeatLabel);
             this.VideoPlayerPanel.Panel2.Controls.Add(this.repeatTrackBar);
             this.VideoPlayerPanel.Size = new System.Drawing.Size(584, 562);
-            this.VideoPlayerPanel.SplitterDistance = 316;
+            this.VideoPlayerPanel.SplitterDistance = 319;
             this.VideoPlayerPanel.SplitterWidth = 1;
             this.VideoPlayerPanel.TabIndex = 0;
             // 
@@ -115,7 +115,7 @@
             // 
             this.backButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.backButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.backButton.Location = new System.Drawing.Point(472, 292);
+            this.backButton.Location = new System.Drawing.Point(472, 295);
             this.backButton.Margin = new System.Windows.Forms.Padding(10);
             this.backButton.Name = "backButton";
             this.backButton.Size = new System.Drawing.Size(100, 25);
@@ -127,7 +127,7 @@
             // 
             this.optionsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.optionsButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.optionsButton.Location = new System.Drawing.Point(370, 292);
+            this.optionsButton.Location = new System.Drawing.Point(370, 295);
             this.optionsButton.Margin = new System.Windows.Forms.Padding(10);
             this.optionsButton.Name = "optionsButton";
             this.optionsButton.Size = new System.Drawing.Size(100, 25);
@@ -149,6 +149,15 @@
             this.VowelComboBox.TabIndex = 1;
             this.VowelComboBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.VowelComboBox_KeyPress);
             this.VowelComboBox.Leave += new System.EventHandler(this.VowelComboBox_Leave);
+            // 
+            // vlcPlayer1
+            // 
+            this.vlcPlayer1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.vlcPlayer1.Location = new System.Drawing.Point(0, 39);
+            this.vlcPlayer1.Name = "vlcPlayer1";
+            this.vlcPlayer1.Size = new System.Drawing.Size(585, 251);
+            this.vlcPlayer1.TabIndex = 8;
             // 
             // divider4
             // 
@@ -407,15 +416,6 @@
             this.repeatTrackBar.Size = new System.Drawing.Size(399, 45);
             this.repeatTrackBar.TabIndex = 0;
             // 
-            // vlcPlayer1
-            // 
-            this.vlcPlayer1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.vlcPlayer1.Location = new System.Drawing.Point(0, 39);
-            this.vlcPlayer1.Name = "vlcPlayer1";
-            this.vlcPlayer1.Size = new System.Drawing.Size(585, 251);
-            this.vlcPlayer1.TabIndex = 8;
-            // 
             // VideoPlayer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -425,6 +425,7 @@
             this.MinimumSize = new System.Drawing.Size(375, 600);
             this.Name = "VideoPlayer";
             this.Text = "MPAi Sound";
+            this.Load += new System.EventHandler(this.VideoPlayer_Load);
             this.VideoPlayerPanel.Panel1.ResumeLayout(false);
             this.VideoPlayerPanel.Panel2.ResumeLayout(false);
             this.VideoPlayerPanel.Panel2.PerformLayout();

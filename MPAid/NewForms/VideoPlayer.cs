@@ -86,5 +86,10 @@ namespace MPAid.NewForms
             MessageBox.Show(vowelNotFoundText);
             VowelComboBox.Focus();
         }
+
+        private void VideoPlayer_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
