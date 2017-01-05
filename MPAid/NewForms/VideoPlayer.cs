@@ -126,6 +126,11 @@ namespace MPAid.NewForms
             vowelComboBox.SelectedIndex = vlcPlayer1.CurrentRecordingIndex;
         }
 
+        /// <summary>
+        /// Handles the functionality for the options button.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void optionsButton_Click(object sender, EventArgs e)
         {
             toggleOptions();
@@ -153,5 +158,18 @@ namespace MPAid.NewForms
             }
             VideoPlayerPanel.Panel2Collapsed = !VideoPlayerPanel.Panel2Collapsed;
         }
+
+        /// <summary>
+        /// Handles the functionality for the back button.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void backButton_Click(object sender, EventArgs e)
+        {
+            // Show other form on this line.
+            Close();
+        }
+
+
     }
 }
