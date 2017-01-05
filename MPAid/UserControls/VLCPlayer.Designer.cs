@@ -86,8 +86,8 @@
             // 
             this.stopImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("stopImageList.ImageStream")));
             this.stopImageList.TransparentColor = System.Drawing.Color.Transparent;
-            this.stopImageList.Images.SetKeyName(0, "stop_64_1.png");
-            this.stopImageList.Images.SetKeyName(1, "stop_64_2.png");
+            this.stopImageList.Images.SetKeyName(0, "Light Stop.png");
+            this.stopImageList.Images.SetKeyName(1, "Stop.png");
             // 
             // playButton
             // 
@@ -114,17 +114,17 @@
             // 
             this.playImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("playImageList.ImageStream")));
             this.playImageList.TransparentColor = System.Drawing.Color.Transparent;
-            this.playImageList.Images.SetKeyName(0, "LightPlay.png");
+            this.playImageList.Images.SetKeyName(0, "Light Play.png");
             this.playImageList.Images.SetKeyName(1, "Play.png");
-            this.playImageList.Images.SetKeyName(2, "LightPause.png");
+            this.playImageList.Images.SetKeyName(2, "Light Pause.png");
             this.playImageList.Images.SetKeyName(3, "Pause.png");
             // 
             // backImageList
             // 
             this.backImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("backImageList.ImageStream")));
             this.backImageList.TransparentColor = System.Drawing.Color.Transparent;
-            this.backImageList.Images.SetKeyName(0, "LightBack.png");
-            this.backImageList.Images.SetKeyName(1, "Back.png");
+            this.backImageList.Images.SetKeyName(0, "Light Backward.png");
+            this.backImageList.Images.SetKeyName(1, "Backward.png");
             // 
             // tableLayoutPanel1
             // 
@@ -178,7 +178,7 @@
             // 
             this.forwardImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("forwardImageList.ImageStream")));
             this.forwardImageList.TransparentColor = System.Drawing.Color.Transparent;
-            this.forwardImageList.Images.SetKeyName(0, "LightForward.png");
+            this.forwardImageList.Images.SetKeyName(0, "Light Forward.png");
             this.forwardImageList.Images.SetKeyName(1, "Forward.png");
             // 
             // backButton

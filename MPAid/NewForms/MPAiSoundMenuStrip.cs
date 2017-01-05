@@ -27,25 +27,32 @@ namespace MPAid.NewForms
 
         private void checkAppropriateComponents()
         {
-            switch (UserManagement.getCurrentUser().Voice)
+            try
             {
-                case Models.VoiceType.FEMININE_HERITAGE:
-                    heritageMāoriToolStripMenuItem.Checked = true;
-                    feminineToolStripMenuItem.Checked = true;
-                    break;
-                case Models.VoiceType.FEMININE_MODERN:
-                    modernMāoriToolStripMenuItem.Checked = true;
-                    feminineToolStripMenuItem.Checked = true;
-                    break;
-                case Models.VoiceType.MASCULINE_HERITAGE:
-                    heritageMāoriToolStripMenuItem.Checked = true;
-                    masculineToolStripMenuItem.Checked = true;
-                    break;
-                case Models.VoiceType.MASCULINE_MODERN:
-                    modernMāoriToolStripMenuItem.Checked = true;
-                    masculineToolStripMenuItem.Checked = true;
-                    break;
+                switch (UserManagement.getCurrentUser().Voice)
+                {
+                    case Models.VoiceType.FEMININE_HERITAGE:
+                        heritageMāoriToolStripMenuItem.Checked = true;
+                        feminineToolStripMenuItem.Checked = true;
+                        break;
+                    case Models.VoiceType.FEMININE_MODERN:
+                        modernMāoriToolStripMenuItem.Checked = true;
+                        feminineToolStripMenuItem.Checked = true;
+                        break;
+                    case Models.VoiceType.MASCULINE_HERITAGE:
+                        heritageMāoriToolStripMenuItem.Checked = true;
+                        masculineToolStripMenuItem.Checked = true;
+                        break;
+                    case Models.VoiceType.MASCULINE_MODERN:
+                        modernMāoriToolStripMenuItem.Checked = true;
+                        masculineToolStripMenuItem.Checked = true;
+                        break;
+                }
+            } catch (NullReferenceException e)
+            {
+
             }
+            
         }
 
         private void heritageMāoriToolStripMenuItem_Click(object sender, EventArgs e)
