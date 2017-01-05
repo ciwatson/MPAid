@@ -85,6 +85,7 @@
             // VideoPlayerPanel.Panel2
             // 
             this.VideoPlayerPanel.Panel2.BackColor = System.Drawing.SystemColors.Control;
+            this.VideoPlayerPanel.Panel2.Controls.Add(this.repeatSpinner);
             this.VideoPlayerPanel.Panel2.Controls.Add(this.divider4);
             this.VideoPlayerPanel.Panel2.Controls.Add(this.divider3);
             this.VideoPlayerPanel.Panel2.Controls.Add(this.divider2);
@@ -106,7 +107,6 @@
             this.VideoPlayerPanel.Panel2.Controls.Add(this.AudioInputDeviceButton);
             this.VideoPlayerPanel.Panel2.Controls.Add(this.AudioInputDeviceComboBox);
             this.VideoPlayerPanel.Panel2.Controls.Add(this.AudioInputDeviceLabel);
-            this.VideoPlayerPanel.Panel2.Controls.Add(this.repeatSpinner);
             this.VideoPlayerPanel.Panel2.Controls.Add(this.repeatLabel);
             this.VideoPlayerPanel.Panel2.Controls.Add(this.repeatTrackBar);
             this.VideoPlayerPanel.Panel2MinSize = 250;
@@ -389,11 +389,24 @@
             // repeatSpinner
             // 
             this.repeatSpinner.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.repeatSpinner.Location = new System.Drawing.Point(479, 38);
+            this.repeatSpinner.Items.Add("Repeat forever");
+            this.repeatSpinner.Items.Add("Repeat 10 times");
+            this.repeatSpinner.Items.Add("Repeat 9 times");
+            this.repeatSpinner.Items.Add("Repeat 8 times");
+            this.repeatSpinner.Items.Add("Repeat 7 times");
+            this.repeatSpinner.Items.Add("Repeat 6 times");
+            this.repeatSpinner.Items.Add("Repeat 5 times");
+            this.repeatSpinner.Items.Add("Repeat 4 times");
+            this.repeatSpinner.Items.Add("Repeat 3 times");
+            this.repeatSpinner.Items.Add("Repeat twice");
+            this.repeatSpinner.Items.Add("Repeat once");
+            this.repeatSpinner.Items.Add("Don\'t repeat");
+            this.repeatSpinner.Location = new System.Drawing.Point(467, 33);
             this.repeatSpinner.Name = "repeatSpinner";
-            this.repeatSpinner.Size = new System.Drawing.Size(87, 20);
+            this.repeatSpinner.ReadOnly = true;
+            this.repeatSpinner.Size = new System.Drawing.Size(107, 20);
             this.repeatSpinner.TabIndex = 2;
-            this.repeatSpinner.Text = "domainUpDown1";
+            this.repeatSpinner.SelectedItemChanged += new System.EventHandler(this.repeatSpinner_SelectedItemChanged);
             // 
             // repeatLabel
             // 
@@ -410,9 +423,11 @@
             this.repeatTrackBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.repeatTrackBar.Location = new System.Drawing.Point(62, 31);
+            this.repeatTrackBar.Maximum = 11;
             this.repeatTrackBar.Name = "repeatTrackBar";
             this.repeatTrackBar.Size = new System.Drawing.Size(399, 45);
             this.repeatTrackBar.TabIndex = 0;
+            this.repeatTrackBar.ValueChanged += new System.EventHandler(this.repeatTrackBar_ValueChanged);
             // 
             // vlcPlayer1
             // 
