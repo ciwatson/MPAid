@@ -23,6 +23,12 @@ namespace MPAid.UserControls
     /// </summary>
     public partial class VlcPlayer : UserControl, INotifyPropertyChanged
     {
+        // All strings are kept here to make them eaiser to change.
+        private string selectFolderString = "Select Vlc libraries folder.";
+        private string invalidStateString = "Invalid State!";
+        private string noVideoString = "No video recording was found for that sound.";
+        private string invalidRecordingString = "Invalid recording!";
+
         // The list of recordings to play.
         private List<Word> wordsList;
         // The index of the current recording.
@@ -110,7 +116,7 @@ namespace MPAid.UserControls
             if (!e.VlcLibDirectory.Exists)      // If a folder is missing
             {
                 var folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();       // Raise a browser window and let the user find it.
-                folderBrowserDialog.Description = "Select Vlc libraries folder.";
+                folderBrowserDialog.Description = selectFolderString;
                 folderBrowserDialog.RootFolder = Environment.SpecialFolder.Desktop;
                 folderBrowserDialog.ShowNewFolderButton = true;
                 if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
@@ -151,7 +157,7 @@ namespace MPAid.UserControls
                         }
                         break;
                     default:
-                        MessageBox.Show("Invalid State!");
+                        MessageBox.Show(invalidStateString);
                         break;
                 }
             }
@@ -180,7 +186,7 @@ namespace MPAid.UserControls
                     SingleFile sf = rd.Video;
                     if (sf == null)
                     {
-                        MessageBox.Show("No video recording was found for that sound.");
+                        MessageBox.Show(noVideoString);
                         return;
                     }
                     string filePath = Path.Combine(sf.Address, sf.Name);
@@ -190,7 +196,7 @@ namespace MPAid.UserControls
                 }
                 else
                 {
-                    MessageBox.Show("Invalid recording!");
+                    MessageBox.Show(invalidRecordingString);
                 }
             }
         }
