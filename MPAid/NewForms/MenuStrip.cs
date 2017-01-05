@@ -9,15 +9,15 @@ using System.Windows.Forms;
 
 namespace MPAid.NewForms
 {
-    public partial class MPAiSoundMenuStrip : MenuStrip
+    public partial class MenuStrip : System.Windows.Forms.MenuStrip
     {
-        public MPAiSoundMenuStrip() : base()
+        public MenuStrip() : base()
         {
             InitializeComponent();
             checkAppropriateComponents();
         }
 
-        public MPAiSoundMenuStrip(IContainer container) : base()
+        public MenuStrip(IContainer container) : base()
         {
             container.Add(this);
 

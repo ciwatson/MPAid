@@ -223,11 +223,11 @@
     <Compile Include="NewForms\AudioPlayer.Designer.cs">
       <DependentUpon>AudioPlayer.cs</DependentUpon>
     </Compile>
-    <Compile Include="NewForms\MPAiSoundMenuStrip.cs">
+    <Compile Include="NewForms\MenuStrip.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="NewForms\MPAiSoundMenuStrip.Designer.cs">
-      <DependentUpon>MPAiSoundMenuStrip.cs</DependentUpon>
+    <Compile Include="NewForms\MenuStrip.Designer.cs">
+      <DependentUpon>MenuStrip.cs</DependentUpon>
     </Compile>
     <Compile Include="NewForms\RenameFileDialog.cs">
       <SubType>Form</SubType>
@@ -353,8 +353,8 @@
     <EmbeddedResource Include="NewForms\AudioPlayer.resx">
       <DependentUpon>AudioPlayer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NewForms\MPAiSoundMenuStrip.resx">
-      <DependentUpon>MPAiSoundMenuStrip.cs</DependentUpon>
+    <EmbeddedResource Include="NewForms\MenuStrip.resx">
+      <DependentUpon>MenuStrip.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NewForms\RenameFileDialog.resx">
       <DependentUpon>RenameFileDialog.cs</DependentUpon>

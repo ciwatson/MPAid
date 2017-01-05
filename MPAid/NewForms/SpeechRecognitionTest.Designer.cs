@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SpeechRecognitionTest));
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.mpAiSoundMenuStrip1 = new MPAid.NewForms.MPAiSoundMenuStrip(this.components);
+            this.mpAiSoundMenuStrip1 = new MPAid.NewForms.MenuStrip(this.components);
             this.SpeechRecognitionTestPanel = new System.Windows.Forms.SplitContainer();
             this.backButton = new System.Windows.Forms.Button();
             this.optionsButton = new System.Windows.Forms.Button();
@@ -346,7 +346,7 @@
 
         #endregion
         private System.Windows.Forms.OpenFileDialog openFileDialog;
-        private MPAiSoundMenuStrip mpAiSoundMenuStrip1;
+        private MenuStrip mpAiSoundMenuStrip1;
         private System.Windows.Forms.SplitContainer SpeechRecognitionTestPanel;
         private System.Windows.Forms.Button backButton;
         private System.Windows.Forms.Button optionsButton;

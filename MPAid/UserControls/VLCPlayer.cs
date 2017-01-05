@@ -223,5 +223,15 @@ namespace MPAid.UserControls
         {
             forwardButton.ImageIndex = 1;
         }
+
+        private void forwardButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void backButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
