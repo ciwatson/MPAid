@@ -20,6 +20,11 @@ namespace MPAid.NewForms
         private string optionsLess = "Less...";
         private string optionsMore = "More...";
 
+        /// <summary>
+        /// Holds the height of the bottom panel between clicks of the options button.
+        /// </summary>
+        private int bottomHeight;
+
         public ComboBox VowelComboBox {
             get { return vowelComboBox; }
         }
@@ -28,6 +33,8 @@ namespace MPAid.NewForms
         {
             InitializeComponent();
             populateVowelComboBox();
+            bottomHeight = VideoPlayerPanel.Height - VideoPlayerPanel.SplitterDistance;
+            toggleOptions();    // For development, the bottom panel is visible, but the user won't need the bottom panel most of the time.
         }
 
         /// <summary>
@@ -131,22 +138,20 @@ namespace MPAid.NewForms
         {
             // Prevent relative resizing issues by storing the current height of the top panel.
             int panel1Size = VideoPlayerPanel.SplitterDistance;
-            VideoPlayerPanel.Panel2Collapsed = !VideoPlayerPanel.Panel2Collapsed;
             if (VideoPlayerPanel.Panel2Collapsed)
             {
-                Height += (VideoPlayerPanel.Height - VideoPlayerPanel.SplitterDistance);
+                Height += bottomHeight;
                 MinimumSize = new Size(MinimumSize.Width, 600);
                 optionsButton.Text = optionsLess;
             }
             else
             {
                 MinimumSize = new Size(MinimumSize.Width, 300);
-                Height -= (VideoPlayerPanel.Height - VideoPlayerPanel.SplitterDistance);
+                bottomHeight = VideoPlayerPanel.Height - VideoPlayerPanel.SplitterDistance;
+                Height -= bottomHeight;
                 optionsButton.Text = optionsMore;
             }
-            
-            // Restore original height of the top panel.
-            VideoPlayerPanel.SplitterDistance = panel1Size;
+            VideoPlayerPanel.Panel2Collapsed = !VideoPlayerPanel.Panel2Collapsed;
         }
     }
 }

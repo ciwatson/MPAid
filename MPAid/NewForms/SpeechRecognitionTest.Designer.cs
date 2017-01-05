@@ -79,6 +79,7 @@
             this.SpeechRecognitionTestPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.SpeechRecognitionTestPanel.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
             this.SpeechRecognitionTestPanel.Location = new System.Drawing.Point(0, 18);
             this.SpeechRecognitionTestPanel.Name = "SpeechRecognitionTestPanel";
             this.SpeechRecognitionTestPanel.Orientation = System.Windows.Forms.Orientation.Horizontal;
@@ -93,7 +94,6 @@
             this.SpeechRecognitionTestPanel.Panel1.Controls.Add(this.recordButton);
             this.SpeechRecognitionTestPanel.Panel1.Controls.Add(this.playButton);
             this.SpeechRecognitionTestPanel.Panel1.Controls.Add(this.recordingProgressBar);
-            this.SpeechRecognitionTestPanel.Panel1MinSize = 200;
             // 
             // SpeechRecognitionTestPanel.Panel2
             // 
@@ -107,8 +107,10 @@
             this.SpeechRecognitionTestPanel.Panel2.Controls.Add(this.SelectButton);
             this.SpeechRecognitionTestPanel.Panel2.Controls.Add(this.RecordingListBox);
             this.SpeechRecognitionTestPanel.Panel2.Controls.Add(this.RecordingListLabel);
+            this.SpeechRecognitionTestPanel.Panel2MinSize = 250;
             this.SpeechRecognitionTestPanel.Size = new System.Drawing.Size(584, 525);
             this.SpeechRecognitionTestPanel.SplitterDistance = 200;
+            this.SpeechRecognitionTestPanel.SplitterWidth = 1;
             this.SpeechRecognitionTestPanel.TabIndex = 44;
             // 
             // backButton
@@ -291,7 +293,7 @@
             this.ScoreReportButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ScoreReportButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.ScoreReportButton.Location = new System.Drawing.Point(150, 279);
+            this.ScoreReportButton.Location = new System.Drawing.Point(150, 282);
             this.ScoreReportButton.Margin = new System.Windows.Forms.Padding(0);
             this.ScoreReportButton.Name = "ScoreReportButton";
             this.ScoreReportButton.Size = new System.Drawing.Size(300, 25);
