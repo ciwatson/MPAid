@@ -31,7 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VlcPlayer));
             this.vlcControl = new Vlc.DotNet.Forms.VlcControl();
-            this.stopButton = new System.Windows.Forms.Button();
             this.stopImageList = new System.Windows.Forms.ImageList(this.components);
             this.playButton = new System.Windows.Forms.Button();
             this.playImageList = new System.Windows.Forms.ImageList(this.components);
@@ -47,7 +46,7 @@
             // vlcControl
             // 
             this.vlcControl.BackColor = System.Drawing.SystemColors.ButtonShadow;
-            this.tableLayoutPanel1.SetColumnSpan(this.vlcControl, 10);
+            this.tableLayoutPanel1.SetColumnSpan(this.vlcControl, 9);
             this.vlcControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.vlcControl.Location = new System.Drawing.Point(3, 3);
             this.vlcControl.Name = "vlcControl";
@@ -60,27 +59,6 @@
             this.vlcControl.VlcLibDirectoryNeeded += new System.EventHandler<Vlc.DotNet.Forms.VlcLibDirectoryNeededEventArgs>(this.OnVlcControlNeedLibDirectory);
             this.vlcControl.EndReached += new System.EventHandler<Vlc.DotNet.Core.VlcMediaPlayerEndReachedEventArgs>(this.vlcControl_EndReached);
             this.vlcControl.Stopped += new System.EventHandler<Vlc.DotNet.Core.VlcMediaPlayerStoppedEventArgs>(this.OnVlcControlStopped);
-            // 
-            // stopButton
-            // 
-            this.stopButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.stopButton.BackColor = System.Drawing.SystemColors.Control;
-            this.stopButton.FlatAppearance.BorderSize = 0;
-            this.stopButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.stopButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.stopButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.stopButton.ImageIndex = 1;
-            this.stopButton.ImageList = this.stopImageList;
-            this.stopButton.Location = new System.Drawing.Point(273, 265);
-            this.stopButton.Name = "stopButton";
-            this.stopButton.Size = new System.Drawing.Size(48, 59);
-            this.stopButton.TabIndex = 7;
-            this.stopButton.UseVisualStyleBackColor = false;
-            this.stopButton.Click += new System.EventHandler(this.stopButton_Click);
-            this.stopButton.MouseEnter += new System.EventHandler(this.stopButton_MouseEnter);
-            this.stopButton.MouseLeave += new System.EventHandler(this.stopButton_MouseLeave);
             // 
             // stopImageList
             // 
@@ -101,9 +79,9 @@
             this.playButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.playButton.ImageIndex = 1;
             this.playButton.ImageList = this.playImageList;
-            this.playButton.Location = new System.Drawing.Point(219, 265);
+            this.playButton.Location = new System.Drawing.Point(243, 265);
             this.playButton.Name = "playButton";
-            this.playButton.Size = new System.Drawing.Size(48, 59);
+            this.playButton.Size = new System.Drawing.Size(54, 59);
             this.playButton.TabIndex = 6;
             this.playButton.UseVisualStyleBackColor = false;
             this.playButton.Click += new System.EventHandler(this.playButton_Click);
@@ -128,22 +106,21 @@
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.ColumnCount = 10;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel1.ColumnCount = 9;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Controls.Add(this.vlcControl, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.forwardButton, 6, 1);
             this.tableLayoutPanel1.Controls.Add(this.backButton, 3, 1);
             this.tableLayoutPanel1.Controls.Add(this.playButton, 4, 1);
-            this.tableLayoutPanel1.Controls.Add(this.stopButton, 5, 1);
+            this.tableLayoutPanel1.Controls.Add(this.forwardButton, 5, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -165,9 +142,9 @@
             this.forwardButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.forwardButton.ImageIndex = 1;
             this.forwardButton.ImageList = this.forwardImageList;
-            this.forwardButton.Location = new System.Drawing.Point(327, 265);
+            this.forwardButton.Location = new System.Drawing.Point(303, 265);
             this.forwardButton.Name = "forwardButton";
-            this.forwardButton.Size = new System.Drawing.Size(48, 59);
+            this.forwardButton.Size = new System.Drawing.Size(54, 59);
             this.forwardButton.TabIndex = 8;
             this.forwardButton.UseVisualStyleBackColor = false;
             this.forwardButton.Click += new System.EventHandler(this.forwardButton_Click);
@@ -193,9 +170,9 @@
             this.backButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.backButton.ImageIndex = 1;
             this.backButton.ImageList = this.backImageList;
-            this.backButton.Location = new System.Drawing.Point(165, 265);
+            this.backButton.Location = new System.Drawing.Point(183, 265);
             this.backButton.Name = "backButton";
-            this.backButton.Size = new System.Drawing.Size(48, 59);
+            this.backButton.Size = new System.Drawing.Size(54, 59);
             this.backButton.TabIndex = 5;
             this.backButton.UseVisualStyleBackColor = false;
             this.backButton.Click += new System.EventHandler(this.backButton_Click);
@@ -217,7 +194,6 @@
 
         #endregion
         private Vlc.DotNet.Forms.VlcControl vlcControl;
-        private System.Windows.Forms.Button stopButton;
         private System.Windows.Forms.Button playButton;
         private System.Windows.Forms.ImageList backImageList;
         private System.Windows.Forms.ImageList stopImageList;
