@@ -58,6 +58,7 @@
             this.vlcControl.VlcLibDirectory = null;
             this.vlcControl.VlcMediaplayerOptions = null;
             this.vlcControl.VlcLibDirectoryNeeded += new System.EventHandler<Vlc.DotNet.Forms.VlcLibDirectoryNeededEventArgs>(this.OnVlcControlNeedLibDirectory);
+            this.vlcControl.EndReached += new System.EventHandler<Vlc.DotNet.Core.VlcMediaPlayerEndReachedEventArgs>(this.vlcControl_EndReached);
             this.vlcControl.Stopped += new System.EventHandler<Vlc.DotNet.Core.VlcMediaPlayerStoppedEventArgs>(this.OnVlcControlStopped);
             // 
             // stopButton
@@ -169,6 +170,7 @@
             this.forwardButton.Size = new System.Drawing.Size(48, 59);
             this.forwardButton.TabIndex = 8;
             this.forwardButton.UseVisualStyleBackColor = false;
+            this.forwardButton.Click += new System.EventHandler(this.forwardButton_Click);
             this.forwardButton.MouseEnter += new System.EventHandler(this.forwardButton_MouseEnter);
             this.forwardButton.MouseLeave += new System.EventHandler(this.forwardButton_MouseLeave);
             // 
@@ -196,6 +198,7 @@
             this.backButton.Size = new System.Drawing.Size(48, 59);
             this.backButton.TabIndex = 5;
             this.backButton.UseVisualStyleBackColor = false;
+            this.backButton.Click += new System.EventHandler(this.backButton_Click);
             this.backButton.MouseEnter += new System.EventHandler(this.backButton_MouseEnter);
             this.backButton.MouseLeave += new System.EventHandler(this.backButton_MouseLeave);
             // 

@@ -13,14 +13,64 @@ using System.IO;
 using MPAid.Models;
 using MPAid.Cores;
 using MPAid.Forms;
+using MPAid.NewForms;
+using System.Runtime.CompilerServices;
 
 namespace MPAid.UserControls
 {
     /// <summary>
     /// Class handling the VLC video player.
     /// </summary>
-    public partial class VlcPlayer : UserControl
+    public partial class VlcPlayer : UserControl, INotifyPropertyChanged
     {
+        // The list of recordings to play.
+        private List<Word> wordsList;
+        // The index of the current recording.
+        private int currentRecordingIndex = 0;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        /// <summary>
+        /// Wrapper property for the list of recordings.
+        /// </summary>
+        public List<Word> WordsList
+        {
+            get
+            {
+                return wordsList;
+            }
+
+            set
+            {
+                wordsList = value;
+            }
+        }
+        /// <summary>
+        /// Wrapper property for the current index.
+        /// </summary>
+        public int CurrentRecordingIndex
+        {
+            get
+            {
+                return currentRecordingIndex;
+            }
+            set
+            {
+                currentRecordingIndex = value;
+                NotifyPropertyChanged();
+            }
+        }
+
+        /// <summary>
+        /// </summary>
+        /// <param name="propertyName">Automatically filled in by the CallerMemberName annotation.</param>
+        private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
 
         /// <summary>
         /// Reference to the player control on the form.
@@ -29,6 +79,7 @@ namespace MPAid.UserControls
         {
             get { return vlcControl; }
         }
+
 
         /// <summary>
         /// Default constructor.
@@ -79,26 +130,11 @@ namespace MPAid.UserControls
             {
                 switch (vlcControl.State)
                 {
-                    case Vlc.DotNet.Core.Interops.Signatures.MediaStates.NothingSpecial:    // Do nothing.
+                    case Vlc.DotNet.Core.Interops.Signatures.MediaStates.NothingSpecial:    // Occurs when control is finished loading. Same functionality as stopped.
+                    case Vlc.DotNet.Core.Interops.Signatures.MediaStates.Ended:             // Occurs when control has finished playing a video. Same funcionaility as stopped.
                     case Vlc.DotNet.Core.Interops.Signatures.MediaStates.Stopped:
                         {
-                            MainForm mainForm = this.Parent.Parent.Parent.Parent.Parent.Parent as MainForm; // Get the main form.
-                            Speaker spk = mainForm.RecordingList.SpeakerComboBox.SelectedItem as Speaker;   // Get the speaker from the combo box.
-                            Word wd = mainForm.RecordingList.WordListBox.SelectedItem as Word;              // Get the word from the list box.
-                            Recording rd = mainForm.DBModel.Recording.Local.Where(x => x.WordId == wd.WordId && x.SpeakerId == spk.SpeakerId).SingleOrDefault();    // Get the recording that corresponds to the speaker and word above.
-                            if (rd != null) // If the recording exists
-                            {
-                                SingleFile sf = rd.Video;
-                                if (sf == null) throw new Exception("No video recording!");
-                                string filePath = Path.Combine(sf.Address, sf.Name);
-
-                                vlcControl.Play(new Uri(filePath)); // Play the video.
-                                playButton.ImageIndex = 3;
-                            }
-                            else
-                            {
-                                MessageBox.Show("Invalid recording!");
-                            }
+                            playVideo();
                         }
                         break;
                     case Vlc.DotNet.Core.Interops.Signatures.MediaStates.Playing:   // If playing, pause and update the button.
@@ -114,13 +150,47 @@ namespace MPAid.UserControls
                         }
                         break;
                     default:
-                        throw new Exception("Invalid state!");
+                        MessageBox.Show("Invalid State!");
+                        break;
                 }
             }
             catch (Exception exp)
             {
                 MessageBox.Show(exp.Message);
                 Console.WriteLine(exp);
+            }
+        }
+
+        /// <summary>
+        /// Plays or pauses the video, depending on the VLC player's current state.
+        /// </summary>
+        private void playVideo()
+        { 
+            using (MPAidModel DBModel = new MPAidModel())
+            {
+                Word wd = wordsList[currentRecordingIndex];
+                Speaker spk = null;   // Get the speaker from user settings.
+                Recording rd = DBModel.Recording.SingleOrDefault(x => x.WordId == wd.WordId
+                //&& x.SpeakerId == spk.SpeakerId // Comment this line out to test until we have user settings up and running.
+                );    // Get the recording that corresponds to the speaker and word above.
+
+                if (rd != null) // If the recording exists
+                {
+                    SingleFile sf = rd.Video;
+                    if (sf == null)
+                    {
+                        MessageBox.Show("No video recording was found for that sound.");
+                        return;
+                    }
+                    string filePath = Path.Combine(sf.Address, sf.Name);
+
+                    vlcControl.Play(new Uri(filePath)); // Play the video.
+                    playButton.ImageIndex = 3;
+                }
+                else
+                {
+                    MessageBox.Show("Invalid recording!");
+                }
             }
         }
 
@@ -222,6 +292,68 @@ namespace MPAid.UserControls
         private void forwardButton_MouseLeave(object sender, EventArgs e)
         {
             forwardButton.ImageIndex = 1;
+        }
+
+        /// <summary>
+        /// When the video finishes playing, revert the play button to it's original state.
+        /// </summary>
+        /// <param name="sender">Automatically generated by Visual Studio.</param>
+        /// <param name="e">Automatically generated by Visual Studio.</param>
+        private void vlcControl_EndReached(object sender, Vlc.DotNet.Core.VlcMediaPlayerEndReachedEventArgs e)
+        {
+            // Add repeat/autoplay functionality here
+            playButton.ImageIndex = 1;
+        }
+
+        /// <summary>
+        /// Move to the next sound when the next button is clicked.
+        /// </summary>
+        /// <param name="sender">Automatically generated by Visual Studio.</param>
+        /// <param name="e">Automatically generated by Visual Studio.</param>
+        private void forwardButton_Click(object sender, EventArgs e)
+        {
+            if (CurrentRecordingIndex < WordsList.Count - 1)
+            {
+                CurrentRecordingIndex += 1;
+            }
+            else    // Move back to beginning if the user reaches the end of the list.
+            {
+                CurrentRecordingIndex = 0;
+            }
+
+            // If the video is playing, automatically play the next one.
+            if (vlcControl.State.Equals(Vlc.DotNet.Core.Interops.Signatures.MediaStates.Playing))
+            {
+                playVideo();
+            }
+            else
+            {
+            }
+        }
+
+        /// <summary>
+        /// Move to the previous sound when the previous button is clicked.
+        /// </summary>
+        /// <param name="sender">Automatically generated by Visual Studio.</param>
+        /// <param name="e">Automatically generated by Visual Studio.</param>
+        private void backButton_Click(object sender, EventArgs e)
+        {
+            if (CurrentRecordingIndex > 0)
+            {
+                CurrentRecordingIndex -= 1;
+            }
+            {
+                CurrentRecordingIndex = WordsList.Count - 1;
+            }
+
+            // If the video is playing, automatically play the next one.
+            if (vlcControl.State.Equals(Vlc.DotNet.Core.Interops.Signatures.MediaStates.Playing))
+            {
+                playVideo();
+            }
+            else
+            {
+            }
         }
     }
 }
