@@ -17,6 +17,8 @@ namespace MPAid.NewForms
     {
         // Strings kept in fields to make text easier to change.
         private string vowelNotFoundText = "That sound is not valid. Try another, or select from the list.";
+        private string optionsLess = "Less...";
+        private string optionsMore = "More...";
 
         public ComboBox VowelComboBox {
             get { return vowelComboBox; }
@@ -115,6 +117,36 @@ namespace MPAid.NewForms
         private void updateComboBoxIndex(object sender, EventArgs e)
         {
             vowelComboBox.SelectedIndex = vlcPlayer1.CurrentRecordingIndex;
+        }
+
+        private void optionsButton_Click(object sender, EventArgs e)
+        {
+            toggleOptions();
+        }
+
+        /// <summary>
+        /// Shows/hides the options panel, changes button text, and resizes the form as appropriate.
+        /// </summary>
+        private void toggleOptions()
+        {
+            // Prevent relative resizing issues by storing the current height of the top panel.
+            int panel1Size = VideoPlayerPanel.SplitterDistance;
+            VideoPlayerPanel.Panel2Collapsed = !VideoPlayerPanel.Panel2Collapsed;
+            if (VideoPlayerPanel.Panel2Collapsed)
+            {
+                Height += (VideoPlayerPanel.Height - VideoPlayerPanel.SplitterDistance);
+                MinimumSize = new Size(MinimumSize.Width, 600);
+                optionsButton.Text = optionsLess;
+            }
+            else
+            {
+                MinimumSize = new Size(MinimumSize.Width, 300);
+                Height -= (VideoPlayerPanel.Height - VideoPlayerPanel.SplitterDistance);
+                optionsButton.Text = optionsMore;
+            }
+            
+            // Restore original height of the top panel.
+            VideoPlayerPanel.SplitterDistance = panel1Size;
         }
     }
 }
