@@ -122,6 +122,7 @@
             this.backButton.TabIndex = 5;
             this.backButton.Text = "Back";
             this.backButton.UseVisualStyleBackColor = true;
+            this.backButton.Click += new System.EventHandler(this.backButton_Click);
             // 
             // optionsButton
             // 
@@ -134,6 +135,7 @@
             this.optionsButton.TabIndex = 4;
             this.optionsButton.Text = "Less...";
             this.optionsButton.UseVisualStyleBackColor = true;
+            this.optionsButton.Click += new System.EventHandler(this.optionsButton_Click);
             // 
             // WordComboBox
             // 
@@ -147,6 +149,7 @@
             this.WordComboBox.Name = "WordComboBox";
             this.WordComboBox.Size = new System.Drawing.Size(350, 21);
             this.WordComboBox.TabIndex = 0;
+            this.WordComboBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.WordComboBox_KeyPress);
             // 
             // analyzeButton
             // 
@@ -160,6 +163,7 @@
             this.analyzeButton.TabIndex = 3;
             this.analyzeButton.Text = "&Analyze!";
             this.analyzeButton.UseVisualStyleBackColor = true;
+            this.analyzeButton.Click += new System.EventHandler(this.analyzeButton_Click);
             // 
             // recordingProgressBarLabel
             // 
@@ -172,6 +176,7 @@
             this.recordingProgressBarLabel.TabIndex = 36;
             this.recordingProgressBarLabel.Text = "No current file";
             this.recordingProgressBarLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.recordingProgressBarLabel.TextChanged += new System.EventHandler(this.recordingProgressBarLabel_TextChanged);
             // 
             // recordButton
             // 
@@ -184,6 +189,7 @@
             this.recordButton.TabIndex = 1;
             this.recordButton.Text = "Record";
             this.recordButton.UseVisualStyleBackColor = true;
+            this.recordButton.Click += new System.EventHandler(this.recordButton_Click);
             // 
             // playButton
             // 
@@ -197,6 +203,7 @@
             this.playButton.TabIndex = 2;
             this.playButton.Text = "Play";
             this.playButton.UseVisualStyleBackColor = true;
+            this.playButton.Click += new System.EventHandler(this.playButton_Click);
             // 
             // recordingProgressBar
             // 
@@ -217,6 +224,7 @@
             this.AudioInputDeviceButton.TabIndex = 7;
             this.AudioInputDeviceButton.Text = "Refresh";
             this.AudioInputDeviceButton.UseVisualStyleBackColor = true;
+            this.AudioInputDeviceButton.Click += new System.EventHandler(this.AudioInputDeviceButton_Click);
             // 
             // RenameButton
             // 
@@ -230,6 +238,7 @@
             this.RenameButton.TabIndex = 12;
             this.RenameButton.Text = "Rename";
             this.RenameButton.UseVisualStyleBackColor = true;
+            this.RenameButton.Click += new System.EventHandler(this.RenameButton_Click);
             // 
             // AudioInputDeviceComboBox
             // 
@@ -253,6 +262,7 @@
             this.DeleteButton.TabIndex = 11;
             this.DeleteButton.Text = "Delete";
             this.DeleteButton.UseVisualStyleBackColor = true;
+            this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
             // 
             // AudioInputDeviceLabel
             // 
@@ -274,6 +284,7 @@
             this.AddButton.TabIndex = 10;
             this.AddButton.Text = "Add...";
             this.AddButton.UseVisualStyleBackColor = true;
+            this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
             // 
             // ScoreReportButton
             // 
@@ -287,6 +298,7 @@
             this.ScoreReportButton.TabIndex = 13;
             this.ScoreReportButton.Text = "Score Report";
             this.ScoreReportButton.UseVisualStyleBackColor = true;
+            this.ScoreReportButton.Click += new System.EventHandler(this.ScoreReportButton_Click);
             // 
             // SelectButton
             // 
@@ -300,6 +312,7 @@
             this.SelectButton.TabIndex = 9;
             this.SelectButton.Text = "Select";
             this.SelectButton.UseVisualStyleBackColor = true;
+            this.SelectButton.Click += new System.EventHandler(this.SelectButton_Click);
             // 
             // RecordingListBox
             // 
@@ -311,6 +324,7 @@
             this.RecordingListBox.Name = "RecordingListBox";
             this.RecordingListBox.Size = new System.Drawing.Size(458, 173);
             this.RecordingListBox.TabIndex = 8;
+            this.RecordingListBox.SelectedIndexChanged += new System.EventHandler(this.RecordingListBox_SelectedIndexChanged);
             // 
             // RecordingListLabel
             // 
@@ -325,7 +339,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(584, 561);
+            this.ClientSize = new System.Drawing.Size(584, 562);
             this.Controls.Add(this.SpeechRecognitionTestPanel);
             this.Controls.Add(this.mpAiSoundMenuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
