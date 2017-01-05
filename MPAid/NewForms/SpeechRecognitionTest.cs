@@ -54,6 +54,9 @@ namespace MPAid.NewForms
         private HTKEngine RecEngine = new HTKEngine();
         private ScoreBoard scoreBoard = new ScoreBoard();
         private NAudioPlayer audioPlayer = new NAudioPlayer();
+
+        private int bottomHeight;
+
         public NAudioPlayer AudioPlayer
         {
             get { return audioPlayer; }
@@ -70,6 +73,7 @@ namespace MPAid.NewForms
             CreateDirectory();
             DataBinding();
             populateWordComboBox();
+            bottomHeight = SpeechRecognitionTestPanel.Height - SpeechRecognitionTestPanel.SplitterDistance;
             toggleOptions();    // For development, the bottom panel is visible, but the user won't need the bottom panel most of the time.
             toggleListButtons(RecordingListBox.SelectedItems.Count > 0);
             Visible = true;
@@ -277,22 +281,20 @@ namespace MPAid.NewForms
         /// </summary>
         private void toggleOptions()
         {
-            // Prevent relative resizing issues by storing the current height of the top panel.
-            int panel1Size = SpeechRecognitionTestPanel.SplitterDistance;
             if (SpeechRecognitionTestPanel.Panel2Collapsed)
             {
+                Height += bottomHeight;
                 MinimumSize = new Size(MinimumSize.Width, 600);
                 optionsButton.Text = optionsLess;
             }
             else
             {
-                MinimumSize = new Size(MinimumSize.Width, 250);
-                Height -= (SpeechRecognitionTestPanel.Height - SpeechRecognitionTestPanel.SplitterDistance);
+                MinimumSize = new Size(MinimumSize.Width, 300);
+                bottomHeight = SpeechRecognitionTestPanel.Height - SpeechRecognitionTestPanel.SplitterDistance;
+                Height -= bottomHeight;
                 optionsButton.Text = optionsMore;
             }
             SpeechRecognitionTestPanel.Panel2Collapsed = !SpeechRecognitionTestPanel.Panel2Collapsed;
-            // Restore original height of the top panel.
-            SpeechRecognitionTestPanel.SplitterDistance = panel1Size;
         }
 
         /// <summary>
