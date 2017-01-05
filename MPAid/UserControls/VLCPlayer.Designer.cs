@@ -36,7 +36,7 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.forwardButton = new System.Windows.Forms.Button();
             this.forwardImageList = new System.Windows.Forms.ImageList(this.components);
-            this.backButton = new System.Windows.Forms.Button();
+            this.backwardButton = new System.Windows.Forms.Button();
             this.playButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.vlcControl)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
@@ -89,7 +89,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Controls.Add(this.vlcControl, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.forwardButton, 5, 1);
-            this.tableLayoutPanel1.Controls.Add(this.backButton, 3, 1);
+            this.tableLayoutPanel1.Controls.Add(this.backwardButton, 3, 1);
             this.tableLayoutPanel1.Controls.Add(this.playButton, 4, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
@@ -105,7 +105,7 @@
             this.forwardButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.forwardButton.BackColor = System.Drawing.SystemColors.Control;
+            this.forwardButton.BackColor = System.Drawing.Color.Transparent;
             this.forwardButton.FlatAppearance.BorderSize = 0;
             this.forwardButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.forwardButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
@@ -125,36 +125,36 @@
             // 
             this.forwardImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("forwardImageList.ImageStream")));
             this.forwardImageList.TransparentColor = System.Drawing.Color.Transparent;
-            this.forwardImageList.Images.SetKeyName(0, "Forward.png");
-            this.forwardImageList.Images.SetKeyName(1, "Light Forward.png");
+            this.forwardImageList.Images.SetKeyName(0, "Light Forward.png");
+            this.forwardImageList.Images.SetKeyName(1, "Forward.png");
             // 
-            // backButton
+            // backwardButton
             // 
-            this.backButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.backwardButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.backButton.BackColor = System.Drawing.SystemColors.Control;
-            this.backButton.FlatAppearance.BorderSize = 0;
-            this.backButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.backButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.backButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.backButton.ImageIndex = 1;
-            this.backButton.ImageList = this.backImageList;
-            this.backButton.Location = new System.Drawing.Point(183, 265);
-            this.backButton.Name = "backButton";
-            this.backButton.Size = new System.Drawing.Size(54, 59);
-            this.backButton.TabIndex = 5;
-            this.backButton.UseVisualStyleBackColor = false;
-            this.backButton.Click += new System.EventHandler(this.backButton_Click);
-            this.backButton.MouseEnter += new System.EventHandler(this.backButton_MouseEnter);
-            this.backButton.MouseLeave += new System.EventHandler(this.backButton_MouseLeave);
+            this.backwardButton.BackColor = System.Drawing.Color.Transparent;
+            this.backwardButton.FlatAppearance.BorderSize = 0;
+            this.backwardButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.backwardButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.backwardButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.backwardButton.ImageIndex = 1;
+            this.backwardButton.ImageList = this.backImageList;
+            this.backwardButton.Location = new System.Drawing.Point(183, 265);
+            this.backwardButton.Name = "backwardButton";
+            this.backwardButton.Size = new System.Drawing.Size(54, 59);
+            this.backwardButton.TabIndex = 5;
+            this.backwardButton.UseVisualStyleBackColor = false;
+            this.backwardButton.Click += new System.EventHandler(this.backButton_Click);
+            this.backwardButton.MouseEnter += new System.EventHandler(this.backButton_MouseEnter);
+            this.backwardButton.MouseLeave += new System.EventHandler(this.backButton_MouseLeave);
             // 
             // playButton
             // 
             this.playButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.playButton.BackColor = System.Drawing.SystemColors.Control;
+            this.playButton.BackColor = System.Drawing.Color.Transparent;
             this.playButton.FlatAppearance.BorderSize = 0;
             this.playButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.playButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
@@ -190,7 +190,7 @@
         private System.Windows.Forms.ImageList playImageList;
         private System.Windows.Forms.ImageList forwardImageList;
         private System.Windows.Forms.Button forwardButton;
-        private System.Windows.Forms.Button backButton;
+        private System.Windows.Forms.Button backwardButton;
         private System.Windows.Forms.Button playButton;
     }
 }
