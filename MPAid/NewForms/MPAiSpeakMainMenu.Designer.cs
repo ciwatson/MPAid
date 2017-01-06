@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.mpAiSoundMenuStrip1 = new MPAid.NewForms.MPAiSoundMenuStrip(this.components);
+            this.mpAiSoundMenuStrip1 = new MPAid.NewForms.MenuStrip(this.components);
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.headerBox = new System.Windows.Forms.PictureBox();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
@@ -192,7 +192,7 @@
 
         #endregion
 
-        private MPAiSoundMenuStrip mpAiSoundMenuStrip1;
+        private MenuStrip mpAiSoundMenuStrip1;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.PictureBox headerBox;
         private System.Windows.Forms.SplitContainer splitContainer2;

@@ -1,6 +1,6 @@
 ﻿namespace MPAid.NewForms
 {
-    partial class MPAiSoundMenuStrip
+    partial class MenuStrip
     {
         /// <summary>
         /// Required designer variable.
