@@ -28,6 +28,7 @@ namespace MPAid.Cores
         /// Default constructor.
         /// </summary>
         public NAudioPlayer() {}
+
         /// <summary>
         /// Verifies that the audio file exists and if it does, invokes the WaveOut API to play it.
         /// This can only play one audio file at a time. To play multiple, instantiate multiple NAudioPlayers.
@@ -44,11 +45,12 @@ namespace MPAid.Cores
                 waveOut.PlaybackStopped += WaveOut_PlaybackStopped; ;       // Calls the WaveOut_PlaybackStopped method if playback is unexpectedly stopped.
                 waveOut.Play();
             }
-            catch(Exception exp)
+            catch (Exception exp)
             {
                 Console.WriteLine(exp);
             }
         }
+        
         /// <summary>
         /// Stops playback of the current wave sound.
         /// Forces the reader and WaveOutEvents to be disposed of immediately, rather than waiting for the Playbackstopped event.
@@ -63,6 +65,24 @@ namespace MPAid.Cores
             }
         }
 
+        /// <summary>
+        /// Pauses sound playback.
+        /// </summary>
+        public void Pause()
+        {
+            waveOut.Pause();
+        }
+
+        /// <summary>
+        /// Unpauses sound playback. If the player is not currently paused, does nothing.
+        /// </summary>
+        public void Unpause()
+        {
+            if (waveOut.PlaybackState.Equals(PlaybackState.Paused))
+            {
+                waveOut.Play();
+            }
+        }
         /// <summary>
         /// Fires when the sound has finished playing, and cleans up any objects that may still be running.
         /// </summary>
