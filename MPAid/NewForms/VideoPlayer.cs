@@ -44,6 +44,7 @@ namespace MPAid.NewForms
         private string audioFilePath = Path.Combine(Path.GetTempPath(), "MPAiTemp", "VideoPlayerRecordedAudio.wav");
         private WaveFileWriter writer;
         private WasapiCapture waveIn;
+        private NAudioPlayer audioPlayer = new NAudioPlayer();
 
         // Used to keep track of the currently playing file.
         private string filePath;
@@ -466,12 +467,17 @@ namespace MPAid.NewForms
                     case Vlc.DotNet.Core.Interops.Signatures.MediaStates.Playing:   // If playing, pause and update the button.
                         {
                             vlcControl.Pause();
+                            audioPlayer.WaveOut.Pause();
                             playButton.ImageIndex = 1;
                         }
                         break;
                     case Vlc.DotNet.Core.Interops.Signatures.MediaStates.Paused:    // If paused, play and update the button.
                         {
-                            asyncPlay();
+                            vlcControl.Play();  // asyncPlay is not used here, as it starts playback from the beginning.
+                            if (!recordingProgressBarLabel.Text.Equals(noFileText))
+                            {
+                                audioPlayer.Unpause();
+                            }
                             playButton.ImageIndex = 3;
                         }
                         break;
@@ -510,6 +516,7 @@ namespace MPAid.NewForms
                         return;
                     }
                     filePath = Path.Combine(sf.Address, sf.Name);
+
                     asyncPlay();
                     playButton.ImageIndex = 3;
                 }
@@ -529,6 +536,13 @@ namespace MPAid.NewForms
             delegatePlayer VLCDelegate = new delegatePlayer(vlcControl.Play);
             // Call play asynchronously.
             VLCDelegate.BeginInvoke(new Uri(filePath), new string[] { }, null, null);
+            if (!recordingProgressBarLabel.Text.Equals(noFileText))
+            {
+                // Play audio at same time as video
+                audioPlayer.Stop();
+                audioPlayer.Play(audioFilePath);
+            }
+
         }
 
         /// <summary>
@@ -540,6 +554,10 @@ namespace MPAid.NewForms
             delegateStopper VLCDelegate = new delegateStopper(vlcControl.Stop);
             // Call stop asynchronously.
             VLCDelegate.BeginInvoke(null, null);
+            if (!recordingProgressBarLabel.Text.Equals(noFileText))
+            {
+                audioPlayer.Stop();
+            }
         }
 
         /// <summary>
@@ -622,6 +640,7 @@ namespace MPAid.NewForms
             // The only way to loop playback is to have a delegate call play asynchronously. 
             if (repeatTimes == 11)
             {
+
                 asyncPlay();
             }
             else if (repeatsRemaining > 0)
