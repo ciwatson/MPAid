@@ -47,16 +47,13 @@
             this.divider3 = new System.Windows.Forms.Label();
             this.divider2 = new System.Windows.Forms.Label();
             this.divider1 = new System.Windows.Forms.Label();
-            this.playNextRadioButtonNo = new System.Windows.Forms.RadioButton();
             this.soundListAddAllButton = new System.Windows.Forms.Button();
-            this.playNextRadioButtonYes = new System.Windows.Forms.RadioButton();
             this.soundListRemoveButton = new System.Windows.Forms.Button();
             this.soundListAddButton = new System.Windows.Forms.Button();
             this.soundListAllListBox = new System.Windows.Forms.ListBox();
             this.soundListCurrentListBox = new System.Windows.Forms.ListBox();
             this.soundListAllLabel = new System.Windows.Forms.Label();
             this.soundListCurrentLabel = new System.Windows.Forms.Label();
-            this.playNextLabel = new System.Windows.Forms.Label();
             this.addFromFileButton = new System.Windows.Forms.Button();
             this.recordButton = new System.Windows.Forms.Button();
             this.AudioInputDeviceButton = new System.Windows.Forms.Button();
@@ -68,6 +65,7 @@
             this.repeatTrackBar = new System.Windows.Forms.TrackBar();
             this.recordingProgressBar = new System.Windows.Forms.ProgressBar();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.playNextCheckBox = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.VideoPlayerPanel)).BeginInit();
             this.VideoPlayerPanel.Panel1.SuspendLayout();
             this.VideoPlayerPanel.Panel2.SuspendLayout();
@@ -95,21 +93,19 @@
             // VideoPlayerPanel.Panel2
             // 
             this.VideoPlayerPanel.Panel2.BackColor = System.Drawing.SystemColors.Control;
+            this.VideoPlayerPanel.Panel2.Controls.Add(this.playNextCheckBox);
             this.VideoPlayerPanel.Panel2.Controls.Add(this.removeButton);
             this.VideoPlayerPanel.Panel2.Controls.Add(this.divider4);
             this.VideoPlayerPanel.Panel2.Controls.Add(this.divider3);
             this.VideoPlayerPanel.Panel2.Controls.Add(this.divider2);
             this.VideoPlayerPanel.Panel2.Controls.Add(this.divider1);
-            this.VideoPlayerPanel.Panel2.Controls.Add(this.playNextRadioButtonNo);
             this.VideoPlayerPanel.Panel2.Controls.Add(this.soundListAddAllButton);
-            this.VideoPlayerPanel.Panel2.Controls.Add(this.playNextRadioButtonYes);
             this.VideoPlayerPanel.Panel2.Controls.Add(this.soundListRemoveButton);
             this.VideoPlayerPanel.Panel2.Controls.Add(this.soundListAddButton);
             this.VideoPlayerPanel.Panel2.Controls.Add(this.soundListAllListBox);
             this.VideoPlayerPanel.Panel2.Controls.Add(this.soundListCurrentListBox);
             this.VideoPlayerPanel.Panel2.Controls.Add(this.soundListAllLabel);
             this.VideoPlayerPanel.Panel2.Controls.Add(this.soundListCurrentLabel);
-            this.VideoPlayerPanel.Panel2.Controls.Add(this.playNextLabel);
             this.VideoPlayerPanel.Panel2.Controls.Add(this.addFromFileButton);
             this.VideoPlayerPanel.Panel2.Controls.Add(this.recordButton);
             this.VideoPlayerPanel.Panel2.Controls.Add(this.AudioInputDeviceButton);
@@ -121,7 +117,7 @@
             this.VideoPlayerPanel.Panel2.Controls.Add(this.repeatTrackBar);
             this.VideoPlayerPanel.Panel2.Controls.Add(this.recordingProgressBar);
             this.VideoPlayerPanel.Size = new System.Drawing.Size(584, 562);
-            this.VideoPlayerPanel.SplitterDistance = 310;
+            this.VideoPlayerPanel.SplitterDistance = 313;
             this.VideoPlayerPanel.SplitterWidth = 1;
             this.VideoPlayerPanel.TabIndex = 0;
             // 
@@ -129,7 +125,7 @@
             // 
             this.backButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.backButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.backButton.Location = new System.Drawing.Point(472, 275);
+            this.backButton.Location = new System.Drawing.Point(472, 278);
             this.backButton.Margin = new System.Windows.Forms.Padding(10);
             this.backButton.Name = "backButton";
             this.backButton.Size = new System.Drawing.Size(100, 25);
@@ -142,7 +138,7 @@
             // 
             this.optionsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.optionsButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.optionsButton.Location = new System.Drawing.Point(368, 275);
+            this.optionsButton.Location = new System.Drawing.Point(368, 278);
             this.optionsButton.Margin = new System.Windows.Forms.Padding(10);
             this.optionsButton.Name = "optionsButton";
             this.optionsButton.Size = new System.Drawing.Size(100, 25);
@@ -192,7 +188,7 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 65F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(566, 235);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(566, 238);
             this.tableLayoutPanel1.TabIndex = 8;
             // 
             // vlcControl
@@ -202,7 +198,7 @@
             this.vlcControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.vlcControl.Location = new System.Drawing.Point(3, 3);
             this.vlcControl.Name = "vlcControl";
-            this.vlcControl.Size = new System.Drawing.Size(560, 164);
+            this.vlcControl.Size = new System.Drawing.Size(560, 167);
             this.vlcControl.Spu = -1;
             this.vlcControl.TabIndex = 3;
             this.vlcControl.Text = "vlcControl1";
@@ -224,7 +220,7 @@
             this.backwardButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.backwardButton.ImageIndex = 1;
             this.backwardButton.ImageList = this.backImageList;
-            this.backwardButton.Location = new System.Drawing.Point(189, 173);
+            this.backwardButton.Location = new System.Drawing.Point(189, 176);
             this.backwardButton.Name = "backwardButton";
             this.backwardButton.Size = new System.Drawing.Size(56, 59);
             this.backwardButton.TabIndex = 5;
@@ -252,7 +248,7 @@
             this.playButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.playButton.ImageIndex = 1;
             this.playButton.ImageList = this.playImageList;
-            this.playButton.Location = new System.Drawing.Point(251, 173);
+            this.playButton.Location = new System.Drawing.Point(251, 176);
             this.playButton.Name = "playButton";
             this.playButton.Size = new System.Drawing.Size(56, 59);
             this.playButton.TabIndex = 6;
@@ -282,7 +278,7 @@
             this.forwardButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.forwardButton.ImageIndex = 1;
             this.forwardButton.ImageList = this.forwardImageList;
-            this.forwardButton.Location = new System.Drawing.Point(313, 173);
+            this.forwardButton.Location = new System.Drawing.Point(313, 176);
             this.forwardButton.Name = "forwardButton";
             this.forwardButton.Size = new System.Drawing.Size(56, 59);
             this.forwardButton.TabIndex = 8;
@@ -352,18 +348,6 @@
             this.divider1.Size = new System.Drawing.Size(584, 2);
             this.divider1.TabIndex = 39;
             // 
-            // playNextRadioButtonNo
-            // 
-            this.playNextRadioButtonNo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.playNextRadioButtonNo.AutoSize = true;
-            this.playNextRadioButtonNo.Location = new System.Drawing.Point(532, 117);
-            this.playNextRadioButtonNo.Name = "playNextRadioButtonNo";
-            this.playNextRadioButtonNo.Size = new System.Drawing.Size(39, 17);
-            this.playNextRadioButtonNo.TabIndex = 1;
-            this.playNextRadioButtonNo.TabStop = true;
-            this.playNextRadioButtonNo.Text = "No";
-            this.playNextRadioButtonNo.UseVisualStyleBackColor = true;
-            // 
             // soundListAddAllButton
             // 
             this.soundListAddAllButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
@@ -375,18 +359,6 @@
             this.soundListAddAllButton.TabIndex = 21;
             this.soundListAddAllButton.Text = "Add All";
             this.soundListAddAllButton.UseVisualStyleBackColor = true;
-            // 
-            // playNextRadioButtonYes
-            // 
-            this.playNextRadioButtonYes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.playNextRadioButtonYes.AutoSize = true;
-            this.playNextRadioButtonYes.Location = new System.Drawing.Point(472, 117);
-            this.playNextRadioButtonYes.Name = "playNextRadioButtonYes";
-            this.playNextRadioButtonYes.Size = new System.Drawing.Size(43, 17);
-            this.playNextRadioButtonYes.TabIndex = 0;
-            this.playNextRadioButtonYes.TabStop = true;
-            this.playNextRadioButtonYes.Text = "Yes";
-            this.playNextRadioButtonYes.UseVisualStyleBackColor = true;
             // 
             // soundListRemoveButton
             // 
@@ -449,16 +421,6 @@
             this.soundListCurrentLabel.Size = new System.Drawing.Size(99, 13);
             this.soundListCurrentLabel.TabIndex = 15;
             this.soundListCurrentLabel.Text = "Sounds to practice:";
-            // 
-            // playNextLabel
-            // 
-            this.playNextLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.playNextLabel.AutoSize = true;
-            this.playNextLabel.Location = new System.Drawing.Point(18, 119);
-            this.playNextLabel.Name = "playNextLabel";
-            this.playNextLabel.Size = new System.Drawing.Size(159, 13);
-            this.playNextLabel.TabIndex = 13;
-            this.playNextLabel.Text = "Play  next sound when finished?";
             // 
             // addFromFileButton
             // 
@@ -580,6 +542,17 @@
             this.openFileDialog.RestoreDirectory = true;
             this.openFileDialog.Title = "Select a Recording...";
             // 
+            // playNextCheckBox
+            // 
+            this.playNextCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.playNextCheckBox.AutoSize = true;
+            this.playNextCheckBox.Location = new System.Drawing.Point(21, 119);
+            this.playNextCheckBox.Name = "playNextCheckBox";
+            this.playNextCheckBox.Size = new System.Drawing.Size(243, 17);
+            this.playNextCheckBox.TabIndex = 45;
+            this.playNextCheckBox.Text = "Play next sound when the current one finishes";
+            this.playNextCheckBox.UseVisualStyleBackColor = true;
+            // 
             // VideoPlayer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -620,9 +593,6 @@
         private System.Windows.Forms.ListBox soundListCurrentListBox;
         private System.Windows.Forms.Label soundListAllLabel;
         private System.Windows.Forms.Label soundListCurrentLabel;
-        private System.Windows.Forms.RadioButton playNextRadioButtonNo;
-        private System.Windows.Forms.RadioButton playNextRadioButtonYes;
-        private System.Windows.Forms.Label playNextLabel;
         private System.Windows.Forms.Button addFromFileButton;
         private System.Windows.Forms.Button recordButton;
         private System.Windows.Forms.Label recordingProgressBarLabel;
@@ -641,5 +611,6 @@
         private System.Windows.Forms.ImageList backImageList;
         private System.Windows.Forms.ImageList playImageList;
         private System.Windows.Forms.ImageList forwardImageList;
+        private System.Windows.Forms.CheckBox playNextCheckBox;
     }
 }
