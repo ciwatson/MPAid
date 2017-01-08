@@ -526,6 +526,7 @@ namespace MPAid.NewForms
                     SingleFile sf = rd.Video;
                     if (sf == null)
                     {
+                        asyncStop();
                         MessageBox.Show(noVideoString);
                         return;
                     }
@@ -665,8 +666,30 @@ namespace MPAid.NewForms
             else
             {
                 repeatsRemaining = RepeatTimes;
-                playButton.ImageIndex = 1;
-                // AutoPlay here
+                // Autoplay functionality
+                if (playNextCheckBox.Checked)
+                {
+                    if (currentRecordingIndex < wordsList.Count - 1)
+                    {
+                        currentRecordingIndex += 1;
+                        // Run this command on the GUI thread
+                        Invoke((MethodInvoker)delegate {
+                            VowelComboBox.SelectedIndex += 1;
+                        });
+                    }
+                    else    // Move back to beginning if the user reaches the end of the list.
+                    {
+                        currentRecordingIndex = 0;
+                        Invoke((MethodInvoker)delegate {
+                            VowelComboBox.SelectedIndex = 0;
+                        });
+                    }
+                    playVideo();
+                }
+                else
+                {
+                    playButton.ImageIndex = 1;
+                }
             }
         }
 
