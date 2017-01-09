@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginScreen));
             this.logoBox = new System.Windows.Forms.PictureBox();
-            this.userNameTextBox = new System.Windows.Forms.TextBox();
+            this.usernameTextBox = new System.Windows.Forms.TextBox();
             this.passwordTextBox = new System.Windows.Forms.TextBox();
             this.loginButton = new System.Windows.Forms.Button();
             this.signupButton = new System.Windows.Forms.Button();
@@ -50,16 +50,16 @@
             this.logoBox.TabIndex = 15;
             this.logoBox.TabStop = false;
             // 
-            // userNameTextBox
+            // usernameTextBox
             // 
-            this.userNameTextBox.ForeColor = System.Drawing.SystemColors.InactiveCaption;
-            this.userNameTextBox.Location = new System.Drawing.Point(12, 127);
-            this.userNameTextBox.Name = "userNameTextBox";
-            this.userNameTextBox.Size = new System.Drawing.Size(260, 20);
-            this.userNameTextBox.TabIndex = 16;
-            this.userNameTextBox.Text = "Username...";
-            this.userNameTextBox.Enter += new System.EventHandler(this.userNameTextBox_Enter);
-            this.userNameTextBox.Leave += new System.EventHandler(this.userNameTextBox_Leave);
+            this.usernameTextBox.ForeColor = System.Drawing.SystemColors.InactiveCaption;
+            this.usernameTextBox.Location = new System.Drawing.Point(12, 127);
+            this.usernameTextBox.Name = "usernameTextBox";
+            this.usernameTextBox.Size = new System.Drawing.Size(260, 20);
+            this.usernameTextBox.TabIndex = 16;
+            this.usernameTextBox.Text = "Username...";
+            this.usernameTextBox.Enter += new System.EventHandler(this.usernameTextBox_Enter);
+            this.usernameTextBox.Leave += new System.EventHandler(this.usernameTextBox_Leave);
             // 
             // passwordTextBox
             // 
@@ -111,7 +111,7 @@
             this.Controls.Add(this.signupButton);
             this.Controls.Add(this.loginButton);
             this.Controls.Add(this.passwordTextBox);
-            this.Controls.Add(this.userNameTextBox);
+            this.Controls.Add(this.usernameTextBox);
             this.Controls.Add(this.logoBox);
             this.Name = "LoginScreen";
             this.Text = "LoginScreen";
@@ -124,7 +124,7 @@
         #endregion
 
         private System.Windows.Forms.PictureBox logoBox;
-        private System.Windows.Forms.TextBox userNameTextBox;
+        private System.Windows.Forms.TextBox usernameTextBox;
         private System.Windows.Forms.TextBox passwordTextBox;
         private System.Windows.Forms.Button loginButton;
         private System.Windows.Forms.Button signupButton;
