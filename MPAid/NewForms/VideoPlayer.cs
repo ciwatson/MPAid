@@ -787,11 +787,7 @@ namespace MPAid.NewForms
                 wordsList.Remove(wd);
             }
 
-            // VowelComboBox should always have a value selected
-            if (VowelComboBox.SelectedItem == null)
-            {
-                VowelComboBox.SelectedIndex = 0;
-            }
+            selectItemInComboBox();
         }
 
         /// <summary>
@@ -808,7 +804,7 @@ namespace MPAid.NewForms
             VowelComboBox.Items.Clear();
             wordsList.Clear();
 
-            // Add all words to each list used by the screen, in the correct order.
+            // Add all words to each list used by the screen. These will always be in he correct order, as the All box doesn't change.
             soundListCurrentListBox.Items.AddRange(soundListAllListBox.Items);
             foreach (Word wd in soundListAllListBox.Items)     
             {
@@ -816,11 +812,7 @@ namespace MPAid.NewForms
                 wordsList.Add(wd);
             }
 
-            // VowelComboBox should always have a value selected
-            if (VowelComboBox.SelectedItem == null)
-            {
-                VowelComboBox.SelectedIndex = 0;
-            }
+            selectItemInComboBox();
         }
 
         /// <summary>
@@ -833,15 +825,14 @@ namespace MPAid.NewForms
             asyncStop();        // Stop playback - changing lists can cause unusual behaviour.
 
             List<Word> tempList = new List<Word>();
-            // Add all words to be used to tempList.
+            // Add all words tha should be added to each list used by the screen. These will always be in he correct order, as the All box doesn't change.
             foreach (Word wd in soundListAllListBox.Items)
             {
                 if (soundListCurrentListBox.Items.Contains(wd) || soundListAllListBox.SelectedItems.Contains(wd))   
                 {
                     tempList.Add(wd);
                 }
-            }   
-            // tempList will be in the right order, as it iterated through the All list, which can't change.
+            }
 
             // It is more efficient to clear the lists and add new items than to sort the existing lists.
             VowelComboBox.Items.Clear();
@@ -853,7 +844,15 @@ namespace MPAid.NewForms
             }
             wordsList = tempList;
 
-            // VowelComboBox should always have a value selected
+            selectItemInComboBox();
+        }
+
+        /// <summary>
+        /// VowelComboBox should always have a value selected. 
+        /// This method should be called when the selected item may have been deleted, and it selects index 0 if this is the case.
+        /// </summary>
+        private void selectItemInComboBox()
+        {
             if (VowelComboBox.SelectedItem == null)
             {
                 VowelComboBox.SelectedIndex = 0;
