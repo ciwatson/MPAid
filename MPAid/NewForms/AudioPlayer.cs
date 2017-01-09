@@ -99,23 +99,12 @@ namespace MPAid.NewForms
             toggleOptions();    // For development, the bottom panel is visible, but the user won't need the bottom panel most of the time.
         }
 
-        delegate void ConsoleTextCallback(string str);
-
-        private void AppendConsoleText(string str)
-        {
-            if (this.console.InvokeRequired)
-            {
-                ConsoleTextCallback d = new ConsoleTextCallback(AppendConsoleText);
-                this.Invoke(d, new object[] { str });
-            }
-            else
-            {
-                this.console.Text += str;
-            }
-        }
-
         delegate void SetProgressCallback(int value);
 
+        /// <summary>
+        /// Threadsafe way to invoke progress updates
+        /// </summary>
+        /// <param name="value"></param>
         private void SetProgress(int value)
         {
             if (this.audioProgressBar.InvokeRequired)

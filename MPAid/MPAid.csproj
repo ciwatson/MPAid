@@ -151,10 +151,10 @@
     <Compile Include="Forms\Config\RecordingRenameConfig.Designer.cs">
       <DependentUpon>RecordingRenameConfig.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\HMMsConfig.cs">
+    <Compile Include="Archived Classes\Prior to 1.6\HMMsConfig.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\HMMsConfig.Designer.cs">
+    <Compile Include="Archived Classes\Prior to 1.6\HMMsConfig.Designer.cs">
       <DependentUpon>HMMsConfig.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\LoginWindow.cs">
@@ -203,10 +203,10 @@
     <Compile Include="Modules\FormantPlotController.cs" />
     <Compile Include="Modules\IoController.cs" />
     <Compile Include="Modules\MPAiUser.cs" />
-    <Compile Include="Modules\Examiner.cs" />
-    <Compile Include="Modules\HMMsController.cs" />
-    <Compile Include="Modules\HtmlConfig.cs" />
-    <Compile Include="Modules\HtmlGenerator.cs" />
+    <Compile Include="Archived Classes\Prior to 1.6\Examiner.cs" />
+    <Compile Include="Archived Classes\Prior to 1.6\HMMsController.cs" />
+    <Compile Include="Archived Classes\Prior to 1.6\HtmlConfig.cs" />
+    <Compile Include="Archived Classes\Prior to 1.6\HtmlGenerator.cs" />
     <Compile Include="Cores\NameParser.cs" />
     <Compile Include="Cores\SysCfg.cs" />
     <Compile Include="Modules\UserManagement.cs" />
@@ -222,6 +222,12 @@
     </Compile>
     <Compile Include="NewForms\AudioPlayer.Designer.cs">
       <DependentUpon>AudioPlayer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewForms\LoginScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewForms\LoginScreen.Designer.cs">
+      <DependentUpon>LoginScreen.cs</DependentUpon>
     </Compile>
     <Compile Include="NewForms\MenuStrip.cs">
       <SubType>Component</SubType>
@@ -276,7 +282,7 @@
     <Compile Include="Forms\SplashScreen.Designer.cs">
       <DependentUpon>SplashScreen.cs</DependentUpon>
     </Compile>
-    <Compile Include="Components\VerticalProgressBar.cs">
+    <Compile Include="Archived Classes\Prior to 1.6\VerticalProgressBar.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Forms\Config\RecordingUploadConfig.cs">
@@ -329,7 +335,7 @@
     <EmbeddedResource Include="Forms\Config\RecordingRenameConfig.resx">
       <DependentUpon>RecordingRenameConfig.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\HMMsConfig.resx">
+    <EmbeddedResource Include="Archived Classes\Prior to 1.6\HMMsConfig.resx">
       <DependentUpon>HMMsConfig.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\LoginWindow.resx">
@@ -352,6 +358,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="NewForms\AudioPlayer.resx">
       <DependentUpon>AudioPlayer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewForms\LoginScreen.resx">
+      <DependentUpon>LoginScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NewForms\MenuStrip.resx">
       <DependentUpon>MenuStrip.cs</DependentUpon>
