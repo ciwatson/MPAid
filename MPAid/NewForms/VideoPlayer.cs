@@ -38,6 +38,7 @@ namespace MPAid.NewForms
         private string formatErrorText = "A problem was encountered during recording {0}";
         private string warningText = "Warning";
         private string noAudioDeviceText = "No audio device plugged in.";
+        private string wrongFileFormatError = "The audio player can only accept wave files (.wav). Please try another, or record one using the record button.";
 
         private string[] spinnerText = { "Repeat Forever", "Repeat 10 Times", "Repeat 9 Times", "Repeat 8 Times", "Repeat 7 Times", "Repeat 6 Times", "Repeat 5 Times", "Repeat 4 Times", "Repeat 3 Times", "Repeat Twice", "Repeat Once", "Don't Repeat" };
 
@@ -290,10 +291,20 @@ namespace MPAid.NewForms
         {
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                File.Copy(openFileDialog.FileName, audioFilePath, true);
-                recordingProgressBarLabel.Text = openFileDialog.FileName;
-                removeButton.Enabled = true;
+                if (Path.GetExtension(openFileDialog.FileName).Equals(".wav"))
+                {
+                    File.Copy(openFileDialog.FileName, audioFilePath, true);
+                    recordingProgressBarLabel.Text = openFileDialog.FileName;
+                    removeButton.Enabled = true;
+                }
+                else
+                {
+                    // If they select a file that is not a wav file, stop them and retry.
+                    MessageBox.Show(wrongFileFormatError);
+                    addFromFileButton_Click(sender, e);
+                }
             }
+            // If the user presses cancel, return.
         }
         /// <summary>
         /// Handles functionality of the record/stop button, calling appropriate methods and changing it's text.
