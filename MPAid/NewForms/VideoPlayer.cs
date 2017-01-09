@@ -58,6 +58,7 @@ namespace MPAid.NewForms
         // The index of the current recording.
         private int currentRecordingIndex = 0;
 
+        // Variables used to determine the number of times to repeat a video.
         private int repeatTimes = 0;
         private int repeatsRemaining = 0;
 
@@ -66,6 +67,9 @@ namespace MPAid.NewForms
         /// </summary>
         private int bottomHeight;
 
+        /// <summary>
+        /// Wrapper propety for repeatTimes, also prevents too many repeats by updating repeatsRemaining.
+        /// </summary>
         public int RepeatTimes
         {
             get
@@ -83,19 +87,23 @@ namespace MPAid.NewForms
         public VideoPlayer()
         {
             InitializeComponent();
-
             populateBoxes();
-            repeatSpinner.SelectedIndex = repeatSpinner.Items.Count - 1;    // No way to set this in form properties
-
-            // Set up repeat spinner programatically. Visual Studio tends to delete values when set up in the designer.
-            repeatSpinner.Items.AddRange(spinnerText);
-            repeatSpinner.SelectedIndex = repeatSpinner.Items.Count - 1;
-            repeatSpinner.SelectedItemChanged += repeatSpinner_SelectedItemChanged;
-
+            setUpSpinner();
             LoadWasapiDevices();
 
             bottomHeight = VideoPlayerPanel.Height - VideoPlayerPanel.SplitterDistance;
             toggleOptions();    // For development, the bottom panel is visible, but the user won't need the bottom panel most of the time.
+        }
+
+        /// <summary>
+        /// Set up repeat spinner programatically. Visual Studio tends to delete values when set up in the designer, and some values can't be set in form properties.
+        /// </summary>
+        private void setUpSpinner()
+        {
+            repeatSpinner.SelectedIndex = repeatSpinner.Items.Count - 1;
+            repeatSpinner.Items.AddRange(spinnerText);
+            repeatSpinner.SelectedIndex = repeatSpinner.Items.Count - 1;
+            repeatSpinner.SelectedItemChanged += repeatSpinner_SelectedItemChanged;
         }
 
         /// <summary>
@@ -117,23 +125,24 @@ namespace MPAid.NewForms
                        //&& x.Recordings.Any(y => y.Speaker.SpeakerId == current.Speaker.SpeakerId)  // Until the Menubar is finished, this won't work. Comment this line out to test.
                        )).ToList();
 
+                    // Can't sort a control's Items field, so we sort a list and add values.
                     view.Sort(new VowelComparer());
 
-                    soundListAllListBox.DataSource = new BindingSource() { DataSource = view };
+                    // Lists of Word objects, but only their name needs to be displayed to the user.
                     soundListAllListBox.DisplayMember = "Name";
-
                     VowelComboBox.DisplayMember = "Name";
                     soundListCurrentListBox.DisplayMember = "Name";
+
+                    // Set the values in all the lists used by the program.
+                    soundListAllListBox.DataSource = new BindingSource() { DataSource = view };
                     foreach (Word wd in view)
                     {
                         soundListCurrentListBox.Items.Add(wd);
                         VowelComboBox.Items.Add(wd);
                     }
-
-                    selectItemInComboBox();
-
-                    // Update the VLC player's list of words to the ones in the combo box.
                     wordsList = view;
+
+                    selectItemInComboBox();                 
                 }
             }
             catch (Exception exp)
@@ -200,12 +209,10 @@ namespace MPAid.NewForms
         /// </summary>
         private void toggleOptions()
         {
-            // Prevent relative resizing issues by storing the current height of the top panel.
-            int panel1Size = VideoPlayerPanel.SplitterDistance;
             if (VideoPlayerPanel.Panel2Collapsed)
             {
                 Height += bottomHeight;
-                MinimumSize = new Size(MinimumSize.Width, 600);
+                MinimumSize = new Size(MinimumSize.Width, 625);
                 optionsButton.Text = optionsLess;
             }
             else
@@ -411,7 +418,6 @@ namespace MPAid.NewForms
                     MessageBox.Show(String.Format(formatErrorText, e.Exception.Message));
                 }
                 SetControlStates(false);    // Toggle the record and stop buttons
-                removeButton.Enabled = true;
                 recordingProgressBarLabel.Text = myRecordingText;
             }
         }
@@ -484,7 +490,7 @@ namespace MPAid.NewForms
                 {
                     case Vlc.DotNet.Core.Interops.Signatures.MediaStates.NothingSpecial:    // Occurs when control is finished loading. Same functionality as stopped.
                     case Vlc.DotNet.Core.Interops.Signatures.MediaStates.Ended:             // Occurs when control has finished playing a video. Same funcionaility as stopped.
-                    case Vlc.DotNet.Core.Interops.Signatures.MediaStates.Stopped:
+                    case Vlc.DotNet.Core.Interops.Signatures.MediaStates.Stopped:           // Occurs when the player has been stopped. No video is loaded in.
                         {
                             playVideo();
                         }
@@ -499,10 +505,7 @@ namespace MPAid.NewForms
                     case Vlc.DotNet.Core.Interops.Signatures.MediaStates.Paused:    // If paused, play and update the button.
                         {
                             vlcControl.Play();  // asyncPlay is not used here, as it starts playback from the beginning.
-                            if (!recordingProgressBarLabel.Text.Equals(noFileText))
-                            {
-                                audioPlayer.Unpause();
-                            }
+                            audioPlayer.Unpause();
                             playButton.ImageIndex = 3;
                         }
                         break;
@@ -513,7 +516,6 @@ namespace MPAid.NewForms
             }
             catch (Exception exp)
             {
-
                 MessageBox.Show(exp.Message);
                 Console.WriteLine(exp);
             }
@@ -555,6 +557,7 @@ namespace MPAid.NewForms
 
         /// <summary>
         /// The VLCPlayer is not threadsafe, so it is much easier to invoke it with delegates.
+        /// This should be used to play the video; it also handles the audio overlay.
         /// </summary>
         private void asyncPlay()
         {
@@ -573,6 +576,7 @@ namespace MPAid.NewForms
 
         /// <summary>
         /// The VLCPlayer is not threadsafe, so it is much easier to invoke it with delegates.
+        /// This should be used to stop the video; it also stops audio overlay playback.
         /// </summary>
         private void asyncStop()
         {
@@ -582,6 +586,7 @@ namespace MPAid.NewForms
             VLCDelegate.BeginInvoke(null, null);
             if (!recordingProgressBarLabel.Text.Equals(noFileText))
             {
+                // Stop audio when video is stopped.
                 audioPlayer.Stop();
             }
         }
