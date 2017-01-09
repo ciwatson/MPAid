@@ -102,10 +102,13 @@ namespace MPAid.NewForms
         /// </summary>
         /// <param name="Username">The username to enter, as a string.</param>
         /// <param name="Password">The password to enter, as a string.</param>
+        public void VisualizeUser(MPAiUser user)
         {
             watermarkUsername(false);
+            usernameTextBox.Text = user.getName();
 
             watermarkPassword(false);
+            passwordTextBox.Text = user.getCode();
         }
     }
 }
