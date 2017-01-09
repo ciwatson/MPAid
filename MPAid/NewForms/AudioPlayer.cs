@@ -16,6 +16,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Vlc.DotNet.Forms;
+using System.Threading;
 
 namespace MPAid.NewForms
 {
@@ -62,6 +63,9 @@ namespace MPAid.NewForms
         private int repeatTimes = 0;
         private int repeatsRemaining = 0;
 
+        // Thread for the progress bar counter
+        Thread progressBarThread;
+
         /// <summary>
         /// Holds the height of the bottom panel between clicks of the options button.
         /// </summary>
@@ -95,14 +99,19 @@ namespace MPAid.NewForms
             toggleOptions();    // For development, the bottom panel is visible, but the user won't need the bottom panel most of the time.
         }
 
-        /// <summary>
-        /// Event handler for when the position changes; updates the progress bar
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void audioPlayer_PositionChanged(object sender, Vlc.DotNet.Core.VlcMediaPlayerPositionChangedEventArgs e)
+        delegate void ConsoleTextCallback(string str);
+
+        private void AppendConsoleText(string str)
         {
-            SetProgress((int)(vlcControl.Position * 100));
+            if (this.console.InvokeRequired)
+            {
+                ConsoleTextCallback d = new ConsoleTextCallback(AppendConsoleText);
+                this.Invoke(d, new object[] { str });
+            }
+            else
+            {
+                this.console.Text += str;
+            }
         }
 
         delegate void SetProgressCallback(int value);
@@ -116,7 +125,29 @@ namespace MPAid.NewForms
             }
             else
             {
-                this.audioProgressBar.Value = value;
+                while(vlcControl.GetCurrentMedia() == null) { }
+
+                if(vlcControl.GetCurrentMedia().Duration.TotalMilliseconds < 10000)
+                {
+                    if (value >= 100)
+                    {
+                        this.audioProgressBar.Value = 100;
+                        this.audioProgressBar.Value = 99;
+                        this.audioProgressBar.Value = 100;
+                    }
+                    else if (value <= 0)
+                    {
+                        this.audioProgressBar.Value = 0;
+                    }
+                    else
+                    {
+                        this.audioProgressBar.Value = value + 1;
+                        this.audioProgressBar.Value = value;
+                    }
+                } else
+                {
+                    this.audioProgressBar.Value = value;
+                }
             }
         }
 
@@ -578,6 +609,8 @@ namespace MPAid.NewForms
                     SingleFile sf = audios.PickNext();
                     filePath = Path.Combine(sf.Address, sf.Name);
 
+                    filePath = "C:\\Users\\useradmin\\Downloads\\ding.mp3";
+
                     asyncPlay();
                     playButton.ImageIndex = 3;
                 }
@@ -595,7 +628,7 @@ namespace MPAid.NewForms
         private void asyncPlay()
         {
             // Get a new instance of the delegate
-            delegatePlayer VLCDelegate = new delegatePlayer(vlcControl.Play);
+            delegatePlayer VLCDelegate = new delegatePlayer(this.Play);
             // Call play asynchronously.
             VLCDelegate.BeginInvoke(new Uri(filePath), new string[] { }, null, null);
             if (!recordingProgressBarLabel.Text.Equals(noFileText))
@@ -604,7 +637,12 @@ namespace MPAid.NewForms
                 audioPlayer.Stop();
                 audioPlayer.Play(audioFilePath);
             }
+        }
 
+        private void Play(System.Uri file, string[] pars)
+        {
+            vlcControl.Play(file, pars);
+            SetProgress(0);
         }
 
         /// <summary>
@@ -912,6 +950,11 @@ namespace MPAid.NewForms
             }
             repeatTrackBar.Value = 0;   // Reset repeats to 0.
             playNextCheckBox.Checked = false;   // Reset play next to false.
+        }
+
+        private void vlcControl_PositionChanged(object sender, Vlc.DotNet.Core.VlcMediaPlayerPositionChangedEventArgs e)
+        {
+            SetProgress((int) (vlcControl.Position * 100));
         }
     }
 }
