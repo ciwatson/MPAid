@@ -76,7 +76,7 @@ namespace MPAid.NewForms
             set
             {
                 repeatTimes = value;
-                repeatsRemaining = value;
+                repeatsRemaining = Math.Min(repeatsRemaining, value);
             }
         }
 
