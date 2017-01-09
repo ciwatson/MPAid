@@ -223,6 +223,12 @@
     <Compile Include="NewForms\AudioPlayer.Designer.cs">
       <DependentUpon>AudioPlayer.cs</DependentUpon>
     </Compile>
+    <Compile Include="NewForms\LoginScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewForms\LoginScreen.Designer.cs">
+      <DependentUpon>LoginScreen.cs</DependentUpon>
+    </Compile>
     <Compile Include="NewForms\MenuStrip.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -352,6 +358,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="NewForms\AudioPlayer.resx">
       <DependentUpon>AudioPlayer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewForms\LoginScreen.resx">
+      <DependentUpon>LoginScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NewForms\MenuStrip.resx">
       <DependentUpon>MenuStrip.cs</DependentUpon>

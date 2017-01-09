@@ -15,7 +15,6 @@ namespace MPAid
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new NewForms.VideoPlayer());
             Application.Run(new LoginWindow());
         }
     }
