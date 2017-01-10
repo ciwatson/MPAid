@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.mpAiSoundMenuStrip1 = new MPAid.NewForms.MenuStrip(this.components);
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.headerBox = new System.Windows.Forms.PictureBox();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
@@ -38,6 +37,7 @@
             this.learnButton = new System.Windows.Forms.Button();
             this.testButton = new System.Windows.Forms.Button();
             this.reportButton = new System.Windows.Forms.Button();
+            this.mpAiSoundMenuStrip1 = new MPAid.NewForms.MenuStrip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -49,14 +49,6 @@
             this.splitContainer2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // mpAiSoundMenuStrip1
-            // 
-            this.mpAiSoundMenuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.mpAiSoundMenuStrip1.Name = "mpAiSoundMenuStrip1";
-            this.mpAiSoundMenuStrip1.Size = new System.Drawing.Size(544, 24);
-            this.mpAiSoundMenuStrip1.TabIndex = 2;
-            this.mpAiSoundMenuStrip1.Text = "mpAiSoundMenuStrip1";
             // 
             // splitContainer1
             // 
@@ -145,6 +137,7 @@
             this.learnButton.TabIndex = 0;
             this.learnButton.Text = "Learn";
             this.learnButton.UseVisualStyleBackColor = true;
+            this.learnButton.Click += new System.EventHandler(this.learnButton_Click);
             // 
             // testButton
             // 
@@ -155,6 +148,7 @@
             this.testButton.TabIndex = 1;
             this.testButton.Text = "Test";
             this.testButton.UseVisualStyleBackColor = true;
+            this.testButton.Click += new System.EventHandler(this.testButton_Click);
             // 
             // reportButton
             // 
@@ -166,6 +160,14 @@
             this.reportButton.Text = "Score Report";
             this.reportButton.UseVisualStyleBackColor = true;
             this.reportButton.Click += new System.EventHandler(this.reportButton_Click);
+            // 
+            // mpAiSoundMenuStrip1
+            // 
+            this.mpAiSoundMenuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.mpAiSoundMenuStrip1.Name = "mpAiSoundMenuStrip1";
+            this.mpAiSoundMenuStrip1.Size = new System.Drawing.Size(544, 24);
+            this.mpAiSoundMenuStrip1.TabIndex = 2;
+            this.mpAiSoundMenuStrip1.Text = "mpAiSoundMenuStrip1";
             // 
             // MPAiSpeakMainMenu
             // 
