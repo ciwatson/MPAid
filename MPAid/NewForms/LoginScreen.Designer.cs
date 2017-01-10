@@ -92,6 +92,7 @@
             this.signupButton.TabIndex = 19;
             this.signupButton.Text = "Sign Up";
             this.signupButton.UseVisualStyleBackColor = true;
+            this.signupButton.Click += new System.EventHandler(this.signupButton_Click);
             // 
             // rememberCheckBox
             // 
@@ -102,6 +103,7 @@
             this.rememberCheckBox.TabIndex = 20;
             this.rememberCheckBox.Text = "Remember Me";
             this.rememberCheckBox.UseVisualStyleBackColor = true;
+            this.rememberCheckBox.CheckedChanged += new System.EventHandler(this.rememberCheckBox_CheckedChanged);
             // 
             // LoginScreen
             // 
@@ -115,7 +117,8 @@
             this.Controls.Add(this.usernameTextBox);
             this.Controls.Add(this.logoBox);
             this.Name = "LoginScreen";
-            this.Text = "LoginScreen";
+            this.Text = "Login to MPAi";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.LoginScreen_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.logoBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

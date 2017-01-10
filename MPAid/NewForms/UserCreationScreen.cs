@@ -94,7 +94,7 @@ namespace MPAid.NewForms
                 MessageBox.Show("Registration successful! ",
                         "Congratulations", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 UserManagement.WriteSettings();
-                LoginScreen loginWindow = (LoginScreen)this.Owner;      // Only LoginWindow can open this form.
+                LoginScreen loginWindow = (LoginScreen)Owner;      // Only LoginWindow can open this form.
                 loginWindow.VisualizeUser(candidate);
                 Close();
             }
