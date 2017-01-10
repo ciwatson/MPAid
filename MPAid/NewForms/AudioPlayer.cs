@@ -69,7 +69,7 @@ namespace MPAid.NewForms
         /// <summary>
         /// Holds the height of the bottom panel between clicks of the options button.
         /// </summary>
-        private int bottomHeight;
+        private readonly int bottomHeight;
 
         /// <summary>
         /// Wrapper propety for repeatTimes, also prevents too many repeats by updating repeatsRemaining.
@@ -107,10 +107,10 @@ namespace MPAid.NewForms
         /// <param name="value"></param>
         private void SetProgress(int value)
         {
-            if (this.audioProgressBar.InvokeRequired)
+            if (this.progressBar1.InvokeRequired)
             {
                 SetProgressCallback d = new SetProgressCallback(SetProgress);
-                this.Invoke(d, new object[] { value });
+               this.Invoke(d, new object[] { value });
             }
             else
             {
@@ -120,22 +120,22 @@ namespace MPAid.NewForms
                 {
                     if (value >= 100)
                     {
-                        this.audioProgressBar.Value = 100;
-                        this.audioProgressBar.Value = 99;
-                        this.audioProgressBar.Value = 100;
+                        this.progressBar1.Value = 100;
+                        this.progressBar1.Value = 99;
+                        this.progressBar1.Value = 100;
                     }
                     else if (value <= 0)
                     {
-                        this.audioProgressBar.Value = 0;
+                        this.progressBar1.Value = 0;
                     }
                     else
                     {
-                        this.audioProgressBar.Value = value + 1;
-                        this.audioProgressBar.Value = value;
+                        this.progressBar1.Value = value + 1;
+                        this.progressBar1.Value = value;
                     }
                 } else
                 {
-                    this.audioProgressBar.Value = value;
+                    this.progressBar1.Value = value;
                 }
             }
         }
@@ -254,20 +254,22 @@ namespace MPAid.NewForms
         /// </summary>
         private void toggleOptions()
         {
+            
             if (VideoPlayerPanel.Panel2Collapsed)
             {
                 Height += bottomHeight;
-                MinimumSize = new Size(MinimumSize.Width, 625);
+                MinimumSize = new Size(MinimumSize.Width, 450);
                 optionsButton.Text = optionsLess;
+                VideoPlayerPanel.Panel2Collapsed = !VideoPlayerPanel.Panel2Collapsed;
             }
             else
             {
-                MinimumSize = new Size(MinimumSize.Width, 300);
-                bottomHeight = VideoPlayerPanel.Height - VideoPlayerPanel.SplitterDistance;
+
+                VideoPlayerPanel.Panel2Collapsed = !VideoPlayerPanel.Panel2Collapsed;
+                MinimumSize = new Size(MinimumSize.Width, 225);
                 Height -= bottomHeight;
                 optionsButton.Text = optionsMore;
             }
-            VideoPlayerPanel.Panel2Collapsed = !VideoPlayerPanel.Panel2Collapsed;
         }
 
         /// <summary>
@@ -597,8 +599,6 @@ namespace MPAid.NewForms
                     if (audios == null || audios.Count == 0) throw new Exception("No audio recording!");
                     SingleFile sf = audios.PickNext();
                     filePath = Path.Combine(sf.Address, sf.Name);
-
-                    filePath = "C:\\Users\\useradmin\\Downloads\\ding.mp3";
 
                     asyncPlay();
                     playButton.ImageIndex = 3;
