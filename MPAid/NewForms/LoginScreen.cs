@@ -23,9 +23,12 @@ namespace MPAid.NewForms
         /// </summary>
         public LoginScreen()
         {
-            // Set up an initial connection to the database (which takes a noticable amount of time) while the splash screen is showing.
+            // Show the splash screen for intensive initialisation tasks.
             SplashScreen splashScreen = new SplashScreen();
             splashScreen.Show();
+
+            // NOTE: Put any time-consuming tasks that only need to be done once on startup (such as file I/O) here.
+            // They will be done while the splash screen is up.
 
             InitializeDB();
 

@@ -20,8 +20,8 @@ namespace MPAid.NewForms
         {
             InitializeComponent();
 
-            // Disable score report button if the report has not been created before. - THIS MAY CHANGE
-            reportButton.Enabled = (File.Exists(new ReportLaucher().ScoreboardReportHTMLAddress) && File.Exists(new ReportLaucher().ScoreboardReportHTMLAddress));
+            // Disable score report button if the report has not been created before.
+            reportButton.Enabled = (File.Exists(ReportLauncher.MPAiSpeakScoreReportHTMLAddress) && File.Exists(ReportLauncher.ScoreboardReportCSSAddress));
 
             string name = UserManagement.getCurrentUser().getName();
             if (name == null)
@@ -42,7 +42,7 @@ namespace MPAid.NewForms
         private void reportButton_Click(object sender, EventArgs e)
         {
             // THIS MAY CHANGE
-            IoController.ShowInBrowser(new ReportLaucher().ScoreboardReportHTMLAddress);
+            IoController.ShowInBrowser(ReportLauncher.MPAiSpeakScoreReportHTMLAddress);
         }
 
         /// <summary>
