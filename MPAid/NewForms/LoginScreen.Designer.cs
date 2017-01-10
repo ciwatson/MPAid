@@ -32,9 +32,10 @@
             this.logoBox = new System.Windows.Forms.PictureBox();
             this.usernameTextBox = new System.Windows.Forms.TextBox();
             this.passwordTextBox = new System.Windows.Forms.TextBox();
-            this.loginButton = new System.Windows.Forms.Button();
+            this.speakLaunchButton = new System.Windows.Forms.Button();
             this.signupButton = new System.Windows.Forms.Button();
             this.rememberCheckBox = new System.Windows.Forms.CheckBox();
+            this.soundLaunchButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.logoBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -72,16 +73,16 @@
             this.passwordTextBox.Enter += new System.EventHandler(this.passwordTextBox_Enter);
             this.passwordTextBox.Leave += new System.EventHandler(this.passwordTextBox_Leave);
             // 
-            // loginButton
+            // speakLaunchButton
             // 
-            this.loginButton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.loginButton.Location = new System.Drawing.Point(12, 227);
-            this.loginButton.Name = "loginButton";
-            this.loginButton.Size = new System.Drawing.Size(75, 23);
-            this.loginButton.TabIndex = 18;
-            this.loginButton.Text = "Log In";
-            this.loginButton.UseVisualStyleBackColor = true;
-            this.loginButton.Click += new System.EventHandler(this.loginButton_Click);
+            this.speakLaunchButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.speakLaunchButton.Location = new System.Drawing.Point(12, 227);
+            this.speakLaunchButton.Name = "speakLaunchButton";
+            this.speakLaunchButton.Size = new System.Drawing.Size(75, 23);
+            this.speakLaunchButton.TabIndex = 18;
+            this.speakLaunchButton.Text = "MPAi Speak";
+            this.speakLaunchButton.UseVisualStyleBackColor = true;
+            this.speakLaunchButton.Click += new System.EventHandler(this.speakLaunchButton_Click);
             // 
             // signupButton
             // 
@@ -105,14 +106,26 @@
             this.rememberCheckBox.UseVisualStyleBackColor = true;
             this.rememberCheckBox.CheckedChanged += new System.EventHandler(this.rememberCheckBox_CheckedChanged);
             // 
+            // soundLaunchButton
+            // 
+            this.soundLaunchButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.soundLaunchButton.Location = new System.Drawing.Point(93, 227);
+            this.soundLaunchButton.Name = "soundLaunchButton";
+            this.soundLaunchButton.Size = new System.Drawing.Size(75, 23);
+            this.soundLaunchButton.TabIndex = 21;
+            this.soundLaunchButton.Text = "MPAi Sound";
+            this.soundLaunchButton.UseVisualStyleBackColor = true;
+            this.soundLaunchButton.Click += new System.EventHandler(this.soundLaunchButton_Click);
+            // 
             // LoginScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 262);
+            this.Controls.Add(this.soundLaunchButton);
             this.Controls.Add(this.rememberCheckBox);
             this.Controls.Add(this.signupButton);
-            this.Controls.Add(this.loginButton);
+            this.Controls.Add(this.speakLaunchButton);
             this.Controls.Add(this.passwordTextBox);
             this.Controls.Add(this.usernameTextBox);
             this.Controls.Add(this.logoBox);
@@ -130,8 +143,9 @@
         private System.Windows.Forms.PictureBox logoBox;
         private System.Windows.Forms.TextBox usernameTextBox;
         private System.Windows.Forms.TextBox passwordTextBox;
-        private System.Windows.Forms.Button loginButton;
+        private System.Windows.Forms.Button speakLaunchButton;
         private System.Windows.Forms.Button signupButton;
         private System.Windows.Forms.CheckBox rememberCheckBox;
+        private System.Windows.Forms.Button soundLaunchButton;
     }
 }
