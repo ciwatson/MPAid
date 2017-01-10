@@ -15,7 +15,7 @@ namespace MPAid
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LoginWindow());
+            Application.Run(new NewForms.AudioPlayer());
 
         }
     }
