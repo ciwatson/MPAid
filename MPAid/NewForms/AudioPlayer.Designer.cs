@@ -31,32 +31,34 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AudioPlayer));
             this.VideoPlayerPanel = new System.Windows.Forms.SplitContainer();
-            this.VowelComboBox = new System.Windows.Forms.ComboBox();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.vlcControl = new Vlc.DotNet.Forms.VlcControl();
+            this.backwardButton = new System.Windows.Forms.Button();
+            this.backImageList = new System.Windows.Forms.ImageList(this.components);
+            this.playButton = new System.Windows.Forms.Button();
+            this.playImageList = new System.Windows.Forms.ImageList(this.components);
+            this.forwardButton = new System.Windows.Forms.Button();
+            this.forwardImageList = new System.Windows.Forms.ImageList(this.components);
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.VowelComboBox = new System.Windows.Forms.ComboBox();
             this.optionsButton = new System.Windows.Forms.Button();
             this.backButton = new System.Windows.Forms.Button();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.audioProgressBar = new System.Windows.Forms.ProgressBar();
-            this.playImageList = new System.Windows.Forms.ImageList(this.components);
-            this.vlcAudioPlayer = new Vlc.DotNet.Forms.VlcControl();
+            this.resetButton = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.playNextCheckBox = new System.Windows.Forms.CheckBox();
+            this.removeButton = new System.Windows.Forms.Button();
             this.divider4 = new System.Windows.Forms.Label();
             this.divider3 = new System.Windows.Forms.Label();
             this.divider2 = new System.Windows.Forms.Label();
             this.divider1 = new System.Windows.Forms.Label();
-            this.addButton = new System.Windows.Forms.Button();
-            this.recordingProgressBarLabel = new System.Windows.Forms.Label();
-            this.playNextRadioButtonNo = new System.Windows.Forms.RadioButton();
             this.soundListAddAllButton = new System.Windows.Forms.Button();
-            this.playNextRadioButtonYes = new System.Windows.Forms.RadioButton();
             this.soundListRemoveButton = new System.Windows.Forms.Button();
             this.soundListAddButton = new System.Windows.Forms.Button();
             this.soundListAllListBox = new System.Windows.Forms.ListBox();
             this.soundListCurrentListBox = new System.Windows.Forms.ListBox();
             this.soundListAllLabel = new System.Windows.Forms.Label();
             this.soundListCurrentLabel = new System.Windows.Forms.Label();
-            this.playNextLabel = new System.Windows.Forms.Label();
             this.addFromFileButton = new System.Windows.Forms.Button();
             this.recordButton = new System.Windows.Forms.Button();
             this.AudioInputDeviceButton = new System.Windows.Forms.Button();
@@ -64,22 +66,17 @@
             this.AudioInputDeviceLabel = new System.Windows.Forms.Label();
             this.repeatSpinner = new System.Windows.Forms.DomainUpDown();
             this.repeatLabel = new System.Windows.Forms.Label();
+            this.recordingProgressBarLabel = new System.Windows.Forms.Label();
             this.repeatTrackBar = new System.Windows.Forms.TrackBar();
-            this.stopImageList = new System.Windows.Forms.ImageList(this.components);
-            this.backImageList = new System.Windows.Forms.ImageList(this.components);
-            this.forwardImageList = new System.Windows.Forms.ImageList(this.components);
-            this.forwardButton = new System.Windows.Forms.Button();
-            this.backwardButton = new System.Windows.Forms.Button();
-            this.playButton = new System.Windows.Forms.Button();
+            this.recordingProgressBar = new System.Windows.Forms.ProgressBar();
+            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.VideoPlayerPanel)).BeginInit();
             this.VideoPlayerPanel.Panel1.SuspendLayout();
             this.VideoPlayerPanel.Panel2.SuspendLayout();
             this.VideoPlayerPanel.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.vlcAudioPlayer)).BeginInit();
+            this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.vlcControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repeatTrackBar)).BeginInit();
             this.SuspendLayout();
             // 
@@ -93,28 +90,26 @@
             // 
             // VideoPlayerPanel.Panel1
             // 
-            this.VideoPlayerPanel.Panel1.Controls.Add(this.VowelComboBox);
-            this.VideoPlayerPanel.Panel1.Controls.Add(this.tableLayoutPanel1);
+            this.VideoPlayerPanel.Panel1.Controls.Add(this.panel1);
             // 
             // VideoPlayerPanel.Panel2
             // 
             this.VideoPlayerPanel.Panel2.BackColor = System.Drawing.SystemColors.Control;
+            this.VideoPlayerPanel.Panel2.Controls.Add(this.resetButton);
+            this.VideoPlayerPanel.Panel2.Controls.Add(this.label1);
+            this.VideoPlayerPanel.Panel2.Controls.Add(this.playNextCheckBox);
+            this.VideoPlayerPanel.Panel2.Controls.Add(this.removeButton);
             this.VideoPlayerPanel.Panel2.Controls.Add(this.divider4);
             this.VideoPlayerPanel.Panel2.Controls.Add(this.divider3);
             this.VideoPlayerPanel.Panel2.Controls.Add(this.divider2);
             this.VideoPlayerPanel.Panel2.Controls.Add(this.divider1);
-            this.VideoPlayerPanel.Panel2.Controls.Add(this.addButton);
-            this.VideoPlayerPanel.Panel2.Controls.Add(this.recordingProgressBarLabel);
-            this.VideoPlayerPanel.Panel2.Controls.Add(this.playNextRadioButtonNo);
             this.VideoPlayerPanel.Panel2.Controls.Add(this.soundListAddAllButton);
-            this.VideoPlayerPanel.Panel2.Controls.Add(this.playNextRadioButtonYes);
             this.VideoPlayerPanel.Panel2.Controls.Add(this.soundListRemoveButton);
             this.VideoPlayerPanel.Panel2.Controls.Add(this.soundListAddButton);
             this.VideoPlayerPanel.Panel2.Controls.Add(this.soundListAllListBox);
             this.VideoPlayerPanel.Panel2.Controls.Add(this.soundListCurrentListBox);
             this.VideoPlayerPanel.Panel2.Controls.Add(this.soundListAllLabel);
             this.VideoPlayerPanel.Panel2.Controls.Add(this.soundListCurrentLabel);
-            this.VideoPlayerPanel.Panel2.Controls.Add(this.playNextLabel);
             this.VideoPlayerPanel.Panel2.Controls.Add(this.addFromFileButton);
             this.VideoPlayerPanel.Panel2.Controls.Add(this.recordButton);
             this.VideoPlayerPanel.Panel2.Controls.Add(this.AudioInputDeviceButton);
@@ -122,442 +117,73 @@
             this.VideoPlayerPanel.Panel2.Controls.Add(this.AudioInputDeviceLabel);
             this.VideoPlayerPanel.Panel2.Controls.Add(this.repeatSpinner);
             this.VideoPlayerPanel.Panel2.Controls.Add(this.repeatLabel);
+            this.VideoPlayerPanel.Panel2.Controls.Add(this.recordingProgressBarLabel);
             this.VideoPlayerPanel.Panel2.Controls.Add(this.repeatTrackBar);
-            this.VideoPlayerPanel.Size = new System.Drawing.Size(584, 562);
-            this.VideoPlayerPanel.SplitterDistance = 340;
+            this.VideoPlayerPanel.Panel2.Controls.Add(this.recordingProgressBar);
+            this.VideoPlayerPanel.Size = new System.Drawing.Size(584, 512);
+            this.VideoPlayerPanel.SplitterDistance = 234;
             this.VideoPlayerPanel.SplitterWidth = 1;
-            this.VideoPlayerPanel.TabIndex = 1;
-            // 
-            // VowelComboBox
-            // 
-            this.VowelComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.VowelComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.VowelComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.VowelComboBox.FormattingEnabled = true;
-            this.VowelComboBox.ItemHeight = 13;
-            this.VowelComboBox.Location = new System.Drawing.Point(117, 12);
-            this.VowelComboBox.Name = "VowelComboBox";
-            this.VowelComboBox.Size = new System.Drawing.Size(353, 21);
-            this.VowelComboBox.TabIndex = 1;
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.ColumnCount = 1;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.panel2, 0, 1);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 3;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.76923F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 79.23077F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 70F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(584, 340);
-            this.tableLayoutPanel1.TabIndex = 8;
+            this.VideoPlayerPanel.TabIndex = 0;
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.tableLayoutPanel1);
+            this.panel1.Controls.Add(this.VowelComboBox);
             this.panel1.Controls.Add(this.optionsButton);
             this.panel1.Controls.Add(this.backButton);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(3, 272);
+            this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(578, 65);
-            this.panel1.TabIndex = 8;
+            this.panel1.Size = new System.Drawing.Size(584, 234);
+            this.panel1.TabIndex = 9;
             // 
-            // optionsButton
+            // tableLayoutPanel1
             // 
-            this.optionsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.optionsButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.optionsButton.Location = new System.Drawing.Point(356, 20);
-            this.optionsButton.Margin = new System.Windows.Forms.Padding(10);
-            this.optionsButton.Name = "optionsButton";
-            this.optionsButton.Size = new System.Drawing.Size(100, 25);
-            this.optionsButton.TabIndex = 6;
-            this.optionsButton.Text = "Less...";
-            this.optionsButton.UseVisualStyleBackColor = true;
-            // 
-            // backButton
-            // 
-            this.backButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.backButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.backButton.Location = new System.Drawing.Point(471, 20);
-            this.backButton.Margin = new System.Windows.Forms.Padding(10);
-            this.backButton.Name = "backButton";
-            this.backButton.Size = new System.Drawing.Size(100, 25);
-            this.backButton.TabIndex = 7;
-            this.backButton.Text = "Back";
-            this.backButton.UseVisualStyleBackColor = true;
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.tableLayoutPanel2);
-            this.panel2.Controls.Add(this.vlcAudioPlayer);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(3, 59);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(578, 207);
-            this.panel2.TabIndex = 10;
-            // 
-            // tableLayoutPanel2
-            // 
-            this.tableLayoutPanel2.BackColor = System.Drawing.SystemColors.Control;
-            this.tableLayoutPanel2.ColumnCount = 9;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.Controls.Add(this.audioProgressBar, 1, 0);
-            this.tableLayoutPanel2.Controls.Add(this.backwardButton, 3, 1);
-            this.tableLayoutPanel2.Controls.Add(this.forwardButton, 5, 1);
-            this.tableLayoutPanel2.Controls.Add(this.playButton, 4, 1);
-            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 2;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 65F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(578, 207);
-            this.tableLayoutPanel2.TabIndex = 11;
-            // 
-            // audioProgressBar
-            // 
-            this.audioProgressBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel2.SetColumnSpan(this.audioProgressBar, 7);
-            this.audioProgressBar.Location = new System.Drawing.Point(67, 59);
-            this.audioProgressBar.Name = "audioProgressBar";
-            this.audioProgressBar.Size = new System.Drawing.Size(442, 23);
-            this.audioProgressBar.TabIndex = 10;
-            this.audioProgressBar.Click += new System.EventHandler(this.progressBar2_Click);
-            // 
-            // playImageList
-            // 
-            this.playImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("playImageList.ImageStream")));
-            this.playImageList.TransparentColor = System.Drawing.Color.Transparent;
-            this.playImageList.Images.SetKeyName(0, "Light Play.png");
-            this.playImageList.Images.SetKeyName(1, "Play.png");
-            this.playImageList.Images.SetKeyName(2, "Light Pause.png");
-            this.playImageList.Images.SetKeyName(3, "Pause.png");
-            // 
-            // vlcAudioPlayer
-            // 
-            this.vlcAudioPlayer.BackColor = System.Drawing.SystemColors.ButtonShadow;
-            this.vlcAudioPlayer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.vlcAudioPlayer.Location = new System.Drawing.Point(0, 0);
-            this.vlcAudioPlayer.Name = "vlcAudioPlayer";
-            this.vlcAudioPlayer.Size = new System.Drawing.Size(578, 207);
-            this.vlcAudioPlayer.Spu = -1;
-            this.vlcAudioPlayer.TabIndex = 9;
-            this.vlcAudioPlayer.Text = "vlcControl1";
-            this.vlcAudioPlayer.Visible = false;
-            this.vlcAudioPlayer.VlcLibDirectory = null;
-            this.vlcAudioPlayer.VlcMediaplayerOptions = null;
-            // 
-            // divider4
-            // 
-            this.divider4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.divider4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.divider4.Location = new System.Drawing.Point(0, 137);
-            this.divider4.Name = "divider4";
-            this.divider4.Size = new System.Drawing.Size(584, 2);
-            this.divider4.TabIndex = 42;
-            // 
-            // divider3
-            // 
-            this.divider3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.divider3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.divider3.Location = new System.Drawing.Point(0, 114);
-            this.divider3.Name = "divider3";
-            this.divider3.Size = new System.Drawing.Size(584, 2);
-            this.divider3.TabIndex = 41;
-            // 
-            // divider2
-            // 
-            this.divider2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.divider2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.divider2.Location = new System.Drawing.Point(0, 10);
-            this.divider2.Name = "divider2";
-            this.divider2.Size = new System.Drawing.Size(584, 2);
-            this.divider2.TabIndex = 40;
-            // 
-            // divider1
-            // 
-            this.divider1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.divider1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.divider1.Location = new System.Drawing.Point(1, 47);
-            this.divider1.Name = "divider1";
-            this.divider1.Size = new System.Drawing.Size(584, 2);
-            this.divider1.TabIndex = 39;
-            // 
-            // addButton
-            // 
-            this.addButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.addButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.addButton.Location = new System.Drawing.Point(466, 57);
-            this.addButton.Margin = new System.Windows.Forms.Padding(0);
-            this.addButton.Name = "addButton";
-            this.addButton.Size = new System.Drawing.Size(100, 25);
-            this.addButton.TabIndex = 38;
-            this.addButton.Text = "Add";
-            this.addButton.UseVisualStyleBackColor = true;
-            // 
-            // recordingProgressBarLabel
-            // 
-            this.recordingProgressBarLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.recordingProgressBarLabel.BackColor = System.Drawing.SystemColors.Control;
-            this.recordingProgressBarLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.recordingProgressBarLabel.Location = new System.Drawing.Point(99, 58);
-            this.recordingProgressBarLabel.Name = "recordingProgressBarLabel";
-            this.recordingProgressBarLabel.Size = new System.Drawing.Size(361, 23);
-            this.recordingProgressBarLabel.TabIndex = 37;
-            this.recordingProgressBarLabel.Text = "No current file";
-            this.recordingProgressBarLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // playNextRadioButtonNo
-            // 
-            this.playNextRadioButtonNo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.playNextRadioButtonNo.AutoSize = true;
-            this.playNextRadioButtonNo.Location = new System.Drawing.Point(526, 117);
-            this.playNextRadioButtonNo.Name = "playNextRadioButtonNo";
-            this.playNextRadioButtonNo.Size = new System.Drawing.Size(39, 17);
-            this.playNextRadioButtonNo.TabIndex = 1;
-            this.playNextRadioButtonNo.TabStop = true;
-            this.playNextRadioButtonNo.Text = "No";
-            this.playNextRadioButtonNo.UseVisualStyleBackColor = true;
-            // 
-            // soundListAddAllButton
-            // 
-            this.soundListAddAllButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.soundListAddAllButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.soundListAddAllButton.Location = new System.Drawing.Point(258, 214);
-            this.soundListAddAllButton.Margin = new System.Windows.Forms.Padding(10);
-            this.soundListAddAllButton.Name = "soundListAddAllButton";
-            this.soundListAddAllButton.Size = new System.Drawing.Size(91, 25);
-            this.soundListAddAllButton.TabIndex = 21;
-            this.soundListAddAllButton.Text = "Add All";
-            this.soundListAddAllButton.UseVisualStyleBackColor = true;
-            // 
-            // playNextRadioButtonYes
-            // 
-            this.playNextRadioButtonYes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.playNextRadioButtonYes.AutoSize = true;
-            this.playNextRadioButtonYes.Location = new System.Drawing.Point(466, 117);
-            this.playNextRadioButtonYes.Name = "playNextRadioButtonYes";
-            this.playNextRadioButtonYes.Size = new System.Drawing.Size(43, 17);
-            this.playNextRadioButtonYes.TabIndex = 0;
-            this.playNextRadioButtonYes.TabStop = true;
-            this.playNextRadioButtonYes.Text = "Yes";
-            this.playNextRadioButtonYes.UseVisualStyleBackColor = true;
-            // 
-            // soundListRemoveButton
-            // 
-            this.soundListRemoveButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.soundListRemoveButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.soundListRemoveButton.Location = new System.Drawing.Point(258, 186);
-            this.soundListRemoveButton.Margin = new System.Windows.Forms.Padding(10);
-            this.soundListRemoveButton.Name = "soundListRemoveButton";
-            this.soundListRemoveButton.Size = new System.Drawing.Size(91, 25);
-            this.soundListRemoveButton.TabIndex = 20;
-            this.soundListRemoveButton.Text = "Remove Selected";
-            this.soundListRemoveButton.UseVisualStyleBackColor = true;
-            // 
-            // soundListAddButton
-            // 
-            this.soundListAddButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.soundListAddButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.soundListAddButton.Location = new System.Drawing.Point(258, 157);
-            this.soundListAddButton.Margin = new System.Windows.Forms.Padding(10);
-            this.soundListAddButton.Name = "soundListAddButton";
-            this.soundListAddButton.Size = new System.Drawing.Size(91, 25);
-            this.soundListAddButton.TabIndex = 19;
-            this.soundListAddButton.Text = "Add Selected";
-            this.soundListAddButton.UseVisualStyleBackColor = true;
-            // 
-            // soundListAllListBox
-            // 
-            this.soundListAllListBox.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.soundListAllListBox.FormattingEnabled = true;
-            this.soundListAllListBox.Location = new System.Drawing.Point(359, 157);
-            this.soundListAllListBox.Name = "soundListAllListBox";
-            this.soundListAllListBox.Size = new System.Drawing.Size(206, 82);
-            this.soundListAllListBox.TabIndex = 18;
-            // 
-            // soundListCurrentListBox
-            // 
-            this.soundListCurrentListBox.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.soundListCurrentListBox.FormattingEnabled = true;
-            this.soundListCurrentListBox.Location = new System.Drawing.Point(12, 157);
-            this.soundListCurrentListBox.Name = "soundListCurrentListBox";
-            this.soundListCurrentListBox.Size = new System.Drawing.Size(233, 82);
-            this.soundListCurrentListBox.TabIndex = 17;
-            // 
-            // soundListAllLabel
-            // 
-            this.soundListAllLabel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.soundListAllLabel.AutoSize = true;
-            this.soundListAllLabel.Location = new System.Drawing.Point(356, 141);
-            this.soundListAllLabel.Name = "soundListAllLabel";
-            this.soundListAllLabel.Size = new System.Drawing.Size(58, 13);
-            this.soundListAllLabel.TabIndex = 16;
-            this.soundListAllLabel.Text = "All sounds:";
-            // 
-            // soundListCurrentLabel
-            // 
-            this.soundListCurrentLabel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.soundListCurrentLabel.AutoSize = true;
-            this.soundListCurrentLabel.Location = new System.Drawing.Point(12, 141);
-            this.soundListCurrentLabel.Name = "soundListCurrentLabel";
-            this.soundListCurrentLabel.Size = new System.Drawing.Size(99, 13);
-            this.soundListCurrentLabel.TabIndex = 15;
-            this.soundListCurrentLabel.Text = "Sounds to practice:";
-            // 
-            // playNextLabel
-            // 
-            this.playNextLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.playNextLabel.AutoSize = true;
-            this.playNextLabel.Location = new System.Drawing.Point(12, 119);
-            this.playNextLabel.Name = "playNextLabel";
-            this.playNextLabel.Size = new System.Drawing.Size(159, 13);
-            this.playNextLabel.TabIndex = 13;
-            this.playNextLabel.Text = "Play  next sound when finished?";
-            // 
-            // addFromFileButton
-            // 
-            this.addFromFileButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.addFromFileButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.addFromFileButton.Location = new System.Drawing.Point(466, 84);
-            this.addFromFileButton.Margin = new System.Windows.Forms.Padding(0);
-            this.addFromFileButton.Name = "addFromFileButton";
-            this.addFromFileButton.Size = new System.Drawing.Size(100, 25);
-            this.addFromFileButton.TabIndex = 12;
-            this.addFromFileButton.Text = "Select from file";
-            this.addFromFileButton.UseVisualStyleBackColor = true;
-            // 
-            // recordButton
-            // 
-            this.recordButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.recordButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.recordButton.Location = new System.Drawing.Point(360, 84);
-            this.recordButton.Margin = new System.Windows.Forms.Padding(0);
-            this.recordButton.Name = "recordButton";
-            this.recordButton.Size = new System.Drawing.Size(100, 25);
-            this.recordButton.TabIndex = 11;
-            this.recordButton.Text = "Record";
-            this.recordButton.UseVisualStyleBackColor = true;
-            // 
-            // AudioInputDeviceButton
-            // 
-            this.AudioInputDeviceButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.AudioInputDeviceButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.AudioInputDeviceButton.Location = new System.Drawing.Point(300, 84);
-            this.AudioInputDeviceButton.Margin = new System.Windows.Forms.Padding(10);
-            this.AudioInputDeviceButton.Name = "AudioInputDeviceButton";
-            this.AudioInputDeviceButton.Size = new System.Drawing.Size(50, 25);
-            this.AudioInputDeviceButton.TabIndex = 10;
-            this.AudioInputDeviceButton.Text = "Refresh";
-            this.AudioInputDeviceButton.UseVisualStyleBackColor = true;
-            // 
-            // AudioInputDeviceComboBox
-            // 
-            this.AudioInputDeviceComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.AudioInputDeviceComboBox.FormattingEnabled = true;
-            this.AudioInputDeviceComboBox.Location = new System.Drawing.Point(14, 84);
-            this.AudioInputDeviceComboBox.Name = "AudioInputDeviceComboBox";
-            this.AudioInputDeviceComboBox.Size = new System.Drawing.Size(300, 21);
-            this.AudioInputDeviceComboBox.TabIndex = 9;
-            // 
-            // AudioInputDeviceLabel
-            // 
-            this.AudioInputDeviceLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.AudioInputDeviceLabel.AutoSize = true;
-            this.AudioInputDeviceLabel.Location = new System.Drawing.Point(12, 63);
-            this.AudioInputDeviceLabel.Name = "AudioInputDeviceLabel";
-            this.AudioInputDeviceLabel.Size = new System.Drawing.Size(81, 13);
-            this.AudioInputDeviceLabel.TabIndex = 8;
-            this.AudioInputDeviceLabel.Text = "Add your voice:";
-            // 
-            // repeatSpinner
-            // 
-            this.repeatSpinner.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.repeatSpinner.Location = new System.Drawing.Point(478, 22);
-            this.repeatSpinner.Name = "repeatSpinner";
-            this.repeatSpinner.Size = new System.Drawing.Size(87, 20);
-            this.repeatSpinner.TabIndex = 2;
-            this.repeatSpinner.Text = "domainUpDown1";
-            // 
-            // repeatLabel
-            // 
-            this.repeatLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.repeatLabel.AutoSize = true;
-            this.repeatLabel.Location = new System.Drawing.Point(12, 24);
-            this.repeatLabel.Name = "repeatLabel";
-            this.repeatLabel.Size = new System.Drawing.Size(42, 13);
-            this.repeatLabel.TabIndex = 1;
-            this.repeatLabel.Text = "Repeat";
-            // 
-            // repeatTrackBar
-            // 
-            this.repeatTrackBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.repeatTrackBar.Location = new System.Drawing.Point(61, 15);
-            this.repeatTrackBar.Name = "repeatTrackBar";
-            this.repeatTrackBar.Size = new System.Drawing.Size(399, 45);
-            this.repeatTrackBar.TabIndex = 0;
-            // 
-            // stopImageList
-            // 
-            this.stopImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("stopImageList.ImageStream")));
-            this.stopImageList.TransparentColor = System.Drawing.Color.Transparent;
-            this.stopImageList.Images.SetKeyName(0, "Light Stop.png");
-            this.stopImageList.Images.SetKeyName(1, "Stop.png");
-            // 
-            // backImageList
-            // 
-            this.backImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("backImageList.ImageStream")));
-            this.backImageList.TransparentColor = System.Drawing.Color.Transparent;
-            this.backImageList.Images.SetKeyName(0, "Light Backward.png");
-            this.backImageList.Images.SetKeyName(1, "Backward.png");
-            // 
-            // forwardImageList
-            // 
-            this.forwardImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("forwardImageList.ImageStream")));
-            this.forwardImageList.TransparentColor = System.Drawing.Color.Transparent;
-            this.forwardImageList.Images.SetKeyName(0, "Light Forward.png");
-            this.forwardImageList.Images.SetKeyName(1, "Forward.png");
-            // 
-            // forwardButton
-            // 
-            this.forwardButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.forwardButton.BackColor = System.Drawing.Color.Transparent;
-            this.forwardButton.FlatAppearance.BorderSize = 0;
-            this.forwardButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.forwardButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.forwardButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.forwardButton.ImageIndex = 1;
-            this.forwardButton.ImageList = this.forwardImageList;
-            this.forwardButton.Location = new System.Drawing.Point(323, 145);
-            this.forwardButton.Name = "forwardButton";
-            this.forwardButton.Size = new System.Drawing.Size(58, 59);
-            this.forwardButton.TabIndex = 13;
-            this.forwardButton.UseVisualStyleBackColor = false;
+            this.tableLayoutPanel1.AutoSize = true;
+            this.tableLayoutPanel1.ColumnCount = 9;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.tableLayoutPanel1.Controls.Add(this.vlcControl, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.backwardButton, 3, 1);
+            this.tableLayoutPanel1.Controls.Add(this.playButton, 4, 1);
+            this.tableLayoutPanel1.Controls.Add(this.forwardButton, 5, 1);
+            this.tableLayoutPanel1.Controls.Add(this.progressBar1, 2, 0);
+            this.tableLayoutPanel1.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.AddColumns;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(8, 39);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 65F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(566, 139);
+            this.tableLayoutPanel1.TabIndex = 8;
+            // 
+            // vlcControl
+            // 
+            this.vlcControl.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.vlcControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.vlcControl.Location = new System.Drawing.Point(3, 77);
+            this.vlcControl.Name = "vlcControl";
+            this.vlcControl.Size = new System.Drawing.Size(56, 59);
+            this.vlcControl.Spu = -1;
+            this.vlcControl.TabIndex = 3;
+            this.vlcControl.Text = "vlcControl1";
+            this.vlcControl.Visible = false;
+            this.vlcControl.VlcLibDirectory = null;
+            this.vlcControl.VlcMediaplayerOptions = null;
+            this.vlcControl.VlcLibDirectoryNeeded += new System.EventHandler<Vlc.DotNet.Forms.VlcLibDirectoryNeededEventArgs>(this.OnVlcControlNeedLibDirectory);
+            this.vlcControl.EndReached += new System.EventHandler<Vlc.DotNet.Core.VlcMediaPlayerEndReachedEventArgs>(this.vlcControl_EndReached);
+            this.vlcControl.PositionChanged += new System.EventHandler<Vlc.DotNet.Core.VlcMediaPlayerPositionChangedEventArgs>(this.vlcControl_PositionChanged);
+            this.vlcControl.Stopped += new System.EventHandler<Vlc.DotNet.Core.VlcMediaPlayerStoppedEventArgs>(this.OnVlcControlStopped);
             // 
             // backwardButton
             // 
@@ -571,11 +197,21 @@
             this.backwardButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.backwardButton.ImageIndex = 1;
             this.backwardButton.ImageList = this.backImageList;
-            this.backwardButton.Location = new System.Drawing.Point(195, 145);
+            this.backwardButton.Location = new System.Drawing.Point(189, 77);
             this.backwardButton.Name = "backwardButton";
-            this.backwardButton.Size = new System.Drawing.Size(58, 59);
-            this.backwardButton.TabIndex = 11;
+            this.backwardButton.Size = new System.Drawing.Size(56, 59);
+            this.backwardButton.TabIndex = 5;
             this.backwardButton.UseVisualStyleBackColor = false;
+            this.backwardButton.Click += new System.EventHandler(this.backwardButton_Click);
+            this.backwardButton.MouseEnter += new System.EventHandler(this.backwardButton_MouseEnter);
+            this.backwardButton.MouseLeave += new System.EventHandler(this.backwardButton_MouseLeave);
+            // 
+            // backImageList
+            // 
+            this.backImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("backImageList.ImageStream")));
+            this.backImageList.TransparentColor = System.Drawing.Color.Transparent;
+            this.backImageList.Images.SetKeyName(0, "Light Backward.png");
+            this.backImageList.Images.SetKeyName(1, "Backward.png");
             // 
             // playButton
             // 
@@ -589,30 +225,408 @@
             this.playButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.playButton.ImageIndex = 1;
             this.playButton.ImageList = this.playImageList;
-            this.playButton.Location = new System.Drawing.Point(259, 145);
+            this.playButton.Location = new System.Drawing.Point(251, 77);
             this.playButton.Name = "playButton";
-            this.playButton.Size = new System.Drawing.Size(58, 59);
-            this.playButton.TabIndex = 12;
+            this.playButton.Size = new System.Drawing.Size(56, 59);
+            this.playButton.TabIndex = 6;
             this.playButton.UseVisualStyleBackColor = false;
+            this.playButton.Click += new System.EventHandler(this.playButton_Click);
+            this.playButton.MouseEnter += new System.EventHandler(this.playButton_MouseEnter);
+            this.playButton.MouseLeave += new System.EventHandler(this.playButton_MouseLeave);
+            // 
+            // playImageList
+            // 
+            this.playImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("playImageList.ImageStream")));
+            this.playImageList.TransparentColor = System.Drawing.Color.Transparent;
+            this.playImageList.Images.SetKeyName(0, "Light Play.png");
+            this.playImageList.Images.SetKeyName(1, "Play.png");
+            this.playImageList.Images.SetKeyName(2, "Light Pause.png");
+            this.playImageList.Images.SetKeyName(3, "Pause.png");
+            // 
+            // forwardButton
+            // 
+            this.forwardButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.forwardButton.BackColor = System.Drawing.Color.Transparent;
+            this.forwardButton.FlatAppearance.BorderSize = 0;
+            this.forwardButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.forwardButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.forwardButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.forwardButton.ImageIndex = 1;
+            this.forwardButton.ImageList = this.forwardImageList;
+            this.forwardButton.Location = new System.Drawing.Point(313, 77);
+            this.forwardButton.Name = "forwardButton";
+            this.forwardButton.Size = new System.Drawing.Size(56, 59);
+            this.forwardButton.TabIndex = 8;
+            this.forwardButton.UseVisualStyleBackColor = false;
+            this.forwardButton.Click += new System.EventHandler(this.forwardButton_Click);
+            this.forwardButton.MouseEnter += new System.EventHandler(this.forwardButton_MouseEnter);
+            this.forwardButton.MouseLeave += new System.EventHandler(this.forwardButton_MouseLeave);
+            // 
+            // forwardImageList
+            // 
+            this.forwardImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("forwardImageList.ImageStream")));
+            this.forwardImageList.TransparentColor = System.Drawing.Color.Transparent;
+            this.forwardImageList.Images.SetKeyName(0, "Light Forward.png");
+            this.forwardImageList.Images.SetKeyName(1, "Forward.png");
+            // 
+            // progressBar1
+            // 
+            this.tableLayoutPanel1.SetColumnSpan(this.progressBar1, 5);
+            this.progressBar1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.progressBar1.Location = new System.Drawing.Point(127, 48);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(304, 23);
+            this.progressBar1.TabIndex = 9;
+            // 
+            // VowelComboBox
+            // 
+            this.VowelComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.VowelComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.VowelComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.VowelComboBox.FormattingEnabled = true;
+            this.VowelComboBox.ItemHeight = 13;
+            this.VowelComboBox.Location = new System.Drawing.Point(117, 12);
+            this.VowelComboBox.Name = "VowelComboBox";
+            this.VowelComboBox.Size = new System.Drawing.Size(353, 21);
+            this.VowelComboBox.TabIndex = 1;
+            this.VowelComboBox.SelectedIndexChanged += new System.EventHandler(this.VowelComboBox_SelectedIndexChanged);
+            this.VowelComboBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.VowelComboBox_KeyPress);
+            this.VowelComboBox.Leave += new System.EventHandler(this.VowelComboBox_Leave);
+            // 
+            // optionsButton
+            // 
+            this.optionsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.optionsButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.optionsButton.Location = new System.Drawing.Point(365, 199);
+            this.optionsButton.Margin = new System.Windows.Forms.Padding(10);
+            this.optionsButton.Name = "optionsButton";
+            this.optionsButton.Size = new System.Drawing.Size(100, 25);
+            this.optionsButton.TabIndex = 6;
+            this.optionsButton.Text = "Less...";
+            this.optionsButton.UseVisualStyleBackColor = true;
+            this.optionsButton.Click += new System.EventHandler(this.optionsButton_Click);
+            // 
+            // backButton
+            // 
+            this.backButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.backButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.backButton.Location = new System.Drawing.Point(471, 199);
+            this.backButton.Margin = new System.Windows.Forms.Padding(10);
+            this.backButton.Name = "backButton";
+            this.backButton.Size = new System.Drawing.Size(100, 25);
+            this.backButton.TabIndex = 7;
+            this.backButton.Text = "Back";
+            this.backButton.UseVisualStyleBackColor = true;
+            this.backButton.Click += new System.EventHandler(this.backButton_Click);
+            // 
+            // resetButton
+            // 
+            this.resetButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.resetButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.resetButton.Location = new System.Drawing.Point(190, 247);
+            this.resetButton.Margin = new System.Windows.Forms.Padding(10);
+            this.resetButton.Name = "resetButton";
+            this.resetButton.Size = new System.Drawing.Size(250, 25);
+            this.resetButton.TabIndex = 47;
+            this.resetButton.Text = "Restore Defaults";
+            this.resetButton.UseVisualStyleBackColor = true;
+            this.resetButton.Click += new System.EventHandler(this.resetButton_Click);
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label1.Location = new System.Drawing.Point(2, 240);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(584, 2);
+            this.label1.TabIndex = 46;
+            // 
+            // playNextCheckBox
+            // 
+            this.playNextCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.playNextCheckBox.AutoSize = true;
+            this.playNextCheckBox.Location = new System.Drawing.Point(20, 116);
+            this.playNextCheckBox.Name = "playNextCheckBox";
+            this.playNextCheckBox.Size = new System.Drawing.Size(243, 17);
+            this.playNextCheckBox.TabIndex = 45;
+            this.playNextCheckBox.Text = "Play next sound when the current one finishes";
+            this.playNextCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // removeButton
+            // 
+            this.removeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.removeButton.Enabled = false;
+            this.removeButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.removeButton.Location = new System.Drawing.Point(472, 52);
+            this.removeButton.Margin = new System.Windows.Forms.Padding(0);
+            this.removeButton.Name = "removeButton";
+            this.removeButton.Size = new System.Drawing.Size(100, 25);
+            this.removeButton.TabIndex = 43;
+            this.removeButton.Text = "Remove";
+            this.removeButton.UseVisualStyleBackColor = true;
+            this.removeButton.Click += new System.EventHandler(this.removeButton_Click);
+            // 
+            // divider4
+            // 
+            this.divider4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.divider4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.divider4.Location = new System.Drawing.Point(-2, 134);
+            this.divider4.Name = "divider4";
+            this.divider4.Size = new System.Drawing.Size(584, 2);
+            this.divider4.TabIndex = 42;
+            // 
+            // divider3
+            // 
+            this.divider3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.divider3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.divider3.Location = new System.Drawing.Point(0, 111);
+            this.divider3.Name = "divider3";
+            this.divider3.Size = new System.Drawing.Size(584, 2);
+            this.divider3.TabIndex = 41;
+            // 
+            // divider2
+            // 
+            this.divider2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.divider2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.divider2.Location = new System.Drawing.Point(-2, -22);
+            this.divider2.Name = "divider2";
+            this.divider2.Size = new System.Drawing.Size(584, 2);
+            this.divider2.TabIndex = 40;
+            // 
+            // divider1
+            // 
+            this.divider1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.divider1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.divider1.Location = new System.Drawing.Point(0, 45);
+            this.divider1.Name = "divider1";
+            this.divider1.Size = new System.Drawing.Size(584, 2);
+            this.divider1.TabIndex = 39;
+            // 
+            // soundListAddAllButton
+            // 
+            this.soundListAddAllButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.soundListAddAllButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.soundListAddAllButton.Location = new System.Drawing.Point(266, 209);
+            this.soundListAddAllButton.Margin = new System.Windows.Forms.Padding(10);
+            this.soundListAddAllButton.Name = "soundListAddAllButton";
+            this.soundListAddAllButton.Size = new System.Drawing.Size(91, 25);
+            this.soundListAddAllButton.TabIndex = 21;
+            this.soundListAddAllButton.Text = "Add All";
+            this.soundListAddAllButton.UseVisualStyleBackColor = true;
+            this.soundListAddAllButton.Click += new System.EventHandler(this.soundListAddAllButton_Click);
+            // 
+            // soundListRemoveButton
+            // 
+            this.soundListRemoveButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.soundListRemoveButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.soundListRemoveButton.Location = new System.Drawing.Point(266, 181);
+            this.soundListRemoveButton.Margin = new System.Windows.Forms.Padding(10);
+            this.soundListRemoveButton.Name = "soundListRemoveButton";
+            this.soundListRemoveButton.Size = new System.Drawing.Size(91, 25);
+            this.soundListRemoveButton.TabIndex = 20;
+            this.soundListRemoveButton.Text = "Remove Selected";
+            this.soundListRemoveButton.UseVisualStyleBackColor = true;
+            this.soundListRemoveButton.Click += new System.EventHandler(this.soundListRemoveButton_Click);
+            // 
+            // soundListAddButton
+            // 
+            this.soundListAddButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.soundListAddButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.soundListAddButton.Location = new System.Drawing.Point(266, 152);
+            this.soundListAddButton.Margin = new System.Windows.Forms.Padding(10);
+            this.soundListAddButton.Name = "soundListAddButton";
+            this.soundListAddButton.Size = new System.Drawing.Size(91, 25);
+            this.soundListAddButton.TabIndex = 19;
+            this.soundListAddButton.Text = "Add Selected";
+            this.soundListAddButton.UseVisualStyleBackColor = true;
+            this.soundListAddButton.Click += new System.EventHandler(this.soundListAddButton_Click);
+            // 
+            // soundListAllListBox
+            // 
+            this.soundListAllListBox.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.soundListAllListBox.FormattingEnabled = true;
+            this.soundListAllListBox.Location = new System.Drawing.Point(367, 152);
+            this.soundListAllListBox.Name = "soundListAllListBox";
+            this.soundListAllListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
+            this.soundListAllListBox.Size = new System.Drawing.Size(206, 82);
+            this.soundListAllListBox.TabIndex = 18;
+            // 
+            // soundListCurrentListBox
+            // 
+            this.soundListCurrentListBox.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.soundListCurrentListBox.FormattingEnabled = true;
+            this.soundListCurrentListBox.Location = new System.Drawing.Point(20, 152);
+            this.soundListCurrentListBox.Name = "soundListCurrentListBox";
+            this.soundListCurrentListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
+            this.soundListCurrentListBox.Size = new System.Drawing.Size(233, 82);
+            this.soundListCurrentListBox.TabIndex = 17;
+            // 
+            // soundListAllLabel
+            // 
+            this.soundListAllLabel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.soundListAllLabel.AutoSize = true;
+            this.soundListAllLabel.Location = new System.Drawing.Point(364, 136);
+            this.soundListAllLabel.Name = "soundListAllLabel";
+            this.soundListAllLabel.Size = new System.Drawing.Size(58, 13);
+            this.soundListAllLabel.TabIndex = 16;
+            this.soundListAllLabel.Text = "All sounds:";
+            // 
+            // soundListCurrentLabel
+            // 
+            this.soundListCurrentLabel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.soundListCurrentLabel.AutoSize = true;
+            this.soundListCurrentLabel.Location = new System.Drawing.Point(20, 136);
+            this.soundListCurrentLabel.Name = "soundListCurrentLabel";
+            this.soundListCurrentLabel.Size = new System.Drawing.Size(99, 13);
+            this.soundListCurrentLabel.TabIndex = 15;
+            this.soundListCurrentLabel.Text = "Sounds to practice:";
+            // 
+            // addFromFileButton
+            // 
+            this.addFromFileButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.addFromFileButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.addFromFileButton.Location = new System.Drawing.Point(472, 82);
+            this.addFromFileButton.Margin = new System.Windows.Forms.Padding(0);
+            this.addFromFileButton.Name = "addFromFileButton";
+            this.addFromFileButton.Size = new System.Drawing.Size(100, 25);
+            this.addFromFileButton.TabIndex = 12;
+            this.addFromFileButton.Text = "Select from file";
+            this.addFromFileButton.UseVisualStyleBackColor = true;
+            this.addFromFileButton.Click += new System.EventHandler(this.addFromFileButton_Click);
+            // 
+            // recordButton
+            // 
+            this.recordButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.recordButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.recordButton.Location = new System.Drawing.Point(366, 82);
+            this.recordButton.Margin = new System.Windows.Forms.Padding(0);
+            this.recordButton.Name = "recordButton";
+            this.recordButton.Size = new System.Drawing.Size(100, 25);
+            this.recordButton.TabIndex = 11;
+            this.recordButton.Text = "Record";
+            this.recordButton.UseVisualStyleBackColor = true;
+            this.recordButton.Click += new System.EventHandler(this.recordButton_Click);
+            // 
+            // AudioInputDeviceButton
+            // 
+            this.AudioInputDeviceButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.AudioInputDeviceButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.AudioInputDeviceButton.Location = new System.Drawing.Point(306, 82);
+            this.AudioInputDeviceButton.Margin = new System.Windows.Forms.Padding(10);
+            this.AudioInputDeviceButton.Name = "AudioInputDeviceButton";
+            this.AudioInputDeviceButton.Size = new System.Drawing.Size(50, 25);
+            this.AudioInputDeviceButton.TabIndex = 10;
+            this.AudioInputDeviceButton.Text = "Refresh";
+            this.AudioInputDeviceButton.UseVisualStyleBackColor = true;
+            this.AudioInputDeviceButton.Click += new System.EventHandler(this.AudioInputDeviceButton_Click);
+            // 
+            // AudioInputDeviceComboBox
+            // 
+            this.AudioInputDeviceComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.AudioInputDeviceComboBox.FormattingEnabled = true;
+            this.AudioInputDeviceComboBox.Location = new System.Drawing.Point(20, 82);
+            this.AudioInputDeviceComboBox.Name = "AudioInputDeviceComboBox";
+            this.AudioInputDeviceComboBox.Size = new System.Drawing.Size(282, 21);
+            this.AudioInputDeviceComboBox.TabIndex = 9;
+            // 
+            // AudioInputDeviceLabel
+            // 
+            this.AudioInputDeviceLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.AudioInputDeviceLabel.AutoSize = true;
+            this.AudioInputDeviceLabel.Location = new System.Drawing.Point(18, 61);
+            this.AudioInputDeviceLabel.Name = "AudioInputDeviceLabel";
+            this.AudioInputDeviceLabel.Size = new System.Drawing.Size(81, 13);
+            this.AudioInputDeviceLabel.TabIndex = 8;
+            this.AudioInputDeviceLabel.Text = "Add your voice:";
+            // 
+            // repeatSpinner
+            // 
+            this.repeatSpinner.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.repeatSpinner.Location = new System.Drawing.Point(484, 20);
+            this.repeatSpinner.Name = "repeatSpinner";
+            this.repeatSpinner.Size = new System.Drawing.Size(87, 20);
+            this.repeatSpinner.TabIndex = 2;
+            this.repeatSpinner.Text = "domainUpDown1";
+            // 
+            // repeatLabel
+            // 
+            this.repeatLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.repeatLabel.AutoSize = true;
+            this.repeatLabel.Location = new System.Drawing.Point(18, 22);
+            this.repeatLabel.Name = "repeatLabel";
+            this.repeatLabel.Size = new System.Drawing.Size(42, 13);
+            this.repeatLabel.TabIndex = 1;
+            this.repeatLabel.Text = "Repeat";
+            // 
+            // recordingProgressBarLabel
+            // 
+            this.recordingProgressBarLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.recordingProgressBarLabel.BackColor = System.Drawing.SystemColors.Control;
+            this.recordingProgressBarLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.recordingProgressBarLabel.Location = new System.Drawing.Point(105, 53);
+            this.recordingProgressBarLabel.Name = "recordingProgressBarLabel";
+            this.recordingProgressBarLabel.Size = new System.Drawing.Size(361, 23);
+            this.recordingProgressBarLabel.TabIndex = 37;
+            this.recordingProgressBarLabel.Text = "No current file";
+            this.recordingProgressBarLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // repeatTrackBar
+            // 
+            this.repeatTrackBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.repeatTrackBar.LargeChange = 1;
+            this.repeatTrackBar.Location = new System.Drawing.Point(67, 13);
+            this.repeatTrackBar.Maximum = 11;
+            this.repeatTrackBar.Name = "repeatTrackBar";
+            this.repeatTrackBar.Size = new System.Drawing.Size(399, 45);
+            this.repeatTrackBar.TabIndex = 0;
+            this.repeatTrackBar.ValueChanged += new System.EventHandler(this.repeatTrackBar_ValueChanged);
+            // 
+            // recordingProgressBar
+            // 
+            this.recordingProgressBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.recordingProgressBar.Location = new System.Drawing.Point(105, 21);
+            this.recordingProgressBar.Name = "recordingProgressBar";
+            this.recordingProgressBar.Size = new System.Drawing.Size(361, 25);
+            this.recordingProgressBar.TabIndex = 44;
+            // 
+            // openFileDialog
+            // 
+            this.openFileDialog.Filter = "Wave files (*.wav)|*.wav|All Files(*.*)|*.*";
+            this.openFileDialog.InitialDirectory = "Environment.GetFolderPath(Environment.SpecialFolder.MyMusic, Environment.SpecialF" +
+    "olderOption.None)";
+            this.openFileDialog.RestoreDirectory = true;
+            this.openFileDialog.Title = "Select a Recording...";
             // 
             // AudioPlayer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(584, 562);
+            this.ClientSize = new System.Drawing.Size(584, 512);
             this.Controls.Add(this.VideoPlayerPanel);
+            this.MinimumSize = new System.Drawing.Size(375, 550);
             this.Name = "AudioPlayer";
-            this.Text = "MPai Sound";
+            this.Text = "MPAi Sound";
             this.VideoPlayerPanel.Panel1.ResumeLayout(false);
             this.VideoPlayerPanel.Panel2.ResumeLayout(false);
             this.VideoPlayerPanel.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.VideoPlayerPanel)).EndInit();
             this.VideoPlayerPanel.ResumeLayout(false);
-            this.tableLayoutPanel1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.tableLayoutPanel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.vlcAudioPlayer)).EndInit();
+            this.panel1.PerformLayout();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.vlcControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repeatTrackBar)).EndInit();
             this.ResumeLayout(false);
 
@@ -621,45 +635,44 @@
         #endregion
 
         private System.Windows.Forms.SplitContainer VideoPlayerPanel;
+        private System.Windows.Forms.ComboBox VowelComboBox;
         private System.Windows.Forms.Button backButton;
         private System.Windows.Forms.Button optionsButton;
-        private System.Windows.Forms.ComboBox VowelComboBox;
-        private System.Windows.Forms.Label divider4;
-        private System.Windows.Forms.Label divider3;
-        private System.Windows.Forms.Label divider2;
-        private System.Windows.Forms.Label divider1;
-        private System.Windows.Forms.Button addButton;
-        private System.Windows.Forms.Label recordingProgressBarLabel;
-        private System.Windows.Forms.RadioButton playNextRadioButtonNo;
+        private System.Windows.Forms.DomainUpDown repeatSpinner;
+        private System.Windows.Forms.Label repeatLabel;
+        private System.Windows.Forms.TrackBar repeatTrackBar;
+        private System.Windows.Forms.Button AudioInputDeviceButton;
+        private System.Windows.Forms.ComboBox AudioInputDeviceComboBox;
+        private System.Windows.Forms.Label AudioInputDeviceLabel;
         private System.Windows.Forms.Button soundListAddAllButton;
-        private System.Windows.Forms.RadioButton playNextRadioButtonYes;
         private System.Windows.Forms.Button soundListRemoveButton;
         private System.Windows.Forms.Button soundListAddButton;
         private System.Windows.Forms.ListBox soundListAllListBox;
         private System.Windows.Forms.ListBox soundListCurrentListBox;
         private System.Windows.Forms.Label soundListAllLabel;
         private System.Windows.Forms.Label soundListCurrentLabel;
-        private System.Windows.Forms.Label playNextLabel;
         private System.Windows.Forms.Button addFromFileButton;
         private System.Windows.Forms.Button recordButton;
-        private System.Windows.Forms.Button AudioInputDeviceButton;
-        private System.Windows.Forms.ComboBox AudioInputDeviceComboBox;
-        private System.Windows.Forms.Label AudioInputDeviceLabel;
-        private System.Windows.Forms.DomainUpDown repeatSpinner;
-        private System.Windows.Forms.Label repeatLabel;
-        private System.Windows.Forms.TrackBar repeatTrackBar;
+        private System.Windows.Forms.Label recordingProgressBarLabel;
+        private System.Windows.Forms.Label divider1;
+        private System.Windows.Forms.Label divider4;
+        private System.Windows.Forms.Label divider3;
+        private System.Windows.Forms.Label divider2;
+        private System.Windows.Forms.Button removeButton;
+        private System.Windows.Forms.OpenFileDialog openFileDialog;
+        private System.Windows.Forms.ProgressBar recordingProgressBar;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.ProgressBar audioProgressBar;
-        private Vlc.DotNet.Forms.VlcControl vlcAudioPlayer;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.ImageList stopImageList;
-        private System.Windows.Forms.ImageList playImageList;
-        private System.Windows.Forms.ImageList backImageList;
-        private System.Windows.Forms.ImageList forwardImageList;
+        private Vlc.DotNet.Forms.VlcControl vlcControl;
         private System.Windows.Forms.Button backwardButton;
-        private System.Windows.Forms.Button forwardButton;
         private System.Windows.Forms.Button playButton;
+        private System.Windows.Forms.Button forwardButton;
+        private System.Windows.Forms.ImageList backImageList;
+        private System.Windows.Forms.ImageList playImageList;
+        private System.Windows.Forms.ImageList forwardImageList;
+        private System.Windows.Forms.CheckBox playNextCheckBox;
+        private System.Windows.Forms.Button resetButton;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.Panel panel1;
     }
 }
