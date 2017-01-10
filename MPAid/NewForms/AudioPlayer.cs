@@ -601,8 +601,6 @@ namespace MPAid.NewForms
                     SingleFile sf = audios.PickNext();
                     filePath = Path.Combine(sf.Address, sf.Name);
 
-                    filePath = "C:\\Users\\useradmin\\Downloads\\ten_sec.mp3";
-
                     asyncPlay();
                     playButton.ImageIndex = 3;
                 }
