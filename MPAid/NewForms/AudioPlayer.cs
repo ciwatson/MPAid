@@ -63,9 +63,6 @@ namespace MPAid.NewForms
         private int repeatTimes = 0;
         private int repeatsRemaining = 0;
 
-        // Thread for the progress bar counter
-        Thread progressBarThread;
-
         /// <summary>
         /// Holds the height of the bottom panel between clicks of the options button.
         /// </summary>
@@ -110,7 +107,13 @@ namespace MPAid.NewForms
             if (this.progressBar1.InvokeRequired)
             {
                 SetProgressCallback d = new SetProgressCallback(SetProgress);
-               this.Invoke(d, new object[] { value });
+                try
+                {
+                    this.Invoke(d, new object[] { value });
+                } catch (ObjectDisposedException)
+                {
+                    //Do Nothing
+                }
             }
             else
             {
@@ -597,6 +600,8 @@ namespace MPAid.NewForms
                     if (audios == null || audios.Count == 0) throw new Exception("No audio recording!");
                     SingleFile sf = audios.PickNext();
                     filePath = Path.Combine(sf.Address, sf.Name);
+
+                    filePath = "C:\\Users\\useradmin\\Downloads\\ten_sec.mp3";
 
                     asyncPlay();
                     playButton.ImageIndex = 3;
