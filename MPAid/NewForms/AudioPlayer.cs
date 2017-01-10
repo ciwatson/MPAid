@@ -256,7 +256,7 @@ namespace MPAid.NewForms
         { 
             if (VideoPlayerPanel.Panel2Collapsed)
             {
-                Height += bottomHeight;
+                Height += bottomHeight - 3;
                 MinimumSize = new Size(MinimumSize.Width, 450);
                 optionsButton.Text = optionsLess;
                 VideoPlayerPanel.Panel2Collapsed = !VideoPlayerPanel.Panel2Collapsed;
@@ -265,7 +265,7 @@ namespace MPAid.NewForms
             {
                 VideoPlayerPanel.Panel2Collapsed = !VideoPlayerPanel.Panel2Collapsed;
                 MinimumSize = new Size(MinimumSize.Width, 225);
-                Height -= bottomHeight;
+                Height -= bottomHeight - 3;
                 optionsButton.Text = optionsMore;
             }
         }
