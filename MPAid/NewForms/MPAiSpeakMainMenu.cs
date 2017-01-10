@@ -15,6 +15,16 @@ namespace MPAid.NewForms
         public MPAiSpeakMainMenu()
         {
             InitializeComponent();
+
+            string name = UserManagement.getCurrentUser().getName();
+            if (name == null)
+            {
+                greetingLabel.Text = "Kia Ora, User!";
+            }
+            else
+            {
+                greetingLabel.Text = "Kia Ora, " + name + "!";
+            }
         }
     }
 }
