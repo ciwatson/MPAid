@@ -66,7 +66,7 @@ namespace MPAid.NewForms
         /// <summary>
         /// Holds the height of the bottom panel between clicks of the options button.
         /// </summary>
-        private int bottomHeight;
+        private readonly int bottomHeight;
 
         /// <summary>
         /// Wrapper propety for repeatTimes, also prevents too many repeats by updating repeatsRemaining.
@@ -215,15 +215,15 @@ namespace MPAid.NewForms
                 Height += bottomHeight;
                 MinimumSize = new Size(MinimumSize.Width, 625);
                 optionsButton.Text = optionsLess;
+                VideoPlayerPanel.Panel2Collapsed = !VideoPlayerPanel.Panel2Collapsed;
             }
             else
             {
+                VideoPlayerPanel.Panel2Collapsed = !VideoPlayerPanel.Panel2Collapsed;
                 MinimumSize = new Size(MinimumSize.Width, 300);
-                bottomHeight = VideoPlayerPanel.Height - VideoPlayerPanel.SplitterDistance;
                 Height -= bottomHeight;
                 optionsButton.Text = optionsMore;
             }
-            VideoPlayerPanel.Panel2Collapsed = !VideoPlayerPanel.Panel2Collapsed;
         }
 
         /// <summary>

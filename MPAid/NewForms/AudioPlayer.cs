@@ -253,8 +253,7 @@ namespace MPAid.NewForms
         /// Shows/hides the options panel, changes button text, and resizes the form as appropriate.
         /// </summary>
         private void toggleOptions()
-        {
-            
+        { 
             if (VideoPlayerPanel.Panel2Collapsed)
             {
                 Height += bottomHeight;
@@ -264,7 +263,6 @@ namespace MPAid.NewForms
             }
             else
             {
-
                 VideoPlayerPanel.Panel2Collapsed = !VideoPlayerPanel.Panel2Collapsed;
                 MinimumSize = new Size(MinimumSize.Width, 225);
                 Height -= bottomHeight;
