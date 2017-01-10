@@ -1,7 +1,9 @@
-﻿using System;
+﻿using MPAid.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -21,6 +23,12 @@ namespace MPAid.NewForms
         /// </summary>
         public LoginScreen()
         {
+            // Set up an initial connection to the database (which takes a noticable amount of time) while the splash screen is showing.
+            SplashScreen splashScreen = new SplashScreen();
+            splashScreen.Show();
+
+            InitializeDB();
+
             InitializeComponent();
             // Checks the "Remember Me"checkbox value
             bool autoLog = rememberCheckBox.Checked = Properties.Settings.Default.autoLoginSetting;
@@ -28,6 +36,29 @@ namespace MPAid.NewForms
             if (autoLog)
             { 
                 VisualizeUser(UserManagement.getCurrentUser());
+            }
+
+            splashScreen.Close();
+        }
+
+        /// <summary>
+        /// Connects this program to the maintained database, and loads all relevant files.
+        /// </summary>
+        private void InitializeDB()
+        {
+            try
+            {
+                MPAidModel DBModel = new MPAidModel();
+                DBModel.Database.Initialize(false);
+                DBModel.Recording.Load();
+                DBModel.Speaker.Load();
+                DBModel.Category.Load();
+                DBModel.Word.Load();
+                DBModel.SingleFile.Load();
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.Message, "Database linking error!");
             }
         }
 
@@ -188,8 +219,8 @@ namespace MPAid.NewForms
         {
             if (login())
             {
-                Hide(); // This form is the first one the program opens. When it is closed, the program terminates, so we must keep it alive for now.
                 new MPAiSpeakMainMenu().Show();
+                Hide(); // As this is the first form that gets loaded, it becomes the main form for the program. If it is closed, the program terminates.
             }
         }
 
@@ -198,8 +229,8 @@ namespace MPAid.NewForms
         {
             if (login())
             {
-                Hide(); // This form is the first one the program opens. When it is closed, the program terminates, so we must keep it alive for now.
                 new MPAiSoundMainMenu().Show();
+                Hide(); // As this is the first form that gets loaded, it becomes the main form for the program. If it is closed, the program terminates.
             }
         }
     }                                                    
