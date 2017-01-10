@@ -413,11 +413,10 @@ namespace MPAid.NewForms
         /// </summary>
         void generateReport()
         {
-            ReportLauncher rl = new ReportLauncher();
-            rl.GenerateHTML(scoreBoard);
-            if (File.Exists(rl.MPAiSpeakScoreReportHTMLAddress))
+        ReportLauncher.GenerateMPAiSpeakScoreHTML(scoreBoard);
+            if (File.Exists(ReportLauncher.MPAiSpeakScoreReportHTMLAddress))
             {
-                IoController.ShowInBrowser(rl.MPAiSpeakScoreReportHTMLAddress);
+                ReportLauncher.ShowMPAiSpeakScoreReport();
             }
         }
 

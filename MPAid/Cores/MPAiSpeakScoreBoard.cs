@@ -12,6 +12,12 @@ namespace MPAid.Cores
     /// </summary>
     class MPAiSpeakScoreBoardItem
     {
+        public MPAiSpeakScoreBoardItem(string expectingText, string recognisedText, string analysis)
+        {
+            this.expectingText = expectingText;
+            this.recognisedText = recognisedText;
+            this.analysis = analysis;
+        }
         /// <summary>
         /// Calls the similarity algorithm to calculate the difference between the two arguments.
         /// </summary>
@@ -28,7 +34,6 @@ namespace MPAid.Cores
         public string RecognisedText
         {
             get { return recognisedText; }
-            set { recognisedText = value; }
         }
         /// <summary>
         /// The text the user input as what they were trying to say.
@@ -37,7 +42,6 @@ namespace MPAid.Cores
         public string ExpectingText
         {
             get { return expectingText; }
-            set { expectingText = value; }
         }
         /// <summary>
         /// The text describing what the user got right and wrong.
@@ -46,7 +50,6 @@ namespace MPAid.Cores
         public string Analysis
         {
             get { return analysis; }
-            set { analysis = value; }
         }
     }
     /// <summary>
@@ -57,7 +60,12 @@ namespace MPAid.Cores
         /// <summary>
         /// A list of all of the scoreboard items on the scoreboard.
         /// </summary>     
-        public List<MPAiSpeakScoreBoardItem> Content = new List<MPAiSpeakScoreBoardItem>();
+        private List<MPAiSpeakScoreBoardItem> content = new List<MPAiSpeakScoreBoardItem>();
+
+        public List<MPAiSpeakScoreBoardItem> Content
+        {
+            get { return content; }
+        }
         /// <summary>
         /// Calculates the overall correctness of each entry, by adding each entry's correctness and dividing by the number of entries.
         /// </summary>
@@ -79,6 +87,11 @@ namespace MPAid.Cores
                 }
                 return sum;
             }
+        }
+
+        public void AddScoreBoardItem(string expectedText, string recognisedText, string analysis)
+        {
+            Content.Add(new MPAiSpeakScoreBoardItem(expectedText, recognisedText, analysis));
         }
     }
     /// <summary>

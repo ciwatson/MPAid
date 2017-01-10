@@ -48,7 +48,7 @@ namespace MPAid.Cores
             this.overallCorrectnessPercentage = overallCorrectnessPercentage;
         }
 
-        public void addScoreBoardItem(string vowel, float correctnessPercentage)
+        public void AddScoreBoardItem(string vowel, float correctnessPercentage)
         {
             Content.Add(new MPAiSoundScoreBoardItem(vowel, correctnessPercentage));
         }

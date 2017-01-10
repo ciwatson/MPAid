@@ -66,7 +66,7 @@ namespace MPAid.Cores
         /// <summary>
         /// Generates the CSS File for the report, if it does not already exist.
         /// </summary>
-        public static void GenerateScoreboardCSS()
+        private static void generateScoreboardCSS()
         {
             if (!File.Exists(ScoreboardReportCSSAddress))
             {
@@ -224,6 +224,10 @@ namespace MPAid.Cores
         /// <param name="scoreboard">The scoreboard to generate an HTML report of.</param>
         public static void GenerateMPAiSpeakScoreHTML(MPAiSpeakScoreBoard scoreboard)
         {
+            if(!File.Exists(ScoreboardReportCSSAddress))
+            {
+                generateScoreboardCSS();
+            }
             using (FileStream fs = new FileStream(MPAiSpeakScoreReportHTMLAddress, FileMode.Create))
             {
                 using (StreamWriter sw = new StreamWriter(fs))
@@ -312,6 +316,10 @@ namespace MPAid.Cores
 
         public static void GenerateMPAiSoundScoreHTML(MPAiSoundScoreBoard scoreboard)
         {
+            if (!File.Exists(ScoreboardReportCSSAddress))
+            {
+                generateScoreboardCSS();
+            }
             using (FileStream fs = new FileStream(MPAiSpeakScoreReportHTMLAddress, FileMode.Create))
             {
                 using (StreamWriter sw = new StreamWriter(fs))
@@ -332,7 +340,7 @@ namespace MPAid.Cores
                         htw.AddAttribute(HtmlTextWriterAttribute.Class, "table-title");
                         htw.RenderBeginTag(HtmlTextWriterTag.Div);
                         htw.RenderBeginTag(HtmlTextWriterTag.H3);
-                        htw.Write("MPAi Speak Pronunciation Scoreboard");
+                        htw.Write("MPAi Sound Pronunciation Scoreboard");
                         htw.RenderEndTag();
                         htw.RenderEndTag();
                         // Header row of the table

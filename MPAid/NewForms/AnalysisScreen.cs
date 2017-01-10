@@ -27,14 +27,11 @@ namespace MPAid.NewForms
 
         private void scoreReportButton_Click(object sender, EventArgs e)
         {
-            ReportLauncher rl = new ReportLauncher();
-            rl.GenerateHTML(scoreBoard);
+            ReportLauncher.GenerateMPAiSpeakScoreHTML(scoreBoard);
 
-            if (File.Exists(rl.MPAiSpeakScoreReportHTMLAddress))
+            if (File.Exists(ReportLauncher.MPAiSpeakScoreReportHTMLAddress))
             {
-                Process browser = new Process();
-                browser.StartInfo.FileName = rl.MPAiSpeakScoreReportHTMLAddress;
-                browser.Start();
+                ReportLauncher.ShowMPAiSpeakScoreReport();
             }
             else
             {
