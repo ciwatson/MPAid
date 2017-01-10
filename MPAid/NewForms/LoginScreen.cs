@@ -32,6 +32,7 @@ namespace MPAid.NewForms
 
             InitializeDB();
 
+            // Initialise the LoginScreen.
             InitializeComponent();
             // Checks the "Remember Me"checkbox value
             bool autoLog = rememberCheckBox.Checked = Properties.Settings.Default.autoLoginSetting;
