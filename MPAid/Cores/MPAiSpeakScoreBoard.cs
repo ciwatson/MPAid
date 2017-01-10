@@ -10,24 +10,8 @@ namespace MPAid.Cores
     /// <summary>
     /// Class representing each item on the scoreboard.
     /// </summary>
-    class ScoreBoardItem
+    class MPAiSpeakScoreBoardItem
     {
-        /// <summary>
-        /// Default constructor. Does nothing.
-        /// </summary>
-        public ScoreBoardItem(){}
-        /// <summary>
-        /// Constructor that takes 2 arguments. Only calls the one that does nothing.
-        /// </summary>
-        public ScoreBoardItem(string recognisedText, string expectingText)
-            : this()
-        {}
-        /// <summary>
-        /// Constructor that takes 1 argument. Only calls the one that only calls the one that does nothing.
-        /// </summary>
-        public ScoreBoardItem(string recognisedText)
-            : this(recognisedText, recognisedText)
-        {}
         /// <summary>
         /// Calls the similarity algorithm to calculate the difference between the two arguments.
         /// </summary>
@@ -68,16 +52,16 @@ namespace MPAid.Cores
     /// <summary>
     /// Class representing the scoreboard as a whole.
     /// </summary>
-    class ScoreBoard
+    class MPAiSpeakScoreBoard
     {
         /// <summary>
         /// A list of all of the scoreboard items on the scoreboard.
         /// </summary>     
-        public List<ScoreBoardItem> Content = new List<ScoreBoardItem>();
+        public List<MPAiSpeakScoreBoardItem> Content = new List<MPAiSpeakScoreBoardItem>();
         /// <summary>
         /// Calculates the overall correctness of each entry, by adding each entry's correctness and dividing by the number of entries.
         /// </summary>
-        public float CalculateCorrectness
+        public float OverallCorrectnessPercentage
         {
             get { return CalculateScore / Content.Count;}
         }
@@ -89,7 +73,7 @@ namespace MPAid.Cores
             get
             {
                 float sum = 0;
-                foreach(ScoreBoardItem item in Content)
+                foreach(MPAiSpeakScoreBoardItem item in Content)
                 {
                     sum += item.Similarity(SimilarityAlgorithm.DamereauLevensheinDistanceAlgorithm);
                 }

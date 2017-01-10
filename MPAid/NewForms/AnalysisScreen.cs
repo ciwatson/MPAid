@@ -15,27 +15,25 @@ namespace MPAid.NewForms
 {
     public partial class AnalysisScreen : Form
     {
-        private ScoreBoard scoreBoard;
+        private MPAiSpeakScoreBoard scoreBoard;
 
-        AnalysisScreen(string recordingFileName, string targetWord, string recognisedWord, ScoreBoard scoreBoard)
+        AnalysisScreen(float pronunciationCorrectness, string description)
         {
             InitializeComponent();
 
-            this.scoreBoard = scoreBoard;
-
-            descriptionBox.Text = PronuciationAdvisor.Advise(recordingFileName, targetWord, recognisedWord);
-            correctnessLabel.Text = string.Format(@"Pronunciation is {0:0.0%} Correct", scoreBoard.CalculateCorrectness);
+            correctnessLabel.Text = string.Format(@"Pronunciation is {0:0.0%} Correct", pronunciationCorrectness);
+            descriptionBox.Text = description;
         }
 
         private void scoreReportButton_Click(object sender, EventArgs e)
         {
-            ReportLaucher rl = new ReportLaucher();
+            ReportLauncher rl = new ReportLauncher();
             rl.GenerateHTML(scoreBoard);
 
-            if (File.Exists(rl.ScoreboardReportHTMLAddress))
+            if (File.Exists(rl.MPAiSpeakScoreReportHTMLAddress))
             {
                 Process browser = new Process();
-                browser.StartInfo.FileName = rl.ScoreboardReportHTMLAddress;
+                browser.StartInfo.FileName = rl.MPAiSpeakScoreReportHTMLAddress;
                 browser.Start();
             }
             else

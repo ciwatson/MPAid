@@ -16,7 +16,7 @@ namespace MPAid.Forms.MSGBox
     /// </summary>
     partial class RecognitionResultMSGBox : Form
     {
-        public ScoreBoardItem scoreBoardItem = new ScoreBoardItem();
+        public MPAiSpeakScoreBoardItem scoreBoardItem = new MPAiSpeakScoreBoardItem();
         /// <summary>
         /// Default constructor.
         /// </summary>

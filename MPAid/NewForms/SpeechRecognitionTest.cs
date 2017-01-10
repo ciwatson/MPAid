@@ -52,7 +52,7 @@ namespace MPAid.NewForms
         private WaveFileReader reader;
 
         private HTKEngine RecEngine = new HTKEngine();
-        private ScoreBoard scoreBoard = new ScoreBoard();
+        private MPAiSpeakScoreBoard scoreBoard = new MPAiSpeakScoreBoard();
         private NAudioPlayer audioPlayer = new NAudioPlayer();
 
         private int bottomHeight;
@@ -413,11 +413,11 @@ namespace MPAid.NewForms
         /// </summary>
         void generateReport()
         {
-            ReportLaucher rl = new ReportLaucher();
+            ReportLauncher rl = new ReportLauncher();
             rl.GenerateHTML(scoreBoard);
-            if (File.Exists(rl.ScoreboardReportHTMLAddress))
+            if (File.Exists(rl.MPAiSpeakScoreReportHTMLAddress))
             {
-                IoController.ShowInBrowser(rl.ScoreboardReportHTMLAddress);
+                IoController.ShowInBrowser(rl.MPAiSpeakScoreReportHTMLAddress);
             }
         }
 
