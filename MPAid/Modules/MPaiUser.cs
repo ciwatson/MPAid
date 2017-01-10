@@ -78,16 +78,17 @@ namespace MPAid
         }
 
         /// <summary>
-        /// Constructor for the MPAiUser class.
+        /// Constructor for the MPAiUser class, with a default value for voice type.
         /// </summary>
         /// <param name="name">The new user's username</param>
         /// <param name="code">The new user's password</param>
-        public MPAiUser(string name, string code)
+        public MPAiUser(string name, string code) :
+            this(name, code, VoiceType.MASCULINE_HERITAGE)
         {
-            userName = name;
-            passWord = code;
-            voiceType = null;
+            // As Peter Keegan's recordings are the only one we have for testing, users default to MASCULINE_HERITAGE.
         }
+
+
         /// <summary>
         /// Constructor for the MPAiUser class.
         /// </summary>
@@ -99,6 +100,7 @@ namespace MPAid
             passWord = code;
             this.voiceType = voiceType;
         }
+
         /// <summary>
         /// Changes the voice type to feminine.
         /// </summary>
@@ -114,6 +116,7 @@ namespace MPAid
                     break;
             }
         }
+
         /// <summary>
         /// Changes the voice type to Masculine.
         /// </summary>
@@ -129,6 +132,7 @@ namespace MPAid
                     break;
             }
         }
+
         /// <summary>
         /// Changes the voice type to Heritage.
         /// </summary>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MPAid.Models;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -13,14 +14,13 @@ namespace MPAid
     /// </summary>
     public static class UserManagement
     {
-        private static MPAiUser currentUser = null;
+        private static MPAiUser currentUser = null; // Make sure that current user has the correct voice type when you assign to it.
         private static string userDirRoot = IoController.GetAppDataDir() + Path.DirectorySeparatorChar;
-        private static string fileName = "AppSettings.dat";    // At present, this does not exist. 
-        //Deprecated: Optimisation feature, commit logs suggest that it may cause errors, all references to it have been commented out.
-        //private bool unchanged = true;
+        private static string fileName = "AppSettings.dat";
         private static readonly string adminStr = "admin";
 
         private static List<MPAiUser> allUsers;
+
         /// <summary>
         /// Constructor for the UserManagement class, restores current user's settings, all users, and creates an admin user if one doesn't already exist.
         /// </summary>
@@ -32,6 +32,7 @@ namespace MPAid
             if (allUsers.Count == 0)            
                 allUsers.Add(new MPAiUser(adminStr, adminStr));
         }
+
         /// <summary>
         /// Sets the root directory for the user.
         /// </summary>
@@ -68,8 +69,6 @@ namespace MPAid
         /// <returns>True if the creation was successful, false if not.</returns>
         public static bool CreateNewUser(string newUserName, string newCode)
         {
-            //unchanged = false;
-
             IEnumerable<MPAiUser> searchUser =
                 from user in allUsers
                 where user.getName() == newUserName.ToLower()
@@ -85,19 +84,34 @@ namespace MPAid
                 return false;
             }
         }
+
         /// <summary>
         /// Checks whether the input user already exists in the system.
         /// </summary>
-        /// <param name="candidate">The user to check, as an MAPiUser.</param>
+        /// <param name="candidate">The user to check, as an MPAiUser.</param>
         /// <returns>True if the user is in the system, false if not.</returns>
         public static bool ContainsUser(MPAiUser candidate)
         {
-            foreach (MPAiUser item in allUsers)
-                if (item.getName() == candidate.getName())
-                    return true;
+            return ContainsUser(candidate.getName());
+        }
 
+        /// <summary>
+        /// Checks whether the input user already exists in the system.
+        /// </summary>
+        /// <param name="candidate">The username to check, as a string.</param>
+        /// <returns>True if the user is in the system, false if not.</returns>
+        public static bool ContainsUser(string Username)
+        {
+            foreach (MPAiUser item in allUsers)
+            {
+                if (item.getName() == Username)
+                {
+                    return true;
+                }
+            }
             return false;
         }
+
         /// <summary>
         /// Checks if a user already exists with the same username as the user input, and adds the user to the database if not.
         /// </summary>
@@ -105,8 +119,6 @@ namespace MPAid
         /// <returns>True if the creation was successful, false if not.</returns>
         public static bool CreateNewUser(MPAiUser candidate)
         {
-            //unchanged = false;
-
             if (allUsers.Contains(candidate))
                 return false;
             else
@@ -115,6 +127,7 @@ namespace MPAid
                 return true;
             }
         }
+
         /// <summary>
         /// Gets the current user of the system.
         /// </summary>
@@ -126,6 +139,7 @@ namespace MPAid
             else
                 return null;
         }
+
         /// <summary>
         /// Checks if the current user is the administrator.
         /// </summary>
@@ -137,21 +151,25 @@ namespace MPAid
 
         /// <summary>
         /// Checks if the input user is a valid, existing user, with a correct password, and sets them to the current user. 
+        /// Also adds the stored voicetype to the user object that is authenticated.
         /// </summary>
-        /// <param name="tUser">The user to authenticate, as an MPAiUser object.</param>
+        /// <param name="tUser">The user to authenticate, as an MPAiUser object. This is passed by reference.</param>
         /// <returns>True if the user exists already, false otherwise.</returns>
-        public static bool AuthenticateUser(MPAiUser tUser)
+        public static bool AuthenticateUser(ref MPAiUser tUser)
         {
-
             if (allUsers.Contains(tUser)
-                    && getUser(tUser.getName()).codeCorrect(tUser.getCode())){
-                currentUser = tUser;
+                    && getUser(tUser.getName()).codeCorrect(tUser.getCode()))
+            {
+                tUser.Voice = getUser(tUser.getName()).Voice;   // Set the user's voice to the one stored, if they exist.
+                currentUser = tUser;    // Set the user as the current user.
                 return true;
-            }else
+            }
+            else
             {
                 return false;
             }
         }
+
         /// <summary>
         /// Changes the current user's password.
         /// </summary>
@@ -160,9 +178,10 @@ namespace MPAid
         public static void ChangeUserCode(string userName, string newCode)
         {
             allUsers.Remove(currentUser);
-            currentUser = new MPAiUser(userName, newCode);
+            currentUser = new MPAiUser(userName, newCode, currentUser.Voice);
             allUsers.Add(currentUser);
         }
+
         /// <summary>
         /// Removes the specified user from the system.
         /// </summary>
@@ -171,6 +190,7 @@ namespace MPAid
         {
             allUsers.Remove(userToRemove);
         }
+
         /// <summary>
         /// Returns a string representing the settings file on the user's computer.
         /// </summary>
@@ -179,6 +199,7 @@ namespace MPAid
         {
             return (userDirRoot + fileName);
         }
+
         /// <summary>
         /// Opens the settings file and populates the allUsers field with the data found there.
         /// Also restores the last user to access the system to current user status.
@@ -196,14 +217,15 @@ namespace MPAid
                             int n = reader.ReadInt32();
                             for (int i = 0; i < n; i++)
                             {
-                                allUsers.Add(new MPAiUser(reader.ReadString(), reader.ReadString()));
+                                allUsers.Add(new MPAiUser(reader.ReadString(), reader.ReadString(), VoiceTypeConverter.getVoiceTypeFromString(reader.ReadString())));
                             }
                             // restore the last used user, if there was one.
                             string name = reader.ReadString();
                             string code = reader.ReadString();
-                            if (!String.IsNullOrEmpty(name) && !String.IsNullOrEmpty(code))
+                            VoiceType? type = VoiceTypeConverter.getVoiceTypeFromString(reader.ReadString());
+                            if (!string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(code))
                             {
-                                currentUser = new MPAiUser(name, code);
+                                currentUser = new MPAiUser(name, code, type);
                             }
                         }                         
                     }
@@ -214,14 +236,12 @@ namespace MPAid
                 Console.WriteLine(exp);
             }
         }
+
         /// <summary>
         /// Writes all users to the settings file, and creates it if it does not already exist.
         /// </summary>
         public static void WriteSettings()
         {
-            //if (unchanged)
-            //    return;
-
             Int32 n = allUsers.Count;
 
             try
@@ -237,16 +257,19 @@ namespace MPAid
                             {
                                 writer.Write(user.getName());
                                 writer.Write(user.getCode());
+                                writer.Write(VoiceTypeConverter.getStringFromVoiceType(user.Voice));
                             }         
                             if (currentUser == null)    // If there is a current user, store it.
                             {
-                                writer.Write(String.Empty);
-                                writer.Write(String.Empty);
+                                writer.Write(string.Empty);
+                                writer.Write(string.Empty);
+                                writer.Write(string.Empty);
                             }
                             else
                             { 
                                 writer.Write(currentUser.getName());
                                 writer.Write(currentUser.getCode());
+                                writer.Write(VoiceTypeConverter.getStringFromVoiceType(currentUser.Voice));
                             }                                                                   
                         }
                     }
@@ -257,6 +280,5 @@ namespace MPAid
                 Console.WriteLine(exp);
             }
         }
-
     }
 }
