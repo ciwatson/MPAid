@@ -14,7 +14,6 @@ namespace MPAid
     /// </summary>
     public partial class LoginWindow : Form
     {
-
         /// <summary>
         /// Default constructor.
         /// </summary>
@@ -74,7 +73,7 @@ namespace MPAid
         public void PerformLogin()
         {
             MPAiUser tUser = new MPAiUser(userNameBox.Text, codeBox.Text);
-            if (UserManagement.AuthenticateUser(tUser))
+            if (UserManagement.AuthenticateUser(ref tUser))
             {
                 Hide(); // This form is the first one the program opens. When it is closed, the program terminates, so we must keep it alive for now.
                 MainForm mainWindow = new MainForm();
@@ -96,7 +95,6 @@ namespace MPAid
                     userNameBox.Clear();
                     codeBox.Clear();
                 }
-
             }
         }
 

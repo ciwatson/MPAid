@@ -110,5 +110,34 @@ namespace MPAid.NewForms
             watermarkPassword(false);
             passwordTextBox.Text = user.getCode();
         }
+
+        private void loginButton_Click(object sender, EventArgs e)
+        {
+            MPAiUser tUser = new MPAiUser(usernameTextBox.Text, passwordTextBox.Text);
+            if (UserManagement.AuthenticateUser(ref tUser))
+            {
+                Hide(); // This form is the first one the program opens. When it is closed, the program terminates, so we must keep it alive for now.
+                MessageBox.Show("This is the next form, " + UserManagement.getCurrentUser().getName() + UserManagement.getCurrentUser().getCode() + Models.VoiceTypeConverter.getStringFromVoiceType(UserManagement.getCurrentUser().Voice));// Load next form here.
+            }
+            else
+            {
+                if (UserManagement.ContainsUser(tUser))
+                {
+                    MessageBox.Show("Password is incorrect!",
+                    "Oops", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    passwordTextBox.Clear();
+                    watermarkPassword(true);
+                }
+                else
+                {
+                    MessageBox.Show("User does not exist!",
+                    "Oops", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    usernameTextBox.Clear();
+                    watermarkUsername(true);
+                    passwordTextBox.Clear();
+                    watermarkPassword(true);
+                }
+            }
+        }
     }
 }
