@@ -32,10 +32,10 @@ namespace MPAid.NewForms
             ReportLaucher rl = new ReportLaucher();
             rl.GenerateHTML(scoreBoard);
 
-            if (File.Exists(rl.ReportAddr))
+            if (File.Exists(rl.ScoreboardReportHTMLAddress))
             {
                 Process browser = new Process();
-                browser.StartInfo.FileName = rl.ReportAddr;
+                browser.StartInfo.FileName = rl.ScoreboardReportHTMLAddress;
                 browser.Start();
             }
             else

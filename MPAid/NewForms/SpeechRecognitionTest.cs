@@ -415,9 +415,9 @@ namespace MPAid.NewForms
         {
             ReportLaucher rl = new ReportLaucher();
             rl.GenerateHTML(scoreBoard);
-            if (File.Exists(rl.ReportAddr))
+            if (File.Exists(rl.ScoreboardReportHTMLAddress))
             {
-                IoController.ShowInBrowser(rl.ReportAddr);
+                IoController.ShowInBrowser(rl.ScoreboardReportHTMLAddress);
             }
         }
 

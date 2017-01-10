@@ -318,6 +318,7 @@ namespace MPAid.UserControls
                         target = string.Empty;
                     }
                     Dictionary<string, string> result = RecEngine.Recognize(Path.Combine(outputFolder, (string)RECListBox.SelectedItem)).ToDictionary(x => x.Key, x => x.Value);
+                    result.Add("hahoi","hoihoi");
                     if(result.Count > 0)
                     {
                         NAudioPlayer audioplayer = new NAudioPlayer();
@@ -349,16 +350,17 @@ namespace MPAid.UserControls
         private void showReportButton_Click(object sender, EventArgs e)
         {
             ReportLaucher rl = new ReportLaucher();
+            rl.GenerateScoreboardCSS();
             rl.GenerateHTML(scoreBoard);
 
             // Deprecated: this system no longer has an hConfig object.
             //String reportPath = hConfig.GetHtmlFullPath();
 
             // Show the HTML file in system browser
-            if (File.Exists(rl.ReportAddr))
+            if (File.Exists(rl.ScoreboardReportHTMLAddress))
             {
                 Process browser = new Process();
-                browser.StartInfo.FileName = rl.ReportAddr;
+                browser.StartInfo.FileName = rl.ScoreboardReportHTMLAddress;
                 browser.Start();
             }
             else
