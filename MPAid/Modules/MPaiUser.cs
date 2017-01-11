@@ -87,10 +87,6 @@ namespace MPAid
         {
             get
             {
-                if(speakScoreboard == null)
-                {
-                    loadScoreBoard();
-                }
                 return speakScoreboard;
             }
         }
@@ -123,15 +119,12 @@ namespace MPAid
 
         private void loadScoreBoard()
         {
+            MessageBox.Show("loadScoreBoard in user " + userName + " called");
             if(File.Exists(MPAiSpeakScoreboardLoader.SpeakScoreboardFileAddress(this)))
             {
-                
                 speakScoreboard = MPAiSpeakScoreboardLoader.LoadScoreboard(this);
-                MPAiSpeakScoreboardLoader.SaveScoreboardTEST(speakScoreboard);
-                MessageBox.Show("Loading " + MPAiSpeakScoreboardLoader.SpeakScoreboardFileAddress(this) + " from file...");
             } else
             {
-                MessageBox.Show("Scoreboard file does not exist...");
                 speakScoreboard = new MPAiSpeakScoreBoard(this);
             }
             

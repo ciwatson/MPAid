@@ -25,13 +25,6 @@ namespace MPAid.Cores.Scoreboard
 
         }
 
-        private static string SpeakScoreboardFileAddressTEST(MPAiUser user)
-        {
-            ensureUserDirectoryExists(user);
-            return Path.Combine(Properties.Settings.Default.ReportFolder, user.getName(), "MPAiSpeakScoreboardTEST.txt");
-
-        }
-
         public static void SaveScoreboard(MPAiSpeakScoreBoard scoreboard)
         {
             if (File.Exists(SpeakScoreboardFileAddress(scoreboard.User)))
@@ -71,45 +64,6 @@ namespace MPAid.Cores.Scoreboard
             File.SetAttributes(SpeakScoreboardFileAddress(scoreboard.User), File.GetAttributes(SpeakScoreboardFileAddress(scoreboard.User)) | FileAttributes.Hidden);
         }
 
-        public static void SaveScoreboardTEST(MPAiSpeakScoreBoard scoreboard)
-        {
-            if (File.Exists(SpeakScoreboardFileAddressTEST(scoreboard.User)))
-            {
-                File.Delete(SpeakScoreboardFileAddressTEST(scoreboard.User));
-            }
-            using (FileStream fs = new FileStream(SpeakScoreboardFileAddressTEST(scoreboard.User), FileMode.Create))
-            {
-                using (StreamWriter sw = new StreamWriter(fs))
-                {
-                    sw.WriteLine("<Scoreboard>");
-                    foreach (MPAiSpeakScoreBoardSession session in scoreboard.Sessions)
-                    {
-                        sw.WriteLine("<Session>");
-                        sw.WriteLine("<Date>");
-                        sw.WriteLine(session.DateAndTime);
-                        sw.WriteLine("</Date>");
-                        sw.WriteLine("<Content>");
-                        foreach (MPAiSpeakScoreBoardItem item in session.Content)
-                        {
-                            sw.WriteLine("<Expected>");
-                            sw.WriteLine(item.ExpectedText);
-                            sw.WriteLine("</Expected>");
-                            sw.WriteLine("<Recognised>");
-                            sw.WriteLine(item.RecognisedText);
-                            sw.WriteLine("</Recognised>");
-                            sw.WriteLine("<Analysis>");
-                            sw.WriteLine(item.Analysis);
-                            sw.WriteLine("</Analysis>");
-                        }
-                        sw.WriteLine("</Content>");
-                        sw.WriteLine("</Session>");
-                    }
-                    sw.WriteLine("</Scoreboard>");
-                }
-            }
-            File.SetAttributes(SpeakScoreboardFileAddressTEST(scoreboard.User), File.GetAttributes(SpeakScoreboardFileAddressTEST(scoreboard.User)) | FileAttributes.Hidden);
-        }
-
         public static MPAiSpeakScoreBoard LoadScoreboard(MPAiUser user)
         {
             MPAiSpeakScoreBoard scoreboard = new MPAiSpeakScoreBoard(user);
@@ -137,10 +91,10 @@ namespace MPAid.Cores.Scoreboard
                                         line = sr.ReadLine();
                                         if (line.Equals("<Date>"))
                                         {
+                                            line = sr.ReadLine();
                                             while (!line.Equals("</Date>"))
                                             {
                                                 dateAndTime = new DateTime();
-                                                line = sr.ReadLine();
                                                 if (!DateTime.TryParse(line, out dateAndTime))
                                                 {
                                                     throw new FileLoadException("Date could not be read");
@@ -153,13 +107,13 @@ namespace MPAid.Cores.Scoreboard
                                         List<MPAiSpeakScoreBoardItem> content = new List<MPAiSpeakScoreBoardItem>();
                                         if (line.Equals("<Content>"))
                                         {
+                                            line = sr.ReadLine();
                                             while (!line.Equals("</Content>"))
                                             {
                                                 string expected = "";
                                                 string recognised = "";
                                                 string analysis = "";
 
-                                                line = sr.ReadLine();
                                                 if (line.Equals("<Expected>"))
                                                 {
                                                     bool firstline = true;

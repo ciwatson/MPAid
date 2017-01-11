@@ -32,7 +32,7 @@ namespace MPAid.UserControls
         private string tempFilename;
         private string tempFolder;
         private HTKEngine RecEngine = new HTKEngine();
-        private MPAiSpeakScoreBoardSession session;
+        private MPAiSpeakScoreBoardSession session = UserManagement.getCurrentUser().SpeakScoreboard.NewScoreBoardSession();
         private NAudioPlayer audioPlayer = new NAudioPlayer();
         public NAudioPlayer AudioPlayer
         {
@@ -327,7 +327,6 @@ namespace MPAid.UserControls
                         RecognitionResultMSGBox recMSGBox = new RecognitionResultMSGBox();
                         if (recMSGBox.ShowDialog(result.First().Key, target, result.First().Value) == DialogResult.OK)
                         {
-                            session = UserManagement.getCurrentUser().SpeakScoreboard.NewScoreBoardSession();
                             session.Content.Add(recMSGBox.scoreBoardItem);
                             correctnessLabel.Text = string.Format(@"Correctness: {0:0.0%}", session.OverallCorrectnessPercentage); 
                         }

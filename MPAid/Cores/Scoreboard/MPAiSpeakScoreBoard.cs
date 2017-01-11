@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace MPAid.Cores.Scoreboard
 {
@@ -17,6 +18,8 @@ namespace MPAid.Cores.Scoreboard
             this.expectedText = expectedText;
             this.recognisedText = recognisedText;
             this.analysis = analysis;
+
+            MessageBox.Show("Scoreboard item created\nExpectedText: " + expectedText + "\nRecognisedText: " + recognisedText + "\nAnalysis: " + analysis);
         }
         /// <summary>
         /// Calls the similarity algorithm to calculate the difference between the two arguments.
@@ -110,7 +113,13 @@ namespace MPAid.Cores.Scoreboard
         {
             Content.Add(new MPAiSpeakScoreBoardItem(expectedText, recognisedText, analysis));
         }
+
+        public static int ComparisionByDate(MPAiSpeakScoreBoardSession x, MPAiSpeakScoreBoardSession y)
+        {
+            return DateTime.Compare(x.DateAndTime, y.DateAndTime);
+        }
     }
+
     /// <summary>
     /// Class representing the scoreboard as a whole.
     /// </summary>
@@ -129,18 +138,34 @@ namespace MPAid.Cores.Scoreboard
 
         public List<MPAiSpeakScoreBoardSession> Sessions
         {
-            get { return sessions; }
+            get
+            {
+                sessions.Sort(MPAiSpeakScoreBoardSession.ComparisionByDate);
+                return sessions;
+            }
+        }
+
+
+        MPAiSpeakScoreBoardSession currentSession;
+
+        public MPAiSpeakScoreBoardSession CurrentSession
+        {
+            get
+            {
+                return currentSession;
+            }
         }
 
         public MPAiSpeakScoreBoard(MPAiUser user)
         {
             this.user = user;
         }
-        
+
         public MPAiSpeakScoreBoardSession NewScoreBoardSession()
         {
             MPAiSpeakScoreBoardSession session = new MPAiSpeakScoreBoardSession(DateTime.Now);
             sessions.Add(session);
+            currentSession = session;
             return session;
         }
 
@@ -148,12 +173,8 @@ namespace MPAid.Cores.Scoreboard
         {
             MPAiSpeakScoreBoardSession session = new MPAiSpeakScoreBoardSession(dateAndTime, content);
             sessions.Add(session);
+            currentSession = session;
             return session;
-        }
-
-        private void loadScoreBoardFromFile()
-        {
-            //TODO
         }
 
         public void SaveScoreBoardToFile()
@@ -210,3 +231,4 @@ namespace MPAid.Cores.Scoreboard
         }
     }
 }
+
