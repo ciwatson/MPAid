@@ -35,9 +35,9 @@
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.greetingLabel = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.learnButton = new System.Windows.Forms.Button();
+            this.testButton = new System.Windows.Forms.Button();
+            this.reportButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -123,9 +123,9 @@
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.button1, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.button2, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.button3, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.learnButton, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.testButton, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.reportButton, 0, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -136,35 +136,38 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(544, 164);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
-            // button1
+            // learnButton
             // 
-            this.button1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button1.Location = new System.Drawing.Point(197, 15);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(150, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Learn";
-            this.button1.UseVisualStyleBackColor = true;
+            this.learnButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.learnButton.Location = new System.Drawing.Point(197, 15);
+            this.learnButton.Name = "learnButton";
+            this.learnButton.Size = new System.Drawing.Size(150, 23);
+            this.learnButton.TabIndex = 0;
+            this.learnButton.Text = "Learn";
+            this.learnButton.UseVisualStyleBackColor = true;
+            this.learnButton.Click += new System.EventHandler(this.learnButton_Click);
             // 
-            // button2
+            // testButton
             // 
-            this.button2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button2.Location = new System.Drawing.Point(197, 69);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(150, 23);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Test";
-            this.button2.UseVisualStyleBackColor = true;
+            this.testButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.testButton.Location = new System.Drawing.Point(197, 69);
+            this.testButton.Name = "testButton";
+            this.testButton.Size = new System.Drawing.Size(150, 23);
+            this.testButton.TabIndex = 1;
+            this.testButton.Text = "Test";
+            this.testButton.UseVisualStyleBackColor = true;
+            this.testButton.Click += new System.EventHandler(this.testButton_Click);
             // 
-            // button3
+            // reportButton
             // 
-            this.button3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button3.Location = new System.Drawing.Point(197, 124);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(150, 23);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "Score Report";
-            this.button3.UseVisualStyleBackColor = true;
+            this.reportButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.reportButton.Location = new System.Drawing.Point(197, 124);
+            this.reportButton.Name = "reportButton";
+            this.reportButton.Size = new System.Drawing.Size(150, 23);
+            this.reportButton.TabIndex = 2;
+            this.reportButton.Text = "Score Report";
+            this.reportButton.UseVisualStyleBackColor = true;
+            this.reportButton.Click += new System.EventHandler(this.reportButton_Click);
             // 
             // MPAiSoundMainMenu
             // 
@@ -199,8 +202,8 @@
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.Label greetingLabel;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button learnButton;
+        private System.Windows.Forms.Button testButton;
+        private System.Windows.Forms.Button reportButton;
     }
 }
