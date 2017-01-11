@@ -8,8 +8,9 @@ ID: 4974689
 
 """
 
-from MainApp import *
+from FormantApp import *
+import sys
 
-mainApp = MainApp()
-mainApp.mainloop()
+FormantApp = FormantApp()
+FormantApp.mainloop()
 raw_input()
