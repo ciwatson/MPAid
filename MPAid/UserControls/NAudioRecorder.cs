@@ -319,11 +319,11 @@ namespace MPAid.UserControls
                         target = string.Empty;
                     }
                     Dictionary<string, string> result = RecEngine.Recognize(Path.Combine(outputFolder, (string)RECListBox.SelectedItem)).ToDictionary(x => x.Key, x => x.Value);
-                    result.Add("hahoi","hoihoi");
-                    if(result.Count > 0)
+                    result.Add("hahoi", "hoihoi");
+                    //MessageBox.Show("result: " + result.First().Key + ", " + result.First().Value);
+                    if (result.Count > 0)
                     {
-                        NAudioPlayer audioplayer = new NAudioPlayer();
-                        audioplayer.Play(Path.Combine(outputFolder, (string)RECListBox.SelectedItem));
+                        
                         RecognitionResultMSGBox recMSGBox = new RecognitionResultMSGBox();
                         if (recMSGBox.ShowDialog(result.First().Key, target, result.First().Value) == DialogResult.OK)
                         {

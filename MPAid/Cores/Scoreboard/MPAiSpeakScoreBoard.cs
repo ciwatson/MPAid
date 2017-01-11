@@ -225,7 +225,8 @@ namespace MPAid.Cores.Scoreboard
                     d[i, j] = Math.Min(Math.Min(min1, min2), min3);
                 }
             }
-            return Math.Abs(1 - (float)d[n, m] / m);
+
+            return Math.Abs(1 - (float)d[n, m] / Math.Max(m, n));
         }
     }
 }
