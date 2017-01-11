@@ -49,11 +49,13 @@
             this.fomantFolderSelectButton = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.fomantFolderTextBox = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // audioFolderTextBox
             // 
-            this.audioFolderTextBox.Location = new System.Drawing.Point(127, 37);
+            this.audioFolderTextBox.Enabled = false;
+            this.audioFolderTextBox.Location = new System.Drawing.Point(126, 72);
             this.audioFolderTextBox.Name = "audioFolderTextBox";
             this.audioFolderTextBox.Size = new System.Drawing.Size(332, 20);
             this.audioFolderTextBox.TabIndex = 0;
@@ -61,7 +63,7 @@
             // audioFolderLabel
             // 
             this.audioFolderLabel.AutoSize = true;
-            this.audioFolderLabel.Location = new System.Drawing.Point(20, 40);
+            this.audioFolderLabel.Location = new System.Drawing.Point(19, 75);
             this.audioFolderLabel.Name = "audioFolderLabel";
             this.audioFolderLabel.Size = new System.Drawing.Size(66, 13);
             this.audioFolderLabel.TabIndex = 1;
@@ -69,7 +71,7 @@
             // 
             // audioFolderSelectButton
             // 
-            this.audioFolderSelectButton.Location = new System.Drawing.Point(465, 37);
+            this.audioFolderSelectButton.Location = new System.Drawing.Point(464, 72);
             this.audioFolderSelectButton.Name = "audioFolderSelectButton";
             this.audioFolderSelectButton.Size = new System.Drawing.Size(33, 25);
             this.audioFolderSelectButton.TabIndex = 2;
@@ -99,7 +101,7 @@
             // 
             // videoFolderSelectButton
             // 
-            this.videoFolderSelectButton.Location = new System.Drawing.Point(465, 74);
+            this.videoFolderSelectButton.Location = new System.Drawing.Point(464, 106);
             this.videoFolderSelectButton.Name = "videoFolderSelectButton";
             this.videoFolderSelectButton.Size = new System.Drawing.Size(33, 25);
             this.videoFolderSelectButton.TabIndex = 7;
@@ -110,7 +112,7 @@
             // videoFolderlabel
             // 
             this.videoFolderlabel.AutoSize = true;
-            this.videoFolderlabel.Location = new System.Drawing.Point(20, 77);
+            this.videoFolderlabel.Location = new System.Drawing.Point(19, 109);
             this.videoFolderlabel.Name = "videoFolderlabel";
             this.videoFolderlabel.Size = new System.Drawing.Size(66, 13);
             this.videoFolderlabel.TabIndex = 6;
@@ -118,14 +120,15 @@
             // 
             // videoFolderTextBox
             // 
-            this.videoFolderTextBox.Location = new System.Drawing.Point(127, 74);
+            this.videoFolderTextBox.Enabled = false;
+            this.videoFolderTextBox.Location = new System.Drawing.Point(126, 106);
             this.videoFolderTextBox.Name = "videoFolderTextBox";
             this.videoFolderTextBox.Size = new System.Drawing.Size(332, 20);
             this.videoFolderTextBox.TabIndex = 5;
             // 
             // reportFolderSelectButton
             // 
-            this.reportFolderSelectButton.Location = new System.Drawing.Point(465, 142);
+            this.reportFolderSelectButton.Location = new System.Drawing.Point(464, 171);
             this.reportFolderSelectButton.Name = "reportFolderSelectButton";
             this.reportFolderSelectButton.Size = new System.Drawing.Size(33, 25);
             this.reportFolderSelectButton.TabIndex = 13;
@@ -136,7 +139,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(20, 145);
+            this.label1.Location = new System.Drawing.Point(19, 174);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(71, 13);
             this.label1.TabIndex = 12;
@@ -144,14 +147,15 @@
             // 
             // reportFolderTextBox
             // 
-            this.reportFolderTextBox.Location = new System.Drawing.Point(127, 142);
+            this.reportFolderTextBox.Enabled = false;
+            this.reportFolderTextBox.Location = new System.Drawing.Point(126, 171);
             this.reportFolderTextBox.Name = "reportFolderTextBox";
             this.reportFolderTextBox.Size = new System.Drawing.Size(332, 20);
             this.reportFolderTextBox.TabIndex = 11;
             // 
             // recordingFolderSelectButton
             // 
-            this.recordingFolderSelectButton.Location = new System.Drawing.Point(465, 105);
+            this.recordingFolderSelectButton.Location = new System.Drawing.Point(464, 138);
             this.recordingFolderSelectButton.Name = "recordingFolderSelectButton";
             this.recordingFolderSelectButton.Size = new System.Drawing.Size(33, 25);
             this.recordingFolderSelectButton.TabIndex = 10;
@@ -162,7 +166,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(20, 108);
+            this.label2.Location = new System.Drawing.Point(19, 141);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(88, 13);
             this.label2.TabIndex = 9;
@@ -170,14 +174,15 @@
             // 
             // recordingFolderTextBox
             // 
-            this.recordingFolderTextBox.Location = new System.Drawing.Point(127, 105);
+            this.recordingFolderTextBox.Enabled = false;
+            this.recordingFolderTextBox.Location = new System.Drawing.Point(126, 138);
             this.recordingFolderTextBox.Name = "recordingFolderTextBox";
             this.recordingFolderTextBox.Size = new System.Drawing.Size(332, 20);
             this.recordingFolderTextBox.TabIndex = 8;
             // 
             // HTKFolderSelectButton
             // 
-            this.HTKFolderSelectButton.Location = new System.Drawing.Point(465, 172);
+            this.HTKFolderSelectButton.Location = new System.Drawing.Point(464, 201);
             this.HTKFolderSelectButton.Name = "HTKFolderSelectButton";
             this.HTKFolderSelectButton.Size = new System.Drawing.Size(33, 25);
             this.HTKFolderSelectButton.TabIndex = 16;
@@ -188,7 +193,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(20, 175);
+            this.label3.Location = new System.Drawing.Point(19, 204);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(61, 13);
             this.label3.TabIndex = 15;
@@ -196,7 +201,8 @@
             // 
             // HTKFolderTextBox
             // 
-            this.HTKFolderTextBox.Location = new System.Drawing.Point(127, 172);
+            this.HTKFolderTextBox.Enabled = false;
+            this.HTKFolderTextBox.Location = new System.Drawing.Point(126, 201);
             this.HTKFolderTextBox.Name = "HTKFolderTextBox";
             this.HTKFolderTextBox.Size = new System.Drawing.Size(332, 20);
             this.HTKFolderTextBox.TabIndex = 14;
@@ -204,7 +210,7 @@
             // 
             // fomantFolderSelectButton
             // 
-            this.fomantFolderSelectButton.Location = new System.Drawing.Point(465, 200);
+            this.fomantFolderSelectButton.Location = new System.Drawing.Point(464, 229);
             this.fomantFolderSelectButton.Name = "fomantFolderSelectButton";
             this.fomantFolderSelectButton.Size = new System.Drawing.Size(33, 25);
             this.fomantFolderSelectButton.TabIndex = 19;
@@ -215,7 +221,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(20, 203);
+            this.label4.Location = new System.Drawing.Point(19, 232);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(74, 13);
             this.label4.TabIndex = 18;
@@ -223,17 +229,30 @@
             // 
             // fomantFolderTextBox
             // 
-            this.fomantFolderTextBox.Location = new System.Drawing.Point(127, 200);
+            this.fomantFolderTextBox.Enabled = false;
+            this.fomantFolderTextBox.Location = new System.Drawing.Point(126, 229);
             this.fomantFolderTextBox.Name = "fomantFolderTextBox";
             this.fomantFolderTextBox.Size = new System.Drawing.Size(332, 20);
             this.fomantFolderTextBox.TabIndex = 17;
             this.fomantFolderTextBox.TextChanged += new System.EventHandler(this.FomantFolderTextBox_TextChanged);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(75, 25);
+            this.label5.MaximumSize = new System.Drawing.Size(400, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(364, 26);
+            this.label5.TabIndex = 20;
+            this.label5.Text = "This allows you to set the file locations used by the system. Note that MPAi depe" +
+    "nds on files it finds in these locations; it is advised not to change these.";
             // 
             // SystemConfig
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(510, 304);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.fomantFolderSelectButton);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.fomantFolderTextBox);
@@ -288,5 +307,6 @@
         private System.Windows.Forms.Button fomantFolderSelectButton;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox fomantFolderTextBox;
+        private System.Windows.Forms.Label label5;
     }
 }
