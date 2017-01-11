@@ -54,8 +54,7 @@ namespace MPAid.NewForms
         private void learnButton_Click(object sender, EventArgs e)
         {
             new AudioPlayer().Show();
-            appClosing = false;
-            Close();
+            closeThis();
         }
 
         /// <summary>
@@ -66,7 +65,15 @@ namespace MPAid.NewForms
         private void testButton_Click(object sender, EventArgs e)
         {
             new SpeechRecognitionTest().Show();
-            appClosing = false;
+            closeThis();
+        }
+
+        /// <summary>
+        /// Closes the form, but not the application.
+        /// </summary>
+        protected void closeThis()
+        {
+            appClosing = false; // Tell the FormClosing event not to end the program.
             Close();
         }
 

@@ -59,8 +59,7 @@ namespace MPAid.NewForms
         private void learnButton_Click(object sender, EventArgs e)
         {
             new VideoPlayer().Show();
-            appClosing = false;
-            Close();
+            closeThis();
         }
 
         /// <summary>
@@ -71,10 +70,17 @@ namespace MPAid.NewForms
         private void testButton_Click(object sender, EventArgs e)
         {
             // Launch Formant stuff
-            appClosing = false;
-            Close();
+            closeThis();
         }
 
+        /// <summary>
+        /// Closes the form, but not the application.
+        /// </summary>
+        protected void closeThis()
+        {
+            appClosing = false; // Tell the FormClosing event not to end the program.
+            Close();
+        }
         /// <summary>
         /// Launches the score report in the user's default browser.
         /// </summary>

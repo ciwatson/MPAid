@@ -284,6 +284,14 @@ namespace MPAid.NewForms
         private void backButton_Click(object sender, EventArgs e)
         {
             new MPAiSpeakMainMenu().Show();
+            closeThis();
+        }
+
+        /// <summary>
+        /// Closes the form, but not the application.
+        /// </summary>
+        protected void closeThis()
+        {
             appClosing = false; // Tell the FormClosing event not to end the program.
             Close();
         }
