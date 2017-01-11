@@ -19,7 +19,7 @@ using Vlc.DotNet.Forms;
 
 namespace MPAid.NewForms
 {
-    public partial class VideoPlayer : Form
+    public partial class VideoPlayer : Form, MainFormInterface
     {
         // Strings kept in fields to make text easier to change.
         private string optionsLess = "Less...";
@@ -242,7 +242,7 @@ namespace MPAid.NewForms
         /// <summary>
         /// Closes the form, but not the application.
         /// </summary>
-        protected void closeThis()
+        public void closeThis()
         {
             appClosing = false; // Tell the FormClosing event not to end the program.
             Close();

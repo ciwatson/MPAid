@@ -14,7 +14,7 @@ using System.Windows.Forms;
 
 namespace MPAid.NewForms
 {
-    public partial class MPAiSpeakMainMenu : Form
+    public partial class MPAiSpeakMainMenu : Form, MainFormInterface
     {
         private bool appClosing = true;
 
@@ -71,7 +71,7 @@ namespace MPAid.NewForms
         /// <summary>
         /// Closes the form, but not the application.
         /// </summary>
-        protected void closeThis()
+        public void closeThis()
         {
             appClosing = false; // Tell the FormClosing event not to end the program.
             Close();

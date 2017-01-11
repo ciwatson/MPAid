@@ -230,6 +230,7 @@
     <Compile Include="NewForms\LoginScreen.Designer.cs">
       <DependentUpon>LoginScreen.cs</DependentUpon>
     </Compile>
+    <Compile Include="NewForms\MainFormInterface.cs" />
     <Compile Include="NewForms\MenuStrip.cs">
       <SubType>Component</SubType>
     </Compile>
