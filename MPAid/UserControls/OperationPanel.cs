@@ -62,7 +62,7 @@ namespace MPAid.UserControls
         {
             tdButtonFormantPlot.Enabled = false;
 
-            FormantPlotController.RunFormantPlot();
+            PlotController.ClosePlot();
 
             tdButtonFormantPlot.Enabled = true;
         }

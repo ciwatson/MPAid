@@ -201,7 +201,6 @@
     <Compile Include="Models\Word.cs" />
     <Compile Include="Cores\EnumerationPicker.cs" />
     <Compile Include="Cores\Serializer.cs" />
-    <Compile Include="Modules\FormantPlotController.cs" />
     <Compile Include="Modules\IoController.cs" />
     <Compile Include="Modules\MPAiUser.cs" />
     <Compile Include="Archived Classes\Prior to 1.6\Examiner.cs" />
@@ -210,6 +209,7 @@
     <Compile Include="Archived Classes\Prior to 1.6\HtmlGenerator.cs" />
     <Compile Include="Cores\NameParser.cs" />
     <Compile Include="Cores\SysCfg.cs" />
+    <Compile Include="Modules\PlotController.cs" />
     <Compile Include="Modules\UserManagement.cs" />
     <Compile Include="Cores\VowelComparer.cs" />
     <Compile Include="NewForms\AnalysisScreen.cs">

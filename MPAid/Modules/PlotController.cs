@@ -107,7 +107,6 @@ namespace MPAid
             if ((PlotExe != null) && (!PlotExe.HasExited))
             {
                 PlotExe.Kill();
-
             }
         }
         /// <summary>
