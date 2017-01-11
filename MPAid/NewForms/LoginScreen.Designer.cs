@@ -130,6 +130,7 @@
             this.Controls.Add(this.usernameTextBox);
             this.Controls.Add(this.logoBox);
             this.Name = "LoginScreen";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login to MPAi";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.LoginScreen_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.logoBox)).EndInit();

@@ -465,6 +465,7 @@
             this.ClientSize = new System.Drawing.Size(361, 365);
             this.Controls.Add(this.splitContainer1);
             this.Name = "UserCreationScreen";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Create a New User";
             this.Load += new System.EventHandler(this.UserCreationScreen_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);

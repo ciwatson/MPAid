@@ -178,6 +178,7 @@
             this.Controls.Add(this.mpAiSoundMenuStrip1);
             this.MainMenuStrip = this.mpAiSoundMenuStrip1;
             this.Name = "MPAiSoundMainMenu";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MPAiSoundMainMenu";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MPAiSoundMainMenu_FormClosing);
             this.splitContainer1.Panel1.ResumeLayout(false);
