@@ -27,12 +27,8 @@ namespace MPAid
             {
                 return currentUser;
             }
-
-            set
-            {
-                currentUser = value;
-            }
         }
+
 
         /// <summary>
         /// Constructor for the UserManagement class, restores current user's settings, all users, and creates an admin user if one doesn't already exist.
@@ -42,8 +38,10 @@ namespace MPAid
             allUsers = new List<MPAiUser>();
             ReadSettings();
 
-            if (allUsers.Count == 0)            
+            if (allUsers.Count == 0)
+            {
                 allUsers.Add(new MPAiUser(adminStr, adminStr));
+            }
         }
 
         /// <summary>
@@ -69,7 +67,7 @@ namespace MPAid
         /// </summary>
         /// <param name="username">The name of the user to get.</param>
         /// <returns>The MPAiUser with name username.</returns>
-        private static MPAiUser getUser(string username)
+        public static MPAiUser getUser(string username)
         {
             return GetAllUsers().Find(x => x.getName().Equals(username.ToLower()));
         }
@@ -158,11 +156,12 @@ namespace MPAid
         /// <returns>True if the user exists already, false otherwise.</returns>
         public static bool AuthenticateUser(ref MPAiUser tUser)
         {
+            // This changes the field, as the property's setter is designed to be used from outside the class, and would cause this to break.
             if (allUsers.Contains(tUser)
                     && getUser(tUser.getName()).codeCorrect(tUser.getCode()))
             {
                 tUser.Voice = getUser(tUser.getName()).Voice;   // Set the user's voice to the one stored, if they exist.
-                CurrentUser = tUser;    // Set the user as the current user.
+                currentUser = tUser;    // Set the user as the current user.
                 return true;
             }
             else
@@ -178,8 +177,9 @@ namespace MPAid
         /// <param name="newCode">The new password for the specified user, as a string.</param>
         public static void ChangeUserCode(string userName, string newCode)
         {
+            // This changes the field, as the property's setter is designed to be used from outside the class, and would cause this to break.
             allUsers.Remove(CurrentUser);
-            CurrentUser = new MPAiUser(userName, newCode, CurrentUser.Voice);
+            currentUser = new MPAiUser(userName, newCode, CurrentUser.Voice);
             allUsers.Add(CurrentUser);
         }
 
@@ -226,7 +226,7 @@ namespace MPAid
                             VoiceType? type = VoiceTypeConverter.getVoiceTypeFromString(reader.ReadString());
                             if (!string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(code))
                             {
-                                CurrentUser = new MPAiUser(name, code, type);
+                                currentUser = new MPAiUser(name, code, type);
                             }
                         }                         
                     }

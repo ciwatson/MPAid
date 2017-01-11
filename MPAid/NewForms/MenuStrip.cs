@@ -59,33 +59,39 @@ namespace MPAid.NewForms
         {
             heritageMāoriToolStripMenuItem.Checked = true;
             modernMāoriToolStripMenuItem.Checked = false;
-            UserManagement.CurrentUser.changeVoiceToHeritage();
+            UserManagement.CurrentUser.changeVoiceToHeritage();                                     // Change the current user variable...
+            UserManagement.getUser(UserManagement.CurrentUser.getName()).changeVoiceToHeritage();   // and the current user in the list of users.
         }
 
         private void modernMāoriToolStripMenuItem_Click(object sender, EventArgs e)
         {
             heritageMāoriToolStripMenuItem.Checked = false;
             modernMāoriToolStripMenuItem.Checked = true;
-            UserManagement.CurrentUser.changeVoiceToModern();
+            UserManagement.CurrentUser.changeVoiceToModern();                                     // Change the current user variable...
+            UserManagement.getUser(UserManagement.CurrentUser.getName()).changeVoiceToModern();   // and the current user in the list of users.
         }
 
         private void feminineToolStripMenuItem_Click(object sender, EventArgs e)
         {
             feminineToolStripMenuItem.Checked = true;
             masculineToolStripMenuItem.Checked = false;
-            UserManagement.CurrentUser.changeVoiceToFeminine();
+            UserManagement.CurrentUser.changeVoiceToFeminine();                                     // Change the current user variable...
+            UserManagement.getUser(UserManagement.CurrentUser.getName()).changeVoiceToFeminine();   // and the current user in the list of users.
         }
 
         private void masculineToolStripMenuItem_Click(object sender, EventArgs e)
         {
             feminineToolStripMenuItem.Checked = false;
             masculineToolStripMenuItem.Checked = true;
-            UserManagement.CurrentUser.changeVoiceToMasculine();
+            UserManagement.CurrentUser.changeVoiceToMasculine();                                     // Change the current user variable...
+            UserManagement.getUser(UserManagement.CurrentUser.getName()).changeVoiceToMasculine();   // and the current user in the list of users.
         }
 
         private void signOutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            // There will always be only one login screen, and it will always be open if the program is running.
+            Application.OpenForms.OfType<LoginScreen>().SingleOrDefault().Show();   
+            ((MainFormInterface)Parent).closeThis();
         }
 
         private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
