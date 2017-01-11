@@ -25,7 +25,7 @@ namespace MPAid.NewForms
             // Disable score report button if the report has not been created before.
             reportButton.Enabled = (File.Exists(ReportLauncher.MPAiSpeakScoreReportHTMLAddress) && File.Exists(ReportLauncher.ScoreboardReportCSSAddress));
 
-            string name = UserManagement.getCurrentUser().getName();
+            string name = UserManagement.CurrentUser.getName();
             if (name == null)
             {
                 greetingLabel.Text = "Kia Ora, User!";

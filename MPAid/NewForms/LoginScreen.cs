@@ -39,7 +39,7 @@ namespace MPAid.NewForms
             // If the user has been remembered, populate the username and password fields with their username and password.
             if (autoLog)
             { 
-                VisualizeUser(UserManagement.getCurrentUser());
+                VisualizeUser(UserManagement.CurrentUser);
             }
 
             splashScreen.Close();

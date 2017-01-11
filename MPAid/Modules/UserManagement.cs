@@ -21,6 +21,19 @@ namespace MPAid
 
         private static List<MPAiUser> allUsers;
 
+        public static MPAiUser CurrentUser
+        {
+            get
+            {
+                return currentUser;
+            }
+
+            set
+            {
+                currentUser = value;
+            }
+        }
+
         /// <summary>
         /// Constructor for the UserManagement class, restores current user's settings, all users, and creates an admin user if one doesn't already exist.
         /// </summary>
@@ -129,24 +142,12 @@ namespace MPAid
         }
 
         /// <summary>
-        /// Gets the current user of the system.
-        /// </summary>
-        /// <returns>The current user of the system as an MPAi object, if one exists. Null if not.</returns>
-        public static MPAiUser getCurrentUser()
-        {
-            if (currentUser != null)
-                return currentUser;
-            else
-                return null;
-        }
-
-        /// <summary>
         /// Checks if the current user is the administrator.
         /// </summary>
         /// <returns>True if the current user is the administrator, false if not.</returns>
         public static bool currentUserIsAdmin()
         {
-            return (getCurrentUser().getName() == adminStr);
+            return (CurrentUser.getName() == adminStr);
         }
 
         /// <summary>
@@ -161,7 +162,7 @@ namespace MPAid
                     && getUser(tUser.getName()).codeCorrect(tUser.getCode()))
             {
                 tUser.Voice = getUser(tUser.getName()).Voice;   // Set the user's voice to the one stored, if they exist.
-                currentUser = tUser;    // Set the user as the current user.
+                CurrentUser = tUser;    // Set the user as the current user.
                 return true;
             }
             else
@@ -177,9 +178,9 @@ namespace MPAid
         /// <param name="newCode">The new password for the specified user, as a string.</param>
         public static void ChangeUserCode(string userName, string newCode)
         {
-            allUsers.Remove(currentUser);
-            currentUser = new MPAiUser(userName, newCode, currentUser.Voice);
-            allUsers.Add(currentUser);
+            allUsers.Remove(CurrentUser);
+            CurrentUser = new MPAiUser(userName, newCode, CurrentUser.Voice);
+            allUsers.Add(CurrentUser);
         }
 
         /// <summary>
@@ -225,7 +226,7 @@ namespace MPAid
                             VoiceType? type = VoiceTypeConverter.getVoiceTypeFromString(reader.ReadString());
                             if (!string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(code))
                             {
-                                currentUser = new MPAiUser(name, code, type);
+                                CurrentUser = new MPAiUser(name, code, type);
                             }
                         }                         
                     }
@@ -259,7 +260,7 @@ namespace MPAid
                                 writer.Write(user.getCode());
                                 writer.Write(VoiceTypeConverter.getStringFromVoiceType(user.Voice));
                             }         
-                            if (currentUser == null)    // If there is a current user, store it.
+                            if (CurrentUser == null)    // If there is a current user, store it.
                             {
                                 writer.Write(string.Empty);
                                 writer.Write(string.Empty);
@@ -267,9 +268,9 @@ namespace MPAid
                             }
                             else
                             { 
-                                writer.Write(currentUser.getName());
-                                writer.Write(currentUser.getCode());
-                                writer.Write(VoiceTypeConverter.getStringFromVoiceType(currentUser.Voice));
+                                writer.Write(CurrentUser.getName());
+                                writer.Write(CurrentUser.getCode());
+                                writer.Write(VoiceTypeConverter.getStringFromVoiceType(CurrentUser.Voice));
                             }                                                                   
                         }
                     }

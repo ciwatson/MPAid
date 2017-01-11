@@ -29,7 +29,7 @@ namespace MPAid.NewForms
         {
             try
             {
-                switch (UserManagement.getCurrentUser().Voice)
+                switch (UserManagement.CurrentUser.Voice)
                 {
                     case Models.VoiceType.FEMININE_HERITAGE:
                         heritageMāoriToolStripMenuItem.Checked = true;
@@ -59,28 +59,28 @@ namespace MPAid.NewForms
         {
             heritageMāoriToolStripMenuItem.Checked = true;
             modernMāoriToolStripMenuItem.Checked = false;
-            UserManagement.getCurrentUser().changeVoiceToHeritage();
+            UserManagement.CurrentUser.changeVoiceToHeritage();
         }
 
         private void modernMāoriToolStripMenuItem_Click(object sender, EventArgs e)
         {
             heritageMāoriToolStripMenuItem.Checked = false;
             modernMāoriToolStripMenuItem.Checked = true;
-            UserManagement.getCurrentUser().changeVoiceToModern();
+            UserManagement.CurrentUser.changeVoiceToModern();
         }
 
         private void feminineToolStripMenuItem_Click(object sender, EventArgs e)
         {
             feminineToolStripMenuItem.Checked = true;
             masculineToolStripMenuItem.Checked = false;
-            UserManagement.getCurrentUser().changeVoiceToFeminine();
+            UserManagement.CurrentUser.changeVoiceToFeminine();
         }
 
         private void masculineToolStripMenuItem_Click(object sender, EventArgs e)
         {
             feminineToolStripMenuItem.Checked = false;
             masculineToolStripMenuItem.Checked = true;
-            UserManagement.getCurrentUser().changeVoiceToMasculine();
+            UserManagement.CurrentUser.changeVoiceToMasculine();
         }
 
         private void signOutToolStripMenuItem_Click(object sender, EventArgs e)

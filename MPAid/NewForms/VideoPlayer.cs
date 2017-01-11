@@ -121,7 +121,7 @@ namespace MPAid.NewForms
                 {
                     DBModel.Database.Initialize(false); // Added for safety; if the database has not been initialised, initialise it.
 
-                    MPAiUser current = UserManagement.getCurrentUser();
+                    MPAiUser current = UserManagement.CurrentUser;
 
                     List<Word> view = DBModel.Word.Where(x => (
                        x.Category.Name.Equals("Vowel")

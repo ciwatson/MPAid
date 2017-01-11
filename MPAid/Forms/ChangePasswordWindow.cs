@@ -19,7 +19,7 @@ namespace MPAid
         {
             InitializeComponent();
 
-            currentUser = UserManagement.getCurrentUser();
+            currentUser = UserManagement.CurrentUser;
 
             InitUI();
         }
