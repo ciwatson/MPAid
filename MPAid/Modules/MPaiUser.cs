@@ -119,7 +119,6 @@ namespace MPAid
 
         private void loadScoreBoard()
         {
-            MessageBox.Show("loadScoreBoard in user " + userName + " called");
             if(File.Exists(MPAiSpeakScoreboardLoader.SpeakScoreboardFileAddress(this)))
             {
                 speakScoreboard = MPAiSpeakScoreboardLoader.LoadScoreboard(this);

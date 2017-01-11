@@ -18,8 +18,6 @@ namespace MPAid.Cores.Scoreboard
             this.expectedText = expectedText;
             this.recognisedText = recognisedText;
             this.analysis = analysis;
-
-            MessageBox.Show("Scoreboard item created\nExpectedText: " + expectedText + "\nRecognisedText: " + recognisedText + "\nAnalysis: " + analysis);
         }
         /// <summary>
         /// Calls the similarity algorithm to calculate the difference between the two arguments.
@@ -116,7 +114,7 @@ namespace MPAid.Cores.Scoreboard
 
         public static int ComparisionByDate(MPAiSpeakScoreBoardSession x, MPAiSpeakScoreBoardSession y)
         {
-            return DateTime.Compare(x.DateAndTime, y.DateAndTime);
+            return DateTime.Compare(y.DateAndTime, x.DateAndTime);
         }
     }
 
