@@ -48,15 +48,21 @@ namespace MPAid
         /// </summary>
         private void changePassword()
         {
+            // If you want requirements for passwords, (such as 8 characters in length, etc.) implement it here.
             if ((codeBox.Text.Trim() == "") || (codeBox2.Text.Trim() == ""))
             {
-                MessageBox.Show("Passwords should not be empty! ",
+                MessageBox.Show("Passwords should not be empty!",
                    "Oops", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
             }
             else if (codeBox.Text != codeBox2.Text)
             {
-                MessageBox.Show("Passwords do not match! ",
+                MessageBox.Show("Passwords do not match!",
+                   "Oops", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            else if (codeBox.Text.Equals(currentUser.getCode()))
+            {
+                MessageBox.Show("That is already your password!",
                    "Oops", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             else

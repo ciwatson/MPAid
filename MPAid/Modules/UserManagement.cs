@@ -177,7 +177,6 @@ namespace MPAid
         /// <param name="newCode">The new password for the specified user, as a string.</param>
         public static void ChangeUserCode(string userName, string newCode)
         {
-            // This changes the field, as the property's setter is designed to be used from outside the class, and would cause this to break.
             allUsers.Remove(CurrentUser);
             currentUser = new MPAiUser(userName, newCode, CurrentUser.Voice);
             allUsers.Add(CurrentUser);
