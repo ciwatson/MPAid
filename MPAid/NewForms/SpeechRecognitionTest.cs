@@ -13,6 +13,7 @@ using NAudio.CoreAudioApi;
 using NAudio.Wave;
 using MPAid.Models;
 using MPAid.Cores;
+using MPAid.Cores.Scoreboard;
 using MPAid.Forms.MSGBox;
 using System.Data.Entity;
 using MPAid.Forms.Config;
@@ -52,7 +53,7 @@ namespace MPAid.NewForms
         private WaveFileReader reader;
 
         private HTKEngine RecEngine = new HTKEngine();
-        private MPAiSpeakScoreBoard scoreBoard = new MPAiSpeakScoreBoard();
+        private MPAiSpeakScoreBoardSession session = UserManagement.getCurrentUser().SpeakScoreboard.NewScoreBoardSession();
         private NAudioPlayer audioPlayer = new NAudioPlayer();
 
         private int bottomHeight;
@@ -384,7 +385,7 @@ namespace MPAid.NewForms
                         RecognitionResultMSGBox recMSGBox = new RecognitionResultMSGBox();      // This will need to be changed when we change the analyse window
                         if (recMSGBox.ShowDialog(result.First().Key, target, result.First().Value) == DialogResult.OK)
                         {
-                            scoreBoard.Content.Add(recMSGBox.scoreBoardItem);
+                            session.Content.Add(recMSGBox.scoreBoardItem);
                         }
                     }
                 }
@@ -413,7 +414,7 @@ namespace MPAid.NewForms
         /// </summary>
         void generateReport()
         {
-        ReportLauncher.GenerateMPAiSpeakScoreHTML(scoreBoard);
+        ReportLauncher.GenerateMPAiSpeakScoreHTML(UserManagement.getCurrentUser().SpeakScoreboard);
             if (File.Exists(ReportLauncher.MPAiSpeakScoreReportHTMLAddress))
             {
                 ReportLauncher.ShowMPAiSpeakScoreReport();

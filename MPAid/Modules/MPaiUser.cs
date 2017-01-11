@@ -5,6 +5,8 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using MPAid.Models;
+using MPAid.Cores.Scoreboard;
+using System.Windows.Forms;
 
 namespace MPAid
 {
@@ -16,6 +18,7 @@ namespace MPAid
         private string userName;
         private string passWord;
         private VoiceType? voiceType;
+        private MPAiSpeakScoreBoard speakScoreboard;
         private Speaker speaker;
         private Category category;
         private readonly string adminStr = "admin";
@@ -76,6 +79,22 @@ namespace MPAid
                 speaker = value;
             }
         }
+        /// <summary>
+        /// Wrapper property for the user's username, allowing access from outside the class.
+        /// </summary>
+        [DisplayName("SpeakScoreBoard")]
+        public MPAiSpeakScoreBoard SpeakScoreboard
+        {
+            get
+            {
+                if(speakScoreboard == null)
+                {
+                    loadScoreBoard();
+                }
+                return speakScoreboard;
+            }
+        }
+
 
         /// <summary>
         /// Constructor for the MPAiUser class, with a default value for voice type.
@@ -99,6 +118,23 @@ namespace MPAid
             userName = name;
             passWord = code;
             this.voiceType = voiceType;
+            loadScoreBoard();
+        }
+
+        private void loadScoreBoard()
+        {
+            if(File.Exists(MPAiSpeakScoreboardLoader.SpeakScoreboardFileAddress(this)))
+            {
+                
+                speakScoreboard = MPAiSpeakScoreboardLoader.LoadScoreboard(this);
+                MPAiSpeakScoreboardLoader.SaveScoreboardTEST(speakScoreboard);
+                MessageBox.Show("Loading " + MPAiSpeakScoreboardLoader.SpeakScoreboardFileAddress(this) + " from file...");
+            } else
+            {
+                MessageBox.Show("Scoreboard file does not exist...");
+                speakScoreboard = new MPAiSpeakScoreBoard(this);
+            }
+            
         }
 
         /// <summary>

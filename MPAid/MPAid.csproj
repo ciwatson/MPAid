@@ -128,12 +128,13 @@
     <Compile Include="Cores\CollectionExtensions.cs" />
     <Compile Include="Cores\HTKEngine.cs" />
     <Compile Include="Cores\MailSender.cs" />
-    <Compile Include="Cores\MPAiSoundScoreBoard.cs" />
+    <Compile Include="Cores\Scoreboard\MPAiSoundScoreBoard.cs" />
     <Compile Include="Cores\NAudioPlayer.cs" />
     <Compile Include="Cores\ProcessExtension.cs" />
     <Compile Include="Cores\PronunciationAdvisor.cs" />
-    <Compile Include="Cores\ReportLauncher.cs" />
-    <Compile Include="Cores\MPAiSpeakScoreBoard.cs" />
+    <Compile Include="Cores\Scoreboard\MPAiSpeakScoreboardLoader.cs" />
+    <Compile Include="Cores\Scoreboard\ReportLauncher.cs" />
+    <Compile Include="Cores\Scoreboard\MPAiSpeakScoreBoard.cs" />
     <Compile Include="Forms\AdminConsole.cs">
       <SubType>Form</SubType>
     </Compile>

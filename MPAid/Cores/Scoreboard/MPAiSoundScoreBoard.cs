@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MPAid.Cores
+namespace MPAid.Cores.Scoreboard
 {
-    class MPAiSoundScoreBoardItem
+    public class MPAiSoundScoreBoardItem
     {
         string vowel;
 
@@ -28,7 +28,7 @@ namespace MPAid.Cores
             this.correctnessPercentage = correctnessPercentage;
         }
     }
-    class MPAiSoundScoreBoard
+    public class MPAiSoundScoreBoard
     {
         private List<MPAiSoundScoreBoardItem> content = new List<MPAiSoundScoreBoardItem>();
 
