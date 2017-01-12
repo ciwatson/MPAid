@@ -7,6 +7,7 @@ using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MPAid.Cores;
+using MPAid.Cores.Scoreboard;
 using MPAid.Models;
 
 namespace MPAid.Forms.MSGBox
@@ -15,7 +16,7 @@ namespace MPAid.Forms.MSGBox
     /// Class for the analysis results form.
     /// </summary>
     partial class RecognitionResultMSGBox : Form
-    {
+    { 
         public MPAiSpeakScoreBoardItem scoreBoardItem;
         /// <summary>
         /// Default constructor.

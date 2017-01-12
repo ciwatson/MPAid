@@ -3,18 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
-namespace MPAid.Cores
+namespace MPAid.Cores.Scoreboard
 {
     public delegate float SimilarityAlgorithmCallBack(string str1, string str2);
     /// <summary>
     /// Class representing each item on the scoreboard.
     /// </summary>
-    class MPAiSpeakScoreBoardItem
+    public class MPAiSpeakScoreBoardItem
     {
-        public MPAiSpeakScoreBoardItem(string expectingText, string recognisedText, string analysis)
+        public MPAiSpeakScoreBoardItem(string expectedText, string recognisedText, string analysis)
         {
-            this.expectingText = expectingText;
+            this.expectedText = expectedText;
             this.recognisedText = recognisedText;
             this.analysis = analysis;
         }
@@ -25,7 +26,7 @@ namespace MPAid.Cores
         /// <returns>A float representing the percentage difference.</returns>
         public float Similarity(SimilarityAlgorithmCallBack simi)
         {
-            return simi(recognisedText, expectingText);
+            return simi(recognisedText, expectedText);
         }
         /// <summary>
         /// The text the HTKEngine identified.
@@ -38,10 +39,10 @@ namespace MPAid.Cores
         /// <summary>
         /// The text the user input as what they were trying to say.
         /// </summary>
-        private string expectingText;
-        public string ExpectingText
+        private string expectedText;
+        public string ExpectedText
         {
-            get { return expectingText; }
+            get { return expectedText; }
         }
         /// <summary>
         /// The text describing what the user got right and wrong.
@@ -52,11 +53,16 @@ namespace MPAid.Cores
             get { return analysis; }
         }
     }
-    /// <summary>
-    /// Class representing the scoreboard as a whole.
-    /// </summary>
-    class MPAiSpeakScoreBoard
+
+    public class MPAiSpeakScoreBoardSession
     {
+        private DateTime dateAndTime;
+
+        public DateTime DateAndTime
+        {
+            get { return dateAndTime; }
+        }
+
         /// <summary>
         /// A list of all of the scoreboard items on the scoreboard.
         /// </summary>     
@@ -66,12 +72,13 @@ namespace MPAid.Cores
         {
             get { return content; }
         }
+
         /// <summary>
         /// Calculates the overall correctness of each entry, by adding each entry's correctness and dividing by the number of entries.
         /// </summary>
         public float OverallCorrectnessPercentage
         {
-            get { return CalculateScore / Content.Count;}
+            get { return CalculateScore / Content.Count; }
         }
         /// <summary>
         /// Calculates the total score of each entry on the scoreboard.
@@ -81,7 +88,7 @@ namespace MPAid.Cores
             get
             {
                 float sum = 0;
-                foreach(MPAiSpeakScoreBoardItem item in Content)
+                foreach (MPAiSpeakScoreBoardItem item in Content)
                 {
                     sum += item.Similarity(SimilarityAlgorithm.DamereauLevensheinDistanceAlgorithm);
                 }
@@ -89,9 +96,75 @@ namespace MPAid.Cores
             }
         }
 
+        public MPAiSpeakScoreBoardSession(DateTime dateAndTime)
+        {
+            this.dateAndTime = dateAndTime;
+        }
+
+        public MPAiSpeakScoreBoardSession(DateTime dateAndTime, List<MPAiSpeakScoreBoardItem> content)
+        {
+            this.dateAndTime = dateAndTime;
+            this.content = content;
+        }
+
         public void AddScoreBoardItem(string expectedText, string recognisedText, string analysis)
         {
             Content.Add(new MPAiSpeakScoreBoardItem(expectedText, recognisedText, analysis));
+        }
+
+        public static int ComparisionByDate(MPAiSpeakScoreBoardSession x, MPAiSpeakScoreBoardSession y)
+        {
+            return DateTime.Compare(y.DateAndTime, x.DateAndTime);
+        }
+    }
+
+    /// <summary>
+    /// Class representing the scoreboard as a whole.
+    /// </summary>
+    public class MPAiSpeakScoreBoard
+    {
+        private MPAiUser user;
+
+        public MPAiUser User
+        {
+            get { return user; }
+        }
+        /// <summary>
+        /// A list of all of the scoreboard sessions on the scoreboard.
+        /// </summary>     
+        private List<MPAiSpeakScoreBoardSession> sessions = new List<MPAiSpeakScoreBoardSession>();
+
+        public List<MPAiSpeakScoreBoardSession> Sessions
+        {
+            get
+            {
+                sessions.Sort(MPAiSpeakScoreBoardSession.ComparisionByDate);
+                return sessions;
+            }
+        }
+
+        public MPAiSpeakScoreBoard(MPAiUser user)
+        {
+            this.user = user;
+        }
+
+        public MPAiSpeakScoreBoardSession NewScoreBoardSession()
+        {
+            MPAiSpeakScoreBoardSession session = new MPAiSpeakScoreBoardSession(DateTime.Now);
+            sessions.Add(session);
+            return session;
+        }
+
+        public MPAiSpeakScoreBoardSession NewScoreBoardSession(DateTime dateAndTime, List<MPAiSpeakScoreBoardItem> content)
+        {
+            MPAiSpeakScoreBoardSession session = new MPAiSpeakScoreBoardSession(dateAndTime, content);
+            sessions.Add(session);
+            return session;
+        }
+
+        public void SaveScoreBoardToFile()
+        {
+            MPAiSpeakScoreboardLoader.SaveScoreboard(this);
         }
     }
     /// <summary>
@@ -139,7 +212,9 @@ namespace MPAid.Cores
                     d[i, j] = Math.Min(Math.Min(min1, min2), min3);
                 }
             }
-            return Math.Abs(1 - (float)d[n, m] / m);
+
+            return Math.Abs(1 - (float)d[n, m] / Math.Max(m, n));
         }
     }
 }
+

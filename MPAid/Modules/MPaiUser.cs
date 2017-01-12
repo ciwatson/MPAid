@@ -5,6 +5,8 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using MPAid.Models;
+using MPAid.Cores.Scoreboard;
+using System.Windows.Forms;
 
 namespace MPAid
 {
@@ -16,6 +18,8 @@ namespace MPAid
         private string userName;
         private string passWord;
         private VoiceType? voiceType;
+        private MPAiSpeakScoreBoard speakScoreboard;
+        private MPAiSoundScoreBoard soundScoreboard;
         private Speaker speaker;
         private Category category;
         private readonly string adminStr = "admin";
@@ -76,6 +80,30 @@ namespace MPAid
                 speaker = value;
             }
         }
+        /// <summary>
+        /// Wrapper property for the user's username, allowing access from outside the class.
+        /// </summary>
+        [DisplayName("SpeakScoreBoard")]
+        public MPAiSpeakScoreBoard SpeakScoreboard
+        {
+            get
+            {
+                return speakScoreboard;
+            }
+        }
+
+        /// <summary>
+        /// Wrapper property for the user's username, allowing access from outside the class.
+        /// </summary>
+        [DisplayName("SoundScoreBoard")]
+        public MPAiSoundScoreBoard SoundScoreboard
+        {
+            get
+            {
+                return soundScoreboard;
+            }
+        }
+
 
         /// <summary>
         /// Constructor for the MPAiUser class, with a default value for voice type.
@@ -99,6 +127,27 @@ namespace MPAid
             userName = name;
             passWord = code;
             this.voiceType = voiceType;
+            loadScoreBoards();
+        }
+
+        private void loadScoreBoards()
+        {
+            if(File.Exists(MPAiSpeakScoreboardLoader.SpeakScoreboardFileAddress(this)))
+            {
+                speakScoreboard = MPAiSpeakScoreboardLoader.LoadScoreboard(this);
+            } else
+            {
+                speakScoreboard = new MPAiSpeakScoreBoard(this);
+            }
+            if (File.Exists(MPAiSoundScoreboardLoader.SpeakScoreboardFileAddress(this)))
+            {
+                soundScoreboard = MPAiSoundScoreboardLoader.LoadScoreboard(this);
+            }
+            else
+            {
+                soundScoreboard = new MPAiSoundScoreBoard(this);
+            }
+
         }
 
         /// <summary>
