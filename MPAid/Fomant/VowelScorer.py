@@ -12,7 +12,7 @@ Author: Joshua Brundan
 """
 class VowelScorer:
     def __init__(self):
-
+        self.isSafeToRecord = True
         self.plotRegions = ['Total','Centre', 'Second', 'Third', 'Not on Target']
         self.longVowels=['a:','e:','i:','o:','u:']
 
@@ -53,7 +53,10 @@ class VowelScorer:
         #update vowelPlotCounts and vowelScores
         self.vowelPlotCounts[index] += plottedInfo[0]
         self.vowelScores[index] += rawScore
-        percentage = (float)(self.vowelScores[index])/(float)(self.vowelPlotCounts[index])
+        if self.vowelPlotCounts[index] == 0:
+            percentage = 100
+        else:
+            percentage = (float)(self.vowelScores[index])/(float)(self.vowelPlotCounts[index])
 
         #update vowelPlotPercentages
         self.vowelPlotPercentages[index] = percentage
@@ -141,7 +144,14 @@ class VowelScorer:
 
         return lineList
 
+    def safeToRecord(self):
+        if(self.isSafeToRecord):
+            return True
+        else:
+            return False
+
     def connectAndSendText(self):
+        self.isSafeToRecord = False
         lineList = self.createLineList()
 
         f = open(r'\\.\pipe\NPSSVowelPlot', 'r+b', 0)
@@ -152,3 +162,4 @@ class VowelScorer:
         print 'Wrote:', lineList
 
         time.sleep(2)
+        self.isSafeToRecord = True

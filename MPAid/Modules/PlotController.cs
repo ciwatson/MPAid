@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Threading;
 using MPAid.Models;
+using MPAid;
 namespace MPAid
 {
     /// <summary>
@@ -30,6 +31,8 @@ namespace MPAid
 
         private static PlotType? plotType;
         private static VoiceType? voiceType;
+        private static Thread pipeThread;
+        private static PythonPipe pythonPipe;
 
         // Calls to the windows USER32.dll file, to make changes to the Python user interface.
 
@@ -80,6 +83,7 @@ namespace MPAid
         }
 
         private static Process PlotExe;
+        private static bool shutdown;
 
         /// <summary>
         /// Method called by the button to show the  plot. 
@@ -105,11 +109,13 @@ namespace MPAid
         /// </summary>
         public static void ClosePlot()
         {
-            if ((PlotExe != null) && (!PlotExe.HasExited))
-            {
-                PlotExe.Kill();
-            }
+            PlotExe.Kill();
+
+            NewForms.MPAiSoundMainMenu menu = new MPAid.NewForms.MPAiSoundMainMenu();
+            menu.Show();
         }
+
+
         /// <summary>
         /// Creates a new process, connects it to the python Runner file, and starts the  plot. 
         /// Also tidies up after an older process if it is still running.
@@ -120,33 +126,33 @@ namespace MPAid
             try
             {
                 // Before starting a new process, tidy up any old ones in the background.
-                ClosePlot();
+                //  ClosePlot();
 
 
-                PythonPipe pythonPipe = new PythonPipe();
+                pythonPipe = new PythonPipe();
 
-                Thread pipeThread = new Thread(new ThreadStart(pythonPipe.ConnectAndRecieve));
+                pipeThread = new Thread(new ThreadStart(pythonPipe.ConnectAndRecieve));
                 pipeThread.Start();
 
                 Console.WriteLine("after Thread");
-                  
+
 
 
                 PlotExe = new Process();
                 //PlotExe.StartInfo.FileName = Path.Combine(Properties.Settings.Default.FomantFolder, @"dist",@"VowelRunner.exe");
 
 
-                    if (plotType == PlotType.vowelPlot)
-                    {
-                        PlotExe.StartInfo.FileName = @"VowelRunner.exe";
-                    }
-                    else if (plotType == PlotType.formantPlot)
-                    {
-                        PlotExe.StartInfo.FileName = @"PlotRunner.exe";
-                    }
+                if (plotType == PlotType.vowelPlot)
+                {
+                    PlotExe.StartInfo.FileName = @"VowelRunner.exe";
+                }
+                else if (plotType == PlotType.formantPlot)
+                {
+                    PlotExe.StartInfo.FileName = @"PlotRunner.exe";
+                }
 
 
-              
+
 
                 // Gets the arguments required for the console command to run the exe file.
                 // based on the requested voiceType.
@@ -169,58 +175,95 @@ namespace MPAid
                         PlotExe.StartInfo.Arguments = @"masculine heritage";
                         break;
                 }
-                
-                PlotExe.StartInfo.UseShellExecute = true;
-                PlotExe.StartInfo.WorkingDirectory = Path.Combine(Properties.Settings.Default.FomantFolder, "Dist");
 
-               //TODO BELOW USED FOR TESTING, DELETE AFTER Tested.
-               // Console.WriteLine(PlotExe.StartInfo.WorkingDirectory);
-               // Console.Write("Current Dir:   ");
-               // Console.WriteLine(System.IO.Directory.GetCurrentDirectory());
-               // Console.Write("Dist exists?:   ");
-               // Console.WriteLine(Directory.Exists("Fomant"));
-               // Console.WriteLine(Directory.Exists("./Fomant"));
-               //
-               // Console.Write("Working Dir:   ");
-               // Console.WriteLine(PlotExe.StartInfo.WorkingDirectory);
-               // Console.WriteLine("\n");
-               // Console.Write("FileName:   ");
-               // Console.WriteLine(PlotExe.StartInfo.FileName);
-               // Console.WriteLine("\n");
-               // Console.Write(".exe Exists:   ");
-               // Console.WriteLine(File.Exists(PlotExe.StartInfo.FileName));
-               // Console.WriteLine("Test Exists:   ");
-               // Console.WriteLine(File.Exists("VowelRunner.py"));
-               // Console.WriteLine("\n");
+                PlotExe.StartInfo.UseShellExecute = true;
+                // PlotExe.StartInfo.WorkingDirectory = Path.Combine(Properties.Settings.Default.FomantFolder, "Dist");
+
+                PlotExe.StartInfo.WorkingDirectory = Path.Combine(System.IO.Directory.GetCurrentDirectory(), "Fomant", "Dist");
+
+
+                //TODO BELOW USED FOR TESTING, DELETE AFTER Tested.
+                Console.WriteLine(PlotExe.StartInfo.WorkingDirectory);
+                Console.Write("Current Dir:   ");
+                Console.WriteLine(System.IO.Directory.GetCurrentDirectory());
+                Console.Write("Dist exists?:   ");
+                Console.WriteLine(Directory.Exists("Fomant"));
+                Console.WriteLine(Directory.Exists("./Fomant"));
+
+                Console.Write("Working Dir:   ");
+                Console.WriteLine(PlotExe.StartInfo.WorkingDirectory);
+                Console.WriteLine("\n");
+                Console.Write("FileName:   ");
+                Console.WriteLine(PlotExe.StartInfo.FileName);
+                Console.WriteLine("\n");
+                Console.Write(".exe Exists:   ");
+                Console.WriteLine(File.Exists(PlotExe.StartInfo.FileName));
+                Console.WriteLine("Test Exists:   ");
+                Console.WriteLine(File.Exists("VowelRunner.py"));
+                Console.WriteLine("\n");
 
                 PlotExe.StartInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Normal;
 
-                PlotExe.Start();
+                Console.WriteLine(Path.Combine(PlotExe.StartInfo.WorkingDirectory, PlotExe.StartInfo.FileName));
+                //PlotExe.StartInfo.FileName = Path.Combine(PlotExe.StartInfo.WorkingDirectory, PlotExe.StartInfo.FileName);
 
+                PlotExe.Start();
+                int count = 0;
                 // Hang up the main application to wait until it finished starting
                 while ((PlotStarted(GetPlotTitle()) == 1) && (!PlotExe.HasExited))
                 {
-                    pipeThread.Abort();
-                    Console.WriteLine("Alpha.Beta has finished");
+                    count++;
+                    Console.Write(count);
 
                     // Wait 5 ms before checking if secondary application has started, preventing CPU blocking.
                     await System.Threading.Tasks.Task.Delay(5);
                 }
+                while (!PlotExe.HasExited)
+                {
+
+                    await System.Threading.Tasks.Task.Delay(10);
+
+                }
+
+
+
+
+                StopThread();
+                ClosePlot();
+
 
             }
             catch (Exception exp)
             {
+
                 PlotExe = null;
                 Console.WriteLine(exp);
             }
         }
+
+        private static void StopThread()
+        {
+
+            shutdown = true;
+            pythonPipe.requestShutDown();
+        }
+
         /// <summary>
         /// Getter for the title of the  plot.  
         /// </summary>
         /// <returns>The title of the  plot, as a string.</returns>
         public static string GetPlotTitle()
         {
-            return (@"Vowel Plot");
+            if (plotType == PlotType.vowelPlot)
+            {
+                return (@"Vowel Plot");
+            }
+            else if (plotType == PlotType.formantPlot)
+            {
+                return (@"Fomant Plot");
+            }
+            return null;
+
         }
     }
     /// <summary>
@@ -228,40 +271,66 @@ namespace MPAid
     /// </summary>
     public class PythonPipe
     {
+        private Boolean pipeServerIsClosed;
+        private Boolean firstTime;
+        private Boolean shutdown = false;
+
+        public void requestShutDown()
+        {
+            shutdown = true;
+        }
+
         public void ConnectAndRecieve()
         {
-           
-            Console.WriteLine("PythonPipe.connectAndRecieve is running in its own thread");
-            // Open the named pipe.
-            var pipeServer = new NamedPipeServerStream("NPSSVowelPlot");
-            Console.WriteLine(pipeServer.ToString());
-            Console.WriteLine("Waiting for connection...");
-  
-            pipeServer.WaitForConnection();
-  
-            Console.WriteLine("Connected.");
-            var binaryReader = new BinaryReader(pipeServer);
-            Console.WriteLine("Messages from VowelPlot.py...");
-            while (true)
+            pipeServerIsClosed = false;
+            firstTime = true;
+
+
+            while (!pipeServerIsClosed)
             {
-                try
+
+                if (!shutdown)
                 {
-                    var recievedLength = (int)binaryReader.ReadUInt64();            // Read string length
-                    var recievedString = new string(binaryReader.ReadChars(recievedLength - 1));
-                    Console.WriteLine("{0}", recievedString);
-  
-  
-                }
-                catch (EndOfStreamException)
+                    Console.WriteLine("PythonPipe.connectAndRecieve is running in its own thread");
+                    // Open the named pipe.
+
+                    ////firstTime = false;
+
+                    using (NamedPipeServerStream pipeServer = new NamedPipeServerStream("NPSSVowelPlot", PipeDirection.InOut, 254))
+                    {
+                        Console.WriteLine("Waiting for connection...");
+                        pipeServer.WaitForConnection();
+
+                        Console.WriteLine("Connected.");
+                        var binaryReader = new BinaryReader(pipeServer);
+                        Console.WriteLine("Messages from VowelPlot.py...");
+                        while (true)
+                        {
+                            try
+                            {
+                                var recievedLength = (int)binaryReader.ReadUInt64();            // Read string length
+                                string recievedString = new string(binaryReader.ReadChars(recievedLength - 1));
+                                Console.WriteLine("{0}", recievedString);
+
+                            }
+                            catch (EndOfStreamException)
+                            {
+                                break;
+                            }
+                        }
+                    }
+
+
+
+                } else
                 {
                     break;
                 }
-            }
-  
-            Console.WriteLine("Client disconnected.");
-            pipeServer.Close();
-            pipeServer.Dispose();
-        }
 
+
+            }
+
+
+        }
     }
 }

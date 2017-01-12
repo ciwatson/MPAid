@@ -390,9 +390,9 @@ class VowelPlot:
                             x1 = self.height-8
                             x2 = self.height-1
 
-                        self.vowelPlotCanvas.create_line(x2,y1, x1,y2, fill='black', tag='arrow')
-                        self.vowelPlotCanvas.create_line(x1,y2, x1,y3, fill='black', tag='arrow')
-                        self.vowelPlotCanvas.create_line(x1,y3, x2,y1, fill='black', tag='arrow')
+                        # self.vowelPlotCanvas.create_line(x2,y1, x1,y2, fill='black', tag='arrow')
+                        # self.vowelPlotCanvas.create_line(x1,y2, x1,y3, fill='black', tag='arrow')
+                        # self.vowelPlotCanvas.create_line(x1,y3, x2,y1, fill='black', tag='arrow')
 
                     if(abs(y-self.y) > self.height ):
                         pass
@@ -412,30 +412,31 @@ class VowelPlot:
             self.vowelPlotCanvas.create_oval(x-radius,y-radius,x+radius,y+radius, fill=color, tags="userformants")
 
 
-
-
     """
     record is called whent eh record button is pressed it starts recording the users sounds
     and makes the formant plot react accordingly.
     """
     def record(self):
-        self.xFormantList = []
-        self.yFormantList = []
-        self.recordedAudio = Sound()
-        self.setUpScore()
-        self.clear()
+        if self.vowelScorer.safeToRecord():
+            self.xFormantList = []
+            self.yFormantList = []
+            self.recordedAudio = Sound()
+            self.setUpScore()
+            self.clear()
 
-        self.plotCount = 0
-        self.notStopped = True
-        self.vowelPlotCanvas.itemconfig('helptext', state='hidden')
-        self.vowelPlotCanvas.itemconfig('firstButtons', state='hidden')
-        self.vowelPlotCanvas.itemconfig('recording', state='normal')
-        self.vowelPlotCanvas.itemconfig('Loudness', state='hidden')
+            self.plotCount = 0
+            self.notStopped = True
+            self.vowelPlotCanvas.itemconfig('helptext', state='hidden')
+            self.vowelPlotCanvas.itemconfig('firstButtons', state='hidden')
+            self.vowelPlotCanvas.itemconfig('recording', state='normal')
+            self.vowelPlotCanvas.itemconfig('Loudness', state='hidden')
 
-        self.recordedAudio.record()
-        self.Recording = True
-        self.count2 = 0
-        thread.start_new_thread(self.multiThreadUpdateCanvas, ("Thread-1", self.notStopped))
+            self.recordedAudio.record()
+            self.Recording = True
+            self.count2 = 0
+            thread.start_new_thread(self.multiThreadUpdateCanvas, ("Thread-1", self.notStopped))
+        else:
+            print "Not SafeToRecord, please Wait..."
 
     def multiThreadUpdateCanvas(self, threadName, notStopped):
         try:
@@ -454,28 +455,28 @@ class VowelPlot:
 
 
     def stop(self):
-        self.notStopped = False
-        self.vowelPlotCanvas.itemconfig('recording', state='hidden')
-        self.vowelPlotCanvas.itemconfig('toLoud', state='hidden')
-        self.vowelPlotCanvas.itemconfig('toQuiet', state='hidden')
-        self.vowelPlotCanvas.itemconfig('Loudness', state='hidden')
-        self.vowelPlotCanvas.itemconfig('firstButtons', state='normal')
+        if self.vowelScorer.safeToRecord():
 
+            self.notStopped = False
+            self.vowelPlotCanvas.itemconfig('recording', state='hidden')
+            self.vowelPlotCanvas.itemconfig('toLoud', state='hidden')
+            self.vowelPlotCanvas.itemconfig('toQuiet', state='hidden')
+            self.vowelPlotCanvas.itemconfig('Loudness', state='hidden')
+            self.vowelPlotCanvas.itemconfig('firstButtons', state='normal')
 
+            self.recordedAudio.stop()
+            self.Recording = False
+            self.root.after(100 ,self.loudnessMeter.clearMeter)
+            self.root.after(100 ,self.displayFinalScore)
 
+            self.vowelScorer.updateScore(self.vowel, self.rawScore, self.plottedInfo)
 
-        self.recordedAudio.stop()
-        self.Recording = False
-        self.root.after(100 ,self.loudnessMeter.clearMeter)
-        self.root.after(100 ,self.displayFinalScore)
-
-        self.vowelScorer.updateScore(self.vowel, self.rawScore, self.plottedInfo)
-        
-        self.vowelScorer.connectAndSendText()
-        self.rawScore = 0
-        self.plotCounter = 0
-        self.plottedInfo = [0,0,0,0,0]
-        #TODO End of round score to vowelScorer
+            self.vowelScorer.connectAndSendText()
+            self.rawScore = 0
+            self.plotCounter = 0
+            self.plottedInfo = [0,0,0,0,0]
+        else:
+            print "Not Safe to Stop.. Please Wait."
 
 
     def clear(self):
