@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MPAid.Forms.Config;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -98,6 +99,15 @@ namespace MPAid.NewForms
         {
             ChangePasswordWindow changePswdForm = new ChangePasswordWindow();
             changePswdForm.ShowDialog(this);
+        }
+
+        private void uploadToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new RecordingUploadConfig().ShowDialog(this);
+        }
+        private void foldersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new SystemConfig().ShowDialog(this);
         }
     }
 }

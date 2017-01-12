@@ -98,6 +98,7 @@
             this.cancelButton.TabIndex = 4;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
             // videoFolderSelectButton
             // 
@@ -206,7 +207,6 @@
             this.HTKFolderTextBox.Name = "HTKFolderTextBox";
             this.HTKFolderTextBox.Size = new System.Drawing.Size(332, 20);
             this.HTKFolderTextBox.TabIndex = 14;
-            this.HTKFolderTextBox.TextChanged += new System.EventHandler(this.HTKFolderTextBox_TextChanged);
             // 
             // fomantFolderSelectButton
             // 
@@ -234,7 +234,6 @@
             this.fomantFolderTextBox.Name = "fomantFolderTextBox";
             this.fomantFolderTextBox.Size = new System.Drawing.Size(332, 20);
             this.fomantFolderTextBox.TabIndex = 17;
-            this.fomantFolderTextBox.TextChanged += new System.EventHandler(this.FomantFolderTextBox_TextChanged);
             // 
             // label5
             // 
