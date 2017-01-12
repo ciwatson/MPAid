@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MPAid.Cores;
+using MPAid.Cores.Scoreboard;
 using System.IO;
 using System.Diagnostics;
 
@@ -15,7 +16,6 @@ namespace MPAid.NewForms
 {
     public partial class AnalysisScreen : Form
     {
-        private MPAiSpeakScoreBoard scoreBoard;
 
         AnalysisScreen(float pronunciationCorrectness, string description)
         {
@@ -27,7 +27,7 @@ namespace MPAid.NewForms
 
         private void scoreReportButton_Click(object sender, EventArgs e)
         {
-            ReportLauncher.GenerateMPAiSpeakScoreHTML(scoreBoard);
+            ReportLauncher.GenerateMPAiSpeakScoreHTML(UserManagement.CurrentUser.SpeakScoreboard);
 
             if (File.Exists(ReportLauncher.MPAiSpeakScoreReportHTMLAddress))
             {

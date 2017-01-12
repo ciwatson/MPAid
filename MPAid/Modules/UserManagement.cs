@@ -21,6 +21,15 @@ namespace MPAid
 
         private static List<MPAiUser> allUsers;
 
+        public static MPAiUser CurrentUser
+        {
+            get
+            {
+                return currentUser;
+            }
+        }
+
+
         /// <summary>
         /// Constructor for the UserManagement class, restores current user's settings, all users, and creates an admin user if one doesn't already exist.
         /// </summary>
@@ -29,8 +38,10 @@ namespace MPAid
             allUsers = new List<MPAiUser>();
             ReadSettings();
 
-            if (allUsers.Count == 0)            
+            if (allUsers.Count == 0)
+            {
                 allUsers.Add(new MPAiUser(adminStr, adminStr));
+            }
         }
 
         /// <summary>
@@ -56,7 +67,7 @@ namespace MPAid
         /// </summary>
         /// <param name="username">The name of the user to get.</param>
         /// <returns>The MPAiUser with name username.</returns>
-        private static MPAiUser getUser(string username)
+        public static MPAiUser getUser(string username)
         {
             return GetAllUsers().Find(x => x.getName().Equals(username.ToLower()));
         }
@@ -129,24 +140,12 @@ namespace MPAid
         }
 
         /// <summary>
-        /// Gets the current user of the system.
-        /// </summary>
-        /// <returns>The current user of the system as an MPAi object, if one exists. Null if not.</returns>
-        public static MPAiUser getCurrentUser()
-        {
-            if (currentUser != null)
-                return currentUser;
-            else
-                return null;
-        }
-
-        /// <summary>
         /// Checks if the current user is the administrator.
         /// </summary>
         /// <returns>True if the current user is the administrator, false if not.</returns>
         public static bool currentUserIsAdmin()
         {
-            return (getCurrentUser().getName() == adminStr);
+            return (CurrentUser.getName() == adminStr);
         }
 
         /// <summary>
@@ -157,6 +156,7 @@ namespace MPAid
         /// <returns>True if the user exists already, false otherwise.</returns>
         public static bool AuthenticateUser(ref MPAiUser tUser)
         {
+            // This changes the field, as the property's setter is designed to be used from outside the class, and would cause this to break.
             if (allUsers.Contains(tUser)
                     && getUser(tUser.getName()).codeCorrect(tUser.getCode()))
             {
@@ -177,9 +177,9 @@ namespace MPAid
         /// <param name="newCode">The new password for the specified user, as a string.</param>
         public static void ChangeUserCode(string userName, string newCode)
         {
-            allUsers.Remove(currentUser);
-            currentUser = new MPAiUser(userName, newCode, currentUser.Voice);
-            allUsers.Add(currentUser);
+            allUsers.Remove(CurrentUser);
+            currentUser = new MPAiUser(userName, newCode, CurrentUser.Voice);
+            allUsers.Add(CurrentUser);
         }
 
         /// <summary>
@@ -259,7 +259,7 @@ namespace MPAid
                                 writer.Write(user.getCode());
                                 writer.Write(VoiceTypeConverter.getStringFromVoiceType(user.Voice));
                             }         
-                            if (currentUser == null)    // If there is a current user, store it.
+                            if (CurrentUser == null)    // If there is a current user, store it.
                             {
                                 writer.Write(string.Empty);
                                 writer.Write(string.Empty);
@@ -267,9 +267,9 @@ namespace MPAid
                             }
                             else
                             { 
-                                writer.Write(currentUser.getName());
-                                writer.Write(currentUser.getCode());
-                                writer.Write(VoiceTypeConverter.getStringFromVoiceType(currentUser.Voice));
+                                writer.Write(CurrentUser.getName());
+                                writer.Write(CurrentUser.getCode());
+                                writer.Write(VoiceTypeConverter.getStringFromVoiceType(CurrentUser.Voice));
                             }                                                                   
                         }
                     }

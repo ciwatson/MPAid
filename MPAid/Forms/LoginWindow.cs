@@ -40,7 +40,7 @@ namespace MPAid
             // If the user has been remembered, populate the username and password fields with their username and password.
             if (autoLog)
             {
-                MPAiUser lastUser = UserManagement.getCurrentUser();
+                MPAiUser lastUser = UserManagement.CurrentUser;
                 if (lastUser != null)
                     VisualizeUser(lastUser.getName(), lastUser.getCode());
             }

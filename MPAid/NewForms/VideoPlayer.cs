@@ -19,7 +19,7 @@ using Vlc.DotNet.Forms;
 
 namespace MPAid.NewForms
 {
-    public partial class VideoPlayer : Form
+    public partial class VideoPlayer : Form, MainFormInterface
     {
         // Strings kept in fields to make text easier to change.
         private string optionsLess = "Less...";
@@ -121,7 +121,7 @@ namespace MPAid.NewForms
                 {
                     DBModel.Database.Initialize(false); // Added for safety; if the database has not been initialised, initialise it.
 
-                    MPAiUser current = UserManagement.getCurrentUser();
+                    MPAiUser current = UserManagement.CurrentUser;
 
                     List<Word> view = DBModel.Word.Where(x => (
                        x.Category.Name.Equals("Vowel")
@@ -236,7 +236,15 @@ namespace MPAid.NewForms
         private void backButton_Click(object sender, EventArgs e)
         {
             new MPAiSoundMainMenu().Show();
-            appClosing = false;
+            closeThis();
+        }
+
+        /// <summary>
+        /// Closes the form, but not the application.
+        /// </summary>
+        public void closeThis()
+        {
+            appClosing = false; // Tell the FormClosing event not to end the program.
             Close();
         }
 

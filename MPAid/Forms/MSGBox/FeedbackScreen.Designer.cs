@@ -1,6 +1,6 @@
 ﻿namespace MPAid.Forms.MSGBox
 {
-    partial class FeedbackMSGBox
+    partial class FeedbackScreen
     {
         /// <summary>
         /// Required designer variable.
@@ -32,7 +32,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.mailContentTextBox = new System.Windows.Forms.TextBox();
-            this.customerEmialTextBox = new System.Windows.Forms.TextBox();
+            this.customerEmailTextBox = new System.Windows.Forms.TextBox();
             this.mailSubjectTextBox = new System.Windows.Forms.TextBox();
             this.mailSendButton = new System.Windows.Forms.Button();
             this.mailCancelButton = new System.Windows.Forms.Button();
@@ -75,10 +75,10 @@
             // 
             // customerEmialTextBox
             // 
-            this.customerEmialTextBox.Location = new System.Drawing.Point(72, 17);
-            this.customerEmialTextBox.Name = "customerEmialTextBox";
-            this.customerEmialTextBox.Size = new System.Drawing.Size(546, 20);
-            this.customerEmialTextBox.TabIndex = 4;
+            this.customerEmailTextBox.Location = new System.Drawing.Point(72, 17);
+            this.customerEmailTextBox.Name = "customerEmialTextBox";
+            this.customerEmailTextBox.Size = new System.Drawing.Size(546, 20);
+            this.customerEmailTextBox.TabIndex = 4;
             // 
             // mailSubjectTextBox
             // 
@@ -106,6 +106,7 @@
             this.mailCancelButton.TabIndex = 7;
             this.mailCancelButton.Text = "Cancel";
             this.mailCancelButton.UseVisualStyleBackColor = true;
+            this.mailCancelButton.Click += new System.EventHandler(this.mailCancelButton_Click);
             // 
             // FeedbackMSGBox
             // 
@@ -117,7 +118,7 @@
             this.Controls.Add(this.mailCancelButton);
             this.Controls.Add(this.mailSendButton);
             this.Controls.Add(this.mailSubjectTextBox);
-            this.Controls.Add(this.customerEmialTextBox);
+            this.Controls.Add(this.customerEmailTextBox);
             this.Controls.Add(this.mailContentTextBox);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -139,7 +140,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox mailContentTextBox;
-        private System.Windows.Forms.TextBox customerEmialTextBox;
+        private System.Windows.Forms.TextBox customerEmailTextBox;
         private System.Windows.Forms.TextBox mailSubjectTextBox;
         private System.Windows.Forms.Button mailSendButton;
         private System.Windows.Forms.Button mailCancelButton;

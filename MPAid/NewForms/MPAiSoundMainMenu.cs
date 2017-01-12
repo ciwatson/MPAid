@@ -1,4 +1,5 @@
 ﻿using MPAid.Cores;
+using MPAid.Cores.Scoreboard;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,7 +13,7 @@ using System.Windows.Forms;
 
 namespace MPAid.NewForms
 {
-    public partial class MPAiSoundMainMenu : Form
+    public partial class MPAiSoundMainMenu : Form, MainFormInterface
     {
         private bool appClosing = true;
 
@@ -23,7 +24,7 @@ namespace MPAid.NewForms
             // Disable score report button if the report has not been created before.
             reportButton.Enabled = (File.Exists(ReportLauncher.MPAiSoundScoreReportHTMLAddress) && File.Exists(ReportLauncher.ScoreboardReportCSSAddress));
 
-            string name = UserManagement.getCurrentUser().getName();
+            string name = UserManagement.CurrentUser.getName();
             if (name == null)
             {
                 greetingLabel.Text = "Kia Ora, User!";
@@ -59,8 +60,7 @@ namespace MPAid.NewForms
         private void learnButton_Click(object sender, EventArgs e)
         {
             new VideoPlayer().Show();
-            appClosing = false;
-            Close();
+            closeThis();
         }
 
         /// <summary>
@@ -71,15 +71,25 @@ namespace MPAid.NewForms
         private void testButton_Click(object sender, EventArgs e)
         {
 
-            MPAiUser user = UserManagement.getCurrentUser();
+
+            MPAiUser user = UserManagement.CurrentUser;
             PlotController.PlotType? plotType = PlotController.PlotType.vowelPlot;
             Models.VoiceType? voiceType = user.Voice;
             PlotController.RunPlot(plotType, voiceType);
 
-            appClosing = false;
-            Close();
+           
+            closeThis();
+
         }
 
+        /// <summary>
+        /// Closes the form, but not the application.
+        /// </summary>
+        public void closeThis()
+        {
+            appClosing = false; // Tell the FormClosing event not to end the program.
+            Close();
+        }
         /// <summary>
         /// Launches the score report in the user's default browser.
         /// </summary>

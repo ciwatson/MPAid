@@ -1,4 +1,5 @@
 ﻿using MPAid.Cores;
+using MPAid.Cores.Scoreboard;
 using MPAid.Models;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,7 @@ using System.Windows.Forms;
 
 namespace MPAid.NewForms
 {
-    public partial class MPAiSpeakMainMenu : Form
+    public partial class MPAiSpeakMainMenu : Form, MainFormInterface
     {
         private bool appClosing = true;
 
@@ -25,7 +26,7 @@ namespace MPAid.NewForms
             // Disable score report button if the report has not been created before.
             reportButton.Enabled = (File.Exists(ReportLauncher.MPAiSpeakScoreReportHTMLAddress) && File.Exists(ReportLauncher.ScoreboardReportCSSAddress));
 
-            string name = UserManagement.getCurrentUser().getName();
+            string name = UserManagement.CurrentUser.getName();
             if (name == null)
             {
                 greetingLabel.Text = "Kia Ora, User!";
@@ -54,8 +55,7 @@ namespace MPAid.NewForms
         private void learnButton_Click(object sender, EventArgs e)
         {
             new AudioPlayer().Show();
-            appClosing = false;
-            Close();
+            closeThis();
         }
 
         /// <summary>
@@ -66,7 +66,15 @@ namespace MPAid.NewForms
         private void testButton_Click(object sender, EventArgs e)
         {
             new SpeechRecognitionTest().Show();
-            appClosing = false;
+            closeThis();
+        }
+
+        /// <summary>
+        /// Closes the form, but not the application.
+        /// </summary>
+        public void closeThis()
+        {
+            appClosing = false; // Tell the FormClosing event not to end the program.
             Close();
         }
 

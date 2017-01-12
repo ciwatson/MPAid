@@ -20,7 +20,7 @@ using System.Threading;
 
 namespace MPAid.NewForms
 {
-    public partial class AudioPlayer : Form
+    public partial class AudioPlayer : Form, MainFormInterface
     {
         // Strings kept in fields to make text easier to change.
         private string optionsLess = "Less...";
@@ -169,7 +169,7 @@ namespace MPAid.NewForms
                 {
                     DBModel.Database.Initialize(false); // Added for safety; if the database has not been initialised, initialise it.
 
-                    MPAiUser current = UserManagement.getCurrentUser();
+                    MPAiUser current = UserManagement.CurrentUser;
 
                     List<Word> view = DBModel.Word.Where(x => (
                        x.Category.Name.Equals("Word")
@@ -284,6 +284,14 @@ namespace MPAid.NewForms
         private void backButton_Click(object sender, EventArgs e)
         {
             new MPAiSpeakMainMenu().Show();
+            closeThis();
+        }
+
+        /// <summary>
+        /// Closes the form, but not the application.
+        /// </summary>
+        public void closeThis()
+        {
             appClosing = false; // Tell the FormClosing event not to end the program.
             Close();
         }

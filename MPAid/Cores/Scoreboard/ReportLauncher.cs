@@ -6,32 +6,41 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.UI;
 
-namespace MPAid.Cores
+namespace MPAid.Cores.Scoreboard
 {
     /// <summary>
     /// Class that generates an HTML report based on data from a MPAiSpeakScoreBoard object.
     /// </summary>
     static class ReportLauncher
     {
+        private static void ensureUserDirectoryExists()
+        {
+            if (!Directory.Exists(Path.Combine(Properties.Settings.Default.ReportFolder, UserManagement.CurrentUser.getName())))
+            {
+                Directory.CreateDirectory(Path.Combine(Properties.Settings.Default.ReportFolder, UserManagement.CurrentUser.getName()));
+            }
+        }
         /// <summary>
-        /// The address within the local repository of the generated report.
+        /// The address within the local repository of the generated Speak report.
         /// </summary>
         public static string MPAiSpeakScoreReportHTMLAddress
         {
             get
             {
-                return Path.Combine(Properties.Settings.Default.ReportFolder, "MPAiSpeakReport.html");
+                ensureUserDirectoryExists();
+                return Path.Combine(Properties.Settings.Default.ReportFolder, UserManagement.CurrentUser.getName(), "MPAiSpeakReport.html");
             }
         }
 
         /// <summary>
-        /// The address within the local repository of the generated report.
+        /// The address within the local repository of the generated Sound report.
         /// </summary>
         public static string MPAiSoundScoreReportHTMLAddress
         {
             get
             {
-                return Path.Combine(Properties.Settings.Default.ReportFolder, "MPAiSoundReport.html");
+                ensureUserDirectoryExists();
+                return Path.Combine(Properties.Settings.Default.ReportFolder, UserManagement.CurrentUser.getName(), "MPAiSoundReport.html");
             }
         }
 
@@ -42,7 +51,8 @@ namespace MPAid.Cores
         {
             get
             {
-                return Path.Combine(Properties.Settings.Default.ReportFolder, "Scoreboard.css");
+                ensureUserDirectoryExists();
+                return Path.Combine(Properties.Settings.Default.ReportFolder, UserManagement.CurrentUser.getName(), "Scoreboard.css");
             }
         }
 
@@ -84,6 +94,25 @@ namespace MPAid.Cores
                         sw.WriteLine("  text-rendering: optimizeLegibility;");
                         sw.WriteLine("}");
                         sw.WriteLine("");
+                        sw.WriteLine("div.title {");
+                        sw.WriteLine("	text-align: center;");
+                        sw.WriteLine("  display: block;");
+                        sw.WriteLine("  margin: auto;");
+                        sw.WriteLine("  max-width: 600px;");
+                        sw.WriteLine("  padding:5px;");
+                        sw.WriteLine("  width: 100%;");
+                        sw.WriteLine("}");
+                        sw.WriteLine("");
+                        sw.WriteLine(".title h3 {");
+                        sw.WriteLine("   color: #fafafa;");
+                        sw.WriteLine("   font-size: 36px;");
+                        sw.WriteLine("   font-weight: 400;");
+                        sw.WriteLine("   font-style: bold;");
+                        sw.WriteLine("   font-family: \"Roboto\", helvetica, arial, sans-serif;");
+                        sw.WriteLine("   text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);");
+                        sw.WriteLine("   text-transform:uppercase;");
+                        sw.WriteLine("}");
+                        sw.WriteLine("");
                         sw.WriteLine("div.table-title {");
                         sw.WriteLine("	text-align: center;");
                         sw.WriteLine("  display: block;");
@@ -95,7 +124,7 @@ namespace MPAid.Cores
                         sw.WriteLine("");
                         sw.WriteLine(".table-title h3 {");
                         sw.WriteLine("   color: #fafafa;");
-                        sw.WriteLine("   font-size: 30px;");
+                        sw.WriteLine("   font-size: 28px;");
                         sw.WriteLine("   font-weight: 400;");
                         sw.WriteLine("   font-style: normal;");
                         sw.WriteLine("   font-family: \"Roboto\", helvetica, arial, sans-serif;");
@@ -224,6 +253,8 @@ namespace MPAid.Cores
         /// <param name="scoreboard">The scoreboard to generate an HTML report of.</param>
         public static void GenerateMPAiSpeakScoreHTML(MPAiSpeakScoreBoard scoreboard)
         {
+            scoreboard.SaveScoreBoardToFile();
+
             if(!File.Exists(ScoreboardReportCSSAddress))
             {
                 generateScoreboardCSS();
@@ -243,70 +274,82 @@ namespace MPAid.Cores
                         htw.RenderBeginTag(HtmlTextWriterTag.Link);
                         htw.RenderEndTag();
                         htw.RenderEndTag();
-                        //Table Title
+                        //Scoreboard Title
                         htw.RenderBeginTag(HtmlTextWriterTag.Body);
-                        htw.AddAttribute(HtmlTextWriterAttribute.Class, "table-title");
+                        htw.AddAttribute(HtmlTextWriterAttribute.Class, "title");
                         htw.RenderBeginTag(HtmlTextWriterTag.Div);
                         htw.RenderBeginTag(HtmlTextWriterTag.H3);
-                        htw.Write("MPAi Speak Pronunciation Scoreboard");
+                        htw.Write(scoreboard.User.getName() + "'s MPAi Speak Pronunciation Scoreboard");
                         htw.RenderEndTag();
                         htw.RenderEndTag();
-                        // Header row of the table
-                        htw.AddAttribute(HtmlTextWriterAttribute.Class, "table-fill");
-                        htw.RenderBeginTag(HtmlTextWriterTag.Table);
-                        htw.RenderBeginTag(HtmlTextWriterTag.Tr);
-                        htw.RenderBeginTag(HtmlTextWriterTag.Th);
-                        htw.Write("Expecting Word");
-                        htw.RenderEndTag();
-                        htw.RenderBeginTag(HtmlTextWriterTag.Th);
-                        htw.Write("Recognized Word");
-                        htw.RenderEndTag();
-                        htw.RenderBeginTag(HtmlTextWriterTag.Th);
-                        htw.Write("Similarity Score");
-                        htw.RenderEndTag();
-                        htw.RenderBeginTag(HtmlTextWriterTag.Th);
-                        htw.Write("Analysis Tips");
-                        htw.RenderEndTag();
-                        htw.RenderEndTag();
-                        // Table rows
-                        foreach (MPAiSpeakScoreBoardItem item in scoreboard.Content)
+
+                        foreach(MPAiSpeakScoreBoardSession session in scoreboard.Sessions)
                         {
+                            //Table Title
+                            htw.AddAttribute(HtmlTextWriterAttribute.Class, "table-title");
+                            htw.RenderBeginTag(HtmlTextWriterTag.Div);
+                            htw.RenderBeginTag(HtmlTextWriterTag.H3);
+                            htw.Write(session.DateAndTime.ToString());
+                            htw.RenderEndTag();
+                            htw.RenderEndTag();
+                            // Header row of the table
+                            htw.AddAttribute(HtmlTextWriterAttribute.Class, "table-fill");
+                            htw.RenderBeginTag(HtmlTextWriterTag.Table);
                             htw.RenderBeginTag(HtmlTextWriterTag.Tr);
+                            htw.RenderBeginTag(HtmlTextWriterTag.Th);
+                            htw.Write("Expecting Word");
+                            htw.RenderEndTag();
+                            htw.RenderBeginTag(HtmlTextWriterTag.Th);
+                            htw.Write("Recognized Word");
+                            htw.RenderEndTag();
+                            htw.RenderBeginTag(HtmlTextWriterTag.Th);
+                            htw.Write("Similarity Score");
+                            htw.RenderEndTag();
+                            htw.RenderBeginTag(HtmlTextWriterTag.Th);
+                            htw.Write("Analysis Tips");
+                            htw.RenderEndTag();
+                            htw.RenderEndTag();
+                            // Table rows
+                            foreach (MPAiSpeakScoreBoardItem item in session.Content)
+                            {
+                                htw.RenderBeginTag(HtmlTextWriterTag.Tr);
+                                htw.RenderBeginTag(HtmlTextWriterTag.Td);
+                                htw.Write(item.ExpectedText);
+                                htw.RenderEndTag();
+                                htw.RenderBeginTag(HtmlTextWriterTag.Td);
+                                htw.Write(item.RecognisedText);
+                                htw.RenderEndTag();
+                                htw.RenderBeginTag(HtmlTextWriterTag.Td);
+                                htw.Write(item.Similarity(SimilarityAlgorithm.DamereauLevensheinDistanceAlgorithm).ToString("0.0%"));
+                                htw.RenderEndTag();
+                                htw.RenderBeginTag(HtmlTextWriterTag.Td);
+                                htw.Write(item.Analysis);
+                                htw.RenderEndTag();
+                                htw.RenderEndTag();
+                            }
+                            // Correctness score
+                            float correctness = session.OverallCorrectnessPercentage;
+                            if (correctness >= 0.8)
+                            {
+                                htw.AddAttribute(HtmlTextWriterAttribute.Class, "good-colour");
+                            }
+                            else if (correctness >= 0.5)
+                            {
+                                htw.AddAttribute(HtmlTextWriterAttribute.Class, "medium-colour");
+                            }
+                            else
+                            {
+                                htw.AddAttribute(HtmlTextWriterAttribute.Class, "bad-colour");
+                            }
+                            htw.RenderBeginTag(HtmlTextWriterTag.Tr);
+                            htw.AddAttribute(HtmlTextWriterAttribute.Colspan, "4");
                             htw.RenderBeginTag(HtmlTextWriterTag.Td);
-                            htw.Write(item.ExpectingText);
-                            htw.RenderEndTag();
-                            htw.RenderBeginTag(HtmlTextWriterTag.Td);
-                            htw.Write(item.RecognisedText);
-                            htw.RenderEndTag();
-                            htw.RenderBeginTag(HtmlTextWriterTag.Td);
-                            htw.Write(item.Similarity(SimilarityAlgorithm.DamereauLevensheinDistanceAlgorithm).ToString("0.0%"));
-                            htw.RenderEndTag();
-                            htw.RenderBeginTag(HtmlTextWriterTag.Td);
-                            htw.Write(item.Analysis);
+                            htw.Write("Pronunciation is " + correctness.ToString("0.0%") + " Correct");
                             htw.RenderEndTag();
                             htw.RenderEndTag();
+                            htw.RenderEndTag();
+
                         }
-                        // Correctness score
-                        float correctness = scoreboard.OverallCorrectnessPercentage;
-                        if (correctness >= 0.8)
-                        {
-                            htw.AddAttribute(HtmlTextWriterAttribute.Class, "good-colour");
-                        }
-                        else if (correctness >= 0.5)
-                        {
-                            htw.AddAttribute(HtmlTextWriterAttribute.Class, "medium-colour");
-                        }
-                        else
-                        {
-                            htw.AddAttribute(HtmlTextWriterAttribute.Class, "bad-colour");
-                        }
-                        htw.RenderBeginTag(HtmlTextWriterTag.Tr);
-                        htw.AddAttribute(HtmlTextWriterAttribute.Colspan, "4");
-                        htw.RenderBeginTag(HtmlTextWriterTag.Td);
-                        htw.Write("Pronunciation is " + correctness.ToString("0.0%") + " Correct");
-                        htw.RenderEndTag();
-                        htw.RenderEndTag();
-                        htw.RenderEndTag();
                         htw.RenderEndTag();
                         htw.RenderEndTag();
                     }
@@ -316,11 +359,13 @@ namespace MPAid.Cores
 
         public static void GenerateMPAiSoundScoreHTML(MPAiSoundScoreBoard scoreboard)
         {
+            scoreboard.SaveScoreBoardToFile();
+
             if (!File.Exists(ScoreboardReportCSSAddress))
             {
                 generateScoreboardCSS();
             }
-            using (FileStream fs = new FileStream(MPAiSpeakScoreReportHTMLAddress, FileMode.Create))
+            using (FileStream fs = new FileStream(MPAiSoundScoreReportHTMLAddress, FileMode.Create))
             {
                 using (StreamWriter sw = new StreamWriter(fs))
                 {
@@ -335,64 +380,69 @@ namespace MPAid.Cores
                         htw.RenderBeginTag(HtmlTextWriterTag.Link);
                         htw.RenderEndTag();
                         htw.RenderEndTag();
-                        //Table Title
+                        //Scoreboard Title
                         htw.RenderBeginTag(HtmlTextWriterTag.Body);
-                        htw.AddAttribute(HtmlTextWriterAttribute.Class, "table-title");
+                        htw.AddAttribute(HtmlTextWriterAttribute.Class, "title");
                         htw.RenderBeginTag(HtmlTextWriterTag.Div);
                         htw.RenderBeginTag(HtmlTextWriterTag.H3);
-                        htw.Write("MPAi Sound Pronunciation Scoreboard");
+                        htw.Write(scoreboard.User.getName() + "'s MPAi Sound Pronunciation Scoreboard");
                         htw.RenderEndTag();
                         htw.RenderEndTag();
-                        // Header row of the table
-                        htw.AddAttribute(HtmlTextWriterAttribute.Class, "table-fill");
-                        htw.RenderBeginTag(HtmlTextWriterTag.Table);
-                        htw.RenderBeginTag(HtmlTextWriterTag.Tr);
-                        htw.RenderBeginTag(HtmlTextWriterTag.Th);
-                        htw.Write("Expecting Word");
-                        htw.RenderEndTag();
-                        htw.RenderBeginTag(HtmlTextWriterTag.Th);
-                        htw.Write("Recognized Word");
-                        htw.RenderEndTag();
-                        htw.RenderBeginTag(HtmlTextWriterTag.Th);
-                        htw.Write("Similarity Score");
-                        htw.RenderEndTag();
-                        htw.RenderBeginTag(HtmlTextWriterTag.Th);
-                        htw.Write("Analysis Tips");
-                        htw.RenderEndTag();
-                        htw.RenderEndTag();
-                        // Table rows
-                        foreach (MPAiSoundScoreBoardItem item in scoreboard.Content)
+
+                        foreach (MPAiSoundScoreBoardSession session in scoreboard.Sessions)
                         {
+                            //Table Title
+                            htw.AddAttribute(HtmlTextWriterAttribute.Class, "table-title");
+                            htw.RenderBeginTag(HtmlTextWriterTag.Div);
+                            htw.RenderBeginTag(HtmlTextWriterTag.H3);
+                            htw.Write(session.DateAndTime.ToString());
+                            htw.RenderEndTag();
+                            htw.RenderEndTag();
+                            // Header row of the table
+                            htw.AddAttribute(HtmlTextWriterAttribute.Class, "table-fill");
+                            htw.RenderBeginTag(HtmlTextWriterTag.Table);
                             htw.RenderBeginTag(HtmlTextWriterTag.Tr);
+                            htw.RenderBeginTag(HtmlTextWriterTag.Th);
+                            htw.Write("Vowel");
+                            htw.RenderEndTag();
+                            htw.RenderBeginTag(HtmlTextWriterTag.Th);
+                            htw.Write("Correctness Percentage");
+                            htw.RenderEndTag();
+                            htw.RenderEndTag();
+                            // Table rows
+                            foreach (MPAiSoundScoreBoardItem item in session.Content)
+                            {
+                                htw.RenderBeginTag(HtmlTextWriterTag.Tr);
+                                htw.RenderBeginTag(HtmlTextWriterTag.Td);
+                                htw.Write(item.Vowel);
+                                htw.RenderEndTag();
+                                htw.RenderBeginTag(HtmlTextWriterTag.Td);
+                                htw.Write(item.CorrectnessPercentage);
+                                htw.RenderEndTag();
+                                htw.RenderEndTag();
+                            }
+                            // Correctness score
+                            float correctness = session.OverallCorrectnessPercentage;
+                            if (correctness >= 0.8)
+                            {
+                                htw.AddAttribute(HtmlTextWriterAttribute.Class, "good-colour");
+                            }
+                            else if (correctness >= 0.5)
+                            {
+                                htw.AddAttribute(HtmlTextWriterAttribute.Class, "medium-colour");
+                            }
+                            else
+                            {
+                                htw.AddAttribute(HtmlTextWriterAttribute.Class, "bad-colour");
+                            }
+                            htw.RenderBeginTag(HtmlTextWriterTag.Tr);
+                            htw.AddAttribute(HtmlTextWriterAttribute.Colspan, "2");
                             htw.RenderBeginTag(HtmlTextWriterTag.Td);
-                            htw.Write(item.Vowel);
+                            htw.Write("Pronunciation is " + correctness.ToString("0.0%") + " Correct");
                             htw.RenderEndTag();
-                            htw.RenderBeginTag(HtmlTextWriterTag.Td);
-                            htw.Write(item.CorrectnessPercentage);
                             htw.RenderEndTag();
                             htw.RenderEndTag();
                         }
-                        // Correctness score
-                        float correctness = scoreboard.OverallCorrectnessPercentage;
-                        if (correctness >= 0.8)
-                        {
-                            htw.AddAttribute(HtmlTextWriterAttribute.Class, "good-colour");
-                        }
-                        else if (correctness >= 0.5)
-                        {
-                            htw.AddAttribute(HtmlTextWriterAttribute.Class, "medium-colour");
-                        }
-                        else
-                        {
-                            htw.AddAttribute(HtmlTextWriterAttribute.Class, "bad-colour");
-                        }
-                        htw.RenderBeginTag(HtmlTextWriterTag.Tr);
-                        htw.AddAttribute(HtmlTextWriterAttribute.Colspan, "4");
-                        htw.RenderBeginTag(HtmlTextWriterTag.Td);
-                        htw.Write("Pronunciation is " + correctness.ToString("0.0%") + " Correct");
-                        htw.RenderEndTag();
-                        htw.RenderEndTag();
-                        htw.RenderEndTag();
                         htw.RenderEndTag();
                         htw.RenderEndTag();
                     }
