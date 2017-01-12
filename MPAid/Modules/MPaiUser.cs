@@ -88,6 +88,7 @@ namespace MPAid
         {
             get
             {
+                loadScoreBoards();
                 return speakScoreboard;
             }
         }
@@ -100,6 +101,7 @@ namespace MPAid
         {
             get
             {
+                loadScoreBoards();
                 return soundScoreboard;
             }
         }
@@ -127,27 +129,33 @@ namespace MPAid
             userName = name;
             passWord = code;
             this.voiceType = voiceType;
-            loadScoreBoards();
         }
 
         private void loadScoreBoards()
         {
-            if(File.Exists(MPAiSpeakScoreboardLoader.SpeakScoreboardFileAddress(this)))
+            if (speakScoreboard == null)
             {
-                speakScoreboard = MPAiSpeakScoreboardLoader.LoadScoreboard(this);
-            } else
-            {
-                speakScoreboard = new MPAiSpeakScoreBoard(this);
+                if (File.Exists(MPAiSpeakScoreboardLoader.SpeakScoreboardFileAddress(this)))
+                {
+                    speakScoreboard = MPAiSpeakScoreboardLoader.LoadScoreboard(this);
+                }
+                else
+                {
+                    speakScoreboard = new MPAiSpeakScoreBoard(this);
+                }
             }
-            if (File.Exists(MPAiSoundScoreboardLoader.SpeakScoreboardFileAddress(this)))
+            
+            if(soundScoreboard == null)
             {
-                soundScoreboard = MPAiSoundScoreboardLoader.LoadScoreboard(this);
+                if (File.Exists(MPAiSoundScoreboardLoader.SpeakScoreboardFileAddress(this)))
+                {
+                    soundScoreboard = MPAiSoundScoreboardLoader.LoadScoreboard(this);
+                }
+                else
+                {
+                    soundScoreboard = new MPAiSoundScoreBoard(this);
+                }
             }
-            else
-            {
-                soundScoreboard = new MPAiSoundScoreBoard(this);
-            }
-
         }
 
         /// <summary>

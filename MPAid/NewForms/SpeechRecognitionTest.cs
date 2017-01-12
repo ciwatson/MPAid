@@ -53,7 +53,7 @@ namespace MPAid.NewForms
         private WaveFileReader reader;
 
         private HTKEngine RecEngine = new HTKEngine();
-        private MPAiSpeakScoreBoardSession session = UserManagement.CurrentUser.SpeakScoreboard.NewScoreBoardSession();
+        private MPAiSpeakScoreBoardSession session;
         private NAudioPlayer audioPlayer = new NAudioPlayer();
 
         private int bottomHeight;
