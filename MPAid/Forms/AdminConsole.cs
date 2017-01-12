@@ -24,7 +24,7 @@ namespace MPAid
         {
             InitializeComponent();
 
-            currentUser = UserManagement.getCurrentUser();
+            currentUser = UserManagement.CurrentUser;
 
             userDataView.DataSource = UserManagement.GetAllUsers();
             userDataView.DataBindings.Add(new Binding("ReadOnly", dataReadOnly, "Checked"));

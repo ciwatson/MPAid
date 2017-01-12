@@ -27,6 +27,7 @@ namespace MPAid
     {
 
         public enum PlotType { formantPlot, vowelPlot }
+
         private static PlotType? plotType;
         private static VoiceType? voiceType;
 
@@ -124,23 +125,28 @@ namespace MPAid
 
                 PythonPipe pythonPipe = new PythonPipe();
 
-                Thread oThread = new Thread(new ThreadStart(pythonPipe.ConnectAndRecieve));
-                oThread.Start();
+                Thread pipeThread = new Thread(new ThreadStart(pythonPipe.ConnectAndRecieve));
+                pipeThread.Start();
 
                 Console.WriteLine("after Thread");
-
+                  
 
 
                 PlotExe = new Process();
+                //PlotExe.StartInfo.FileName = Path.Combine(Properties.Settings.Default.FomantFolder, @"dist",@"VowelRunner.exe");
 
-                if (plotType == PlotType.vowelPlot)
-                {
-                    PlotExe.StartInfo.FileName = "VowelRunner.exe";
-                }
-                else if (plotType == PlotType.formantPlot)
-                {
-                    PlotExe.StartInfo.FileName = "PlotRunner.exe";
-                }
+
+                    if (plotType == PlotType.vowelPlot)
+                    {
+                        PlotExe.StartInfo.FileName = @"VowelRunner.exe";
+                    }
+                    else if (plotType == PlotType.formantPlot)
+                    {
+                        PlotExe.StartInfo.FileName = @"PlotRunner.exe";
+                    }
+
+
+              
 
                 // Gets the arguments required for the console command to run the exe file.
                 // based on the requested voiceType.
@@ -150,6 +156,7 @@ namespace MPAid
                         PlotExe.StartInfo.Arguments = @"masculine heritage";
                         break;
                     case VoiceType.MASCULINE_MODERN:
+
                         PlotExe.StartInfo.Arguments = @"masculine modern";
                         break;
                     case VoiceType.FEMININE_HERITAGE:
@@ -162,17 +169,39 @@ namespace MPAid
                         PlotExe.StartInfo.Arguments = @"masculine heritage";
                         break;
                 }
-
+                
                 PlotExe.StartInfo.UseShellExecute = true;
-                PlotExe.StartInfo.WorkingDirectory = Path.Combine(Properties.Settings.Default.FomantFolder, @"dist");
-                PlotExe.StartInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
+                PlotExe.StartInfo.WorkingDirectory = Path.Combine(Properties.Settings.Default.FomantFolder, "Dist");
+
+               //TODO BELOW USED FOR TESTING, DELETE AFTER Tested.
+               // Console.WriteLine(PlotExe.StartInfo.WorkingDirectory);
+               // Console.Write("Current Dir:   ");
+               // Console.WriteLine(System.IO.Directory.GetCurrentDirectory());
+               // Console.Write("Dist exists?:   ");
+               // Console.WriteLine(Directory.Exists("Fomant"));
+               // Console.WriteLine(Directory.Exists("./Fomant"));
+               //
+               // Console.Write("Working Dir:   ");
+               // Console.WriteLine(PlotExe.StartInfo.WorkingDirectory);
+               // Console.WriteLine("\n");
+               // Console.Write("FileName:   ");
+               // Console.WriteLine(PlotExe.StartInfo.FileName);
+               // Console.WriteLine("\n");
+               // Console.Write(".exe Exists:   ");
+               // Console.WriteLine(File.Exists(PlotExe.StartInfo.FileName));
+               // Console.WriteLine("Test Exists:   ");
+               // Console.WriteLine(File.Exists("VowelRunner.py"));
+               // Console.WriteLine("\n");
+
+                PlotExe.StartInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Normal;
+
                 PlotExe.Start();
 
                 // Hang up the main application to wait until it finished starting
                 while ((PlotStarted(GetPlotTitle()) == 1) && (!PlotExe.HasExited))
                 {
-                    //oThread.Abort();
-                    //Console.WriteLine("Alpha.Beta has finished");
+                    pipeThread.Abort();
+                    Console.WriteLine("Alpha.Beta has finished");
 
                     // Wait 5 ms before checking if secondary application has started, preventing CPU blocking.
                     await System.Threading.Tasks.Task.Delay(5);
@@ -201,15 +230,15 @@ namespace MPAid
     {
         public void ConnectAndRecieve()
         {
-
+           
             Console.WriteLine("PythonPipe.connectAndRecieve is running in its own thread");
             // Open the named pipe.
             var pipeServer = new NamedPipeServerStream("NPSSVowelPlot");
-
+            Console.WriteLine(pipeServer.ToString());
             Console.WriteLine("Waiting for connection...");
-
+  
             pipeServer.WaitForConnection();
-
+  
             Console.WriteLine("Connected.");
             var binaryReader = new BinaryReader(pipeServer);
             Console.WriteLine("Messages from VowelPlot.py...");
@@ -220,15 +249,15 @@ namespace MPAid
                     var recievedLength = (int)binaryReader.ReadUInt64();            // Read string length
                     var recievedString = new string(binaryReader.ReadChars(recievedLength - 1));
                     Console.WriteLine("{0}", recievedString);
-
-
+  
+  
                 }
                 catch (EndOfStreamException)
                 {
                     break;
                 }
             }
-
+  
             Console.WriteLine("Client disconnected.");
             pipeServer.Close();
             pipeServer.Dispose();

@@ -21,7 +21,7 @@ using MPAid.Forms.Config;
 namespace MPAid.NewForms
 {
 
-    public partial class SpeechRecognitionTest : Form
+    public partial class SpeechRecognitionTest : Form, MainFormInterface
     {
         // Strings kept in fields to make text easier to change.
         private string optionsLess = "Less...";
@@ -92,7 +92,7 @@ namespace MPAid.NewForms
                 {
                     DBModel.Database.Initialize(false); // Added for safety; if the database has not been initialised, initialise it.
 
-                    MPAiUser current = UserManagement.getCurrentUser();
+                    MPAiUser current = UserManagement.CurrentUser;
 
                     List<Word> view = DBModel.Word.Where(x => (
                        x.Category.Name.Equals("Word")
@@ -450,7 +450,15 @@ namespace MPAid.NewForms
         private void backButton_Click(object sender, EventArgs e)
         {
             new MPAiSpeakMainMenu().Show();
-            appClosing = false;
+            closeThis();
+        }
+
+        /// <summary>
+        /// Closes the form, but not the application.
+        /// </summary>
+        public void closeThis()
+        {
+            appClosing = false; // Tell the FormClosing event not to end the program.
             Close();
         }
 
@@ -538,7 +546,7 @@ namespace MPAid.NewForms
                     waveIn.DataAvailable += OnDataAvailable;
                     waveIn.RecordingStopped += OnRecordingStopped;
 
-                    tempFilename = String.Format("{0}-{1:yyy-MM-dd-HH-mm-ss}.wav", UserManagement.getCurrentUser().getName(), DateTime.Now);
+                    tempFilename = String.Format("{0}-{1:yyy-MM-dd-HH-mm-ss}.wav", UserManagement.CurrentUser.getName(), DateTime.Now);
                     // Initially, outputname is the same as tempfilename
                     outputFileName = tempFilename;
                     writer = new WaveFileWriter(Path.Combine(tempFolder, tempFilename), waveIn.WaveFormat);
