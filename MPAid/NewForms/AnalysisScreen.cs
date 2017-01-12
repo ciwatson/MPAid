@@ -27,7 +27,7 @@ namespace MPAid.NewForms
 
         private void scoreReportButton_Click(object sender, EventArgs e)
         {
-            ReportLauncher.GenerateMPAiSpeakScoreHTML(UserManagement.getCurrentUser().SpeakScoreboard);
+            ReportLauncher.GenerateMPAiSpeakScoreHTML(UserManagement.CurrentUser.SpeakScoreboard);
 
             if (File.Exists(ReportLauncher.MPAiSpeakScoreReportHTMLAddress))
             {

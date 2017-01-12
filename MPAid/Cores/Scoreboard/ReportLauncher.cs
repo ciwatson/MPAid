@@ -15,9 +15,9 @@ namespace MPAid.Cores.Scoreboard
     {
         private static void ensureUserDirectoryExists()
         {
-            if (!Directory.Exists(Path.Combine(Properties.Settings.Default.ReportFolder, UserManagement.getCurrentUser().getName())))
+            if (!Directory.Exists(Path.Combine(Properties.Settings.Default.ReportFolder, UserManagement.CurrentUser.getName())))
             {
-                Directory.CreateDirectory(Path.Combine(Properties.Settings.Default.ReportFolder, UserManagement.getCurrentUser().getName()));
+                Directory.CreateDirectory(Path.Combine(Properties.Settings.Default.ReportFolder, UserManagement.CurrentUser.getName()));
             }
         }
         /// <summary>
@@ -28,7 +28,7 @@ namespace MPAid.Cores.Scoreboard
             get
             {
                 ensureUserDirectoryExists();
-                return Path.Combine(Properties.Settings.Default.ReportFolder, UserManagement.getCurrentUser().getName(), "MPAiSpeakReport.html");
+                return Path.Combine(Properties.Settings.Default.ReportFolder, UserManagement.CurrentUser.getName(), "MPAiSpeakReport.html");
             }
         }
 
@@ -40,7 +40,7 @@ namespace MPAid.Cores.Scoreboard
             get
             {
                 ensureUserDirectoryExists();
-                return Path.Combine(Properties.Settings.Default.ReportFolder, UserManagement.getCurrentUser().getName(), "MPAiSoundReport.html");
+                return Path.Combine(Properties.Settings.Default.ReportFolder, UserManagement.CurrentUser.getName(), "MPAiSoundReport.html");
             }
         }
 
@@ -52,7 +52,7 @@ namespace MPAid.Cores.Scoreboard
             get
             {
                 ensureUserDirectoryExists();
-                return Path.Combine(Properties.Settings.Default.ReportFolder, UserManagement.getCurrentUser().getName(), "Scoreboard.css");
+                return Path.Combine(Properties.Settings.Default.ReportFolder, UserManagement.CurrentUser.getName(), "Scoreboard.css");
             }
         }
 

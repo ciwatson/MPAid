@@ -53,7 +53,7 @@ namespace MPAid.NewForms
         private WaveFileReader reader;
 
         private HTKEngine RecEngine = new HTKEngine();
-        private MPAiSpeakScoreBoardSession session = UserManagement.getCurrentUser().SpeakScoreboard.NewScoreBoardSession();
+        private MPAiSpeakScoreBoardSession session = UserManagement.CurrentUser.SpeakScoreboard.NewScoreBoardSession();
         private NAudioPlayer audioPlayer = new NAudioPlayer();
 
         private int bottomHeight;
@@ -414,7 +414,7 @@ namespace MPAid.NewForms
         /// </summary>
         void generateReport()
         {
-        ReportLauncher.GenerateMPAiSpeakScoreHTML(UserManagement.getCurrentUser().SpeakScoreboard);
+        ReportLauncher.GenerateMPAiSpeakScoreHTML(UserManagement.CurrentUser.SpeakScoreboard);
             if (File.Exists(ReportLauncher.MPAiSpeakScoreReportHTMLAddress))
             {
                 ReportLauncher.ShowMPAiSpeakScoreReport();
