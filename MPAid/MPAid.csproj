@@ -132,6 +132,7 @@
     <Compile Include="Cores\NAudioPlayer.cs" />
     <Compile Include="Cores\ProcessExtension.cs" />
     <Compile Include="Cores\PronunciationAdvisor.cs" />
+    <Compile Include="Cores\Scoreboard\MPAiSoundScoreboardLoader.cs" />
     <Compile Include="Cores\Scoreboard\MPAiSpeakScoreboardLoader.cs" />
     <Compile Include="Cores\Scoreboard\ReportLauncher.cs" />
     <Compile Include="Cores\Scoreboard\MPAiSpeakScoreBoard.cs" />

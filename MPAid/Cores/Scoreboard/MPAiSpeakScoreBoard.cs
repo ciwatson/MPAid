@@ -143,17 +143,6 @@ namespace MPAid.Cores.Scoreboard
             }
         }
 
-
-        MPAiSpeakScoreBoardSession currentSession;
-
-        public MPAiSpeakScoreBoardSession CurrentSession
-        {
-            get
-            {
-                return currentSession;
-            }
-        }
-
         public MPAiSpeakScoreBoard(MPAiUser user)
         {
             this.user = user;
@@ -163,7 +152,6 @@ namespace MPAid.Cores.Scoreboard
         {
             MPAiSpeakScoreBoardSession session = new MPAiSpeakScoreBoardSession(DateTime.Now);
             sessions.Add(session);
-            currentSession = session;
             return session;
         }
 
@@ -171,7 +159,6 @@ namespace MPAid.Cores.Scoreboard
         {
             MPAiSpeakScoreBoardSession session = new MPAiSpeakScoreBoardSession(dateAndTime, content);
             sessions.Add(session);
-            currentSession = session;
             return session;
         }
 

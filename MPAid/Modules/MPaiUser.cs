@@ -19,6 +19,7 @@ namespace MPAid
         private string passWord;
         private VoiceType? voiceType;
         private MPAiSpeakScoreBoard speakScoreboard;
+        private MPAiSoundScoreBoard soundScoreboard;
         private Speaker speaker;
         private Category category;
         private readonly string adminStr = "admin";
@@ -91,6 +92,18 @@ namespace MPAid
             }
         }
 
+        /// <summary>
+        /// Wrapper property for the user's username, allowing access from outside the class.
+        /// </summary>
+        [DisplayName("SoundScoreBoard")]
+        public MPAiSoundScoreBoard SoundScoreboard
+        {
+            get
+            {
+                return soundScoreboard;
+            }
+        }
+
 
         /// <summary>
         /// Constructor for the MPAiUser class, with a default value for voice type.
@@ -114,10 +127,10 @@ namespace MPAid
             userName = name;
             passWord = code;
             this.voiceType = voiceType;
-            loadScoreBoard();
+            loadScoreBoards();
         }
 
-        private void loadScoreBoard()
+        private void loadScoreBoards()
         {
             if(File.Exists(MPAiSpeakScoreboardLoader.SpeakScoreboardFileAddress(this)))
             {
@@ -126,7 +139,15 @@ namespace MPAid
             {
                 speakScoreboard = new MPAiSpeakScoreBoard(this);
             }
-            
+            if (File.Exists(MPAiSoundScoreboardLoader.SpeakScoreboardFileAddress(this)))
+            {
+                soundScoreboard = MPAiSoundScoreboardLoader.LoadScoreboard(this);
+            }
+            else
+            {
+                soundScoreboard = new MPAiSoundScoreBoard(this);
+            }
+
         }
 
         /// <summary>

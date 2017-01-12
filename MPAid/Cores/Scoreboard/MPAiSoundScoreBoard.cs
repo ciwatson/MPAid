@@ -28,11 +28,20 @@ namespace MPAid.Cores.Scoreboard
             this.correctnessPercentage = correctnessPercentage;
         }
     }
-    public class MPAiSoundScoreBoard
+
+    public class MPAiSoundScoreBoardSession
     {
+        private DateTime dateAndTime;
+
+        public DateTime DateAndTime
+        {
+            get { return dateAndTime; }
+        }
+
         private List<MPAiSoundScoreBoardItem> content = new List<MPAiSoundScoreBoardItem>();
 
-        public List<MPAiSoundScoreBoardItem> Content {
+        public List<MPAiSoundScoreBoardItem> Content
+        {
             get { return content; }
         }
 
@@ -43,14 +52,72 @@ namespace MPAid.Cores.Scoreboard
             get { return overallCorrectnessPercentage; }
         }
 
-        public MPAiSoundScoreBoard(float overallCorrectnessPercentage)
+        public MPAiSoundScoreBoardSession(DateTime dateAndTime)
         {
-            this.overallCorrectnessPercentage = overallCorrectnessPercentage;
+            this.dateAndTime = dateAndTime;
+        }
+
+        public MPAiSoundScoreBoardSession(DateTime dateAndTime, List<MPAiSoundScoreBoardItem> content)
+        {
+            this.dateAndTime = dateAndTime;
+            this.content = content;
         }
 
         public void AddScoreBoardItem(string vowel, float correctnessPercentage)
         {
             Content.Add(new MPAiSoundScoreBoardItem(vowel, correctnessPercentage));
+        }
+
+        public static int ComparisionByDate(MPAiSoundScoreBoardSession x, MPAiSoundScoreBoardSession y)
+        {
+            return DateTime.Compare(y.DateAndTime, x.DateAndTime);
+        }
+    }
+
+    public class MPAiSoundScoreBoard
+    { 
+        private MPAiUser user;
+
+        public MPAiUser User
+        {
+            get { return user; }
+        }
+        /// <summary>
+        /// A list of all of the scoreboard sessions on the scoreboard.
+        /// </summary>     
+        private List<MPAiSoundScoreBoardSession> sessions = new List<MPAiSoundScoreBoardSession>();
+
+        public List<MPAiSoundScoreBoardSession> Sessions
+        {
+            get
+            {
+                sessions.Sort(MPAiSoundScoreBoardSession.ComparisionByDate);
+                return sessions;
+            }
+        }
+
+        public MPAiSoundScoreBoard(MPAiUser user)
+        {
+            this.user = user;
+        }
+
+        public MPAiSoundScoreBoardSession NewScoreBoardSession()
+        {
+            MPAiSoundScoreBoardSession session = new MPAiSoundScoreBoardSession(DateTime.Now);
+            sessions.Add(session);
+            return session;
+        }
+
+        public MPAiSoundScoreBoardSession NewScoreBoardSession(DateTime dateAndTime, List<MPAiSoundScoreBoardItem> content)
+        {
+            MPAiSoundScoreBoardSession session = new MPAiSoundScoreBoardSession(dateAndTime, content);
+            sessions.Add(session);
+            return session;
+        }
+
+        public void SaveScoreBoardToFile()
+        {
+            MPAiSoundScoreboardLoader.SaveScoreboard(this);
         }
     }
 }

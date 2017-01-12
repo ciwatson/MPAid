@@ -351,6 +351,7 @@ namespace MPAid.UserControls
         private void showReportButton_Click(object sender, EventArgs e)
         {
             ReportLauncher.GenerateMPAiSpeakScoreHTML(UserManagement.getCurrentUser().SpeakScoreboard);
+            ReportLauncher.GenerateMPAiSoundScoreHTML(UserManagement.getCurrentUser().SoundScoreboard);
 
             // Deprecated: this system no longer has an hConfig object.
             //String reportPath = hConfig.GetHtmlFullPath();
@@ -359,6 +360,7 @@ namespace MPAid.UserControls
             if (File.Exists(ReportLauncher.MPAiSpeakScoreReportHTMLAddress))
             {
                 ReportLauncher.ShowMPAiSpeakScoreReport();
+                ReportLauncher.ShowMPAiSoundScoreReport();
             }
             else
                 showReportButton.Enabled = false;
