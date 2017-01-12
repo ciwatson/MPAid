@@ -41,6 +41,9 @@
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.foldersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.uploadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.feedbackToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.instructionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SuspendLayout();
             // 
             // userToolStripMenuItem
@@ -125,8 +128,12 @@
             // 
             // helpToolStripMenuItem
             // 
+            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.feedbackToolStripMenuItem,
+            this.instructionToolStripMenuItem,
+            this.aboutToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20); 
             this.helpToolStripMenuItem.Text = "Help";
             //
             // foldersToolStripMenuItem
@@ -142,6 +149,27 @@
             this.uploadToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.uploadToolStripMenuItem.Text = "Upload New Recording";
             this.uploadToolStripMenuItem.Click += new System.EventHandler(this.uploadToolStripMenuItem_Click);
+            //
+            // feedbackToolStripMenuItem
+            //
+            this.feedbackToolStripMenuItem.Name = "feedbackToolStripMenuItem";
+            this.feedbackToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.feedbackToolStripMenuItem.Text = "Submit Feedback";
+            this.feedbackToolStripMenuItem.Click += new System.EventHandler(this.feedbackToolStripMenuItem_Click);
+            //
+            // instructionToolStripMenuItem
+            //
+            this.instructionToolStripMenuItem.Name = "instructionToolStripMenuItem";
+            this.instructionToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.instructionToolStripMenuItem.Text = "Instruction Manual";
+            this.instructionToolStripMenuItem.Click += new System.EventHandler(this.instructionToolStripMenuItem_Click);
+            //
+            // aboutToolStripMenuItem
+            //
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.aboutToolStripMenuItem.Text = "About MPAi";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // MenuStrip
             // 
@@ -169,6 +197,9 @@
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem foldersToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem uploadToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem feedbackToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem instructionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
 
     }
 

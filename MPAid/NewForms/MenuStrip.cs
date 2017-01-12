@@ -1,4 +1,5 @@
 ﻿using MPAid.Forms.Config;
+using MPAid.Forms.MSGBox;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -105,9 +106,33 @@ namespace MPAid.NewForms
         {
             new RecordingUploadConfig().ShowDialog(this);
         }
+
         private void foldersToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new SystemConfig().ShowDialog(this);
+        }
+
+        private void feedbackToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new FeedbackScreen().ShowDialog(this);
+        }
+
+        private void instructionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Open the browser to view the github wiki, at least until we get a proper system for this.
+            IoController.ShowInBrowser("https://github.com/JSCooke/MPAid/wiki");
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(
+                this, "Maori Pronunciation Aid (MPAi) " +
+                Application.ProductVersion + "\n\n" +
+                "Dr. Catherine Watson\n" +
+                "The University of Auckland",
+                "About",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
         }
     }
 }

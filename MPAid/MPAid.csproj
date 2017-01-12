@@ -164,11 +164,11 @@
     <Compile Include="Forms\LoginWindow.Designer.cs">
       <DependentUpon>LoginWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\MSGBox\FeedbackMSGBox.cs">
+    <Compile Include="Forms\MSGBox\FeedbackScreen.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\MSGBox\FeedbackMSGBox.Designer.cs">
-      <DependentUpon>FeedbackMSGBox.cs</DependentUpon>
+    <Compile Include="Forms\MSGBox\FeedbackScreen.Designer.cs">
+      <DependentUpon>FeedbackScreen.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\MSGBox\RecognitionResultMSGBox.cs">
       <SubType>Form</SubType>
@@ -343,8 +343,8 @@
     <EmbeddedResource Include="Forms\LoginWindow.resx">
       <DependentUpon>LoginWindow.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\MSGBox\FeedbackMSGBox.resx">
-      <DependentUpon>FeedbackMSGBox.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\MSGBox\FeedbackScreen.resx">
+      <DependentUpon>FeedbackScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MSGBox\RecognitionResultMSGBox.resx">
       <DependentUpon>RecognitionResultMSGBox.cs</DependentUpon>
