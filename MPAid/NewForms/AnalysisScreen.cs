@@ -17,7 +17,7 @@ namespace MPAid.NewForms
     public partial class AnalysisScreen : Form
     {
 
-        AnalysisScreen(float pronunciationCorrectness, string description)
+        public AnalysisScreen(float pronunciationCorrectness, string description)
         {
             InitializeComponent();
 
@@ -39,9 +39,9 @@ namespace MPAid.NewForms
             }
         }
 
-        private void learnButton_Click(object sender, EventArgs e)
+        private void backButton_Click(object sender, EventArgs e)
         {
-            //Open learn section once implemented
+            Close();
         }
     }
 }

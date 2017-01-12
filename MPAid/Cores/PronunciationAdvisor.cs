@@ -28,6 +28,7 @@ namespace MPAid.Cores
                 {
                     string recognizedPronouciation = LexiconReader.dictionary[recognized];
                     advice = string.Format(@"Your recording '{0}' is analysed as the word '{1}', with the pronounciation '{2}'.{3}{4}", recording, recognized, recognizedPronouciation, Environment.NewLine, Environment.NewLine);
+	
                     if (!recognized.Equals(target) && !string.IsNullOrEmpty(target))
                     {
                         advice += CompareWords(target, recognized);
@@ -39,7 +40,7 @@ namespace MPAid.Cores
                 }
                 else
                 {
-                    throw new Exception("The word you choose/input is not in the dictionary!");
+                    throw new Exception("The word you chose/input is not in the dictionary!");
                 }
 
             }

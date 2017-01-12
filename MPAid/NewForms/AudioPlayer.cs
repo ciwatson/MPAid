@@ -604,7 +604,7 @@ namespace MPAid.NewForms
             using (MPAidModel DBModel = InitializeDBModel())
             {
                 Word wd = wordsList[currentRecordingIndex];
-                Speaker spk = DBModel.Speaker.Local[0];  // Get the speaker from user settings.
+                Speaker spk = UserManagement.CurrentUser.Speaker;  // Get the speaker from user settings.
                 Recording rd = DBModel.Recording.Local.Where(x => x.WordId == wd.WordId && x.SpeakerId == spk.SpeakerId).SingleOrDefault();
 
                 if (rd != null)
