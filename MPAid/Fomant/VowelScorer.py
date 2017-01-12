@@ -54,7 +54,8 @@ class VowelScorer:
         self.vowelPlotCounts[index] += plottedInfo[0]
         self.vowelScores[index] += rawScore
         if self.vowelPlotCounts[index] == 0:
-            percentage = 100
+            #Leave the percentage at its current value.
+            pass
         else:
             percentage = (float)(self.vowelScores[index])/(float)(self.vowelPlotCounts[index])
 
@@ -66,7 +67,11 @@ class VowelScorer:
         self.totalScore += rawScore
 
         #calculate overallPercentage
-        self.overallPercentage = (float)(self.totalScore)/(float)(self.totalPlotCount)
+        if self.totalPlotCount == 0:
+            #Leave the percentage at its current value.
+            pass
+        else:
+            self.overallPercentage = (float)(self.totalScore)/(float)(self.totalPlotCount)
 
     """
     Gets the index of a element in a list.
