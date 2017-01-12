@@ -13,7 +13,7 @@ namespace MPAid.Cores.Scoreboard
         {
             if (!Directory.Exists(Path.Combine(Properties.Settings.Default.ReportFolder, user.getName())))
             {
-                Directory.CreateDirectory(Path.Combine(Properties.Settings.Default.ReportFolder, UserManagement.CurrentUser.getName()));
+                Directory.CreateDirectory(Path.Combine(Properties.Settings.Default.ReportFolder, user.getName()));
             }
         }
 
