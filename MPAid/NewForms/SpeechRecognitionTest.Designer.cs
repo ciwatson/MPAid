@@ -80,7 +80,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.SpeechRecognitionTestPanel.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
-            this.SpeechRecognitionTestPanel.Location = new System.Drawing.Point(0, 18);
+            this.SpeechRecognitionTestPanel.Location = new System.Drawing.Point(0, 24);
             this.SpeechRecognitionTestPanel.Name = "SpeechRecognitionTestPanel";
             this.SpeechRecognitionTestPanel.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -108,8 +108,8 @@
             this.SpeechRecognitionTestPanel.Panel2.Controls.Add(this.RecordingListBox);
             this.SpeechRecognitionTestPanel.Panel2.Controls.Add(this.RecordingListLabel);
             this.SpeechRecognitionTestPanel.Panel2MinSize = 250;
-            this.SpeechRecognitionTestPanel.Size = new System.Drawing.Size(584, 525);
-            this.SpeechRecognitionTestPanel.SplitterDistance = 227;
+            this.SpeechRecognitionTestPanel.Size = new System.Drawing.Size(584, 535);
+            this.SpeechRecognitionTestPanel.SplitterDistance = 240;
             this.SpeechRecognitionTestPanel.SplitterWidth = 1;
             this.SpeechRecognitionTestPanel.TabIndex = 44;
             // 
@@ -117,7 +117,7 @@
             // 
             this.backButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.backButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.backButton.Location = new System.Drawing.Point(474, 193);
+            this.backButton.Location = new System.Drawing.Point(474, 206);
             this.backButton.Margin = new System.Windows.Forms.Padding(10);
             this.backButton.Name = "backButton";
             this.backButton.Size = new System.Drawing.Size(100, 25);
@@ -130,7 +130,7 @@
             // 
             this.optionsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.optionsButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.optionsButton.Location = new System.Drawing.Point(368, 193);
+            this.optionsButton.Location = new System.Drawing.Point(368, 206);
             this.optionsButton.Margin = new System.Windows.Forms.Padding(10);
             this.optionsButton.Name = "optionsButton";
             this.optionsButton.Size = new System.Drawing.Size(100, 25);
@@ -158,7 +158,7 @@
             this.analyzeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.analyzeButton.Enabled = false;
             this.analyzeButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.analyzeButton.Location = new System.Drawing.Point(150, 138);
+            this.analyzeButton.Location = new System.Drawing.Point(150, 145);
             this.analyzeButton.Margin = new System.Windows.Forms.Padding(20, 10, 20, 10);
             this.analyzeButton.Name = "analyzeButton";
             this.analyzeButton.Size = new System.Drawing.Size(300, 25);
@@ -172,7 +172,7 @@
             this.recordingProgressBarLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.recordingProgressBarLabel.BackColor = System.Drawing.SystemColors.Control;
             this.recordingProgressBarLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.recordingProgressBarLabel.Location = new System.Drawing.Point(117, 73);
+            this.recordingProgressBarLabel.Location = new System.Drawing.Point(117, 80);
             this.recordingProgressBarLabel.Name = "recordingProgressBarLabel";
             this.recordingProgressBarLabel.Size = new System.Drawing.Size(350, 50);
             this.recordingProgressBarLabel.TabIndex = 36;
@@ -184,7 +184,7 @@
             // 
             this.recordButton.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.recordButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.recordButton.Location = new System.Drawing.Point(10, 85);
+            this.recordButton.Location = new System.Drawing.Point(10, 92);
             this.recordButton.Margin = new System.Windows.Forms.Padding(0);
             this.recordButton.Name = "recordButton";
             this.recordButton.Size = new System.Drawing.Size(100, 25);
@@ -198,7 +198,7 @@
             this.playButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.playButton.Enabled = false;
             this.playButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.playButton.Location = new System.Drawing.Point(474, 85);
+            this.playButton.Location = new System.Drawing.Point(474, 92);
             this.playButton.Margin = new System.Windows.Forms.Padding(0);
             this.playButton.Name = "playButton";
             this.playButton.Size = new System.Drawing.Size(100, 25);
@@ -210,7 +210,7 @@
             // recordingProgressBar
             // 
             this.recordingProgressBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.recordingProgressBar.Location = new System.Drawing.Point(117, 73);
+            this.recordingProgressBar.Location = new System.Drawing.Point(117, 80);
             this.recordingProgressBar.Name = "recordingProgressBar";
             this.recordingProgressBar.Size = new System.Drawing.Size(350, 50);
             this.recordingProgressBar.TabIndex = 40;
@@ -233,7 +233,7 @@
             this.RenameButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.RenameButton.Enabled = false;
             this.RenameButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.RenameButton.Location = new System.Drawing.Point(474, 230);
+            this.RenameButton.Location = new System.Drawing.Point(474, 208);
             this.RenameButton.Margin = new System.Windows.Forms.Padding(10);
             this.RenameButton.Name = "RenameButton";
             this.RenameButton.Size = new System.Drawing.Size(100, 25);
@@ -257,7 +257,7 @@
             this.DeleteButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.DeleteButton.Enabled = false;
             this.DeleteButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.DeleteButton.Location = new System.Drawing.Point(474, 180);
+            this.DeleteButton.Location = new System.Drawing.Point(474, 163);
             this.DeleteButton.Margin = new System.Windows.Forms.Padding(10);
             this.DeleteButton.Name = "DeleteButton";
             this.DeleteButton.Size = new System.Drawing.Size(100, 25);
@@ -279,7 +279,7 @@
             // 
             this.AddButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.AddButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.AddButton.Location = new System.Drawing.Point(474, 130);
+            this.AddButton.Location = new System.Drawing.Point(474, 118);
             this.AddButton.Margin = new System.Windows.Forms.Padding(10);
             this.AddButton.Name = "AddButton";
             this.AddButton.Size = new System.Drawing.Size(100, 25);
@@ -293,7 +293,7 @@
             this.ScoreReportButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ScoreReportButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.ScoreReportButton.Location = new System.Drawing.Point(150, 282);
+            this.ScoreReportButton.Location = new System.Drawing.Point(150, 253);
             this.ScoreReportButton.Margin = new System.Windows.Forms.Padding(0);
             this.ScoreReportButton.Name = "ScoreReportButton";
             this.ScoreReportButton.Size = new System.Drawing.Size(300, 25);
@@ -307,7 +307,7 @@
             this.SelectButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.SelectButton.Enabled = false;
             this.SelectButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.SelectButton.Location = new System.Drawing.Point(474, 80);
+            this.SelectButton.Location = new System.Drawing.Point(474, 73);
             this.SelectButton.Margin = new System.Windows.Forms.Padding(10);
             this.SelectButton.Name = "SelectButton";
             this.SelectButton.Size = new System.Drawing.Size(100, 25);
@@ -324,7 +324,7 @@
             this.RecordingListBox.FormattingEnabled = true;
             this.RecordingListBox.Location = new System.Drawing.Point(10, 75);
             this.RecordingListBox.Name = "RecordingListBox";
-            this.RecordingListBox.Size = new System.Drawing.Size(458, 56);
+            this.RecordingListBox.Size = new System.Drawing.Size(458, 160);
             this.RecordingListBox.TabIndex = 8;
             this.RecordingListBox.SelectedIndexChanged += new System.EventHandler(this.RecordingListBox_SelectedIndexChanged);
             this.RecordingListBox.DoubleClick += new System.EventHandler(this.SelectButton_Click);
