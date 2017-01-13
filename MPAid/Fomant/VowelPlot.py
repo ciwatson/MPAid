@@ -417,7 +417,11 @@ class VowelPlot:
     and makes the formant plot react accordingly.
     """
     def record(self):
+
         if self.vowelScorer.safeToRecord():
+            self.Recording = True
+
+            self.formApp.preventResizing()
             self.xFormantList = []
             self.yFormantList = []
             self.recordedAudio = Sound()
@@ -432,7 +436,6 @@ class VowelPlot:
             self.vowelPlotCanvas.itemconfig('Loudness', state='hidden')
 
             self.recordedAudio.record()
-            self.Recording = True
             self.count2 = 0
             thread.start_new_thread(self.multiThreadUpdateCanvas, ("Thread-1", self.notStopped))
         else:
@@ -465,13 +468,13 @@ class VowelPlot:
             self.vowelPlotCanvas.itemconfig('firstButtons', state='normal')
 
             self.recordedAudio.stop()
-            self.Recording = False
             self.root.after(100 ,self.loudnessMeter.clearMeter)
             self.root.after(100 ,self.displayFinalScore)
+            self.Recording = False
+            self.formApp.allowResizing()
 
             self.vowelScorer.updateScore(self.vowel, self.rawScore, self.plottedInfo)
 
-            self.vowelScorer.connectAndSendText()
             self.rawScore = 0
             self.plotCounter = 0
             self.plottedInfo = [0,0,0,0,0]

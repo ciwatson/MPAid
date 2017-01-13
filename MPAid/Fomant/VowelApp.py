@@ -84,13 +84,19 @@ class VowelApp:
     def initialiseRoot(self):
         self.root = Tk()
         self.root.title("Vowel Plot") #Dont change the title without changing the c# code to end the process.
-        self.root.protocol("WM_DELETE_WINDOW", self.quit()) #Defines the default close operation.
+        self.root.protocol("WM_DELETE_WINDOW", self.quitApp) #Defines the default close operation.
         self.resizeCount=0
 
         self.root.resizable(True, True) #Allows the window to be resized both verically and horizonally.
         self.root.minsize(510,510)
 
         self.positionWindowInCentre(self.root, FRAMEWIDTH, FRAMEHEIGHT) #Determines where to place the Frame on the screen.
+
+    def preventResizing(self):
+        self.root.resizable(False, False)
+
+    def allowResizing(self):
+        self.root.resizable(True, True)
 
     def bindResizing(self):
         self.bindedFunctionID = self.frame.bind("<Configure>", self.resizeRequest)
@@ -331,5 +337,7 @@ class VowelApp:
     def mainloop(self):
         self.root.mainloop()
 
-    def quit(self):
+    def quitApp(self):
+        self.vowelScorer.connectAndSendText()
         self.root.destroy
+        self.quit()
