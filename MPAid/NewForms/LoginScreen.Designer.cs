@@ -59,6 +59,8 @@
             this.usernameTextBox.Size = new System.Drawing.Size(260, 20);
             this.usernameTextBox.TabIndex = 16;
             this.usernameTextBox.Text = "Username...";
+            this.usernameTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.usernameTextBox.WordWrap = false;
             this.usernameTextBox.Enter += new System.EventHandler(this.usernameTextBox_Enter);
             this.usernameTextBox.Leave += new System.EventHandler(this.usernameTextBox_Leave);
             // 
@@ -70,6 +72,8 @@
             this.passwordTextBox.Size = new System.Drawing.Size(260, 20);
             this.passwordTextBox.TabIndex = 17;
             this.passwordTextBox.Text = "Password...";
+            this.passwordTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.passwordTextBox.WordWrap = false;
             this.passwordTextBox.Enter += new System.EventHandler(this.passwordTextBox_Enter);
             this.passwordTextBox.Leave += new System.EventHandler(this.passwordTextBox_Leave);
             // 
