@@ -50,6 +50,7 @@ namespace MPAid.Cores.Scoreboard
         public float OverallCorrectnessPercentage
         {
             get { return overallCorrectnessPercentage; }
+            set { overallCorrectnessPercentage = value; }
         }
 
         public MPAiSoundScoreBoardSession(DateTime dateAndTime)
