@@ -109,7 +109,7 @@
             this.currentFolderTextBox.MinimumSize = new System.Drawing.Size(175, 15);
             this.currentFolderTextBox.Name = "currentFolderTextBox";
             this.currentFolderTextBox.ReadOnly = true;
-            this.currentFolderTextBox.Size = new System.Drawing.Size(175, 15);
+            this.currentFolderTextBox.Size = new System.Drawing.Size(175, 20);
             this.currentFolderTextBox.TabIndex = 17;
             this.currentFolderTextBox.Text = "No Folder Selected";
             // 
