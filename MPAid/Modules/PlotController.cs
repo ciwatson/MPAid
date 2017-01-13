@@ -84,6 +84,7 @@ namespace MPAid
 
         private static Process PlotExe;
         private static bool shutdown;
+        private static bool exitRequest = false;
 
         /// <summary>
         /// Method called by the button to show the  plot. 
@@ -95,6 +96,7 @@ namespace MPAid
         /// </summary>
         public static void RunPlot(PlotType? requestedPlotType, VoiceType? requestedVoiceType)
         {
+            exitRequest = false;
             plotType = requestedPlotType;
             voiceType = requestedVoiceType;
 
@@ -109,6 +111,7 @@ namespace MPAid
         /// </summary>
         public static void ClosePlot()
         {
+            Console.WriteLine("Close Requested...");
             PlotExe.Kill();
 
             NewForms.MPAiSoundMainMenu menu = new MPAid.NewForms.MPAiSoundMainMenu();
@@ -177,32 +180,11 @@ namespace MPAid
                 }
 
                 PlotExe.StartInfo.UseShellExecute = true;
-                // PlotExe.StartInfo.WorkingDirectory = Path.Combine(Properties.Settings.Default.FomantFolder, "Dist");
+                PlotExe.StartInfo.WorkingDirectory = Path.Combine(Properties.Settings.Default.FomantFolder, "Dist");
 
-                PlotExe.StartInfo.WorkingDirectory = Path.Combine(System.IO.Directory.GetCurrentDirectory(), "Fomant", "Dist");
+                //PlotExe.StartInfo.WorkingDirectory = Path.Combine(System.IO.Directory.GetCurrentDirectory(), "Fomant", "Dist");
 
-
-                //TODO BELOW USED FOR TESTING, DELETE AFTER Tested.
-                Console.WriteLine(PlotExe.StartInfo.WorkingDirectory);
-                Console.Write("Current Dir:   ");
-                Console.WriteLine(System.IO.Directory.GetCurrentDirectory());
-                Console.Write("Dist exists?:   ");
-                Console.WriteLine(Directory.Exists("Fomant"));
-                Console.WriteLine(Directory.Exists("./Fomant"));
-
-                Console.Write("Working Dir:   ");
-                Console.WriteLine(PlotExe.StartInfo.WorkingDirectory);
-                Console.WriteLine("\n");
-                Console.Write("FileName:   ");
-                Console.WriteLine(PlotExe.StartInfo.FileName);
-                Console.WriteLine("\n");
-                Console.Write(".exe Exists:   ");
-                Console.WriteLine(File.Exists(PlotExe.StartInfo.FileName));
-                Console.WriteLine("Test Exists:   ");
-                Console.WriteLine(File.Exists("VowelRunner.py"));
-                Console.WriteLine("\n");
-
-                PlotExe.StartInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Normal;
+                PlotExe.StartInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
 
                 Console.WriteLine(Path.Combine(PlotExe.StartInfo.WorkingDirectory, PlotExe.StartInfo.FileName));
                 //PlotExe.StartInfo.FileName = Path.Combine(PlotExe.StartInfo.WorkingDirectory, PlotExe.StartInfo.FileName);
@@ -210,7 +192,7 @@ namespace MPAid
                 PlotExe.Start();
                 int count = 0;
                 // Hang up the main application to wait until it finished starting
-                while ((PlotStarted(GetPlotTitle()) == 1) && (!PlotExe.HasExited))
+                while ((PlotStarted(GetPlotTitle()) == 1) && (!exitRequest))
                 {
                     count++;
                     Console.Write(count);
@@ -218,7 +200,10 @@ namespace MPAid
                     // Wait 5 ms before checking if secondary application has started, preventing CPU blocking.
                     await System.Threading.Tasks.Task.Delay(5);
                 }
-                while (!PlotExe.HasExited)
+                Console.WriteLine(PlotStarted(GetPlotTitle()));
+                Console.WriteLine(!PlotExe.HasExited);
+                Console.WriteLine("End of first loop.");
+                while ( !exitRequest)
                 {
 
                     await System.Threading.Tasks.Task.Delay(10);
@@ -227,7 +212,7 @@ namespace MPAid
 
 
 
-
+                Console.WriteLine("End of things to do...");
                 StopThread();
                 ClosePlot();
 
@@ -248,6 +233,11 @@ namespace MPAid
             pythonPipe.requestShutDown();
         }
 
+        public static void RequestShutDown() {
+            exitRequest = true;
+        }
+
+       
         /// <summary>
         /// Getter for the title of the  plot.  
         /// </summary>
@@ -274,7 +264,8 @@ namespace MPAid
         private Boolean pipeServerIsClosed;
         private Boolean firstTime;
         private Boolean shutdown = false;
-
+       
+        
         public void requestShutDown()
         {
             shutdown = true;
@@ -318,6 +309,7 @@ namespace MPAid
                                 break;
                             }
                         }
+                        PlotController.RequestShutDown();
                     }
 
 

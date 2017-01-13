@@ -417,7 +417,11 @@ class VowelPlot:
     and makes the formant plot react accordingly.
     """
     def record(self):
+
         if self.vowelScorer.safeToRecord():
+            self.Recording = True
+
+            self.formApp.preventResizing()
             self.xFormantList = []
             self.yFormantList = []
             self.recordedAudio = Sound()
@@ -432,7 +436,6 @@ class VowelPlot:
             self.vowelPlotCanvas.itemconfig('Loudness', state='hidden')
 
             self.recordedAudio.record()
-            self.Recording = True
             self.count2 = 0
             thread.start_new_thread(self.multiThreadUpdateCanvas, ("Thread-1", self.notStopped))
         else:
@@ -455,7 +458,10 @@ class VowelPlot:
 
 
     def stop(self):
+        print "In stop 0"
         if self.vowelScorer.safeToRecord():
+
+            print "In stop 1"
 
             self.notStopped = False
             self.vowelPlotCanvas.itemconfig('recording', state='hidden')
@@ -464,17 +470,24 @@ class VowelPlot:
             self.vowelPlotCanvas.itemconfig('Loudness', state='hidden')
             self.vowelPlotCanvas.itemconfig('firstButtons', state='normal')
 
+            print "In stop 2"
             self.recordedAudio.stop()
-            self.Recording = False
             self.root.after(100 ,self.loudnessMeter.clearMeter)
             self.root.after(100 ,self.displayFinalScore)
-
+            self.Recording = False
+            print "In stop 3"
+            print "In stop 4"
             self.vowelScorer.updateScore(self.vowel, self.rawScore, self.plottedInfo)
-
-            self.vowelScorer.connectAndSendText()
+            print "In stop 5"
             self.rawScore = 0
             self.plotCounter = 0
             self.plottedInfo = [0,0,0,0,0]
+            print "In stop 6"
+
+            self.root.after(100,self.formApp.allowResizing)
+            print "In stop 7"
+
+
         else:
             print "Not Safe to Stop.. Please Wait."
 
