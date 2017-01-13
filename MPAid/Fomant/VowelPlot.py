@@ -458,7 +458,10 @@ class VowelPlot:
 
 
     def stop(self):
+        print "In stop 0"
         if self.vowelScorer.safeToRecord():
+
+            print "In stop 1"
 
             self.notStopped = False
             self.vowelPlotCanvas.itemconfig('recording', state='hidden')
@@ -467,17 +470,24 @@ class VowelPlot:
             self.vowelPlotCanvas.itemconfig('Loudness', state='hidden')
             self.vowelPlotCanvas.itemconfig('firstButtons', state='normal')
 
+            print "In stop 2"
             self.recordedAudio.stop()
             self.root.after(100 ,self.loudnessMeter.clearMeter)
             self.root.after(100 ,self.displayFinalScore)
             self.Recording = False
-            self.formApp.allowResizing()
-
+            print "In stop 3"
+            print "In stop 4"
             self.vowelScorer.updateScore(self.vowel, self.rawScore, self.plottedInfo)
-
+            print "In stop 5"
             self.rawScore = 0
             self.plotCounter = 0
             self.plottedInfo = [0,0,0,0,0]
+            print "In stop 6"
+
+            self.root.after(100,self.formApp.allowResizing)
+            print "In stop 7"
+
+
         else:
             print "Not Safe to Stop.. Please Wait."
 

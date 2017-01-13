@@ -28,6 +28,11 @@ namespace MPAid.Cores.Scoreboard
         {
             return simi(recognisedText, expectedText);
         }
+
+        public float Similarity()
+        {
+            return Similarity(SimilarityAlgorithm.DamereauLevensheinDistanceAlgorithm);
+        }
         /// <summary>
         /// The text the HTKEngine identified.
         /// </summary>

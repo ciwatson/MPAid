@@ -78,6 +78,7 @@ namespace MPAid.NewForms
             bottomHeight = SpeechRecognitionTestPanel.Height - SpeechRecognitionTestPanel.SplitterDistance;
             toggleOptions();    // For development, the bottom panel is visible, but the user won't need the bottom panel most of the time.
             toggleListButtons(RecordingListBox.SelectedItems.Count > 0);
+            session = UserManagement.CurrentUser.SpeakScoreboard.NewScoreBoardSession();
         }
 
         /// <summary>
@@ -380,16 +381,16 @@ namespace MPAid.NewForms
                 {
                     string target = ((WordComboBox.SelectedItem as Word) == null) ? string.Empty : (WordComboBox.SelectedItem as Word).Name;
                     Dictionary<string, string> result = RecEngine.Recognize(Path.Combine(outputFolder, recordingProgressBarLabel.Text)).ToDictionary(x => x.Key, x => x.Value);
+                    result.Add("Recording File Name", "hoihoi");
                     if (result.Count > 0)
                     {
-                        RecognitionResultMSGBox recMSGBox = new RecognitionResultMSGBox();      // This will need to be changed when we change the analyse window
-                        if (recMSGBox.ShowDialog(result.First().Key, target, result.First().Value) == DialogResult.OK)
-                        {
-                            session.Content.Add(recMSGBox.scoreBoardItem);
-                        }
+                        MPAiSpeakScoreBoardItem item = new MPAiSpeakScoreBoardItem(target, result.First().Value, PronuciationAdvisor.Advise(result.First().Key, target, result.First().Value));
+                        session.Content.Add(item);
+
+                        AnalysisScreen analysisScreen = new AnalysisScreen(item.Similarity(), item.Analysis);
+                        analysisScreen.ShowDialog(this);
                     }
                 }
-
             }
             catch (Exception exp)
             {

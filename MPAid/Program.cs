@@ -15,7 +15,7 @@ namespace MPAid
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new NewForms.LoginScreen());
+            Application.Run(new NewForms.RecordingUploadScreen());
             //MessageBox.Show("hahoi, hoihoi" + MPAid.Cores.Scoreboard.SimilarityAlgorithm.DamereauLevensheinDistanceAlgorithm("hahoi", "hoihoi") + "\nhoihoi, hahoi" + MPAid.Cores.Scoreboard.SimilarityAlgorithm.DamereauLevensheinDistanceAlgorithm("hoihoi", "hahoi"));
         }
     }
