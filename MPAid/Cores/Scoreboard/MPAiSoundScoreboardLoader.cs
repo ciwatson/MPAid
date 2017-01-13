@@ -41,6 +41,9 @@ namespace MPAid.Cores.Scoreboard
                         sw.WriteLine("<Date>");
                         sw.WriteLine(session.DateAndTime);
                         sw.WriteLine("</Date>");
+                        sw.WriteLine("<OverallCorrectnessPercentage>");
+                        sw.WriteLine(session.OverallCorrectnessPercentage);
+                        sw.WriteLine("</OverallCorrectnessPercentage>");
                         sw.WriteLine("<Content>");
                         foreach (MPAiSoundScoreBoardItem item in session.Content)
                         {
@@ -81,10 +84,10 @@ namespace MPAid.Cores.Scoreboard
                                 line = sr.ReadLine();
                                 while (line.Equals("<Session>"))
                                 {
+                                    line = sr.ReadLine();
                                     while (!line.Equals("</Session>"))
                                     {
                                         DateTime dateAndTime = new DateTime(); ;
-                                        line = sr.ReadLine();
                                         if (line.Equals("<Date>"))
                                         {
                                             line = sr.ReadLine();
@@ -94,6 +97,21 @@ namespace MPAid.Cores.Scoreboard
                                                 if (!DateTime.TryParse(line, out dateAndTime))
                                                 {
                                                     throw new FileLoadException("Date could not be read");
+                                                }
+                                                line = sr.ReadLine();
+                                            }
+                                            line = sr.ReadLine();
+                                        }
+
+                                        float overallCorrectnessPercentage = -1;
+                                        if (line.Equals("<OverallCorrectnessPercentage>"))
+                                        {
+                                            line = sr.ReadLine();
+                                            while (!line.Equals("</OverallCorrectnessPercentage>"))
+                                            {
+                                                if (!float.TryParse(line, out overallCorrectnessPercentage))
+                                                {
+                                                    throw new FileLoadException("Overall Correctness Percentage could not be read");
                                                 }
                                                 line = sr.ReadLine();
                                             }
@@ -147,7 +165,8 @@ namespace MPAid.Cores.Scoreboard
                                             }
                                             line = sr.ReadLine();
                                         }
-                                        scoreboard.NewScoreBoardSession(dateAndTime, content);
+                                        MPAiSoundScoreBoardSession session = scoreboard.NewScoreBoardSession(dateAndTime, content);
+                                        session.OverallCorrectnessPercentage = overallCorrectnessPercentage;
                                     }
                                     line = sr.ReadLine();
                                 }

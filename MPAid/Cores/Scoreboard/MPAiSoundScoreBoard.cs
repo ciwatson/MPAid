@@ -89,35 +89,35 @@ namespace MPAid.Cores.Scoreboard
         private List<MPAiSoundScoreBoardSession> sessions = new List<MPAiSoundScoreBoardSession>();
 
         public List<MPAiSoundScoreBoardSession> Sessions
-        {
-            get
-            {
+        {               
+            get         
+            {           
                 sessions.Sort(MPAiSoundScoreBoardSession.ComparisionByDate);
                 return sessions;
-            }
-        }
-
+            }           
+        }               
+                        
         public MPAiSoundScoreBoard(MPAiUser user)
-        {
+        {               
             this.user = user;
-        }
-
+        }               
+                        
         public MPAiSoundScoreBoardSession NewScoreBoardSession()
-        {
+        {               
             MPAiSoundScoreBoardSession session = new MPAiSoundScoreBoardSession(DateTime.Now);
             sessions.Add(session);
             return session;
-        }
-
+        }               
+                        
         public MPAiSoundScoreBoardSession NewScoreBoardSession(DateTime dateAndTime, List<MPAiSoundScoreBoardItem> content)
-        {
+        {               
             MPAiSoundScoreBoardSession session = new MPAiSoundScoreBoardSession(dateAndTime, content);
             sessions.Add(session);
             return session;
-        }
-
+        }               
+                        
         public void SaveScoreBoardToFile()
-        {
+        {               
             MPAiSoundScoreboardLoader.SaveScoreboard(this);
         }
     }
