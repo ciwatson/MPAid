@@ -320,7 +320,6 @@ namespace MPAid.UserControls
                     }
                     Dictionary<string, string> result = RecEngine.Recognize(Path.Combine(outputFolder, (string)RECListBox.SelectedItem)).ToDictionary(x => x.Key, x => x.Value);
                     result.Add("hahoi", "hoihoi");
-                    //MessageBox.Show("result: " + result.First().Key + ", " + result.First().Value);
                     if (result.Count > 0)
                     {
                         

@@ -39,7 +39,6 @@ namespace MPAid.NewForms
             this.descriptionBox = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.scoreReportButton = new System.Windows.Forms.Button();
-            this.learnButton = new System.Windows.Forms.Button();
             this.backButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -74,7 +73,7 @@ namespace MPAid.NewForms
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
             this.splitContainer1.Size = new System.Drawing.Size(498, 315);
             this.splitContainer1.SplitterDistance = 99;
-            this.splitContainer1.TabIndex = 0;
+            this.splitContainer1.TabIndex = 255;
             this.splitContainer1.TabStop = false;
             // 
             // correctnessLabel
@@ -164,7 +163,6 @@ namespace MPAid.NewForms
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel1.Controls.Add(this.scoreReportButton, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.learnButton, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.backButton, 3, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
@@ -185,17 +183,6 @@ namespace MPAid.NewForms
             this.scoreReportButton.UseVisualStyleBackColor = true;
             this.scoreReportButton.Click += new System.EventHandler(this.scoreReportButton_Click);
             // 
-            // learnButton
-            // 
-            this.learnButton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.learnButton.Location = new System.Drawing.Point(310, 9);
-            this.learnButton.Name = "learnButton";
-            this.learnButton.Size = new System.Drawing.Size(75, 23);
-            this.learnButton.TabIndex = 1;
-            this.learnButton.Text = "Learn";
-            this.learnButton.UseVisualStyleBackColor = true;
-            this.learnButton.Click += new System.EventHandler(this.learnButton_Click);
-            // 
             // backButton
             // 
             this.backButton.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -205,6 +192,7 @@ namespace MPAid.NewForms
             this.backButton.TabIndex = 2;
             this.backButton.Text = "Back";
             this.backButton.UseVisualStyleBackColor = true;
+            this.backButton.Click += new System.EventHandler(this.backButton_Click);
             // 
             // AnalysisScreen
             // 
@@ -245,7 +233,6 @@ namespace MPAid.NewForms
         private System.Windows.Forms.TextBox descriptionBox;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Button scoreReportButton;
-        private System.Windows.Forms.Button learnButton;
         private System.Windows.Forms.Button backButton;
     }
 }

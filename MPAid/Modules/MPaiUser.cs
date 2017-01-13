@@ -7,6 +7,17 @@ using System.Text;
 using MPAid.Models;
 using MPAid.Cores.Scoreboard;
 using System.Windows.Forms;
+using MPAid.Cores;
+using NAudio.CoreAudioApi;
+using NAudio.Wave;
+using System.Data;
+using System.Data.Entity;
+using System.Drawing;
+using System.Reflection;
+using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
+using Vlc.DotNet.Forms;
+using System.Threading;
 
 namespace MPAid
 {
@@ -23,6 +34,7 @@ namespace MPAid
         private Speaker speaker;
         private Category category;
         private readonly string adminStr = "admin";
+        private MPAidModel DBModel;
         /// <summary>
         /// Wrapper property for the user's username, allowing access from outside the class.
         /// </summary>
@@ -46,7 +58,10 @@ namespace MPAid
         public string UserPswd
         {
             get { return passWord; }
-            set { passWord = value; }
+            set
+            {
+                passWord = value;
+            }
         }
 
         /// <summary>
@@ -56,7 +71,10 @@ namespace MPAid
         public VoiceType? Voice
         {
             get { return voiceType; }
-            set { voiceType = value; }
+            set {
+                voiceType = value;
+                setSpeakerFromVoiceType();
+            }
         }
         
         /// <summary>
@@ -106,6 +124,18 @@ namespace MPAid
             }
         }
 
+        private MPAidModel InitializeDBModel()
+        {
+            DBModel = new MPAidModel();
+            DBModel.Database.Initialize(false);
+            DBModel.Recording.Load();
+            DBModel.Speaker.Load();
+            DBModel.Category.Load();
+            DBModel.Word.Load();
+            DBModel.SingleFile.Load();
+            return DBModel;
+        }
+
 
         /// <summary>
         /// Constructor for the MPAiUser class, with a default value for voice type.
@@ -126,9 +156,32 @@ namespace MPAid
         /// <param name="code">The new user's password</param>
         public MPAiUser(string name, string code, VoiceType? voiceType)
         {
+            InitializeDBModel();
             userName = name;
             passWord = code;
-            this.voiceType = voiceType;
+            this.Voice = voiceType;
+        }
+
+        private void setSpeakerFromVoiceType()
+        {
+            switch(voiceType)
+            {
+                case VoiceType.MASCULINE_HERITAGE:
+                    speaker = DBModel.Speaker.Local[1];
+                    break;
+
+                case VoiceType.FEMININE_HERITAGE:
+                    speaker = DBModel.Speaker.Local[0];
+                    break;
+
+                case VoiceType.MASCULINE_MODERN:
+                    speaker = DBModel.Speaker.Local[3];
+                    break;
+
+                case VoiceType.FEMININE_MODERN:
+                    speaker = DBModel.Speaker.Local[2];
+                    break;
+            }
         }
 
         private void loadScoreBoards()
@@ -166,10 +219,10 @@ namespace MPAid
             switch(voiceType)
             {
                 case VoiceType.MASCULINE_HERITAGE:
-                    voiceType = VoiceType.FEMININE_HERITAGE;
+                    Voice = VoiceType.FEMININE_HERITAGE;
                     break;
                 case VoiceType.MASCULINE_MODERN:
-                    voiceType = VoiceType.FEMININE_MODERN;
+                    Voice = VoiceType.FEMININE_MODERN;
                     break;
             }
         }
@@ -182,10 +235,10 @@ namespace MPAid
             switch (voiceType)
             {
                 case VoiceType.FEMININE_HERITAGE:
-                    voiceType = VoiceType.MASCULINE_HERITAGE;
+                    Voice = VoiceType.MASCULINE_HERITAGE;
                     break;
                 case VoiceType.FEMININE_MODERN:
-                    voiceType = VoiceType.MASCULINE_MODERN;
+                    Voice = VoiceType.MASCULINE_MODERN;
                     break;
             }
         }
@@ -198,10 +251,10 @@ namespace MPAid
             switch (voiceType)
             {
                 case VoiceType.FEMININE_MODERN:
-                    voiceType = VoiceType.FEMININE_HERITAGE;
+                    Voice = VoiceType.FEMININE_HERITAGE;
                     break;
                 case VoiceType.MASCULINE_MODERN:
-                    voiceType = VoiceType.MASCULINE_HERITAGE;
+                    Voice = VoiceType.MASCULINE_HERITAGE;
                     break;
             }
         }
@@ -213,10 +266,10 @@ namespace MPAid
             switch (voiceType)
             {
                 case VoiceType.FEMININE_HERITAGE:
-                    voiceType = VoiceType.FEMININE_MODERN;
+                    Voice = VoiceType.FEMININE_MODERN;
                     break;
                 case VoiceType.MASCULINE_HERITAGE:
-                    voiceType = VoiceType.MASCULINE_MODERN;
+                    Voice = VoiceType.MASCULINE_MODERN;
                     break;
             }
         }
