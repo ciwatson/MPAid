@@ -239,6 +239,12 @@
     <Compile Include="NewForms\MenuStrip.Designer.cs">
       <DependentUpon>MenuStrip.cs</DependentUpon>
     </Compile>
+    <Compile Include="NewForms\RecordingUploadScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewForms\RecordingUploadScreen.Designer.cs">
+      <DependentUpon>RecordingUploadScreen.cs</DependentUpon>
+    </Compile>
     <Compile Include="NewForms\RenameFileDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -368,6 +374,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="NewForms\MenuStrip.resx">
       <DependentUpon>MenuStrip.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewForms\RecordingUploadScreen.resx">
+      <DependentUpon>RecordingUploadScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NewForms\RenameFileDialog.resx">
       <DependentUpon>RenameFileDialog.cs</DependentUpon>
