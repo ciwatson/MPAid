@@ -12,6 +12,7 @@ using System.Windows.Forms;
 using System.Threading;
 using MPAid.Models;
 using MPAid;
+using MPAid.Cores.Scoreboard;
 namespace MPAid
 {
     /// <summary>
@@ -184,7 +185,7 @@ namespace MPAid
 
                 //PlotExe.StartInfo.WorkingDirectory = Path.Combine(System.IO.Directory.GetCurrentDirectory(), "Fomant", "Dist");
 
-                PlotExe.StartInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
+                PlotExe.StartInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Normal;
 
                 Console.WriteLine(Path.Combine(PlotExe.StartInfo.WorkingDirectory, PlotExe.StartInfo.FileName));
                 //PlotExe.StartInfo.FileName = Path.Combine(PlotExe.StartInfo.WorkingDirectory, PlotExe.StartInfo.FileName);
@@ -299,9 +300,48 @@ namespace MPAid
                         {
                             try
                             {
+
                                 var recievedLength = (int)binaryReader.ReadUInt64();            // Read string length
                                 string recievedString = new string(binaryReader.ReadChars(recievedLength - 1));
-                                Console.WriteLine("{0}", recievedString);
+                                Console.WriteLine(recievedString);
+
+                                String[] recievedStringList = recievedString.Split('\n');
+
+                                MPAiSoundScoreBoardSession session = UserManagement.CurrentUser.SoundScoreboard.NewScoreBoardSession();
+                                
+
+                                int count = 0;
+                                foreach (String str in recievedStringList) {
+                                    String[] lineStringList = str.Split(' ');
+                                    if (count > 0)
+                                    {
+                                        //vowels
+                                        String vowel = lineStringList[0];
+                                        float correctnessPercentage;
+                                        if (!float.TryParse(lineStringList[1], out correctnessPercentage))
+                                        {
+                                            throw new Exception("Could not parse String to Float");
+                                        }
+
+                                        session.AddScoreBoardItem(vowel, correctnessPercentage);
+                                    }
+                                    else {
+                                        //total
+                                        float overallPercentage;
+                                        
+                                        if (!float.TryParse(lineStringList[1], out overallPercentage))
+                                        {
+                                            throw new Exception("Could not parse String to Float");
+                                        }
+                                        Console.WriteLine(overallPercentage);
+                                        session.OverallCorrectnessPercentage = overallPercentage;
+                                    }
+                                    count++;
+
+
+                                }
+
+                                ReportLauncher.GenerateMPAiSoundScoreHTML(UserManagement.CurrentUser.SoundScoreboard);
 
                             }
                             catch (EndOfStreamException)

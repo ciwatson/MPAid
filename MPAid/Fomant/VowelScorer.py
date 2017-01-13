@@ -84,70 +84,46 @@ class VowelScorer:
         return -1
 
     def createLineList(self):
-        line1 = '{}'.format(self.totalPlotCount) + ' {:.1%}'.format(self.overallPercentage/100.0)
-        region0 = self.totalPlotRegionsCounts[0]
-        region1 = self.totalPlotRegionsCounts[1]
-        region2 = self.totalPlotRegionsCounts[2]
-        region3 = self.totalPlotRegionsCounts[3]
-        line2 = "%d %d %d %d" % (region0, region1, region2, region3)
+
+        lineTotal = 'TotaTotal: '+ "{:.2f}".format(self.overallPercentage)
+        sentLine = lineTotal
+        print sentLine
 
         #a:
         index = 0
-        line3 = '{}'.format(self.vowelPlotCounts[index]) + ' {:.1%}'.format(self.overallPercentage/100.0)
-        region0 = self.vowelPlotRegionsCounts[index][0]
-        region1 = self.vowelPlotRegionsCounts[index][1]
-        region2 = self.vowelPlotRegionsCounts[index][2]
-        region3 = self.vowelPlotRegionsCounts[index][3]
-        line4 = "%d %d %d %d" % (region0, region1, region2, region3)
+        if self.vowelPlotCounts[index] != 0:
+            lineA = 'a: ' + "{:.2f}".format(self.vowelPlotPercentages[index])
+            sentLine = sentLine + "\n" + lineA
+            print sentLine
         #e:
         index = 1
-        line5 ='{}'.format(self.vowelPlotCounts[index]) + ' {:.1%}'.format(self.vowelPlotPercentages[index]/100.0)
-        region0 = self.vowelPlotRegionsCounts[index][0]
-        region1 = self.vowelPlotRegionsCounts[index][1]
-        region2 = self.vowelPlotRegionsCounts[index][2]
-        region3 = self.vowelPlotRegionsCounts[index][3]
-        line6 = "%d %d %d %d" % (region0, region1, region2, region3)
+        if self.vowelPlotCounts[index] != 0:
+            lineE = 'e: '+ "{:.2f}".format(self.vowelPlotPercentages[index])
+            sentLine = sentLine + "\n" + lineE
+
         #i:
         index = 2
-        line7 = '{}'.format(self.vowelPlotCounts[index]) + ' {:.1%}'.format(self.vowelPlotPercentages[index]/100.0)
-        region0 = self.vowelPlotRegionsCounts[index][0]
-        region1 = self.vowelPlotRegionsCounts[index][1]
-        region2 = self.vowelPlotRegionsCounts[index][2]
-        region3 = self.vowelPlotRegionsCounts[index][3]
-        line8 = "%d %d %d %d" % (region0, region1, region2, region3)
+        if self.vowelPlotCounts[index] != 0:
+            lineI = 'i: '+ "{:.2f}".format(self.vowelPlotPercentages[index])
+            sentLine = sentLine + "\n" + lineI
+            print sentLine
+
         #o:
         index = 3
-        line9 = '{}'.format(self.vowelPlotCounts[index]) + ' {:.1%}'.format(self.vowelPlotPercentages[index]/100.0)
-        region0 = self.vowelPlotRegionsCounts[index][0]
-        region1 = self.vowelPlotRegionsCounts[index][1]
-        region2 = self.vowelPlotRegionsCounts[index][2]
-        region3 = self.vowelPlotRegionsCounts[index][3]
-        line10 = "%d %d %d %d" % (region0, region1, region2, region3)
+        if self.vowelPlotCounts[index] != 0:
+            lineO = 'o: '+ "{:.2f}".format(self.vowelPlotPercentages[index])
+            sentLine = sentLine + "\n" + lineO
+            print sentLine
+
         #u:
         index = 4
-        line11 = '{}'.format(self.vowelPlotCounts[index]) + ' {:.1%}'.format(self.vowelPlotPercentages[index]/100.0)
-        region0 = self.vowelPlotRegionsCounts[index][0]
-        region1 = self.vowelPlotRegionsCounts[index][1]
-        region2 = self.vowelPlotRegionsCounts[index][2]
-        region3 = self.vowelPlotRegionsCounts[index][3]
-        line12 = "%d %d %d %d" % (region0, region1, region2, region3)
+        if self.vowelPlotCounts[index] != 0:
+            lineU = 'u: '+ "{:.2f}".format(self.vowelPlotPercentages[index])
+            sentLine = sentLine + "\n" + lineU
+            print sentLine
 
-
-        lineList = (line1+"\n")
-        lineList = lineList + (line2+"\n")
-        lineList = lineList + (line3+"\n")
-        lineList = lineList + (line4+"\n")
-        lineList = lineList + (line5+"\n")
-        lineList = lineList + (line6+"\n")
-        lineList = lineList + (line7+"\n")
-        lineList = lineList + (line8+"\n")
-        lineList = lineList + (line9+"\n")
-        lineList = lineList + (line10+"\n")
-        lineList = lineList + (line11+"\n")
-        lineList = lineList + (line12+"\n")
-
-
-        return lineList
+        print sentLine
+        return sentLine
 
     def safeToRecord(self):
         if(self.isSafeToRecord):

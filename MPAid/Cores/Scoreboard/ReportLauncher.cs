@@ -422,7 +422,7 @@ namespace MPAid.Cores.Scoreboard
                                 htw.RenderEndTag();
                             }
                             // Correctness score
-                            float correctness = session.OverallCorrectnessPercentage;
+                            float correctness = session.OverallCorrectnessPercentage / 100;
                             if (correctness >= 0.8)
                             {
                                 htw.AddAttribute(HtmlTextWriterAttribute.Class, "good-colour");
