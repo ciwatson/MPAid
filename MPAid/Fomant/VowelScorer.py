@@ -15,7 +15,7 @@ class VowelScorer:
         self.isSafeToRecord = True
         self.plotRegions = ['Total','Centre', 'Second', 'Third', 'Not on Target']
         self.longVowels=['a:','e:','i:','o:','u:']
-
+        self.lastScore = 0
         #VowelRegionsCounts
         self.vowelPlotRegionsCounts = []
         for i in range(len(self.longVowels)):
@@ -41,7 +41,10 @@ class VowelScorer:
     As well as the overall data.
     """
     def updateScore(self, vowel, rawScore, plottedInfo):
-
+        if plottedInfo == 0 :
+            pass
+        else:
+            self.lastScore = (int)((float)(rawScore)/(float)(plottedInfo[0]))
         index = self.getIndex(vowel, self.longVowels)
 
         #updateVowelPlotRegionsCount for vowel
@@ -82,6 +85,10 @@ class VowelScorer:
                 return i
         print "Error Vowel not valid."
         return -1
+    def getLastScore(self):
+        print self.lastScore
+
+        return self.lastScore
 
     def createLineList(self):
 

@@ -175,6 +175,7 @@ class VowelPlot:
         self.scoreCounter = 0
 
     def redrawScore(self):
+        print self.score
         font = ('Arial','18')
         self.vowelPlotCanvas.delete('score')
         if self.score == 0:
@@ -193,6 +194,11 @@ class VowelPlot:
         scoreText = (str)(self.score)+ " %"
         self.vowelPlotCanvas.itemconfig(self.textID, text=scoreText)
 
+    def displayFinalScore(self, score):
+        scoreText = "Score: "+(str)(score)+ " %"
+        self.vowelPlotCanvas.itemconfig(self.textID, text=scoreText)
+        self.score = score
+
     def distanceToScore(self, distance):
 
         self.plottedInfo[0] += 1
@@ -209,11 +215,7 @@ class VowelPlot:
             self.plottedInfo[3] += 1
             return 0
 
-
         self.updateScore((int)(score))
-
-    def displayFinalScore(self):
-        self.vowelPlotCanvas.itemconfig(self.textID, text = "Final Score: " + (str)(self.score) + " %" )
 
 
 
@@ -378,7 +380,7 @@ class VowelPlot:
 
                     if self.plotCount > 250:
                         self.stop()
-                        self.root.after(100 , self.displayFinalScore)
+                        #self.root.after(100 , self.displayFinalScore)
 
                     self.distanceToScore(distance)
 
@@ -434,6 +436,7 @@ class VowelPlot:
 
             self.plotCount = 0
             self.notStopped = True
+            self.vowelPlotCanvas.itemconfig('analysisButton', state = 'hidden')
             self.vowelPlotCanvas.itemconfig('helptext', state='hidden')
             self.vowelPlotCanvas.itemconfig('firstButtons', state='hidden')
             self.vowelPlotCanvas.itemconfig('recording', state='normal')
@@ -462,10 +465,7 @@ class VowelPlot:
 
 
     def stop(self):
-        print "In stop 0"
         if self.vowelScorer.safeToRecord():
-
-            print "In stop 1"
 
             self.notStopped = False
             self.vowelPlotCanvas.itemconfig('recording', state='hidden')
@@ -474,27 +474,28 @@ class VowelPlot:
             self.vowelPlotCanvas.itemconfig('Loudness', state='hidden')
             self.vowelPlotCanvas.itemconfig('firstButtons', state='normal')
 
-            print "In stop 2"
             self.recordedAudio.stop()
             self.root.after(100 ,self.loudnessMeter.clearMeter)
-            self.root.after(100 ,self.displayFinalScore)
+            #self.root.after(100 ,self.displayFinalScore)
             self.Recording = False
-            print "In stop 3"
-            print "In stop 4"
             self.vowelScorer.updateScore(self.vowel, self.rawScore, self.plottedInfo)
-            print "In stop 5"
             self.rawScore = 0
             self.plotCounter = 0
             self.plottedInfo = [0,0,0,0,0]
-            print "In stop 6"
+            self.vowelPlotCanvas.itemconfig('analysisButton', state='normal')
+            #self.root.after(100,self.formApp.allowResizing)
 
-            self.root.after(100,self.formApp.allowResizing)
-            print "In stop 7"
-
+            self.vowelPlotCanvas.itemconfig('Loudness', state='hidden')
+            self.vowelPlotCanvas.itemconfig('toLoud', state='hidden')
+            self.vowelPlotCanvas.itemconfig('toQuiet', state='hidden')
+            self.root.after(500 ,self.requestFinalScore)
 
         else:
             print "Not Safe to Stop.. Please Wait."
 
+    def requestFinalScore(self):
+        print "Requesting Final Score"
+        self.displayFinalScore(self.vowelScorer.getLastScore())
 
     def clear(self):
         self.vowelPlotCanvas.delete('userformants')

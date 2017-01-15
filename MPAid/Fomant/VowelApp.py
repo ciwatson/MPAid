@@ -87,7 +87,7 @@ class VowelApp:
         self.root.protocol("WM_DELETE_WINDOW", self.quitApp) #Defines the default close operation.
         self.resizeCount=0
 
-        self.root.resizable(True, True) #Allows the window to be resized both verically and horizonally.
+        self.root.resizable(False, False) #Allows the window to be resized both verically and horizonally.
         self.root.minsize(510,510)
 
         self.positionWindowInCentre(self.root, FRAMEWIDTH, FRAMEHEIGHT) #Determines where to place the Frame on the screen.
@@ -96,7 +96,7 @@ class VowelApp:
         self.root.resizable(False, False)
 
     def allowResizing(self):
-        self.root.resizable(True, True)
+        self.root.resizable(False, False)
 
     def bindResizing(self):
         self.bindedFunctionID = self.frame.bind("<Configure>", self.resizeRequest)
@@ -336,7 +336,7 @@ class VowelApp:
 
     def mainloop(self):
         self.root.mainloop()
-        
+
     def quitApp(self):
         print("QUITTING...")
         self.vowelScorer.connectAndSendText()
