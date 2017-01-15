@@ -336,7 +336,7 @@ class VowelApp:
 
     def mainloop(self):
         self.root.mainloop()
-
+        
     def quitApp(self):
         print("QUITTING...")
         self.vowelScorer.connectAndSendText()

@@ -95,25 +95,29 @@ class VowelPlot:
         vowel = ['a:','e:','i:','o:','u:']
 
 
-        self.aButton = Button(self.parent, text = vowel[0], font = font, command = lambda vow=vowel[0]: self.changeVowel(vow))
-        self.aButton.configure( activebackground = "#33B5E5", relief  = GROOVE)
-        self.aButtonWindow = self.vowelPlotCanvas.create_window(self.width/2 - 160, 50, window = self.aButton, tags="firstButtons")
+        aButton = Button(self.parent, text = vowel[0], font = font, command = lambda vow=vowel[0]: self.changeVowel(vow))
+        aButton.configure( activebackground = "#33B5E5", relief  = GROOVE)
+        aButtonWindow = self.vowelPlotCanvas.create_window(self.width/2 - 160, 50, window = aButton, tags="firstButtons")
 
-        self.eButton = Button(self.parent, text = vowel[1], font = font, command = lambda vow=vowel[1]: self.changeVowel(vow))
-        self.eButton.configure( activebackground = "#33B5E5", relief  = GROOVE)
-        self.eButtonWindow = self.vowelPlotCanvas.create_window(self.width/2 - 80, 50, window = self.eButton, tags="firstButtons")
+        eButton = Button(self.parent, text = vowel[1], font = font, command = lambda vow=vowel[1]: self.changeVowel(vow))
+        eButton.configure( activebackground = "#33B5E5", relief  = GROOVE)
+        eButtonWindow = self.vowelPlotCanvas.create_window(self.width/2 - 80, 50, window = eButton, tags="firstButtons")
 
-        self.iButton = Button(self.parent, text = vowel[2]+" ", font = font, command = lambda vow=vowel[2]: self.changeVowel(vow))
-        self.iButton.configure( activebackground = "#33B5E5", relief  = GROOVE)
-        self.iButtonWindow = self.vowelPlotCanvas.create_window(self.width/2, 50, window = self.iButton, tags="firstButtons")
+        iButton = Button(self.parent, text = vowel[2]+" ", font = font, command = lambda vow=vowel[2]: self.changeVowel(vow))
+        iButton.configure( activebackground = "#33B5E5", relief  = GROOVE)
+        iButtonWindow = self.vowelPlotCanvas.create_window(self.width/2, 50, window = iButton, tags="firstButtons")
 
-        self.oButton = Button(self.parent, text = vowel[3], font = font, command = lambda vow=vowel[3]: self.changeVowel(vow))
-        self.oButton.configure( activebackground = "#33B5E5", relief  = GROOVE)
-        self.oButtonWindow = self.vowelPlotCanvas.create_window(self.width/2 + 80, 50, window = self.oButton, tags="firstButtons")
+        oButton = Button(self.parent, text = vowel[3], font = font, command = lambda vow=vowel[3]: self.changeVowel(vow))
+        oButton.configure( activebackground = "#33B5E5", relief  = GROOVE)
+        oButtonWindow = self.vowelPlotCanvas.create_window(self.width/2 + 80, 50, window = oButton, tags="firstButtons")
 
-        self.uButton = Button(self.parent, text = vowel[4], font = font, command = lambda vow=vowel[4]: self.changeVowel(vow))
-        self.uButton.configure( activebackground = "#33B5E5", relief  = GROOVE)
-        self.uButtonWindow = self.vowelPlotCanvas.create_window(self.width/2 + 160, 50, window = self.uButton, tags="firstButtons")
+        uButton = Button(self.parent, text = vowel[4], font = font, command = lambda vow=vowel[4]: self.changeVowel(vow))
+        uButton.configure( activebackground = "#33B5E5", relief  = GROOVE)
+        uButtonWindow = self.vowelPlotCanvas.create_window(self.width/2 + 160, 50, window = uButton, tags="firstButtons")
+
+        analysisButton = Button(self.parent, text="    Analysis    \nand\ngo back",command=self.requestQuit, font = ('Arial','15') )
+        analysisButton.configure(activebackground='green', anchor=W, relief = GROOVE)
+        analysisButtonWindow = self.vowelPlotCanvas.create_window(4, self.height-4, anchor=SW,tags=('analysisButton', 'firstButtons'),window=analysisButton)
 
 
         # y = (self.height/2 - self.yIdeal*2)/3
@@ -135,7 +139,8 @@ class VowelPlot:
         #     buttonWindow = self.vowelPlotCanvas.create_window((int)(x[i]), (int)(y), anchor=NW, window=buttonFrame, tag='firstButtons')
         #
         #     self.vowelPlotCanvas.itemconfig('firstButtons', state = 'normal')
-
+    def requestQuit(self):
+        self.formApp.quitApp()
 
     def onResize(self, width, height):
 
@@ -155,7 +160,6 @@ class VowelPlot:
 
     def changeVowel(self, vowel):
         self.formApp.loadVowelPlot(self.id, vowel,self.width,self.height)
-
 
 
     """

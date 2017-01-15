@@ -179,7 +179,7 @@ namespace MPAid
                         PlotExe.StartInfo.Arguments = @"masculine heritage";
                         break;
                 }
-
+                
                 PlotExe.StartInfo.UseShellExecute = true;
                 PlotExe.StartInfo.WorkingDirectory = Path.Combine(Properties.Settings.Default.FomantFolder, "Dist");
 

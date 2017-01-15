@@ -132,15 +132,17 @@ class VowelScorer:
             return False
 
     def connectAndSendText(self):
-        self.isSafeToRecord = False
-        lineList = self.createLineList()
+        try:
+            self.isSafeToRecord = False
+            lineList = self.createLineList()
 
-        f = open(r'\\.\pipe\NPSSVowelPlot', 'r+b', 0)
-        i = 1
+            f = open(r'\\.\pipe\NPSSVowelPlot', 'r+b', 0)
+            i = 1
 
-        f.write(struct.pack('I', len(lineList)) + lineList)   # Write str length and str
-        f.seek(0)                               # EDIT: This is also necessary
-        print 'Wrote:', lineList
-
+            f.write(struct.pack('I', len(lineList)) + lineList)   # Write str length and str
+            f.seek(0)                               # EDIT: This is also necessary
+            print 'Wrote:', lineList
+        except IOError:
+            print "Pipe File does not exist."
         time.sleep(2)
         self.isSafeToRecord = True
