@@ -303,10 +303,13 @@ namespace MPAid
 
                                 var recievedLength = (int)binaryReader.ReadUInt64();            // Read string length
                                 string recievedString = new string(binaryReader.ReadChars(recievedLength - 1));
-                                Console.WriteLine(recievedString);
 
+                                if (recievedString.Length == 1) {
+                                    break;
+                                }
                                 String[] recievedStringList = recievedString.Split('\n');
-
+                                int length = recievedStringList.Length;
+                                Console.WriteLine(length);
                                 MPAiSoundScoreBoardSession session = UserManagement.CurrentUser.SoundScoreboard.NewScoreBoardSession();
                                 
 
