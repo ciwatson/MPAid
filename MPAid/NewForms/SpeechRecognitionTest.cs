@@ -381,7 +381,7 @@ namespace MPAid.NewForms
                 {
                     string target = ((WordComboBox.SelectedItem as Word) == null) ? string.Empty : (WordComboBox.SelectedItem as Word).Name;
                     Dictionary<string, string> result = RecEngine.Recognize(Path.Combine(outputFolder, recordingProgressBarLabel.Text)).ToDictionary(x => x.Key, x => x.Value);
-                    result.Add("Recording File Name", "hoihoi");
+                    //result.Add("Recording File Name", "hoihoi");
                     if (result.Count > 0)
                     {
                         MPAiSpeakScoreBoardItem item = new MPAiSpeakScoreBoardItem(target, result.First().Value, PronuciationAdvisor.Advise(result.First().Key, target, result.First().Value));
@@ -585,23 +585,34 @@ namespace MPAid.NewForms
         /// </summary>
         private void add()
         {
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            try
             {
-                foreach (string f in openFileDialog.FileNames)
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
-                    File.Copy(f, Path.Combine(tempFolder, "Rename_Backup"));    // Back up file
-                    using (RenameFileDialog renameDialog = new RenameFileDialog(f))
+                    foreach (string f in openFileDialog.FileNames)
                     {
-                        if (renameDialog.ShowDialog() == DialogResult.OK)
-                        {  
-                            // Rename file
-                            File.Move(renameDialog.RenamedFile.FullName, Path.Combine(outputFolder, renameDialog.RenamedFile.Name)); // Move renamed file into recording directory
-                            File.Move(Path.Combine(tempFolder, "Rename_Backup"), f); // Restore old file from backup.
+                        File.Copy(f, Path.Combine(tempFolder, "Rename_Backup"));    // Back up file
+                        using (RenameFileDialog renameDialog = new RenameFileDialog(f))
+                        {
+                            if (renameDialog.ShowDialog() == DialogResult.OK)
+                            {
+                                // Rename file
+                                File.Move(renameDialog.RenamedFile.FullName, Path.Combine(outputFolder, renameDialog.RenamedFile.Name)); // Move renamed file into recording directory
+                                File.Move(Path.Combine(tempFolder, "Rename_Backup"), f); // Restore old file from backup.
+                            }
                         }
-                        File.Delete(Path.Combine(tempFolder, "Rename_Backup"));    // Delete temp file.
                     }
+                    DataBinding();
                 }
-                DataBinding();
+            }
+            catch (Exception exp)
+            {
+                Console.WriteLine(exp.StackTrace);
+
+            }
+            finally
+            {
+                File.Delete(Path.Combine(tempFolder, "Rename_Backup"));    // Delete temp file.
             }
         }
 
