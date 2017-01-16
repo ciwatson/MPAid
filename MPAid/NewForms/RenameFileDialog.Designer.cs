@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.labelTextBox = new System.Windows.Forms.TextBox();
             this.labelLabel = new System.Windows.Forms.Label();
             this.WordLabel = new System.Windows.Forms.Label();
-            this.speakerTextBox = new System.Windows.Forms.TextBox();
             this.speakerLabel = new System.Windows.Forms.Label();
             this.filenameTextBox = new System.Windows.Forms.TextBox();
             this.filenameLabel = new System.Windows.Forms.Label();
@@ -41,11 +41,16 @@
             this.WordComboBox = new System.Windows.Forms.ComboBox();
             this.ExplanationLabel = new System.Windows.Forms.Label();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.categoryComboBox = new System.Windows.Forms.ComboBox();
+            this.categoryLabel = new System.Windows.Forms.Label();
+            this.speakerComboBox = new System.Windows.Forms.ComboBox();
+            this.voiceTypeConverterBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.voiceTypeConverterBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // labelTextBox
             // 
-            this.labelTextBox.Location = new System.Drawing.Point(81, 144);
+            this.labelTextBox.Location = new System.Drawing.Point(81, 147);
             this.labelTextBox.Margin = new System.Windows.Forms.Padding(10);
             this.labelTextBox.Name = "labelTextBox";
             this.labelTextBox.Size = new System.Drawing.Size(322, 20);
@@ -54,7 +59,7 @@
             // labelLabel
             // 
             this.labelLabel.AutoSize = true;
-            this.labelLabel.Location = new System.Drawing.Point(26, 147);
+            this.labelLabel.Location = new System.Drawing.Point(26, 150);
             this.labelLabel.Margin = new System.Windows.Forms.Padding(10);
             this.labelLabel.Name = "labelLabel";
             this.labelLabel.Size = new System.Drawing.Size(33, 13);
@@ -64,25 +69,17 @@
             // WordLabel
             // 
             this.WordLabel.AutoSize = true;
-            this.WordLabel.Location = new System.Drawing.Point(26, 113);
+            this.WordLabel.Location = new System.Drawing.Point(26, 123);
             this.WordLabel.Margin = new System.Windows.Forms.Padding(10);
             this.WordLabel.Name = "WordLabel";
             this.WordLabel.Size = new System.Drawing.Size(33, 13);
             this.WordLabel.TabIndex = 21;
             this.WordLabel.Text = "Word";
             // 
-            // speakerTextBox
-            // 
-            this.speakerTextBox.Location = new System.Drawing.Point(81, 77);
-            this.speakerTextBox.Margin = new System.Windows.Forms.Padding(10);
-            this.speakerTextBox.Name = "speakerTextBox";
-            this.speakerTextBox.Size = new System.Drawing.Size(322, 20);
-            this.speakerTextBox.TabIndex = 1;
-            // 
             // speakerLabel
             // 
             this.speakerLabel.AutoSize = true;
-            this.speakerLabel.Location = new System.Drawing.Point(26, 80);
+            this.speakerLabel.Location = new System.Drawing.Point(26, 72);
             this.speakerLabel.Margin = new System.Windows.Forms.Padding(10);
             this.speakerLabel.Name = "speakerLabel";
             this.speakerLabel.Size = new System.Drawing.Size(47, 13);
@@ -122,7 +119,7 @@
             // 
             // renameButton
             // 
-            this.renameButton.Location = new System.Drawing.Point(247, 177);
+            this.renameButton.Location = new System.Drawing.Point(247, 178);
             this.renameButton.Name = "renameButton";
             this.renameButton.Size = new System.Drawing.Size(75, 23);
             this.renameButton.TabIndex = 5;
@@ -133,7 +130,7 @@
             // cancelButton
             // 
             this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.cancelButton.Location = new System.Drawing.Point(328, 177);
+            this.cancelButton.Location = new System.Drawing.Point(328, 178);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 23);
             this.cancelButton.TabIndex = 6;
@@ -145,10 +142,11 @@
             this.WordComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.WordComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.WordComboBox.FormattingEnabled = true;
-            this.WordComboBox.Location = new System.Drawing.Point(81, 110);
+            this.WordComboBox.Location = new System.Drawing.Point(81, 120);
             this.WordComboBox.Name = "WordComboBox";
             this.WordComboBox.Size = new System.Drawing.Size(322, 21);
             this.WordComboBox.TabIndex = 2;
+            this.WordComboBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.WordComboBox_KeyPress);
             this.WordComboBox.Leave += new System.EventHandler(this.WordComboBox_Leave);
             // 
             // ExplanationLabel
@@ -169,17 +167,56 @@
             this.openFileDialog.Filter = "Audio files (*.wav)|*.wav|All files (*.*)|*.*";
             this.openFileDialog.RestoreDirectory = true;
             // 
+            // categoryComboBox
+            // 
+            this.categoryComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.categoryComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.categoryComboBox.FormattingEnabled = true;
+            this.categoryComboBox.Location = new System.Drawing.Point(81, 94);
+            this.categoryComboBox.Name = "categoryComboBox";
+            this.categoryComboBox.Size = new System.Drawing.Size(322, 21);
+            this.categoryComboBox.TabIndex = 31;
+            this.categoryComboBox.SelectedIndexChanged += new System.EventHandler(this.categoryComboBox_SelectedIndexChanged);
+            this.categoryComboBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.categoryComboBox_KeyPress);
+            this.categoryComboBox.Leave += new System.EventHandler(this.categoryComboBox_Leave);
+            // 
+            // categoryLabel
+            // 
+            this.categoryLabel.AutoSize = true;
+            this.categoryLabel.Location = new System.Drawing.Point(26, 97);
+            this.categoryLabel.Margin = new System.Windows.Forms.Padding(10);
+            this.categoryLabel.Name = "categoryLabel";
+            this.categoryLabel.Size = new System.Drawing.Size(49, 13);
+            this.categoryLabel.TabIndex = 32;
+            this.categoryLabel.Text = "Category";
+            // 
+            // speakerComboBox
+            // 
+            this.speakerComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.speakerComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.speakerComboBox.FormattingEnabled = true;
+            this.speakerComboBox.Location = new System.Drawing.Point(81, 69);
+            this.speakerComboBox.Name = "speakerComboBox";
+            this.speakerComboBox.Size = new System.Drawing.Size(322, 21);
+            this.speakerComboBox.TabIndex = 33;
+            // 
+            // voiceTypeConverterBindingSource
+            // 
+            this.voiceTypeConverterBindingSource.DataSource = typeof(MPAid.Models.VoiceTypeConverter);
+            // 
             // RenameFileDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(434, 212);
+            this.Controls.Add(this.speakerComboBox);
+            this.Controls.Add(this.categoryComboBox);
+            this.Controls.Add(this.categoryLabel);
             this.Controls.Add(this.ExplanationLabel);
             this.Controls.Add(this.WordComboBox);
             this.Controls.Add(this.labelTextBox);
             this.Controls.Add(this.labelLabel);
             this.Controls.Add(this.WordLabel);
-            this.Controls.Add(this.speakerTextBox);
             this.Controls.Add(this.speakerLabel);
             this.Controls.Add(this.filenameTextBox);
             this.Controls.Add(this.filenameLabel);
@@ -189,6 +226,7 @@
             this.Name = "RenameFileDialog";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Rename";
+            ((System.ComponentModel.ISupportInitialize)(this.voiceTypeConverterBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -198,7 +236,6 @@
         private System.Windows.Forms.TextBox labelTextBox;
         private System.Windows.Forms.Label labelLabel;
         private System.Windows.Forms.Label WordLabel;
-        private System.Windows.Forms.TextBox speakerTextBox;
         private System.Windows.Forms.Label speakerLabel;
         private System.Windows.Forms.TextBox filenameTextBox;
         private System.Windows.Forms.Label filenameLabel;
@@ -208,5 +245,9 @@
         private System.Windows.Forms.ComboBox WordComboBox;
         private System.Windows.Forms.Label ExplanationLabel;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
+        private System.Windows.Forms.ComboBox categoryComboBox;
+        private System.Windows.Forms.Label categoryLabel;
+        private System.Windows.Forms.ComboBox speakerComboBox;
+        private System.Windows.Forms.BindingSource voiceTypeConverterBindingSource;
     }
 }

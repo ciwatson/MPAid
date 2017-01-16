@@ -162,7 +162,7 @@ namespace MPAid
             this.Voice = voiceType;
         }
 
-        private void setSpeakerFromVoiceType()
+        public void setSpeakerFromVoiceType()
         {
             switch(voiceType)
             {

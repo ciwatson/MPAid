@@ -21,6 +21,10 @@ namespace MPAid.NewForms
         private string alreadyExistsText = "Destination file already exists!";
         private string dataLinkErrorText = "Database linking error!";
         private string wordNotFoundText = "That word is not valid, try another, or select from the list.";
+        private string categoryNotFoundText = "That category is not valid, try another, or select from the list.";
+
+        // If the user is adding a recording to the database, some validation should be removed.
+        private bool newFile = false;
 
         private FileInfo file;
 
@@ -34,11 +38,70 @@ namespace MPAid.NewForms
             InitializeComponent();
             // Use user settings or menu data to automatically fill the fields.
             // Speaker = user's screen name
-            // Category will always be word
-            WordComboBox.Text = "Word";
+            speakerComboBox.Items.AddRange( new object[4]{ VoiceType.FEMININE_HERITAGE, VoiceType.MASCULINE_HERITAGE, VoiceType.FEMININE_MODERN, VoiceType.MASCULINE_MODERN });
+            speakerComboBox.SelectedItem = UserManagement.CurrentUser.Voice;
+            // Category has a drop down list for scalability, although in this version it's just Word and Vowel.
+            populateCategoryComboBox(); 
             // Word will need a drop-down list
             populateWordComboBox();
             // Label should start with focus and be up to them.
+        }
+
+        public RenameFileDialog(bool newFile):
+            base()
+        {
+            this.newFile = newFile;
+        }
+
+        /// <summary>
+        /// Gets the categories from the database.
+        /// </summary>
+        private void populateCategoryComboBox()
+        {
+            try
+            {
+                // Create new database context.
+                using (MPAidModel DBModel = new MPAidModel())
+                {
+                    DBModel.Database.Initialize(false); // Added for safety; if the database has not been initialised, initialise it.
+
+                    MPAiUser current = UserManagement.CurrentUser;
+
+                    List<Category> view = DBModel.Category.ToList();
+                    view.Reverse();
+                    categoryComboBox.DataSource = new BindingSource() { DataSource = view };
+                    categoryComboBox.DisplayMember = "Name";
+                }
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(dataLinkErrorText);
+                Console.WriteLine(exp);
+            }
+        }
+
+        /// <summary>
+        /// Due to the legacy code on the batch files, the enums for voice type don't match the text required in filenames.
+        /// This method converts between the two.
+        /// </summary>
+        /// <param name="voice">A VoiceType enum representing the voice type to convert.</param>
+        /// <returns>A string which is the old format for the input enum.</returns>
+        private string ConvertVoiceType(VoiceType? voice)
+        {
+            switch (voice)
+            {
+                case (VoiceType.FEMININE_HERITAGE):
+                    return "oldfemale";
+                case (VoiceType.MASCULINE_HERITAGE):
+                    return "oldmale";
+                case (VoiceType.FEMININE_MODERN):
+                    return "youngfemale";
+                case (VoiceType.MASCULINE_MODERN):
+                    return "youngmale";
+                default:
+                    MessageBox.Show("Invalid Speaker type!");
+                    return null;
+            }
         }
 
         /// <summary>
@@ -54,10 +117,11 @@ namespace MPAid.NewForms
                     DBModel.Database.Initialize(false); // Added for safety; if the database has not been initialised, initialise it.
 
                     MPAiUser current = UserManagement.CurrentUser;
+                    UserManagement.CurrentUser.setSpeakerFromVoiceType();
 
                     List<Word> view = DBModel.Word.Where(x => (
-                       x.Category.Name.Equals("Word")
-                       && x.Recordings.Any(y => y.Speaker.SpeakerId == current.Speaker.SpeakerId)  // Until the Menubar is finished, this won't work. Comment this line out to test.
+                       x.Category.Name.Equals(((Category)categoryComboBox.SelectedItem).Name)
+                       && x.Recordings.Any(y => y.Speaker.SpeakerId == UserManagement.CurrentUser.Speaker.SpeakerId) 
                        )).ToList();
 
                     view.Sort(new VowelComparer());
@@ -67,6 +131,7 @@ namespace MPAid.NewForms
             }
             catch (Exception exp)
             {
+                MessageBox.Show(dataLinkErrorText);
                 Console.WriteLine(exp);
             }
         }
@@ -75,7 +140,7 @@ namespace MPAid.NewForms
         /// Constructor overload allowing a file to be passed in from elsewhere to be renamed.
         /// </summary>
         /// <param name="filename">The file to rename.</param>
-        public RenameFileDialog(String filename): this()
+        public RenameFileDialog(string filename): this()
         {
             file = new FileInfo(filename);
             filenameTextBox.Text = file.Name;
@@ -122,8 +187,8 @@ namespace MPAid.NewForms
                 NameParser parser = new NameParser();
                 parser.Address = Path.GetDirectoryName(file.FullName);
                 parser.Ext = Path.GetExtension(file.FullName);
-                parser.Speaker = speakerTextBox.Text;
-                parser.Category = "Word";   // This form is only used for words, not sounds, so the category will always be the same.
+                parser.Speaker = ConvertVoiceType((VoiceType?)speakerComboBox.SelectedItem);
+                parser.Category = categoryComboBox.Text;
                 parser.Word = WordComboBox.Text;
                 parser.Label = labelTextBox.Text;
 
@@ -145,6 +210,7 @@ namespace MPAid.NewForms
                 }
             }
         }
+
         /// <summary>
         /// Prevents two lists appearing onscreen at once by closing the main list when the suggestion list is visible.
         /// </summary>
@@ -157,12 +223,19 @@ namespace MPAid.NewForms
 
         /// <summary>
         /// Ensures only valid words are entered, by comparing the text to the names of all words when focus is lost.
+        /// Validation is skipped if the user is uploading a new file, as the word may not be in the database yet.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Automatically generated by Visual Studio.</param>
+        /// <param name="e">Automatically generated by Visual Studio.</param>
         private void WordComboBox_Leave(object sender, EventArgs e)
         {
-            //Prevents the user getting stuck when there are no words.
+            // Separate if statements used for code clarity.
+            // If the user is uploading a new file, don't enforce this rule.
+            if (newFile)
+            {
+                return;
+            }
+            // Prevents the user getting stuck when there are no words. 
             if (WordComboBox.Items.Count < 1)
             {
                 return;
@@ -176,6 +249,56 @@ namespace MPAid.NewForms
             }
             MessageBox.Show(wordNotFoundText);
             WordComboBox.Focus();
+        }
+
+        /// <summary>
+        /// Prevents two lists appearing onscreen at once by closing the main list when the suggestion list is visible.
+        /// </summary>
+        /// <param name="sender">Automatically generated by Visual Studio.</param>
+        /// <param name="e">Automatically generated by Visual Studio.</param>
+        private void categoryComboBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            categoryComboBox.DroppedDown = false;
+        }
+
+        /// <summary>
+        /// Ensures only valid categories are entered, by comparing the text to the names of all categories when focus is lost.
+        /// Validation is skipped if the user is uploading a new file, as the category may not be in the database yet.
+        /// </summary>
+        /// <param name="sender">Automatically generated by Visual Studio.</param>
+        /// <param name="e">Automatically generated by Visual Studio.</param>
+        private void categoryComboBox_Leave(object sender, EventArgs e)
+        {
+            // Separate if statements used for code clarity.
+            // If the user is uploading a new file, don't enforce this rule.
+            if (newFile)
+            {
+                return;
+            }
+            // Prevents the user getting stuck when there are no words. 
+            if (categoryComboBox.Items.Count < 1)
+            {
+                return;
+            }
+            foreach (Category w in categoryComboBox.Items)
+            {
+                if (w.Name.Equals(categoryComboBox.Text))
+                {
+                    return;
+                }
+            }
+            MessageBox.Show(categoryNotFoundText);
+            categoryComboBox.Focus();
+        }
+
+        /// <summary>
+        /// When the category changes, update the words to be the words in that category.
+        /// </summary>
+        /// <param name="sender">Automatically generated by Visual Studio.</param>
+        /// <param name="e">Automatically generated by Visual Studio.</param>
+        private void categoryComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            populateWordComboBox();
         }
     }
 }

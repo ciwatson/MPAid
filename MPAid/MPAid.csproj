@@ -3187,6 +3187,7 @@
     <None Include="Prerequisties\x64\SqlLocalDB.msi" />
     <None Include="Prerequisties\x86\ActivePerl-5.22.1.2201-MSWin32-x86-64int-299574.msi" />
     <None Include="Prerequisties\x86\SqlLocalDB.msi" />
+    <None Include="Properties\DataSources\MPAid.Models.VoiceTypeConverter.datasource" />
     <None Include="VlcLibs\header-files\.keep" />
     <None Include="VlcLibs\x64\.keep" />
     <None Include="VlcLibs\x64\plugins\plugins.dat" />
