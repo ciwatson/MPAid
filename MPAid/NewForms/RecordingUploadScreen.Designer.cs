@@ -49,6 +49,7 @@
             this.toLocalButton.TabIndex = 12;
             this.toLocalButton.Text = "Delete from Database";
             this.toLocalButton.UseVisualStyleBackColor = true;
+            this.toLocalButton.Click += new System.EventHandler(this.toLocalButton_Click);
             // 
             // toDBButton
             // 
