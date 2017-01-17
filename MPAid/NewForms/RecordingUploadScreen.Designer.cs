@@ -37,7 +37,7 @@
             this.currentFolderTextBox = new System.Windows.Forms.TextBox();
             this.selectFolderButton = new System.Windows.Forms.Button();
             this.allDatabaseItemsButton = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.backButton = new System.Windows.Forms.Button();
             this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.SuspendLayout();
             // 
@@ -80,6 +80,7 @@
             this.allLocalItemsButton.Tag = "1";
             this.allLocalItemsButton.Text = "Select All Local Files";
             this.allLocalItemsButton.UseVisualStyleBackColor = true;
+            this.allLocalItemsButton.Click += new System.EventHandler(this.allLocalItemsButton_Click);
             // 
             // mediaLocalListBox
             // 
@@ -133,23 +134,25 @@
             this.allDatabaseItemsButton.Tag = "1";
             this.allDatabaseItemsButton.Text = "Select All Database Files";
             this.allDatabaseItemsButton.UseVisualStyleBackColor = true;
+            this.allDatabaseItemsButton.Click += new System.EventHandler(this.allDatabaseItemsButton_Click);
             // 
-            // button1
+            // backButton
             // 
-            this.button1.Location = new System.Drawing.Point(218, 154);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(148, 23);
-            this.button1.TabIndex = 20;
-            this.button1.Tag = "1";
-            this.button1.Text = "Close";
-            this.button1.UseVisualStyleBackColor = true;
+            this.backButton.Location = new System.Drawing.Point(218, 154);
+            this.backButton.Name = "backButton";
+            this.backButton.Size = new System.Drawing.Size(148, 23);
+            this.backButton.TabIndex = 20;
+            this.backButton.Tag = "1";
+            this.backButton.Text = "Close";
+            this.backButton.UseVisualStyleBackColor = true;
+            this.backButton.Click += new System.EventHandler(this.backButton_Click);
             // 
             // RecordingUploadScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 193);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.backButton);
             this.Controls.Add(this.allDatabaseItemsButton);
             this.Controls.Add(this.selectFolderButton);
             this.Controls.Add(this.currentFolderTextBox);
@@ -177,7 +180,7 @@
         private System.Windows.Forms.TextBox currentFolderTextBox;
         private System.Windows.Forms.Button selectFolderButton;
         private System.Windows.Forms.Button allDatabaseItemsButton;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button backButton;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog;
     }
 }
