@@ -47,8 +47,21 @@ namespace MPAid.NewForms
             // Label should start with focus and be up to them.
         }
 
-        public RenameFileDialog(bool newFile):
-            base()
+        /// <summary>
+        /// Constructor overload allowing a file to be passed in from elsewhere to be renamed.
+        /// </summary>
+        /// <param name="filename">The file to rename.</param>
+        public RenameFileDialog(string filename) : this()
+        {
+            file = new FileInfo(filename);
+            filenameTextBox.Text = file.Name;
+        }
+
+        /// <summary>
+        /// Constructor allowing the user to disable certain validation so that new words can be added to the database.
+        /// </summary>
+        /// <param name="newFile"></param>
+        public RenameFileDialog(string filename, bool newFile) : this(filename)
         {
             this.newFile = newFile;
         }
@@ -134,16 +147,6 @@ namespace MPAid.NewForms
                 MessageBox.Show(dataLinkErrorText);
                 Console.WriteLine(exp);
             }
-        }
-
-        /// <summary>
-        /// Constructor overload allowing a file to be passed in from elsewhere to be renamed.
-        /// </summary>
-        /// <param name="filename">The file to rename.</param>
-        public RenameFileDialog(string filename): this()
-        {
-            file = new FileInfo(filename);
-            filenameTextBox.Text = file.Name;
         }
 
         /// <summary>
