@@ -3943,13 +3943,6 @@
     <Content Include="Audio\youngmale-word-tü-L1Y03M.wav" />
     <Content Include="Audio\youngmale-word-tü-L1Y05M.wav" />
     <Content Include="bin\Debug\App_Data\Database.txt" />
-    <Content Include="bin\Debug\App_Data\MPAidDB.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="bin\Debug\App_Data\MPAidDB_log.ldf">
-      <DependentUpon>MPAidDB.mdf</DependentUpon>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="bin\Debug\Audio\oldfemale-word-hau-R001M.wav" />
     <Content Include="bin\Debug\Audio\oldfemale-word-hau-R002M.wav" />
     <Content Include="bin\Debug\Audio\oldfemale-word-hau-R003M.wav" />

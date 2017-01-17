@@ -117,6 +117,7 @@ namespace MPAid.NewForms
                         {
                             File.Copy(existingFile, newFile, true);
                         }
+                        DBModel.SaveChanges();
                     }
                 }
                 populateListBox();
@@ -181,7 +182,8 @@ namespace MPAid.NewForms
                         if (cty.Words.Count == 0)                       // The last word attached to a category, then delete the category.
                         {
                             DBModel.Category.Remove(cty);
-                        }                    
+                        }
+                        DBModel.SaveChanges();                   
                     }
                 }
                 populateListBox();
