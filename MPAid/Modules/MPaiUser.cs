@@ -34,7 +34,7 @@ namespace MPAid
         private Speaker speaker;
         private Category category;
         private readonly string adminStr = "admin";
-        private MPAidModel DBModel;
+
         /// <summary>
         /// Wrapper property for the user's username, allowing access from outside the class.
         /// </summary>
@@ -123,10 +123,8 @@ namespace MPAid
                 return soundScoreboard;
             }
         }
-
-        private MPAidModel InitializeDBModel()
+        private MPAidModel InitializeDBModel(MPAidModel DBModel)
         {
-            DBModel = new MPAidModel();
             DBModel.Database.Initialize(false);
             DBModel.Recording.Load();
             DBModel.Speaker.Load();
@@ -135,7 +133,6 @@ namespace MPAid
             DBModel.SingleFile.Load();
             return DBModel;
         }
-
 
         /// <summary>
         /// Constructor for the MPAiUser class, with a default value for voice type.
@@ -156,31 +153,34 @@ namespace MPAid
         /// <param name="code">The new user's password</param>
         public MPAiUser(string name, string code, VoiceType? voiceType)
         {
-            InitializeDBModel();
             userName = name;
             passWord = code;
-            this.Voice = voiceType;
+            Voice = voiceType;
         }
 
         public void setSpeakerFromVoiceType()
         {
-            switch(voiceType)
+            using (MPAidModel DBModel = new MPAidModel())
             {
-                case VoiceType.MASCULINE_HERITAGE:
-                    speaker = DBModel.Speaker.Local[1];
-                    break;
+                InitializeDBModel(DBModel);
+                switch (voiceType)
+                {
+                    case VoiceType.MASCULINE_HERITAGE:
+                        speaker = DBModel.Speaker.Local.Where(x => x.SpeakerId == 2).SingleOrDefault();
+                        break;
 
-                case VoiceType.FEMININE_HERITAGE:
-                    speaker = DBModel.Speaker.Local[0];
-                    break;
+                    case VoiceType.FEMININE_HERITAGE:
+                        speaker = DBModel.Speaker.Local.Where(x => x.SpeakerId == 1).SingleOrDefault();
+                        break;
 
-                case VoiceType.MASCULINE_MODERN:
-                    speaker = DBModel.Speaker.Local[3];
-                    break;
+                    case VoiceType.MASCULINE_MODERN:
+                        speaker = DBModel.Speaker.Local.Where(x => x.SpeakerId == 4).SingleOrDefault();
+                        break;
 
-                case VoiceType.FEMININE_MODERN:
-                    speaker = DBModel.Speaker.Local[2];
-                    break;
+                    case VoiceType.FEMININE_MODERN:
+                        speaker = DBModel.Speaker.Local.Where(x => x.SpeakerId == 3).SingleOrDefault();
+                        break;
+                }
             }
         }
 
