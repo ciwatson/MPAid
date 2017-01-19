@@ -15,6 +15,6 @@ namespace MPAid.Models
         /// <summary>
         /// Combination of the standard MPAi directory, and a folder which will always be called App_Data.
         /// </summary>
-        public readonly static string path = Path.Combine(System.Windows.Forms.Application.StartupPath, @"App_Data");
+        public readonly static string path = Path.Combine(System.Environment.GetEnvironmentVariable("localappdata"),"MPAi");
     }
 }
