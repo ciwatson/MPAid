@@ -64,6 +64,18 @@ namespace MPAid.NewForms
             splashScreen.Close();
         }
 
+        public LoginScreen(string command) {
+            if (command.Trim().ToLower() == "initdb") {
+                SplashScreen splashScreen = new SplashScreen();
+                splashScreen.Show();
+                InitializeDB();
+                splashScreen.Close();
+                Close();
+            }
+        }
+
+  
+
         /// <summary>
         /// Connects this program to the maintained database, and loads all relevant files.
         /// </summary>
