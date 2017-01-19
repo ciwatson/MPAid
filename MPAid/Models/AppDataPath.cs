@@ -20,7 +20,7 @@ namespace MPAid.Models
         /// <summary>
         /// Combination of the standard MPAi directory, and a folder which will always be called App_Data.
         /// </summary>
-        private readonly static string path = System.IO.Path.Combine(System.Environment.GetEnvironmentVariable("localappdata"), "MPAi");
+        private readonly static string path = System.IO.Path.Combine(System.Environment.GetEnvironmentVariable("appdata"), "MPAi");
 
         /// <summary>
         /// Lazily instantiates the temp directory if it doesn't already exist.
