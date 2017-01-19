@@ -157,6 +157,10 @@ namespace MPAid.NewForms
                 Console.WriteLine(exp);
                 MessageBox.Show(updateFailedText);
             }
+            finally
+            {
+                File.Delete(Path.Combine(Path.Combine(Path.GetTempPath(), "MPAiTemp"), "Rename_Backup"));
+            }
         }
 
         /// <summary>
