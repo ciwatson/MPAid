@@ -21,7 +21,7 @@ namespace MPAid
             {
                 if(scoreboardReportFolder == null)
                 {
-                    string path = Path.Combine(AppDataPath.path, "ScoreboardReports");
+                    string path = Path.Combine(AppDataPath.Path, "ScoreboardReports");
                     ensureDirectoryExists(path);
                     return Path.Combine(path);
                 }
@@ -42,7 +42,7 @@ namespace MPAid
             {
                 if(videoFolder == null)
                 {
-                    string path = Path.Combine(AppDataPath.path, "Video");
+                    string path = Path.Combine(AppDataPath.Path, "Video");
                     ensureDirectoryExists(path);
                     return Path.Combine(path);
                 }
@@ -63,7 +63,7 @@ namespace MPAid
             {
                 if(audioFolder == null)
                 {
-                    string path = Path.Combine(AppDataPath.path, "Audio");
+                    string path = Path.Combine(AppDataPath.Path, "Audio");
                     ensureDirectoryExists(path);
                     return Path.Combine(path);
                 }
@@ -84,7 +84,7 @@ namespace MPAid
             {
                 if(recordingFolder == null)
                 {
-                    string path = Path.Combine(AppDataPath.path, "Recording");
+                    string path = Path.Combine(AppDataPath.Path, "Recording");
                     ensureDirectoryExists(path);
                     return Path.Combine(path);
                 }
