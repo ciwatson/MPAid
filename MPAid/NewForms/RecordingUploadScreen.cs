@@ -155,7 +155,7 @@ namespace MPAid.NewForms
             catch (Exception exp)
             {
                 Console.WriteLine(exp);
-                MessageBox.Show(updateFailedText);
+                MessageBox.Show(exp.StackTrace);
             }
         }
 
