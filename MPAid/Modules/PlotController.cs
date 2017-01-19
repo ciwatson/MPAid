@@ -13,6 +13,8 @@ using System.Threading;
 using MPAid.Models;
 using MPAid;
 using MPAid.Cores.Scoreboard;
+using System.Security.AccessControl;
+
 namespace MPAid
 {
     /// <summary>
@@ -113,7 +115,7 @@ namespace MPAid
         public static void ClosePlot()
         {
             Console.WriteLine("Close Requested...");
-            PlotExe.Kill();
+            PlotExe.CloseMainWindow();
 
             NewForms.MPAiSoundMainMenu menu = new MPAid.NewForms.MPAiSoundMainMenu();
             menu.Show();
@@ -126,7 +128,7 @@ namespace MPAid
         /// </summary>
         private static async void StartPlot()
         {
-
+            
             try
             {
                 // Before starting a new process, tidy up any old ones in the background.
@@ -136,6 +138,7 @@ namespace MPAid
                 pythonPipe = new PythonPipe();
 
                 pipeThread = new Thread(new ThreadStart(pythonPipe.ConnectAndRecieve));
+                pipeThread.IsBackground = true;
                 pipeThread.Start();
 
                 Console.WriteLine("after Thread");
@@ -213,7 +216,8 @@ namespace MPAid
 
 
 
-                Console.WriteLine("End of things to do...");
+                Console.WriteLine("Request end of program.");
+
                 StopThread();
                 ClosePlot();
 
@@ -235,6 +239,7 @@ namespace MPAid
         }
 
         public static void RequestShutDown() {
+            Console.WriteLine("Request ShutDown, exitRequest made.");
             exitRequest = true;
         }
 
@@ -288,8 +293,11 @@ namespace MPAid
 
                     ////firstTime = false;
 
+                    
+
                     using (NamedPipeServerStream pipeServer = new NamedPipeServerStream("NPSSVowelPlot", PipeDirection.InOut, 254))
                     {
+
                         Console.WriteLine("Waiting for connection...");
                         pipeServer.WaitForConnection();
 
@@ -352,6 +360,7 @@ namespace MPAid
                                 break;
                             }
                         }
+                        Console.WriteLine("Requesting plotcontrooler to shut down ");
                         PlotController.RequestShutDown();
                     }
 
