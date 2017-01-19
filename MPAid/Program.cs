@@ -11,12 +11,22 @@ namespace MPAid
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main()
+        static void Main(string[] args)
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
+
+            if (args.Length > 0)
+            {
+                if (args[0] == "initDB")
+                {
+                    Application.Run(new NewForms.LoginScreen("initDB"));
+                    return;
+                }
+            }
+            Console.WriteLine("Running Normally.");
+            
             Application.Run(new NewForms.LoginScreen());
             //MessageBox.Show("hahoi, hoihoi" + MPAid.Cores.Scoreboard.SimilarityAlgorithm.DamereauLevensheinDistanceAlgorithm("hahoi", "hoihoi") + "\nhoihoi, hahoi" + MPAid.Cores.Scoreboard.SimilarityAlgorithm.DamereauLevensheinDistanceAlgorithm("hoihoi", "hahoi"));
+            Application.Exit();
         }
     }
 }
