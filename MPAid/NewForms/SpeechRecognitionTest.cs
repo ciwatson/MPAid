@@ -390,7 +390,11 @@ namespace MPAid.NewForms
                 {
                     string target = ((WordComboBox.SelectedItem as Word) == null) ? string.Empty : (WordComboBox.SelectedItem as Word).Name;
                     Dictionary<string, string> result = RecEngine.Recognize(Path.Combine(outputFolder, recordingProgressBarLabel.Text)).ToDictionary(x => x.Key, x => x.Value);
-                    result.Add("Recording File Name", "hoihoi");
+                    if(result.Count <= 0)
+                    {
+                        result.Add("Recording File Name", "hau");
+                        MessageBox.Show("Default Value Used");
+                    }
                     if (result.Count > 0)
                     {
                         MPAiSpeakScoreBoardItem item = new MPAiSpeakScoreBoardItem(target, result.First().Value, PronuciationAdvisor.Advise(result.First().Key, target, result.First().Value));

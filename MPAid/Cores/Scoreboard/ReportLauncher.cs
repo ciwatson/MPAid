@@ -253,8 +253,6 @@ namespace MPAid.Cores.Scoreboard
         /// <param name="scoreboard">The scoreboard to generate an HTML report of.</param>
         public static void GenerateMPAiSpeakScoreHTML(MPAiSpeakScoreBoard scoreboard)
         {
-            System.Windows.Forms.MessageBox.Show(scoreboard.ToString());
-
             scoreboard.SaveScoreBoardToFile();
 
             if(!File.Exists(ScoreboardReportCSSAddress))
