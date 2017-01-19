@@ -88,6 +88,12 @@ namespace MPAid
         private static Process PlotExe;
         private static bool shutdown;
         private static bool exitRequest = false;
+        private static Process currentPlotProcess;
+
+        public static Process getCurrentPlotProcess() {
+            return currentPlotProcess;
+                
+        }
 
         /// <summary>
         /// Method called by the button to show the  plot. 
@@ -102,6 +108,11 @@ namespace MPAid
             exitRequest = false;
             plotType = requestedPlotType;
             voiceType = requestedVoiceType;
+
+            foreach (var process in Process.GetProcessesByName("VowelRunner"))
+            {
+                process.Kill();
+            }
 
             if (PlotStarted(GetPlotTitle()) == 1)
                 StartPlot();
@@ -192,7 +203,7 @@ namespace MPAid
 
                 Console.WriteLine(Path.Combine(PlotExe.StartInfo.WorkingDirectory, PlotExe.StartInfo.FileName));
                 //PlotExe.StartInfo.FileName = Path.Combine(PlotExe.StartInfo.WorkingDirectory, PlotExe.StartInfo.FileName);
-
+                currentPlotProcess = PlotExe;
                 PlotExe.Start();
                 int count = 0;
                 // Hang up the main application to wait until it finished starting
