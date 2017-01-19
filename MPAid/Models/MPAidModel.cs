@@ -22,7 +22,7 @@ namespace MPAid.Models
         {
             // Deprecated: The AppDataPath class holds this value, making it easier to change.
             //AppDomain.CurrentDomain.SetData("DataDirectory", System.Windows.Forms.Application.StartupPath + @"\App_Data");
-            AppDomain.CurrentDomain.SetData("DataDirectory", AppDataPath.path);
+            AppDomain.CurrentDomain.SetData("DataDirectory", Path.Combine(AppDataPath.path, "Database"));
 
             Database.SetInitializer<MPAidModel>(new MPAidModelInitializer());
         }
