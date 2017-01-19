@@ -169,9 +169,9 @@ namespace MPAid.Models
         /// <param name="context">The current MPAidModel object representing the persistence context.</param>
         protected override void Seed(MPAidModel context)
         {
-            if(Directory.Exists(Properties.Settings.Default.AudioFolder))
+            if(Directory.Exists(DirectoryManagement.AudioFolder))
             {
-                DirectoryInfo dirInfo = new DirectoryInfo(Properties.Settings.Default.AudioFolder);
+                DirectoryInfo dirInfo = new DirectoryInfo(DirectoryManagement.AudioFolder);
                 foreach(FileInfo fInfo in dirInfo.GetFiles("*.wav", SearchOption.AllDirectories))   // Also searches subdirectories.
                 {
                     if(fInfo.Extension.Contains("wav"))

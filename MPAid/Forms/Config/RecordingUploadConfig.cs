@@ -58,8 +58,8 @@ namespace MPAid.Forms.Config
                     NameParser paser = new NameParser();
                     paser.FullName = filename;          // Put the name into the parser
                     // Set the parser address to the audio or video folder as appropriate. 
-                    if (paser.MediaFormat == "audio") paser.Address = Properties.Settings.Default.AudioFolder;
-                    else if (paser.MediaFormat == "video") paser.Address = Properties.Settings.Default.VideoFolder;
+                    if (paser.MediaFormat == "audio") paser.Address = DirectoryManagement.AudioFolder;
+                    else if (paser.MediaFormat == "video") paser.Address = DirectoryManagement.VideoFolder;
                     // Get the file and add it to the database context.
                     DBContext.AddOrUpdateRecordingFile(paser.SingleFile);
                     // Copy the existing local file into the audio/video folder if it wasn't already there.

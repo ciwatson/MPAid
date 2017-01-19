@@ -136,8 +136,8 @@ namespace MPAid.NewForms
                         NameParser parser = new NameParser();
                         parser.FullName = workingFile.FullName;          // Put the name into the parser
                         // Set the parser address to the audio or video folder as appropriate. 
-                        if (parser.MediaFormat == "audio") parser.Address = Properties.Settings.Default.AudioFolder;
-                        else if (parser.MediaFormat == "video") parser.Address = Properties.Settings.Default.VideoFolder;
+                        if (parser.MediaFormat == "audio") parser.Address = DirectoryManagement.AudioFolder;
+                        else if (parser.MediaFormat == "video") parser.Address = DirectoryManagement.VideoFolder;
                         // Get the file and add it to the database context.
                         DBModel.AddOrUpdateRecordingFile(parser.SingleFile);
                         // Copy the existing local file into the audio/video folder if it wasn't already there.

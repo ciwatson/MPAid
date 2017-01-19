@@ -48,7 +48,7 @@ namespace MPAid.NewForms
         Category cty = null;
 
         private IWaveIn waveIn;
-        private WaveOutEvent waveOut; 
+        private WaveOutEvent waveOut;
         private WaveFileWriter writer;
         private WaveFileReader reader;
 
@@ -79,6 +79,15 @@ namespace MPAid.NewForms
             toggleOptions();    // For development, the bottom panel is visible, but the user won't need the bottom panel most of the time.
             toggleListButtons(RecordingListBox.SelectedItems.Count > 0);
             session = UserManagement.CurrentUser.SpeakScoreboard.NewScoreBoardSession();
+
+            if (File.Exists(ReportLauncher.MPAiSpeakScoreReportHTMLAddress))
+            {
+                ScoreReportButton.Enabled = true;
+            }
+            else
+            {
+                ScoreReportButton.Enabled = false;
+            }
         }
 
         /// <summary>
@@ -117,7 +126,7 @@ namespace MPAid.NewForms
         /// </summary>
         public void CreateDirectory()
         {
-            outputFolder = Properties.Settings.Default.RecordingFolder;
+            outputFolder = DirectoryManagement.RecordingFolder;
             tempFolder = Path.Combine(Path.GetTempPath(), "MPAiTemp");
             Directory.CreateDirectory(outputFolder);
             Directory.CreateDirectory(tempFolder);
@@ -142,7 +151,7 @@ namespace MPAid.NewForms
         public void DataBinding()
         {
             RecordingListBox.Items.Clear();
-            DirectoryInfo info = new DirectoryInfo(Properties.Settings.Default.RecordingFolder);
+            DirectoryInfo info = new DirectoryInfo(DirectoryManagement.RecordingFolder);
             RecordingListBox.Items.AddRange(info.GetFiles().Where(x => x.Extension != ".mfc" && x.Name.EndsWith(".wav")).Select(x => x.Name).ToArray());
             toggleListButtons(RecordingListBox.Items.Count > 0);
         }
@@ -381,7 +390,7 @@ namespace MPAid.NewForms
                 {
                     string target = ((WordComboBox.SelectedItem as Word) == null) ? string.Empty : (WordComboBox.SelectedItem as Word).Name;
                     Dictionary<string, string> result = RecEngine.Recognize(Path.Combine(outputFolder, recordingProgressBarLabel.Text)).ToDictionary(x => x.Key, x => x.Value);
-                    //result.Add("Recording File Name", "hoihoi");
+                    result.Add("Recording File Name", "hoihoi");
                     if (result.Count > 0)
                     {
                         MPAiSpeakScoreBoardItem item = new MPAiSpeakScoreBoardItem(target, result.First().Value, PronuciationAdvisor.Advise(result.First().Key, target, result.First().Value));
@@ -389,6 +398,8 @@ namespace MPAid.NewForms
 
                         AnalysisScreen analysisScreen = new AnalysisScreen(item.Similarity(), item.Analysis);
                         analysisScreen.ShowDialog(this);
+
+                        ScoreReportButton.Enabled = true;
                     }
                 }
             }
@@ -631,7 +642,7 @@ namespace MPAid.NewForms
         /// </summary>
         private void rename()
         {
-            using (RenameFileDialog renameDialog = new RenameFileDialog(Path.Combine(Properties.Settings.Default.RecordingFolder, RecordingListBox.GetItemText(RecordingListBox.SelectedItem))))
+            using (RenameFileDialog renameDialog = new RenameFileDialog(Path.Combine(DirectoryManagement.RecordingFolder, RecordingListBox.GetItemText(RecordingListBox.SelectedItem))))
             {
                 if (renameDialog.ShowDialog() == DialogResult.OK)
                 {

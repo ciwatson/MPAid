@@ -136,6 +136,7 @@
     <Compile Include="Cores\Scoreboard\MPAiSpeakScoreboardLoader.cs" />
     <Compile Include="Cores\Scoreboard\ReportLauncher.cs" />
     <Compile Include="Cores\Scoreboard\MPAiSpeakScoreBoard.cs" />
+    <Compile Include="DirectoryManagement.cs" />
     <Compile Include="Forms\AdminConsole.cs">
       <SubType>Form</SubType>
     </Compile>

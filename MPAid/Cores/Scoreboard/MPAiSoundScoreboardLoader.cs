@@ -11,16 +11,16 @@ namespace MPAid.Cores.Scoreboard
     {
         private static void ensureUserDirectoryExists(MPAiUser user)
         {
-            if (!Directory.Exists(Path.Combine(Properties.Settings.Default.ReportFolder, user.getName())))
+            if (!Directory.Exists(Path.Combine(DirectoryManagement.ScoreboardReportFolder, user.getName())))
             {
-                Directory.CreateDirectory(Path.Combine(Properties.Settings.Default.ReportFolder, user.getName()));
+                Directory.CreateDirectory(Path.Combine(DirectoryManagement.ScoreboardReportFolder, user.getName()));
             }
         }
 
         public static string SpeakScoreboardFileAddress(MPAiUser user)
         {
             ensureUserDirectoryExists(user);
-            return Path.Combine(Properties.Settings.Default.ReportFolder, user.getName(), "MPAiSoundScoreboard.txt");
+            return Path.Combine(DirectoryManagement.ScoreboardReportFolder, user.getName(), "MPAiSoundScoreboard.txt");
 
         }
 
@@ -37,6 +37,10 @@ namespace MPAid.Cores.Scoreboard
                     sw.WriteLine("<Scoreboard>");
                     foreach (MPAiSoundScoreBoardSession session in scoreboard.Sessions)
                     {
+                        if (session.IsEmpty())
+                        {
+                            continue;
+                        }
                         sw.WriteLine("<Session>");
                         sw.WriteLine("<Date>");
                         sw.WriteLine(session.DateAndTime);

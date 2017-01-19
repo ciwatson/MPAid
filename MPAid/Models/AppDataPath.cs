@@ -10,7 +10,7 @@ namespace MPAid.Models
     /// <summary>
     /// Wrapper class for the App_Data folder path, allowing it to be accessed easily.
     /// </summary>
-    class AppDataPath
+    static class AppDataPath
     {
         /// <summary>
         /// Returns the location of a temporary folder in the temp space on the user's machine.

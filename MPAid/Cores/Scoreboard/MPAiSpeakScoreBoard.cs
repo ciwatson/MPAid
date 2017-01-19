@@ -121,6 +121,11 @@ namespace MPAid.Cores.Scoreboard
         {
             return DateTime.Compare(y.DateAndTime, x.DateAndTime);
         }
+
+        public bool IsEmpty()
+        {
+            return !Content.Any();
+        }
     }
 
     /// <summary>
