@@ -70,8 +70,8 @@ namespace MPAi.Cores
             {
                 try
                 {
+                    if (!IsFileNameCorrect(value)) { throw new Exception("Invalid name format!"); }
                     string[] parts = value.Split('-');
-                    if(parts.Length != 4) { throw new Exception("Invalid name format!"); }
                     Speaker = parts[0];
                     Category = parts[1];
                     Word = parts[2];
@@ -83,6 +83,35 @@ namespace MPAi.Cores
                 }
             }
         }
+
+        public static bool IsFileNameCorrect(string fileName)
+        {
+            string[] parts = fileName.Split('-');
+
+            MPAi.Models.MPAiModel DBModel = MPAi.Models.MPAiModel.InitializeDBModel();
+
+            if (parts.Length < 4)
+            {
+                return false;
+            }
+
+            if (!DBModel.IsSpeakerString(parts[0]))
+            {
+                return false;
+            }
+
+            if (!DBModel.IsCategoryString(parts[1]))
+            {
+                return false;
+            }
+
+            if (!DBModel.IsWordString(parts[2]))
+            {
+                return false;
+            }
+            return true;
+        }
+
         /// <summary>
         /// Property for accessing the recording details of a file containing a recording.
         /// Combines the Speaker, Category, and Word values, separating them with hyphens (-).
