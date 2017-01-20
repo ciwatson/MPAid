@@ -483,9 +483,9 @@ namespace MPAi.NewForms
             if (currentDirectory == null)   // If there isn't one, return.
                 return;
             if (AssemblyName.GetAssemblyName(currentAssembly.Location).ProcessorArchitecture == ProcessorArchitecture.X86)  // If the computer is running an x86 architecture, use the x86 folder.
-                e.VlcLibDirectory = new DirectoryInfo(Path.Combine(currentDirectory, @"VlcLibs\x86\"));
+                e.VlcLibDirectory = new DirectoryInfo(Path.Combine(currentDirectory, @"VlcLibs\vlcx86\"));
             else        // otherwise use the x64 folder.
-                e.VlcLibDirectory = new DirectoryInfo(Path.Combine(currentDirectory, @"VlcLibs\x64\"));
+                e.VlcLibDirectory = new DirectoryInfo(Path.Combine(currentDirectory, @"VlcLibs\vlcx64\"));
 
             if (!e.VlcLibDirectory.Exists)      // If a folder is missing
             {
