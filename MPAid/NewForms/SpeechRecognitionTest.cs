@@ -393,7 +393,6 @@ namespace MPAid.NewForms
                     if(result.Count <= 0)
                     {
                         result.Add("Recording File Name", "hau");
-                        MessageBox.Show("Default Value Used");
                     }
                     if (result.Count > 0)
                     {
