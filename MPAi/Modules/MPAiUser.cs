@@ -298,6 +298,14 @@ namespace MPAi
         {
             return userName.ToLower();
         }
+
+        /// <summary>
+        /// Getter for the Users inputed username. Case sensitive.
+        /// </summary>
+        /// <returns>The case sensitive username, as a string</returns>
+        public string getRawName() {
+            return userName;
+        }
         /// <summary>
         /// Getter for password. Case Senstive.
         /// </summary>

@@ -2922,7 +2922,7 @@
     <Compile Include="Models\AppDataPath.cs" />
     <Compile Include="Models\VoiceType.cs" />
     <Compile Include="Models\SingleFile.cs" />
-    <Compile Include="Models\MPAidModel.cs" />
+    <Compile Include="Models\MPAiModel.cs" />
     <Compile Include="Models\Recording.cs" />
     <Compile Include="Models\Speaker.cs" />
     <Compile Include="Models\Category.cs" />
