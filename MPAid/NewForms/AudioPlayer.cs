@@ -42,7 +42,6 @@ namespace MPAid.NewForms
 
         private string[] spinnerText = { "Repeat Forever", "Repeat 10 Times", "Repeat 9 Times", "Repeat 8 Times", "Repeat 7 Times", "Repeat 6 Times", "Repeat 5 Times", "Repeat 4 Times", "Repeat 3 Times", "Repeat Twice", "Repeat Once", "Don't Repeat" };
 
-        private string audioFilePath = Path.Combine(Path.GetTempPath(), "MPAiTemp", "VideoPlayerRecordedAudio.wav");
         private WaveFileWriter writer;
         private WasapiCapture waveIn;
         private NAudioPlayer audioPlayer = new NAudioPlayer();

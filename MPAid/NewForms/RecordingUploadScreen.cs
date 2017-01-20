@@ -112,8 +112,7 @@ namespace MPAid.NewForms
                         if (parts.Length != 4)
                         {
                             // Back up the file to a temporary folder.
-                            string tempFolder = Path.Combine(Path.GetTempPath(), "MPAiTemp");
-                            File.Copy(workingFile.FullName, Path.Combine(tempFolder, "Rename_Backup"));
+                            File.Copy(workingFile.FullName, Path.Combine(AppDataPath.Temp, "Rename_Backup"));
 
                             //Open the rename dialog
                             RenameFileDialog renameDialog = new RenameFileDialog(workingFile.FullName, true);
@@ -122,7 +121,7 @@ namespace MPAid.NewForms
                                 // The old file has been changed to this.
                                 FileInfo renamedFile = renameDialog.RenamedFile;
                                 // Restore the old file, with old name intact, from the backup.
-                                File.Move(Path.Combine(tempFolder, "Rename_Backup"), workingFile.FullName);
+                                File.Move(Path.Combine(AppDataPath.Temp, "Rename_Backup"), workingFile.FullName);
                                 // Continue the process with the new file name.
                                 workingFile = renamedFile;
                             }
@@ -136,13 +135,19 @@ namespace MPAid.NewForms
                         NameParser parser = new NameParser();
                         parser.FullName = workingFile.FullName;          // Put the name into the parser
                         // Set the parser address to the audio or video folder as appropriate. 
-                        if (parser.MediaFormat == "audio") parser.Address = Properties.Settings.Default.AudioFolder;
-                        else if (parser.MediaFormat == "video") parser.Address = Properties.Settings.Default.VideoFolder;
+                        if (parser.MediaFormat == "audio")
+                        {
+                            parser.Address = Properties.Settings.Default.AudioFolder;
+                        }
+                        else if (parser.MediaFormat == "video")
+                        {
+                            parser.Address = Properties.Settings.Default.VideoFolder;
+                        }
                         // Get the file and add it to the database context.
                         DBModel.AddOrUpdateRecordingFile(parser.SingleFile);
                         // Copy the existing local file into the audio/video folder if it wasn't already there.
                         string existingFile = workingFile.FullName;
-                        string newFile = parser.Address + "\\" + workingFile.Name;
+                        string newFile = Path.Combine(parser.Address, workingFile.Name);
                         if (!existingFile.Equals(newFile))
                         {
                             File.Copy(existingFile, newFile, true);
@@ -159,7 +164,7 @@ namespace MPAid.NewForms
             }
             finally
             {
-                File.Delete(Path.Combine(Path.Combine(Path.GetTempPath(), "MPAiTemp"), "Rename_Backup"));
+                File.Delete(Path.Combine(AppDataPath.Temp, "Rename_Backup"));
             }
         }
 
@@ -189,7 +194,7 @@ namespace MPAid.NewForms
                         Recording rd = null;
                         NameParser paser = new NameParser();
                         paser.FullName = sf.Name;       // Add the file to the Parser
-                                                        // Use the parser to create the model objects.
+                        // Use the parser to create the model objects.
                         if (paser.MediaFormat == "audio")
                         {
                             rd = sf.Audio;

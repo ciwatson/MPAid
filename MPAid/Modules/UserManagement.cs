@@ -15,7 +15,7 @@ namespace MPAid
     public static class UserManagement
     {
         private static MPAiUser currentUser = null; // Make sure that current user has the correct voice type when you assign to it.
-        private static string userDirRoot = IoController.GetAppDataDir() + Path.DirectorySeparatorChar;
+        private static string userDirRoot = AppDataPath.Path;
         private static string fileName = "AppSettings.dat";
         private static readonly string adminStr = "admin";
 
@@ -42,15 +42,6 @@ namespace MPAid
             {
                 allUsers.Add(new MPAiUser(adminStr, adminStr));
             }
-        }
-
-        /// <summary>
-        /// Sets the root directory for the user.
-        /// </summary>
-        /// <param name="root">The current MPAid root directory.</param>
-        public static void SetRoot(string root)
-        {
-            userDirRoot = root + Path.DirectorySeparatorChar;
         }
 
         /// <summary>
@@ -197,7 +188,7 @@ namespace MPAid
         /// <returns>The path to the settings file, as a string.</returns>
         private static string GetSettingFilePath()
         {
-            return (userDirRoot + fileName);
+            return (Path.Combine(userDirRoot, fileName));
         }
 
         /// <summary>

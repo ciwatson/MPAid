@@ -97,7 +97,7 @@ namespace MPAid.NewForms
 
                     List<Word> view = DBModel.Word.Where(x => (
                        x.Category.Name.Equals("Word")
-                       //&& x.Recordings.Any(y =>y.Speaker.SpeakerId == current.Speaker.SpeakerId)  // Until the Menubar is finished, this won't work.
+                       && x.Recordings.Any(y =>y.Speaker.SpeakerId == current.Speaker.SpeakerId) 
                        )).ToList();
 
                     view.Sort(new VowelComparer());
@@ -118,9 +118,8 @@ namespace MPAid.NewForms
         public void CreateDirectory()
         {
             outputFolder = Properties.Settings.Default.RecordingFolder;
-            tempFolder = Path.Combine(Path.GetTempPath(), "MPAiTemp");
+            tempFolder = AppDataPath.Temp;
             Directory.CreateDirectory(outputFolder);
-            Directory.CreateDirectory(tempFolder);
         }
 
         /// <summary>

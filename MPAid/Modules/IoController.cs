@@ -14,30 +14,6 @@ namespace MPAid
     /// </summary>
     public static class IoController
     {
-
-        /// <summary>
-        /// Gets the current MPAid directory.
-        /// </summary>
-        /// <returns>The current MPAid directory, as a string.</returns>
-        public static string GetAppDataDir()
-        {
-            if (!Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\MPAid"))
-            {
-                Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\MPAid");
-            }
-            return Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\MPAid";
-        }
-
-        /// <summary>
-        /// Gets the input user's directory in the MPAid directory.
-        /// </summary>
-        /// <param name="user">The MPAiUser object representing the user who owns the directory.</param>
-        /// <returns>The directory of that user, as a string.</returns>
-        public static string GetAppDataDir(MPAiUser user)
-        {
-            return (GetAppDataDir() + Path.DirectorySeparatorChar + user.getName()) + "\\";
-        }
-
         /// <summary>
         /// Loads the user's default browser to view the specified HTML file.
         /// </summary>

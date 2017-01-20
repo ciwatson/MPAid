@@ -42,7 +42,7 @@ namespace MPAid.NewForms
 
         private string[] spinnerText = { "Repeat Forever", "Repeat 10 Times", "Repeat 9 Times", "Repeat 8 Times", "Repeat 7 Times", "Repeat 6 Times", "Repeat 5 Times", "Repeat 4 Times", "Repeat 3 Times", "Repeat Twice", "Repeat Once", "Don't Repeat" };
 
-        private string audioFilePath = Path.Combine(Path.GetTempPath(), "MPAiTemp", "VideoPlayerRecordedAudio.wav");
+        private string audioFilePath = Path.Combine(AppDataPath.Temp, "VideoPlayerRecordedAudio.wav");
         private WaveFileWriter writer;
         private WasapiCapture waveIn;
         private NAudioPlayer audioPlayer = new NAudioPlayer();
@@ -125,7 +125,7 @@ namespace MPAid.NewForms
 
                     List<Word> view = DBModel.Word.Where(x => (
                        x.Category.Name.Equals("Vowel")
-                       //&& x.Recordings.Any(y => y.Speaker.SpeakerId == current.Speaker.SpeakerId)  // Until the Menubar is finished, this won't work. Comment this line out to test.
+                       && x.Recordings.Any(y => y.Speaker.SpeakerId == current.Speaker.SpeakerId) 
                        )).ToList();
 
                     // Can't sort a control's Items field, so we sort a list and add values.
