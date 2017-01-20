@@ -582,26 +582,13 @@ namespace MPAi.NewForms
             }
         }
 
-        private MPAiModel InitializeDBModel()
-        {
-            MPAiModel DBModel;
-            DBModel = new MPAiModel();
-            DBModel.Database.Initialize(false);
-            DBModel.Recording.Load();
-            DBModel.Speaker.Load();
-            DBModel.Category.Load();
-            DBModel.Word.Load();
-            DBModel.SingleFile.Load();
-            return DBModel;
-        }
-
         /// <summary>
         /// Plays or pauses the audio, depending on the VLC player's current state.
         /// </summary>
         private void playAudio()
         {
 
-            using (MPAiModel DBModel = InitializeDBModel())
+            using (MPAiModel DBModel = MPAiModel.InitializeDBModel())
             {
                 Word wd = wordsList[currentRecordingIndex];
                 Speaker spk = UserManagement.CurrentUser.Speaker;  // Get the speaker from user settings.

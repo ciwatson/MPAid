@@ -36,6 +36,56 @@ namespace MPAi.Models
         public virtual DbSet<Speaker> Speaker { get; set; }
         public virtual DbSet<Word> Word { get; set; }
         public virtual DbSet<SingleFile> SingleFile { get; set; }
+
+        public static MPAiModel InitializeDBModel()
+        {
+            MPAiModel DBModel;
+            DBModel = new MPAiModel();
+            DBModel.Database.Initialize(false);
+            DBModel.Recording.Load();
+            DBModel.Speaker.Load();
+            DBModel.Category.Load();
+            DBModel.Word.Load();
+            DBModel.SingleFile.Load();
+            return DBModel;
+        }
+
+        public bool IsSpeakerString(string str)
+        {
+            foreach(Speaker speaker in Speaker)
+            {
+                if(str.Equals(speaker.Name))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public bool IsCategoryString(string str)
+        {
+            foreach (Category category in Category)
+            {
+                if (str.Equals(category.Name))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public bool IsWordString(string str)
+        {
+            foreach (Word word in Word)
+            {
+                if (str.Equals(word.Name))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         /// <summary>
         /// Override used to configure some database settings before the database is linked to the context object.
         /// Relations between classes and the nature of such relations are defined here,

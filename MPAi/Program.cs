@@ -23,10 +23,9 @@ namespace MPAi
                 }
             }
             Console.WriteLine("Running Normally.");
-            
+
             Application.Run(new NewForms.LoginScreen());
-            //MessageBox.Show("hahoi, hoihoi" + MPAi.Cores.Scoreboard.SimilarityAlgorithm.DamereauLevensheinDistanceAlgorithm("hahoi", "hoihoi") + "\nhoihoi, hahoi" + MPAi.Cores.Scoreboard.SimilarityAlgorithm.DamereauLevensheinDistanceAlgorithm("hoihoi", "hahoi"));
             Application.Exit();
         }
-    }
+    } 
 }

@@ -108,8 +108,8 @@ namespace MPAi.NewForms
 
                         // Need to rename file.
                         // If the user wanted to rename them themselves, take the same action as in SpeechRecognitionTest - automatically bring up rename.
-                        string[] parts = workingFile.Name.Split('-');
-                        if (parts.Length != 4)
+
+                        if (NameParser.IsFileNameCorrect(workingFile.Name))
                         {
                             // Back up the file to a temporary folder.
                             File.Copy(workingFile.FullName, Path.Combine(AppDataPath.Temp, "Rename_Backup"));
@@ -127,7 +127,7 @@ namespace MPAi.NewForms
                             }
                             else
                             {
-                                continue; 
+                                continue;
                             }
                         }
                         // If the file follows convention (i.e. parts.length == 4), do nothing.
