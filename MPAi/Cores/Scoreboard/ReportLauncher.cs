@@ -320,7 +320,7 @@ namespace MPAi.Cores.Scoreboard
                                 htw.Write(item.RecognisedText);
                                 htw.RenderEndTag();
                                 htw.RenderBeginTag(HtmlTextWriterTag.Td);
-                                htw.Write(item.Similarity(SimilarityAlgorithm.DamereauLevensheinDistanceAlgorithm).ToString("0.0%"));
+                                htw.Write(item.Similarity.ToString("0.0%"));
                                 htw.RenderEndTag();
                                 htw.RenderBeginTag(HtmlTextWriterTag.Td);
                                 htw.Write(item.Analysis);

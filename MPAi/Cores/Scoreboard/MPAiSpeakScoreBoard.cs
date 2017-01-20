@@ -18,21 +18,18 @@ namespace MPAi.Cores.Scoreboard
             this.expectedText = expectedText;
             this.recognisedText = recognisedText;
             this.analysis = analysis;
+            this.similarity = SimilarityScore(SimilarityAlgorithm.DamereauLevensheinDistanceAlgorithm);
         }
         /// <summary>
         /// Calls the similarity algorithm to calculate the difference between the two arguments.
         /// </summary>
         /// <param name="simi">The delegate method to use to calculate the difference between the two arguments.</param>
         /// <returns>A float representing the percentage difference.</returns>
-        public float Similarity(SimilarityAlgorithmCallBack simi)
+        private float SimilarityScore(SimilarityAlgorithmCallBack simi)
         {
             return simi(recognisedText, expectedText);
         }
 
-        public float Similarity()
-        {
-            return Similarity(SimilarityAlgorithm.DamereauLevensheinDistanceAlgorithm);
-        }
         /// <summary>
         /// The text the HTKEngine identified.
         /// </summary>
@@ -56,6 +53,18 @@ namespace MPAi.Cores.Scoreboard
         public string Analysis
         {
             get { return analysis; }
+        }
+
+        /// <summary>
+        /// The text describing what the user got right and wrong.
+        /// </summary>
+        private float similarity;
+        public float Similarity
+        {
+            get
+            {
+                return similarity;
+            }
         }
     }
 
@@ -95,7 +104,7 @@ namespace MPAi.Cores.Scoreboard
                 float sum = 0;
                 foreach (MPAiSpeakScoreBoardItem item in Content)
                 {
-                    sum += item.Similarity(SimilarityAlgorithm.DamereauLevensheinDistanceAlgorithm);
+                    sum += item.Similarity;
                 }
                 return sum;
             }

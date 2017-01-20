@@ -386,7 +386,7 @@ namespace MPAi.NewForms
                         MPAiSpeakScoreBoardItem item = new MPAiSpeakScoreBoardItem(target, result.First().Value, PronuciationAdvisor.Advise(result.First().Key, target, result.First().Value));
                         session.Content.Add(item);
 
-                        AnalysisScreen analysisScreen = new AnalysisScreen(item.Similarity(), item.Analysis);
+                        AnalysisScreen analysisScreen = new AnalysisScreen(item.Similarity, item.Analysis);
                         analysisScreen.ShowDialog(this);
                     }
                 }
