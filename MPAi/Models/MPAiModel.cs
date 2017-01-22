@@ -126,77 +126,69 @@ namespace MPAi.Models
         {
             try
             {
-                NameParser paser = new NameParser();
-                paser.SingleFile = recordingFile;
-                // Should only be one speaker per recording.
-                Speaker spk = this.Speaker.SingleOrDefault(x => x.Name == paser.Speaker);
-                // Handle the case where the file has no speaker set, by creating and adding one from the file name.
+                NameParser parser = new NameParser();
+                parser.SingleFileInitialise( recordingFile);
+
+                Speaker spk = this.Speaker.SingleOrDefault(x => x.Name == parser.Speaker);
                 if (spk == null)
                 {
                     spk = new Speaker()
                     {
-                        Name = paser.Speaker
+                        Name = parser.Speaker
                     };
                     this.Speaker.AddOrUpdate(x => x.Name, spk);
                     this.SaveChanges();
                 }
-                // Should only be one category per recording.
-                Category cty = this.Category.SingleOrDefault(x => x.Name == paser.Category);
-                //Handle the case where the file has no category set, by creating and adding one from the file name.
+
+                Category cty = this.Category.SingleOrDefault(x => x.Name == parser.Category);
                 if (cty == null)
                 {
                     cty = new Category()
                     {
-                        Name = paser.Category
+                        Name = parser.Category
                     };
                     this.Category.AddOrUpdate(x => x.Name, cty);
                     this.SaveChanges();
                 }
-                // Should only be one word per recording.
-                Word word = this.Word.SingleOrDefault(x => x.Name == paser.Word);
-                // Handle the case where the file has no word set, by creating and adding one from the file name and category.
-                // The category has been created above if it did not already exist.
+
+                Word word = this.Word.SingleOrDefault(x => x.Name == parser.Word);
                 if (word == null)
                 {
                     word = new Word()
                     {
-                        Name = paser.Word,
+                        Name = parser.Word,
                         CategoryId = cty.CategoryId
                     };
                     this.Word.AddOrUpdate(x => x.Name, word);
                     this.SaveChanges();
                 }
-                // Should only be one recording per recording object.
-                Recording rd = this.Recording.SingleOrDefault(x => x.Name == paser.Recording); ;
-                // Handle the case where a recording has no associated entry, by creating and adding one from the file name, speaker and word.
-                // The speaker and word have been created above if they did not already exist.
+
+                Recording rd = this.Recording.SingleOrDefault(x => x.Name == parser.Recording); ;
                 if (rd == null)
                 {
                     rd = new Recording()
                     {
-                        Name = paser.Recording,
+                        Name = parser.Recording,
                         SpeakerId = spk.SpeakerId,
                         WordId = word.WordId
                     };
                     this.Recording.AddOrUpdate(x => x.Name, rd);
                     this.SaveChanges();
                 }
-                // Should have a single file for each recording. 
-                SingleFile sf = this.SingleFile.SingleOrDefault(x => x.Name == paser.FullName);
-                // Handle the case where there is no file, by creating a filename from the path in the name, 
-                // and associating it with an audio or video recording (created above if they did not already exist) based on it's file type.
+
+                SingleFile sf = this.SingleFile.SingleOrDefault(x => x.Name == parser.FullName);
                 if (sf == null)
                 {
                     sf = new SingleFile()
                     {
-                        Name = paser.FullName,
-                        Address = paser.Address,
+                        Name = parser.FullName,
+                        Address = parser.Address,
                     };
-                    if (paser.MediaFormat == "audio")
+                    if (parser.MediaFormat == "audio")
                     {
                         sf.Audio = rd;
                     }
-                    else if (paser.MediaFormat == "video")
+                    else if (parser.MediaFormat == "video")
                     {
                         sf.Video = rd;
                     }
@@ -210,6 +202,7 @@ namespace MPAi.Models
             }
         }
     }
+
     /// <summary>
     /// Implementation of a database context initialiser that sets up a database based on the files in the Audio folder. 
     /// </summary>
@@ -223,13 +216,16 @@ namespace MPAi.Models
         /// <param name="context">The current MPAiModel object representing the persistence context.</param>
         protected override void Seed(MPAiModel context)
         {
+            Console.WriteLine("In Seed");
             if(Directory.Exists(Properties.Settings.Default.AudioFolder))
             {
+                Console.WriteLine("Audio Folder Exists.");
                 DirectoryInfo dirInfo = new DirectoryInfo(Properties.Settings.Default.AudioFolder);
                 foreach(FileInfo fInfo in dirInfo.GetFiles("*.wav", SearchOption.AllDirectories))   // Also searches subdirectories.
                 {
                     if(fInfo.Extension.Contains("wav"))
                     {
+                        Console.WriteLine("Wav found...");
                         context.AddOrUpdateRecordingFile(Path.Combine(fInfo.DirectoryName, fInfo.FullName));
                     }
                 }
@@ -237,6 +233,7 @@ namespace MPAi.Models
                 {
                     if (fInfo.Extension.Contains("mp4"))
                     {
+                        Console.WriteLine("Wav found...");
                         context.AddOrUpdateRecordingFile(Path.Combine(fInfo.DirectoryName, fInfo.FullName));
                     }
                 }
