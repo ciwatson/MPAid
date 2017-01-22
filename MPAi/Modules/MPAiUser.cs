@@ -38,7 +38,6 @@ namespace MPAi
         /// <summary>
         /// Wrapper property for the user's username, allowing access from outside the class.
         /// </summary>
-
         [DisplayName("UserName")]
         public string UserID
         {

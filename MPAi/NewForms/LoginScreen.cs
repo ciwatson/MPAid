@@ -85,8 +85,7 @@ namespace MPAi.NewForms
             }
             catch (Exception exp)
             {
-                MessageBox.Show(exp.StackTrace, "Database linking error!");
-                
+                MessageBox.Show(exp.Message, "Database linking error!");
             }
         }
 
