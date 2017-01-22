@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.UI;
+using MPAi.Models;
 
 namespace MPAi.Cores.Scoreboard
 {
@@ -15,9 +16,9 @@ namespace MPAi.Cores.Scoreboard
     {
         private static void ensureUserDirectoryExists()
         {
-            if (!Directory.Exists(Path.Combine(Properties.Settings.Default.ReportFolder, UserManagement.CurrentUser.getName())))
+            if (!Directory.Exists(Path.Combine(AppDataPath.Path, UserManagement.CurrentUser.getName())))
             {
-                Directory.CreateDirectory(Path.Combine(Properties.Settings.Default.ReportFolder, UserManagement.CurrentUser.getName()));
+                Directory.CreateDirectory(Path.Combine(DirectoryManagement.ScoreboardReportFolder, UserManagement.CurrentUser.getName()));
             }
         }
         /// <summary>
@@ -28,7 +29,7 @@ namespace MPAi.Cores.Scoreboard
             get
             {
                 ensureUserDirectoryExists();
-                return Path.Combine(Properties.Settings.Default.ReportFolder, UserManagement.CurrentUser.getName(), "MPAiSpeakReport.html");
+                return Path.Combine(DirectoryManagement.ScoreboardReportFolder, UserManagement.CurrentUser.getName(), "MPAiSpeakReport.html");
             }
         }
 
@@ -40,7 +41,7 @@ namespace MPAi.Cores.Scoreboard
             get
             {
                 ensureUserDirectoryExists();
-                return Path.Combine(Properties.Settings.Default.ReportFolder, UserManagement.CurrentUser.getName(), "MPAiSoundReport.html");
+                return Path.Combine(DirectoryManagement.ScoreboardReportFolder, UserManagement.CurrentUser.getName(), "MPAiSoundReport.html");
             }
         }
 
@@ -52,7 +53,7 @@ namespace MPAi.Cores.Scoreboard
             get
             {
                 ensureUserDirectoryExists();
-                return Path.Combine(Properties.Settings.Default.ReportFolder, UserManagement.CurrentUser.getName(), "Scoreboard.css");
+                return Path.Combine(DirectoryManagement.ScoreboardReportFolder, UserManagement.CurrentUser.getName(), "Scoreboard.css");
             }
         }
 
@@ -285,6 +286,10 @@ namespace MPAi.Cores.Scoreboard
 
                         foreach(MPAiSpeakScoreBoardSession session in scoreboard.Sessions)
                         {
+                            if(session.IsEmpty())
+                            {
+                                continue;
+                            }
                             //Table Title
                             htw.AddAttribute(HtmlTextWriterAttribute.Class, "table-title");
                             htw.RenderBeginTag(HtmlTextWriterTag.Div);
@@ -391,6 +396,10 @@ namespace MPAi.Cores.Scoreboard
 
                         foreach (MPAiSoundScoreBoardSession session in scoreboard.Sessions)
                         {
+                            if (session.IsEmpty())
+                            {
+                                continue;
+                            }
                             //Table Title
                             htw.AddAttribute(HtmlTextWriterAttribute.Class, "table-title");
                             htw.RenderBeginTag(HtmlTextWriterTag.Div);

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Windows.Forms;
+using MPAi.Cores;
 
 namespace MPAi.Cores.Scoreboard
 {
@@ -12,16 +13,16 @@ namespace MPAi.Cores.Scoreboard
     {
         private static void ensureUserDirectoryExists(MPAiUser user)
         {
-            if (!Directory.Exists(Path.Combine(Properties.Settings.Default.ReportFolder,user.getName())))
+            if (!Directory.Exists(Path.Combine(DirectoryManagement.ScoreboardReportFolder, user.getName())))
             {
-                Directory.CreateDirectory(Path.Combine(Properties.Settings.Default.ReportFolder, user.getName()));
+                Directory.CreateDirectory(Path.Combine(DirectoryManagement.ScoreboardReportFolder, user.getName()));
             }
         }
 
         public static string SpeakScoreboardFileAddress(MPAiUser user)
         {
             ensureUserDirectoryExists(user);
-            return Path.Combine(Properties.Settings.Default.ReportFolder, user.getName(), "MPAiSpeakScoreboard.txt");
+            return Path.Combine(DirectoryManagement.ScoreboardReportFolder, user.getName(), "MPAiSpeakScoreboard.txt");
 
         }
 
@@ -38,6 +39,10 @@ namespace MPAi.Cores.Scoreboard
                     sw.WriteLine("<Scoreboard>");
                     foreach (MPAiSpeakScoreBoardSession session in scoreboard.Sessions)
                     {
+                        if(session.IsEmpty())
+                        {
+                            continue;
+                        }
                         sw.WriteLine("<Session>");
                         sw.WriteLine("<Date>");
                         sw.WriteLine(session.DateAndTime);

@@ -5,18 +5,6 @@
     <Setting Name="autoLoginSetting" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="AudioFolder" Type="System.String" Scope="User">
-      <Value Profile="(Default)">./Audio</Value>
-    </Setting>
-    <Setting Name="VideoFolder" Type="System.String" Scope="User">
-      <Value Profile="(Default)">./Video</Value>
-    </Setting>
-    <Setting Name="RecordingFolder" Type="System.String" Scope="User">
-      <Value Profile="(Default)">./Recording</Value>
-    </Setting>
-    <Setting Name="ReportFolder" Type="System.String" Scope="User">
-      <Value Profile="(Default)">./Report</Value>
-    </Setting>
     <Setting Name="HTKFolder" Type="System.String" Scope="User">
       <Value Profile="(Default)">./HTK</Value>
     </Setting>

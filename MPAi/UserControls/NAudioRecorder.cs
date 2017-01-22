@@ -64,7 +64,7 @@ namespace MPAi.UserControls
         /// </summary>
         public void CreateDirectory()
         {
-            outputFolder = Properties.Settings.Default.RecordingFolder;
+            outputFolder = DirectoryManagement.RecordingFolder;
             tempFolder = Path.Combine(Path.GetTempPath(), "MPAiTemp");
             Directory.CreateDirectory(outputFolder);
             Directory.CreateDirectory(tempFolder);
@@ -75,7 +75,7 @@ namespace MPAi.UserControls
         public void DataBinding()
         {
             RECListBox.Items.Clear();
-            DirectoryInfo info = new DirectoryInfo(Properties.Settings.Default.RecordingFolder);
+            DirectoryInfo info = new DirectoryInfo(DirectoryManagement.RecordingFolder);
             RECListBox.Items.AddRange(info.GetFiles().Where(x => x.Extension != ".mfc").Select(x => x.Name).ToArray());
             // Deprecated: Old implemetation that gets all .wav files in the recording directory.
             //RECListBox.DataSource = info.GetFiles("*.wav");

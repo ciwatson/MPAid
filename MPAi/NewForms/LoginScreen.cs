@@ -38,14 +38,6 @@ namespace MPAi.NewForms
             The program depends on having a full path, but the dynamic settings can't be added by default.
             Also create the directories if they don't already exist.
             */
-            Directory.CreateDirectory(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Audio"));
-            Properties.Settings.Default.AudioFolder = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Audio");
-            Directory.CreateDirectory(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Video"));
-            Properties.Settings.Default.VideoFolder = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Video");
-            Directory.CreateDirectory(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Recording"));
-            Properties.Settings.Default.RecordingFolder = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Recording");
-            Directory.CreateDirectory(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Report"));
-            Properties.Settings.Default.ReportFolder = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Report");
             Directory.CreateDirectory(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "HTK"));
             Properties.Settings.Default.HTKFolder = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "HTK");
             Directory.CreateDirectory(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Fomant"));
