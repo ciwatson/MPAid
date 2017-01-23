@@ -137,11 +137,11 @@ namespace MPAi.NewForms
                         // Set the parser address to the audio or video folder as appropriate. 
                         if (parser.MediaFormat == "audio")
                         {
-                            parser.Address = DirectoryManagement.AudioFolder;
+                            parser.Address = Properties.Settings.Default.AudioFolder;
                         }
                         else if (parser.MediaFormat == "video")
                         {
-                            parser.Address = DirectoryManagement.VideoFolder;
+                            parser.Address = Properties.Settings.Default.VideoFolder;
                         }
                         // Get the file and add it to the database context.
                         DBModel.AddOrUpdateRecordingFile(parser.SingleFile);

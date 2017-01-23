@@ -117,7 +117,7 @@ namespace MPAi.NewForms
         /// </summary>
         public void CreateDirectory()
         {
-            outputFolder = DirectoryManagement.RecordingFolder;
+            outputFolder = Properties.Settings.Default.RecordingFolder;
             tempFolder = AppDataPath.Temp;
             Directory.CreateDirectory(outputFolder);
         }
@@ -141,7 +141,7 @@ namespace MPAi.NewForms
         public void DataBinding()
         {
             RecordingListBox.Items.Clear();
-            DirectoryInfo info = new DirectoryInfo(DirectoryManagement.RecordingFolder);
+            DirectoryInfo info = new DirectoryInfo(Properties.Settings.Default.RecordingFolder);
             RecordingListBox.Items.AddRange(info.GetFiles().Where(x => x.Extension != ".mfc" && x.Name.EndsWith(".wav")).Select(x => x.Name).ToArray());
             toggleListButtons(RecordingListBox.Items.Count > 0);
         }
@@ -630,7 +630,7 @@ namespace MPAi.NewForms
         /// </summary>
         private void rename()
         {
-            using (RenameFileDialog renameDialog = new RenameFileDialog(Path.Combine(DirectoryManagement.RecordingFolder, RecordingListBox.GetItemText(RecordingListBox.SelectedItem))))
+            using (RenameFileDialog renameDialog = new RenameFileDialog(Path.Combine(Properties.Settings.Default.RecordingFolder, RecordingListBox.GetItemText(RecordingListBox.SelectedItem))))
             {
                 if (renameDialog.ShowDialog() == DialogResult.OK)
                 {
