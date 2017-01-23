@@ -33,6 +33,19 @@ namespace MPAi.Cores
                 }
             }
         }
+
+        public void SingleFileInitialise(string singleFile)
+        {
+            try
+            {
+                Address = Path.GetDirectoryName(singleFile);
+                FullNameInitialise(Path.GetFileName(singleFile));
+            }
+            catch (Exception exp)
+            {
+                Console.WriteLine(exp);
+            }
+        }
         /// <summary>
         /// Property for accessing the file name and extension of a file containing a recording.
         /// Getters and setters combine the FileName variable (File name without extension) and the Ext variable (File extension).
@@ -57,6 +70,19 @@ namespace MPAi.Cores
                 }   
             }
         }
+
+        public void FullNameInitialise(string fullname)
+        {
+            try
+            {
+                FileNameInitialise(Path.GetFileNameWithoutExtension(fullname));
+                Ext = Path.GetExtension(fullname);
+            }
+            catch (Exception exp)
+            {
+                Console.WriteLine(exp);
+            }
+        }
         /// <summary>
         /// Property for accessing the file name of a file containing a recording. 
         /// This follows a particular format.
@@ -70,6 +96,8 @@ namespace MPAi.Cores
             {
                 try
                 {
+
+                    Console.WriteLine(value);
                     if (!IsFileNameCorrect(value)) { throw new Exception("Invalid name format!"); }
                     string[] parts = value.Split('-');
                     Speaker = parts[0];
@@ -84,6 +112,24 @@ namespace MPAi.Cores
             }
         }
 
+        public void FileNameInitialise( string fileName)
+        {
+            try
+            {
+
+                Console.WriteLine(fileName);
+                string[] parts = fileName.Split('-');
+                Speaker = parts[0];
+                Category = parts[1];
+                Word = parts[2];
+                Label = parts[3];
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+        }
+
         public static bool IsFileNameCorrect(string fileName)
         {
             string[] parts = fileName.Split('-');
@@ -92,11 +138,14 @@ namespace MPAi.Cores
 
             if (parts.Length < 4)
             {
+                Console.WriteLine("Not enough Dashes");
                 return false;
             }
 
             if (!DBModel.IsSpeakerString(parts[0]))
             {
+                Console.WriteLine("Speaker invalid");
+
                 return false;
             }
 
