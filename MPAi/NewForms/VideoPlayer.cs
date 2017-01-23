@@ -340,6 +340,8 @@ namespace MPAi.NewForms
         /// </summary>
         private void StopRecording()
         {
+            waveIn.DataAvailable -= OnDataAvailable;
+
             recordButton.Text = recordText;
             if (waveIn != null)
             {

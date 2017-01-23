@@ -216,28 +216,24 @@ namespace MPAi.Models
         /// <param name="context">The current MPAiModel object representing the persistence context.</param>
         protected override void Seed(MPAiModel context)
         {
-            Console.WriteLine("In Seed");
             if(Directory.Exists(Properties.Settings.Default.AudioFolder))
             {
-                Console.WriteLine("Audio Folder Exists.");
                 DirectoryInfo dirInfo = new DirectoryInfo(Properties.Settings.Default.AudioFolder);
                 foreach(FileInfo fInfo in dirInfo.GetFiles("*.wav", SearchOption.AllDirectories))   // Also searches subdirectories.
                 {
                     if(fInfo.Extension.Contains("wav"))
                     {
-                        Console.WriteLine("Wav found...");
                         context.AddOrUpdateRecordingFile(Path.Combine(fInfo.DirectoryName, fInfo.FullName));
                     }
                 }
             }
-            if (Directory.Exists(DirectoryManagement.VideoFolder))
+            if (Directory.Exists(Properties.Settings.Default.VideoFolder))
             {
-                DirectoryInfo dirInfo = new DirectoryInfo(DirectoryManagement.VideoFolder);
+                DirectoryInfo dirInfo = new DirectoryInfo(Properties.Settings.Default.VideoFolder);
                 foreach (FileInfo fInfo in dirInfo.GetFiles("*.mp4", SearchOption.AllDirectories))   // Also searches subdirectories.
                 {
                     if (fInfo.Extension.Contains("mp4"))
                     {
-                        Console.WriteLine("Wav found...");
                         context.AddOrUpdateRecordingFile(Path.Combine(fInfo.DirectoryName, fInfo.FullName));
                     }
                 }
