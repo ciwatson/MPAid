@@ -127,6 +127,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cores\CollectionExtensions.cs" />
+    <Compile Include="Cores\DirectoryManagement.cs" />
     <Compile Include="Cores\HTKEngine.cs" />
     <Compile Include="Cores\MailSender.cs" />
     <Compile Include="Cores\Scoreboard\MPAiSoundScoreBoard.cs" />

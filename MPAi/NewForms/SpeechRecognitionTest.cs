@@ -117,7 +117,7 @@ namespace MPAi.NewForms
         /// </summary>
         public void CreateDirectory()
         {
-            outputFolder = Properties.Settings.Default.RecordingFolder;
+            outputFolder = DirectoryManagement.RecordingFolder;
             tempFolder = AppDataPath.Temp;
             Directory.CreateDirectory(outputFolder);
         }
@@ -141,7 +141,7 @@ namespace MPAi.NewForms
         public void DataBinding()
         {
             RecordingListBox.Items.Clear();
-            DirectoryInfo info = new DirectoryInfo(Properties.Settings.Default.RecordingFolder);
+            DirectoryInfo info = new DirectoryInfo(DirectoryManagement.RecordingFolder);
             RecordingListBox.Items.AddRange(info.GetFiles().Where(x => x.Extension != ".mfc" && x.Name.EndsWith(".wav")).Select(x => x.Name).ToArray());
             toggleListButtons(RecordingListBox.Items.Count > 0);
         }

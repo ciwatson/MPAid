@@ -61,18 +61,6 @@ namespace MPAi.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("./Recording")]
-        public string RecordingFolder {
-            get {
-                return ((string)(this["RecordingFolder"]));
-            }
-            set {
-                this["RecordingFolder"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("./Report")]
         public string ReportFolder {
             get {
@@ -104,6 +92,18 @@ namespace MPAi.Properties {
             }
             set {
                 this["FomantFolder"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("./Recording")]
+        public string RecordingFolder {
+            get {
+                return ((string)(this["RecordingFolder"]));
+            }
+            set {
+                this["RecordingFolder"] = value;
             }
         }
     }
