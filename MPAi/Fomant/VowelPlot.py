@@ -423,30 +423,32 @@ class VowelPlot:
     and makes the formant plot react accordingly.
     """
     def record(self):
+        try:
+            if self.vowelScorer.safeToRecord():
+                self.Recording = True
 
-        if self.vowelScorer.safeToRecord():
-            self.Recording = True
+                self.formApp.preventResizing()
+                self.xFormantList = []
+                self.yFormantList = []
+                self.recordedAudio = Sound()
+                self.setUpScore()
+                self.clear()
 
-            self.formApp.preventResizing()
-            self.xFormantList = []
-            self.yFormantList = []
-            self.recordedAudio = Sound()
-            self.setUpScore()
-            self.clear()
+                self.plotCount = 0
+                self.notStopped = True
+                self.vowelPlotCanvas.itemconfig('analysisButton', state = 'hidden')
+                self.vowelPlotCanvas.itemconfig('helptext', state='hidden')
+                self.vowelPlotCanvas.itemconfig('firstButtons', state='hidden')
+                self.vowelPlotCanvas.itemconfig('recording', state='normal')
+                self.vowelPlotCanvas.itemconfig('Loudness', state='hidden')
 
-            self.plotCount = 0
-            self.notStopped = True
-            self.vowelPlotCanvas.itemconfig('analysisButton', state = 'hidden')
-            self.vowelPlotCanvas.itemconfig('helptext', state='hidden')
-            self.vowelPlotCanvas.itemconfig('firstButtons', state='hidden')
-            self.vowelPlotCanvas.itemconfig('recording', state='normal')
-            self.vowelPlotCanvas.itemconfig('Loudness', state='hidden')
-
-            self.recordedAudio.record()
-            self.count2 = 0
-            thread.start_new_thread(self.multiThreadUpdateCanvas, ("Thread-1", self.notStopped))
-        else:
-            print "Not SafeToRecord, please Wait..."
+                self.recordedAudio.record()
+                self.count2 = 0
+                thread.start_new_thread(self.multiThreadUpdateCanvas, ("Thread-1", self.notStopped))
+            else:
+                print "Not SafeToRecord, please Wait..."
+        except Exception:
+            self.requestQuit()
 
     def multiThreadUpdateCanvas(self, threadName, notStopped):
         try:
@@ -490,8 +492,8 @@ class VowelPlot:
             self.vowelPlotCanvas.itemconfig('toQuiet', state='hidden')
             self.root.after(500 ,self.requestFinalScore)
 
-        else:
-            print "Not Safe to Stop.. Please Wait."
+    
+
 
     def requestFinalScore(self):
         print "Requesting Final Score"
