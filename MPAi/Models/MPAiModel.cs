@@ -233,6 +233,10 @@ namespace MPAi.Models
                         context.AddOrUpdateRecordingFile(Path.Combine(fInfo.DirectoryName, fInfo.FullName));
                     }
                 }
+            }
+            if (Directory.Exists(DirectoryManagement.VideoFolder))
+            {
+                DirectoryInfo dirInfo = new DirectoryInfo(DirectoryManagement.VideoFolder);
                 foreach (FileInfo fInfo in dirInfo.GetFiles("*.mp4", SearchOption.AllDirectories))   // Also searches subdirectories.
                 {
                     if (fInfo.Extension.Contains("mp4"))
