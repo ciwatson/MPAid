@@ -1,19 +1,14 @@
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using MPAi.Cores;
 using System.IO.Pipes;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Threading;
 using MPAi.Models;
-using MPAi;
 using MPAi.Cores.Scoreboard;
-using System.Security.AccessControl;
+using NAudio.CoreAudioApi;
 
 namespace MPAi
 {
@@ -109,15 +104,36 @@ namespace MPAi
             plotType = requestedPlotType;
             voiceType = requestedVoiceType;
 
-            foreach (var process in Process.GetProcessesByName("VowelRunner"))
-            {
-                process.Kill();
-            }
+           
 
-            if (PlotStarted(GetPlotTitle()) == 1)
-                StartPlot();
+            var deviceEnum = new MMDeviceEnumerator();
+            var devices = deviceEnum.EnumerateAudioEndPoints(DataFlow.Capture, DeviceState.Active).ToList();
+            if (devices.Count == 0)
+            {
+                MessageBox.Show("No recording device detected.\nVowel Plot requires a working microphone to function correctly.\nPlease plug in Microphone, or update Drivers.");
+
+                NewForms.MPAiSoundMainMenu menu = new MPAi.NewForms.MPAiSoundMainMenu();
+                menu.Show();
+
+            }
             else
-                ShowPlot(GetPlotTitle());
+            {
+
+                foreach (var process in Process.GetProcessesByName("VowelRunner"))
+                {
+                    process.Kill();
+                }
+
+
+                if (PlotStarted(GetPlotTitle()) == 1)
+                    StartPlot();
+                else
+                    ShowPlot(GetPlotTitle());
+
+            }
+           
+
+            
         }
         /// <summary>
         /// Used to clean up after a  plot has been closed, as the process is simply put into the background.
