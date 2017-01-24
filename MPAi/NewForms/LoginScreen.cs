@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.Entity;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -50,6 +51,17 @@ namespace MPAi.NewForms
             Properties.Settings.Default.HTKFolder = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "HTK");
             Directory.CreateDirectory(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Fomant"));
             Properties.Settings.Default.FomantFolder = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Fomant");
+
+            // Kill any erroneous processes that may be running.
+            Process me = Process.GetCurrentProcess();
+            foreach (Process p in Process.GetProcessesByName("MPAi"))
+            {
+                if (!p.Equals(me))
+                {
+                    p.Kill();
+                    p.WaitForExit();
+                }
+            }
 
             // Initialise the LoginScreen.
             InitializeComponent();
